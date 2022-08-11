@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Categories on Le D de Data</title>
+        <link>https://blog.ddata.fr/categories/</link>
+        <description>Recent content in Categories on Le D de Data</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>fr-fr</language>
+        <lastBuildDate>Thu, 11 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ddata.fr/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Azure</title>
+        <link>https://blog.ddata.fr/categories/azure/</link>
+        <pubDate>Thu, 11 Aug 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://blog.ddata.fr/categories/azure/</guid>
+        <description>&lt;img src="https://blog.ddata.fr/categories/azure/Azure250.png" alt="Featured image of post Azure" /&gt;</description>
+        </item>
+        <item>
+        <title>Microsoft 365</title>
+        <link>https://blog.ddata.fr/categories/m365/</link>
+        <pubDate>Thu, 11 Aug 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://blog.ddata.fr/categories/m365/</guid>
+        <description>&lt;img src="https://blog.ddata.fr/categories/m365/M365250.png" alt="Featured image of post Microsoft 365" /&gt;</description>
+        </item>
+        <item>
+        <title>Power Apps</title>
+        <link>https://blog.ddata.fr/categories/powerapps/</link>
+        <pubDate>Thu, 11 Aug 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://blog.ddata.fr/categories/powerapps/</guid>
+        <description>&lt;img src="https://blog.ddata.fr/categories/powerapps/PowerApps250.png" alt="Featured image of post Power Apps" /&gt;</description>
+        </item>
+        <item>
+        <title>Power Automate</title>
+        <link>https://blog.ddata.fr/categories/powerautomate/</link>
+        <pubDate>Thu, 11 Aug 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://blog.ddata.fr/categories/powerautomate/</guid>
+        <description>&lt;img src="https://blog.ddata.fr/categories/powerautomate/PowerAutomate250.png" alt="Featured image of post Power Automate" /&gt;</description>
+        </item>
+        <item>
+        <title>Power BI</title>
+        <link>https://blog.ddata.fr/categories/powerbi/</link>
+        <pubDate>Thu, 11 Aug 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://blog.ddata.fr/categories/powerbi/</guid>
+        <description>&lt;img src="https://blog.ddata.fr/categories/powerbi/PowerBI250.png" alt="Featured image of post Power BI" /&gt;</description>
+        </item>
+        
+    </channel>
+</rss>

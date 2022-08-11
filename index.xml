@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Le D de Data</title>
+        <link>https://blog.ddata.fr/</link>
+        <description>Recent content on Le D de Data</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>fr-fr</language>
+        <lastBuildDate>Thu, 11 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ddata.fr/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>A propos de D de Data</title>
+        <link>https://blog.ddata.fr/a-propos-de-d-de-data/</link>
+        <pubDate>Thu, 11 Aug 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://blog.ddata.fr/a-propos-de-d-de-data/</guid>
+        <description>&lt;p&gt;Ce blog ce veut un espace de partage de savoir autour des technologies de la &lt;strong&gt;données Microsoft&lt;/strong&gt; et &lt;strong&gt;Power Platform&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;Ce blog est principalement &lt;strong&gt;francophone&lt;/strong&gt; (fautes d&amp;rsquo;orthographes et de grammaires incluses)&lt;/p&gt;
+&lt;p&gt;Mon objectifs est de couvrir des &lt;strong&gt;problématiques techniques&lt;/strong&gt; pour une &lt;strong&gt;audience non technique&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;Vous trouverez plus d&amp;rsquo;informations sur la face caché de ce blog dans &lt;a class=&#34;link&#34; href=&#34;https://blog.ddata.fr/about-tech&#34; &gt;ici&lt;/a&gt; , notament sur la collecte de données et les outils utilisés.&lt;/p&gt;
+&lt;p&gt;Le contenu de ce blog est sous licence Creative Commons, vous pouvez utiliser mes contenus librement mais vous devez &lt;strong&gt;me citer&lt;/strong&gt;, un lien vers le blog est bienvenue.&lt;/p&gt;
+&lt;p&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;Le D de Data&lt;!-- raw HTML omitted --&gt; de &lt;!-- raw HTML omitted --&gt;Pierre Dupont&lt;!-- raw HTML omitted --&gt; est mis à disposition selon les termes de la &lt;!-- raw HTML omitted --&gt;licence Creative Commons Attribution 4.0 International&lt;!-- raw HTML omitted --&gt;.&lt;/p&gt;</description>
+        </item>
+        <item>
+        <title>Archives</title>
+        <link>https://blog.ddata.fr/archives/</link>
+        <pubDate>Thu, 11 Aug 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://blog.ddata.fr/archives/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Cékoidonc Azure ?</title>
+        <link>https://blog.ddata.fr/p/c%C3%A9koidonc-azure/</link>
+        <pubDate>Thu, 11 Aug 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://blog.ddata.fr/p/c%C3%A9koidonc-azure/</guid>
+        <description>&lt;img src="https://blog.ddata.fr/p/c%C3%A9koidonc-azure/adrien-olichon-KzkIVT1HCVY-unsplash.jpg" alt="Featured image of post Cékoidonc Azure ?" /&gt;&lt;p&gt;Cékoidonc Azure ?&lt;/p&gt;
+&lt;p&gt;Lorsque vous affichez cette page de blog, cela n&amp;rsquo;est ni magique ni divin. Vous faites appel à des services informatiques qui répondent à votre demande.&lt;br&gt;
+Ces services peuvent être de nature différente, mais ont tous en commun d&amp;rsquo;être disponible sur Internet.&lt;br&gt;
+Il existe des fournisseurs qui vous louent des services informatiques sur Internet, c&amp;rsquo;est ce que l&amp;rsquo;on appelle le cloud.&lt;br&gt;
+Parmi ces fournisseurs on retrouve :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Amazon avec le service AWS (Amazon Web Services).&lt;/li&gt;
+&lt;li&gt;Microsoft avec le service Azure.&lt;/li&gt;
+&lt;li&gt;Google avec le service GCP (Google Cloud Platform).&lt;/li&gt;
+&lt;li&gt;OVH avec le service OCHcloud.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Azure est donc un service de location de ressources informatique sur Internet délivré par Microsoft.&lt;br&gt;
+Azure propose plus de 200 types de services différents à la location.&lt;/p&gt;</description>
+        </item>
+        <item>
+        <title>Cékoidonc Azure Active Directory ?</title>
+        <link>https://blog.ddata.fr/p/c%C3%A9koidonc-azure-active-directory/</link>
+        <pubDate>Thu, 11 Aug 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://blog.ddata.fr/p/c%C3%A9koidonc-azure-active-directory/</guid>
+        <description>&lt;img src="https://blog.ddata.fr/p/c%C3%A9koidonc-azure-active-directory/jukebox-print-FUohNQatzVs-unsplash.jpg" alt="Featured image of post Cékoidonc Azure Active Directory ?" /&gt;&lt;p&gt;Cékoidonc Azure Active Directory ?&lt;/p&gt;
+&lt;p&gt;Lorsque vous souscrivez à des services en ligne, vous ne souhaitez que n&amp;rsquo;importe qui accède à vos ressources, on parle dans ce cas d&amp;rsquo;authentification des utilisateurs.&lt;br&gt;
+Parmi vos utilisateurs authentifiés, vous ne voulez pas non plus que tout le monde accède à tout, on parle dans ce cas d&amp;rsquo;autorisations.&lt;/p&gt;
+&lt;p&gt;Azure Active Directory est le service Azure en charge de l&amp;rsquo;authentification.&lt;br&gt;
+La gestion des autorisations des services Azure, sera réalisé sur les utilisateurs authentifiés dans Azure Active Directory.&lt;/p&gt;
+&lt;p&gt;On utilise souvent les acronymes Azure AD ou AAD pour Azure Active Directory.&lt;/p&gt;
+&lt;p&gt;En plus des utilisateurs, AAD permet de gérer des groupes, dans lesquels on ajoute des utilisateurs. Un utilisateur peut être membre de plusieurs groupes.&lt;br&gt;
+La bonne pratique est d&amp;rsquo;affecter les droits à des groupes et non à des utilisateurs individuellement, ainsi c&amp;rsquo;est plus simple d&amp;rsquo;affecter des droits à un nouvel utilisateur en le rendant simplement membre des groupes correspondants au besoin.&lt;/p&gt;</description>
+        </item>
+        <item>
+        <title>Cékoidonc Microsoft 365 ?</title>
+        <link>https://blog.ddata.fr/p/c%C3%A9koidonc-microsoft-365/</link>
+        <pubDate>Thu, 11 Aug 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://blog.ddata.fr/p/c%C3%A9koidonc-microsoft-365/</guid>
+        <description>&lt;img src="https://blog.ddata.fr/p/c%C3%A9koidonc-microsoft-365/joyce-mccown-1Q4TjXPlrVQ-unsplash.jpg" alt="Featured image of post Cékoidonc Microsoft 365 ?" /&gt;&lt;p&gt;Cékoidonc Microsoft 365 ?&lt;/p&gt;
+&lt;p&gt;Microsoft 365 est un ensemble de service,orienté bureautique, destinée aux entreprises.&lt;br&gt;
+En plus des classiques de la suite Office (Word, Excel, PowerPoint) on retrouve notamment :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Teams : l&amp;rsquo;outil de chat et de réunion (écrit, vidéo et audio)&lt;/li&gt;
+&lt;li&gt;Outlook : votre messagerie email.&lt;/li&gt;
+&lt;li&gt;SharePoint : l&amp;rsquo;outil de site intranet et de partage de documents collaboratif.&lt;/li&gt;
+&lt;li&gt;OneDrive : vos documents personnels d&amp;rsquo;entreprise dans le cloud.&lt;/li&gt;
+&lt;li&gt;Power BI : &lt;a class=&#34;link&#34; href=&#34;https://blog.ddata.fr/p/c%C3%A9koidonc-power-bi/&#34; &gt;Voir mon cékoidonc ?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Power Apps : &lt;a class=&#34;link&#34; href=&#34;https://blog.ddata.fr/p/c%C3%A9koidonc-power-apps/&#34; &gt;Voir mon cékoidonc ?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Power Automate : &lt;a class=&#34;link&#34; href=&#34;https://blog.ddata.fr/p/c%C3%A9koidonc-power-automate/&#34; &gt;Voir mon cékoidonc ?&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Il existe un grand nombre de licences Microsoft 365 qui intègre plus ou moins de produits de la gamme.&lt;/p&gt;</description>
+        </item>
+        <item>
+        <title>Cékoidonc Power Apps ?</title>
+        <link>https://blog.ddata.fr/p/c%C3%A9koidonc-power-apps/</link>
+        <pubDate>Thu, 11 Aug 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://blog.ddata.fr/p/c%C3%A9koidonc-power-apps/</guid>
+        <description>&lt;img src="https://blog.ddata.fr/p/c%C3%A9koidonc-power-apps/tamanna-rumee-aRlwXNPvLIk-unsplash.jpg" alt="Featured image of post Cékoidonc Power Apps ?" /&gt;&lt;p&gt;Cékoidonc Power Apps ?&lt;/p&gt;
+&lt;p&gt;Power Apps est un outil disponible au travers de votre navigateur Internet (outil cloud), il vous permet de créer des applications exécutables dans votre navigateur Internet ou sur votre mobile (Android / IPhone).&lt;br&gt;
+Les applications créées sont généralement des applications de collecte de données (texte, nombre, photos, coordonnées GPS).&lt;/p&gt;
+&lt;p&gt;L&amp;rsquo;objectif de cet outil est de pouvoir être utilisé par des utilisateurs non technique (citizen developer).&lt;/p&gt;</description>
+        </item>
+        <item>
+        <title>Cékoidonc Power Automate ?</title>
+        <link>https://blog.ddata.fr/p/c%C3%A9koidonc-power-automate/</link>
+        <pubDate>Thu, 11 Aug 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://blog.ddata.fr/p/c%C3%A9koidonc-power-automate/</guid>
+        <description>&lt;img src="https://blog.ddata.fr/p/c%C3%A9koidonc-power-automate/alex-padurariu-ZR48YvUpk04-unsplash.jpg" alt="Featured image of post Cékoidonc Power Automate ?" /&gt;&lt;p&gt;Cékoidonc Power Automate ?&lt;/p&gt;
+&lt;p&gt;Power Automate est un outil disponible au travers de votre navigateur Internet (outil cloud), il vous permet de créer des traitements qui interagisse entre les différentes briques de Microsoft 365, mais aussi avec des briques extérieures à cet éco système.&lt;br&gt;
+Par exemple, vous pouvez réaliser un traitement automatique qui a chaque réception d&amp;rsquo;un mail avec une pièce jointe, copie cette pièce jointe dans un dossier, créer à la volée, de votre OneDrive.&lt;br&gt;
+L&amp;rsquo;objectif de cet outil est de pouvoir être utilisé par des utilisateurs non technique (citizen developer).&lt;/p&gt;</description>
+        </item>
+        <item>
+        <title>Cékoidonc Power BI ?</title>
+        <link>https://blog.ddata.fr/p/c%C3%A9koidonc-power-bi/</link>
+        <pubDate>Thu, 11 Aug 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://blog.ddata.fr/p/c%C3%A9koidonc-power-bi/</guid>
+        <description>&lt;img src="https://blog.ddata.fr/p/c%C3%A9koidonc-power-bi/cedric-stoecklin-3MoMDBHWhnU-unsplash.jpg" alt="Featured image of post Cékoidonc Power BI ?" /&gt;&lt;p&gt;Cékoidonc Power BI ?&lt;/p&gt;
+&lt;p&gt;Power BI est un ensemble d&amp;rsquo;outils :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Power BI desktop, disponible sur votre poste de travail, est un outil permettant de réaliser un projet BI. Toutes les étapes d&amp;rsquo;un projet BI sont couvertes : collecte et transformation des données, modélisation et création d&amp;rsquo;indicateurs, et enfin réalisation de vos rapports. L&amp;rsquo;objectif est de rendre aux utilisateurs le contrôle de leurs données.&lt;/li&gt;
+&lt;li&gt;Power BI Service disponible au travers de votre navigateur Internet (outil cloud), il permet la diffusion de vos rapports et tableau de bord.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;L&amp;rsquo;objectif de cet outil est de pouvoir être utilisé par des utilisateurs non technique (citizen developer).&lt;/p&gt;</description>
+        </item>
+        <item>
+        <title>Informations technique à propos de D de Data</title>
+        <link>https://blog.ddata.fr/about-tech/</link>
+        <pubDate>Thu, 11 Aug 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://blog.ddata.fr/about-tech/</guid>
+        <description>&lt;p&gt;Ce blog est produit sous le format d&amp;rsquo;un site statique, qui ne contient que des pages html, css et js.&lt;/p&gt;
+&lt;h1 id=&#34;le-blog&#34;&gt;Le blog&lt;/h1&gt;
+&lt;p&gt;Pour réaliser ce blog j&amp;rsquo;utilise :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Pour la génération du site statique : Hugo &lt;a class=&#34;link&#34; href=&#34;https://gohugo.io/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://gohugo.io/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Le thème Hugo Stack : &lt;a class=&#34;link&#34; href=&#34;https://docs.stack.jimmycai.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://docs.stack.jimmycai.com/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Pour la rédaction des articles : VS Code&lt;/li&gt;
+&lt;li&gt;Pour l&amp;rsquo;hébergement du site : Github Pages&lt;/li&gt;
+&lt;li&gt;Pour le nom de domaine : Gandi&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;coût-de-ce-blog&#34;&gt;Coût de ce blog&lt;/h2&gt;
+&lt;p&gt;Hormis le temps passé, les coûts financiers de ce blog se résume à :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;L&amp;rsquo;achat du nom de domaine.&lt;/li&gt;
+&lt;li&gt;Le coût de l&amp;rsquo;électricité consommé par mon ordinateur pour rédiger les articles.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Tous ces coûts sont financés à titre personnel.&lt;/p&gt;
+&lt;h2 id=&#34;collecte-de-données&#34;&gt;Collecte de données&lt;/h2&gt;
+&lt;p&gt;Le blog ne collecte pas directement de données personnelles mais utilise 2 services externes qui peuvent le faire :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Google Analytics : pour suivre l&amp;rsquo;activité du blog.&lt;/li&gt;
+&lt;li&gt;Disqus : pour le module de commentaire du blog.&lt;/li&gt;
+&lt;/ul&gt;</description>
+        </item>
+        <item>
+        <title>Liens</title>
+        <link>https://blog.ddata.fr/liens/</link>
+        <pubDate>Thu, 11 Aug 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://blog.ddata.fr/liens/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Series</title>
+        <link>https://blog.ddata.fr/series/</link>
+        <pubDate>Thu, 11 Aug 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://blog.ddata.fr/series/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Rechercher</title>
+        <link>https://blog.ddata.fr/search/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>https://blog.ddata.fr/search/</guid>
+        <description></description>
+        </item>
+        
+    </channel>
+</rss>

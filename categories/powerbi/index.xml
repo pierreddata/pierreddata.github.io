@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Power BI on Le D de Data</title>
+        <link>https://blog.ddata.fr/categories/powerbi/</link>
+        <description>Recent content in Power BI on Le D de Data</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>fr-fr</language>
+        <lastBuildDate>Thu, 11 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ddata.fr/categories/powerbi/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Cékoidonc Power BI ?</title>
+        <link>https://blog.ddata.fr/p/c%C3%A9koidonc-power-bi/</link>
+        <pubDate>Thu, 11 Aug 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://blog.ddata.fr/p/c%C3%A9koidonc-power-bi/</guid>
+        <description>&lt;img src="https://blog.ddata.fr/p/c%C3%A9koidonc-power-bi/cedric-stoecklin-3MoMDBHWhnU-unsplash.jpg" alt="Featured image of post Cékoidonc Power BI ?" /&gt;&lt;p&gt;Cékoidonc Power BI ?&lt;/p&gt;
+&lt;p&gt;Power BI est un ensemble d&amp;rsquo;outils :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Power BI desktop, disponible sur votre poste de travail, est un outil permettant de réaliser un projet BI. Toutes les étapes d&amp;rsquo;un projet BI sont couvertes : collecte et transformation des données, modélisation et création d&amp;rsquo;indicateurs, et enfin réalisation de vos rapports. L&amp;rsquo;objectif est de rendre aux utilisateurs le contrôle de leurs données.&lt;/li&gt;
+&lt;li&gt;Power BI Service disponible au travers de votre navigateur Internet (outil cloud), il permet la diffusion de vos rapports et tableau de bord.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;L&amp;rsquo;objectif de cet outil est de pouvoir être utilisé par des utilisateurs non technique (citizen developer).&lt;/p&gt;</description>
+        </item>
+        
+    </channel>
+</rss>

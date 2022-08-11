@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Azure on Le D de Data</title>
+        <link>https://blog.ddata.fr/categories/azure/</link>
+        <description>Recent content in Azure on Le D de Data</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>fr-fr</language>
+        <lastBuildDate>Thu, 11 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ddata.fr/categories/azure/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Cékoidonc Azure ?</title>
+        <link>https://blog.ddata.fr/p/c%C3%A9koidonc-azure/</link>
+        <pubDate>Thu, 11 Aug 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://blog.ddata.fr/p/c%C3%A9koidonc-azure/</guid>
+        <description>&lt;img src="https://blog.ddata.fr/p/c%C3%A9koidonc-azure/adrien-olichon-KzkIVT1HCVY-unsplash.jpg" alt="Featured image of post Cékoidonc Azure ?" /&gt;&lt;p&gt;Cékoidonc Azure ?&lt;/p&gt;
+&lt;p&gt;Lorsque vous affichez cette page de blog, cela n&amp;rsquo;est ni magique ni divin. Vous faites appel à des services informatiques qui répondent à votre demande.&lt;br&gt;
+Ces services peuvent être de nature différente, mais ont tous en commun d&amp;rsquo;être disponible sur Internet.&lt;br&gt;
+Il existe des fournisseurs qui vous louent des services informatiques sur Internet, c&amp;rsquo;est ce que l&amp;rsquo;on appelle le cloud.&lt;br&gt;
+Parmi ces fournisseurs on retrouve :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Amazon avec le service AWS (Amazon Web Services).&lt;/li&gt;
+&lt;li&gt;Microsoft avec le service Azure.&lt;/li&gt;
+&lt;li&gt;Google avec le service GCP (Google Cloud Platform).&lt;/li&gt;
+&lt;li&gt;OVH avec le service OCHcloud.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Azure est donc un service de location de ressources informatique sur Internet délivré par Microsoft.&lt;br&gt;
+Azure propose plus de 200 types de services différents à la location.&lt;/p&gt;</description>
+        </item>
+        <item>
+        <title>Cékoidonc Azure Active Directory ?</title>
+        <link>https://blog.ddata.fr/p/c%C3%A9koidonc-azure-active-directory/</link>
+        <pubDate>Thu, 11 Aug 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://blog.ddata.fr/p/c%C3%A9koidonc-azure-active-directory/</guid>
+        <description>&lt;img src="https://blog.ddata.fr/p/c%C3%A9koidonc-azure-active-directory/jukebox-print-FUohNQatzVs-unsplash.jpg" alt="Featured image of post Cékoidonc Azure Active Directory ?" /&gt;&lt;p&gt;Cékoidonc Azure Active Directory ?&lt;/p&gt;
+&lt;p&gt;Lorsque vous souscrivez à des services en ligne, vous ne souhaitez que n&amp;rsquo;importe qui accède à vos ressources, on parle dans ce cas d&amp;rsquo;authentification des utilisateurs.&lt;br&gt;
+Parmi vos utilisateurs authentifiés, vous ne voulez pas non plus que tout le monde accède à tout, on parle dans ce cas d&amp;rsquo;autorisations.&lt;/p&gt;
+&lt;p&gt;Azure Active Directory est le service Azure en charge de l&amp;rsquo;authentification.&lt;br&gt;
+La gestion des autorisations des services Azure, sera réalisé sur les utilisateurs authentifiés dans Azure Active Directory.&lt;/p&gt;
+&lt;p&gt;On utilise souvent les acronymes Azure AD ou AAD pour Azure Active Directory.&lt;/p&gt;
+&lt;p&gt;En plus des utilisateurs, AAD permet de gérer des groupes, dans lesquels on ajoute des utilisateurs. Un utilisateur peut être membre de plusieurs groupes.&lt;br&gt;
+La bonne pratique est d&amp;rsquo;affecter les droits à des groupes et non à des utilisateurs individuellement, ainsi c&amp;rsquo;est plus simple d&amp;rsquo;affecter des droits à un nouvel utilisateur en le rendant simplement membre des groupes correspondants au besoin.&lt;/p&gt;</description>
+        </item>
+        
+    </channel>
+</rss>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Series on Le D de Data</title>
+        <link>https://blog.ddata.fr/series/</link>
+        <description>Recent content in Series on Le D de Data</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>fr-fr</language>
+        <lastBuildDate>Thu, 11 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ddata.fr/series/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Cékoidonc ?</title>
+        <link>https://blog.ddata.fr/series/cekoidonc/</link>
+        <pubDate>Thu, 11 Aug 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://blog.ddata.fr/series/cekoidonc/</guid>
+        <description>&lt;img src="https://blog.ddata.fr/series/cekoidonc/towfiqu-barbhuiya-oZuBNC-6E2s-unsplash.jpg" alt="Featured image of post Cékoidonc ?" /&gt;</description>
+        </item>
+        <item>
+        <title>Autoformation Power BI Service</title>
+        <link>https://blog.ddata.fr/series/autoformation-power-bi-service/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>https://blog.ddata.fr/series/autoformation-power-bi-service/</guid>
+        <description>&lt;img src="https://blog.ddata.fr/series/autoformation-power-bi-service/AutoformationPowerBIService.png" alt="Featured image of post Autoformation Power BI Service" /&gt;</description>
+        </item>
+        
+    </channel>
+</rss>

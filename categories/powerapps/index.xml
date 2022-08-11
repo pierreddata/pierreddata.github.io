@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Power Apps on Le D de Data</title>
+        <link>https://blog.ddata.fr/categories/powerapps/</link>
+        <description>Recent content in Power Apps on Le D de Data</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>fr-fr</language>
+        <lastBuildDate>Thu, 11 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ddata.fr/categories/powerapps/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Cékoidonc Power Apps ?</title>
+        <link>https://blog.ddata.fr/p/c%C3%A9koidonc-power-apps/</link>
+        <pubDate>Thu, 11 Aug 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://blog.ddata.fr/p/c%C3%A9koidonc-power-apps/</guid>
+        <description>&lt;img src="https://blog.ddata.fr/p/c%C3%A9koidonc-power-apps/tamanna-rumee-aRlwXNPvLIk-unsplash.jpg" alt="Featured image of post Cékoidonc Power Apps ?" /&gt;&lt;p&gt;Cékoidonc Power Apps ?&lt;/p&gt;
+&lt;p&gt;Power Apps est un outil disponible au travers de votre navigateur Internet (outil cloud), il vous permet de créer des applications exécutables dans votre navigateur Internet ou sur votre mobile (Android / IPhone).&lt;br&gt;
+Les applications créées sont généralement des applications de collecte de données (texte, nombre, photos, coordonnées GPS).&lt;/p&gt;
+&lt;p&gt;L&amp;rsquo;objectif de cet outil est de pouvoir être utilisé par des utilisateurs non technique (citizen developer).&lt;/p&gt;</description>
+        </item>
+        
+    </channel>
+</rss>

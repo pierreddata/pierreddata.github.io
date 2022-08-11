@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Pages on Le D de Data</title>
+        <link>https://blog.ddata.fr/page/</link>
+        <description>Recent content in Pages on Le D de Data</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>fr-fr</language>
+        <lastBuildDate>Thu, 11 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ddata.fr/page/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>A propos de D de Data</title>
+        <link>https://blog.ddata.fr/a-propos-de-d-de-data/</link>
+        <pubDate>Thu, 11 Aug 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://blog.ddata.fr/a-propos-de-d-de-data/</guid>
+        <description>&lt;p&gt;Ce blog ce veut un espace de partage de savoir autour des technologies de la &lt;strong&gt;données Microsoft&lt;/strong&gt; et &lt;strong&gt;Power Platform&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;Ce blog est principalement &lt;strong&gt;francophone&lt;/strong&gt; (fautes d&amp;rsquo;orthographes et de grammaires incluses)&lt;/p&gt;
+&lt;p&gt;Mon objectifs est de couvrir des &lt;strong&gt;problématiques techniques&lt;/strong&gt; pour une &lt;strong&gt;audience non technique&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;Vous trouverez plus d&amp;rsquo;informations sur la face caché de ce blog dans &lt;a class=&#34;link&#34; href=&#34;https://blog.ddata.fr/about-tech&#34; &gt;ici&lt;/a&gt; , notament sur la collecte de données et les outils utilisés.&lt;/p&gt;
+&lt;p&gt;Le contenu de ce blog est sous licence Creative Commons, vous pouvez utiliser mes contenus librement mais vous devez &lt;strong&gt;me citer&lt;/strong&gt;, un lien vers le blog est bienvenue.&lt;/p&gt;
+&lt;p&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;Le D de Data&lt;!-- raw HTML omitted --&gt; de &lt;!-- raw HTML omitted --&gt;Pierre Dupont&lt;!-- raw HTML omitted --&gt; est mis à disposition selon les termes de la &lt;!-- raw HTML omitted --&gt;licence Creative Commons Attribution 4.0 International&lt;!-- raw HTML omitted --&gt;.&lt;/p&gt;</description>
+        </item>
+        <item>
+        <title>Archives</title>
+        <link>https://blog.ddata.fr/archives/</link>
+        <pubDate>Thu, 11 Aug 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://blog.ddata.fr/archives/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Informations technique à propos de D de Data</title>
+        <link>https://blog.ddata.fr/about-tech/</link>
+        <pubDate>Thu, 11 Aug 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://blog.ddata.fr/about-tech/</guid>
+        <description>&lt;p&gt;Ce blog est produit sous le format d&amp;rsquo;un site statique, qui ne contient que des pages html, css et js.&lt;/p&gt;
+&lt;h1 id=&#34;le-blog&#34;&gt;Le blog&lt;/h1&gt;
+&lt;p&gt;Pour réaliser ce blog j&amp;rsquo;utilise :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Pour la génération du site statique : Hugo &lt;a class=&#34;link&#34; href=&#34;https://gohugo.io/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://gohugo.io/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Le thème Hugo Stack : &lt;a class=&#34;link&#34; href=&#34;https://docs.stack.jimmycai.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://docs.stack.jimmycai.com/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Pour la rédaction des articles : VS Code&lt;/li&gt;
+&lt;li&gt;Pour l&amp;rsquo;hébergement du site : Github Pages&lt;/li&gt;
+&lt;li&gt;Pour le nom de domaine : Gandi&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;coût-de-ce-blog&#34;&gt;Coût de ce blog&lt;/h2&gt;
+&lt;p&gt;Hormis le temps passé, les coûts financiers de ce blog se résume à :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;L&amp;rsquo;achat du nom de domaine.&lt;/li&gt;
+&lt;li&gt;Le coût de l&amp;rsquo;électricité consommé par mon ordinateur pour rédiger les articles.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Tous ces coûts sont financés à titre personnel.&lt;/p&gt;
+&lt;h2 id=&#34;collecte-de-données&#34;&gt;Collecte de données&lt;/h2&gt;
+&lt;p&gt;Le blog ne collecte pas directement de données personnelles mais utilise 2 services externes qui peuvent le faire :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Google Analytics : pour suivre l&amp;rsquo;activité du blog.&lt;/li&gt;
+&lt;li&gt;Disqus : pour le module de commentaire du blog.&lt;/li&gt;
+&lt;/ul&gt;</description>
+        </item>
+        <item>
+        <title>Liens</title>
+        <link>https://blog.ddata.fr/liens/</link>
+        <pubDate>Thu, 11 Aug 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://blog.ddata.fr/liens/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Series</title>
+        <link>https://blog.ddata.fr/series/</link>
+        <pubDate>Thu, 11 Aug 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://blog.ddata.fr/series/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Rechercher</title>
+        <link>https://blog.ddata.fr/search/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>https://blog.ddata.fr/search/</guid>
+        <description></description>
+        </item>
+        
+    </channel>
+</rss>

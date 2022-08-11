@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Débutant on Le D de Data</title>
+        <link>https://blog.ddata.fr/tags/d%C3%A9butant/</link>
+        <description>Recent content in Débutant on Le D de Data</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>fr-fr</language>
+        <lastBuildDate>Thu, 11 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ddata.fr/tags/d%C3%A9butant/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Cékoidonc Azure ?</title>
+        <link>https://blog.ddata.fr/p/c%C3%A9koidonc-azure/</link>
+        <pubDate>Thu, 11 Aug 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://blog.ddata.fr/p/c%C3%A9koidonc-azure/</guid>
+        <description>&lt;img src="https://blog.ddata.fr/p/c%C3%A9koidonc-azure/adrien-olichon-KzkIVT1HCVY-unsplash.jpg" alt="Featured image of post Cékoidonc Azure ?" /&gt;&lt;p&gt;Cékoidonc Azure ?&lt;/p&gt;
+&lt;p&gt;Lorsque vous affichez cette page de blog, cela n&amp;rsquo;est ni magique ni divin. Vous faites appel à des services informatiques qui répondent à votre demande.&lt;br&gt;
+Ces services peuvent être de nature différente, mais ont tous en commun d&amp;rsquo;être disponible sur Internet.&lt;br&gt;
+Il existe des fournisseurs qui vous louent des services informatiques sur Internet, c&amp;rsquo;est ce que l&amp;rsquo;on appelle le cloud.&lt;br&gt;
+Parmi ces fournisseurs on retrouve :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Amazon avec le service AWS (Amazon Web Services).&lt;/li&gt;
+&lt;li&gt;Microsoft avec le service Azure.&lt;/li&gt;
+&lt;li&gt;Google avec le service GCP (Google Cloud Platform).&lt;/li&gt;
+&lt;li&gt;OVH avec le service OCHcloud.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Azure est donc un service de location de ressources informatique sur Internet délivré par Microsoft.&lt;br&gt;
+Azure propose plus de 200 types de services différents à la location.&lt;/p&gt;</description>
+        </item>
+        <item>
+        <title>Cékoidonc Azure Active Directory ?</title>
+        <link>https://blog.ddata.fr/p/c%C3%A9koidonc-azure-active-directory/</link>
+        <pubDate>Thu, 11 Aug 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://blog.ddata.fr/p/c%C3%A9koidonc-azure-active-directory/</guid>
+        <description>&lt;img src="https://blog.ddata.fr/p/c%C3%A9koidonc-azure-active-directory/jukebox-print-FUohNQatzVs-unsplash.jpg" alt="Featured image of post Cékoidonc Azure Active Directory ?" /&gt;&lt;p&gt;Cékoidonc Azure Active Directory ?&lt;/p&gt;
+&lt;p&gt;Lorsque vous souscrivez à des services en ligne, vous ne souhaitez que n&amp;rsquo;importe qui accède à vos ressources, on parle dans ce cas d&amp;rsquo;authentification des utilisateurs.&lt;br&gt;
+Parmi vos utilisateurs authentifiés, vous ne voulez pas non plus que tout le monde accède à tout, on parle dans ce cas d&amp;rsquo;autorisations.&lt;/p&gt;
+&lt;p&gt;Azure Active Directory est le service Azure en charge de l&amp;rsquo;authentification.&lt;br&gt;
+La gestion des autorisations des services Azure, sera réalisé sur les utilisateurs authentifiés dans Azure Active Directory.&lt;/p&gt;
+&lt;p&gt;On utilise souvent les acronymes Azure AD ou AAD pour Azure Active Directory.&lt;/p&gt;
+&lt;p&gt;En plus des utilisateurs, AAD permet de gérer des groupes, dans lesquels on ajoute des utilisateurs. Un utilisateur peut être membre de plusieurs groupes.&lt;br&gt;
+La bonne pratique est d&amp;rsquo;affecter les droits à des groupes et non à des utilisateurs individuellement, ainsi c&amp;rsquo;est plus simple d&amp;rsquo;affecter des droits à un nouvel utilisateur en le rendant simplement membre des groupes correspondants au besoin.&lt;/p&gt;</description>
+        </item>
+        <item>
+        <title>Cékoidonc Microsoft 365 ?</title>
+        <link>https://blog.ddata.fr/p/c%C3%A9koidonc-microsoft-365/</link>
+        <pubDate>Thu, 11 Aug 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://blog.ddata.fr/p/c%C3%A9koidonc-microsoft-365/</guid>
+        <description>&lt;img src="https://blog.ddata.fr/p/c%C3%A9koidonc-microsoft-365/joyce-mccown-1Q4TjXPlrVQ-unsplash.jpg" alt="Featured image of post Cékoidonc Microsoft 365 ?" /&gt;&lt;p&gt;Cékoidonc Microsoft 365 ?&lt;/p&gt;
+&lt;p&gt;Microsoft 365 est un ensemble de service,orienté bureautique, destinée aux entreprises.&lt;br&gt;
+En plus des classiques de la suite Office (Word, Excel, PowerPoint) on retrouve notamment :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Teams : l&amp;rsquo;outil de chat et de réunion (écrit, vidéo et audio)&lt;/li&gt;
+&lt;li&gt;Outlook : votre messagerie email.&lt;/li&gt;
+&lt;li&gt;SharePoint : l&amp;rsquo;outil de site intranet et de partage de documents collaboratif.&lt;/li&gt;
+&lt;li&gt;OneDrive : vos documents personnels d&amp;rsquo;entreprise dans le cloud.&lt;/li&gt;
+&lt;li&gt;Power BI : &lt;a class=&#34;link&#34; href=&#34;https://blog.ddata.fr/p/c%C3%A9koidonc-power-bi/&#34; &gt;Voir mon cékoidonc ?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Power Apps : &lt;a class=&#34;link&#34; href=&#34;https://blog.ddata.fr/p/c%C3%A9koidonc-power-apps/&#34; &gt;Voir mon cékoidonc ?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Power Automate : &lt;a class=&#34;link&#34; href=&#34;https://blog.ddata.fr/p/c%C3%A9koidonc-power-automate/&#34; &gt;Voir mon cékoidonc ?&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Il existe un grand nombre de licences Microsoft 365 qui intègre plus ou moins de produits de la gamme.&lt;/p&gt;</description>
+        </item>
+        <item>
+        <title>Cékoidonc Power Apps ?</title>
+        <link>https://blog.ddata.fr/p/c%C3%A9koidonc-power-apps/</link>
+        <pubDate>Thu, 11 Aug 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://blog.ddata.fr/p/c%C3%A9koidonc-power-apps/</guid>
+        <description>&lt;img src="https://blog.ddata.fr/p/c%C3%A9koidonc-power-apps/tamanna-rumee-aRlwXNPvLIk-unsplash.jpg" alt="Featured image of post Cékoidonc Power Apps ?" /&gt;&lt;p&gt;Cékoidonc Power Apps ?&lt;/p&gt;
+&lt;p&gt;Power Apps est un outil disponible au travers de votre navigateur Internet (outil cloud), il vous permet de créer des applications exécutables dans votre navigateur Internet ou sur votre mobile (Android / IPhone).&lt;br&gt;
+Les applications créées sont généralement des applications de collecte de données (texte, nombre, photos, coordonnées GPS).&lt;/p&gt;
+&lt;p&gt;L&amp;rsquo;objectif de cet outil est de pouvoir être utilisé par des utilisateurs non technique (citizen developer).&lt;/p&gt;</description>
+        </item>
+        <item>
+        <title>Cékoidonc Power Automate ?</title>
+        <link>https://blog.ddata.fr/p/c%C3%A9koidonc-power-automate/</link>
+        <pubDate>Thu, 11 Aug 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://blog.ddata.fr/p/c%C3%A9koidonc-power-automate/</guid>
+        <description>&lt;img src="https://blog.ddata.fr/p/c%C3%A9koidonc-power-automate/alex-padurariu-ZR48YvUpk04-unsplash.jpg" alt="Featured image of post Cékoidonc Power Automate ?" /&gt;&lt;p&gt;Cékoidonc Power Automate ?&lt;/p&gt;
+&lt;p&gt;Power Automate est un outil disponible au travers de votre navigateur Internet (outil cloud), il vous permet de créer des traitements qui interagisse entre les différentes briques de Microsoft 365, mais aussi avec des briques extérieures à cet éco système.&lt;br&gt;
+Par exemple, vous pouvez réaliser un traitement automatique qui a chaque réception d&amp;rsquo;un mail avec une pièce jointe, copie cette pièce jointe dans un dossier, créer à la volée, de votre OneDrive.&lt;br&gt;
+L&amp;rsquo;objectif de cet outil est de pouvoir être utilisé par des utilisateurs non technique (citizen developer).&lt;/p&gt;</description>
+        </item>
+        <item>
+        <title>Cékoidonc Power BI ?</title>
+        <link>https://blog.ddata.fr/p/c%C3%A9koidonc-power-bi/</link>
+        <pubDate>Thu, 11 Aug 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://blog.ddata.fr/p/c%C3%A9koidonc-power-bi/</guid>
+        <description>&lt;img src="https://blog.ddata.fr/p/c%C3%A9koidonc-power-bi/cedric-stoecklin-3MoMDBHWhnU-unsplash.jpg" alt="Featured image of post Cékoidonc Power BI ?" /&gt;&lt;p&gt;Cékoidonc Power BI ?&lt;/p&gt;
+&lt;p&gt;Power BI est un ensemble d&amp;rsquo;outils :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Power BI desktop, disponible sur votre poste de travail, est un outil permettant de réaliser un projet BI. Toutes les étapes d&amp;rsquo;un projet BI sont couvertes : collecte et transformation des données, modélisation et création d&amp;rsquo;indicateurs, et enfin réalisation de vos rapports. L&amp;rsquo;objectif est de rendre aux utilisateurs le contrôle de leurs données.&lt;/li&gt;
+&lt;li&gt;Power BI Service disponible au travers de votre navigateur Internet (outil cloud), il permet la diffusion de vos rapports et tableau de bord.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;L&amp;rsquo;objectif de cet outil est de pouvoir être utilisé par des utilisateurs non technique (citizen developer).&lt;/p&gt;</description>
+        </item>
+        
+    </channel>
+</rss>
