@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="fr-fr" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Dans cet article nous allons créer gratuitement votre propre environnement Microsoft 365.
+'><title>Créer un environnement d&#39;apprentissage Microsoft 365</title>
+
+<link rel='canonical' href='https://blog.ddata.fr/p/m365-developer/'>
+
+<link rel="stylesheet" href="/scss/style.min.5a8e892f6fa14515e9065eee1f5d2e05302606ec7f11750b2fb95198f9cdcbfd.css"><meta property='og:title' content='Créer un environnement d&#39;apprentissage Microsoft 365'>
+<meta property='og:description' content='Dans cet article nous allons créer gratuitement votre propre environnement Microsoft 365.
+'>
+<meta property='og:url' content='https://blog.ddata.fr/p/m365-developer/'>
+<meta property='og:site_name' content='Le D de Data'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Gratuit' /><meta property='article:tag' content='Débutant' /><meta property='article:tag' content='Auto formation' /><meta property='article:published_time' content='2022-08-12T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2022-08-12T00:00:00&#43;00:00'/><meta property='og:image' content='https://blog.ddata.fr/p/m365-developer/vadim-babenko-RzVaeI5uLX0-unsplash.jpg' />
+<meta name="twitter:title" content="Créer un environnement d&#39;apprentissage Microsoft 365">
+<meta name="twitter:description" content="Dans cet article nous allons créer gratuitement votre propre environnement Microsoft 365.
+"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://blog.ddata.fr/p/m365-developer/vadim-babenko-RzVaeI5uLX0-unsplash.jpg' />
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TY6XFEN6QV"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-TY6XFEN6QV', { 'anonymize_ip': false });
+}
+</script>
+<link rel="alternate"
+      type="application/rss+xml"
+      href="https://blog.ddata.fr/index.xml"
+      title="Le D de Data">
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "dark");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Afficher le menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/pierre_hua6bbc70dde858dd10e363a14d1f7729c_67951_300x0_resize_q75_box.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Le D de Data</a></h1>
+            <h2 class="site-description">Blog francophone autour de la data Microsoft</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/pierreddata'
+                        target="_blank"
+                        title="GitHub"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://www.linkedin.com/in/pierre-dupont-0b532374/'
+                        target="_blank"
+                        title="LinkdIn"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-folders" width="44" height="44" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <rect x="4" y="4" width="16" height="16" rx="2" />
+  <line x1="8" y1="11" x2="8" y2="16" />
+  <line x1="8" y1="8" x2="8" y2="8.01" />
+  <line x1="12" y1="16" x2="12" y2="11" />
+  <path d="M16 16v-3a2 2 0 0 0 -4 0" />
+</svg>
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Accueil</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/a-propos-de-d-de-data/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>A Propos</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/series/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-folders" width="44" height="44" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 4h3l2 2h5a2 2 0 0 1 2 2v7a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-9a2 2 0 0 1 2 -2" />
+  <path d="M17 17v2a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-9a2 2 0 0 1 2 -2h2" />
+</svg>
+
+                
+                <span>Series</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/liens/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Liens</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Rechercher</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Mode sombre</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+<main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/m365-developer/">
+                <img src="/p/m365-developer/vadim-babenko-RzVaeI5uLX0-unsplash_hu4c0ac1a5fc3bc62d5287596e79649454_708326_800x0_resize_q75_box.jpg"
+                        srcset="/p/m365-developer/vadim-babenko-RzVaeI5uLX0-unsplash_hu4c0ac1a5fc3bc62d5287596e79649454_708326_800x0_resize_q75_box.jpg 800w, /p/m365-developer/vadim-babenko-RzVaeI5uLX0-unsplash_hu4c0ac1a5fc3bc62d5287596e79649454_708326_1600x0_resize_q75_box.jpg 1600w"
+                        width="800" 
+                        height="564" 
+                        loading="lazy"
+                        alt="Featured image of post Créer un environnement d&#39;apprentissage Microsoft 365" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/powerbi/" style="background-color: #f2c811; color: #fff;">
+                Power BI
+            </a>
+        
+            <a href="/categories/m365/" style="background-color: #D83B01; color: #fff;">
+                Microsoft 365
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/m365-developer/">Créer un environnement d&#39;apprentissage Microsoft 365</a>
+        </h2>
+
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published" datetime="2022-08-12T00:00:00Z">
+                    12 août 2022
+                    
+                </time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    4 minutes de lecture
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+    
+    
+</div>
+</header>
+
+    <section class="article-content">
+    
+    
+    <p>Dans cet article nous allons créer <strong>gratuitement</strong> votre propre environnement Microsoft 365.</p>
+<h2 id="context">Context</h2>
+<p>Je pense que la meilleure manière d&rsquo;apprendre passe par l&rsquo;expérience, pour apprendre à utiliser un outil comme Power BI Service il faut pouvoir le manipuler.<br>
+Dans un cadre professionnel, vous ne pouvez pas « jouer » dans votre environnement de production.<br>
+Dans un cadre non professionnel, scolaire, autoapprentissage ou autre, vous n’avez pas les moyens financiers pour vous offrir un environnement Power BI Service.</p>
+<p>Microsoft propose une  solution : le programme <strong>Microsoft 365 Developer</strong>. Ce programme vous permet d’avoir en environnement complet et réel pour faire des tests et apprendre. En <strong>aucun cas</strong> ce programme ne doit être <strong>utilisé en production</strong>.</p>
+<p>Le programme se compose de :</p>
+<ul>
+<li>Un tenant Azure Active Directory</li>
+<li>25 licences E5</li>
+</ul>
+<h2 id="objectif">Objectif</h2>
+<p>Je vous propose dans ce premier article de vous accompagner dans la création d&rsquo;un compte dans ce programme.<br>
+Cela nous servira de bac à sable pour utiliser l&rsquo;éco système M365.<br>
+Pour mes prochains articles utilisant Power BI Service j&rsquo;utiliserais cet environnement.</p>
+<h2 id="cest-parti-">C&rsquo;est parti !</h2>
+<p>Pour commencer utiliser votre navigateur pour vous rendre sur le site du programme <a class="link" href="https://developer.microsoft.com/en-us/microsoft-365/dev-program"  target="_blank" rel="noopener"
+    >Microsoft 365 developer program</a> ou rechercher « Microsoft 365 developer program » dans votre moteur de recherche.</p>
+<p>Vous arrivez sur la page d’accueil :</p>
+<p><img src="/p/m365-developer/img/001-m365-developer-landing-page.png"
+	width="1920"
+	height="969"
+	srcset="/p/m365-developer/img/001-m365-developer-landing-page_hu263b1919d815955a0d1d778318dd59a5_1338563_480x0_resize_box_3.png 480w, /p/m365-developer/img/001-m365-developer-landing-page_hu263b1919d815955a0d1d778318dd59a5_1338563_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Page d’accueil"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="198"
+		data-flex-basis="475px"
+	
+></p>
+<ol>
+<li>Cliquer sur <strong>Sign in</strong> pour vous connecter avec un compte Microsoft</li>
+</ol>
+<p><img src="/p/m365-developer/img/002-create-ms-account.png"
+	width="449"
+	height="406"
+	srcset="/p/m365-developer/img/002-create-ms-account_hufac3d538eff220f37b4771286c22d63c_18937_480x0_resize_box_3.png 480w, /p/m365-developer/img/002-create-ms-account_hufac3d538eff220f37b4771286c22d63c_18937_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Page de connexion"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="110"
+		data-flex-basis="265px"
+	
+></p>
+<ol>
+<li>Vous connectez avec un compte Microsoft existant.</li>
+<li>Si vous n’en avez pas de compte Microsoft ou si vous voulez utiliser un compte dédié pour la création de cet environnement cliquez sur <strong>Create one!</strong> et créez un compte Microsoft.</li>
+</ol>
+<p>Dans les 2 cas, le compte utilisé sera le propriétaire du programme « Microsoft 365 Developer » créé.</p>
+<p><img src="/p/m365-developer/img/003-m365-developer-landing-page-connected.png"
+	width="1920"
+	height="969"
+	srcset="/p/m365-developer/img/003-m365-developer-landing-page-connected_hu59a984f76ea6c2a4cf8511f7b51712d8_1340718_480x0_resize_box_3.png 480w, /p/m365-developer/img/003-m365-developer-landing-page-connected_hu59a984f76ea6c2a4cf8511f7b51712d8_1340718_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Authentifié sur la page d’accueil"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="198"
+		data-flex-basis="475px"
+	
+></p>
+<ol>
+<li>Vérifiez que vous êtes connecté avec votre compte Microsoft.</li>
+<li>Appuyez sur <strong>Join now</strong> pour commencer la procédure de création.</li>
+</ol>
+<p><img src="/p/m365-developer/img/004-user-information.png"
+	width="1920"
+	height="969"
+	srcset="/p/m365-developer/img/004-user-information_hu941f92eacb355018b65f5f63111296eb_79049_480x0_resize_box_3.png 480w, /p/m365-developer/img/004-user-information_hu941f92eacb355018b65f5f63111296eb_79049_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Saisie des informations utilisateur"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="198"
+		data-flex-basis="475px"
+	
+></p>
+<ol>
+<li>Vérifiez que c&rsquo;est bien votre compte qui est utilisé pour la création.</li>
+<li>Le site vous demande d’enregistrer quelques informations.
+<ol>
+<li>Votre pays</li>
+<li>Votre compagnie</li>
+<li>Votre langage par défaut</li>
+</ol>
+</li>
+<li>Comme d’habitude, lisez bien les conditions générales du site</li>
+<li>Appuyez sur le bouton <strong>Next</strong> pour continuer la procédure d’enregistrement.</li>
+</ol>
+<p><img src="/p/m365-developer/img/005-user-question.png"
+	width="1920"
+	height="969"
+	srcset="/p/m365-developer/img/005-user-question_hud2663368cabc6445be9f4736f7d0d273_41184_480x0_resize_box_3.png 480w, /p/m365-developer/img/005-user-question_hud2663368cabc6445be9f4736f7d0d273_41184_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Saisie du questionnaire utilisateur"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="198"
+		data-flex-basis="475px"
+	
+></p>
+<ol>
+<li>Renseignez le questionnaire</li>
+<li>Appuyez sur le bouton <strong>Next</strong> pour continuer la procédure d’enregistrement.</li>
+</ol>
+<p><img src="/p/m365-developer/img/006-user-question2.png"
+	width="1920"
+	height="969"
+	srcset="/p/m365-developer/img/006-user-question2_hue53fec9866c789768b50f8604aab42f4_42154_480x0_resize_box_3.png 480w, /p/m365-developer/img/006-user-question2_hue53fec9866c789768b50f8604aab42f4_42154_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Saisie du questionnaire utilisateur suite"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="198"
+		data-flex-basis="475px"
+	
+></p>
+<ol>
+<li>Renseignez le questionnaire</li>
+<li>Appuyez sur le bouton <strong>Save</strong> pour continuer la procédure d’enregistrement.</li>
+</ol>
+<p><img src="/p/m365-developer/img/007-choose-sandbox-type.png"
+	width="738"
+	height="702"
+	srcset="/p/m365-developer/img/007-choose-sandbox-type_hu26b03bf48ac945a81a2d754329ae38d0_77834_480x0_resize_box_3.png 480w, /p/m365-developer/img/007-choose-sandbox-type_hu26b03bf48ac945a81a2d754329ae38d0_77834_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Choix du type de bac à sable"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="105"
+		data-flex-basis="252px"
+	
+></p>
+<ol>
+<li>À cette étape nous pouvons choisir entre 2 types de bacs à sable, nous allons choisir <strong>Instant sandbox</strong>, ainsi tout un ensemble d’éléments fictifs sera créé automatiquement (Utilisateurs, Email, Teams et Sharepoint)</li>
+<li>Appuyez sur le bouton <strong>Next</strong> pour continuer la procédure d’enregistrement.</li>
+</ol>
+<p>L’étape suivante est très importante pour la suite, nous allons créer ce que l’on appelle un tenant dans un datacenter de Microsoft.<br>
+Lors de cette création, nous allons indiquer le nom de l’administrateur de ce tenant. Cet administrateur aura <strong>TOUS les droits</strong> sur le tenant.<br>
+Le tenant sera composé de :</p>
+<ul>
+<li>Un Azure Active Directory : C’est l’annuaire d’entreprise, il contient notamment les utilisateurs et les groupes.</li>
+<li>Un environnement Microsoft 365 qui contiendra notamment les boites aux lettres utilisateurs, les sites SharePoint et les équipes Teams.</li>
+</ul>
+<p><img src="/p/m365-developer/img/008-setup-sandbox.png"
+	width="405"
+	height="776"
+	srcset="/p/m365-developer/img/008-setup-sandbox_huf7e12079b3753c7c44b11f4a652e400d_38722_480x0_resize_box_3.png 480w, /p/m365-developer/img/008-setup-sandbox_huf7e12079b3753c7c44b11f4a652e400d_38722_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Paramétrage du type de bac à sable"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="52"
+		data-flex-basis="125px"
+	
+></p>
+<ol>
+<li>Choisissez le datacenter dans lequel sera votre tenant bac à sable, choisissez la zone géographique la plus proche de vous.</li>
+<li>Choisir un nom pour l’administrateur du tenant.</li>
+<li>Choisir et confirmer un mot de passe pour l’administrateur du tenant.</li>
+<li>Choisir de mettre un mot de passe différent de celui de l’administrateur pour les 16 utilisateurs fictifs</li>
+<li>Choisir et confirmer un mot de passe pour les 16 utilisateurs fictifs (ils auront tous le même)</li>
+<li>Appuyez sur le bouton « Continue » pour continuer la procédure d’enregistrement.</li>
+</ol>
+<p>Afin de valider la procédure d’enregistrement, vous allez devoir indiquer un numéro de téléphone valide pour recevoir un code de confirmation par SMS.</p>
+<p><img src="/p/m365-developer/img/009-validate-mobile-number.png"
+	width="405"
+	height="407"
+	srcset="/p/m365-developer/img/009-validate-mobile-number_huc607ae538395c09d11f4d61437e08ac6_17524_480x0_resize_box_3.png 480w, /p/m365-developer/img/009-validate-mobile-number_huc607ae538395c09d11f4d61437e08ac6_17524_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Validation du compte avec un numéro de portable"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="99"
+		data-flex-basis="238px"
+	
+></p>
+<ol>
+<li>Choisissez votre pays</li>
+<li>Indiquez votre numéro de téléphone (sans le premier zéro pour la France)</li>
+<li>Appuyez sur « Send Code » pour recevoir le code par SMS
+Une fois le code reçu entrez le dans la zone appropriée et valider cet écran.
+Bravo vous voilà propriétaire d’un tenant Microsoft 365 complet, l’écran suivant vous redonne la synthèse des informations :</li>
+</ol>
+<p><img src="/p/m365-developer/img/010-m365-developer-dashboard.png"
+	width="1920"
+	height="969"
+	srcset="/p/m365-developer/img/010-m365-developer-dashboard_hu190372c2891a96bee05b028c629d2ce6_90523_480x0_resize_box_3.png 480w, /p/m365-developer/img/010-m365-developer-dashboard_hu190372c2891a96bee05b028c629d2ce6_90523_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Tableau de bord du programme Microsoft 365 Developer"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="198"
+		data-flex-basis="475px"
+	
+></p>
+<ol>
+<li>Le nom de domaine de votre tenant assigné automatiquement par Microsoft. C’est toujours un nom de domaine sous la forme <em>xyz.onmicrosoft.com</em>. C’est votre nom de domaine par défaut.</li>
+<li>Un rappel de l’email de connexion de l’administrateur.</li>
+<li>Le nombre de jours restant pour l’évaluation. Cette période est renouvelée automatiquement à la fin de 90 jours.</li>
+</ol>
+<p>Nous en avons terminé avec la création de votre bac à sable. Retrouvez-moi dans de prochains articles pour utiliser votre environnement.</p>
+<p>Pour plus d&rsquo;information sur le programme <strong>Microsoft 365 Developer</strong>, retrouvez la <a class="link" href="https://docs.microsoft.com/fr-fr/office/developer-program/microsoft-365-developer-program-faq"  target="_blank" rel="noopener"
+    >FAQ ici</a>.</p>
+<p>Merci de votre attention.</p>
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/gratuit/">Gratuit</a>
+        
+            <a href="/tags/d%C3%A9butant/">Débutant</a>
+        
+            <a href="/tags/auto-formation/">Auto formation</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Contenus liés</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/c%C3%A9koidonc-microsoft-365/">
+        
+        
+            <div class="article-image">
+                <img src="/p/c%C3%A9koidonc-microsoft-365/_hu6f8bd3335d5e0a54aad627c035558e90_1054235_b7f6272b8d322197c821074e814c80f1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Cékoidonc Microsoft 365 ?"
+                        
+                        data-hash="md5-jrDj8yfj4FkMQIBSvPcz5w==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Cékoidonc Microsoft 365 ?</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/c%C3%A9koidonc-power-bi/">
+        
+        
+            <div class="article-image">
+                <img src="/p/c%C3%A9koidonc-power-bi/_hu1ca34946bd12f0e64e734615c45e379d_1750064_a3e7c6ef21bb45580b25197756c8b976.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Cékoidonc Power BI ?"
+                        
+                        data-hash="md5-uIsNDPnJPsGXy02PByndnw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Cékoidonc Power BI ?</h2>
+        </div>
+    </a>
+</article>
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "ddata" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2022 Le D de Data
+    </section>
+    
+    <section class="powerby">
+        Généré avec <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Thème <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.13.0">Stack</a></b> conçu par <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table des matières</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#context">Context</a></li>
+    <li><a href="#objectif">Objectif</a></li>
+    <li><a href="#cest-parti-">C&rsquo;est parti !</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Gratuit on Le D de Data</title>
+        <link>https://blog.ddata.fr/tags/gratuit/</link>
+        <description>Recent content in Gratuit on Le D de Data</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>fr-fr</language>
+        <lastBuildDate>Fri, 12 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ddata.fr/tags/gratuit/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Créer un environnement d&#39;apprentissage Microsoft 365</title>
+        <link>https://blog.ddata.fr/p/m365-developer/</link>
+        <pubDate>Fri, 12 Aug 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://blog.ddata.fr/p/m365-developer/</guid>
+        <description>&lt;img src="https://blog.ddata.fr/p/m365-developer/vadim-babenko-RzVaeI5uLX0-unsplash.jpg" alt="Featured image of post Créer un environnement d&#39;apprentissage Microsoft 365" /&gt;&lt;p&gt;Dans cet article nous allons créer &lt;strong&gt;gratuitement&lt;/strong&gt; votre propre environnement Microsoft 365.&lt;/p&gt;
+&lt;h2 id=&#34;context&#34;&gt;Context&lt;/h2&gt;
+&lt;p&gt;Je pense que la meilleure manière d&amp;rsquo;apprendre passe par l&amp;rsquo;expérience, pour apprendre à utiliser un outil comme Power BI Service il faut pouvoir le manipuler.&lt;br&gt;
+Dans un cadre professionnel, vous ne pouvez pas « jouer » dans votre environnement de production.&lt;br&gt;
+Dans un cadre non professionnel, scolaire, autoapprentissage ou autre, vous n’avez pas les moyens financiers pour vous offrir un environnement Power BI Service.&lt;/p&gt;
+&lt;p&gt;Microsoft propose une  solution : le programme &lt;strong&gt;Microsoft 365 Developer&lt;/strong&gt;. Ce programme vous permet d’avoir en environnement complet et réel pour faire des tests et apprendre. En &lt;strong&gt;aucun cas&lt;/strong&gt; ce programme ne doit être &lt;strong&gt;utilisé en production&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;Le programme se compose de :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Un tenant Azure Active Directory&lt;/li&gt;
+&lt;li&gt;25 licences E5&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;objectif&#34;&gt;Objectif&lt;/h2&gt;
+&lt;p&gt;Je vous propose dans ce premier article de vous accompagner dans la création d&amp;rsquo;un compte dans ce programme.&lt;br&gt;
+Cela nous servira de bac à sable pour utiliser l&amp;rsquo;éco système M365.&lt;br&gt;
+Pour mes prochains articles utilisant Power BI Service j&amp;rsquo;utiliserais cet environnement.&lt;/p&gt;
+&lt;h2 id=&#34;cest-parti-&#34;&gt;C&amp;rsquo;est parti !&lt;/h2&gt;
+&lt;p&gt;Pour commencer utiliser votre navigateur pour vous rendre sur le site du programme &lt;a class=&#34;link&#34; href=&#34;https://developer.microsoft.com/en-us/microsoft-365/dev-program&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Microsoft 365 developer program&lt;/a&gt; ou rechercher « Microsoft 365 developer program » dans votre moteur de recherche.&lt;/p&gt;
+&lt;p&gt;Vous arrivez sur la page d’accueil :&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/m365-developer/img/001-m365-developer-landing-page.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;969&#34;
+	srcset=&#34;https://blog.ddata.fr/p/m365-developer/img/001-m365-developer-landing-page_hu263b1919d815955a0d1d778318dd59a5_1338563_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/m365-developer/img/001-m365-developer-landing-page_hu263b1919d815955a0d1d778318dd59a5_1338563_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Page d’accueil&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;198&#34;
+		data-flex-basis=&#34;475px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Cliquer sur &lt;strong&gt;Sign in&lt;/strong&gt; pour vous connecter avec un compte Microsoft&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/m365-developer/img/002-create-ms-account.png&#34;
+	width=&#34;449&#34;
+	height=&#34;406&#34;
+	srcset=&#34;https://blog.ddata.fr/p/m365-developer/img/002-create-ms-account_hufac3d538eff220f37b4771286c22d63c_18937_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/m365-developer/img/002-create-ms-account_hufac3d538eff220f37b4771286c22d63c_18937_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Page de connexion&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;110&#34;
+		data-flex-basis=&#34;265px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Vous connectez avec un compte Microsoft existant.&lt;/li&gt;
+&lt;li&gt;Si vous n’en avez pas de compte Microsoft ou si vous voulez utiliser un compte dédié pour la création de cet environnement cliquez sur &lt;strong&gt;Create one!&lt;/strong&gt; et créez un compte Microsoft.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Dans les 2 cas, le compte utilisé sera le propriétaire du programme « Microsoft 365 Developer » créé.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/m365-developer/img/003-m365-developer-landing-page-connected.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;969&#34;
+	srcset=&#34;https://blog.ddata.fr/p/m365-developer/img/003-m365-developer-landing-page-connected_hu59a984f76ea6c2a4cf8511f7b51712d8_1340718_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/m365-developer/img/003-m365-developer-landing-page-connected_hu59a984f76ea6c2a4cf8511f7b51712d8_1340718_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Authentifié sur la page d’accueil&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;198&#34;
+		data-flex-basis=&#34;475px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Vérifiez que vous êtes connecté avec votre compte Microsoft.&lt;/li&gt;
+&lt;li&gt;Appuyez sur &lt;strong&gt;Join now&lt;/strong&gt; pour commencer la procédure de création.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/m365-developer/img/004-user-information.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;969&#34;
+	srcset=&#34;https://blog.ddata.fr/p/m365-developer/img/004-user-information_hu941f92eacb355018b65f5f63111296eb_79049_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/m365-developer/img/004-user-information_hu941f92eacb355018b65f5f63111296eb_79049_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Saisie des informations utilisateur&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;198&#34;
+		data-flex-basis=&#34;475px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Vérifiez que c&amp;rsquo;est bien votre compte qui est utilisé pour la création.&lt;/li&gt;
+&lt;li&gt;Le site vous demande d’enregistrer quelques informations.
+&lt;ol&gt;
+&lt;li&gt;Votre pays&lt;/li&gt;
+&lt;li&gt;Votre compagnie&lt;/li&gt;
+&lt;li&gt;Votre langage par défaut&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;Comme d’habitude, lisez bien les conditions générales du site&lt;/li&gt;
+&lt;li&gt;Appuyez sur le bouton &lt;strong&gt;Next&lt;/strong&gt; pour continuer la procédure d’enregistrement.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/m365-developer/img/005-user-question.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;969&#34;
+	srcset=&#34;https://blog.ddata.fr/p/m365-developer/img/005-user-question_hud2663368cabc6445be9f4736f7d0d273_41184_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/m365-developer/img/005-user-question_hud2663368cabc6445be9f4736f7d0d273_41184_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Saisie du questionnaire utilisateur&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;198&#34;
+		data-flex-basis=&#34;475px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Renseignez le questionnaire&lt;/li&gt;
+&lt;li&gt;Appuyez sur le bouton &lt;strong&gt;Next&lt;/strong&gt; pour continuer la procédure d’enregistrement.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/m365-developer/img/006-user-question2.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;969&#34;
+	srcset=&#34;https://blog.ddata.fr/p/m365-developer/img/006-user-question2_hue53fec9866c789768b50f8604aab42f4_42154_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/m365-developer/img/006-user-question2_hue53fec9866c789768b50f8604aab42f4_42154_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Saisie du questionnaire utilisateur suite&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;198&#34;
+		data-flex-basis=&#34;475px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Renseignez le questionnaire&lt;/li&gt;
+&lt;li&gt;Appuyez sur le bouton &lt;strong&gt;Save&lt;/strong&gt; pour continuer la procédure d’enregistrement.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/m365-developer/img/007-choose-sandbox-type.png&#34;
+	width=&#34;738&#34;
+	height=&#34;702&#34;
+	srcset=&#34;https://blog.ddata.fr/p/m365-developer/img/007-choose-sandbox-type_hu26b03bf48ac945a81a2d754329ae38d0_77834_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/m365-developer/img/007-choose-sandbox-type_hu26b03bf48ac945a81a2d754329ae38d0_77834_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Choix du type de bac à sable&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;105&#34;
+		data-flex-basis=&#34;252px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;À cette étape nous pouvons choisir entre 2 types de bacs à sable, nous allons choisir &lt;strong&gt;Instant sandbox&lt;/strong&gt;, ainsi tout un ensemble d’éléments fictifs sera créé automatiquement (Utilisateurs, Email, Teams et Sharepoint)&lt;/li&gt;
+&lt;li&gt;Appuyez sur le bouton &lt;strong&gt;Next&lt;/strong&gt; pour continuer la procédure d’enregistrement.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;L’étape suivante est très importante pour la suite, nous allons créer ce que l’on appelle un tenant dans un datacenter de Microsoft.&lt;br&gt;
+Lors de cette création, nous allons indiquer le nom de l’administrateur de ce tenant. Cet administrateur aura &lt;strong&gt;TOUS les droits&lt;/strong&gt; sur le tenant.&lt;br&gt;
+Le tenant sera composé de :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Un Azure Active Directory : C’est l’annuaire d’entreprise, il contient notamment les utilisateurs et les groupes.&lt;/li&gt;
+&lt;li&gt;Un environnement Microsoft 365 qui contiendra notamment les boites aux lettres utilisateurs, les sites SharePoint et les équipes Teams.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/m365-developer/img/008-setup-sandbox.png&#34;
+	width=&#34;405&#34;
+	height=&#34;776&#34;
+	srcset=&#34;https://blog.ddata.fr/p/m365-developer/img/008-setup-sandbox_huf7e12079b3753c7c44b11f4a652e400d_38722_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/m365-developer/img/008-setup-sandbox_huf7e12079b3753c7c44b11f4a652e400d_38722_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Paramétrage du type de bac à sable&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;52&#34;
+		data-flex-basis=&#34;125px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Choisissez le datacenter dans lequel sera votre tenant bac à sable, choisissez la zone géographique la plus proche de vous.&lt;/li&gt;
+&lt;li&gt;Choisir un nom pour l’administrateur du tenant.&lt;/li&gt;
+&lt;li&gt;Choisir et confirmer un mot de passe pour l’administrateur du tenant.&lt;/li&gt;
+&lt;li&gt;Choisir de mettre un mot de passe différent de celui de l’administrateur pour les 16 utilisateurs fictifs&lt;/li&gt;
+&lt;li&gt;Choisir et confirmer un mot de passe pour les 16 utilisateurs fictifs (ils auront tous le même)&lt;/li&gt;
+&lt;li&gt;Appuyez sur le bouton « Continue » pour continuer la procédure d’enregistrement.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Afin de valider la procédure d’enregistrement, vous allez devoir indiquer un numéro de téléphone valide pour recevoir un code de confirmation par SMS.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/m365-developer/img/009-validate-mobile-number.png&#34;
+	width=&#34;405&#34;
+	height=&#34;407&#34;
+	srcset=&#34;https://blog.ddata.fr/p/m365-developer/img/009-validate-mobile-number_huc607ae538395c09d11f4d61437e08ac6_17524_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/m365-developer/img/009-validate-mobile-number_huc607ae538395c09d11f4d61437e08ac6_17524_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Validation du compte avec un numéro de portable&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;99&#34;
+		data-flex-basis=&#34;238px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Choisissez votre pays&lt;/li&gt;
+&lt;li&gt;Indiquez votre numéro de téléphone (sans le premier zéro pour la France)&lt;/li&gt;
+&lt;li&gt;Appuyez sur « Send Code » pour recevoir le code par SMS
+Une fois le code reçu entrez le dans la zone appropriée et valider cet écran.
+Bravo vous voilà propriétaire d’un tenant Microsoft 365 complet, l’écran suivant vous redonne la synthèse des informations :&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/m365-developer/img/010-m365-developer-dashboard.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;969&#34;
+	srcset=&#34;https://blog.ddata.fr/p/m365-developer/img/010-m365-developer-dashboard_hu190372c2891a96bee05b028c629d2ce6_90523_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/m365-developer/img/010-m365-developer-dashboard_hu190372c2891a96bee05b028c629d2ce6_90523_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Tableau de bord du programme Microsoft 365 Developer&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;198&#34;
+		data-flex-basis=&#34;475px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Le nom de domaine de votre tenant assigné automatiquement par Microsoft. C’est toujours un nom de domaine sous la forme &lt;em&gt;xyz.onmicrosoft.com&lt;/em&gt;. C’est votre nom de domaine par défaut.&lt;/li&gt;
+&lt;li&gt;Un rappel de l’email de connexion de l’administrateur.&lt;/li&gt;
+&lt;li&gt;Le nombre de jours restant pour l’évaluation. Cette période est renouvelée automatiquement à la fin de 90 jours.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Nous en avons terminé avec la création de votre bac à sable. Retrouvez-moi dans de prochains articles pour utiliser votre environnement.&lt;/p&gt;
+&lt;p&gt;Pour plus d&amp;rsquo;information sur le programme &lt;strong&gt;Microsoft 365 Developer&lt;/strong&gt;, retrouvez la &lt;a class=&#34;link&#34; href=&#34;https://docs.microsoft.com/fr-fr/office/developer-program/microsoft-365-developer-program-faq&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;FAQ ici&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Merci de votre attention.&lt;/p&gt;</description>
+        </item>
+        
+    </channel>
+</rss>
