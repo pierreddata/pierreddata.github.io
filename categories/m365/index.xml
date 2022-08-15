@@ -6,7 +6,79 @@
         <description>Recent content in Microsoft 365 on Le D de Data</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>fr-fr</language>
-        <lastBuildDate>Fri, 12 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ddata.fr/categories/m365/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Mon, 15 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ddata.fr/categories/m365/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>💡 Désactiver la double authentification par défaut. 🔒</title>
+        <link>https://blog.ddata.fr/p/desactiver-la-mfa/</link>
+        <pubDate>Mon, 15 Aug 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://blog.ddata.fr/p/desactiver-la-mfa/</guid>
+        <description>&lt;img src="https://blog.ddata.fr/p/desactiver-la-mfa/brooke-lark-fFQ19Vz_Mu8-unsplash.jpg" alt="Featured image of post 💡 Désactiver la double authentification par défaut. 🔒" /&gt;&lt;p&gt;Vous souhaitez désactiver la demande une double authentification de votre environnement de test ?&lt;br&gt;
+Je vais vous guider pas à pas pour réaliser cela.&lt;/p&gt;
+&lt;h2 id=&#34;context&#34;&gt;Context&lt;/h2&gt;
+&lt;p&gt;Lorsque l&amp;rsquo;on travaille sur un environnement de test, on ne souhaite pas forcément avoir un niveau de sécurité de haut niveau.  Par défaut le plan Microsoft 365 developer program active la double authentification (MFA) pour tout le monde.&lt;/p&gt;
+&lt;p&gt;Vous voyez donc régulièrement cet écran :&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/desactiver-la-mfa/img/001-mfa-register-request.png&#34;
+	width=&#34;440&#34;
+	height=&#34;512&#34;
+	srcset=&#34;https://blog.ddata.fr/p/desactiver-la-mfa/img/001-mfa-register-request_hu9e2ee58651c1b66de7a09f0bd4cb83f7_23364_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/desactiver-la-mfa/img/001-mfa-register-request_hu9e2ee58651c1b66de7a09f0bd4cb83f7_23364_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Rappel d&amp;rsquo;activation de la MFA&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;85&#34;
+		data-flex-basis=&#34;206px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Si vous souhaitez l&amp;rsquo;enlever, suivez ce guide.&lt;/p&gt;
+&lt;p&gt;Bien entendu il ne faut pas baisser la sécurité d&amp;rsquo;un environnement professionnel.&lt;/p&gt;
+&lt;h2 id=&#34;désactivation-de-la-mfa&#34;&gt;Désactivation de la MFA&lt;/h2&gt;
+&lt;p&gt;La MFA est activée par défaut, car votre Azure Active Directory est paramétré avec les options de sécurité par défaut. Pour résoudre notre problème, il suffit de les désactiver.&lt;br&gt;
+Pour cela nous allons aller sur le &lt;a class=&#34;link&#34; href=&#34;https://aad.portal.azure.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;centre d&amp;rsquo;administration de l&amp;rsquo;Azure Active Directory&lt;/a&gt; avec un utilisateur administrateur global.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/desactiver-la-mfa/img/002-aad-portal-landingpage.png&#34;
+	width=&#34;1379&#34;
+	height=&#34;727&#34;
+	srcset=&#34;https://blog.ddata.fr/p/desactiver-la-mfa/img/002-aad-portal-landingpage_hub6d174cb1d50a366dc9aadfdd87f9698_97219_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/desactiver-la-mfa/img/002-aad-portal-landingpage_hub6d174cb1d50a366dc9aadfdd87f9698_97219_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Page d&amp;rsquo;accueil&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;189&#34;
+		data-flex-basis=&#34;455px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Sélectionnez &lt;strong&gt;Azure Active Directory&lt;/strong&gt; pour débuter.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/desactiver-la-mfa/img/003-aad-portal-default-secutiry-setting.png&#34;
+	width=&#34;1379&#34;
+	height=&#34;727&#34;
+	srcset=&#34;https://blog.ddata.fr/p/desactiver-la-mfa/img/003-aad-portal-default-secutiry-setting_hu1303e625f2b33016319c4c5040ca59eb_113373_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/desactiver-la-mfa/img/003-aad-portal-default-secutiry-setting_hu1303e625f2b33016319c4c5040ca59eb_113373_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Page des propriétés de sécurité par défaut&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;189&#34;
+		data-flex-basis=&#34;455px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Sélectionnez &lt;strong&gt;Propriétés&lt;/strong&gt; dans le panneau de gauche.&lt;/li&gt;
+&lt;li&gt;Cliquez sur le lien &lt;strong&gt;Gérer les paramètres de sécurité par défaut&lt;/strong&gt; pour ouvrir le panneau de gauche.&lt;/li&gt;
+&lt;li&gt;Passer l&amp;rsquo;option &lt;strong&gt;Activer les paramètres de sécurité par défaut&lt;/strong&gt; sur &lt;strong&gt;Non&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;Donner une raison.&lt;/li&gt;
+&lt;li&gt;Appuyez sur &lt;strong&gt;Enregistrer&lt;/strong&gt; pour sauvegarder votre modification.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Voilà vous n&amp;rsquo;aurez plus d&amp;rsquo;obligation de mettre de la MFA sur vos comptes de test.&lt;/p&gt;
+&lt;p&gt;Merci de votre attention.&lt;/p&gt;</description>
+        </item>
+        <item>
         <title>Créer un environnement d&#39;apprentissage Microsoft 365</title>
         <link>https://blog.ddata.fr/p/m365-developer/</link>
         <pubDate>Fri, 12 Aug 2022 00:00:00 +0000</pubDate>
