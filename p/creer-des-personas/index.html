@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+<html lang="fr-fr" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Lorsque vous devez tester les services Microsoft 365, vous devez le faire avec plusieurs identités. Pour éviter la schizophrénie, créer des personas et donner leurs vies dans votre navigateur.
+'><title>Créer des personas.</title>
+
+<link rel='canonical' href='https://blog.ddata.fr/p/creer-des-personas/'>
+
+<link rel="stylesheet" href="/scss/style.min.5a8e892f6fa14515e9065eee1f5d2e05302606ec7f11750b2fb95198f9cdcbfd.css"><meta property='og:title' content='Créer des personas.'>
+<meta property='og:description' content='Lorsque vous devez tester les services Microsoft 365, vous devez le faire avec plusieurs identités. Pour éviter la schizophrénie, créer des personas et donner leurs vies dans votre navigateur.
+'>
+<meta property='og:url' content='https://blog.ddata.fr/p/creer-des-personas/'>
+<meta property='og:site_name' content='Le D de Data'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Gratuit' /><meta property='article:tag' content='Débutant' /><meta property='article:tag' content='Auto formation' /><meta property='article:published_time' content='2022-08-19T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2022-08-19T00:00:00&#43;00:00'/><meta property='og:image' content='https://blog.ddata.fr/p/creer-des-personas/hello-i-m-nik-v8pL84kvTTc-unsplash.jpg' />
+<meta name="twitter:title" content="Créer des personas.">
+<meta name="twitter:description" content="Lorsque vous devez tester les services Microsoft 365, vous devez le faire avec plusieurs identités. Pour éviter la schizophrénie, créer des personas et donner leurs vies dans votre navigateur.
+"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://blog.ddata.fr/p/creer-des-personas/hello-i-m-nik-v8pL84kvTTc-unsplash.jpg' />
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TY6XFEN6QV"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-TY6XFEN6QV', { 'anonymize_ip': false });
+}
+</script>
+<link rel="alternate"
+      type="application/rss+xml"
+      href="https://blog.ddata.fr/index.xml"
+      title="Le D de Data">
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "dark");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Afficher le menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/pierre_hua6bbc70dde858dd10e363a14d1f7729c_67951_300x0_resize_q75_box.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Le D de Data</a></h1>
+            <h2 class="site-description">Blog francophone autour de la data Microsoft</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/pierreddata'
+                        target="_blank"
+                        title="GitHub"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://www.linkedin.com/in/pierre-dupont-0b532374/'
+                        target="_blank"
+                        title="LinkdIn"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-folders" width="44" height="44" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <rect x="4" y="4" width="16" height="16" rx="2" />
+  <line x1="8" y1="11" x2="8" y2="16" />
+  <line x1="8" y1="8" x2="8" y2="8.01" />
+  <line x1="12" y1="16" x2="12" y2="11" />
+  <path d="M16 16v-3a2 2 0 0 0 -4 0" />
+</svg>
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Accueil</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/a-propos-de-d-de-data/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>A Propos</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/series/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-folders" width="44" height="44" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 4h3l2 2h5a2 2 0 0 1 2 2v7a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-9a2 2 0 0 1 2 -2" />
+  <path d="M17 17v2a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-9a2 2 0 0 1 2 -2h2" />
+</svg>
+
+                
+                <span>Series</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/liens/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Liens</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Rechercher</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Mode sombre</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+<main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/creer-des-personas/">
+                <img src="/p/creer-des-personas/hello-i-m-nik-v8pL84kvTTc-unsplash_huc0441eb0c3b34a2bc25f8a0410fc39d0_897394_800x0_resize_q75_box.jpg"
+                        srcset="/p/creer-des-personas/hello-i-m-nik-v8pL84kvTTc-unsplash_huc0441eb0c3b34a2bc25f8a0410fc39d0_897394_800x0_resize_q75_box.jpg 800w, /p/creer-des-personas/hello-i-m-nik-v8pL84kvTTc-unsplash_huc0441eb0c3b34a2bc25f8a0410fc39d0_897394_1600x0_resize_q75_box.jpg 1600w"
+                        width="800" 
+                        height="477" 
+                        loading="lazy"
+                        alt="Featured image of post Créer des personas." />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/powerbi/" style="background-color: #f2c811; color: #fff;">
+                Power BI
+            </a>
+        
+            <a href="/categories/m365/" style="background-color: #D83B01; color: #fff;">
+                Microsoft 365
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/creer-des-personas/">Créer des personas.</a>
+        </h2>
+
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published" datetime="2022-08-19T00:00:00Z">
+                    19 août 2022
+                    
+                </time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    5 minutes de lecture
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+    
+    
+</div>
+</header>
+
+    <section class="article-content">
+    
+    
+    <p>Lorsque vous devez tester les services Microsoft 365, vous devez le faire avec plusieurs identités.
+Pour éviter la schizophrénie, créer des personas et donner leurs vies dans votre navigateur.</p>
+<h2 id="context">Context</h2>
+<p>Vous avez votre propre espace de test Microsoft 365 et vous souhaitez vous mettre en situation pour tester un service (Power BI, Power Apps, Teams&hellip;), vous allez rapidement avoir besoin de le faire avec plusieurs identités différentes.<br>
+Dans cet article je vais vous expliquer comment créer ces nouvelles identités dans votre environnement 365 et comment les utiliser facilement.</p>
+<h2 id="pré-requis">Pré requis</h2>
+<p>Vous devez avoir accès à un environnement avec des droits d&rsquo;administrateur Azure Active directory.<br>
+Si vous n&rsquo;avez pas encore votre environnement de test je vous invite à suivre <a class="link" href="https://blog.ddata.fr/p/m365-developer/" >mon article</a> consacré à la création de ce dernier.</p>
+<h2 id="créer-un-persona">Créer un persona</h2>
+<p>Un persona est une personne fictive qui sert en général pour définir des stratégies marketing. Je vous conseille de créer différents utilisateurs basés sur différentes personnas afin de donner vie à vos différents scénarii et les mettre en scène en conditions réelles.</p>
+<p>Pour créer un personna réaliste vous aurez notamment besoin de lui donnée vie au travers photo. Vous pouvez utilisez le site site <a class="link" href="https://thispersondoesnotexist.com/"  target="_blank" rel="noopener"
+    >thispersondoesnotexist</a> pour obtenir des photos de personnes n&rsquo;existant pas et donc de personnifier vos personas sans risque de nuire à autrui.</p>
+<p>Pour faire facilement une image en cercle j&rsquo;utilise <a class="link" href="https://crop-circle.imageonline.co/fr/"  target="_blank" rel="noopener"
+    >ce site</a>.</p>
+<h3 id="mes-personas">Mes personas</h3>
+<p>Vous trouverez ici les personnas que j&rsquo;utilise, sur chaque fiche vous trouverez une description de la personna :</p>
+<ul>
+<li><a class="link" href="https://github.com/pierreddata/blog.ddata.fr/blob/main/persona/persona-azure-admin.md"  target="_blank" rel="noopener"
+    >Administrateur Azure</a></li>
+<li><a class="link" href="https://github.com/pierreddata/blog.ddata.fr/blob/main/persona/persona-power-bi-admin.md"  target="_blank" rel="noopener"
+    >Administrateur Power BI</a></li>
+<li><a class="link" href="https://github.com/pierreddata/blog.ddata.fr/blob/main/persona/persona-power-bi-maker.md"  target="_blank" rel="noopener"
+    >Créateur Power BI</a></li>
+<li><a class="link" href="https://github.com/pierreddata/blog.ddata.fr/blob/main/persona/persona-power-bi-viewer-manager.md"  target="_blank" rel="noopener"
+    >Manager, utilisateur de Power BI</a></li>
+<li><a class="link" href="https://github.com/pierreddata/blog.ddata.fr/blob/main/persona/persona-power-bi-viewer-simple-user.md"  target="_blank" rel="noopener"
+    >Colaborateur, utilisateur de Power BI</a></li>
+<li><a class="link" href="https://github.com/pierreddata/blog.ddata.fr/blob/main/persona/persona-power-platform-maker.md"  target="_blank" rel="noopener"
+    >Créateur Power PlatForm</a></li>
+</ul>
+<h2 id="création-dun-profil-utilisateur-dans-son-navigateur">Création d&rsquo;un profil utilisateur dans son navigateur</h2>
+<p>J&rsquo;utilise Google Chrome pour les exemples, mais vous pouvez vous réaliser ces opérations dans tous les navigateurs modernes.<br>
+L&rsquo;utilisation des profils dans votre navigateur permet d&rsquo;avoir une étanchéité entre les différents profils utilisateurs que vous utilisez. Vous pourrez notamment avoir vos favoris, cookies et mots de passe enregistrés de manière isolés pour chaque profil.</p>
+<p>Je vais créer un profil pour mon utilisateur administrateur, celui créer lors de notre inscription au programme Microsoft 365 Developer.</p>
+<p>Pour ajouter un profil utilisateur de Google Chrome, vous devez :</p>
+<p><img src="/p/creer-des-personas/img/001-add-profile.png"
+	width="929"
+	height="730"
+	srcset="/p/creer-des-personas/img/001-add-profile_hu28fc1c0d6ad7d21ecad000135079f5a0_54278_480x0_resize_box_3.png 480w, /p/creer-des-personas/img/001-add-profile_hu28fc1c0d6ad7d21ecad000135079f5a0_54278_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Ajouter un profil"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="127"
+		data-flex-basis="305px"
+	
+></p>
+<ol>
+<li>Cliquer sur le cercle représentant le profil en cours.</li>
+<li>Sélectionner <strong>Ajouter</strong>.</li>
+</ol>
+<p><img src="/p/creer-des-personas/img/002-config-profile-step1.png"
+	width="1026"
+	height="790"
+	srcset="/p/creer-des-personas/img/002-config-profile-step1_hu76a79461f8adfabaa37d7ef3eb63ee0e_42577_480x0_resize_box_3.png 480w, /p/creer-des-personas/img/002-config-profile-step1_hu76a79461f8adfabaa37d7ef3eb63ee0e_42577_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Configurer le profil étape 1"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="129"
+		data-flex-basis="311px"
+	
+></p>
+<ol>
+<li>Sélectionner <strong>Continuer sans compte</strong> pour poursuivre la création.</li>
+</ol>
+<p><img src="/p/creer-des-personas/img/003-config-profile-step2.png"
+	width="1026"
+	height="790"
+	srcset="/p/creer-des-personas/img/003-config-profile-step2_hu20ea276b9f7fbd58a7c4b84c841eb561_68934_480x0_resize_box_3.png 480w, /p/creer-des-personas/img/003-config-profile-step2_hu20ea276b9f7fbd58a7c4b84c841eb561_68934_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Configurer le profil étape 2"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="129"
+		data-flex-basis="311px"
+	
+></p>
+<ol>
+<li>Choisissez un avatar pour le profil.</li>
+<li>Saisir un nom pour le profile, l&rsquo;email de la personna me semble une bonne option.</li>
+<li>Choisissez une couleur de thème pour le profil. Ce choix est pour moi important, car il me permet d&rsquo;identifier en un coup d&rsquo;oeil le profil quand plusieurs sessions sont ouvertes en parallèle. En général, j&rsquo;utilise :
+<ol>
+<li>Le bleu pour l&rsquo;administrateur Azure</li>
+<li>Le jaune pour l&rsquo;administrateur Power BI</li>
+</ol>
+</li>
+<li>Appuyer sur le bouton <strong>OK</strong> pour terminer la création du profil.</li>
+</ol>
+<p>Votre navigateur s&rsquo;ouvre avec son nouveau thème :</p>
+<p><img src="/p/creer-des-personas/img/004-add-profile-end.png"
+	width="929"
+	height="730"
+	srcset="/p/creer-des-personas/img/004-add-profile-end_hu949e3263848108f79cc6e544eeed53a4_31915_480x0_resize_box_3.png 480w, /p/creer-des-personas/img/004-add-profile-end_hu949e3263848108f79cc6e544eeed53a4_31915_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Votre nouveau profil"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="127"
+		data-flex-basis="305px"
+	
+></p>
+<ol>
+<li>Vous pouvez passer d&rsquo;un profil à l&rsquo;autre à l&rsquo;aide du cercle représentant les profils.</li>
+</ol>
+<p>Reproduisaient ces opérations pour créer un profil pour chacune des personnas que vous utilisez.</p>
+<h2 id="création-dun-nouvel-utilisateur">Création d&rsquo;un nouvel utilisateur</h2>
+<p>Pour créer un nouvel utilisateur, nous allons commencer par nous connecter au <a class="link" href="https://admin.microsoft.com/"  target="_blank" rel="noopener"
+    >portail d&rsquo;administration Microsoft 365</a> avec le profil de notre utilisateur administrateur.</p>
+<p><img src="/p/creer-des-personas/img/005-login-step1.png"
+	width="440"
+	height="512"
+	srcset="/p/creer-des-personas/img/005-login-step1_hu5ee805c0e1c6788152f772574e733d86_23651_480x0_resize_box_3.png 480w, /p/creer-des-personas/img/005-login-step1_hu5ee805c0e1c6788152f772574e733d86_23651_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Ignorer la MFA"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="85"
+		data-flex-basis="206px"
+	
+></p>
+<ol>
+<li>Lors de la première connexion, utilisez le lien <strong>Ignorer pour l’instant</strong> si vous souhaitez ignorer l&rsquo;authentification multi-facteur (MFA).</li>
+<li>Utilisez le bouton <strong>Suivant</strong> pour paramétrer l&rsquo;authentification multi-facteur (MFA).</li>
+</ol>
+<p>Une fois la procédure d&rsquo;authentification terminée vous arrivez sur la page d&rsquo;accueil du portail d&rsquo;administration Microsoft 365.</p>
+<p><img src="/p/creer-des-personas/img/006-m365-admin-portal.png"
+	width="1596"
+	height="853"
+	srcset="/p/creer-des-personas/img/006-m365-admin-portal_huea36fed1974d0c0dc9be1eb6ce9e0449_117995_480x0_resize_box_3.png 480w, /p/creer-des-personas/img/006-m365-admin-portal_huea36fed1974d0c0dc9be1eb6ce9e0449_117995_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Portail d&rsquo;administration Microsoft 365"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="187"
+		data-flex-basis="449px"
+	
+></p>
+<ol>
+<li>Dans le panneau de gauche, ouvrez le menu <strong>Utilisateurs</strong></li>
+<li>Appuyez sur <strong>Utilisateurs actifs</strong> pour ouvrir l&rsquo;écran de gestion des utilisateurs</li>
+</ol>
+<p><img src="/p/creer-des-personas/img/007-m365-admin-portal-users.png"
+	width="1596"
+	height="853"
+	srcset="/p/creer-des-personas/img/007-m365-admin-portal-users_hua56447f90ad10d0098db1033f1921f40_89296_480x0_resize_box_3.png 480w, /p/creer-des-personas/img/007-m365-admin-portal-users_hua56447f90ad10d0098db1033f1921f40_89296_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Gestion des utilisateurs"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="187"
+		data-flex-basis="449px"
+	
+></p>
+<ol>
+<li>Appuyez sur <strong>Ajouter un utilisateur</strong> pour créer un nouvel utilisateur.</li>
+</ol>
+<p>Un assistant apparait dans le panneau de droite. Nous allons créer le profil de la personna <a class="link" href="https://github.com/pierreddata/blog.ddata.fr/blob/main/persona/persona-power-bi-admin.md"  target="_blank" rel="noopener"
+    >administrateur Power BI</a></p>
+<p><img src="/p/creer-des-personas/img/008-m365-admin-portal-user-add.png"
+	width="1596"
+	height="853"
+	srcset="/p/creer-des-personas/img/008-m365-admin-portal-user-add_hu5a69ce48d3e3b1ac6504c11d4a63f7bd_93017_480x0_resize_box_3.png 480w, /p/creer-des-personas/img/008-m365-admin-portal-user-add_hu5a69ce48d3e3b1ac6504c11d4a63f7bd_93017_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Information sur l&rsquo;utilisateur"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="187"
+		data-flex-basis="449px"
+	
+></p>
+<ol>
+<li>Renseignez les informations sur l&rsquo;utilisateur</li>
+<li>Décochez <strong>Créer automatiquement le mot de passe</strong> puis saisir le mot de passe de l&rsquo;utilisateur. J&rsquo;utilise le même mot de passe que pour les utilisateurs générés par l&rsquo;environnement (<a class="link" href="https://blog.ddata.fr/p/m365-developer/" >voir article sur la création de l&rsquo;environnement</a>)</li>
+<li>Ne pas demander à l&rsquo;utilisateur de changer son mot de passe.</li>
+<li>Appuyez sur <strong>Suivant</strong> pour continuer.</li>
+</ol>
+<p><strong>Attention</strong>, je ne respecte pas les règles élémentaires de sécurité concernant le mot de passe, car je crée un utilisateur factice utilisé dans le cadre de test. Ne faites pas cela avec vos utilisateurs d&rsquo;entreprise.</p>
+<p><img src="/p/creer-des-personas/img/009-m365-admin-portal-user-add-step2.png"
+	width="1596"
+	height="853"
+	srcset="/p/creer-des-personas/img/009-m365-admin-portal-user-add-step2_hu67f94f7d6300a5d97937c19b2f041b86_91233_480x0_resize_box_3.png 480w, /p/creer-des-personas/img/009-m365-admin-portal-user-add-step2_hu67f94f7d6300a5d97937c19b2f041b86_91233_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Licence de l&rsquo;utilisateur"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="187"
+		data-flex-basis="449px"
+	
+></p>
+<ol>
+<li>Renseignez le pays de l&rsquo;utilisateur.</li>
+<li>Affecter une licence à l&rsquo;utilisateur.</li>
+<li>Appuyez sur <strong>Suivant</strong> pour continuer.</li>
+</ol>
+<p>Nous allons maintenant affecter le rôle <strong>Administrateur Power BI</strong> à notre utilisateur.</p>
+<p><img src="/p/creer-des-personas/img/010-m365-admin-portal-user-add-step3.png"
+	width="1596"
+	height="853"
+	srcset="/p/creer-des-personas/img/010-m365-admin-portal-user-add-step3_hua5c9c329123397cea01e54bbf94c8130_107253_480x0_resize_box_3.png 480w, /p/creer-des-personas/img/010-m365-admin-portal-user-add-step3_hua5c9c329123397cea01e54bbf94c8130_107253_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Rôle de l&rsquo;utilisateur"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="187"
+		data-flex-basis="449px"
+	
+></p>
+<ol>
+<li>Sélectionnez <strong>Accès au centre d&rsquo;administration</strong>.</li>
+<li>Recherchez et cochez le rôle <strong>Administrateur Power BI</strong>.</li>
+<li>Appuyez sur <strong>Suivant</strong> pour continuer.</li>
+</ol>
+<p>Le fait d&rsquo;affecter un rôle à l&rsquo;utilisateur dépend de la personna que l&rsquo;on crée et des droits que l&rsquo;on souhaite lui accorder. Sur les fiches de mes personnas, j&rsquo;indique si l&rsquo;utilisateur à un rôle et si oui lequel.</p>
+<p><img src="/p/creer-des-personas/img/011-m365-admin-portal-user-add-step4.png"
+	width="1596"
+	height="853"
+	srcset="/p/creer-des-personas/img/011-m365-admin-portal-user-add-step4_hud06b25ac0fa457e46f9f658a8135c085_94191_480x0_resize_box_3.png 480w, /p/creer-des-personas/img/011-m365-admin-portal-user-add-step4_hud06b25ac0fa457e46f9f658a8135c085_94191_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Validation de l&rsquo;utilisateur"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="187"
+		data-flex-basis="449px"
+	
+></p>
+<ol>
+<li>Vérifiez les informations de votre utilisateur.</li>
+<li>Appuyez sur <strong>Terminer l&rsquo;ajout</strong> pour terminer.</li>
+</ol>
+<p><img src="/p/creer-des-personas/img/011-m365-admin-portal-user-add-step4.png"
+	width="1596"
+	height="853"
+	srcset="/p/creer-des-personas/img/011-m365-admin-portal-user-add-step4_hud06b25ac0fa457e46f9f658a8135c085_94191_480x0_resize_box_3.png 480w, /p/creer-des-personas/img/011-m365-admin-portal-user-add-step4_hud06b25ac0fa457e46f9f658a8135c085_94191_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Validation de l&rsquo;utilisateur"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="187"
+		data-flex-basis="449px"
+	
+></p>
+<p>L&rsquo;écran de confirmation de création apparait.</p>
+<p><img src="/p/creer-des-personas/img/012-m365-admin-portal-user-add-step5.png"
+	width="1596"
+	height="853"
+	srcset="/p/creer-des-personas/img/012-m365-admin-portal-user-add-step5_hu7e53bc08f21a91cd7e077a46b4ef4ee2_93151_480x0_resize_box_3.png 480w, /p/creer-des-personas/img/012-m365-admin-portal-user-add-step5_hu7e53bc08f21a91cd7e077a46b4ef4ee2_93151_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Confirmation de création de l&rsquo;utilisateur"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="187"
+		data-flex-basis="449px"
+	
+></p>
+<ol>
+<li>Appuyez sur <strong>Fermer</strong> pour revenir à la liste des utilisateurs.</li>
+</ol>
+<p>Pour terminer, nous allons mettre à jour la photo de notre utilisateur.</p>
+<p><img src="/p/creer-des-personas/img/013-m365-admin-portal-users2.png"
+	width="1596"
+	height="853"
+	srcset="/p/creer-des-personas/img/013-m365-admin-portal-users2_hu78602d40469e69d938e4b3798a71115d_54915_480x0_resize_box_3.png 480w, /p/creer-des-personas/img/013-m365-admin-portal-users2_hu78602d40469e69d938e4b3798a71115d_54915_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Gestion des utilisateurs"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="187"
+		data-flex-basis="449px"
+	
+></p>
+<ol>
+<li>Ouvrez la fiche de l&rsquo;utilisateur en cliquant dessus</li>
+<li>Si la liste n&rsquo;est pas à jour appuyer sur le bouton <strong>Actualiser</strong>.</li>
+<li>Si le bouton <strong>Actualiser</strong> n&rsquo;apparait pas utilisez les 3 points pour le faire apparaitre.</li>
+<li>Pour trouver rapidement, utilisez le filtre.</li>
+</ol>
+<p><img src="/p/creer-des-personas/img/014-m365-admin-portal-users-information.png"
+	width="1596"
+	height="853"
+	srcset="/p/creer-des-personas/img/014-m365-admin-portal-users-information_hubee2ba4d3f6bd0f0cf883e0dd3df136e_86800_480x0_resize_box_3.png 480w, /p/creer-des-personas/img/014-m365-admin-portal-users-information_hubee2ba4d3f6bd0f0cf883e0dd3df136e_86800_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Profil utilisateur"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="187"
+		data-flex-basis="449px"
+	
+></p>
+<ol>
+<li>Appuyer sur <strong>Modifier la photo</strong> pour utiliser la photo de l&rsquo;utilisateur.</li>
+</ol>
+<p>Vous avez maintenant un utilisateur utilisable pour vos tests.</p>
+<p><img src="/p/creer-des-personas/img/015-m365-admin-portal-users-information2.png"
+	width="1596"
+	height="853"
+	srcset="/p/creer-des-personas/img/015-m365-admin-portal-users-information2_hu2a2c9c15b2f19b942aa284c6404d9b8f_111038_480x0_resize_box_3.png 480w, /p/creer-des-personas/img/015-m365-admin-portal-users-information2_hu2a2c9c15b2f19b942aa284c6404d9b8f_111038_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Profil utilisateur terminé"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="187"
+		data-flex-basis="449px"
+	
+></p>
+<p>Vous pouvez maintenant créer un profil dans votre navigateur pour ce nouvel utilisateur.</p>
+<p>Répéter l&rsquo;opération avec les différentes personnas.</p>
+<p>Merci de votre attention.</p>
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/gratuit/">Gratuit</a>
+        
+            <a href="/tags/d%C3%A9butant/">Débutant</a>
+        
+            <a href="/tags/auto-formation/">Auto formation</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Contenus liés</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/m365-developer/">
+        
+        
+            <div class="article-image">
+                <img src="/p/m365-developer/_hu4c0ac1a5fc3bc62d5287596e79649454_708326_2b480a85474d13618afba641b0e61b24.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Créer un environnement d&#39;apprentissage Microsoft 365"
+                        data-key="m365-developer" 
+                        data-hash="md5-o5KlaKIN8lgYrGLL6/mgGw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Créer un environnement d&#39;apprentissage Microsoft 365</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/desactiver-la-mfa/">
+        
+        
+            <div class="article-image">
+                <img src="/p/desactiver-la-mfa/_hu9d37c82fe306bfe37bc1c0d5c413c58d_549463_f541cf1576d08059911058a8a4f40364.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 💡 Désactiver la double authentification par défaut. 🔒"
+                        data-key="desactiver-la-mfa" 
+                        data-hash="md5-h2uQWy&#43;D8rNW7oHLXpBplA==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">💡 Désactiver la double authentification par défaut. 🔒</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/c%C3%A9koidonc-microsoft-365/">
+        
+        
+            <div class="article-image">
+                <img src="/p/c%C3%A9koidonc-microsoft-365/_hu6f8bd3335d5e0a54aad627c035558e90_1054235_b7f6272b8d322197c821074e814c80f1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Cékoidonc Microsoft 365 ?"
+                        
+                        data-hash="md5-jrDj8yfj4FkMQIBSvPcz5w==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Cékoidonc Microsoft 365 ?</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/c%C3%A9koidonc-power-bi/">
+        
+        
+            <div class="article-image">
+                <img src="/p/c%C3%A9koidonc-power-bi/_hu1ca34946bd12f0e64e734615c45e379d_1750064_a3e7c6ef21bb45580b25197756c8b976.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Cékoidonc Power BI ?"
+                        
+                        data-hash="md5-uIsNDPnJPsGXy02PByndnw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Cékoidonc Power BI ?</h2>
+        </div>
+    </a>
+</article>
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "ddata" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2022 Le D de Data
+    </section>
+    
+    <section class="powerby">
+        Généré avec <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Thème <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.13.0">Stack</a></b> conçu par <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table des matières</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#context">Context</a></li>
+    <li><a href="#pré-requis">Pré requis</a></li>
+    <li><a href="#créer-un-persona">Créer un persona</a>
+      <ol>
+        <li><a href="#mes-personas">Mes personas</a></li>
+      </ol>
+    </li>
+    <li><a href="#création-dun-profil-utilisateur-dans-son-navigateur">Création d&rsquo;un profil utilisateur dans son navigateur</a></li>
+    <li><a href="#création-dun-nouvel-utilisateur">Création d&rsquo;un nouvel utilisateur</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

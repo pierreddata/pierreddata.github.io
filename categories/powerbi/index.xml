@@ -6,7 +6,354 @@
         <description>Recent content in Power BI on Le D de Data</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>fr-fr</language>
-        <lastBuildDate>Mon, 15 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ddata.fr/categories/powerbi/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Fri, 19 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ddata.fr/categories/powerbi/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Créer des personas.</title>
+        <link>https://blog.ddata.fr/p/creer-des-personas/</link>
+        <pubDate>Fri, 19 Aug 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://blog.ddata.fr/p/creer-des-personas/</guid>
+        <description>&lt;img src="https://blog.ddata.fr/p/creer-des-personas/hello-i-m-nik-v8pL84kvTTc-unsplash.jpg" alt="Featured image of post Créer des personas." /&gt;&lt;p&gt;Lorsque vous devez tester les services Microsoft 365, vous devez le faire avec plusieurs identités.
+Pour éviter la schizophrénie, créer des personas et donner leurs vies dans votre navigateur.&lt;/p&gt;
+&lt;h2 id=&#34;context&#34;&gt;Context&lt;/h2&gt;
+&lt;p&gt;Vous avez votre propre espace de test Microsoft 365 et vous souhaitez vous mettre en situation pour tester un service (Power BI, Power Apps, Teams&amp;hellip;), vous allez rapidement avoir besoin de le faire avec plusieurs identités différentes.&lt;br&gt;
+Dans cet article je vais vous expliquer comment créer ces nouvelles identités dans votre environnement 365 et comment les utiliser facilement.&lt;/p&gt;
+&lt;h2 id=&#34;pré-requis&#34;&gt;Pré requis&lt;/h2&gt;
+&lt;p&gt;Vous devez avoir accès à un environnement avec des droits d&amp;rsquo;administrateur Azure Active directory.&lt;br&gt;
+Si vous n&amp;rsquo;avez pas encore votre environnement de test je vous invite à suivre &lt;a class=&#34;link&#34; href=&#34;https://blog.ddata.fr/p/m365-developer/&#34; &gt;mon article&lt;/a&gt; consacré à la création de ce dernier.&lt;/p&gt;
+&lt;h2 id=&#34;créer-un-persona&#34;&gt;Créer un persona&lt;/h2&gt;
+&lt;p&gt;Un persona est une personne fictive qui sert en général pour définir des stratégies marketing. Je vous conseille de créer différents utilisateurs basés sur différentes personnas afin de donner vie à vos différents scénarii et les mettre en scène en conditions réelles.&lt;/p&gt;
+&lt;p&gt;Pour créer un personna réaliste vous aurez notamment besoin de lui donnée vie au travers photo. Vous pouvez utilisez le site site &lt;a class=&#34;link&#34; href=&#34;https://thispersondoesnotexist.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;thispersondoesnotexist&lt;/a&gt; pour obtenir des photos de personnes n&amp;rsquo;existant pas et donc de personnifier vos personas sans risque de nuire à autrui.&lt;/p&gt;
+&lt;p&gt;Pour faire facilement une image en cercle j&amp;rsquo;utilise &lt;a class=&#34;link&#34; href=&#34;https://crop-circle.imageonline.co/fr/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;ce site&lt;/a&gt;.&lt;/p&gt;
+&lt;h3 id=&#34;mes-personas&#34;&gt;Mes personas&lt;/h3&gt;
+&lt;p&gt;Vous trouverez ici les personnas que j&amp;rsquo;utilise, sur chaque fiche vous trouverez une description de la personna :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/pierreddata/blog.ddata.fr/blob/main/persona/persona-azure-admin.md&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Administrateur Azure&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/pierreddata/blog.ddata.fr/blob/main/persona/persona-power-bi-admin.md&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Administrateur Power BI&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/pierreddata/blog.ddata.fr/blob/main/persona/persona-power-bi-maker.md&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Créateur Power BI&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/pierreddata/blog.ddata.fr/blob/main/persona/persona-power-bi-viewer-manager.md&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Manager, utilisateur de Power BI&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/pierreddata/blog.ddata.fr/blob/main/persona/persona-power-bi-viewer-simple-user.md&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Colaborateur, utilisateur de Power BI&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/pierreddata/blog.ddata.fr/blob/main/persona/persona-power-platform-maker.md&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Créateur Power PlatForm&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;création-dun-profil-utilisateur-dans-son-navigateur&#34;&gt;Création d&amp;rsquo;un profil utilisateur dans son navigateur&lt;/h2&gt;
+&lt;p&gt;J&amp;rsquo;utilise Google Chrome pour les exemples, mais vous pouvez vous réaliser ces opérations dans tous les navigateurs modernes.&lt;br&gt;
+L&amp;rsquo;utilisation des profils dans votre navigateur permet d&amp;rsquo;avoir une étanchéité entre les différents profils utilisateurs que vous utilisez. Vous pourrez notamment avoir vos favoris, cookies et mots de passe enregistrés de manière isolés pour chaque profil.&lt;/p&gt;
+&lt;p&gt;Je vais créer un profil pour mon utilisateur administrateur, celui créer lors de notre inscription au programme Microsoft 365 Developer.&lt;/p&gt;
+&lt;p&gt;Pour ajouter un profil utilisateur de Google Chrome, vous devez :&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/creer-des-personas/img/001-add-profile.png&#34;
+	width=&#34;929&#34;
+	height=&#34;730&#34;
+	srcset=&#34;https://blog.ddata.fr/p/creer-des-personas/img/001-add-profile_hu28fc1c0d6ad7d21ecad000135079f5a0_54278_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/creer-des-personas/img/001-add-profile_hu28fc1c0d6ad7d21ecad000135079f5a0_54278_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Ajouter un profil&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;127&#34;
+		data-flex-basis=&#34;305px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Cliquer sur le cercle représentant le profil en cours.&lt;/li&gt;
+&lt;li&gt;Sélectionner &lt;strong&gt;Ajouter&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/creer-des-personas/img/002-config-profile-step1.png&#34;
+	width=&#34;1026&#34;
+	height=&#34;790&#34;
+	srcset=&#34;https://blog.ddata.fr/p/creer-des-personas/img/002-config-profile-step1_hu76a79461f8adfabaa37d7ef3eb63ee0e_42577_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/creer-des-personas/img/002-config-profile-step1_hu76a79461f8adfabaa37d7ef3eb63ee0e_42577_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Configurer le profil étape 1&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;129&#34;
+		data-flex-basis=&#34;311px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Sélectionner &lt;strong&gt;Continuer sans compte&lt;/strong&gt; pour poursuivre la création.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/creer-des-personas/img/003-config-profile-step2.png&#34;
+	width=&#34;1026&#34;
+	height=&#34;790&#34;
+	srcset=&#34;https://blog.ddata.fr/p/creer-des-personas/img/003-config-profile-step2_hu20ea276b9f7fbd58a7c4b84c841eb561_68934_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/creer-des-personas/img/003-config-profile-step2_hu20ea276b9f7fbd58a7c4b84c841eb561_68934_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Configurer le profil étape 2&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;129&#34;
+		data-flex-basis=&#34;311px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Choisissez un avatar pour le profil.&lt;/li&gt;
+&lt;li&gt;Saisir un nom pour le profile, l&amp;rsquo;email de la personna me semble une bonne option.&lt;/li&gt;
+&lt;li&gt;Choisissez une couleur de thème pour le profil. Ce choix est pour moi important, car il me permet d&amp;rsquo;identifier en un coup d&amp;rsquo;oeil le profil quand plusieurs sessions sont ouvertes en parallèle. En général, j&amp;rsquo;utilise :
+&lt;ol&gt;
+&lt;li&gt;Le bleu pour l&amp;rsquo;administrateur Azure&lt;/li&gt;
+&lt;li&gt;Le jaune pour l&amp;rsquo;administrateur Power BI&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;Appuyer sur le bouton &lt;strong&gt;OK&lt;/strong&gt; pour terminer la création du profil.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Votre navigateur s&amp;rsquo;ouvre avec son nouveau thème :&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/creer-des-personas/img/004-add-profile-end.png&#34;
+	width=&#34;929&#34;
+	height=&#34;730&#34;
+	srcset=&#34;https://blog.ddata.fr/p/creer-des-personas/img/004-add-profile-end_hu949e3263848108f79cc6e544eeed53a4_31915_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/creer-des-personas/img/004-add-profile-end_hu949e3263848108f79cc6e544eeed53a4_31915_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Votre nouveau profil&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;127&#34;
+		data-flex-basis=&#34;305px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Vous pouvez passer d&amp;rsquo;un profil à l&amp;rsquo;autre à l&amp;rsquo;aide du cercle représentant les profils.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Reproduisaient ces opérations pour créer un profil pour chacune des personnas que vous utilisez.&lt;/p&gt;
+&lt;h2 id=&#34;création-dun-nouvel-utilisateur&#34;&gt;Création d&amp;rsquo;un nouvel utilisateur&lt;/h2&gt;
+&lt;p&gt;Pour créer un nouvel utilisateur, nous allons commencer par nous connecter au &lt;a class=&#34;link&#34; href=&#34;https://admin.microsoft.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;portail d&amp;rsquo;administration Microsoft 365&lt;/a&gt; avec le profil de notre utilisateur administrateur.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/creer-des-personas/img/005-login-step1.png&#34;
+	width=&#34;440&#34;
+	height=&#34;512&#34;
+	srcset=&#34;https://blog.ddata.fr/p/creer-des-personas/img/005-login-step1_hu5ee805c0e1c6788152f772574e733d86_23651_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/creer-des-personas/img/005-login-step1_hu5ee805c0e1c6788152f772574e733d86_23651_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Ignorer la MFA&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;85&#34;
+		data-flex-basis=&#34;206px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Lors de la première connexion, utilisez le lien &lt;strong&gt;Ignorer pour l’instant&lt;/strong&gt; si vous souhaitez ignorer l&amp;rsquo;authentification multi-facteur (MFA).&lt;/li&gt;
+&lt;li&gt;Utilisez le bouton &lt;strong&gt;Suivant&lt;/strong&gt; pour paramétrer l&amp;rsquo;authentification multi-facteur (MFA).&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Une fois la procédure d&amp;rsquo;authentification terminée vous arrivez sur la page d&amp;rsquo;accueil du portail d&amp;rsquo;administration Microsoft 365.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/creer-des-personas/img/006-m365-admin-portal.png&#34;
+	width=&#34;1596&#34;
+	height=&#34;853&#34;
+	srcset=&#34;https://blog.ddata.fr/p/creer-des-personas/img/006-m365-admin-portal_huea36fed1974d0c0dc9be1eb6ce9e0449_117995_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/creer-des-personas/img/006-m365-admin-portal_huea36fed1974d0c0dc9be1eb6ce9e0449_117995_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Portail d&amp;rsquo;administration Microsoft 365&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;187&#34;
+		data-flex-basis=&#34;449px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Dans le panneau de gauche, ouvrez le menu &lt;strong&gt;Utilisateurs&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;Appuyez sur &lt;strong&gt;Utilisateurs actifs&lt;/strong&gt; pour ouvrir l&amp;rsquo;écran de gestion des utilisateurs&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/creer-des-personas/img/007-m365-admin-portal-users.png&#34;
+	width=&#34;1596&#34;
+	height=&#34;853&#34;
+	srcset=&#34;https://blog.ddata.fr/p/creer-des-personas/img/007-m365-admin-portal-users_hua56447f90ad10d0098db1033f1921f40_89296_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/creer-des-personas/img/007-m365-admin-portal-users_hua56447f90ad10d0098db1033f1921f40_89296_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Gestion des utilisateurs&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;187&#34;
+		data-flex-basis=&#34;449px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Appuyez sur &lt;strong&gt;Ajouter un utilisateur&lt;/strong&gt; pour créer un nouvel utilisateur.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Un assistant apparait dans le panneau de droite. Nous allons créer le profil de la personna &lt;a class=&#34;link&#34; href=&#34;https://github.com/pierreddata/blog.ddata.fr/blob/main/persona/persona-power-bi-admin.md&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;administrateur Power BI&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/creer-des-personas/img/008-m365-admin-portal-user-add.png&#34;
+	width=&#34;1596&#34;
+	height=&#34;853&#34;
+	srcset=&#34;https://blog.ddata.fr/p/creer-des-personas/img/008-m365-admin-portal-user-add_hu5a69ce48d3e3b1ac6504c11d4a63f7bd_93017_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/creer-des-personas/img/008-m365-admin-portal-user-add_hu5a69ce48d3e3b1ac6504c11d4a63f7bd_93017_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Information sur l&amp;rsquo;utilisateur&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;187&#34;
+		data-flex-basis=&#34;449px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Renseignez les informations sur l&amp;rsquo;utilisateur&lt;/li&gt;
+&lt;li&gt;Décochez &lt;strong&gt;Créer automatiquement le mot de passe&lt;/strong&gt; puis saisir le mot de passe de l&amp;rsquo;utilisateur. J&amp;rsquo;utilise le même mot de passe que pour les utilisateurs générés par l&amp;rsquo;environnement (&lt;a class=&#34;link&#34; href=&#34;https://blog.ddata.fr/p/m365-developer/&#34; &gt;voir article sur la création de l&amp;rsquo;environnement&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Ne pas demander à l&amp;rsquo;utilisateur de changer son mot de passe.&lt;/li&gt;
+&lt;li&gt;Appuyez sur &lt;strong&gt;Suivant&lt;/strong&gt; pour continuer.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;Attention&lt;/strong&gt;, je ne respecte pas les règles élémentaires de sécurité concernant le mot de passe, car je crée un utilisateur factice utilisé dans le cadre de test. Ne faites pas cela avec vos utilisateurs d&amp;rsquo;entreprise.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/creer-des-personas/img/009-m365-admin-portal-user-add-step2.png&#34;
+	width=&#34;1596&#34;
+	height=&#34;853&#34;
+	srcset=&#34;https://blog.ddata.fr/p/creer-des-personas/img/009-m365-admin-portal-user-add-step2_hu67f94f7d6300a5d97937c19b2f041b86_91233_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/creer-des-personas/img/009-m365-admin-portal-user-add-step2_hu67f94f7d6300a5d97937c19b2f041b86_91233_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Licence de l&amp;rsquo;utilisateur&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;187&#34;
+		data-flex-basis=&#34;449px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Renseignez le pays de l&amp;rsquo;utilisateur.&lt;/li&gt;
+&lt;li&gt;Affecter une licence à l&amp;rsquo;utilisateur.&lt;/li&gt;
+&lt;li&gt;Appuyez sur &lt;strong&gt;Suivant&lt;/strong&gt; pour continuer.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Nous allons maintenant affecter le rôle &lt;strong&gt;Administrateur Power BI&lt;/strong&gt; à notre utilisateur.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/creer-des-personas/img/010-m365-admin-portal-user-add-step3.png&#34;
+	width=&#34;1596&#34;
+	height=&#34;853&#34;
+	srcset=&#34;https://blog.ddata.fr/p/creer-des-personas/img/010-m365-admin-portal-user-add-step3_hua5c9c329123397cea01e54bbf94c8130_107253_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/creer-des-personas/img/010-m365-admin-portal-user-add-step3_hua5c9c329123397cea01e54bbf94c8130_107253_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Rôle de l&amp;rsquo;utilisateur&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;187&#34;
+		data-flex-basis=&#34;449px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Sélectionnez &lt;strong&gt;Accès au centre d&amp;rsquo;administration&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;Recherchez et cochez le rôle &lt;strong&gt;Administrateur Power BI&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;Appuyez sur &lt;strong&gt;Suivant&lt;/strong&gt; pour continuer.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Le fait d&amp;rsquo;affecter un rôle à l&amp;rsquo;utilisateur dépend de la personna que l&amp;rsquo;on crée et des droits que l&amp;rsquo;on souhaite lui accorder. Sur les fiches de mes personnas, j&amp;rsquo;indique si l&amp;rsquo;utilisateur à un rôle et si oui lequel.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/creer-des-personas/img/011-m365-admin-portal-user-add-step4.png&#34;
+	width=&#34;1596&#34;
+	height=&#34;853&#34;
+	srcset=&#34;https://blog.ddata.fr/p/creer-des-personas/img/011-m365-admin-portal-user-add-step4_hud06b25ac0fa457e46f9f658a8135c085_94191_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/creer-des-personas/img/011-m365-admin-portal-user-add-step4_hud06b25ac0fa457e46f9f658a8135c085_94191_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Validation de l&amp;rsquo;utilisateur&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;187&#34;
+		data-flex-basis=&#34;449px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Vérifiez les informations de votre utilisateur.&lt;/li&gt;
+&lt;li&gt;Appuyez sur &lt;strong&gt;Terminer l&amp;rsquo;ajout&lt;/strong&gt; pour terminer.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/creer-des-personas/img/011-m365-admin-portal-user-add-step4.png&#34;
+	width=&#34;1596&#34;
+	height=&#34;853&#34;
+	srcset=&#34;https://blog.ddata.fr/p/creer-des-personas/img/011-m365-admin-portal-user-add-step4_hud06b25ac0fa457e46f9f658a8135c085_94191_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/creer-des-personas/img/011-m365-admin-portal-user-add-step4_hud06b25ac0fa457e46f9f658a8135c085_94191_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Validation de l&amp;rsquo;utilisateur&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;187&#34;
+		data-flex-basis=&#34;449px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;L&amp;rsquo;écran de confirmation de création apparait.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/creer-des-personas/img/012-m365-admin-portal-user-add-step5.png&#34;
+	width=&#34;1596&#34;
+	height=&#34;853&#34;
+	srcset=&#34;https://blog.ddata.fr/p/creer-des-personas/img/012-m365-admin-portal-user-add-step5_hu7e53bc08f21a91cd7e077a46b4ef4ee2_93151_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/creer-des-personas/img/012-m365-admin-portal-user-add-step5_hu7e53bc08f21a91cd7e077a46b4ef4ee2_93151_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Confirmation de création de l&amp;rsquo;utilisateur&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;187&#34;
+		data-flex-basis=&#34;449px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Appuyez sur &lt;strong&gt;Fermer&lt;/strong&gt; pour revenir à la liste des utilisateurs.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Pour terminer, nous allons mettre à jour la photo de notre utilisateur.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/creer-des-personas/img/013-m365-admin-portal-users2.png&#34;
+	width=&#34;1596&#34;
+	height=&#34;853&#34;
+	srcset=&#34;https://blog.ddata.fr/p/creer-des-personas/img/013-m365-admin-portal-users2_hu78602d40469e69d938e4b3798a71115d_54915_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/creer-des-personas/img/013-m365-admin-portal-users2_hu78602d40469e69d938e4b3798a71115d_54915_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Gestion des utilisateurs&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;187&#34;
+		data-flex-basis=&#34;449px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Ouvrez la fiche de l&amp;rsquo;utilisateur en cliquant dessus&lt;/li&gt;
+&lt;li&gt;Si la liste n&amp;rsquo;est pas à jour appuyer sur le bouton &lt;strong&gt;Actualiser&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;Si le bouton &lt;strong&gt;Actualiser&lt;/strong&gt; n&amp;rsquo;apparait pas utilisez les 3 points pour le faire apparaitre.&lt;/li&gt;
+&lt;li&gt;Pour trouver rapidement, utilisez le filtre.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/creer-des-personas/img/014-m365-admin-portal-users-information.png&#34;
+	width=&#34;1596&#34;
+	height=&#34;853&#34;
+	srcset=&#34;https://blog.ddata.fr/p/creer-des-personas/img/014-m365-admin-portal-users-information_hubee2ba4d3f6bd0f0cf883e0dd3df136e_86800_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/creer-des-personas/img/014-m365-admin-portal-users-information_hubee2ba4d3f6bd0f0cf883e0dd3df136e_86800_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Profil utilisateur&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;187&#34;
+		data-flex-basis=&#34;449px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Appuyer sur &lt;strong&gt;Modifier la photo&lt;/strong&gt; pour utiliser la photo de l&amp;rsquo;utilisateur.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Vous avez maintenant un utilisateur utilisable pour vos tests.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/creer-des-personas/img/015-m365-admin-portal-users-information2.png&#34;
+	width=&#34;1596&#34;
+	height=&#34;853&#34;
+	srcset=&#34;https://blog.ddata.fr/p/creer-des-personas/img/015-m365-admin-portal-users-information2_hu2a2c9c15b2f19b942aa284c6404d9b8f_111038_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/creer-des-personas/img/015-m365-admin-portal-users-information2_hu2a2c9c15b2f19b942aa284c6404d9b8f_111038_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Profil utilisateur terminé&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;187&#34;
+		data-flex-basis=&#34;449px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Vous pouvez maintenant créer un profil dans votre navigateur pour ce nouvel utilisateur.&lt;/p&gt;
+&lt;p&gt;Répéter l&amp;rsquo;opération avec les différentes personnas.&lt;/p&gt;
+&lt;p&gt;Merci de votre attention.&lt;/p&gt;</description>
+        </item>
+        <item>
         <title>💡 Désactiver la double authentification par défaut. 🔒</title>
         <link>https://blog.ddata.fr/p/desactiver-la-mfa/</link>
         <pubDate>Mon, 15 Aug 2022 00:00:00 +0000</pubDate>
