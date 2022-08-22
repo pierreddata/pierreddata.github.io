@@ -6,7 +6,360 @@
         <description>Recent content in Posts on Le D de Data</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>fr-fr</language>
-        <lastBuildDate>Fri, 19 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ddata.fr/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Mon, 22 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ddata.fr/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>💡 Votre nom de domaine gratuit !</title>
+        <link>https://blog.ddata.fr/p/nom-de-domaine-gratuit/</link>
+        <pubDate>Mon, 22 Aug 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://blog.ddata.fr/p/nom-de-domaine-gratuit/</guid>
+        <description>&lt;img src="https://blog.ddata.fr/p/nom-de-domaine-gratuit/amy-shamblen-BV8Ka-JE0Cs-unsplash.jpg" alt="Featured image of post 💡 Votre nom de domaine gratuit !" /&gt;&lt;p&gt;Vous en avez assez d&amp;rsquo;avoir des adresses de tests en &lt;strong&gt;onmicrosoft.com&lt;/strong&gt; ?&lt;br&gt;
+Je vous montre comment obtenir gratuitement un nom de domaine et le configurer dans votre environnement de test.&lt;/p&gt;
+&lt;h2 id=&#34;context&#34;&gt;Context&lt;/h2&gt;
+&lt;p&gt;Par défaut vous avez un nom de domaine en &lt;strong&gt;onmicrosoft.com&lt;/strong&gt; sur votre environnement de test. Vous pouvez bien entendu configurer votre prope nom de domaine acheter chez un fournisseur comme &lt;a class=&#34;link&#34; href=&#34;http://www.gandi.net/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Gandi&lt;/a&gt;. Cela à un coût que l&amp;rsquo;on ne veut pas forcement déboursser pour faire des tests.&lt;br&gt;
+Il existe une solution pour obtenir un nom de domaine gratuitement pendant un an : &lt;a class=&#34;link&#34; href=&#34;https://www.freenom.com&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Freenom&lt;/a&gt;. Attention après un an pour renouveller ce nom vous devrez payer ou changer de nom de domaine pour conserver la gratuité.&lt;/p&gt;
+&lt;h2 id=&#34;obtenir-votre-nom-de-domaine-gratuit&#34;&gt;Obtenir votre nom de domaine gratuit&lt;/h2&gt;
+&lt;p&gt;Rendez vous sur le site &lt;a class=&#34;link&#34; href=&#34;https://www.freenom.com&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Freenom&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/nom-de-domaine-gratuit/img/001-freenom-portal-landingpage.png&#34;
+	width=&#34;1268&#34;
+	height=&#34;821&#34;
+	srcset=&#34;https://blog.ddata.fr/p/nom-de-domaine-gratuit/img/001-freenom-portal-landingpage_hu6202bc97ca7ba3dd4523be5d2769b467_1122621_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/nom-de-domaine-gratuit/img/001-freenom-portal-landingpage_hu6202bc97ca7ba3dd4523be5d2769b467_1122621_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Page d&amp;rsquo;acceuil&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;154&#34;
+		data-flex-basis=&#34;370px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Saisir un nom de domaine.&lt;/li&gt;
+&lt;li&gt;Appuyez sur &lt;strong&gt;Vérifier la disponibilité&lt;/strong&gt; pour commencer.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/nom-de-domaine-gratuit/img/002-freenom-choose-domain-name.png&#34;
+	width=&#34;1268&#34;
+	height=&#34;821&#34;
+	srcset=&#34;https://blog.ddata.fr/p/nom-de-domaine-gratuit/img/002-freenom-choose-domain-name_hu9d5100a1cc00843c9d1b4a1152a2e94f_93524_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/nom-de-domaine-gratuit/img/002-freenom-choose-domain-name_hu9d5100a1cc00843c9d1b4a1152a2e94f_93524_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Choix du nom de domaine&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;154&#34;
+		data-flex-basis=&#34;370px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Vérifiez que le nom de domaine est disponible gratuitement.&lt;/li&gt;
+&lt;li&gt;Commandez votre nom de domaine disponbile en appuyant sur &lt;strong&gt;Commander!&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;Si le nom n&amp;rsquo;est pas disponible saisir un nouveau nom de domaine.&lt;/li&gt;
+&lt;li&gt;Appuyez sur &lt;strong&gt;Vérifier la disponibilité&lt;/strong&gt; pour faire une nouvelle recherche.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Si lors de l&amp;rsquo;appuie sur &lt;strong&gt;Commander!&lt;/strong&gt;, vous avez le message &lt;em&gt;Not available&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/nom-de-domaine-gratuit/img/003-freenom-choose-domain-name-bug.png&#34;
+	width=&#34;1015&#34;
+	height=&#34;351&#34;
+	srcset=&#34;https://blog.ddata.fr/p/nom-de-domaine-gratuit/img/003-freenom-choose-domain-name-bug_hud7693b78af10fef2b3ee96279f23d704_173131_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/nom-de-domaine-gratuit/img/003-freenom-choose-domain-name-bug_hud7693b78af10fef2b3ee96279f23d704_173131_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Bug choix du nom de domaine&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;289&#34;
+		data-flex-basis=&#34;694px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Saisir le nom de domaine avec l&amp;rsquo;extention dans la zone de recherche.&lt;/li&gt;
+&lt;li&gt;Le nom de domaine est automatiquement ajouté au panier, appuyer sur &lt;strong&gt;Checkout&lt;/strong&gt; pour valider votre panier.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/nom-de-domaine-gratuit/img/004-freenom-checkout.png&#34;
+	width=&#34;1037&#34;
+	height=&#34;183&#34;
+	srcset=&#34;https://blog.ddata.fr/p/nom-de-domaine-gratuit/img/004-freenom-checkout_hu27fda57a784bf511284da34232dafb1b_11956_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/nom-de-domaine-gratuit/img/004-freenom-checkout_hu27fda57a784bf511284da34232dafb1b_11956_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Validation du panier&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;566&#34;
+		data-flex-basis=&#34;1360px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Sélectionnez la durée de votre nom de domaine (maximum 12 mois en version gratuite)&lt;/li&gt;
+&lt;li&gt;Appuyez sur &lt;strong&gt;Continuer&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/nom-de-domaine-gratuit/img/005-freenom-register.png&#34;
+	width=&#34;1012&#34;
+	height=&#34;459&#34;
+	srcset=&#34;https://blog.ddata.fr/p/nom-de-domaine-gratuit/img/005-freenom-register_hud811943d9b0f957a71486b71b7293723_24419_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/nom-de-domaine-gratuit/img/005-freenom-register_hud811943d9b0f957a71486b71b7293723_24419_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Enegistrement&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;220&#34;
+		data-flex-basis=&#34;529px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Enregistrez vous avec votre email.&lt;/li&gt;
+&lt;li&gt;Ou un compte de média social.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/nom-de-domaine-gratuit/img/006-freenom-order-confirmation.png&#34;
+	width=&#34;594&#34;
+	height=&#34;378&#34;
+	srcset=&#34;https://blog.ddata.fr/p/nom-de-domaine-gratuit/img/006-freenom-order-confirmation_huf3cf7ed668ed08996fc49866da39a790_14318_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/nom-de-domaine-gratuit/img/006-freenom-order-confirmation_huf3cf7ed668ed08996fc49866da39a790_14318_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Validation commande&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;157&#34;
+		data-flex-basis=&#34;377px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Suivre ensuite les étapes d&amp;rsquo;enregistrement jusqu&amp;rsquo;à la validation de la commande.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;configurer-votre-environnement-de-test-pour-utiliser-votre-nom-de-domaine&#34;&gt;Configurer votre environnement de test pour utiliser votre nom de domaine&lt;/h2&gt;
+&lt;p&gt;Nous allons maintenant associé le nom de domaine à notre environnement de test.&lt;br&gt;
+Pour commencer connectez vous au centre d&amp;rsquo;&lt;a class=&#34;link&#34; href=&#34;https://admin.microsoft.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;administration Microsoft 365&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/nom-de-domaine-gratuit/img/007-m365-admin-step01.png&#34;
+	width=&#34;1504&#34;
+	height=&#34;964&#34;
+	srcset=&#34;https://blog.ddata.fr/p/nom-de-domaine-gratuit/img/007-m365-admin-step01_hu12d287184d593c6d5a12db832ceaa0ba_76841_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/nom-de-domaine-gratuit/img/007-m365-admin-step01_hu12d287184d593c6d5a12db832ceaa0ba_76841_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Enregistrement du domaine dans M365 - étape 1&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;156&#34;
+		data-flex-basis=&#34;374px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Dans le paneau de gauche, choisissez &lt;strong&gt;Configuration&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;Puis sélectionnez &lt;strong&gt;Configurer votre domaine personnalisé&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/nom-de-domaine-gratuit/img/008-m365-admin-step02.png&#34;
+	width=&#34;1060&#34;
+	height=&#34;744&#34;
+	srcset=&#34;https://blog.ddata.fr/p/nom-de-domaine-gratuit/img/008-m365-admin-step02_hucf959287363089b02276c7457524871c_59508_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/nom-de-domaine-gratuit/img/008-m365-admin-step02_hucf959287363089b02276c7457524871c_59508_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Enregistrement du domaine dans M365 - étape 2&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;142&#34;
+		data-flex-basis=&#34;341px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Appuyez sur &lt;strong&gt;Prise en main&lt;/strong&gt; pour démarrer le processus.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/nom-de-domaine-gratuit/img/009-m365-admin-step03.png&#34;
+	width=&#34;999&#34;
+	height=&#34;481&#34;
+	srcset=&#34;https://blog.ddata.fr/p/nom-de-domaine-gratuit/img/009-m365-admin-step03_hue9fa6b9b7a3eb049c150f4306fcc9daa_23005_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/nom-de-domaine-gratuit/img/009-m365-admin-step03_hue9fa6b9b7a3eb049c150f4306fcc9daa_23005_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Enregistrement du domaine dans M365 - étape 3&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;207&#34;
+		data-flex-basis=&#34;498px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Entrez votre nom de domaine créer précédement.&lt;/li&gt;
+&lt;li&gt;Appuyez sur le bouton &lt;strong&gt;Utiliser ce domaine&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Nous devons maintenant prouver que nous sommes le propriétaire du nom de domaine, pour cela nous allons devoir ajouter un enregistrement dans notre nom de doamine pour démontrer que l&amp;rsquo;on a accès à l&amp;rsquo;administration du nom de domaine.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/nom-de-domaine-gratuit/img/010-m365-admin-step04.png&#34;
+	width=&#34;1500&#34;
+	height=&#34;681&#34;
+	srcset=&#34;https://blog.ddata.fr/p/nom-de-domaine-gratuit/img/010-m365-admin-step04_hu27976206b54d57128a388d52bb9e8c09_101999_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/nom-de-domaine-gratuit/img/010-m365-admin-step04_hu27976206b54d57128a388d52bb9e8c09_101999_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Enregistrement du domaine dans M365 - étape 4&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;220&#34;
+		data-flex-basis=&#34;528px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Choisissez &lt;strong&gt;Ajouter un enregistrement TXT aux enregistrements DNS du domaine&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;Appuyez sur le bouton &lt;strong&gt;Continuer&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/nom-de-domaine-gratuit/img/011-m365-admin-step05.png&#34;
+	width=&#34;1504&#34;
+	height=&#34;681&#34;
+	srcset=&#34;https://blog.ddata.fr/p/nom-de-domaine-gratuit/img/011-m365-admin-step05_hu3a4b7a124febd175bc57a2c58cce376d_94414_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/nom-de-domaine-gratuit/img/011-m365-admin-step05_hu3a4b7a124febd175bc57a2c58cce376d_94414_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Enregistrement du domaine dans M365 - étape 5&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;220&#34;
+		data-flex-basis=&#34;530px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Notez le code que vous devrez saisir dans l&amp;rsquo;interface d&amp;rsquo;administration de Freenom.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Conservez cette page ouverte nous allons y revenir plus tard.&lt;/p&gt;
+&lt;p&gt;Rendez vous maintenant sur l&amp;rsquo;interface d&amp;rsquo;administration de Freenom en cliquant sur &lt;strong&gt;Se connecter&lt;/strong&gt; en haut à droite de la &lt;a class=&#34;link&#34; href=&#34;http://www.freenom.com/fr/index.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;page d&amp;rsquo;accueil de Freenom&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/nom-de-domaine-gratuit/img/012-freenom-admin-domain-menu.png&#34;
+	width=&#34;572&#34;
+	height=&#34;430&#34;
+	srcset=&#34;https://blog.ddata.fr/p/nom-de-domaine-gratuit/img/012-freenom-admin-domain-menu_huda9734017a7c55c718172d54a1f94624_364702_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/nom-de-domaine-gratuit/img/012-freenom-admin-domain-menu_huda9734017a7c55c718172d54a1f94624_364702_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Accès interface d&amp;rsquo;administration domaines&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;133&#34;
+		data-flex-basis=&#34;319px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Pour accéder à interface d&amp;rsquo;administration de Freenom, sélection &lt;strong&gt;My Domains&lt;/strong&gt; dans le menu &lt;strong&gt;Services&lt;/strong&gt; en haut à droite.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/nom-de-domaine-gratuit/img/013-freenom-admin-domain.png&#34;
+	width=&#34;1035&#34;
+	height=&#34;353&#34;
+	srcset=&#34;https://blog.ddata.fr/p/nom-de-domaine-gratuit/img/013-freenom-admin-domain_hu16cdc1c73f0972f4ea3a1d5077921b83_20073_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/nom-de-domaine-gratuit/img/013-freenom-admin-domain_hu16cdc1c73f0972f4ea3a1d5077921b83_20073_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Interface d&amp;rsquo;administration domaines&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;293&#34;
+		data-flex-basis=&#34;703px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Sur la ligne du domaine que vous voulez associé à l&amp;rsquo;environnement detest, appuyez sur &lt;strong&gt;Manage Domain&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/nom-de-domaine-gratuit/img/014-freenom-admin-domain-detail.png&#34;
+	width=&#34;689&#34;
+	height=&#34;318&#34;
+	srcset=&#34;https://blog.ddata.fr/p/nom-de-domaine-gratuit/img/014-freenom-admin-domain-detail_hu8dd02e5c38798cb023ec828a648cbb80_17219_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/nom-de-domaine-gratuit/img/014-freenom-admin-domain-detail_hu8dd02e5c38798cb023ec828a648cbb80_17219_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Interface d&amp;rsquo;administration domaines détail&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;216&#34;
+		data-flex-basis=&#34;520px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Choisissez &lt;strong&gt;Manage Freenom DNS&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/nom-de-domaine-gratuit/img/015-freenom-admin-domain-dns.png&#34;
+	width=&#34;917&#34;
+	height=&#34;436&#34;
+	srcset=&#34;https://blog.ddata.fr/p/nom-de-domaine-gratuit/img/015-freenom-admin-domain-dns_hu2c9983bc24351d86a05f2b1f39a2379e_21213_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/nom-de-domaine-gratuit/img/015-freenom-admin-domain-dns_hu2c9983bc24351d86a05f2b1f39a2379e_21213_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Interface d&amp;rsquo;administration domaines DNS&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;210&#34;
+		data-flex-basis=&#34;504px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Ne rien saisir dans la zone &lt;strong&gt;Name&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;Choisir &lt;strong&gt;TXT&lt;/strong&gt; dans la zone &lt;strong&gt;Type&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;Saisir le code fournit dans l&amp;rsquo;interface d&amp;rsquo;administration de Microsoft 365 dans la zone &lt;strong&gt;Target&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;Appuyez sur &lt;strong&gt;Save Changes&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Nous allons devoir attendre un peut que la modification ce réplique sur les serveurs de Freenom, généralement entre 5 et 15 minutes.&lt;br&gt;
+Nous retournons ensuite sur l&amp;rsquo;écran de vérification du domaine dans l&amp;rsquo;interface d&amp;rsquo;adminitration de Microsoft 365 et appuyer sur le bouton &lt;strong&gt;Vérifier&lt;/strong&gt;.&lt;br&gt;
+Si l&amp;rsquo;enregistrement est trouvé vous obtenez le résultat suivant, sinon patientez et appuyez sur le bouton &lt;strong&gt;Réessayer&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/nom-de-domaine-gratuit/img/016-m365-admin-step06.png&#34;
+	width=&#34;1358&#34;
+	height=&#34;682&#34;
+	srcset=&#34;https://blog.ddata.fr/p/nom-de-domaine-gratuit/img/016-m365-admin-step06_hubd4c511a69bbaa848b51f95d64d9bc5b_46124_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/nom-de-domaine-gratuit/img/016-m365-admin-step06_hubd4c511a69bbaa848b51f95d64d9bc5b_46124_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Enregistrement du domaine dans M365 - étape 6&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;199&#34;
+		data-flex-basis=&#34;477px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Une fois le domaine validé, nous pouvons configurer des services comme l&amp;rsquo;email pour utiliser ce domaine. Appuyez sur &lt;strong&gt;Continuer&lt;/strong&gt; pour débuter cette configuration.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/nom-de-domaine-gratuit/img/017-m365-admin-step07.png&#34;
+	width=&#34;1331&#34;
+	height=&#34;793&#34;
+	srcset=&#34;https://blog.ddata.fr/p/nom-de-domaine-gratuit/img/017-m365-admin-step07_hua3598308ab92e595b26b9a3a17cbf061_54368_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/nom-de-domaine-gratuit/img/017-m365-admin-step07_hua3598308ab92e595b26b9a3a17cbf061_54368_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Enregistrement du domaine dans M365 - étape 7&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;167&#34;
+		data-flex-basis=&#34;402px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Nous devons de nouveau ajouter des enregistrement DNS dans l&amp;rsquo;interface d&amp;rsquo;administration de Freenom pour activé ces services. Vous trouverez les informations pour 3 nouveaux enregistrements plus bas dans la page, lorsque vous avez un arobase (@) dans le nom d&amp;rsquo;hôte ne rien mettre dans la zone &lt;strong&gt;Name&lt;/strong&gt; de freenom, sinon mettre la valeur du nom d&amp;rsquo;hôte dans la zone &lt;strong&gt;Name&lt;/strong&gt; de freenom.&lt;/li&gt;
+&lt;li&gt;Une fois que vous avez ajouter les enregistrements dans Freenom et patientez, appuyez sur le bouton &lt;strong&gt;Continuer&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/nom-de-domaine-gratuit/img/018-m365-admin-step08.png&#34;
+	width=&#34;1326&#34;
+	height=&#34;567&#34;
+	srcset=&#34;https://blog.ddata.fr/p/nom-de-domaine-gratuit/img/018-m365-admin-step08_hu51f4abd5fdd8273b0520fc697f6534d5_37264_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/nom-de-domaine-gratuit/img/018-m365-admin-step08_hu51f4abd5fdd8273b0520fc697f6534d5_37264_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Enregistrement du domaine dans M365 - fin&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;233&#34;
+		data-flex-basis=&#34;561px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Appuyez sur le bouton &lt;strong&gt;Terminé&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Bravo vous avez terminé d&amp;rsquo;associer votre nom de domaine à votre environnement de test.&lt;/p&gt;
+&lt;p&gt;Maintenant vous pouvez créer des comptes utilisateurs pour votre nouveau nom de domaine.&lt;/p&gt;
+&lt;p&gt;Attention seule la première période et gratuite si vous souhaitez conserver le même nom de domaine après la première période vous devrez payer. Sinon vous pourrez créer un nouveau nom de domaine mais vous devrez recréer de nouveau compte pour ce nouveau domaine. Cela n&amp;rsquo;est pas forcément contaiyant pour un environnement de test.&lt;/p&gt;
+&lt;p&gt;Merci de votre attention.&lt;/p&gt;</description>
+        </item>
+        <item>
         <title>Créer des personas.</title>
         <link>https://blog.ddata.fr/p/creer-des-personas/</link>
         <pubDate>Fri, 19 Aug 2022 00:00:00 +0000</pubDate>
