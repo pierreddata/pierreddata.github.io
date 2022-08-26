@@ -6,7 +6,199 @@
         <description>Recent content in Débutant on Le D de Data</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>fr-fr</language>
-        <lastBuildDate>Mon, 22 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ddata.fr/tags/d%C3%A9butant/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Fri, 26 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ddata.fr/tags/d%C3%A9butant/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Power Apps Developer Plan</title>
+        <link>https://blog.ddata.fr/p/power-apps-developer-plan/</link>
+        <pubDate>Fri, 26 Aug 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://blog.ddata.fr/p/power-apps-developer-plan/</guid>
+        <description>&lt;img src="https://blog.ddata.fr/p/power-apps-developer-plan/dele-oke-MO_oMhIGDHU-unsplash.jpg" alt="Featured image of post Power Apps Developer Plan" /&gt;&lt;p&gt;Nous allons voir ensemble, comment obtenir &lt;strong&gt;gratuitement&lt;/strong&gt; un environnement complet Power Apps.&lt;/p&gt;
+&lt;h2 id=&#34;contexte&#34;&gt;Contexte&lt;/h2&gt;
+&lt;p&gt;Pour cet article nous allons utiliser &lt;a class=&#34;link&#34; href=&#34;https://github.com/pierreddata/blog.ddata.fr/blob/main/persona/persona-power-platform-maker.md&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;la persona Violette&lt;/a&gt; créatrice Power Apps.&lt;br&gt;
+Violette à déjà créer quelques applications Power Apps et quelques flux Power Automate avec sa licence Office 365, en effet dans la plupart des licences Office 365 sont inclues les  licences suivantes :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Power Apps for Office 365&lt;/li&gt;
+&lt;li&gt;Power Automate for Office 365&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;C&amp;rsquo;est très bien pour débuter, mais si on souhaite utiliser des connecteurs premium (ceux avec le petit diamant après le nom) on a besoin d&amp;rsquo;une &lt;a class=&#34;link&#34; href=&#34;https://powerapps.microsoft.com/fr-fr/pricing/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;licence payante&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;La licence payante est indispensable si on souhaite utiliser ses applications en production, mais si l&amp;rsquo;on souhaite juste développer, tester et/ou se former il existe une solution : &lt;a class=&#34;link&#34; href=&#34;https://powerapps.microsoft.com/en-us/developerplan/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Power Apps Developer Plan&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Nous allons dans cet article inscrire &lt;em&gt;Violette&lt;/em&gt; au plan Power Apps Developer.&lt;/p&gt;
+&lt;h2 id=&#34;que-contient-le-plan-power-apps-developer-&#34;&gt;Que contient le plan Power Apps Developer ?&lt;/h2&gt;
+&lt;p&gt;Avec le plan Power Apps Developer sont inclues :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Un accès aux environnements de développement Power Apps et Power Automate.&lt;/li&gt;
+&lt;li&gt;Un environnement développeur dédié.&lt;/li&gt;
+&lt;li&gt;un accès aux plus de 600 connecteurs Power Apps et Power Automate.&lt;/li&gt;
+&lt;li&gt;une plate-forme de données Dataverse dédiée limitée à 2 Go de données.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Vous trouverez plus de détails sur &lt;a class=&#34;link&#34; href=&#34;https://docs.microsoft.com/fr-fr/power-apps/maker/developer-plan&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;la page dédié&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Les connecteurs premium de Power Automate seront utilisables par les flux déclenchés par des applications Power Apps.&lt;/p&gt;
+&lt;h2 id=&#34;sinscrire-au-plan-power-apps-developer&#34;&gt;S&amp;rsquo;inscrire au plan Power Apps Developer&lt;/h2&gt;
+&lt;p&gt;Pour vous inscrire au plan Power Apps Developer vous devez vous rendre sur &lt;a class=&#34;link&#34; href=&#34;https://powerapps.microsoft.com/en-us/developerplan/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;le site dédié au plan&lt;/a&gt;.&lt;br&gt;
+Vous devez vous connecter avec une adresse e-mail professionnelle ou scolaire associée à Azure Active Directory.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/power-apps-developer-plan/img/001-powerapp-developerplan-landingpage.png&#34;
+	width=&#34;1432&#34;
+	height=&#34;780&#34;
+	srcset=&#34;https://blog.ddata.fr/p/power-apps-developer-plan/img/001-powerapp-developerplan-landingpage_hu7d57438996b83cfd173dc304bb0c3675_845328_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/power-apps-developer-plan/img/001-powerapp-developerplan-landingpage_hu7d57438996b83cfd173dc304bb0c3675_845328_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Page d’accueil&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;183&#34;
+		data-flex-basis=&#34;440px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Appuyez sur &lt;strong&gt;Get started free&lt;/strong&gt; pour commencer le processus d&amp;rsquo;inscription.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/power-apps-developer-plan/img/002-powerapp-developerplan-register-step1.png&#34;
+	width=&#34;1432&#34;
+	height=&#34;780&#34;
+	srcset=&#34;https://blog.ddata.fr/p/power-apps-developer-plan/img/002-powerapp-developerplan-register-step1_hu5d81efad5e1b52d0b5e144bd430692e1_80256_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/power-apps-developer-plan/img/002-powerapp-developerplan-register-step1_hu5d81efad5e1b52d0b5e144bd430692e1_80256_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Inscription étape 1&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;183&#34;
+		data-flex-basis=&#34;440px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Renseignez l&amp;rsquo;email associé à l&amp;rsquo;inscription.&lt;/li&gt;
+&lt;li&gt;Appuyer sur &lt;strong&gt;Suivant&lt;/strong&gt; pour continuer.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/power-apps-developer-plan/img/003-powerapp-developerplan-register-step2.png&#34;
+	width=&#34;1432&#34;
+	height=&#34;780&#34;
+	srcset=&#34;https://blog.ddata.fr/p/power-apps-developer-plan/img/003-powerapp-developerplan-register-step2_hu39b354e1cecc18a352f03a6057966807_72633_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/power-apps-developer-plan/img/003-powerapp-developerplan-register-step2_hu39b354e1cecc18a352f03a6057966807_72633_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Inscription étape 2&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;183&#34;
+		data-flex-basis=&#34;440px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Appuyer sur &lt;strong&gt;Se connecter&lt;/strong&gt; pour vous identifier.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/power-apps-developer-plan/img/004-powerapp-developerplan-register-step3.png&#34;
+	width=&#34;1432&#34;
+	height=&#34;921&#34;
+	srcset=&#34;https://blog.ddata.fr/p/power-apps-developer-plan/img/004-powerapp-developerplan-register-step3_hu7bea1c5b38ae0c00b7b4b1994dec1fa1_104479_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/power-apps-developer-plan/img/004-powerapp-developerplan-register-step3_hu7bea1c5b38ae0c00b7b4b1994dec1fa1_104479_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Inscription étape 3&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;155&#34;
+		data-flex-basis=&#34;373px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Renseignez le pays associé à l&amp;rsquo;inscription.&lt;/li&gt;
+&lt;li&gt;Renseignez le numéro de mobile associé à l&amp;rsquo;inscription.&lt;/li&gt;
+&lt;li&gt;Cochez les éléments qui vous intéressent.&lt;/li&gt;
+&lt;li&gt;Appuyer sur &lt;strong&gt;Prise en main&lt;/strong&gt; pour continuer.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/power-apps-developer-plan/img/005-powerapp-developerplan-register-step4.png&#34;
+	width=&#34;1432&#34;
+	height=&#34;820&#34;
+	srcset=&#34;https://blog.ddata.fr/p/power-apps-developer-plan/img/005-powerapp-developerplan-register-step4_hu80475de621d7dd04f49eb194af267de6_72486_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/power-apps-developer-plan/img/005-powerapp-developerplan-register-step4_hu80475de621d7dd04f49eb194af267de6_72486_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Inscription étape finale&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;174&#34;
+		data-flex-basis=&#34;419px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Appuyer sur &lt;strong&gt;Prise en main&lt;/strong&gt; pour terminer et être rediriger vers &lt;a class=&#34;link&#34; href=&#34;https://make.powerapps.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;l&amp;rsquo;environnement de développement Power Apps&lt;/a&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;découvrir-le-plan-power-apps-developer&#34;&gt;Découvrir le plan Power Apps Developer&lt;/h2&gt;
+&lt;p&gt;Nous allons commencer par vérifier que le plan est actif.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/power-apps-developer-plan/img/006-powerapp-portal-param.png&#34;
+	width=&#34;1432&#34;
+	height=&#34;820&#34;
+	srcset=&#34;https://blog.ddata.fr/p/power-apps-developer-plan/img/006-powerapp-portal-param_hu02afd3472140846d721a40f7b8dae561_146791_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/power-apps-developer-plan/img/006-powerapp-portal-param_hu02afd3472140846d721a40f7b8dae561_146791_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Voir les plans actifs&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;174&#34;
+		data-flex-basis=&#34;419px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Cliquez sur la roue crantée pour ouvrir le panneau de paramètres.&lt;/li&gt;
+&lt;li&gt;Cliquez sur &lt;strong&gt;Plan(s)&lt;/strong&gt; pour voir la liste des plans affectés à l&amp;rsquo;utilisateur.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/power-apps-developer-plan/img/007-powerapp-portal-planlist.png&#34;
+	width=&#34;329&#34;
+	height=&#34;190&#34;
+	srcset=&#34;https://blog.ddata.fr/p/power-apps-developer-plan/img/007-powerapp-portal-planlist_hu99396ed0913e28f4c2282575876b985a_5437_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/power-apps-developer-plan/img/007-powerapp-portal-planlist_hu99396ed0913e28f4c2282575876b985a_5437_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;liste des licences actives&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;173&#34;
+		data-flex-basis=&#34;415px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;La licence &lt;strong&gt;Power Apps Community&lt;/strong&gt; correspond au plan Power Apps Developer.&lt;/p&gt;
+&lt;p&gt;Nous allons maintenant vérifier que l&amp;rsquo;environement développeur dédié est présent.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/power-apps-developer-plan/img/008-powerapp-portal-environnementlist.png&#34;
+	width=&#34;1432&#34;
+	height=&#34;548&#34;
+	srcset=&#34;https://blog.ddata.fr/p/power-apps-developer-plan/img/008-powerapp-portal-environnementlist_hu6a0c234970a178413b06edae554fc1f5_60130_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/power-apps-developer-plan/img/008-powerapp-portal-environnementlist_hu6a0c234970a178413b06edae554fc1f5_60130_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Voir les environnements&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;261&#34;
+		data-flex-basis=&#34;627px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Cliquez sur l&amp;rsquo;environnement actif pour ouvrir le panneau des environnements.&lt;/li&gt;
+&lt;li&gt;L&amp;rsquo;environnement &lt;strong&gt;Developer Environement&lt;/strong&gt; correspond à votre environement développeur dédié. Vous pouvez cliquer dessus pour passer de l&amp;rsquo;environement par défaut à votre environnement dédié.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Pour profiter des avantages de votre plan Power Apps Developer, vous devrez travailler dans votre environement développeur dédié.&lt;br&gt;
+Le plan ce terminant par &lt;strong&gt;(default)&lt;/strong&gt; est le plan par défaut de votre organisation.&lt;/p&gt;
+&lt;p&gt;Nous avons terminé avec la création du plan Power Apps Developer, il ne vous reste plus qu&amp;rsquo;à jouer avec.&lt;/p&gt;
+&lt;p&gt;Voici les liens pour accéder rapidement aux outils de développement, penser à modifier l&amp;rsquo;environnement de travail avant de commencer vos créations.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://make.powerapps.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Power Apps&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://make.powerautomate.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Power Automate&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://admin.powerplatform.microsoft.com/home&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Portail d&amp;rsquo;administration Power Platform&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</description>
+        </item>
+        <item>
         <title>💡 Votre nom de domaine gratuit !</title>
         <link>https://blog.ddata.fr/p/nom-de-domaine-gratuit/</link>
         <pubDate>Mon, 22 Aug 2022 00:00:00 +0000</pubDate>
