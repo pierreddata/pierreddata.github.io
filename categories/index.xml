@@ -6,15 +6,7 @@
         <description>Recent content in Categories on Le D de Data</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>fr-fr</language>
-        <lastBuildDate>Mon, 29 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ddata.fr/categories/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>Power BI</title>
-        <link>https://blog.ddata.fr/categories/powerbi/</link>
-        <pubDate>Mon, 29 Aug 2022 00:00:00 +0000</pubDate>
-        
-        <guid>https://blog.ddata.fr/categories/powerbi/</guid>
-        <description>&lt;img src="https://blog.ddata.fr/categories/powerbi/PowerBI250.png" alt="Featured image of post Power BI" /&gt;</description>
-        </item>
-        <item>
+        <lastBuildDate>Fri, 26 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ddata.fr/categories/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Power Apps</title>
         <link>https://blog.ddata.fr/categories/powerapps/</link>
         <pubDate>Fri, 26 Aug 2022 00:00:00 +0000</pubDate>
@@ -37,6 +29,14 @@
         
         <guid>https://blog.ddata.fr/categories/m365/</guid>
         <description>&lt;img src="https://blog.ddata.fr/categories/m365/M365250.png" alt="Featured image of post Microsoft 365" /&gt;</description>
+        </item>
+        <item>
+        <title>Power BI</title>
+        <link>https://blog.ddata.fr/categories/powerbi/</link>
+        <pubDate>Fri, 19 Aug 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://blog.ddata.fr/categories/powerbi/</guid>
+        <description>&lt;img src="https://blog.ddata.fr/categories/powerbi/PowerBI250.png" alt="Featured image of post Power BI" /&gt;</description>
         </item>
         <item>
         <title>Azure</title>
