@@ -369,7 +369,7 @@ if (!doNotTrack) {
     <p>Vous avez besoin d&rsquo;afficher la date de la dernière mise à jour de votre jeu de données ?<br>
 Suivez le guide &hellip;</p>
 <h2 id="stocker-la-date-de-dernière-mise-à-jour">Stocker la date de dernière mise à jour</h2>
-<p>Pour calculer la date de dernière mise à jour de votre jeu de données cela ce passe au niverau de Power Query.</p>
+<p>Pour calculer la date de dernière mise à jour de votre jeu de données, cela se passe au niveau de Power Query.</p>
 <p><img src="/p/afficher-date-derniere-mise-a-jour/img/001-power-bi-desktop-open-power-query.png"
 	width="858"
 	height="129"
@@ -423,7 +423,7 @@ Suivez le guide &hellip;</p>
 	
 ></p>
 <ol>
-<li>Dans la barre de formule entrez le code M ci dessous.</li>
+<li>Dans la barre de formule, entrez le code M ci-dessous.</li>
 <li>Appuyez sur la coche pour valider.</li>
 <li>Vérifier le résultat.</li>
 </ol>
@@ -454,7 +454,7 @@ Suivez le guide &hellip;</p>
 <li>Sélectionnez le menu <strong>Affchage</strong>.</li>
 <li>Cochez <strong>Barre de formule</strong>.</li>
 </ol>
-<p>Renommer la requête nouvellement créer en <strong>Mise à jour</strong>.<br>
+<p>Renommer la requête nouvellement créée en <strong>Mise à jour</strong>.<br>
 Noter que la formule M donne l&rsquo;heure en UTC et non en heure local de l&rsquo;utilisateur. La raison est simple, si vous prenez l&rsquo;heure local vous aurez votre heure local dans Power BI Desktop mais l&rsquo;heure dans le service sera en UTC. Nous travaillons donc directement en UTC pour ne pas avoir des comportements différents entre Power BI Desktop et Power BI service.<br>
 Enfin appuyer sur <strong>Fermer &amp; appliquer</strong> dans le menu <strong>Accueil</strong> pour fermer l&rsquo;éditeur Power Query et charger la nouvelle requête dans le modèle Power BI.</p>
 <h2 id="afficher-la-date-de-dernière-mise-à-jour">Afficher la date de dernière mise à jour</h2>
@@ -488,7 +488,7 @@ Enfin appuyer sur <strong>Fermer &amp; appliquer</strong> dans le menu <strong>A
 </div>
 </div><p>Nous ajoutons 2 heures pour passer en heure d&rsquo;été local de Paris. Nous ne traiterons pas les problèmes d&rsquo;heure d&rsquo;été / heure d&rsquo;hiver dans le cadre de cet article.</p>
 <p>Maintenant il nous suffit de poser la mesure <strong>Date de dernière mise à jour</strong> dans un visuel pour afficher cette date.<br>
-Si on souhaite afficher le temps passer depuis la dernière mise à jour, nous allons créer une mesure dans notre modèle Power BI.</p>
+Si on souhaite afficher le temps passé depuis la dernière mise à jour, nous allons créer une mesure dans notre modèle Power BI.</p>
 <p>La formule de notre mesure sera :</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -498,7 +498,7 @@ Si on souhaite afficher le temps passer depuis la dernière mise à jour, nous a
 <pre tabindex="0" class="chroma"><code class="language-c#" data-lang="c#"><span class="line"><span class="cl"><span class="n">Durée</span> <span class="n">depuis</span> <span class="n">dernier</span> <span class="n">rafraichissement</span> <span class="p">=</span> <span class="n">DATEDIFF</span><span class="p">(</span><span class="n">MAX</span><span class="p">(</span><span class="err">&#39;</span><span class="n">Mise</span> <span class="err">à</span> <span class="n">jour</span><span class="err">&#39;</span><span class="p">[</span><span class="n">Last</span> <span class="n">refresh</span> <span class="n">date</span><span class="p">]),</span> <span class="n">UTCNOW</span><span class="p">(),</span><span class="n">MINUTE</span><span class="p">)</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>Pour afficher un texte propre à nos utilisateurs on peut créer une autre mesure DAX avec la formule suivante :</p>
+</div><p>Pour afficher un texte propre à nos utilisateurs, on peut créer une autre mesure DAX avec la formule suivante :</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -517,7 +517,7 @@ Si on souhaite afficher le temps passer depuis la dernière mise à jour, nous a
 </span></span><span class="line"><span class="cl">  <span class="n">If</span><span class="p">(</span><span class="n">vHeures</span> <span class="p">&gt;</span> <span class="m">0</span><span class="p">,</span> <span class="n">vHeures</span> <span class="p">&amp;</span> <span class="s">&#34; Heures &#34;</span><span class="p">)</span> <span class="p">&amp;</span> <span class="n">vMinutesRestantes</span> <span class="p">&amp;</span> <span class="s">&#34; Minutes&#34;</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>Formule inspriré de cet article : <a class="link" href="https://radacad.com/calculate-duration-in-days-hours-minutes-and-seconds-dynamically-in-power-bi-using-dax"  target="_blank" rel="noopener"
+</div><p>Formule inspirée de cet article : <a class="link" href="https://radacad.com/calculate-duration-in-days-hours-minutes-and-seconds-dynamically-in-power-bi-using-dax"  target="_blank" rel="noopener"
     >Calculate Duration in Days Hours Minutes and Seconds Dynamically in Power BI using DAX</a></p>
 <p>Voici le rendu des trois mesures dans un rapport Power BI :</p>
 <p><img src="/p/afficher-date-derniere-mise-a-jour/img/006-power-bi-create-show-measure.png"
