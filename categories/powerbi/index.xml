@@ -6,7 +6,138 @@
         <description>Recent content in Power BI on Le D de Data</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>fr-fr</language>
-        <lastBuildDate>Tue, 30 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ddata.fr/categories/powerbi/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sun, 04 Sep 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ddata.fr/categories/powerbi/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>💡 Power BI : Créer un tableau de bord Power BI.</title>
+        <link>https://blog.ddata.fr/p/power-bi-create-dashboard/</link>
+        <pubDate>Sun, 04 Sep 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://blog.ddata.fr/p/power-bi-create-dashboard/</guid>
+        <description>&lt;img src="https://blog.ddata.fr/p/power-bi-create-dashboard/adi-goldstein-Ug1-eXogOS0-unsplash.jpg" alt="Featured image of post 💡 Power BI : Créer un tableau de bord Power BI." /&gt;&lt;p&gt;Vous souhaitez créer un tableau de bord dans Power BI ?&lt;br&gt;
+Suivez le guide &amp;hellip;&lt;/p&gt;
+&lt;h2 id=&#34;préparons-nous&#34;&gt;Préparons-nous&lt;/h2&gt;
+&lt;p&gt;Je vous propose pour cet article d&amp;rsquo;utiliser un exemple de &lt;a class=&#34;link&#34; href=&#34;https://github.com/pierreddata/blog.ddata.fr/raw/main/powerbi/blog.ddata.fr-simple-report.pbix&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;fichier Power BI&lt;/a&gt; disponible sur mon GitHub.&lt;/p&gt;
+&lt;p&gt;Dans cet exemple vous trouverez un simple jeu de données générer aléatoirement via Power Query, vous aurez donc à chaque rafraichissement des résultats différentss.&lt;/p&gt;
+&lt;p&gt;Ce jeu de données à l&amp;rsquo;avantage de n’être connecté à aucune source externe et il peut donc être utilisé simplement.&lt;/p&gt;
+&lt;p&gt;Une fois le fichier Power BI téléchargé, vous pouvez le publier dans votre espace de travail personnel dans le service Power BI. L&amp;rsquo;utilisation de l&amp;rsquo;espace de travail personnel est recommandée pour faire des tests ou apprendre à utiliser le service, nous l&amp;rsquo;utiliserons donc dans cet article.&lt;/p&gt;
+&lt;p&gt;Ouvrez le fichier dans Power BI Desktop.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/power-bi-create-dashboard/img/001-power-bi-upload-pbix.png&#34;
+	width=&#34;884&#34;
+	height=&#34;526&#34;
+	srcset=&#34;https://blog.ddata.fr/p/power-bi-create-dashboard/img/001-power-bi-upload-pbix_hud050d03cef4302a609885cd90ed07d5d_41187_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/power-bi-create-dashboard/img/001-power-bi-upload-pbix_hud050d03cef4302a609885cd90ed07d5d_41187_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Chargement du fichier&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;168&#34;
+		data-flex-basis=&#34;403px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Cliquez sur l&amp;rsquo;icône &lt;strong&gt;Publier&lt;/strong&gt; dans le menu Accueil pour publier le fichier.&lt;/li&gt;
+&lt;li&gt;Choisissez &lt;strong&gt;Mon espace de travail&lt;/strong&gt; comme destination.&lt;/li&gt;
+&lt;li&gt;Appuyez sur le bouton &lt;strong&gt;Sélectionner&lt;/strong&gt; pour publier le fichier dans le service Power BI.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Une fois le fichier publier dans Power BI service, ouvrez votre espace de travail personnel.&lt;/p&gt;
+&lt;h2 id=&#34;création-dun-tableau-de-bord&#34;&gt;Création d&amp;rsquo;un tableau de bord&lt;/h2&gt;
+&lt;h3 id=&#34;un-peu-de-théorie&#34;&gt;Un peu de théorie&lt;/h3&gt;
+&lt;p&gt;Un tableau de bord permet d&amp;rsquo;afficher des visuels en provenance de différents rapports sur une page écran.&lt;br&gt;
+Les principales différences entre le rapport et le tableau de bord sont :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Un tableau de bord est mono page alors qu&amp;rsquo;un rapport est multi page.&lt;/li&gt;
+&lt;li&gt;Un tableau de bord peut afficher des visuels de plusieurs rapports différents et donc afficher des données en provenance de plusieurs jeux de données Power BI. Un rapport est lié à un seul jeu de données.&lt;/li&gt;
+&lt;li&gt;Un tableau de bord ne peut pas être filtré et les visuels ajoutés à un tableau de bord le sont dans leur contexte de filtre.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;passons-à-la-pratique&#34;&gt;Passons à la pratique&lt;/h3&gt;
+&lt;p&gt;Nous allons maintenant créer un tableau de bord, pour cela ouvrez le rapport &lt;em&gt;blog.ddata.fr-simple-report&lt;/em&gt; depuis votre &lt;a class=&#34;link&#34; href=&#34;https://app.powerbi.com/groups/me/list&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;espace de travail personnel&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Vous devez avoir un rapport simple comme celui-ci :&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/power-bi-create-dashboard/img/002-report-add-dashboard-tile.png&#34;
+	width=&#34;964&#34;
+	height=&#34;434&#34;
+	srcset=&#34;https://blog.ddata.fr/p/power-bi-create-dashboard/img/002-report-add-dashboard-tile_hu49ad20637c4d03ca9d315b5ab13910fa_71381_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/power-bi-create-dashboard/img/002-report-add-dashboard-tile_hu49ad20637c4d03ca9d315b5ab13910fa_71381_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Épingler un élément visuel&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;222&#34;
+		data-flex-basis=&#34;533px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Cliquez dans le visuel que vous souhaitez épingler dans votre tableau de bord pour faire apparaitre un menu contextuel (au-dessus ou en dessous du visuel généralement).&lt;/li&gt;
+&lt;li&gt;Cliquez sur l&amp;rsquo;icône &lt;em&gt;Épingler un élément visuel&lt;/em&gt; pour ajouter le visuel.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/power-bi-create-dashboard/img/003-create-dashboard.png&#34;
+	width=&#34;679&#34;
+	height=&#34;341&#34;
+	srcset=&#34;https://blog.ddata.fr/p/power-bi-create-dashboard/img/003-create-dashboard_hu13a48e61be64fceb4766bd6a4b0c8f69_29130_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/power-bi-create-dashboard/img/003-create-dashboard_hu13a48e61be64fceb4766bd6a4b0c8f69_29130_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Créer un tableau de bord&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;199&#34;
+		data-flex-basis=&#34;477px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Sélectionnez l&amp;rsquo;action à faire &lt;em&gt;Tableau de bord existant&lt;/em&gt; ou &lt;em&gt;Nouveau tableau de bord&lt;/em&gt;, vous avez le choix si il y a déjà un tableau de bord dans l&amp;rsquo;espace de travail.&lt;/li&gt;
+&lt;li&gt;Donnez un nom à votre tableau de bord ou sélectionnez un existant.&lt;/li&gt;
+&lt;li&gt;Appuyez sur &lt;em&gt;Épingler&lt;/em&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/power-bi-create-dashboard/img/004-access-dashboard.png&#34;
+	width=&#34;422&#34;
+	height=&#34;170&#34;
+	srcset=&#34;https://blog.ddata.fr/p/power-bi-create-dashboard/img/004-access-dashboard_hu3c27add4e17820dc05141b18016d516f_13141_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/power-bi-create-dashboard/img/004-access-dashboard_hu3c27add4e17820dc05141b18016d516f_13141_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Créer un tableau de bord&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;248&#34;
+		data-flex-basis=&#34;595px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Appuyez sur &lt;em&gt;Accéder au tableau de bord&lt;/em&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Voici donc votre tableau de bord :&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/power-bi-create-dashboard/img/005-show-dashboard.png&#34;
+	width=&#34;1145&#34;
+	height=&#34;523&#34;
+	srcset=&#34;https://blog.ddata.fr/p/power-bi-create-dashboard/img/005-show-dashboard_hu4216afad97223aa571ba468ddd639d6d_44300_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/power-bi-create-dashboard/img/005-show-dashboard_hu4216afad97223aa571ba468ddd639d6d_44300_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Voir votre tableau de bord&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;218&#34;
+		data-flex-basis=&#34;525px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Chaque visuel sur le tableau de bord s&amp;rsquo;appelle une dalle.
+&lt;ul&gt;
+&lt;li&gt;Vous pouvez déplacer une dalle en cliquant dessus, garder le bouton de la sourie appuyée, et en la déplaçant.&lt;/li&gt;
+&lt;li&gt;Si vous cliquez sur la dalle, le rapport d&amp;rsquo;origine du visuel sera ouvert à la page du visuel.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Vous pouvez redimensionner une dalle dans le coin en bas à droite.&lt;/li&gt;
+&lt;li&gt;Vous pouvez passer le tableau de bord en plein écran.&lt;/li&gt;
+&lt;li&gt;Vous pouvez le mettre dans vos favoris (ceux du service Power BI pas ceux du navigateur).&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Bravo vous avez créer votre premier tableau de bord dans le service Power BI. Ces derniers ne sont disponibles que dans le service, pas dans Power BI desktop.&lt;/p&gt;
+&lt;p&gt;Merci de votre attention.&lt;/p&gt;</description>
+        </item>
+        <item>
         <title>💡 Power BI : Ajouter la date de la dernière mise à jour de votre jeu de données. 📅</title>
         <link>https://blog.ddata.fr/p/afficher-date-derniere-mise-a-jour/</link>
         <pubDate>Tue, 30 Aug 2022 00:00:00 +0000</pubDate>
