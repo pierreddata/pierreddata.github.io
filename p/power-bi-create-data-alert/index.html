@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html lang="fr-fr" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Vous souhaitez créer une alerte sur vos données dans Power BI ?
+Suivez le guide &amp;hellip;
+'><title>💡 Power BI : Créer une alerte sur vos données.</title>
+
+<link rel='canonical' href='https://blog.ddata.fr/p/power-bi-create-data-alert/'>
+
+<link rel="stylesheet" href="/scss/style.min.5a8e892f6fa14515e9065eee1f5d2e05302606ec7f11750b2fb95198f9cdcbfd.css"><meta property='og:title' content='💡 Power BI : Créer une alerte sur vos données.'>
+<meta property='og:description' content='Vous souhaitez créer une alerte sur vos données dans Power BI ?
+Suivez le guide &amp;hellip;
+'>
+<meta property='og:url' content='https://blog.ddata.fr/p/power-bi-create-data-alert/'>
+<meta property='og:site_name' content='Le D de Data'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Trucs &amp; astuces' /><meta property='article:tag' content='Débutant' /><meta property='article:tag' content='Auto formation' /><meta property='article:published_time' content='2022-09-11T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2022-09-11T00:00:00&#43;00:00'/><meta property='og:image' content='https://blog.ddata.fr/p/power-bi-create-data-alert/mike-meyers--haAxbjiHds-unsplash.jpg' />
+<meta name="twitter:title" content="💡 Power BI : Créer une alerte sur vos données.">
+<meta name="twitter:description" content="Vous souhaitez créer une alerte sur vos données dans Power BI ?
+Suivez le guide &amp;hellip;
+"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://blog.ddata.fr/p/power-bi-create-data-alert/mike-meyers--haAxbjiHds-unsplash.jpg' />
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TY6XFEN6QV"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-TY6XFEN6QV', { 'anonymize_ip': false });
+}
+</script>
+<link rel="alternate"
+      type="application/rss+xml"
+      href="https://blog.ddata.fr/index.xml"
+      title="Le D de Data">
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "dark");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Afficher le menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/pierre_hua6bbc70dde858dd10e363a14d1f7729c_67951_300x0_resize_q75_box.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Le D de Data</a></h1>
+            <h2 class="site-description">Blog francophone autour de la data Microsoft</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/pierreddata'
+                        target="_blank"
+                        title="GitHub"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://www.linkedin.com/in/pierre-dupont-0b532374/'
+                        target="_blank"
+                        title="LinkdIn"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-folders" width="44" height="44" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <rect x="4" y="4" width="16" height="16" rx="2" />
+  <line x1="8" y1="11" x2="8" y2="16" />
+  <line x1="8" y1="8" x2="8" y2="8.01" />
+  <line x1="12" y1="16" x2="12" y2="11" />
+  <path d="M16 16v-3a2 2 0 0 0 -4 0" />
+</svg>
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Accueil</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/a-propos-de-d-de-data/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>A Propos</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/series/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-folders" width="44" height="44" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 4h3l2 2h5a2 2 0 0 1 2 2v7a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-9a2 2 0 0 1 2 -2" />
+  <path d="M17 17v2a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-9a2 2 0 0 1 2 -2h2" />
+</svg>
+
+                
+                <span>Series</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/liens/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Liens</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Rechercher</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Mode sombre</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+<main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/power-bi-create-data-alert/">
+                <img src="/p/power-bi-create-data-alert/mike-meyers--haAxbjiHds-unsplash_hu82c25fa98cd4e9a8103220017be4b8cb_443365_800x0_resize_q75_box.jpg"
+                        srcset="/p/power-bi-create-data-alert/mike-meyers--haAxbjiHds-unsplash_hu82c25fa98cd4e9a8103220017be4b8cb_443365_800x0_resize_q75_box.jpg 800w, /p/power-bi-create-data-alert/mike-meyers--haAxbjiHds-unsplash_hu82c25fa98cd4e9a8103220017be4b8cb_443365_1600x0_resize_q75_box.jpg 1600w"
+                        width="800" 
+                        height="800" 
+                        loading="lazy"
+                        alt="Featured image of post 💡 Power BI : Créer une alerte sur vos données." />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/powerbi/" style="background-color: #f2c811; color: #fff;">
+                Power BI
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/power-bi-create-data-alert/">💡 Power BI : Créer une alerte sur vos données.</a>
+        </h2>
+
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published" datetime="2022-09-11T00:00:00Z">
+                    11 septembre 2022
+                    
+                </time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    2 minutes de lecture
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+    
+    
+</div>
+</header>
+
+    <section class="article-content">
+    
+    
+    <p>Vous souhaitez créer une alerte sur vos données dans Power BI ?<br>
+Suivez le guide &hellip;</p>
+<h2 id="préparons-nous">Préparons-nous</h2>
+<p>Pour créer une alerte sur vos données dans Power BI vous devez le faire dans un tableau de bord. Si ce n&rsquo;est pas déjà fait créer un tableau de bord tel que je le décris dans ce <a class="link" href="https://blog.ddata.fr/p/power-bi-create-dashboard/" >précédent article</a>.</p>
+<h2 id="création-dune-alerte">Création d&rsquo;une alerte</h2>
+<p>Un seul type de visuel permet de créer des alertes, il s&rsquo;agit des cartes de données.</p>
+<p><img src="/p/power-bi-create-data-alert/img/001-card-visual.png"
+	width="180"
+	height="310"
+	srcset="/p/power-bi-create-data-alert/img/001-card-visual_hub677db46c684df9df27b3ef1103cc672_14590_480x0_resize_box_3.png 480w, /p/power-bi-create-data-alert/img/001-card-visual_hub677db46c684df9df27b3ef1103cc672_14590_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Visuel carte de données"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="58"
+		data-flex-basis="139px"
+	
+></p>
+<p>Ouvrez le rapport <em>blog.ddata.fr-simple-report</em> depuis votre <a class="link" href="https://app.powerbi.com/groups/me/list"  target="_blank" rel="noopener"
+    >espace de travail personnel</a>, comme vu dans <a class="link" href="https://blog.ddata.fr/p/power-bi-create-dashboard/" >cet article</a>.</p>
+<p><img src="/p/power-bi-create-data-alert/img/002-report-add-dashboard-tile.png"
+	width="1145"
+	height="475"
+	srcset="/p/power-bi-create-data-alert/img/002-report-add-dashboard-tile_hu4e8c364ae4bce389b6da525edcb7d51d_36342_480x0_resize_box_3.png 480w, /p/power-bi-create-data-alert/img/002-report-add-dashboard-tile_hu4e8c364ae4bce389b6da525edcb7d51d_36342_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Épingler une carte de données"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="241"
+		data-flex-basis="578px"
+	
+></p>
+<ol>
+<li>Sélectionnez la page <em>Information</em>.</li>
+<li>Cliquez sur le visuel <em>Durée depuis dernier rafraichissement</em> pour faire apparaitre un menu contextuel.</li>
+<li>Cliquez sur l&rsquo;icône <em>Épingler un élément visuel</em> pour ajouter le visuel.</li>
+</ol>
+<p><img src="/p/power-bi-create-data-alert/img/003-add-to-dashboard.png"
+	width="677"
+	height="341"
+	srcset="/p/power-bi-create-data-alert/img/003-add-to-dashboard_hu520000d24018324394c206d4e0822257_22927_480x0_resize_box_3.png 480w, /p/power-bi-create-data-alert/img/003-add-to-dashboard_hu520000d24018324394c206d4e0822257_22927_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Ajouter à un tableau de bord"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="198"
+		data-flex-basis="476px"
+	
+></p>
+<ol>
+<li>Sélectionnez l&rsquo;action <em>Tableau de bord existant</em>.</li>
+<li>Choisissez le tableau de bord existant.</li>
+<li>Appuyez sur <em>Épingler</em>.</li>
+</ol>
+<p><img src="/p/power-bi-create-data-alert/img/004-access-dashboard.png"
+	width="422"
+	height="170"
+	srcset="/p/power-bi-create-data-alert/img/004-access-dashboard_hu3c27add4e17820dc05141b18016d516f_13141_480x0_resize_box_3.png 480w, /p/power-bi-create-data-alert/img/004-access-dashboard_hu3c27add4e17820dc05141b18016d516f_13141_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Créer un tableau de bord"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="248"
+		data-flex-basis="595px"
+	
+></p>
+<ol>
+<li>Appuyez sur <em>Accéder au tableau de bord</em>.</li>
+</ol>
+<p>Voici donc votre tableau de bord :</p>
+<p><img src="/p/power-bi-create-data-alert/img/005-show-dashboard-alert.png"
+	width="1145"
+	height="536"
+	srcset="/p/power-bi-create-data-alert/img/005-show-dashboard-alert_hu8b2537b11618af159504724ca88b4953_59906_480x0_resize_box_3.png 480w, /p/power-bi-create-data-alert/img/005-show-dashboard-alert_hu8b2537b11618af159504724ca88b4953_59906_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Voir votre tableau de bord"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="213"
+		data-flex-basis="512px"
+	
+></p>
+<ol>
+<li>Sur la dalle du visuel carte de données, appuyez sur les 3 points en haut à droite pour ouvrir un menu.</li>
+<li>Sélectionnez <em>Gérer les alertes</em>.</li>
+</ol>
+<p><img src="/p/power-bi-create-data-alert/img/006-create-alert.png"
+	width="400"
+	height="602"
+	srcset="/p/power-bi-create-data-alert/img/006-create-alert_hufd451e29da7abb9ff504321cb65e5d31_16008_480x0_resize_box_3.png 480w, /p/power-bi-create-data-alert/img/006-create-alert_hufd451e29da7abb9ff504321cb65e5d31_16008_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Créer une alerte"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="66"
+		data-flex-basis="159px"
+	
+></p>
+<ol>
+<li>Appuyez sur <em>Ajouter une règle d’alerte</em> pour créer une règle.</li>
+</ol>
+<p><img src="/p/power-bi-create-data-alert/img/007-create-alert-rule.png"
+	width="300"
+	height="617"
+	srcset="/p/power-bi-create-data-alert/img/007-create-alert-rule_huf79d2cf97cee306506289bcb202d64db_31356_480x0_resize_box_3.png 480w, /p/power-bi-create-data-alert/img/007-create-alert-rule_huf79d2cf97cee306506289bcb202d64db_31356_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Définir une règle"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="48"
+		data-flex-basis="116px"
+	
+></p>
+<ol>
+<li>Définir un titre.</li>
+<li>Définir un seuil, au-dessus de 60 pour notre test, déclenchera l&rsquo;alerte si le jeu de données n&rsquo;est pas mis à jour après plus de 60 minutes.</li>
+<li>Choisir une fréquence de test de la règle d&rsquo;alerte, toutes les heures pour notre exemple.</li>
+<li>Vérifier que l&rsquo;envoi de mail est coché.</li>
+<li>Appuyez sur <em>Enregistrer et fermer</em>.</li>
+</ol>
+<p>Vous avez créé votre première alerte de données.</p>
+<h2 id="test-de-lalerte">Test de l&rsquo;alerte</h2>
+<p>Pour tester notre alerte, nous allons devoir réinitialiser le délai de rafraichissement de notre jeu de données.</p>
+<p>Rendez-vous dans votre espace de travail personnel</p>
+<p><img src="/p/power-bi-create-data-alert/img/008-refresh-dataset.png"
+	width="999"
+	height="156"
+	srcset="/p/power-bi-create-data-alert/img/008-refresh-dataset_hu7bb65e1f74b171432add8af9d913e852_13115_480x0_resize_box_3.png 480w, /p/power-bi-create-data-alert/img/008-refresh-dataset_hu7bb65e1f74b171432add8af9d913e852_13115_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Rafraichir le jeu de données"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="640"
+		data-flex-basis="1536px"
+	
+></p>
+<ol>
+<li>Appuyez sur l&rsquo;icône pour rafraichir le jeu de données.</li>
+</ol>
+<p>Patientez, vous allez recevoir une alerte par email dans un délai de 2 heures (une heure pour la règle et 60 minutes pour la valeur de l&rsquo;indicateur).</p>
+<p>En plus de l&rsquo;alerte par email, vous pourrez voir l&rsquo;alerte dans le portail du service Power BI.</p>
+<p>Cliquez sur la cloche en haut à droite pour lire les notifications.</p>
+<p><img src="/p/power-bi-create-data-alert/img/009-portal-notification.png"
+	width="299"
+	height="36"
+	srcset="/p/power-bi-create-data-alert/img/009-portal-notification_hu5a1a218479ebdb143f6a8d024aa8de2c_1861_480x0_resize_box_3.png 480w, /p/power-bi-create-data-alert/img/009-portal-notification_hu5a1a218479ebdb143f6a8d024aa8de2c_1861_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Notification du portail"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="830"
+		data-flex-basis="1993px"
+	
+></p>
+<p>Si la cloche n&rsquo;est pas visible, cliquez sur les 3 points puis choisissez <em>Notifications</em>.</p>
+<p><img src="/p/power-bi-create-data-alert/img/010-portal-notification-compact.png"
+	width="146"
+	height="36"
+	srcset="/p/power-bi-create-data-alert/img/010-portal-notification-compact_huff606bbc7cf07c11c38c1eef75d8b39a_1019_480x0_resize_box_3.png 480w, /p/power-bi-create-data-alert/img/010-portal-notification-compact_huff606bbc7cf07c11c38c1eef75d8b39a_1019_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Notification du portail compact"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="405"
+		data-flex-basis="973px"
+	
+></p>
+<p>Le centre de notification apparait à droite.</p>
+<p><img src="/p/power-bi-create-data-alert/img/011-portal-notification-center.png"
+	width="300"
+	height="204"
+	srcset="/p/power-bi-create-data-alert/img/011-portal-notification-center_hu65c40ce6bdd6f8d8749d830649b0a13c_7992_480x0_resize_box_3.png 480w, /p/power-bi-create-data-alert/img/011-portal-notification-center_hu65c40ce6bdd6f8d8749d830649b0a13c_7992_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Centre de notification"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="147"
+		data-flex-basis="352px"
+	
+></p>
+<p>Nous avons terminé la création de notre première alerte.</p>
+<p>Merci de votre attention.</p>
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/trucs-astuces/">Trucs &amp; astuces</a>
+        
+            <a href="/tags/d%C3%A9butant/">Débutant</a>
+        
+            <a href="/tags/auto-formation/">Auto formation</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Contenus liés</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/power-bi-create-dashboard/">
+        
+        
+            <div class="article-image">
+                <img src="/p/power-bi-create-dashboard/_huf938efc7b2a69af6a2c521a2a8f95bf7_3564155_652f7090deed73ab7c671f2026f1051c.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 💡 Power BI : Créer un tableau de bord Power BI."
+                        data-key="power-bi-create-dashboard" 
+                        data-hash="md5-zfCZOFkRA26yLGk9Oe0ARg==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">💡 Power BI : Créer un tableau de bord Power BI.</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/afficher-date-derniere-mise-a-jour/">
+        
+        
+            <div class="article-image">
+                <img src="/p/afficher-date-derniere-mise-a-jour/_hu9a362b859678502b1d25b6ed7a3ae50f_1047477_7fd7776f83620e67bc278d1bd4df27fb.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 💡 Power BI : Ajouter la date de la dernière mise à jour de votre jeu de données. 📅"
+                        data-key="afficher-date-derniere-mise-a-jour" 
+                        data-hash="md5-2EuE7coC9XLpv&#43;oz7qz/og==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">💡 Power BI : Ajouter la date de la dernière mise à jour de votre jeu de données. 📅</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/desactiver-la-mfa/">
+        
+        
+            <div class="article-image">
+                <img src="/p/desactiver-la-mfa/_hu9d37c82fe306bfe37bc1c0d5c413c58d_549463_f541cf1576d08059911058a8a4f40364.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 💡 Désactiver la double authentification par défaut. 🔒"
+                        data-key="desactiver-la-mfa" 
+                        data-hash="md5-h2uQWy&#43;D8rNW7oHLXpBplA==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">💡 Désactiver la double authentification par défaut. 🔒</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/creer-des-personas/">
+        
+        
+            <div class="article-image">
+                <img src="/p/creer-des-personas/_huc0441eb0c3b34a2bc25f8a0410fc39d0_897394_a250d34f65ca46a394bfd383d2599f3a.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Créer des personas."
+                        data-key="creer-des-personas" 
+                        data-hash="md5-o6muotwB3IcNFKCYrBnRJA==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Créer des personas.</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/m365-developer/">
+        
+        
+            <div class="article-image">
+                <img src="/p/m365-developer/_hu4c0ac1a5fc3bc62d5287596e79649454_708326_2b480a85474d13618afba641b0e61b24.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Créer un environnement d&#39;apprentissage Microsoft 365"
+                        data-key="m365-developer" 
+                        data-hash="md5-o5KlaKIN8lgYrGLL6/mgGw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Créer un environnement d&#39;apprentissage Microsoft 365</h2>
+        </div>
+    </a>
+</article>
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "ddata" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2022 Le D de Data
+    </section>
+    
+    <section class="powerby">
+        Généré avec <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Thème <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.13.0">Stack</a></b> conçu par <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table des matières</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#préparons-nous">Préparons-nous</a></li>
+    <li><a href="#création-dune-alerte">Création d&rsquo;une alerte</a></li>
+    <li><a href="#test-de-lalerte">Test de l&rsquo;alerte</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

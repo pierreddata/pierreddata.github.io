@@ -6,7 +6,218 @@
         <description>Recent content in Auto formation on Le D de Data</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>fr-fr</language>
-        <lastBuildDate>Sun, 04 Sep 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ddata.fr/tags/auto-formation/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sun, 11 Sep 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ddata.fr/tags/auto-formation/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>💡 Power BI : Créer une alerte sur vos données.</title>
+        <link>https://blog.ddata.fr/p/power-bi-create-data-alert/</link>
+        <pubDate>Sun, 11 Sep 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://blog.ddata.fr/p/power-bi-create-data-alert/</guid>
+        <description>&lt;img src="https://blog.ddata.fr/p/power-bi-create-data-alert/mike-meyers--haAxbjiHds-unsplash.jpg" alt="Featured image of post 💡 Power BI : Créer une alerte sur vos données." /&gt;&lt;p&gt;Vous souhaitez créer une alerte sur vos données dans Power BI ?&lt;br&gt;
+Suivez le guide &amp;hellip;&lt;/p&gt;
+&lt;h2 id=&#34;préparons-nous&#34;&gt;Préparons-nous&lt;/h2&gt;
+&lt;p&gt;Pour créer une alerte sur vos données dans Power BI vous devez le faire dans un tableau de bord. Si ce n&amp;rsquo;est pas déjà fait créer un tableau de bord tel que je le décris dans ce &lt;a class=&#34;link&#34; href=&#34;https://blog.ddata.fr/p/power-bi-create-dashboard/&#34; &gt;précédent article&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;création-dune-alerte&#34;&gt;Création d&amp;rsquo;une alerte&lt;/h2&gt;
+&lt;p&gt;Un seul type de visuel permet de créer des alertes, il s&amp;rsquo;agit des cartes de données.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/power-bi-create-data-alert/img/001-card-visual.png&#34;
+	width=&#34;180&#34;
+	height=&#34;310&#34;
+	srcset=&#34;https://blog.ddata.fr/p/power-bi-create-data-alert/img/001-card-visual_hub677db46c684df9df27b3ef1103cc672_14590_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/power-bi-create-data-alert/img/001-card-visual_hub677db46c684df9df27b3ef1103cc672_14590_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Visuel carte de données&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;58&#34;
+		data-flex-basis=&#34;139px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Ouvrez le rapport &lt;em&gt;blog.ddata.fr-simple-report&lt;/em&gt; depuis votre &lt;a class=&#34;link&#34; href=&#34;https://app.powerbi.com/groups/me/list&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;espace de travail personnel&lt;/a&gt;, comme vu dans &lt;a class=&#34;link&#34; href=&#34;https://blog.ddata.fr/p/power-bi-create-dashboard/&#34; &gt;cet article&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/power-bi-create-data-alert/img/002-report-add-dashboard-tile.png&#34;
+	width=&#34;1145&#34;
+	height=&#34;475&#34;
+	srcset=&#34;https://blog.ddata.fr/p/power-bi-create-data-alert/img/002-report-add-dashboard-tile_hu4e8c364ae4bce389b6da525edcb7d51d_36342_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/power-bi-create-data-alert/img/002-report-add-dashboard-tile_hu4e8c364ae4bce389b6da525edcb7d51d_36342_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Épingler une carte de données&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;241&#34;
+		data-flex-basis=&#34;578px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Sélectionnez la page &lt;em&gt;Information&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Cliquez sur le visuel &lt;em&gt;Durée depuis dernier rafraichissement&lt;/em&gt; pour faire apparaitre un menu contextuel.&lt;/li&gt;
+&lt;li&gt;Cliquez sur l&amp;rsquo;icône &lt;em&gt;Épingler un élément visuel&lt;/em&gt; pour ajouter le visuel.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/power-bi-create-data-alert/img/003-add-to-dashboard.png&#34;
+	width=&#34;677&#34;
+	height=&#34;341&#34;
+	srcset=&#34;https://blog.ddata.fr/p/power-bi-create-data-alert/img/003-add-to-dashboard_hu520000d24018324394c206d4e0822257_22927_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/power-bi-create-data-alert/img/003-add-to-dashboard_hu520000d24018324394c206d4e0822257_22927_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Ajouter à un tableau de bord&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;198&#34;
+		data-flex-basis=&#34;476px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Sélectionnez l&amp;rsquo;action &lt;em&gt;Tableau de bord existant&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Choisissez le tableau de bord existant.&lt;/li&gt;
+&lt;li&gt;Appuyez sur &lt;em&gt;Épingler&lt;/em&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/power-bi-create-data-alert/img/004-access-dashboard.png&#34;
+	width=&#34;422&#34;
+	height=&#34;170&#34;
+	srcset=&#34;https://blog.ddata.fr/p/power-bi-create-data-alert/img/004-access-dashboard_hu3c27add4e17820dc05141b18016d516f_13141_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/power-bi-create-data-alert/img/004-access-dashboard_hu3c27add4e17820dc05141b18016d516f_13141_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Créer un tableau de bord&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;248&#34;
+		data-flex-basis=&#34;595px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Appuyez sur &lt;em&gt;Accéder au tableau de bord&lt;/em&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Voici donc votre tableau de bord :&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/power-bi-create-data-alert/img/005-show-dashboard-alert.png&#34;
+	width=&#34;1145&#34;
+	height=&#34;536&#34;
+	srcset=&#34;https://blog.ddata.fr/p/power-bi-create-data-alert/img/005-show-dashboard-alert_hu8b2537b11618af159504724ca88b4953_59906_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/power-bi-create-data-alert/img/005-show-dashboard-alert_hu8b2537b11618af159504724ca88b4953_59906_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Voir votre tableau de bord&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;213&#34;
+		data-flex-basis=&#34;512px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Sur la dalle du visuel carte de données, appuyez sur les 3 points en haut à droite pour ouvrir un menu.&lt;/li&gt;
+&lt;li&gt;Sélectionnez &lt;em&gt;Gérer les alertes&lt;/em&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/power-bi-create-data-alert/img/006-create-alert.png&#34;
+	width=&#34;400&#34;
+	height=&#34;602&#34;
+	srcset=&#34;https://blog.ddata.fr/p/power-bi-create-data-alert/img/006-create-alert_hufd451e29da7abb9ff504321cb65e5d31_16008_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/power-bi-create-data-alert/img/006-create-alert_hufd451e29da7abb9ff504321cb65e5d31_16008_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Créer une alerte&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;66&#34;
+		data-flex-basis=&#34;159px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Appuyez sur &lt;em&gt;Ajouter une règle d’alerte&lt;/em&gt; pour créer une règle.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/power-bi-create-data-alert/img/007-create-alert-rule.png&#34;
+	width=&#34;300&#34;
+	height=&#34;617&#34;
+	srcset=&#34;https://blog.ddata.fr/p/power-bi-create-data-alert/img/007-create-alert-rule_huf79d2cf97cee306506289bcb202d64db_31356_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/power-bi-create-data-alert/img/007-create-alert-rule_huf79d2cf97cee306506289bcb202d64db_31356_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Définir une règle&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;48&#34;
+		data-flex-basis=&#34;116px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Définir un titre.&lt;/li&gt;
+&lt;li&gt;Définir un seuil, au-dessus de 60 pour notre test, déclenchera l&amp;rsquo;alerte si le jeu de données n&amp;rsquo;est pas mis à jour après plus de 60 minutes.&lt;/li&gt;
+&lt;li&gt;Choisir une fréquence de test de la règle d&amp;rsquo;alerte, toutes les heures pour notre exemple.&lt;/li&gt;
+&lt;li&gt;Vérifier que l&amp;rsquo;envoi de mail est coché.&lt;/li&gt;
+&lt;li&gt;Appuyez sur &lt;em&gt;Enregistrer et fermer&lt;/em&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Vous avez créé votre première alerte de données.&lt;/p&gt;
+&lt;h2 id=&#34;test-de-lalerte&#34;&gt;Test de l&amp;rsquo;alerte&lt;/h2&gt;
+&lt;p&gt;Pour tester notre alerte, nous allons devoir réinitialiser le délai de rafraichissement de notre jeu de données.&lt;/p&gt;
+&lt;p&gt;Rendez-vous dans votre espace de travail personnel&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/power-bi-create-data-alert/img/008-refresh-dataset.png&#34;
+	width=&#34;999&#34;
+	height=&#34;156&#34;
+	srcset=&#34;https://blog.ddata.fr/p/power-bi-create-data-alert/img/008-refresh-dataset_hu7bb65e1f74b171432add8af9d913e852_13115_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/power-bi-create-data-alert/img/008-refresh-dataset_hu7bb65e1f74b171432add8af9d913e852_13115_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Rafraichir le jeu de données&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;640&#34;
+		data-flex-basis=&#34;1536px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Appuyez sur l&amp;rsquo;icône pour rafraichir le jeu de données.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Patientez, vous allez recevoir une alerte par email dans un délai de 2 heures (une heure pour la règle et 60 minutes pour la valeur de l&amp;rsquo;indicateur).&lt;/p&gt;
+&lt;p&gt;En plus de l&amp;rsquo;alerte par email, vous pourrez voir l&amp;rsquo;alerte dans le portail du service Power BI.&lt;/p&gt;
+&lt;p&gt;Cliquez sur la cloche en haut à droite pour lire les notifications.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/power-bi-create-data-alert/img/009-portal-notification.png&#34;
+	width=&#34;299&#34;
+	height=&#34;36&#34;
+	srcset=&#34;https://blog.ddata.fr/p/power-bi-create-data-alert/img/009-portal-notification_hu5a1a218479ebdb143f6a8d024aa8de2c_1861_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/power-bi-create-data-alert/img/009-portal-notification_hu5a1a218479ebdb143f6a8d024aa8de2c_1861_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Notification du portail&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;830&#34;
+		data-flex-basis=&#34;1993px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Si la cloche n&amp;rsquo;est pas visible, cliquez sur les 3 points puis choisissez &lt;em&gt;Notifications&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/power-bi-create-data-alert/img/010-portal-notification-compact.png&#34;
+	width=&#34;146&#34;
+	height=&#34;36&#34;
+	srcset=&#34;https://blog.ddata.fr/p/power-bi-create-data-alert/img/010-portal-notification-compact_huff606bbc7cf07c11c38c1eef75d8b39a_1019_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/power-bi-create-data-alert/img/010-portal-notification-compact_huff606bbc7cf07c11c38c1eef75d8b39a_1019_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Notification du portail compact&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;405&#34;
+		data-flex-basis=&#34;973px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Le centre de notification apparait à droite.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/power-bi-create-data-alert/img/011-portal-notification-center.png&#34;
+	width=&#34;300&#34;
+	height=&#34;204&#34;
+	srcset=&#34;https://blog.ddata.fr/p/power-bi-create-data-alert/img/011-portal-notification-center_hu65c40ce6bdd6f8d8749d830649b0a13c_7992_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/power-bi-create-data-alert/img/011-portal-notification-center_hu65c40ce6bdd6f8d8749d830649b0a13c_7992_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Centre de notification&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;147&#34;
+		data-flex-basis=&#34;352px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Nous avons terminé la création de notre première alerte.&lt;/p&gt;
+&lt;p&gt;Merci de votre attention.&lt;/p&gt;</description>
+        </item>
+        <item>
         <title>💡 Power BI : Créer un tableau de bord Power BI.</title>
         <link>https://blog.ddata.fr/p/power-bi-create-dashboard/</link>
         <pubDate>Sun, 04 Sep 2022 00:00:00 +0000</pubDate>
