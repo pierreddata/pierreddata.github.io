@@ -6,7 +6,15 @@
         <description>Recent content in Categories on Le D de Data</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>fr-fr</language>
-        <lastBuildDate>Sun, 11 Sep 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ddata.fr/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sun, 18 Sep 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ddata.fr/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Power Automate</title>
+        <link>https://blog.ddata.fr/categories/powerautomate/</link>
+        <pubDate>Sun, 18 Sep 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://blog.ddata.fr/categories/powerautomate/</guid>
+        <description>&lt;img src="https://blog.ddata.fr/categories/powerautomate/PowerAutomate250.png" alt="Featured image of post Power Automate" /&gt;</description>
+        </item>
+        <item>
         <title>Power BI</title>
         <link>https://blog.ddata.fr/categories/powerbi/</link>
         <pubDate>Sun, 11 Sep 2022 00:00:00 +0000</pubDate>
@@ -21,14 +29,6 @@
         
         <guid>https://blog.ddata.fr/categories/powerapps/</guid>
         <description>&lt;img src="https://blog.ddata.fr/categories/powerapps/PowerApps250.png" alt="Featured image of post Power Apps" /&gt;</description>
-        </item>
-        <item>
-        <title>Power Automate</title>
-        <link>https://blog.ddata.fr/categories/powerautomate/</link>
-        <pubDate>Fri, 26 Aug 2022 00:00:00 +0000</pubDate>
-        
-        <guid>https://blog.ddata.fr/categories/powerautomate/</guid>
-        <description>&lt;img src="https://blog.ddata.fr/categories/powerautomate/PowerAutomate250.png" alt="Featured image of post Power Automate" /&gt;</description>
         </item>
         <item>
         <title>Microsoft 365</title>

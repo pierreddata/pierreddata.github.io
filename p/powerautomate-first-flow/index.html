@@ -1,0 +1,1069 @@
+<!DOCTYPE html>
+<html lang="fr-fr" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Nous allons voir ensemble, comment créer votre premier flux Power Automate.
+'><title>Power Automate : Créer votre premier flux.</title>
+
+<link rel='canonical' href='https://blog.ddata.fr/p/powerautomate-first-flow/'>
+
+<link rel="stylesheet" href="/scss/style.min.5a8e892f6fa14515e9065eee1f5d2e05302606ec7f11750b2fb95198f9cdcbfd.css"><meta property='og:title' content='Power Automate : Créer votre premier flux.'>
+<meta property='og:description' content='Nous allons voir ensemble, comment créer votre premier flux Power Automate.
+'>
+<meta property='og:url' content='https://blog.ddata.fr/p/powerautomate-first-flow/'>
+<meta property='og:site_name' content='Le D de Data'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Débutant' /><meta property='article:published_time' content='2022-09-18T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2022-09-18T00:00:00&#43;00:00'/><meta property='og:image' content='https://blog.ddata.fr/p/powerautomate-first-flow/solen-feyissa-IfWFKG3FXE4-unsplash.jpg' />
+<meta name="twitter:title" content="Power Automate : Créer votre premier flux.">
+<meta name="twitter:description" content="Nous allons voir ensemble, comment créer votre premier flux Power Automate.
+"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://blog.ddata.fr/p/powerautomate-first-flow/solen-feyissa-IfWFKG3FXE4-unsplash.jpg' />
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TY6XFEN6QV"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-TY6XFEN6QV', { 'anonymize_ip': false });
+}
+</script>
+<link rel="alternate"
+      type="application/rss+xml"
+      href="https://blog.ddata.fr/index.xml"
+      title="Le D de Data">
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "dark");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Afficher le menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/pierre_hua6bbc70dde858dd10e363a14d1f7729c_67951_300x0_resize_q75_box.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Le D de Data</a></h1>
+            <h2 class="site-description">Blog francophone autour de la data Microsoft</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/pierreddata'
+                        target="_blank"
+                        title="GitHub"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://www.linkedin.com/in/pierre-dupont-0b532374/'
+                        target="_blank"
+                        title="LinkdIn"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-folders" width="44" height="44" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <rect x="4" y="4" width="16" height="16" rx="2" />
+  <line x1="8" y1="11" x2="8" y2="16" />
+  <line x1="8" y1="8" x2="8" y2="8.01" />
+  <line x1="12" y1="16" x2="12" y2="11" />
+  <path d="M16 16v-3a2 2 0 0 0 -4 0" />
+</svg>
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Accueil</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/a-propos-de-d-de-data/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>A Propos</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/series/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-folders" width="44" height="44" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 4h3l2 2h5a2 2 0 0 1 2 2v7a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-9a2 2 0 0 1 2 -2" />
+  <path d="M17 17v2a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-9a2 2 0 0 1 2 -2h2" />
+</svg>
+
+                
+                <span>Series</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/liens/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Liens</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Rechercher</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Mode sombre</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+<main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/powerautomate-first-flow/">
+                <img src="/p/powerautomate-first-flow/solen-feyissa-IfWFKG3FXE4-unsplash_hu1ee85c87f0bb699a44cee539371079be_1568937_800x0_resize_q75_box.jpg"
+                        srcset="/p/powerautomate-first-flow/solen-feyissa-IfWFKG3FXE4-unsplash_hu1ee85c87f0bb699a44cee539371079be_1568937_800x0_resize_q75_box.jpg 800w, /p/powerautomate-first-flow/solen-feyissa-IfWFKG3FXE4-unsplash_hu1ee85c87f0bb699a44cee539371079be_1568937_1600x0_resize_q75_box.jpg 1600w"
+                        width="800" 
+                        height="533" 
+                        loading="lazy"
+                        alt="Featured image of post Power Automate : Créer votre premier flux." />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/powerautomate/" style="background-color: #0066ff; color: #fff;">
+                Power Automate
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/powerautomate-first-flow/">Power Automate : Créer votre premier flux.</a>
+        </h2>
+
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published" datetime="2022-09-18T00:00:00Z">
+                    18 septembre 2022
+                    
+                </time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    5 minutes de lecture
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+    
+    
+</div>
+</header>
+
+    <section class="article-content">
+    
+    
+    <p>Nous allons voir ensemble, comment créer votre premier flux Power Automate.</p>
+<h2 id="contexte">Contexte</h2>
+<p>Pour cet article nous allons utiliser <a class="link" href="https://github.com/pierreddata/blog.ddata.fr/blob/main/persona/persona-power-platform-maker.md"  target="_blank" rel="noopener"
+    >la persona Violette</a> créatrice Power Apps. Elle va créer un premier flux Power Automate simple.</p>
+<h2 id="power-automate-les-bases">Power Automate les bases</h2>
+<p>Commençons par un peu de théorie, je vais vous expliquer rapidement à quoi sert Power Automate et les concepts utiles pour débuter.<br>
+Vous utilisez déjà un grand nombre de services disponible sur Internet comme One Drive, Sharepoint, Outlook mais dès que vous souhaitez faire interagir ces services ensemble cela devient rapidement un challenge insurmontable quand on n&rsquo;est pas informaticien.</p>
+<p>Power Automate a pour vocation de vous assister pour que vous puissiez réaliser des tâches complexes entre les différents services que vous utilisez, et cela sans connaissance informatique complexe.</p>
+<h3 id="déclencheurs-et-opérations">Déclencheurs et opérations</h3>
+<p>Chaque service et représenter dans Power Automate sous la forme d&rsquo;un connecteur. Un connecteur contient 2 types d&rsquo;éléments :</p>
+<ul>
+<li>Les déclencheurs : ce sont des évènements permettant de démarrer un flux.</li>
+<li>Des opérations : Ce sont des éléments interagissant avec le service et utilisables comme étape dans un flux.</li>
+</ul>
+<p>Chaque flux Power Automate est composé :</p>
+<ul>
+<li>d&rsquo;une première étape de type déclencheur</li>
+<li>d&rsquo;une succession d&rsquo;étape de type opération</li>
+</ul>
+<p>Un flux Power Automate décrit donc une succession d&rsquo;étapes qui démarre dans des conditions précises définies par un déclencheur.</p>
+<p>Il existe aujourd&rsquo;hui plus de 450 connecteurs différents.</p>
+<p>Les déclencheurs peuvent être classés dans 3 catégories distinctes :</p>
+<ul>
+<li>Automatique : Pour les déclencheurs démarrés par un évènement dans un service (réception d&rsquo;un mail, création d&rsquo;un fichier, etc&hellip;)</li>
+<li>Manuel : Pour les déclencheurs démarrés via une action de votre part.</li>
+<li>Planifié : Pour les déclencheurs dont vous programmez l&rsquo;exécution</li>
+</ul>
+<h2 id="votre-premier-flux">Votre premier flux</h2>
+<h3 id="création">Création</h3>
+<p>Pour notre premier flux, je vous propose de créer un flux qui interagit avec votre One Drive et vous permet de transformer un fichier Word en fichier PDF et de l&rsquo;envoyer à une adresse email demandée lors de l&rsquo;exécution du flux.</p>
+<p>Un flux Power Automate ce créer via un site web dédié. Pour créer un nouveau flux, connectez-vous au <a class="link" href="https://make.powerautomate.com/"  target="_blank" rel="noopener"
+    >site de Power Automate</a>.</p>
+<p><img src="/p/powerautomate-first-flow/img/001-power-automate-landing-page.png"
+	width="1366"
+	height="657"
+	srcset="/p/powerautomate-first-flow/img/001-power-automate-landing-page_hu8c2063bea034390542f9a38a8c91be80_89071_480x0_resize_box_3.png 480w, /p/powerautomate-first-flow/img/001-power-automate-landing-page_hu8c2063bea034390542f9a38a8c91be80_89071_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Page d’accueil"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="207"
+		data-flex-basis="498px"
+	
+></p>
+<ol>
+<li>Appuyez sur <strong>Créer</strong> pour créer votre premier flux Power Automate.</li>
+<li>Appuyer sur <strong>Flux de cloud instantané</strong>.</li>
+</ol>
+<p><img src="/p/powerautomate-first-flow/img/002-power-automate-create-flow.png"
+	width="900"
+	height="570"
+	srcset="/p/powerautomate-first-flow/img/002-power-automate-create-flow_hu99100c7be843e6d1da23a23ea583416c_59356_480x0_resize_box_3.png 480w, /p/powerautomate-first-flow/img/002-power-automate-create-flow_hu99100c7be843e6d1da23a23ea583416c_59356_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Page de création"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="157"
+		data-flex-basis="378px"
+	
+></p>
+<ol>
+<li>Saisir un nom pour votre flux, par exemple <em>Convertir en PDF et envoyer par email</em>.</li>
+<li>Sélectionnez le déclencheur, nous allons choisir <em>Pour un fichier sélectionné - OneDrive Entreprise</em>.</li>
+<li>Appuyez sur <strong>Créer</strong> pour créer votre flux.</li>
+</ol>
+<p>Bienvenue dans l&rsquo;écran de création de votre flux Power Automate.
+<img src="/p/powerautomate-first-flow/img/003-power-automate-step-1.png"
+	width="1366"
+	height="657"
+	srcset="/p/powerautomate-first-flow/img/003-power-automate-step-1_hu924ab943acccd81ab62b742f4d50d195_49398_480x0_resize_box_3.png 480w, /p/powerautomate-first-flow/img/003-power-automate-step-1_hu924ab943acccd81ab62b742f4d50d195_49398_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Création du flux - étape 1"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="207"
+		data-flex-basis="498px"
+	
+></p>
+<ol>
+<li>Ici se trouve votre déclencheur que vous pouvez personnaliser.</li>
+<li>Vous pouvez modifier le nom de votre flux ici.</li>
+<li>Vous pouvez enregistrer vos modifications ici? L&rsquo;enregistrement ce fais dans le cloud pas sur votre ordinateur.</li>
+<li>Vous pouvez annuler ou rétablir une action.</li>
+<li>Ce bouton permet d&rsquo;ajouter des étapes à votre flux.</li>
+</ol>
+<p><img src="/p/powerautomate-first-flow/img/004-power-automate-step-2-01.png"
+	width="600"
+	height="119"
+	srcset="/p/powerautomate-first-flow/img/004-power-automate-step-2-01_hub68755a9feef95018facc1d68f846228_5779_480x0_resize_box_3.png 480w, /p/powerautomate-first-flow/img/004-power-automate-step-2-01_hub68755a9feef95018facc1d68f846228_5779_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Création du flux - étape 2.1"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="504"
+		data-flex-basis="1210px"
+	
+><br>
+<img src="/p/powerautomate-first-flow/img/004-power-automate-step-2-02.png"
+	width="600"
+	height="187"
+	srcset="/p/powerautomate-first-flow/img/004-power-automate-step-2-02_hu46dd9da6aa92c26636953a79d1b1ed0c_15818_480x0_resize_box_3.png 480w, /p/powerautomate-first-flow/img/004-power-automate-step-2-02_hu46dd9da6aa92c26636953a79d1b1ed0c_15818_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Création du flux - étape 2.2"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="320"
+		data-flex-basis="770px"
+	
+><br>
+<img src="/p/powerautomate-first-flow/img/004-power-automate-step-2-03.png"
+	width="615"
+	height="298"
+	srcset="/p/powerautomate-first-flow/img/004-power-automate-step-2-03_hu6546d967a836e265f4b432710be7b767_14969_480x0_resize_box_3.png 480w, /p/powerautomate-first-flow/img/004-power-automate-step-2-03_hu6546d967a836e265f4b432710be7b767_14969_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Création du flux - étape 2.3"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="206"
+		data-flex-basis="495px"
+	
+></p>
+<ol>
+<li>Dans la boite du déclencheur, appuyez sur <em>Ajouter une entrée</em>.</li>
+<li>Sélectionnez <em>Messagerie</em>.</li>
+<li>Dans la première zone de texte, vous pouvez définir le nom de la variable, réutilisable dans les étapes suivantes du flux.</li>
+<li>Dans la seconde zone de texte, vous pouvez définir la question qui sera posée à l&rsquo;utilisateur du flux lors de l&rsquo;exécution.</li>
+<li>Appuyez sur <strong>Nouvelle étape</strong> pour ajouter l&rsquo;étape suivante.</li>
+</ol>
+<p><img src="/p/powerautomate-first-flow/img/005-power-automate-step-3-01.png"
+	width="608"
+	height="548"
+	srcset="/p/powerautomate-first-flow/img/005-power-automate-step-3-01_hu713ba8d8e3337451f06ab2167b46787a_33611_480x0_resize_box_3.png 480w, /p/powerautomate-first-flow/img/005-power-automate-step-3-01_hu713ba8d8e3337451f06ab2167b46787a_33611_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Création du flux - étape 3.1"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="110"
+		data-flex-basis="266px"
+	
+><br>
+<img src="/p/powerautomate-first-flow/img/005-power-automate-step-3-02.png"
+	width="606"
+	height="512"
+	srcset="/p/powerautomate-first-flow/img/005-power-automate-step-3-02_hued2598375c653223d46524f952dbb7aa_32350_480x0_resize_box_3.png 480w, /p/powerautomate-first-flow/img/005-power-automate-step-3-02_hued2598375c653223d46524f952dbb7aa_32350_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Création du flux - étape 3.2"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="118"
+		data-flex-basis="284px"
+	
+></p>
+<ol>
+<li>Filtrer la liste des connecteurs en tapant <em>onedrive</em>.</li>
+<li>Sélectionnez <em>OneDrive for Business</em>.</li>
+<li>Sélectionnez <em>Convertir le fichier à l&rsquo;aide d&rsquo;un chemin d&rsquo;accès</em>.</li>
+</ol>
+<p><img src="/p/powerautomate-first-flow/img/006-power-automate-step-4.png"
+	width="831"
+	height="549"
+	srcset="/p/powerautomate-first-flow/img/006-power-automate-step-4_huff21c1eb3d86a8c4b7fb3ed0e7c64b89_40951_480x0_resize_box_3.png 480w, /p/powerautomate-first-flow/img/006-power-automate-step-4_huff21c1eb3d86a8c4b7fb3ed0e7c64b89_40951_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Création du flux - étape 4"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="151"
+		data-flex-basis="363px"
+	
+></p>
+<ol>
+<li>Placez votre curseur dans la zone <em>Chemin d&rsquo;accès au fichier</em> et le menu dynamique de droite apparait.</li>
+<li>Sélectionnez <em>filePath</em> dans le menu de droite, la valeur s&rsquo;ajoute dans la zone (1).</li>
+</ol>
+<p><img src="/p/powerautomate-first-flow/img/007-power-automate-step-5-01.png"
+	width="545"
+	height="565"
+	srcset="/p/powerautomate-first-flow/img/007-power-automate-step-5-01_hubd6662c8c6a119474fd80ca59db2a7d8_36295_480x0_resize_box_3.png 480w, /p/powerautomate-first-flow/img/007-power-automate-step-5-01_hubd6662c8c6a119474fd80ca59db2a7d8_36295_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Création du flux - étape 5.1"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="96"
+		data-flex-basis="231px"
+	
+><br>
+<img src="/p/powerautomate-first-flow/img/007-power-automate-step-5-02.png"
+	width="546"
+	height="490"
+	srcset="/p/powerautomate-first-flow/img/007-power-automate-step-5-02_huc3a3a9baddd310c7a145db0c8672e643_30626_480x0_resize_box_3.png 480w, /p/powerautomate-first-flow/img/007-power-automate-step-5-02_huc3a3a9baddd310c7a145db0c8672e643_30626_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Création du flux - étape 5.2"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="111"
+		data-flex-basis="267px"
+	
+></p>
+<ol>
+<li>Filtrer la liste des connecteurs en tapant <em>outlook</em>.</li>
+<li>Sélectionnez <em>Office 365 Outlook</em>.</li>
+<li>Sélectionnez <em>Envoyer un e-mail (V2)</em>, le numéro de version peut avoir changé depuis la rédaction de cet article.</li>
+</ol>
+<p>Le connecteur s&rsquo;initialise automatiquement pour utiliser votre boite e-mail Office 365 Outlook pour se connecter.</p>
+<p><img src="/p/powerautomate-first-flow/img/008-power-automate-step-6-01.png"
+	width="546"
+	height="287"
+	srcset="/p/powerautomate-first-flow/img/008-power-automate-step-6-01_hu451692b70a666583f30bb5286945353d_17630_480x0_resize_box_3.png 480w, /p/powerautomate-first-flow/img/008-power-automate-step-6-01_hu451692b70a666583f30bb5286945353d_17630_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Création du flux - étape 6.1"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="190"
+		data-flex-basis="456px"
+	
+><br>
+<img src="/p/powerautomate-first-flow/img/008-power-automate-step-6-02.png"
+	width="598"
+	height="458"
+	srcset="/p/powerautomate-first-flow/img/008-power-automate-step-6-02_hu7dc4c1021ac64fc7ad696cf0d6bfcbc2_27059_480x0_resize_box_3.png 480w, /p/powerautomate-first-flow/img/008-power-automate-step-6-02_hu7dc4c1021ac64fc7ad696cf0d6bfcbc2_27059_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Création du flux - étape 6.2"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="130"
+		data-flex-basis="313px"
+	
+></p>
+<ol>
+<li>Placez votre curseur dans la zone <em>À</em>, cette fois le menu dynamique de droite n&rsquo;apparait pas.</li>
+<li>Cliquez sur <em>Ajouter du contenu dynamique</em> pour ouvrir le menu dynamique de droite. Dans ce menu vous trouverez toutes les variables de sortie disponible pour toutes les étapes précédentes.</li>
+<li>Positionnez-vous sur la sortie d&rsquo;étape <em>Pour un fichier sélectionné</em>, qui est le nom de la première étape.</li>
+<li>Sélectionnez <strong>Messagerie</strong> qui correspond au nom de l&rsquo;entrée que l&rsquo;on a créé au niveau du déclencheur. Cette variable contiendra l&rsquo;adresse e-mail qui sera demandée lors du déclenchement du flux et sera utilisée dans la zone destinataire de notre e-mail.</li>
+</ol>
+<p><img src="/p/powerautomate-first-flow/img/009-power-automate-step-7.png"
+	width="606"
+	height="260"
+	srcset="/p/powerautomate-first-flow/img/009-power-automate-step-7_hu82fc7ba1dc3636de54c59ee1c5586b1c_18162_480x0_resize_box_3.png 480w, /p/powerautomate-first-flow/img/009-power-automate-step-7_hu82fc7ba1dc3636de54c59ee1c5586b1c_18162_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Création du flux - étape 7"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="233"
+		data-flex-basis="559px"
+	
+></p>
+<ol>
+<li>La variable <strong>Messagerie</strong> est maintenant utilisée dans le champ <em>À</em> de l&rsquo;e-mail, on reconnait une valeur dynamique dans Power Automate car elle est dans un rectangle coloré avec une icône.</li>
+<li>Tapez un texte pour l&rsquo;objet de l&rsquo;e-mail.</li>
+<li>Tapez un texte pour le corps de l&rsquo;e-mail.</li>
+<li>Appuyez sur <strong>Afficher les options avancées</strong>.</li>
+</ol>
+<p><img src="/p/powerautomate-first-flow/img/010-power-automate-step-8.png"
+	width="880"
+	height="429"
+	srcset="/p/powerautomate-first-flow/img/010-power-automate-step-8_hu1111deea2749f0bee287d29193528057_42569_480x0_resize_box_3.png 480w, /p/powerautomate-first-flow/img/010-power-automate-step-8_hu1111deea2749f0bee287d29193528057_42569_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Création du flux - étape 8"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="205"
+		data-flex-basis="492px"
+	
+></p>
+<ol>
+<li>Placez votre curseur dans la zone <em>Pièces jointes Nom - 1</em> et le menu dynamique de droite apparait.</li>
+<li>Positionnez-vous sur la sortie d&rsquo;étape <em>Convertir le fichier à l&rsquo;aide d&rsquo;un chemin d&rsquo;accès</em>.</li>
+<li>Sélectionnez <strong>Nom de fichier</strong> qui correspond au nom du fichier après l&rsquo;opération de conversion du fichier.</li>
+<li>Placez votre curseur dans la zone <em>Pièces jointes Contenu - 1</em> et le menu dynamique de droite apparait.</li>
+<li>Sélectionnez <strong>Contenu du fichier</strong> qui correspond au contenu du fichier après l&rsquo;opération de conversion du fichier.</li>
+</ol>
+<p>Enregistrez votre flux via l&rsquo;icône disponible dans le bandeau en haut à droite ou via le bouton enregistrer disponible en bas des étapes du flux.</p>
+<h3 id="test-du-flux">Test du flux</h3>
+<p>Rendez-vous dans l&rsquo;interface web de votre OneDrive.</p>
+<p><img src="/p/powerautomate-first-flow/img/011-power-automate-test-step-1.png"
+	width="303"
+	height="411"
+	srcset="/p/powerautomate-first-flow/img/011-power-automate-test-step-1_hu43f376f27e682e903798b4098f991baa_17494_480x0_resize_box_3.png 480w, /p/powerautomate-first-flow/img/011-power-automate-test-step-1_hu43f376f27e682e903798b4098f991baa_17494_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Test du flux - étape 1"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="73"
+		data-flex-basis="176px"
+	
+></p>
+<ol>
+<li>Disponible via le menu gaufre (9 points en 3x3) en haut à gauche.</li>
+<li>Sélectionnez <em>OneDrive</em>.</li>
+</ol>
+<p>Positionnez-vous sur un fichier Word existant ou créez en un pour le test.</p>
+<p><img src="/p/powerautomate-first-flow/img/012-power-automate-test-step-2.png"
+	width="1032"
+	height="604"
+	srcset="/p/powerautomate-first-flow/img/012-power-automate-test-step-2_hu39a986d74b592dbba585708c050e18ee_40234_480x0_resize_box_3.png 480w, /p/powerautomate-first-flow/img/012-power-automate-test-step-2_hu39a986d74b592dbba585708c050e18ee_40234_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Test du flux - étape 2"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="170"
+		data-flex-basis="410px"
+	
+></p>
+<ol>
+<li>Sur la ligne du fichier Word ouvrir le menu via les 3 points verticaux.</li>
+<li>Sélectionnez <em>Automatiser</em>.</li>
+<li>Cliquez sur <em>Convertir en PDF et envoyez par email</em> qui correspond au nom du flux que l&rsquo;on a créé, pour exécuter le flux pour le fichier choisi.</li>
+</ol>
+<p><img src="/p/powerautomate-first-flow/img/013-power-automate-test-step-3.png"
+	width="340"
+	height="644"
+	srcset="/p/powerautomate-first-flow/img/013-power-automate-test-step-3_hu9c250df7de27ca5192562e0451137d34_23639_480x0_resize_box_3.png 480w, /p/powerautomate-first-flow/img/013-power-automate-test-step-3_hu9c250df7de27ca5192562e0451137d34_23639_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Test du flux - étape 3"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="52"
+		data-flex-basis="126px"
+	
+></p>
+<ol>
+<li>La fenêtre d&rsquo;exécution du flux apparait et vérifie les autorisations des connecteurs. Cet écran n&rsquo;apparait que lors de la première exécution.</li>
+<li>Appuyez sur <em>Continuer</em> pour continuer.</li>
+</ol>
+<p><img src="/p/powerautomate-first-flow/img/014-power-automate-test-step-4.png"
+	width="338"
+	height="630"
+	srcset="/p/powerautomate-first-flow/img/014-power-automate-test-step-4_hu925a76b719966f791df7a77def4a5936_17925_480x0_resize_box_3.png 480w, /p/powerautomate-first-flow/img/014-power-automate-test-step-4_hu925a76b719966f791df7a77def4a5936_17925_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Test du flux - étape 4"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="53"
+		data-flex-basis="128px"
+	
+></p>
+<ol>
+<li>Le flux vous demande de saisir une adresse e-mail. Vous pouvez utiliser votre adresse pour le test.</li>
+<li>Appuyez sur <em>Exécuter le flux</em> pour exécuter le flux.</li>
+</ol>
+<p><img src="/p/powerautomate-first-flow/img/015-power-automate-test-step-5.png"
+	width="340"
+	height="632"
+	srcset="/p/powerautomate-first-flow/img/015-power-automate-test-step-5_hud940cec9c9552d0fe0e13f7b8b3d1ddf_11140_480x0_resize_box_3.png 480w, /p/powerautomate-first-flow/img/015-power-automate-test-step-5_hud940cec9c9552d0fe0e13f7b8b3d1ddf_11140_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Test du flux - étape 5"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="53"
+		data-flex-basis="129px"
+	
+></p>
+<ol>
+<li>Appuyez sur <em>Terminer</em>.</li>
+</ol>
+<p><img src="/p/powerautomate-first-flow/img/016-power-automate-test-step-6.png"
+	width="1096"
+	height="329"
+	srcset="/p/powerautomate-first-flow/img/016-power-automate-test-step-6_hud2651fb794f4151eb366cefb6f010f19_30188_480x0_resize_box_3.png 480w, /p/powerautomate-first-flow/img/016-power-automate-test-step-6_hud2651fb794f4151eb366cefb6f010f19_30188_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Test du flux - étape 6"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="333"
+		data-flex-basis="799px"
+	
+></p>
+<p>Vérifier la boite aux lettres que vous avez indiquée lors de l&rsquo;exécution du flux, vous devez avoir reçu un e-mail avec le fichier PDF en pièce jointe.</p>
+<p>Voilà, vous venez de créer votre premier flux avec Power Automate et vous savez maintenant ajouter des commandes personnalisées dans votre OneDrive.</p>
+<p>Merci de votre attention.</p>
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/d%C3%A9butant/">Débutant</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Contenus liés</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/power-apps-developer-plan/">
+        
+        
+            <div class="article-image">
+                <img src="/p/power-apps-developer-plan/_hua214aac1e1e8841ef50abd9806eb882a_4667015_78b1f92292f96997ce8e2b26f71aec89.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Power Apps Developer Plan"
+                        data-key="power-apps-developer-plan" 
+                        data-hash="md5-mPU0XMJ6gJCuNTjtreWohg==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Power Apps Developer Plan</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/c%C3%A9koidonc-power-automate/">
+        
+        
+            <div class="article-image">
+                <img src="/p/c%C3%A9koidonc-power-automate/_huc237122beeea88f66e1fccb341b7a4d2_2647466_55008aacc32000d6f89ab5387ae5b0b3.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Cékoidonc Power Automate ?"
+                        
+                        data-hash="md5-9&#43;rebdpvhwPEaGX1m3LepA==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Cékoidonc Power Automate ?</h2>
+        </div>
+    </a>
+</article>
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "ddata" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2022 Le D de Data
+    </section>
+    
+    <section class="powerby">
+        Généré avec <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Thème <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.13.0">Stack</a></b> conçu par <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table des matières</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#contexte">Contexte</a></li>
+    <li><a href="#power-automate-les-bases">Power Automate les bases</a>
+      <ol>
+        <li><a href="#déclencheurs-et-opérations">Déclencheurs et opérations</a></li>
+      </ol>
+    </li>
+    <li><a href="#votre-premier-flux">Votre premier flux</a>
+      <ol>
+        <li><a href="#création">Création</a></li>
+        <li><a href="#test-du-flux">Test du flux</a></li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

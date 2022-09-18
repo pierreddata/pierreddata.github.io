@@ -6,7 +6,425 @@
         <description>Recent content in Power Automate on Le D de Data</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>fr-fr</language>
-        <lastBuildDate>Fri, 26 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ddata.fr/categories/powerautomate/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sun, 18 Sep 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ddata.fr/categories/powerautomate/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Power Automate : Créer votre premier flux.</title>
+        <link>https://blog.ddata.fr/p/powerautomate-first-flow/</link>
+        <pubDate>Sun, 18 Sep 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://blog.ddata.fr/p/powerautomate-first-flow/</guid>
+        <description>&lt;img src="https://blog.ddata.fr/p/powerautomate-first-flow/solen-feyissa-IfWFKG3FXE4-unsplash.jpg" alt="Featured image of post Power Automate : Créer votre premier flux." /&gt;&lt;p&gt;Nous allons voir ensemble, comment créer votre premier flux Power Automate.&lt;/p&gt;
+&lt;h2 id=&#34;contexte&#34;&gt;Contexte&lt;/h2&gt;
+&lt;p&gt;Pour cet article nous allons utiliser &lt;a class=&#34;link&#34; href=&#34;https://github.com/pierreddata/blog.ddata.fr/blob/main/persona/persona-power-platform-maker.md&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;la persona Violette&lt;/a&gt; créatrice Power Apps. Elle va créer un premier flux Power Automate simple.&lt;/p&gt;
+&lt;h2 id=&#34;power-automate-les-bases&#34;&gt;Power Automate les bases&lt;/h2&gt;
+&lt;p&gt;Commençons par un peu de théorie, je vais vous expliquer rapidement à quoi sert Power Automate et les concepts utiles pour débuter.&lt;br&gt;
+Vous utilisez déjà un grand nombre de services disponible sur Internet comme One Drive, Sharepoint, Outlook mais dès que vous souhaitez faire interagir ces services ensemble cela devient rapidement un challenge insurmontable quand on n&amp;rsquo;est pas informaticien.&lt;/p&gt;
+&lt;p&gt;Power Automate a pour vocation de vous assister pour que vous puissiez réaliser des tâches complexes entre les différents services que vous utilisez, et cela sans connaissance informatique complexe.&lt;/p&gt;
+&lt;h3 id=&#34;déclencheurs-et-opérations&#34;&gt;Déclencheurs et opérations&lt;/h3&gt;
+&lt;p&gt;Chaque service et représenter dans Power Automate sous la forme d&amp;rsquo;un connecteur. Un connecteur contient 2 types d&amp;rsquo;éléments :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Les déclencheurs : ce sont des évènements permettant de démarrer un flux.&lt;/li&gt;
+&lt;li&gt;Des opérations : Ce sont des éléments interagissant avec le service et utilisables comme étape dans un flux.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Chaque flux Power Automate est composé :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;d&amp;rsquo;une première étape de type déclencheur&lt;/li&gt;
+&lt;li&gt;d&amp;rsquo;une succession d&amp;rsquo;étape de type opération&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Un flux Power Automate décrit donc une succession d&amp;rsquo;étapes qui démarre dans des conditions précises définies par un déclencheur.&lt;/p&gt;
+&lt;p&gt;Il existe aujourd&amp;rsquo;hui plus de 450 connecteurs différents.&lt;/p&gt;
+&lt;p&gt;Les déclencheurs peuvent être classés dans 3 catégories distinctes :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Automatique : Pour les déclencheurs démarrés par un évènement dans un service (réception d&amp;rsquo;un mail, création d&amp;rsquo;un fichier, etc&amp;hellip;)&lt;/li&gt;
+&lt;li&gt;Manuel : Pour les déclencheurs démarrés via une action de votre part.&lt;/li&gt;
+&lt;li&gt;Planifié : Pour les déclencheurs dont vous programmez l&amp;rsquo;exécution&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;votre-premier-flux&#34;&gt;Votre premier flux&lt;/h2&gt;
+&lt;h3 id=&#34;création&#34;&gt;Création&lt;/h3&gt;
+&lt;p&gt;Pour notre premier flux, je vous propose de créer un flux qui interagit avec votre One Drive et vous permet de transformer un fichier Word en fichier PDF et de l&amp;rsquo;envoyer à une adresse email demandée lors de l&amp;rsquo;exécution du flux.&lt;/p&gt;
+&lt;p&gt;Un flux Power Automate ce créer via un site web dédié. Pour créer un nouveau flux, connectez-vous au &lt;a class=&#34;link&#34; href=&#34;https://make.powerautomate.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;site de Power Automate&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/powerautomate-first-flow/img/001-power-automate-landing-page.png&#34;
+	width=&#34;1366&#34;
+	height=&#34;657&#34;
+	srcset=&#34;https://blog.ddata.fr/p/powerautomate-first-flow/img/001-power-automate-landing-page_hu8c2063bea034390542f9a38a8c91be80_89071_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/powerautomate-first-flow/img/001-power-automate-landing-page_hu8c2063bea034390542f9a38a8c91be80_89071_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Page d’accueil&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;207&#34;
+		data-flex-basis=&#34;498px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Appuyez sur &lt;strong&gt;Créer&lt;/strong&gt; pour créer votre premier flux Power Automate.&lt;/li&gt;
+&lt;li&gt;Appuyer sur &lt;strong&gt;Flux de cloud instantané&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/powerautomate-first-flow/img/002-power-automate-create-flow.png&#34;
+	width=&#34;900&#34;
+	height=&#34;570&#34;
+	srcset=&#34;https://blog.ddata.fr/p/powerautomate-first-flow/img/002-power-automate-create-flow_hu99100c7be843e6d1da23a23ea583416c_59356_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/powerautomate-first-flow/img/002-power-automate-create-flow_hu99100c7be843e6d1da23a23ea583416c_59356_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Page de création&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;157&#34;
+		data-flex-basis=&#34;378px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Saisir un nom pour votre flux, par exemple &lt;em&gt;Convertir en PDF et envoyer par email&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Sélectionnez le déclencheur, nous allons choisir &lt;em&gt;Pour un fichier sélectionné - OneDrive Entreprise&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Appuyez sur &lt;strong&gt;Créer&lt;/strong&gt; pour créer votre flux.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Bienvenue dans l&amp;rsquo;écran de création de votre flux Power Automate.
+&lt;img src=&#34;https://blog.ddata.fr/p/powerautomate-first-flow/img/003-power-automate-step-1.png&#34;
+	width=&#34;1366&#34;
+	height=&#34;657&#34;
+	srcset=&#34;https://blog.ddata.fr/p/powerautomate-first-flow/img/003-power-automate-step-1_hu924ab943acccd81ab62b742f4d50d195_49398_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/powerautomate-first-flow/img/003-power-automate-step-1_hu924ab943acccd81ab62b742f4d50d195_49398_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Création du flux - étape 1&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;207&#34;
+		data-flex-basis=&#34;498px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Ici se trouve votre déclencheur que vous pouvez personnaliser.&lt;/li&gt;
+&lt;li&gt;Vous pouvez modifier le nom de votre flux ici.&lt;/li&gt;
+&lt;li&gt;Vous pouvez enregistrer vos modifications ici? L&amp;rsquo;enregistrement ce fais dans le cloud pas sur votre ordinateur.&lt;/li&gt;
+&lt;li&gt;Vous pouvez annuler ou rétablir une action.&lt;/li&gt;
+&lt;li&gt;Ce bouton permet d&amp;rsquo;ajouter des étapes à votre flux.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/powerautomate-first-flow/img/004-power-automate-step-2-01.png&#34;
+	width=&#34;600&#34;
+	height=&#34;119&#34;
+	srcset=&#34;https://blog.ddata.fr/p/powerautomate-first-flow/img/004-power-automate-step-2-01_hub68755a9feef95018facc1d68f846228_5779_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/powerautomate-first-flow/img/004-power-automate-step-2-01_hub68755a9feef95018facc1d68f846228_5779_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Création du flux - étape 2.1&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;504&#34;
+		data-flex-basis=&#34;1210px&#34;
+	
+&gt;&lt;br&gt;
+&lt;img src=&#34;https://blog.ddata.fr/p/powerautomate-first-flow/img/004-power-automate-step-2-02.png&#34;
+	width=&#34;600&#34;
+	height=&#34;187&#34;
+	srcset=&#34;https://blog.ddata.fr/p/powerautomate-first-flow/img/004-power-automate-step-2-02_hu46dd9da6aa92c26636953a79d1b1ed0c_15818_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/powerautomate-first-flow/img/004-power-automate-step-2-02_hu46dd9da6aa92c26636953a79d1b1ed0c_15818_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Création du flux - étape 2.2&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;320&#34;
+		data-flex-basis=&#34;770px&#34;
+	
+&gt;&lt;br&gt;
+&lt;img src=&#34;https://blog.ddata.fr/p/powerautomate-first-flow/img/004-power-automate-step-2-03.png&#34;
+	width=&#34;615&#34;
+	height=&#34;298&#34;
+	srcset=&#34;https://blog.ddata.fr/p/powerautomate-first-flow/img/004-power-automate-step-2-03_hu6546d967a836e265f4b432710be7b767_14969_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/powerautomate-first-flow/img/004-power-automate-step-2-03_hu6546d967a836e265f4b432710be7b767_14969_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Création du flux - étape 2.3&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;206&#34;
+		data-flex-basis=&#34;495px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Dans la boite du déclencheur, appuyez sur &lt;em&gt;Ajouter une entrée&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Sélectionnez &lt;em&gt;Messagerie&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Dans la première zone de texte, vous pouvez définir le nom de la variable, réutilisable dans les étapes suivantes du flux.&lt;/li&gt;
+&lt;li&gt;Dans la seconde zone de texte, vous pouvez définir la question qui sera posée à l&amp;rsquo;utilisateur du flux lors de l&amp;rsquo;exécution.&lt;/li&gt;
+&lt;li&gt;Appuyez sur &lt;strong&gt;Nouvelle étape&lt;/strong&gt; pour ajouter l&amp;rsquo;étape suivante.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/powerautomate-first-flow/img/005-power-automate-step-3-01.png&#34;
+	width=&#34;608&#34;
+	height=&#34;548&#34;
+	srcset=&#34;https://blog.ddata.fr/p/powerautomate-first-flow/img/005-power-automate-step-3-01_hu713ba8d8e3337451f06ab2167b46787a_33611_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/powerautomate-first-flow/img/005-power-automate-step-3-01_hu713ba8d8e3337451f06ab2167b46787a_33611_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Création du flux - étape 3.1&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;110&#34;
+		data-flex-basis=&#34;266px&#34;
+	
+&gt;&lt;br&gt;
+&lt;img src=&#34;https://blog.ddata.fr/p/powerautomate-first-flow/img/005-power-automate-step-3-02.png&#34;
+	width=&#34;606&#34;
+	height=&#34;512&#34;
+	srcset=&#34;https://blog.ddata.fr/p/powerautomate-first-flow/img/005-power-automate-step-3-02_hued2598375c653223d46524f952dbb7aa_32350_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/powerautomate-first-flow/img/005-power-automate-step-3-02_hued2598375c653223d46524f952dbb7aa_32350_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Création du flux - étape 3.2&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;118&#34;
+		data-flex-basis=&#34;284px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Filtrer la liste des connecteurs en tapant &lt;em&gt;onedrive&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Sélectionnez &lt;em&gt;OneDrive for Business&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Sélectionnez &lt;em&gt;Convertir le fichier à l&amp;rsquo;aide d&amp;rsquo;un chemin d&amp;rsquo;accès&lt;/em&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/powerautomate-first-flow/img/006-power-automate-step-4.png&#34;
+	width=&#34;831&#34;
+	height=&#34;549&#34;
+	srcset=&#34;https://blog.ddata.fr/p/powerautomate-first-flow/img/006-power-automate-step-4_huff21c1eb3d86a8c4b7fb3ed0e7c64b89_40951_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/powerautomate-first-flow/img/006-power-automate-step-4_huff21c1eb3d86a8c4b7fb3ed0e7c64b89_40951_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Création du flux - étape 4&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;151&#34;
+		data-flex-basis=&#34;363px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Placez votre curseur dans la zone &lt;em&gt;Chemin d&amp;rsquo;accès au fichier&lt;/em&gt; et le menu dynamique de droite apparait.&lt;/li&gt;
+&lt;li&gt;Sélectionnez &lt;em&gt;filePath&lt;/em&gt; dans le menu de droite, la valeur s&amp;rsquo;ajoute dans la zone (1).&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/powerautomate-first-flow/img/007-power-automate-step-5-01.png&#34;
+	width=&#34;545&#34;
+	height=&#34;565&#34;
+	srcset=&#34;https://blog.ddata.fr/p/powerautomate-first-flow/img/007-power-automate-step-5-01_hubd6662c8c6a119474fd80ca59db2a7d8_36295_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/powerautomate-first-flow/img/007-power-automate-step-5-01_hubd6662c8c6a119474fd80ca59db2a7d8_36295_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Création du flux - étape 5.1&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;96&#34;
+		data-flex-basis=&#34;231px&#34;
+	
+&gt;&lt;br&gt;
+&lt;img src=&#34;https://blog.ddata.fr/p/powerautomate-first-flow/img/007-power-automate-step-5-02.png&#34;
+	width=&#34;546&#34;
+	height=&#34;490&#34;
+	srcset=&#34;https://blog.ddata.fr/p/powerautomate-first-flow/img/007-power-automate-step-5-02_huc3a3a9baddd310c7a145db0c8672e643_30626_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/powerautomate-first-flow/img/007-power-automate-step-5-02_huc3a3a9baddd310c7a145db0c8672e643_30626_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Création du flux - étape 5.2&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;111&#34;
+		data-flex-basis=&#34;267px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Filtrer la liste des connecteurs en tapant &lt;em&gt;outlook&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Sélectionnez &lt;em&gt;Office 365 Outlook&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Sélectionnez &lt;em&gt;Envoyer un e-mail (V2)&lt;/em&gt;, le numéro de version peut avoir changé depuis la rédaction de cet article.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Le connecteur s&amp;rsquo;initialise automatiquement pour utiliser votre boite e-mail Office 365 Outlook pour se connecter.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/powerautomate-first-flow/img/008-power-automate-step-6-01.png&#34;
+	width=&#34;546&#34;
+	height=&#34;287&#34;
+	srcset=&#34;https://blog.ddata.fr/p/powerautomate-first-flow/img/008-power-automate-step-6-01_hu451692b70a666583f30bb5286945353d_17630_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/powerautomate-first-flow/img/008-power-automate-step-6-01_hu451692b70a666583f30bb5286945353d_17630_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Création du flux - étape 6.1&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;190&#34;
+		data-flex-basis=&#34;456px&#34;
+	
+&gt;&lt;br&gt;
+&lt;img src=&#34;https://blog.ddata.fr/p/powerautomate-first-flow/img/008-power-automate-step-6-02.png&#34;
+	width=&#34;598&#34;
+	height=&#34;458&#34;
+	srcset=&#34;https://blog.ddata.fr/p/powerautomate-first-flow/img/008-power-automate-step-6-02_hu7dc4c1021ac64fc7ad696cf0d6bfcbc2_27059_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/powerautomate-first-flow/img/008-power-automate-step-6-02_hu7dc4c1021ac64fc7ad696cf0d6bfcbc2_27059_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Création du flux - étape 6.2&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;130&#34;
+		data-flex-basis=&#34;313px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Placez votre curseur dans la zone &lt;em&gt;À&lt;/em&gt;, cette fois le menu dynamique de droite n&amp;rsquo;apparait pas.&lt;/li&gt;
+&lt;li&gt;Cliquez sur &lt;em&gt;Ajouter du contenu dynamique&lt;/em&gt; pour ouvrir le menu dynamique de droite. Dans ce menu vous trouverez toutes les variables de sortie disponible pour toutes les étapes précédentes.&lt;/li&gt;
+&lt;li&gt;Positionnez-vous sur la sortie d&amp;rsquo;étape &lt;em&gt;Pour un fichier sélectionné&lt;/em&gt;, qui est le nom de la première étape.&lt;/li&gt;
+&lt;li&gt;Sélectionnez &lt;strong&gt;Messagerie&lt;/strong&gt; qui correspond au nom de l&amp;rsquo;entrée que l&amp;rsquo;on a créé au niveau du déclencheur. Cette variable contiendra l&amp;rsquo;adresse e-mail qui sera demandée lors du déclenchement du flux et sera utilisée dans la zone destinataire de notre e-mail.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/powerautomate-first-flow/img/009-power-automate-step-7.png&#34;
+	width=&#34;606&#34;
+	height=&#34;260&#34;
+	srcset=&#34;https://blog.ddata.fr/p/powerautomate-first-flow/img/009-power-automate-step-7_hu82fc7ba1dc3636de54c59ee1c5586b1c_18162_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/powerautomate-first-flow/img/009-power-automate-step-7_hu82fc7ba1dc3636de54c59ee1c5586b1c_18162_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Création du flux - étape 7&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;233&#34;
+		data-flex-basis=&#34;559px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;La variable &lt;strong&gt;Messagerie&lt;/strong&gt; est maintenant utilisée dans le champ &lt;em&gt;À&lt;/em&gt; de l&amp;rsquo;e-mail, on reconnait une valeur dynamique dans Power Automate car elle est dans un rectangle coloré avec une icône.&lt;/li&gt;
+&lt;li&gt;Tapez un texte pour l&amp;rsquo;objet de l&amp;rsquo;e-mail.&lt;/li&gt;
+&lt;li&gt;Tapez un texte pour le corps de l&amp;rsquo;e-mail.&lt;/li&gt;
+&lt;li&gt;Appuyez sur &lt;strong&gt;Afficher les options avancées&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/powerautomate-first-flow/img/010-power-automate-step-8.png&#34;
+	width=&#34;880&#34;
+	height=&#34;429&#34;
+	srcset=&#34;https://blog.ddata.fr/p/powerautomate-first-flow/img/010-power-automate-step-8_hu1111deea2749f0bee287d29193528057_42569_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/powerautomate-first-flow/img/010-power-automate-step-8_hu1111deea2749f0bee287d29193528057_42569_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Création du flux - étape 8&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;205&#34;
+		data-flex-basis=&#34;492px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Placez votre curseur dans la zone &lt;em&gt;Pièces jointes Nom - 1&lt;/em&gt; et le menu dynamique de droite apparait.&lt;/li&gt;
+&lt;li&gt;Positionnez-vous sur la sortie d&amp;rsquo;étape &lt;em&gt;Convertir le fichier à l&amp;rsquo;aide d&amp;rsquo;un chemin d&amp;rsquo;accès&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Sélectionnez &lt;strong&gt;Nom de fichier&lt;/strong&gt; qui correspond au nom du fichier après l&amp;rsquo;opération de conversion du fichier.&lt;/li&gt;
+&lt;li&gt;Placez votre curseur dans la zone &lt;em&gt;Pièces jointes Contenu - 1&lt;/em&gt; et le menu dynamique de droite apparait.&lt;/li&gt;
+&lt;li&gt;Sélectionnez &lt;strong&gt;Contenu du fichier&lt;/strong&gt; qui correspond au contenu du fichier après l&amp;rsquo;opération de conversion du fichier.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Enregistrez votre flux via l&amp;rsquo;icône disponible dans le bandeau en haut à droite ou via le bouton enregistrer disponible en bas des étapes du flux.&lt;/p&gt;
+&lt;h3 id=&#34;test-du-flux&#34;&gt;Test du flux&lt;/h3&gt;
+&lt;p&gt;Rendez-vous dans l&amp;rsquo;interface web de votre OneDrive.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/powerautomate-first-flow/img/011-power-automate-test-step-1.png&#34;
+	width=&#34;303&#34;
+	height=&#34;411&#34;
+	srcset=&#34;https://blog.ddata.fr/p/powerautomate-first-flow/img/011-power-automate-test-step-1_hu43f376f27e682e903798b4098f991baa_17494_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/powerautomate-first-flow/img/011-power-automate-test-step-1_hu43f376f27e682e903798b4098f991baa_17494_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Test du flux - étape 1&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;73&#34;
+		data-flex-basis=&#34;176px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Disponible via le menu gaufre (9 points en 3x3) en haut à gauche.&lt;/li&gt;
+&lt;li&gt;Sélectionnez &lt;em&gt;OneDrive&lt;/em&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Positionnez-vous sur un fichier Word existant ou créez en un pour le test.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/powerautomate-first-flow/img/012-power-automate-test-step-2.png&#34;
+	width=&#34;1032&#34;
+	height=&#34;604&#34;
+	srcset=&#34;https://blog.ddata.fr/p/powerautomate-first-flow/img/012-power-automate-test-step-2_hu39a986d74b592dbba585708c050e18ee_40234_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/powerautomate-first-flow/img/012-power-automate-test-step-2_hu39a986d74b592dbba585708c050e18ee_40234_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Test du flux - étape 2&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;170&#34;
+		data-flex-basis=&#34;410px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Sur la ligne du fichier Word ouvrir le menu via les 3 points verticaux.&lt;/li&gt;
+&lt;li&gt;Sélectionnez &lt;em&gt;Automatiser&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Cliquez sur &lt;em&gt;Convertir en PDF et envoyez par email&lt;/em&gt; qui correspond au nom du flux que l&amp;rsquo;on a créé, pour exécuter le flux pour le fichier choisi.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/powerautomate-first-flow/img/013-power-automate-test-step-3.png&#34;
+	width=&#34;340&#34;
+	height=&#34;644&#34;
+	srcset=&#34;https://blog.ddata.fr/p/powerautomate-first-flow/img/013-power-automate-test-step-3_hu9c250df7de27ca5192562e0451137d34_23639_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/powerautomate-first-flow/img/013-power-automate-test-step-3_hu9c250df7de27ca5192562e0451137d34_23639_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Test du flux - étape 3&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;52&#34;
+		data-flex-basis=&#34;126px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;La fenêtre d&amp;rsquo;exécution du flux apparait et vérifie les autorisations des connecteurs. Cet écran n&amp;rsquo;apparait que lors de la première exécution.&lt;/li&gt;
+&lt;li&gt;Appuyez sur &lt;em&gt;Continuer&lt;/em&gt; pour continuer.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/powerautomate-first-flow/img/014-power-automate-test-step-4.png&#34;
+	width=&#34;338&#34;
+	height=&#34;630&#34;
+	srcset=&#34;https://blog.ddata.fr/p/powerautomate-first-flow/img/014-power-automate-test-step-4_hu925a76b719966f791df7a77def4a5936_17925_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/powerautomate-first-flow/img/014-power-automate-test-step-4_hu925a76b719966f791df7a77def4a5936_17925_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Test du flux - étape 4&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;53&#34;
+		data-flex-basis=&#34;128px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Le flux vous demande de saisir une adresse e-mail. Vous pouvez utiliser votre adresse pour le test.&lt;/li&gt;
+&lt;li&gt;Appuyez sur &lt;em&gt;Exécuter le flux&lt;/em&gt; pour exécuter le flux.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/powerautomate-first-flow/img/015-power-automate-test-step-5.png&#34;
+	width=&#34;340&#34;
+	height=&#34;632&#34;
+	srcset=&#34;https://blog.ddata.fr/p/powerautomate-first-flow/img/015-power-automate-test-step-5_hud940cec9c9552d0fe0e13f7b8b3d1ddf_11140_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/powerautomate-first-flow/img/015-power-automate-test-step-5_hud940cec9c9552d0fe0e13f7b8b3d1ddf_11140_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Test du flux - étape 5&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;53&#34;
+		data-flex-basis=&#34;129px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Appuyez sur &lt;em&gt;Terminer&lt;/em&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/powerautomate-first-flow/img/016-power-automate-test-step-6.png&#34;
+	width=&#34;1096&#34;
+	height=&#34;329&#34;
+	srcset=&#34;https://blog.ddata.fr/p/powerautomate-first-flow/img/016-power-automate-test-step-6_hud2651fb794f4151eb366cefb6f010f19_30188_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/powerautomate-first-flow/img/016-power-automate-test-step-6_hud2651fb794f4151eb366cefb6f010f19_30188_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Test du flux - étape 6&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;333&#34;
+		data-flex-basis=&#34;799px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Vérifier la boite aux lettres que vous avez indiquée lors de l&amp;rsquo;exécution du flux, vous devez avoir reçu un e-mail avec le fichier PDF en pièce jointe.&lt;/p&gt;
+&lt;p&gt;Voilà, vous venez de créer votre premier flux avec Power Automate et vous savez maintenant ajouter des commandes personnalisées dans votre OneDrive.&lt;/p&gt;
+&lt;p&gt;Merci de votre attention.&lt;/p&gt;</description>
+        </item>
+        <item>
         <title>Power Apps Developer Plan</title>
         <link>https://blog.ddata.fr/p/power-apps-developer-plan/</link>
         <pubDate>Fri, 26 Aug 2022 00:00:00 +0000</pubDate>
