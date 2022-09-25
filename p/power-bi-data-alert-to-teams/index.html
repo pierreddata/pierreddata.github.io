@@ -1,0 +1,1058 @@
+<!DOCTYPE html>
+<html lang="fr-fr" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Vous avez créé une alerte sur vos données dans Power BI et maintenant vous souhaitez informer un canal Teams du problème ?
+Suivez le guide &amp;hellip;
+'><title>💡 Power BI : Envoyer une alerte de données dans Teams.</title>
+
+<link rel='canonical' href='https://blog.ddata.fr/p/power-bi-data-alert-to-teams/'>
+
+<link rel="stylesheet" href="/scss/style.min.5a8e892f6fa14515e9065eee1f5d2e05302606ec7f11750b2fb95198f9cdcbfd.css"><meta property='og:title' content='💡 Power BI : Envoyer une alerte de données dans Teams.'>
+<meta property='og:description' content='Vous avez créé une alerte sur vos données dans Power BI et maintenant vous souhaitez informer un canal Teams du problème ?
+Suivez le guide &amp;hellip;
+'>
+<meta property='og:url' content='https://blog.ddata.fr/p/power-bi-data-alert-to-teams/'>
+<meta property='og:site_name' content='Le D de Data'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Trucs &amp; astuces' /><meta property='article:tag' content='Auto formation' /><meta property='article:published_time' content='2022-09-25T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2022-09-25T00:00:00&#43;00:00'/><meta property='og:image' content='https://blog.ddata.fr/p/power-bi-data-alert-to-teams/brands-people-ZdqSuxl3Lak-unsplash.jpg' />
+<meta name="twitter:title" content="💡 Power BI : Envoyer une alerte de données dans Teams.">
+<meta name="twitter:description" content="Vous avez créé une alerte sur vos données dans Power BI et maintenant vous souhaitez informer un canal Teams du problème ?
+Suivez le guide &amp;hellip;
+"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://blog.ddata.fr/p/power-bi-data-alert-to-teams/brands-people-ZdqSuxl3Lak-unsplash.jpg' />
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TY6XFEN6QV"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-TY6XFEN6QV', { 'anonymize_ip': false });
+}
+</script>
+<link rel="alternate"
+      type="application/rss+xml"
+      href="https://blog.ddata.fr/index.xml"
+      title="Le D de Data">
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "dark");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Afficher le menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/pierre_hua6bbc70dde858dd10e363a14d1f7729c_67951_300x0_resize_q75_box.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Le D de Data</a></h1>
+            <h2 class="site-description">Blog francophone autour de la data Microsoft</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/pierreddata'
+                        target="_blank"
+                        title="GitHub"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://www.linkedin.com/in/pierre-dupont-0b532374/'
+                        target="_blank"
+                        title="LinkdIn"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-folders" width="44" height="44" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <rect x="4" y="4" width="16" height="16" rx="2" />
+  <line x1="8" y1="11" x2="8" y2="16" />
+  <line x1="8" y1="8" x2="8" y2="8.01" />
+  <line x1="12" y1="16" x2="12" y2="11" />
+  <path d="M16 16v-3a2 2 0 0 0 -4 0" />
+</svg>
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Accueil</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/a-propos-de-d-de-data/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>A Propos</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/series/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-folders" width="44" height="44" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 4h3l2 2h5a2 2 0 0 1 2 2v7a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-9a2 2 0 0 1 2 -2" />
+  <path d="M17 17v2a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-9a2 2 0 0 1 2 -2h2" />
+</svg>
+
+                
+                <span>Series</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/liens/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Liens</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Rechercher</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Mode sombre</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+<main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/power-bi-data-alert-to-teams/">
+                <img src="/p/power-bi-data-alert-to-teams/brands-people-ZdqSuxl3Lak-unsplash_hua4282981a2eb475f28d312d25bf8595a_2186526_800x0_resize_q75_box.jpg"
+                        srcset="/p/power-bi-data-alert-to-teams/brands-people-ZdqSuxl3Lak-unsplash_hua4282981a2eb475f28d312d25bf8595a_2186526_800x0_resize_q75_box.jpg 800w, /p/power-bi-data-alert-to-teams/brands-people-ZdqSuxl3Lak-unsplash_hua4282981a2eb475f28d312d25bf8595a_2186526_1600x0_resize_q75_box.jpg 1600w"
+                        width="800" 
+                        height="505" 
+                        loading="lazy"
+                        alt="Featured image of post 💡 Power BI : Envoyer une alerte de données dans Teams." />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/powerbi/" style="background-color: #f2c811; color: #fff;">
+                Power BI
+            </a>
+        
+            <a href="/categories/powerautomate/" style="background-color: #0066ff; color: #fff;">
+                Power Automate
+            </a>
+        
+            <a href="/categories/m365/" style="background-color: #D83B01; color: #fff;">
+                Microsoft 365
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/power-bi-data-alert-to-teams/">💡 Power BI : Envoyer une alerte de données dans Teams.</a>
+        </h2>
+
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published" datetime="2022-09-25T00:00:00Z">
+                    25 septembre 2022
+                    
+                </time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    4 minutes de lecture
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+    
+    
+</div>
+</header>
+
+    <section class="article-content">
+    
+    
+    <p>Vous avez créé une alerte sur vos données dans Power BI et maintenant vous souhaitez informer un canal Teams du problème ?<br>
+Suivez le guide &hellip;</p>
+<h2 id="préparons-nous">Préparons-nous</h2>
+<p>Dans cet article je vais aborder comment utiliser une alerte de données Power BI pour envoyer un message dans Teams. Pour faire cela, nous allons utiliser Power Automate. Je vais donc supposer que vous avez lu les articles suivants :</p>
+<ul>
+<li><a class="link" href="https://blog.ddata.fr/p/powerautomate-first-flow/" >Power Automate : Créer votre premier flux</a>.</li>
+<li><a class="link" href="https://blog.ddata.fr/p/power-bi-create-data-alert/" >Power BI : Créer une alerte sur vos données</a>.</li>
+</ul>
+<p>Pour cet article nous allons utiliser <a class="link" href="https://github.com/pierreddata/blog.ddata.fr/blob/main/persona/persona-power-bi-maker.md"  target="_blank" rel="noopener"
+    >la persona Narcisse</a> créatrice Power BI.</p>
+<h2 id="création-dun-flux-power-automate">Création d&rsquo;un flux Power Automate</h2>
+<p>Connectez-vous au <a class="link" href="https://make.powerautomate.com/"  target="_blank" rel="noopener"
+    >site de Power Automate</a>.</p>
+<p><img src="/p/power-bi-data-alert-to-teams/img/001-power-automate-landing-page.png"
+	width="1386"
+	height="695"
+	srcset="/p/power-bi-data-alert-to-teams/img/001-power-automate-landing-page_hu2470727453d746090c23a8f843c35945_88989_480x0_resize_box_3.png 480w, /p/power-bi-data-alert-to-teams/img/001-power-automate-landing-page_hu2470727453d746090c23a8f843c35945_88989_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Page d’accueil"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="199"
+		data-flex-basis="478px"
+	
+></p>
+<ol>
+<li>Appuyez sur <strong>Créer</strong> pour créer votre flux Power Automate.</li>
+<li>Appuyer sur <strong>Flux de cloud automatisé</strong>.</li>
+</ol>
+<p><img src="/p/power-bi-data-alert-to-teams/img/002-power-automate-create-flow.png"
+	width="900"
+	height="572"
+	srcset="/p/power-bi-data-alert-to-teams/img/002-power-automate-create-flow_hu5d8917792e6548c58359a59f036ed289_61760_480x0_resize_box_3.png 480w, /p/power-bi-data-alert-to-teams/img/002-power-automate-create-flow_hu5d8917792e6548c58359a59f036ed289_61760_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Page de création"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="157"
+		data-flex-basis="377px"
+	
+></p>
+<ol>
+<li>Saisir un nom pour votre flux, par exemple <em>Alerte Poxer BI - Délai de mise à jour</em>.</li>
+<li>Pour sélectionner le déclencheur, tapez <em>alerte</em> dans la zone de recherche.</li>
+<li>Puis choisir <em>Lorsqu&rsquo;une alerte est déclenchée - Power BI</em>.</li>
+<li>Appuyez sur <strong>Créer</strong> pour créer votre flux.</li>
+</ol>
+<p><img src="/p/power-bi-data-alert-to-teams/img/003-power-automate-step-2.png"
+	width="619"
+	height="212"
+	srcset="/p/power-bi-data-alert-to-teams/img/003-power-automate-step-2_hu1c175b8ccb55b536379d77c3d0fbc045_16078_480x0_resize_box_3.png 480w, /p/power-bi-data-alert-to-teams/img/003-power-automate-step-2_hu1c175b8ccb55b536379d77c3d0fbc045_16078_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Création du flux - étape 2"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="291"
+		data-flex-basis="700px"
+	
+></p>
+<ol>
+<li>Dans la boite du déclencheur, sélectionnez votre alerte dans <em>ID de l&rsquo;alerte</em>.</li>
+<li>Appuyez sur <strong>Nouvelle étape</strong> pour ajouter l&rsquo;étape suivante.</li>
+</ol>
+<p><img src="/p/power-bi-data-alert-to-teams/img/004-power-automate-step-3.png"
+	width="610"
+	height="791"
+	srcset="/p/power-bi-data-alert-to-teams/img/004-power-automate-step-3_hu8f2107da6868cd61d1e84ca1c76e6364_55460_480x0_resize_box_3.png 480w, /p/power-bi-data-alert-to-teams/img/004-power-automate-step-3_hu8f2107da6868cd61d1e84ca1c76e6364_55460_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Création du flux - étape 3"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="77"
+		data-flex-basis="185px"
+	
+></p>
+<ol>
+<li>Filtrer la liste des connecteurs en tapant <em>teams</em>.</li>
+<li>Sélectionnez <em>Microsoft Teams</em>.</li>
+<li>Sélectionnez <em>Publier le message dans une conversation instantanée ou un canal</em>.</li>
+</ol>
+<p><img src="/p/power-bi-data-alert-to-teams/img/004-power-automate-step-4.png"
+	width="1015"
+	height="742"
+	srcset="/p/power-bi-data-alert-to-teams/img/004-power-automate-step-4_huf9f9afede14a21b3f8531b5fdd79daf4_58378_480x0_resize_box_3.png 480w, /p/power-bi-data-alert-to-teams/img/004-power-automate-step-4_huf9f9afede14a21b3f8531b5fdd79daf4_58378_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Création du flux - étape 4"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="136"
+		data-flex-basis="328px"
+	
+></p>
+<ol>
+<li>Dans <em>Publier en tant que</em> choisir <strong>Bot de flux</strong>. Il s&rsquo;agit de l&rsquo;identité de l&rsquo;émetteur du message dans le canal Teams.</li>
+<li>Dans <em>Publier dans</em> choisir <strong>Channel</strong>. On va écrire dans un canal Teams.</li>
+<li>Dans <em>Team</em>, sélectionnez l&rsquo;équipe dans laquelle vous voulez publier le message.</li>
+<li>Dans <em>Channel</em>, sélectionnez le canal dans laquelle vous voulez publier le message.</li>
+<li>Dans <em>Message</em> vous allez pouvoir écrire le message qui apparaitra dans Teams.</li>
+<li>Vous pouvez mettre le message en forme avec la barre de mise en forme (Couleur du texte, gras, italique &hellip;).</li>
+<li>Pour rendre votre texte dynamique, vous pouvez ajouter du contenu dynamique en provenance des étapes précédentes. Il suffit de positionner votre curseur à l&rsquo;endroit où vous souhaitez insérer le contenu.</li>
+<li>Puis sélectionnez le contenu dynamique dans le menu de droite et de cliquer sur le contenu que vous souhaitez pour l&rsquo;insérer.</li>
+<li>Enregistrez votre flux.</li>
+</ol>
+<h3 id="test-du-flux">Test du flux</h3>
+<p>Pour déclencher l&rsquo;alerte, suivez la procédure <em>Test de l&rsquo;alerte</em> de l&rsquo;article <a class="link" href="https://blog.ddata.fr/p/power-bi-create-data-alert/" >Power BI : Créer une alerte sur vos données</a>.</p>
+<p>Patientez, une fois l&rsquo;alerte déclenchée, vous aurez ce résultat dans le canal Teams choisi :</p>
+<p><img src="/p/power-bi-data-alert-to-teams/img/005-teams-powerbi-alert-in-channel.png"
+	width="973"
+	height="137"
+	srcset="/p/power-bi-data-alert-to-teams/img/005-teams-powerbi-alert-in-channel_huf6c184ff0f6862a53d44a6c412a12a70_17724_480x0_resize_box_3.png 480w, /p/power-bi-data-alert-to-teams/img/005-teams-powerbi-alert-in-channel_huf6c184ff0f6862a53d44a6c412a12a70_17724_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Résultat de l&rsquo;alerte dans le canal Teams"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="710"
+		data-flex-basis="1704px"
+	
+></p>
+<h3 id="amélioration-du-message-dans-teams">Amélioration du message dans Teams</h3>
+<p>Le résultat est fonctionnel, mais pas élégant, on a un lien non cliquable et très long dans le message Teams.</p>
+<p>Pour améliorer cela, nous allons devoir modifier le flux.</p>
+<p>Connectez-vous au <a class="link" href="https://make.powerautomate.com/"  target="_blank" rel="noopener"
+    >site de Power Automate</a>.</p>
+<p><img src="/p/power-bi-data-alert-to-teams/img/006-power-automate-landing-page.png"
+	width="1386"
+	height="763"
+	srcset="/p/power-bi-data-alert-to-teams/img/006-power-automate-landing-page_hu21f57df17d7b80de82f193b4ba750164_44418_480x0_resize_box_3.png 480w, /p/power-bi-data-alert-to-teams/img/006-power-automate-landing-page_hu21f57df17d7b80de82f193b4ba750164_44418_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Page d’accueil"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="181"
+		data-flex-basis="435px"
+	
+></p>
+<ol>
+<li>Appuyez sur <strong>Mes flux</strong> pour accéder à vos flux existants.</li>
+<li>Cliquez sur votre flux pour l&rsquo;ouvrir.</li>
+</ol>
+<p><img src="/p/power-bi-data-alert-to-teams/img/007-power-automate-page-detail-flux.png"
+	width="1386"
+	height="825"
+	srcset="/p/power-bi-data-alert-to-teams/img/007-power-automate-page-detail-flux_hu2b93c602f363ee1373532e0e04148cf1_83738_480x0_resize_box_3.png 480w, /p/power-bi-data-alert-to-teams/img/007-power-automate-page-detail-flux_hu2b93c602f363ee1373532e0e04148cf1_83738_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Détail du flux"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="168"
+		data-flex-basis="403px"
+	
+></p>
+<p>Sur la page de détail du flux, vous pouvez voir :</p>
+<ol>
+<li>Les informations détaillées du flux.</li>
+<li>L&rsquo;historique des exécutions des 28 derniers jours.</li>
+<li>Les informations sur les connexions utilisées par votre flux.</li>
+<li>Cliquez sur le bouton <em>Modifier</em> pour modifier votre flux.</li>
+</ol>
+<p><img src="/p/power-bi-data-alert-to-teams/img/008-power-automate-page-edit.png"
+	width="1386"
+	height="721"
+	srcset="/p/power-bi-data-alert-to-teams/img/008-power-automate-page-edit_hu1c5be17b1a51a0bdf2114ba5e716683c_44481_480x0_resize_box_3.png 480w, /p/power-bi-data-alert-to-teams/img/008-power-automate-page-edit_hu1c5be17b1a51a0bdf2114ba5e716683c_44481_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Écran de modification du flux"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="192"
+		data-flex-basis="461px"
+	
+></p>
+<ol>
+<li>Vous ouvrez revenir sur l&rsquo;écran précédent en utilisant la flèche de retour.</li>
+<li>Appuyez sur l&rsquo;étape pour déplier les propriétés de cette dernière.</li>
+</ol>
+<p><img src="/p/power-bi-data-alert-to-teams/img/009-power-automate-change-step01.png"
+	width="1386"
+	height="721"
+	srcset="/p/power-bi-data-alert-to-teams/img/009-power-automate-change-step01_huc28c92daf1cc244e062c91bc600785da_55402_480x0_resize_box_3.png 480w, /p/power-bi-data-alert-to-teams/img/009-power-automate-change-step01_huc28c92daf1cc244e062c91bc600785da_55402_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Amélioration du flux - étape 1"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="192"
+		data-flex-basis="461px"
+	
+></p>
+<p>Nous retrouvons notre étape de message dans Teams tel que nous l&rsquo;avions enregistré. 
+Pour l&rsquo;améliorer, nous allons créer un lien propre inclus dans un texte. 
+Pour créer le lien, nous devons lz créer directement en HTML.</p>
+<ol>
+<li>Appuyez sur l&rsquo;icône <strong>&lt;/&gt;</strong> pour basculer le message en mode HTML.</li>
+</ol>
+<p><img src="/p/power-bi-data-alert-to-teams/img/010-power-automate-change-step02-1.png"
+	width="588"
+	height="139"
+	srcset="/p/power-bi-data-alert-to-teams/img/010-power-automate-change-step02-1_hua7eaaaa37c2f60affa5598b83b1b58fb_8817_480x0_resize_box_3.png 480w, /p/power-bi-data-alert-to-teams/img/010-power-automate-change-step02-1_hua7eaaaa37c2f60affa5598b83b1b58fb_8817_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Amélioration du flux - étape 2-1"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="423"
+		data-flex-basis="1015px"
+	
+>
+<img src="/p/power-bi-data-alert-to-teams/img/010-power-automate-change-step02-2.png"
+	width="584"
+	height="130"
+	srcset="/p/power-bi-data-alert-to-teams/img/010-power-automate-change-step02-2_hude809f044397ffe61b68d42bca651232_8214_480x0_resize_box_3.png 480w, /p/power-bi-data-alert-to-teams/img/010-power-automate-change-step02-2_hude809f044397ffe61b68d42bca651232_8214_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Amélioration du flux - étape 2-2"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="449"
+		data-flex-basis="1078px"
+	
+>
+<img src="/p/power-bi-data-alert-to-teams/img/010-power-automate-change-step02-3.png"
+	width="896"
+	height="435"
+	srcset="/p/power-bi-data-alert-to-teams/img/010-power-automate-change-step02-3_hu2a0f52e6aa63e846e9a948048d04576b_31771_480x0_resize_box_3.png 480w, /p/power-bi-data-alert-to-teams/img/010-power-automate-change-step02-3_hu2a0f52e6aa63e846e9a948048d04576b_31771_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Amélioration du flux - étape 2-3"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="205"
+		data-flex-basis="494px"
+	
+></p>
+<ol>
+<li>Supprimez la balise <em>URL de vignette</em> en cliquant sur la croix.</li>
+<li>Ajoutez le code HTML permettant de créer un lien : <!-- raw HTML omitted -->Lien<!-- raw HTML omitted -->
+<ul>
+<li>Le lien doit être placé entre les 2 doubles quotes après <em>href=</em></li>
+<li>Le texte apparaissant à la place du lien sera <em>Lien</em> dans notre cas et peut être modifié</li>
+</ul>
+</li>
+<li>Positionnez votre curseur entre les 2 doubles quotes.</li>
+<li>Puis sélectionnez le contenu dynamique dans le menu de droite.</li>
+</ol>
+<p>Bonus : Vous pouvez utiliser des émoticônes dans vos messages en ajoutant par exemple : ⚠.<br>
+Sous Windows 10 la combinaison de touche <strong>windows + ;</strong> permets d&rsquo;ouvrir un menu pour insérer des émoticônes.</p>
+<h3 id="second-test-du-flux">Second test du flux</h3>
+<p>Nous allons maintenant retester notre flux. Au lieu d&rsquo;attendre le déclenchement d&rsquo;une alerte, nous allons utiliser la fonction de test qui permet de relancer une exécution avec les paramètres d&rsquo;une précédente exécution.</p>
+<p><img src="/p/power-bi-data-alert-to-teams/img/011-power-automate-test-step01.png"
+	width="1186"
+	height="56"
+	srcset="/p/power-bi-data-alert-to-teams/img/011-power-automate-test-step01_hu9e81823eb7c5aabea16b6c52e3fcc988_6369_480x0_resize_box_3.png 480w, /p/power-bi-data-alert-to-teams/img/011-power-automate-test-step01_hu9e81823eb7c5aabea16b6c52e3fcc988_6369_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Test du flux - étape 1"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="2117"
+		data-flex-basis="5082px"
+	
+></p>
+<ol>
+<li>Appuyez sur le bouton <strong>Tester</strong> pour ouvrir le panneau <strong>Tester le flux</strong>.</li>
+</ol>
+<p><img src="/p/power-bi-data-alert-to-teams/img/012-power-automate-test-step02.png"
+	width="337"
+	height="672"
+	srcset="/p/power-bi-data-alert-to-teams/img/012-power-automate-test-step02_hu9f39f849536bb9fb8e7132b0f6265fbb_23815_480x0_resize_box_3.png 480w, /p/power-bi-data-alert-to-teams/img/012-power-automate-test-step02_hu9f39f849536bb9fb8e7132b0f6265fbb_23815_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Test du flux - étape 2"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="50"
+		data-flex-basis="120px"
+	
+></p>
+<ol>
+<li>Sélectionnez <em>Automatiquement</em>.</li>
+<li>Puis <em>Avec un déclencheur récemment utilisé</em>.</li>
+<li>Choisissez une exécution précédente.</li>
+<li>Appuyez sur le bouton <em>Enregistrer et tester</em>. Si vous aviez déjà enregistré votre flux, le bouton indiquera seulement <em>Tester</em>.</li>
+</ol>
+<p><img src="/p/power-bi-data-alert-to-teams/img/013-teams-powerbi-alert-in-channel-bis.png"
+	width="905"
+	height="114"
+	srcset="/p/power-bi-data-alert-to-teams/img/013-teams-powerbi-alert-in-channel-bis_hu3b30f44b1d8753dfc72c90f0a10ca4fc_7944_480x0_resize_box_3.png 480w, /p/power-bi-data-alert-to-teams/img/013-teams-powerbi-alert-in-channel-bis_hu3b30f44b1d8753dfc72c90f0a10ca4fc_7944_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Nouveau résultat de l&rsquo;alerte dans le canal Teams"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="793"
+		data-flex-basis="1905px"
+	
+></p>
+<p>Bravo, vous pouvez maintenant automatiser les actions sur vos alertes de données Power BI.</p>
+<p>Merci de votre attention.</p>
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/trucs-astuces/">Trucs &amp; astuces</a>
+        
+            <a href="/tags/auto-formation/">Auto formation</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Contenus liés</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/desactiver-la-mfa/">
+        
+        
+            <div class="article-image">
+                <img src="/p/desactiver-la-mfa/_hu9d37c82fe306bfe37bc1c0d5c413c58d_549463_f541cf1576d08059911058a8a4f40364.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 💡 Désactiver la double authentification par défaut. 🔒"
+                        data-key="desactiver-la-mfa" 
+                        data-hash="md5-h2uQWy&#43;D8rNW7oHLXpBplA==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">💡 Désactiver la double authentification par défaut. 🔒</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/creer-des-personas/">
+        
+        
+            <div class="article-image">
+                <img src="/p/creer-des-personas/_huc0441eb0c3b34a2bc25f8a0410fc39d0_897394_a250d34f65ca46a394bfd383d2599f3a.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Créer des personas."
+                        data-key="creer-des-personas" 
+                        data-hash="md5-o6muotwB3IcNFKCYrBnRJA==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Créer des personas.</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/m365-developer/">
+        
+        
+            <div class="article-image">
+                <img src="/p/m365-developer/_hu4c0ac1a5fc3bc62d5287596e79649454_708326_2b480a85474d13618afba641b0e61b24.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Créer un environnement d&#39;apprentissage Microsoft 365"
+                        data-key="m365-developer" 
+                        data-hash="md5-o5KlaKIN8lgYrGLL6/mgGw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Créer un environnement d&#39;apprentissage Microsoft 365</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/power-bi-create-data-alert/">
+        
+        
+            <div class="article-image">
+                <img src="/p/power-bi-create-data-alert/_hu82c25fa98cd4e9a8103220017be4b8cb_443365_53ef746dea6f8640841f1d97315ce776.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 💡 Power BI : Créer une alerte sur vos données."
+                        data-key="power-bi-create-data-alert" 
+                        data-hash="md5-lZArKS3Xl6Dn49XcpxVzBg==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">💡 Power BI : Créer une alerte sur vos données.</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/power-bi-create-dashboard/">
+        
+        
+            <div class="article-image">
+                <img src="/p/power-bi-create-dashboard/_huf938efc7b2a69af6a2c521a2a8f95bf7_3564155_652f7090deed73ab7c671f2026f1051c.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 💡 Power BI : Créer un tableau de bord Power BI."
+                        data-key="power-bi-create-dashboard" 
+                        data-hash="md5-zfCZOFkRA26yLGk9Oe0ARg==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">💡 Power BI : Créer un tableau de bord Power BI.</h2>
+        </div>
+    </a>
+</article>
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "ddata" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2022 Le D de Data
+    </section>
+    
+    <section class="powerby">
+        Généré avec <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Thème <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.13.0">Stack</a></b> conçu par <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table des matières</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#préparons-nous">Préparons-nous</a></li>
+    <li><a href="#création-dun-flux-power-automate">Création d&rsquo;un flux Power Automate</a>
+      <ol>
+        <li><a href="#test-du-flux">Test du flux</a></li>
+        <li><a href="#amélioration-du-message-dans-teams">Amélioration du message dans Teams</a></li>
+        <li><a href="#second-test-du-flux">Second test du flux</a></li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

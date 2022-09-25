@@ -6,7 +6,336 @@
         <description>Recent content in Microsoft 365 on Le D de Data</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>fr-fr</language>
-        <lastBuildDate>Mon, 22 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ddata.fr/categories/m365/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sun, 25 Sep 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ddata.fr/categories/m365/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>💡 Power BI : Envoyer une alerte de données dans Teams.</title>
+        <link>https://blog.ddata.fr/p/power-bi-data-alert-to-teams/</link>
+        <pubDate>Sun, 25 Sep 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://blog.ddata.fr/p/power-bi-data-alert-to-teams/</guid>
+        <description>&lt;img src="https://blog.ddata.fr/p/power-bi-data-alert-to-teams/brands-people-ZdqSuxl3Lak-unsplash.jpg" alt="Featured image of post 💡 Power BI : Envoyer une alerte de données dans Teams." /&gt;&lt;p&gt;Vous avez créé une alerte sur vos données dans Power BI et maintenant vous souhaitez informer un canal Teams du problème ?&lt;br&gt;
+Suivez le guide &amp;hellip;&lt;/p&gt;
+&lt;h2 id=&#34;préparons-nous&#34;&gt;Préparons-nous&lt;/h2&gt;
+&lt;p&gt;Dans cet article je vais aborder comment utiliser une alerte de données Power BI pour envoyer un message dans Teams. Pour faire cela, nous allons utiliser Power Automate. Je vais donc supposer que vous avez lu les articles suivants :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://blog.ddata.fr/p/powerautomate-first-flow/&#34; &gt;Power Automate : Créer votre premier flux&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://blog.ddata.fr/p/power-bi-create-data-alert/&#34; &gt;Power BI : Créer une alerte sur vos données&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Pour cet article nous allons utiliser &lt;a class=&#34;link&#34; href=&#34;https://github.com/pierreddata/blog.ddata.fr/blob/main/persona/persona-power-bi-maker.md&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;la persona Narcisse&lt;/a&gt; créatrice Power BI.&lt;/p&gt;
+&lt;h2 id=&#34;création-dun-flux-power-automate&#34;&gt;Création d&amp;rsquo;un flux Power Automate&lt;/h2&gt;
+&lt;p&gt;Connectez-vous au &lt;a class=&#34;link&#34; href=&#34;https://make.powerautomate.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;site de Power Automate&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/power-bi-data-alert-to-teams/img/001-power-automate-landing-page.png&#34;
+	width=&#34;1386&#34;
+	height=&#34;695&#34;
+	srcset=&#34;https://blog.ddata.fr/p/power-bi-data-alert-to-teams/img/001-power-automate-landing-page_hu2470727453d746090c23a8f843c35945_88989_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/power-bi-data-alert-to-teams/img/001-power-automate-landing-page_hu2470727453d746090c23a8f843c35945_88989_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Page d’accueil&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;199&#34;
+		data-flex-basis=&#34;478px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Appuyez sur &lt;strong&gt;Créer&lt;/strong&gt; pour créer votre flux Power Automate.&lt;/li&gt;
+&lt;li&gt;Appuyer sur &lt;strong&gt;Flux de cloud automatisé&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/power-bi-data-alert-to-teams/img/002-power-automate-create-flow.png&#34;
+	width=&#34;900&#34;
+	height=&#34;572&#34;
+	srcset=&#34;https://blog.ddata.fr/p/power-bi-data-alert-to-teams/img/002-power-automate-create-flow_hu5d8917792e6548c58359a59f036ed289_61760_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/power-bi-data-alert-to-teams/img/002-power-automate-create-flow_hu5d8917792e6548c58359a59f036ed289_61760_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Page de création&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;157&#34;
+		data-flex-basis=&#34;377px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Saisir un nom pour votre flux, par exemple &lt;em&gt;Alerte Poxer BI - Délai de mise à jour&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Pour sélectionner le déclencheur, tapez &lt;em&gt;alerte&lt;/em&gt; dans la zone de recherche.&lt;/li&gt;
+&lt;li&gt;Puis choisir &lt;em&gt;Lorsqu&amp;rsquo;une alerte est déclenchée - Power BI&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Appuyez sur &lt;strong&gt;Créer&lt;/strong&gt; pour créer votre flux.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/power-bi-data-alert-to-teams/img/003-power-automate-step-2.png&#34;
+	width=&#34;619&#34;
+	height=&#34;212&#34;
+	srcset=&#34;https://blog.ddata.fr/p/power-bi-data-alert-to-teams/img/003-power-automate-step-2_hu1c175b8ccb55b536379d77c3d0fbc045_16078_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/power-bi-data-alert-to-teams/img/003-power-automate-step-2_hu1c175b8ccb55b536379d77c3d0fbc045_16078_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Création du flux - étape 2&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;291&#34;
+		data-flex-basis=&#34;700px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Dans la boite du déclencheur, sélectionnez votre alerte dans &lt;em&gt;ID de l&amp;rsquo;alerte&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Appuyez sur &lt;strong&gt;Nouvelle étape&lt;/strong&gt; pour ajouter l&amp;rsquo;étape suivante.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/power-bi-data-alert-to-teams/img/004-power-automate-step-3.png&#34;
+	width=&#34;610&#34;
+	height=&#34;791&#34;
+	srcset=&#34;https://blog.ddata.fr/p/power-bi-data-alert-to-teams/img/004-power-automate-step-3_hu8f2107da6868cd61d1e84ca1c76e6364_55460_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/power-bi-data-alert-to-teams/img/004-power-automate-step-3_hu8f2107da6868cd61d1e84ca1c76e6364_55460_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Création du flux - étape 3&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;77&#34;
+		data-flex-basis=&#34;185px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Filtrer la liste des connecteurs en tapant &lt;em&gt;teams&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Sélectionnez &lt;em&gt;Microsoft Teams&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Sélectionnez &lt;em&gt;Publier le message dans une conversation instantanée ou un canal&lt;/em&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/power-bi-data-alert-to-teams/img/004-power-automate-step-4.png&#34;
+	width=&#34;1015&#34;
+	height=&#34;742&#34;
+	srcset=&#34;https://blog.ddata.fr/p/power-bi-data-alert-to-teams/img/004-power-automate-step-4_huf9f9afede14a21b3f8531b5fdd79daf4_58378_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/power-bi-data-alert-to-teams/img/004-power-automate-step-4_huf9f9afede14a21b3f8531b5fdd79daf4_58378_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Création du flux - étape 4&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;136&#34;
+		data-flex-basis=&#34;328px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Dans &lt;em&gt;Publier en tant que&lt;/em&gt; choisir &lt;strong&gt;Bot de flux&lt;/strong&gt;. Il s&amp;rsquo;agit de l&amp;rsquo;identité de l&amp;rsquo;émetteur du message dans le canal Teams.&lt;/li&gt;
+&lt;li&gt;Dans &lt;em&gt;Publier dans&lt;/em&gt; choisir &lt;strong&gt;Channel&lt;/strong&gt;. On va écrire dans un canal Teams.&lt;/li&gt;
+&lt;li&gt;Dans &lt;em&gt;Team&lt;/em&gt;, sélectionnez l&amp;rsquo;équipe dans laquelle vous voulez publier le message.&lt;/li&gt;
+&lt;li&gt;Dans &lt;em&gt;Channel&lt;/em&gt;, sélectionnez le canal dans laquelle vous voulez publier le message.&lt;/li&gt;
+&lt;li&gt;Dans &lt;em&gt;Message&lt;/em&gt; vous allez pouvoir écrire le message qui apparaitra dans Teams.&lt;/li&gt;
+&lt;li&gt;Vous pouvez mettre le message en forme avec la barre de mise en forme (Couleur du texte, gras, italique &amp;hellip;).&lt;/li&gt;
+&lt;li&gt;Pour rendre votre texte dynamique, vous pouvez ajouter du contenu dynamique en provenance des étapes précédentes. Il suffit de positionner votre curseur à l&amp;rsquo;endroit où vous souhaitez insérer le contenu.&lt;/li&gt;
+&lt;li&gt;Puis sélectionnez le contenu dynamique dans le menu de droite et de cliquer sur le contenu que vous souhaitez pour l&amp;rsquo;insérer.&lt;/li&gt;
+&lt;li&gt;Enregistrez votre flux.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;test-du-flux&#34;&gt;Test du flux&lt;/h3&gt;
+&lt;p&gt;Pour déclencher l&amp;rsquo;alerte, suivez la procédure &lt;em&gt;Test de l&amp;rsquo;alerte&lt;/em&gt; de l&amp;rsquo;article &lt;a class=&#34;link&#34; href=&#34;https://blog.ddata.fr/p/power-bi-create-data-alert/&#34; &gt;Power BI : Créer une alerte sur vos données&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Patientez, une fois l&amp;rsquo;alerte déclenchée, vous aurez ce résultat dans le canal Teams choisi :&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/power-bi-data-alert-to-teams/img/005-teams-powerbi-alert-in-channel.png&#34;
+	width=&#34;973&#34;
+	height=&#34;137&#34;
+	srcset=&#34;https://blog.ddata.fr/p/power-bi-data-alert-to-teams/img/005-teams-powerbi-alert-in-channel_huf6c184ff0f6862a53d44a6c412a12a70_17724_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/power-bi-data-alert-to-teams/img/005-teams-powerbi-alert-in-channel_huf6c184ff0f6862a53d44a6c412a12a70_17724_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Résultat de l&amp;rsquo;alerte dans le canal Teams&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;710&#34;
+		data-flex-basis=&#34;1704px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;amélioration-du-message-dans-teams&#34;&gt;Amélioration du message dans Teams&lt;/h3&gt;
+&lt;p&gt;Le résultat est fonctionnel, mais pas élégant, on a un lien non cliquable et très long dans le message Teams.&lt;/p&gt;
+&lt;p&gt;Pour améliorer cela, nous allons devoir modifier le flux.&lt;/p&gt;
+&lt;p&gt;Connectez-vous au &lt;a class=&#34;link&#34; href=&#34;https://make.powerautomate.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;site de Power Automate&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/power-bi-data-alert-to-teams/img/006-power-automate-landing-page.png&#34;
+	width=&#34;1386&#34;
+	height=&#34;763&#34;
+	srcset=&#34;https://blog.ddata.fr/p/power-bi-data-alert-to-teams/img/006-power-automate-landing-page_hu21f57df17d7b80de82f193b4ba750164_44418_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/power-bi-data-alert-to-teams/img/006-power-automate-landing-page_hu21f57df17d7b80de82f193b4ba750164_44418_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Page d’accueil&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;181&#34;
+		data-flex-basis=&#34;435px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Appuyez sur &lt;strong&gt;Mes flux&lt;/strong&gt; pour accéder à vos flux existants.&lt;/li&gt;
+&lt;li&gt;Cliquez sur votre flux pour l&amp;rsquo;ouvrir.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/power-bi-data-alert-to-teams/img/007-power-automate-page-detail-flux.png&#34;
+	width=&#34;1386&#34;
+	height=&#34;825&#34;
+	srcset=&#34;https://blog.ddata.fr/p/power-bi-data-alert-to-teams/img/007-power-automate-page-detail-flux_hu2b93c602f363ee1373532e0e04148cf1_83738_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/power-bi-data-alert-to-teams/img/007-power-automate-page-detail-flux_hu2b93c602f363ee1373532e0e04148cf1_83738_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Détail du flux&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;168&#34;
+		data-flex-basis=&#34;403px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Sur la page de détail du flux, vous pouvez voir :&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Les informations détaillées du flux.&lt;/li&gt;
+&lt;li&gt;L&amp;rsquo;historique des exécutions des 28 derniers jours.&lt;/li&gt;
+&lt;li&gt;Les informations sur les connexions utilisées par votre flux.&lt;/li&gt;
+&lt;li&gt;Cliquez sur le bouton &lt;em&gt;Modifier&lt;/em&gt; pour modifier votre flux.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/power-bi-data-alert-to-teams/img/008-power-automate-page-edit.png&#34;
+	width=&#34;1386&#34;
+	height=&#34;721&#34;
+	srcset=&#34;https://blog.ddata.fr/p/power-bi-data-alert-to-teams/img/008-power-automate-page-edit_hu1c5be17b1a51a0bdf2114ba5e716683c_44481_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/power-bi-data-alert-to-teams/img/008-power-automate-page-edit_hu1c5be17b1a51a0bdf2114ba5e716683c_44481_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Écran de modification du flux&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;192&#34;
+		data-flex-basis=&#34;461px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Vous ouvrez revenir sur l&amp;rsquo;écran précédent en utilisant la flèche de retour.&lt;/li&gt;
+&lt;li&gt;Appuyez sur l&amp;rsquo;étape pour déplier les propriétés de cette dernière.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/power-bi-data-alert-to-teams/img/009-power-automate-change-step01.png&#34;
+	width=&#34;1386&#34;
+	height=&#34;721&#34;
+	srcset=&#34;https://blog.ddata.fr/p/power-bi-data-alert-to-teams/img/009-power-automate-change-step01_huc28c92daf1cc244e062c91bc600785da_55402_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/power-bi-data-alert-to-teams/img/009-power-automate-change-step01_huc28c92daf1cc244e062c91bc600785da_55402_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Amélioration du flux - étape 1&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;192&#34;
+		data-flex-basis=&#34;461px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Nous retrouvons notre étape de message dans Teams tel que nous l&amp;rsquo;avions enregistré. 
+Pour l&amp;rsquo;améliorer, nous allons créer un lien propre inclus dans un texte. 
+Pour créer le lien, nous devons lz créer directement en HTML.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Appuyez sur l&amp;rsquo;icône &lt;strong&gt;&amp;lt;/&amp;gt;&lt;/strong&gt; pour basculer le message en mode HTML.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/power-bi-data-alert-to-teams/img/010-power-automate-change-step02-1.png&#34;
+	width=&#34;588&#34;
+	height=&#34;139&#34;
+	srcset=&#34;https://blog.ddata.fr/p/power-bi-data-alert-to-teams/img/010-power-automate-change-step02-1_hua7eaaaa37c2f60affa5598b83b1b58fb_8817_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/power-bi-data-alert-to-teams/img/010-power-automate-change-step02-1_hua7eaaaa37c2f60affa5598b83b1b58fb_8817_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Amélioration du flux - étape 2-1&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;423&#34;
+		data-flex-basis=&#34;1015px&#34;
+	
+&gt;
+&lt;img src=&#34;https://blog.ddata.fr/p/power-bi-data-alert-to-teams/img/010-power-automate-change-step02-2.png&#34;
+	width=&#34;584&#34;
+	height=&#34;130&#34;
+	srcset=&#34;https://blog.ddata.fr/p/power-bi-data-alert-to-teams/img/010-power-automate-change-step02-2_hude809f044397ffe61b68d42bca651232_8214_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/power-bi-data-alert-to-teams/img/010-power-automate-change-step02-2_hude809f044397ffe61b68d42bca651232_8214_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Amélioration du flux - étape 2-2&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;449&#34;
+		data-flex-basis=&#34;1078px&#34;
+	
+&gt;
+&lt;img src=&#34;https://blog.ddata.fr/p/power-bi-data-alert-to-teams/img/010-power-automate-change-step02-3.png&#34;
+	width=&#34;896&#34;
+	height=&#34;435&#34;
+	srcset=&#34;https://blog.ddata.fr/p/power-bi-data-alert-to-teams/img/010-power-automate-change-step02-3_hu2a0f52e6aa63e846e9a948048d04576b_31771_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/power-bi-data-alert-to-teams/img/010-power-automate-change-step02-3_hu2a0f52e6aa63e846e9a948048d04576b_31771_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Amélioration du flux - étape 2-3&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;205&#34;
+		data-flex-basis=&#34;494px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Supprimez la balise &lt;em&gt;URL de vignette&lt;/em&gt; en cliquant sur la croix.&lt;/li&gt;
+&lt;li&gt;Ajoutez le code HTML permettant de créer un lien : &lt;!-- raw HTML omitted --&gt;Lien&lt;!-- raw HTML omitted --&gt;
+&lt;ul&gt;
+&lt;li&gt;Le lien doit être placé entre les 2 doubles quotes après &lt;em&gt;href=&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;Le texte apparaissant à la place du lien sera &lt;em&gt;Lien&lt;/em&gt; dans notre cas et peut être modifié&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Positionnez votre curseur entre les 2 doubles quotes.&lt;/li&gt;
+&lt;li&gt;Puis sélectionnez le contenu dynamique dans le menu de droite.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Bonus : Vous pouvez utiliser des émoticônes dans vos messages en ajoutant par exemple : ⚠.&lt;br&gt;
+Sous Windows 10 la combinaison de touche &lt;strong&gt;windows + ;&lt;/strong&gt; permets d&amp;rsquo;ouvrir un menu pour insérer des émoticônes.&lt;/p&gt;
+&lt;h3 id=&#34;second-test-du-flux&#34;&gt;Second test du flux&lt;/h3&gt;
+&lt;p&gt;Nous allons maintenant retester notre flux. Au lieu d&amp;rsquo;attendre le déclenchement d&amp;rsquo;une alerte, nous allons utiliser la fonction de test qui permet de relancer une exécution avec les paramètres d&amp;rsquo;une précédente exécution.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/power-bi-data-alert-to-teams/img/011-power-automate-test-step01.png&#34;
+	width=&#34;1186&#34;
+	height=&#34;56&#34;
+	srcset=&#34;https://blog.ddata.fr/p/power-bi-data-alert-to-teams/img/011-power-automate-test-step01_hu9e81823eb7c5aabea16b6c52e3fcc988_6369_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/power-bi-data-alert-to-teams/img/011-power-automate-test-step01_hu9e81823eb7c5aabea16b6c52e3fcc988_6369_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Test du flux - étape 1&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;2117&#34;
+		data-flex-basis=&#34;5082px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Appuyez sur le bouton &lt;strong&gt;Tester&lt;/strong&gt; pour ouvrir le panneau &lt;strong&gt;Tester le flux&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/power-bi-data-alert-to-teams/img/012-power-automate-test-step02.png&#34;
+	width=&#34;337&#34;
+	height=&#34;672&#34;
+	srcset=&#34;https://blog.ddata.fr/p/power-bi-data-alert-to-teams/img/012-power-automate-test-step02_hu9f39f849536bb9fb8e7132b0f6265fbb_23815_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/power-bi-data-alert-to-teams/img/012-power-automate-test-step02_hu9f39f849536bb9fb8e7132b0f6265fbb_23815_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Test du flux - étape 2&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;50&#34;
+		data-flex-basis=&#34;120px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Sélectionnez &lt;em&gt;Automatiquement&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Puis &lt;em&gt;Avec un déclencheur récemment utilisé&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Choisissez une exécution précédente.&lt;/li&gt;
+&lt;li&gt;Appuyez sur le bouton &lt;em&gt;Enregistrer et tester&lt;/em&gt;. Si vous aviez déjà enregistré votre flux, le bouton indiquera seulement &lt;em&gt;Tester&lt;/em&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/power-bi-data-alert-to-teams/img/013-teams-powerbi-alert-in-channel-bis.png&#34;
+	width=&#34;905&#34;
+	height=&#34;114&#34;
+	srcset=&#34;https://blog.ddata.fr/p/power-bi-data-alert-to-teams/img/013-teams-powerbi-alert-in-channel-bis_hu3b30f44b1d8753dfc72c90f0a10ca4fc_7944_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/power-bi-data-alert-to-teams/img/013-teams-powerbi-alert-in-channel-bis_hu3b30f44b1d8753dfc72c90f0a10ca4fc_7944_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Nouveau résultat de l&amp;rsquo;alerte dans le canal Teams&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;793&#34;
+		data-flex-basis=&#34;1905px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Bravo, vous pouvez maintenant automatiser les actions sur vos alertes de données Power BI.&lt;/p&gt;
+&lt;p&gt;Merci de votre attention.&lt;/p&gt;</description>
+        </item>
+        <item>
         <title>💡 Votre nom de domaine gratuit !</title>
         <link>https://blog.ddata.fr/p/nom-de-domaine-gratuit/</link>
         <pubDate>Mon, 22 Aug 2022 00:00:00 +0000</pubDate>

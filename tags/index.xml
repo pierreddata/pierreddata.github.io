@@ -6,18 +6,10 @@
         <description>Recent content in Tags on Le D de Data</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>fr-fr</language>
-        <lastBuildDate>Sun, 18 Sep 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ddata.fr/tags/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>Débutant</title>
-        <link>https://blog.ddata.fr/tags/d%C3%A9butant/</link>
-        <pubDate>Sun, 18 Sep 2022 00:00:00 +0000</pubDate>
-        
-        <guid>https://blog.ddata.fr/tags/d%C3%A9butant/</guid>
-        <description></description>
-        </item>
-        <item>
+        <lastBuildDate>Sun, 25 Sep 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ddata.fr/tags/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Auto formation</title>
         <link>https://blog.ddata.fr/tags/auto-formation/</link>
-        <pubDate>Sun, 11 Sep 2022 00:00:00 +0000</pubDate>
+        <pubDate>Sun, 25 Sep 2022 00:00:00 +0000</pubDate>
         
         <guid>https://blog.ddata.fr/tags/auto-formation/</guid>
         <description></description>
@@ -25,9 +17,17 @@
         <item>
         <title>Trucs &amp; astuces</title>
         <link>https://blog.ddata.fr/tags/trucs-astuces/</link>
-        <pubDate>Sun, 11 Sep 2022 00:00:00 +0000</pubDate>
+        <pubDate>Sun, 25 Sep 2022 00:00:00 +0000</pubDate>
         
         <guid>https://blog.ddata.fr/tags/trucs-astuces/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Débutant</title>
+        <link>https://blog.ddata.fr/tags/d%C3%A9butant/</link>
+        <pubDate>Sun, 18 Sep 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://blog.ddata.fr/tags/d%C3%A9butant/</guid>
         <description></description>
         </item>
         <item>
