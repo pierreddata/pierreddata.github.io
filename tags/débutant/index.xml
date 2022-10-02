@@ -6,7 +6,225 @@
         <description>Recent content in Débutant on Le D de Data</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>fr-fr</language>
-        <lastBuildDate>Sun, 18 Sep 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ddata.fr/tags/d%C3%A9butant/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sun, 02 Oct 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ddata.fr/tags/d%C3%A9butant/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Les applications Power BI ?!?  A quoi ça sert ?</title>
+        <link>https://blog.ddata.fr/p/les-applications-power-bi/</link>
+        <pubDate>Sun, 02 Oct 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://blog.ddata.fr/p/les-applications-power-bi/</guid>
+        <description>&lt;img src="https://blog.ddata.fr/p/les-applications-power-bi/volodymyr-hryshchenko-V5vqWC9gyEU-unsplash.jpg" alt="Featured image of post Les applications Power BI ?!?  A quoi ça sert ?" /&gt;&lt;p&gt;Les applications Power BI sont trop souvent méconnues, vous vous demandez à quoi elles servent ?&lt;br&gt;
+Créons ensemble une application pour mieux comprendre leur usage.&lt;/p&gt;
+&lt;h2 id=&#34;contexte&#34;&gt;Contexte&lt;/h2&gt;
+&lt;p&gt;Dans Power BI il y a plusieurs manières de partager ses rapports avec son audience. Dès que vous souhaitez diffuser des contenus à une large audience, les applications Power BI sont la bonne manière de le faire.&lt;br&gt;
+Trop souvent les utilisateurs ne comprennent pas leur utilité ou ignorent même leur existence.&lt;/p&gt;
+&lt;h3 id=&#34;analogie-avec-la-création-dune-lettre-dinformation-sur-votre-intranet&#34;&gt;Analogie avec la création d&amp;rsquo;une lettre d&amp;rsquo;information sur votre intranet&lt;/h3&gt;
+&lt;p&gt;Imaginons que vous deviez créer une lettre d&amp;rsquo;information diffusée sur votre intranet, nous pouvons simplifier le processus de création de cette lettre d&amp;rsquo;information ainsi :&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;L&amp;rsquo;équipe en charge de la rédaction travaille sur un fichier Word dans un dossier partagé, ils ont accès en lecture/écriture au dossier.&lt;/li&gt;
+&lt;li&gt;Les personnes en charge de la relecture et de la validation accèdent à ce dossier en lecture seule.&lt;/li&gt;
+&lt;li&gt;Une fois le document validé, ce dernier est transformé en PDF pour être diffusé sur l&amp;rsquo;intranet.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Cet exemple de processus simple est analogue au processus de création de contenu dans le service Power BI :&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Les personnes en charge de la réalisation des rapports collaborent dans un espace de travail avec un des droits suivant : administrateur, membre ou contributeur.&lt;/li&gt;
+&lt;li&gt;Les personnes en charge de la relecture et de la validation accèdent à l&amp;rsquo;espace de travail avec le droit Visioneuse.&lt;/li&gt;
+&lt;li&gt;La diffusion des rapports est réalisée au travers d&amp;rsquo;une application Power BI.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;bénéfices-des-applications&#34;&gt;Bénéfices des applications&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;C&amp;rsquo;est le bon moyen de diffusion des données aux consommateurs de données.&lt;/li&gt;
+&lt;li&gt;Vous avez le contrôle sur les rapports visibles dans l&amp;rsquo;application. Ce n&amp;rsquo;est pas l&amp;rsquo;ensemble de l&amp;rsquo;espace de travail.&lt;/li&gt;
+&lt;li&gt;Tant que vous ne mettez pas à jour l&amp;rsquo;application, les modifications de rapports survenues dans l&amp;rsquo;espace de travail ne sont pas visibles dans l&amp;rsquo;application. Vous pouvez donc travailler sur une nouvelle version de vos rapports sans impacter vos utilisateurs.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;créer-une-application-power-bi&#34;&gt;Créer une application Power BI&lt;/h2&gt;
+&lt;p&gt;&lt;em&gt;Attention, cet article ne prend pas en compte la nouvelle expérience de création des applications actuellement en Public Preview. La nouvelle version est prometteuse, car elle permet la gestion de différentes audiences pour une même application.. Une mise à jour de cet article sera faite quand la version définitive de cette nouvelle fonctionnalité sera disponible.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Il existe une relation un pour un entre un espace de travail et une application. Une application Power BI est liée à un seul espace de travail et depuis un espace de travail on ne peut créer qu&amp;rsquo;une seule application.&lt;/p&gt;
+&lt;p&gt;Allez dans l&amp;rsquo;espace de travail depuis lequel vous souhaitez créer une application :&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/les-applications-power-bi/img/001-create-application-step-01.png&#34;
+	width=&#34;1574&#34;
+	height=&#34;486&#34;
+	srcset=&#34;https://blog.ddata.fr/p/les-applications-power-bi/img/001-create-application-step-01_hu8b73dc0f44fc16fd738d7158fe592f5b_45490_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/les-applications-power-bi/img/001-create-application-step-01_hu8b73dc0f44fc16fd738d7158fe592f5b_45490_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Créer une application&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;323&#34;
+		data-flex-basis=&#34;777px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Sélectionner les rapports et tableaux de bord devant être inclus dans l&amp;rsquo;application.&lt;/li&gt;
+&lt;li&gt;Appuyer sur le bouton &lt;strong&gt;Créer une&amp;hellip;&lt;/strong&gt; pour créer une application.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/les-applications-power-bi/img/002-create-application-step-02.png&#34;
+	width=&#34;784&#34;
+	height=&#34;876&#34;
+	srcset=&#34;https://blog.ddata.fr/p/les-applications-power-bi/img/002-create-application-step-02_hu86a3291f2a3fe1e863dc9e31798b2e65_43349_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/les-applications-power-bi/img/002-create-application-step-02_hu86a3291f2a3fe1e863dc9e31798b2e65_43349_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Information générale sur l&amp;rsquo;application&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;89&#34;
+		data-flex-basis=&#34;214px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Définir un nom pour votre application, ce nom peut-être différent de celui de l&amp;rsquo;espace de travail.&lt;/li&gt;
+&lt;li&gt;Définir une description pour l&amp;rsquo;application.&lt;/li&gt;
+&lt;li&gt;Personnalisez les différents éléments de votre application.&lt;/li&gt;
+&lt;li&gt;Cliquer sur l&amp;rsquo;onglet &lt;strong&gt;Navigation&lt;/strong&gt; pour poursuivre la configuration&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/les-applications-power-bi/img/003-create-application-step-03.png&#34;
+	width=&#34;1032&#34;
+	height=&#34;872&#34;
+	srcset=&#34;https://blog.ddata.fr/p/les-applications-power-bi/img/003-create-application-step-03_hu178d3e5b8ab80bf5a4180ac2f0c25b6e_49100_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/les-applications-power-bi/img/003-create-application-step-03_hu178d3e5b8ab80bf5a4180ac2f0c25b6e_49100_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Navigation de l&amp;rsquo;application&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;118&#34;
+		data-flex-basis=&#34;284px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Définir l&amp;rsquo;ordre et la visibilité des rapports et des tableaux de bord dans le menu principal de l&amp;rsquo;application.&lt;/li&gt;
+&lt;li&gt;Définir les noms des rapports et tableaux de bord dans le menu principal de l&amp;rsquo;application.&lt;/li&gt;
+&lt;li&gt;Cliquer sur l&amp;rsquo;onglet &lt;strong&gt;Autorisations&lt;/strong&gt; pour finir la configuration&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/les-applications-power-bi/img/004-create-application-step-04.png&#34;
+	width=&#34;1029&#34;
+	height=&#34;619&#34;
+	srcset=&#34;https://blog.ddata.fr/p/les-applications-power-bi/img/004-create-application-step-04_hue9f8f5b411c08dff52563ed5031cc8ba_42068_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/les-applications-power-bi/img/004-create-application-step-04_hue9f8f5b411c08dff52563ed5031cc8ba_42068_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Autorisations de l&amp;rsquo;application&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;166&#34;
+		data-flex-basis=&#34;398px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Définir qui a accès à cette application.&lt;/li&gt;
+&lt;li&gt;Définir le niveau de partage de l&amp;rsquo;application.&lt;/li&gt;
+&lt;li&gt;Cliquer sur &lt;strong&gt;Publier l&amp;rsquo;application&lt;/strong&gt; pour publier l&amp;rsquo;application.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/les-applications-power-bi/img/005-create-application-step-05.png&#34;
+	width=&#34;595&#34;
+	height=&#34;217&#34;
+	srcset=&#34;https://blog.ddata.fr/p/les-applications-power-bi/img/005-create-application-step-05_hu1268fe2bd9dbf7c40827c4a825bd06a2_13813_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/les-applications-power-bi/img/005-create-application-step-05_hu1268fe2bd9dbf7c40827c4a825bd06a2_13813_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Création de l&amp;rsquo;application&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;274&#34;
+		data-flex-basis=&#34;658px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Un écran d&amp;rsquo;avertissement apparait, cliquez sur &lt;strong&gt;Publier&lt;/strong&gt; pour terminer le processus&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/les-applications-power-bi/img/006-create-application-step-06.png&#34;
+	width=&#34;1236&#34;
+	height=&#34;619&#34;
+	srcset=&#34;https://blog.ddata.fr/p/les-applications-power-bi/img/006-create-application-step-06_hu25ff37f9941e6c254f567f0d214c3559_73500_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/les-applications-power-bi/img/006-create-application-step-06_hu25ff37f9941e6c254f567f0d214c3559_73500_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Finalisation de la création de l&amp;rsquo;application&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;199&#34;
+		data-flex-basis=&#34;479px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Accéder à votre application soit en cliquant sur le bouton &lt;strong&gt;Accéder à l&amp;rsquo;application&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;Soit par le menu application dans le menu de gauche de Power BI.&lt;/li&gt;
+&lt;li&gt;Soit en copiant le lien dans votre navigateur Internet.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;utilisation-de-lapplication-par-vos-utilisateurs&#34;&gt;Utilisation de l&amp;rsquo;application par vos utilisateurs&lt;/h2&gt;
+&lt;p&gt;Vos utilisateurs ont plusieurs moyens d&amp;rsquo;utiliser l&amp;rsquo;application.&lt;br&gt;
+Avant d&amp;rsquo;utiliser une application, elle doit être installée dans le profil de votre utilisateur.&lt;/p&gt;
+&lt;h3 id=&#34;installation-des-applications&#34;&gt;Installation des applications&lt;/h3&gt;
+&lt;p&gt;Si vous avez coché &lt;strong&gt;Installez automatiquement cette application&lt;/strong&gt; dans le panneau autorisation lors de la création de l&amp;rsquo;application, cette dernière s&amp;rsquo;installe automatiquement pour vos utilisateurs.&lt;/p&gt;
+&lt;p&gt;Pour installer manuellement une application, vous avez 2 moyens :&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Fournir le lien de l&amp;rsquo;application à votre utilisateur, l&amp;rsquo;utilisation de ce lien provoquera l&amp;rsquo;installation automatique de l&amp;rsquo;application.&lt;/li&gt;
+&lt;li&gt;Installer l&amp;rsquo;application depuis le menu &lt;strong&gt;Application&lt;/strong&gt; de Power BI.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/les-applications-power-bi/img/007-install-application-step-01.png&#34;
+	width=&#34;902&#34;
+	height=&#34;365&#34;
+	srcset=&#34;https://blog.ddata.fr/p/les-applications-power-bi/img/007-install-application-step-01_hucb2ab6755348299ebadf927e4f42ef09_20922_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/les-applications-power-bi/img/007-install-application-step-01_hucb2ab6755348299ebadf927e4f42ef09_20922_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Installation de l&amp;rsquo;application&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;247&#34;
+		data-flex-basis=&#34;593px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Sélectionnez le menu &lt;strong&gt;Application&lt;/strong&gt; de Power BI.&lt;/li&gt;
+&lt;li&gt;Appuyez sur le bouton &lt;strong&gt;Obtenir des applicati&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/les-applications-power-bi/img/008-install-application-step-02.png&#34;
+	width=&#34;1312&#34;
+	height=&#34;431&#34;
+	srcset=&#34;https://blog.ddata.fr/p/les-applications-power-bi/img/008-install-application-step-02_hucc8bc691c47282c071e33541abe6a55c_25929_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/les-applications-power-bi/img/008-install-application-step-02_hucc8bc691c47282c071e33541abe6a55c_25929_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Choix de l&amp;rsquo;application&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;304&#34;
+		data-flex-basis=&#34;730px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Allez sur l&amp;rsquo;onglet &lt;strong&gt;Applications organisationnelles&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;Sélectionnez l&amp;rsquo;application et appuyez sur &lt;strong&gt;Obtenir maintenant&lt;/strong&gt; pour installer l&amp;rsquo;application.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/les-applications-power-bi/img/009-install-application-step-03.png&#34;
+	width=&#34;1572&#34;
+	height=&#34;324&#34;
+	srcset=&#34;https://blog.ddata.fr/p/les-applications-power-bi/img/009-install-application-step-03_hu4c94f5223daaf61e82db39a04992cd00_27190_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/les-applications-power-bi/img/009-install-application-step-03_hu4c94f5223daaf61e82db39a04992cd00_27190_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Installation de l&amp;rsquo;application terminée&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;485&#34;
+		data-flex-basis=&#34;1164px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Quand l&amp;rsquo;application est installée, elle apparait dans le menu &lt;strong&gt;Application&lt;/strong&gt; de Power BI.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;mise-à-jour-des-applications&#34;&gt;Mise à jour des applications&lt;/h2&gt;
+&lt;p&gt;Pour mettre à jour une application et publier la dernière version des rapports et tableau de bord de l&amp;rsquo;espace de travail :&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Allez dans l&amp;rsquo;espace de travail de l&amp;rsquo;application.&lt;/li&gt;
+&lt;li&gt;Appuyer sur le bouton &lt;strong&gt;Mettre à j&amp;hellip;&lt;/strong&gt; pour mettre à jour l&amp;rsquo;application.&lt;/li&gt;
+&lt;li&gt;Suivre le même processus que celui de la création de l&amp;rsquo;application.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Merci de votre attention.&lt;/p&gt;</description>
+        </item>
+        <item>
         <title>Power Automate : Créer votre premier flux.</title>
         <link>https://blog.ddata.fr/p/powerautomate-first-flow/</link>
         <pubDate>Sun, 18 Sep 2022 00:00:00 +0000</pubDate>
