@@ -6,7 +6,103 @@
         <description>Recent content in Débutant on Le D de Data</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>fr-fr</language>
-        <lastBuildDate>Sun, 02 Oct 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ddata.fr/tags/d%C3%A9butant/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sun, 09 Oct 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ddata.fr/tags/d%C3%A9butant/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Power BI : leçon d&#39;anatomie</title>
+        <link>https://blog.ddata.fr/p/anatomie-de-power-bi/</link>
+        <pubDate>Sun, 09 Oct 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://blog.ddata.fr/p/anatomie-de-power-bi/</guid>
+        <description>&lt;img src="https://blog.ddata.fr/p/anatomie-de-power-bi/charlesdeluvio-YJxAy2p_ZJ4-unsplash.jpg" alt="Featured image of post Power BI : leçon d&#39;anatomie" /&gt;&lt;p&gt;Quand on débute avec Power BI, on n&amp;rsquo;a pas forcément une vision globale de ce que l&amp;rsquo;on fait. Je vous propose de vous accompagner pour découvrir les entrailles d&amp;rsquo;un projet Power BI.&lt;/p&gt;
+&lt;h2 id=&#34;contexte&#34;&gt;Contexte&lt;/h2&gt;
+&lt;p&gt;Power BI permet comme son nom l&amp;rsquo;indique de faire de la BI.&lt;br&gt;
+La BI, Business Inteliggence ou informatique décisionnelle en bon français, est la branche de l&amp;rsquo;informatique qui vous permet de faire des analyses et du reporting sur vos données passées.&lt;br&gt;
+Quel que soit l&amp;rsquo;outil, un projet BI se fait toujours de la même manière et Power BI ne déroge pas à cela :&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Collecte et préparation des données sources.&lt;/li&gt;
+&lt;li&gt;Modélisation des données et création des indicateurs.&lt;/li&gt;
+&lt;li&gt;Présentation des données.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;la-collecte-de-donnée-dans-power-bi-desktop&#34;&gt;La collecte de donnée dans Power BI Desktop&lt;/h2&gt;
+&lt;p&gt;La collecte des données dans Power BI, se fait à l&amp;rsquo;aide de l&amp;rsquo;outil Power Query. Cet outil permet la préparation des données et réalise la phase ETL (Extract Transform Load) classique des projets BI.&lt;br&gt;
+En sortie de Power Query, des tables sont créées dans la base de données de Power BI.&lt;br&gt;
+C&amp;rsquo;est aussi le processus Power Query qui permet de rafraichir vos données en répétant l&amp;rsquo;ensemble des transformations que vous avez défini pour la création de chaque table.&lt;/p&gt;
+&lt;p&gt;Les données que vous transformez sont toujours des copies des données sources, vous n&amp;rsquo;allez pas endommager vous données source avec Power BI.&lt;/p&gt;
+&lt;h2 id=&#34;la-modélisation-des-données-et-création-des-indicateurs&#34;&gt;La modélisation des données et création des indicateurs&lt;/h2&gt;
+&lt;p&gt;Une fois vos données disponibles dans les tables, vous allez passer à la phase de modélisation. Pour cela Power BI vous fournit 2 outils :&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/anatomie-de-power-bi/img/001-powerbi-desktop-modelisation.png&#34;
+	width=&#34;962&#34;
+	height=&#34;299&#34;
+	srcset=&#34;https://blog.ddata.fr/p/anatomie-de-power-bi/img/001-powerbi-desktop-modelisation_hu5acd8b8e87e4e30d57254ca56fadc630_22996_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/anatomie-de-power-bi/img/001-powerbi-desktop-modelisation_hu5acd8b8e87e4e30d57254ca56fadc630_22996_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Ecran de Power BI Desktop&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;321&#34;
+		data-flex-basis=&#34;772px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Un écran pour définir les relations entre vos tables. Il est fortement conseillé de réaliser une modélisation en étoile, mais nous ne détaillerons pas cela dans le présent article.&lt;/li&gt;
+&lt;li&gt;Un langage, le DAX, vous permettant de requêter vos données, avec lequel vous pourrez créer :
+&lt;ul&gt;
+&lt;li&gt;Des mesures calculées dynamiquement dans le contexte de filtre.&lt;/li&gt;
+&lt;li&gt;Des colonnes calculées dans le contexte de ligne&lt;/li&gt;
+&lt;li&gt;Des tables calculées.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Je ne rentrerais pas non plus dans les détails dans cet article. Si la différence entre mesure et colonne calculées vous intéresse, je vous conseille &lt;a class=&#34;link&#34; href=&#34;https://www.youtube.com/watch?v=wN3Nt2OH9Zo&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;cette excellente vidéo&lt;/a&gt; de &lt;a class=&#34;link&#34; href=&#34;https://www.youtube.com/c/Dataseito&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;DataSeito&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Une fois cette phase terminée vous avez un modèle de données utilisable pour créer vos rapports ou partageable avec vos utilisateurs dans le cadre de la self service BI.&lt;/p&gt;
+&lt;h2 id=&#34;la-présentation-des-données&#34;&gt;La présentation des données&lt;/h2&gt;
+&lt;p&gt;Après avoir travaillé dans l&amp;rsquo;arrière-boutique, vous allez maintenant mettre en forme vos données au travers des différents visuels disponibles pour présenter vos données à vos consommateurs de données.&lt;br&gt;
+C&amp;rsquo;est la phase la plus visible de votre travail, votre vitrine.&lt;/p&gt;
+&lt;h2 id=&#34;vision-synthétique-de-votre-travail-de-power-bi-desktop&#34;&gt;Vision synthétique de votre travail de Power BI Desktop&lt;/h2&gt;
+&lt;p&gt;Toutes les étapes précédentes sont généralement réalisées avec l&amp;rsquo;outil Power BI Desktop et l&amp;rsquo;ensemble de votre travail est conservé sous la forme d&amp;rsquo;un fichier avec l&amp;rsquo;extension PBIX.&lt;br&gt;
+Nous pouvons représenter le contenu de votre fichier PBIX sous cette forme simplifiée :&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/anatomie-de-power-bi/img/002-powerbi-pbix-content.png&#34;
+	width=&#34;613&#34;
+	height=&#34;340&#34;
+	srcset=&#34;https://blog.ddata.fr/p/anatomie-de-power-bi/img/002-powerbi-pbix-content_hu087a8c4a4da88fe464a8b57a8081a0d0_17811_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/anatomie-de-power-bi/img/002-powerbi-pbix-content_hu087a8c4a4da88fe464a8b57a8081a0d0_17811_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Contenu de votre fichier PBIX&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;180&#34;
+		data-flex-basis=&#34;432px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;publication-de-notre-travail&#34;&gt;Publication de notre travail&lt;/h2&gt;
+&lt;p&gt;Lorsque l&amp;rsquo;on souhaite partager son travail, on utilise le service Power BI. La publication se fait simplement via l&amp;rsquo;icône &lt;em&gt;Publier&lt;/em&gt; du menu de Power BI Desktop.
+Lors de la publication dans le service, votre travail est divisé en 2 objets distincts :&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Un jeu de données&lt;/li&gt;
+&lt;li&gt;Un rapport&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Les différents éléments décrits ci-dessus sont répartis ainsi entre ces 2 entités :&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/anatomie-de-power-bi/img/003-powerbi-service-content.png&#34;
+	width=&#34;579&#34;
+	height=&#34;367&#34;
+	srcset=&#34;https://blog.ddata.fr/p/anatomie-de-power-bi/img/003-powerbi-service-content_hu3e687a116326590fbcb417b3d7676c4c_20037_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/anatomie-de-power-bi/img/003-powerbi-service-content_hu3e687a116326590fbcb417b3d7676c4c_20037_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Répartition de votre PBIX dans votre espace de travail&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;157&#34;
+		data-flex-basis=&#34;378px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Ainsi se termine notre tour dans l&amp;rsquo;anatomie d&amp;rsquo;un projet Power BI.&lt;/p&gt;
+&lt;p&gt;Merci de votre attention.&lt;/p&gt;</description>
+        </item>
+        <item>
         <title>Les applications Power BI ?!?  A quoi ça sert ?</title>
         <link>https://blog.ddata.fr/p/les-applications-power-bi/</link>
         <pubDate>Sun, 02 Oct 2022 00:00:00 +0000</pubDate>
