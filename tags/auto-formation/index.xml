@@ -8,11 +8,11 @@
         <language>fr-fr</language>
         <lastBuildDate>Sun, 16 Oct 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ddata.fr/tags/auto-formation/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Jeu de données et rapport : la rupture !</title>
-        <link>https://blog.ddata.fr/p/jeu-de-donn%C3%A9es-et-rapport-la-rupture/</link>
+        <link>https://blog.ddata.fr/p/jeu-de-donnees-et-rapport-la-rupture/</link>
         <pubDate>Sun, 16 Oct 2022 00:00:00 +0000</pubDate>
         
-        <guid>https://blog.ddata.fr/p/jeu-de-donn%C3%A9es-et-rapport-la-rupture/</guid>
-        <description>&lt;img src="https://blog.ddata.fr/p/jeu-de-donn%C3%A9es-et-rapport-la-rupture/massimo-virgilio-7PfWuqT-As0-unsplash.jpg" alt="Featured image of post Jeu de données et rapport : la rupture !" /&gt;&lt;p&gt;C&amp;rsquo;est la fin d&amp;rsquo;une histoire et le début d&amp;rsquo;une autre, le temps de la séparation de votre jeu de données et son rapport arrive&amp;hellip;&lt;br&gt;
+        <guid>https://blog.ddata.fr/p/jeu-de-donnees-et-rapport-la-rupture/</guid>
+        <description>&lt;img src="https://blog.ddata.fr/p/jeu-de-donnees-et-rapport-la-rupture/massimo-virgilio-7PfWuqT-As0-unsplash.jpg" alt="Featured image of post Jeu de données et rapport : la rupture !" /&gt;&lt;p&gt;C&amp;rsquo;est la fin d&amp;rsquo;une histoire et le début d&amp;rsquo;une autre, le temps de la séparation de votre jeu de données et son rapport arrive&amp;hellip;&lt;br&gt;
 Mais pourquoi faire cela ? Est-ce douloureux ?&lt;/p&gt;
 &lt;h2 id=&#34;contexte&#34;&gt;Contexte&lt;/h2&gt;
 &lt;p&gt;Lorsque l&amp;rsquo;on débute avec Power BI on a tendance à tout faire dans le même fichier, préparation de données, modélisation et data visualisation. Mais dès que l&amp;rsquo;on publie notre rapport dans Power BI Service, on s&amp;rsquo;aperçoit que ce dernier divise notre travail en deux parties :&lt;/p&gt;
@@ -32,10 +32,10 @@ Téléchargez le fichier ou utilisez un de vos fichiers de travail, en prenant l
 &lt;p&gt;Un jeu de données est simplement un PBIX sans élément de visualisation. Vous serez par contre obligé de conserver au minimum une page de rapport. Je vous conseille donc de mettre à profit cette page pour informer les personnes ouvrant ce fichier que c&amp;rsquo;est un fichier dédié à être un jeu de données. Vous pouvez aussi profiter des pages de rapports pour documenter votre jeu de données ou avoir quelques visualisations dédiées aux contrôles de données.&lt;/p&gt;
 &lt;p&gt;Ouvrez le fichier dans Power BI Desktop.&lt;/p&gt;
 &lt;p&gt;Pour créer votre fichier dédié au jeu de données, vous devez simplement supprimer toutes les pages de rapport dédié à vos visualisations.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/jeu-de-donn%C3%A9es-et-rapport-la-rupture/img/001-power-bi-desktop-dataset-preparation.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/jeu-de-donnees-et-rapport-la-rupture/img/001-power-bi-desktop-dataset-preparation.png&#34;
 	width=&#34;1077&#34;
 	height=&#34;776&#34;
-	srcset=&#34;https://blog.ddata.fr/p/jeu-de-donn%C3%A9es-et-rapport-la-rupture/img/001-power-bi-desktop-dataset-preparation_hufb2e1eec1953d700803525354f979058_58406_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/jeu-de-donn%C3%A9es-et-rapport-la-rupture/img/001-power-bi-desktop-dataset-preparation_hufb2e1eec1953d700803525354f979058_58406_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://blog.ddata.fr/p/jeu-de-donnees-et-rapport-la-rupture/img/001-power-bi-desktop-dataset-preparation_hufb2e1eec1953d700803525354f979058_58406_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/jeu-de-donnees-et-rapport-la-rupture/img/001-power-bi-desktop-dataset-preparation_hufb2e1eec1953d700803525354f979058_58406_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;Préparation du fichier de jeu de données&#34;
@@ -57,10 +57,10 @@ Téléchargez le fichier ou utilisez un de vos fichiers de travail, en prenant l
 &lt;p&gt;Un fois cela fait, enregistrez votre fichier PBIX sous un nouveau nom, par exemple &lt;em&gt;blog.ddata.fr-simple-report-dataset.pbix&lt;/em&gt;.&lt;br&gt;
 Pour faire cela, allez dans le menu &lt;strong&gt;Fichier&lt;/strong&gt; et sélectionnez &lt;strong&gt;Enregistrer sous&lt;/strong&gt;.&lt;/p&gt;
 &lt;p&gt;Une fois votre fichier prêt, vous devez le publier dans le service avant de passer à l&amp;rsquo;étape suivante.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/jeu-de-donn%C3%A9es-et-rapport-la-rupture/img/002-power-bi-desktop-publish.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/jeu-de-donnees-et-rapport-la-rupture/img/002-power-bi-desktop-publish.png&#34;
 	width=&#34;1077&#34;
 	height=&#34;776&#34;
-	srcset=&#34;https://blog.ddata.fr/p/jeu-de-donn%C3%A9es-et-rapport-la-rupture/img/002-power-bi-desktop-publish_hu2db2307b5e6bc33cd54f315075ff0562_54048_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/jeu-de-donn%C3%A9es-et-rapport-la-rupture/img/002-power-bi-desktop-publish_hu2db2307b5e6bc33cd54f315075ff0562_54048_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://blog.ddata.fr/p/jeu-de-donnees-et-rapport-la-rupture/img/002-power-bi-desktop-publish_hu2db2307b5e6bc33cd54f315075ff0562_54048_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/jeu-de-donnees-et-rapport-la-rupture/img/002-power-bi-desktop-publish_hu2db2307b5e6bc33cd54f315075ff0562_54048_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;Publication du fichier de jeu de données&#34;
@@ -77,10 +77,10 @@ Pour faire cela, allez dans le menu &lt;strong&gt;Fichier&lt;/strong&gt; et sél
 &lt;li&gt;Sélectionnez l&amp;rsquo;espace de travail où vous voulez publier.&lt;/li&gt;
 &lt;li&gt;Appuyez sur &lt;strong&gt;Sélectionner&lt;/strong&gt; pour publier le jeu de données dans le service Poxer BI.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/jeu-de-donn%C3%A9es-et-rapport-la-rupture/img/003-power-bi-service-publication-result.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/jeu-de-donnees-et-rapport-la-rupture/img/003-power-bi-service-publication-result.png&#34;
 	width=&#34;1346&#34;
 	height=&#34;223&#34;
-	srcset=&#34;https://blog.ddata.fr/p/jeu-de-donn%C3%A9es-et-rapport-la-rupture/img/003-power-bi-service-publication-result_hu7996cf5ef14dcb368ff5acffbd17cdaf_17151_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/jeu-de-donn%C3%A9es-et-rapport-la-rupture/img/003-power-bi-service-publication-result_hu7996cf5ef14dcb368ff5acffbd17cdaf_17151_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://blog.ddata.fr/p/jeu-de-donnees-et-rapport-la-rupture/img/003-power-bi-service-publication-result_hu7996cf5ef14dcb368ff5acffbd17cdaf_17151_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/jeu-de-donnees-et-rapport-la-rupture/img/003-power-bi-service-publication-result_hu7996cf5ef14dcb368ff5acffbd17cdaf_17151_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;Publication du jeu de données dans le service Power BI&#34;
@@ -106,10 +106,10 @@ Pour faire cela, allez dans le menu &lt;strong&gt;Fichier&lt;/strong&gt; et sél
 &lt;li&gt;Les objets DAX restants&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Ouvrez le fichier dans Power BI Desktop.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/jeu-de-donn%C3%A9es-et-rapport-la-rupture/img/004-power-bi-desktop-power-query-menu.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/jeu-de-donnees-et-rapport-la-rupture/img/004-power-bi-desktop-power-query-menu.png&#34;
 	width=&#34;1023&#34;
 	height=&#34;133&#34;
-	srcset=&#34;https://blog.ddata.fr/p/jeu-de-donn%C3%A9es-et-rapport-la-rupture/img/004-power-bi-desktop-power-query-menu_hu3dab282424a9d9d79231bffc10789495_23115_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/jeu-de-donn%C3%A9es-et-rapport-la-rupture/img/004-power-bi-desktop-power-query-menu_hu3dab282424a9d9d79231bffc10789495_23115_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://blog.ddata.fr/p/jeu-de-donnees-et-rapport-la-rupture/img/004-power-bi-desktop-power-query-menu_hu3dab282424a9d9d79231bffc10789495_23115_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/jeu-de-donnees-et-rapport-la-rupture/img/004-power-bi-desktop-power-query-menu_hu3dab282424a9d9d79231bffc10789495_23115_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;Ouvrir l&amp;rsquo;éditeur Power Query&#34;
@@ -124,10 +124,10 @@ Pour faire cela, allez dans le menu &lt;strong&gt;Fichier&lt;/strong&gt; et sél
 &lt;li&gt;Nous devons accéder à l&amp;rsquo;éditeur Power Query, allez dans le menu &lt;strong&gt;Acceuil&lt;/strong&gt;.&lt;/li&gt;
 &lt;li&gt;Appuyez sur le bouton &lt;strong&gt;Transformer les données&lt;/strong&gt;.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/jeu-de-donn%C3%A9es-et-rapport-la-rupture/img/005-power-query-delete-all-query.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/jeu-de-donnees-et-rapport-la-rupture/img/005-power-query-delete-all-query.png&#34;
 	width=&#34;1083&#34;
 	height=&#34;753&#34;
-	srcset=&#34;https://blog.ddata.fr/p/jeu-de-donn%C3%A9es-et-rapport-la-rupture/img/005-power-query-delete-all-query_hu0a34b634c65d68f477b4222820236375_40936_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/jeu-de-donn%C3%A9es-et-rapport-la-rupture/img/005-power-query-delete-all-query_hu0a34b634c65d68f477b4222820236375_40936_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://blog.ddata.fr/p/jeu-de-donnees-et-rapport-la-rupture/img/005-power-query-delete-all-query_hu0a34b634c65d68f477b4222820236375_40936_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/jeu-de-donnees-et-rapport-la-rupture/img/005-power-query-delete-all-query_hu0a34b634c65d68f477b4222820236375_40936_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;Ouvrir l&amp;rsquo;éditeur Power Query&#34;
@@ -143,10 +143,10 @@ Pour faire cela, allez dans le menu &lt;strong&gt;Fichier&lt;/strong&gt; et sél
 &lt;li&gt;Faite un clic droit et sélectionnez &lt;strong&gt;Supprimer&lt;/strong&gt;. Appuyez sur &lt;strong&gt;Supprimer&lt;/strong&gt; dans le message suivant pour confirmer.&lt;/li&gt;
 &lt;li&gt;Appuyez sur le bouton &lt;strong&gt;Fermer et appliquer&lt;/strong&gt; pour enregistrer vos modifications.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/jeu-de-donn%C3%A9es-et-rapport-la-rupture/img/006-power-bi-desktop-report-only-error.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/jeu-de-donnees-et-rapport-la-rupture/img/006-power-bi-desktop-report-only-error.png&#34;
 	width=&#34;1077&#34;
 	height=&#34;776&#34;
-	srcset=&#34;https://blog.ddata.fr/p/jeu-de-donn%C3%A9es-et-rapport-la-rupture/img/006-power-bi-desktop-report-only-error_hu6475f6b4b319072136e3e97222bc2b62_56519_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/jeu-de-donn%C3%A9es-et-rapport-la-rupture/img/006-power-bi-desktop-report-only-error_hu6475f6b4b319072136e3e97222bc2b62_56519_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://blog.ddata.fr/p/jeu-de-donnees-et-rapport-la-rupture/img/006-power-bi-desktop-report-only-error_hu6475f6b4b319072136e3e97222bc2b62_56519_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/jeu-de-donnees-et-rapport-la-rupture/img/006-power-bi-desktop-report-only-error_hu6475f6b4b319072136e3e97222bc2b62_56519_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;Rapport en erreur dans Power BI desktop&#34;
@@ -163,10 +163,10 @@ Pour faire cela, allez dans le menu &lt;strong&gt;Fichier&lt;/strong&gt; et sél
 &lt;li&gt;Vérifier que rien ne reste dedans. Si ce n&amp;rsquo;est pas le cas, supprimez tous les éléments restant en faisant un clic droit dessus et en sélectionnant &lt;strong&gt;Supprimer du modèle&lt;/strong&gt;.&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;Il est maintenant temps de reconnecter notre rapport à une source de données. Pour cela nous allons le connecter directement au jeu de données que l&amp;rsquo;on a publié précédemment dans le service Power BI.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/jeu-de-donn%C3%A9es-et-rapport-la-rupture/img/007-power-bi-desktop-report-connect-dataset.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/jeu-de-donnees-et-rapport-la-rupture/img/007-power-bi-desktop-report-connect-dataset.png&#34;
 	width=&#34;1421&#34;
 	height=&#34;776&#34;
-	srcset=&#34;https://blog.ddata.fr/p/jeu-de-donn%C3%A9es-et-rapport-la-rupture/img/007-power-bi-desktop-report-connect-dataset_hud67de54dc63d96253a422ce5a5638e40_69748_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/jeu-de-donn%C3%A9es-et-rapport-la-rupture/img/007-power-bi-desktop-report-connect-dataset_hud67de54dc63d96253a422ce5a5638e40_69748_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://blog.ddata.fr/p/jeu-de-donnees-et-rapport-la-rupture/img/007-power-bi-desktop-report-connect-dataset_hud67de54dc63d96253a422ce5a5638e40_69748_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/jeu-de-donnees-et-rapport-la-rupture/img/007-power-bi-desktop-report-connect-dataset_hud67de54dc63d96253a422ce5a5638e40_69748_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;Connexion du rapport au jeu de données publié&#34;
@@ -184,10 +184,10 @@ Pour faire cela, allez dans le menu &lt;strong&gt;Fichier&lt;/strong&gt; et sél
 &lt;li&gt;Appuyez sur &lt;strong&gt;Se connecter&lt;/strong&gt;.&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;Un écran apparait pour vous permettre de choisir un jeu de données dans le service Power BI :&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/jeu-de-donn%C3%A9es-et-rapport-la-rupture/img/008-power-bi-desktop-report-select-dataset.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/jeu-de-donnees-et-rapport-la-rupture/img/008-power-bi-desktop-report-select-dataset.png&#34;
 	width=&#34;1421&#34;
 	height=&#34;776&#34;
-	srcset=&#34;https://blog.ddata.fr/p/jeu-de-donn%C3%A9es-et-rapport-la-rupture/img/008-power-bi-desktop-report-select-dataset_hu77bf1c1c735613a489ef364481771931_71751_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/jeu-de-donn%C3%A9es-et-rapport-la-rupture/img/008-power-bi-desktop-report-select-dataset_hu77bf1c1c735613a489ef364481771931_71751_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://blog.ddata.fr/p/jeu-de-donnees-et-rapport-la-rupture/img/008-power-bi-desktop-report-select-dataset_hu77bf1c1c735613a489ef364481771931_71751_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/jeu-de-donnees-et-rapport-la-rupture/img/008-power-bi-desktop-report-select-dataset_hu77bf1c1c735613a489ef364481771931_71751_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;Sélection du jeu de données publié&#34;
@@ -202,10 +202,10 @@ Pour faire cela, allez dans le menu &lt;strong&gt;Fichier&lt;/strong&gt; et sél
 &lt;li&gt;Sélectionnez votre jeu de données.&lt;/li&gt;
 &lt;li&gt;Appuyez sur &lt;strong&gt;Se connecter&lt;/strong&gt;.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/jeu-de-donn%C3%A9es-et-rapport-la-rupture/img/009-power-bi-desktop-report-on-dataset.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/jeu-de-donnees-et-rapport-la-rupture/img/009-power-bi-desktop-report-on-dataset.png&#34;
 	width=&#34;1421&#34;
 	height=&#34;776&#34;
-	srcset=&#34;https://blog.ddata.fr/p/jeu-de-donn%C3%A9es-et-rapport-la-rupture/img/009-power-bi-desktop-report-on-dataset_hua36b3dc7702a024440b551711cb24255_132696_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/jeu-de-donn%C3%A9es-et-rapport-la-rupture/img/009-power-bi-desktop-report-on-dataset_hua36b3dc7702a024440b551711cb24255_132696_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://blog.ddata.fr/p/jeu-de-donnees-et-rapport-la-rupture/img/009-power-bi-desktop-report-on-dataset_hua36b3dc7702a024440b551711cb24255_132696_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/jeu-de-donnees-et-rapport-la-rupture/img/009-power-bi-desktop-report-on-dataset_hua36b3dc7702a024440b551711cb24255_132696_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;Rapport sur le jeu de données publié&#34;
@@ -225,10 +225,10 @@ Pour faire cela, allez dans le menu &lt;strong&gt;Fichier&lt;/strong&gt; et sél
 Pour faire cela, allez dans le menu &lt;strong&gt;Fichier&lt;/strong&gt; et sélectionnez &lt;strong&gt;Enregistrer sous&lt;/strong&gt;.&lt;/p&gt;
 &lt;h2 id=&#34;vérification-dans-le-service&#34;&gt;Vérification dans le service&lt;/h2&gt;
 &lt;p&gt;Vous allez maintenant publier le rapport dans le service Power BI puis vous rendre dans l&amp;rsquo;espace de travail dans lequel vous avez publié.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/jeu-de-donn%C3%A9es-et-rapport-la-rupture/img/010-power-bi-service-publish-items.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/jeu-de-donnees-et-rapport-la-rupture/img/010-power-bi-service-publish-items.png&#34;
 	width=&#34;1624&#34;
 	height=&#34;392&#34;
-	srcset=&#34;https://blog.ddata.fr/p/jeu-de-donn%C3%A9es-et-rapport-la-rupture/img/010-power-bi-service-publish-items_hud36ded25718e3108c49412553c202510_37690_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/jeu-de-donn%C3%A9es-et-rapport-la-rupture/img/010-power-bi-service-publish-items_hud36ded25718e3108c49412553c202510_37690_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://blog.ddata.fr/p/jeu-de-donnees-et-rapport-la-rupture/img/010-power-bi-service-publish-items_hud36ded25718e3108c49412553c202510_37690_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/jeu-de-donnees-et-rapport-la-rupture/img/010-power-bi-service-publish-items_hud36ded25718e3108c49412553c202510_37690_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;Résultat des publications&#34;
@@ -243,10 +243,10 @@ Pour faire cela, allez dans le menu &lt;strong&gt;Fichier&lt;/strong&gt; et sél
 &lt;li&gt;Vous pouvez constater que seul le rapport est publié cette fois, il n&amp;rsquo;y a pas de jeu de données avec le même nom que le rapport.&lt;/li&gt;
 &lt;li&gt;Allez dans le menu &lt;strong&gt;Afficher&lt;/strong&gt; et sélectionnez &lt;strong&gt;Traçabilité&lt;/strong&gt;.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/jeu-de-donn%C3%A9es-et-rapport-la-rupture/img/011-power-bi-service-lineage.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/jeu-de-donnees-et-rapport-la-rupture/img/011-power-bi-service-lineage.png&#34;
 	width=&#34;1577&#34;
 	height=&#34;415&#34;
-	srcset=&#34;https://blog.ddata.fr/p/jeu-de-donn%C3%A9es-et-rapport-la-rupture/img/011-power-bi-service-lineage_hu9d34bd42d1181fa79fef791f90772a29_35795_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/jeu-de-donn%C3%A9es-et-rapport-la-rupture/img/011-power-bi-service-lineage_hu9d34bd42d1181fa79fef791f90772a29_35795_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://blog.ddata.fr/p/jeu-de-donnees-et-rapport-la-rupture/img/011-power-bi-service-lineage_hu9d34bd42d1181fa79fef791f90772a29_35795_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/jeu-de-donnees-et-rapport-la-rupture/img/011-power-bi-service-lineage_hu9d34bd42d1181fa79fef791f90772a29_35795_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;Vue de traçabilité&#34;
