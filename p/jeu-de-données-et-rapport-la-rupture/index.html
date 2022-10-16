@@ -1,0 +1,982 @@
+<!DOCTYPE html>
+<html lang="fr-fr" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='C&amp;rsquo;est la fin d&amp;rsquo;une histoire et le début d&amp;rsquo;une autre, le temps de la séparation de votre jeu de données et son rapport arrive&amp;hellip;
+Mais pourquoi faire cela ? Est-ce douloureux ?
+'><title>Jeu de données et rapport : la rupture !</title>
+
+<link rel='canonical' href='https://blog.ddata.fr/p/jeu-de-donn%C3%A9es-et-rapport-la-rupture/'>
+
+<link rel="stylesheet" href="/scss/style.min.5a8e892f6fa14515e9065eee1f5d2e05302606ec7f11750b2fb95198f9cdcbfd.css"><meta property='og:title' content='Jeu de données et rapport : la rupture !'>
+<meta property='og:description' content='C&amp;rsquo;est la fin d&amp;rsquo;une histoire et le début d&amp;rsquo;une autre, le temps de la séparation de votre jeu de données et son rapport arrive&amp;hellip;
+Mais pourquoi faire cela ? Est-ce douloureux ?
+'>
+<meta property='og:url' content='https://blog.ddata.fr/p/jeu-de-donn%C3%A9es-et-rapport-la-rupture/'>
+<meta property='og:site_name' content='Le D de Data'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Débutant' /><meta property='article:tag' content='Auto formation' /><meta property='article:published_time' content='2022-10-16T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2022-10-16T00:00:00&#43;00:00'/><meta property='og:image' content='https://blog.ddata.fr/p/jeu-de-donn%C3%A9es-et-rapport-la-rupture/massimo-virgilio-7PfWuqT-As0-unsplash.jpg' />
+<meta name="twitter:title" content="Jeu de données et rapport : la rupture !">
+<meta name="twitter:description" content="C&amp;rsquo;est la fin d&amp;rsquo;une histoire et le début d&amp;rsquo;une autre, le temps de la séparation de votre jeu de données et son rapport arrive&amp;hellip;
+Mais pourquoi faire cela ? Est-ce douloureux ?
+"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://blog.ddata.fr/p/jeu-de-donn%C3%A9es-et-rapport-la-rupture/massimo-virgilio-7PfWuqT-As0-unsplash.jpg' />
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TY6XFEN6QV"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-TY6XFEN6QV', { 'anonymize_ip': false });
+}
+</script>
+<link rel="alternate"
+      type="application/rss+xml"
+      href="https://blog.ddata.fr/index.xml"
+      title="Le D de Data">
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "dark");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Afficher le menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/pierre_hua6bbc70dde858dd10e363a14d1f7729c_67951_300x0_resize_q75_box.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Le D de Data</a></h1>
+            <h2 class="site-description">Blog francophone autour de la data Microsoft</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/pierreddata'
+                        target="_blank"
+                        title="GitHub"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://www.linkedin.com/in/pierre-dupont-0b532374/'
+                        target="_blank"
+                        title="LinkdIn"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-folders" width="44" height="44" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <rect x="4" y="4" width="16" height="16" rx="2" />
+  <line x1="8" y1="11" x2="8" y2="16" />
+  <line x1="8" y1="8" x2="8" y2="8.01" />
+  <line x1="12" y1="16" x2="12" y2="11" />
+  <path d="M16 16v-3a2 2 0 0 0 -4 0" />
+</svg>
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Accueil</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/a-propos-de-d-de-data/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>A Propos</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/series/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-folders" width="44" height="44" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 4h3l2 2h5a2 2 0 0 1 2 2v7a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-9a2 2 0 0 1 2 -2" />
+  <path d="M17 17v2a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-9a2 2 0 0 1 2 -2h2" />
+</svg>
+
+                
+                <span>Series</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/liens/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Liens</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Rechercher</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Mode sombre</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+<main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/jeu-de-donn%C3%A9es-et-rapport-la-rupture/">
+                <img src="/p/jeu-de-donn%C3%A9es-et-rapport-la-rupture/massimo-virgilio-7PfWuqT-As0-unsplash_hu4f849c82d4e14f72bfb032f4fe26f62a_6495568_800x0_resize_q75_box.jpg"
+                        srcset="/p/jeu-de-donn%C3%A9es-et-rapport-la-rupture/massimo-virgilio-7PfWuqT-As0-unsplash_hu4f849c82d4e14f72bfb032f4fe26f62a_6495568_800x0_resize_q75_box.jpg 800w, /p/jeu-de-donn%C3%A9es-et-rapport-la-rupture/massimo-virgilio-7PfWuqT-As0-unsplash_hu4f849c82d4e14f72bfb032f4fe26f62a_6495568_1600x0_resize_q75_box.jpg 1600w"
+                        width="800" 
+                        height="1200" 
+                        loading="lazy"
+                        alt="Featured image of post Jeu de données et rapport : la rupture !" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/powerbi/" style="background-color: #f2c811; color: #fff;">
+                Power BI
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/jeu-de-donn%C3%A9es-et-rapport-la-rupture/">Jeu de données et rapport : la rupture !</a>
+        </h2>
+
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published" datetime="2022-10-16T00:00:00Z">
+                    16 octobre 2022
+                    
+                </time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    5 minutes de lecture
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+    
+    
+</div>
+</header>
+
+    <section class="article-content">
+    
+    
+    <p>C&rsquo;est la fin d&rsquo;une histoire et le début d&rsquo;une autre, le temps de la séparation de votre jeu de données et son rapport arrive&hellip;<br>
+Mais pourquoi faire cela ? Est-ce douloureux ?</p>
+<h2 id="contexte">Contexte</h2>
+<p>Lorsque l&rsquo;on débute avec Power BI on a tendance à tout faire dans le même fichier, préparation de données, modélisation et data visualisation. Mais dès que l&rsquo;on publie notre rapport dans Power BI Service, on s&rsquo;aperçoit que ce dernier divise notre travail en deux parties :</p>
+<ol>
+<li>Un jeu de données (Dataset) qui contient la préparation de données et la modélisation.</li>
+<li>Un rapport qui contient la data visualisation.</li>
+</ol>
+<p>Dès que l&rsquo;on va plus avant dans l&rsquo;utilisation de la BI self service, on se rend compte que l&rsquo;on peut créer plusieurs rapports sur un même jeu de données ou ouvrir un jeu de données directement dans Excel, via l&rsquo;option <em>Analyser dans Excel</em> du service Power BI.<br>
+Rapidement on comprend que l&rsquo;on a tout intérêt à créer 2 fichiers pbix de travail, un pour le jeu de donnée et un pour la data visualisation.</p>
+<p>Vous avez déjà des rapports avec tout dedans et vous ne souhaitez pas repartir de zéro ? Ne vous inquiétez pas je vais vous montrer comment séparer votre fichier en 2 et cela sans douleur !</p>
+<h2 id="préparation-des-fichiers">Préparation des fichiers</h2>
+<p>Pour notre démonstration, nous allons utiliser un <a class="link" href="https://github.com/pierreddata/blog.ddata.fr/raw/main/powerbi/blog.ddata.fr-simple-report.pbix"  target="_blank" rel="noopener"
+    >rapport simple</a> disponible sur mon <a class="link" href="https://github.com/pierreddata/blog.ddata.fr"  target="_blank" rel="noopener"
+    >Github</a>.<br>
+Téléchargez le fichier ou utilisez un de vos fichiers de travail, en prenant la précaution de travailler sur une copie.</p>
+<h2 id="création-du-jeu-de-données">Création du jeu de données</h2>
+<p>Un jeu de données est simplement un PBIX sans élément de visualisation. Vous serez par contre obligé de conserver au minimum une page de rapport. Je vous conseille donc de mettre à profit cette page pour informer les personnes ouvrant ce fichier que c&rsquo;est un fichier dédié à être un jeu de données. Vous pouvez aussi profiter des pages de rapports pour documenter votre jeu de données ou avoir quelques visualisations dédiées aux contrôles de données.</p>
+<p>Ouvrez le fichier dans Power BI Desktop.</p>
+<p>Pour créer votre fichier dédié au jeu de données, vous devez simplement supprimer toutes les pages de rapport dédié à vos visualisations.</p>
+<p><img src="/p/jeu-de-donn%C3%A9es-et-rapport-la-rupture/img/001-power-bi-desktop-dataset-preparation.png"
+	width="1077"
+	height="776"
+	srcset="/p/jeu-de-donn%C3%A9es-et-rapport-la-rupture/img/001-power-bi-desktop-dataset-preparation_hufb2e1eec1953d700803525354f979058_58406_480x0_resize_box_3.png 480w, /p/jeu-de-donn%C3%A9es-et-rapport-la-rupture/img/001-power-bi-desktop-dataset-preparation_hufb2e1eec1953d700803525354f979058_58406_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Préparation du fichier de jeu de données"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="138"
+		data-flex-basis="333px"
+	
+></p>
+<ol>
+<li>Ajoutez une nouvelle page avec le bouton <strong>+</strong> en bas.</li>
+<li>Renommer cette page, en faisant un clic droit sur l&rsquo;onglet puis <em>Renommer la page</em>.</li>
+<li>Utilisez le menu <em>Insérer</em>.</li>
+<li>Ajouter une zone de texte.</li>
+<li>Ajoutez des informations relatives à votre jeu de données</li>
+<li>Supprimez les pages de rapports avec l&rsquo;ancienne data visualisation, en faisant un clic droit sur l&rsquo;onglet puis <em>Supprimer la page</em>.</li>
+</ol>
+<p>Un fois cela fait, enregistrez votre fichier PBIX sous un nouveau nom, par exemple <em>blog.ddata.fr-simple-report-dataset.pbix</em>.<br>
+Pour faire cela, allez dans le menu <strong>Fichier</strong> et sélectionnez <strong>Enregistrer sous</strong>.</p>
+<p>Une fois votre fichier prêt, vous devez le publier dans le service avant de passer à l&rsquo;étape suivante.</p>
+<p><img src="/p/jeu-de-donn%C3%A9es-et-rapport-la-rupture/img/002-power-bi-desktop-publish.png"
+	width="1077"
+	height="776"
+	srcset="/p/jeu-de-donn%C3%A9es-et-rapport-la-rupture/img/002-power-bi-desktop-publish_hu2db2307b5e6bc33cd54f315075ff0562_54048_480x0_resize_box_3.png 480w, /p/jeu-de-donn%C3%A9es-et-rapport-la-rupture/img/002-power-bi-desktop-publish_hu2db2307b5e6bc33cd54f315075ff0562_54048_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Publication du fichier de jeu de données"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="138"
+		data-flex-basis="333px"
+	
+></p>
+<ol>
+<li>Dans le menu <strong>Acceuil</strong>.</li>
+<li>Appuyez sur le bouton <strong>Publier</strong>.</li>
+<li>Sélectionnez l&rsquo;espace de travail où vous voulez publier.</li>
+<li>Appuyez sur <strong>Sélectionner</strong> pour publier le jeu de données dans le service Poxer BI.</li>
+</ol>
+<p><img src="/p/jeu-de-donn%C3%A9es-et-rapport-la-rupture/img/003-power-bi-service-publication-result.png"
+	width="1346"
+	height="223"
+	srcset="/p/jeu-de-donn%C3%A9es-et-rapport-la-rupture/img/003-power-bi-service-publication-result_hu7996cf5ef14dcb368ff5acffbd17cdaf_17151_480x0_resize_box_3.png 480w, /p/jeu-de-donn%C3%A9es-et-rapport-la-rupture/img/003-power-bi-service-publication-result_hu7996cf5ef14dcb368ff5acffbd17cdaf_17151_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Publication du jeu de données dans le service Power BI"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="603"
+		data-flex-basis="1448px"
+	
+></p>
+<p>Une fois publié, le fichier est séparé en 2 morceaux :</p>
+<ul>
+<li>Un jeu de données</li>
+<li>Un rapport</li>
+</ul>
+<p>Pour plus d&rsquo;explications sur le contenu de chaque entité, je détaille cela dans l&rsquo;article <a class="link" href="https://blog.ddata.fr/p/anatomie-de-power-bi/" >Power BI : leçon d&rsquo;anatomie</a>.</p>
+<p>Vous pouvez supprimer le rapport si vous le souhaitez. Pour cela, positionnez-vous sur la ligne, appuyez sur les 3 points et choisissez <strong>Supprimer</strong>.</p>
+<h2 id="création-de-la-data-visualisation">Création de la data visualisation</h2>
+<p>Nous allons repartir de notre fichier PBIX initial, celui qui contient tout, et le transformer en un fichier PBIX qui ne contiendra que la partie rapport (la visualisation).</p>
+<p>Pour créer votre fichier dédié au rapport, vous devez simplement supprimer tous les éléments relatifs à l&rsquo;intégration de données :</p>
+<ul>
+<li>Les requêtes Power Query</li>
+<li>Les objets DAX restants</li>
+</ul>
+<p>Ouvrez le fichier dans Power BI Desktop.</p>
+<p><img src="/p/jeu-de-donn%C3%A9es-et-rapport-la-rupture/img/004-power-bi-desktop-power-query-menu.png"
+	width="1023"
+	height="133"
+	srcset="/p/jeu-de-donn%C3%A9es-et-rapport-la-rupture/img/004-power-bi-desktop-power-query-menu_hu3dab282424a9d9d79231bffc10789495_23115_480x0_resize_box_3.png 480w, /p/jeu-de-donn%C3%A9es-et-rapport-la-rupture/img/004-power-bi-desktop-power-query-menu_hu3dab282424a9d9d79231bffc10789495_23115_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Ouvrir l&rsquo;éditeur Power Query"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="769"
+		data-flex-basis="1846px"
+	
+></p>
+<ol>
+<li>Nous devons accéder à l&rsquo;éditeur Power Query, allez dans le menu <strong>Acceuil</strong>.</li>
+<li>Appuyez sur le bouton <strong>Transformer les données</strong>.</li>
+</ol>
+<p><img src="/p/jeu-de-donn%C3%A9es-et-rapport-la-rupture/img/005-power-query-delete-all-query.png"
+	width="1083"
+	height="753"
+	srcset="/p/jeu-de-donn%C3%A9es-et-rapport-la-rupture/img/005-power-query-delete-all-query_hu0a34b634c65d68f477b4222820236375_40936_480x0_resize_box_3.png 480w, /p/jeu-de-donn%C3%A9es-et-rapport-la-rupture/img/005-power-query-delete-all-query_hu0a34b634c65d68f477b4222820236375_40936_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Ouvrir l&rsquo;éditeur Power Query"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="143"
+		data-flex-basis="345px"
+	
+></p>
+<ol>
+<li>Sélectionnez <strong>TOUTES</strong> vos requêtes Power Query. Vous pouvez le faire en sélectionnant la première requête de la liste, puis en maintenant la touche majuscule appuyée et sélectionnez la dernière de la liste.</li>
+<li>Faite un clic droit et sélectionnez <strong>Supprimer</strong>. Appuyez sur <strong>Supprimer</strong> dans le message suivant pour confirmer.</li>
+<li>Appuyez sur le bouton <strong>Fermer et appliquer</strong> pour enregistrer vos modifications.</li>
+</ol>
+<p><img src="/p/jeu-de-donn%C3%A9es-et-rapport-la-rupture/img/006-power-bi-desktop-report-only-error.png"
+	width="1077"
+	height="776"
+	srcset="/p/jeu-de-donn%C3%A9es-et-rapport-la-rupture/img/006-power-bi-desktop-report-only-error_hu6475f6b4b319072136e3e97222bc2b62_56519_480x0_resize_box_3.png 480w, /p/jeu-de-donn%C3%A9es-et-rapport-la-rupture/img/006-power-bi-desktop-report-only-error_hu6475f6b4b319072136e3e97222bc2b62_56519_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Rapport en erreur dans Power BI desktop"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="138"
+		data-flex-basis="333px"
+	
+></p>
+<ol>
+<li>De retour dans l&rsquo;écran principal de Power BI Desktop, tout est en erreur, pas d&rsquo;inquiétude, c&rsquo;est normal.</li>
+<li>Ouvrez le panneau <strong>Champs</strong>.</li>
+<li>Vérifier que rien ne reste dedans. Si ce n&rsquo;est pas le cas, supprimez tous les éléments restant en faisant un clic droit dessus et en sélectionnant <strong>Supprimer du modèle</strong>.</li>
+</ol>
+<p>Il est maintenant temps de reconnecter notre rapport à une source de données. Pour cela nous allons le connecter directement au jeu de données que l&rsquo;on a publié précédemment dans le service Power BI.</p>
+<p><img src="/p/jeu-de-donn%C3%A9es-et-rapport-la-rupture/img/007-power-bi-desktop-report-connect-dataset.png"
+	width="1421"
+	height="776"
+	srcset="/p/jeu-de-donn%C3%A9es-et-rapport-la-rupture/img/007-power-bi-desktop-report-connect-dataset_hud67de54dc63d96253a422ce5a5638e40_69748_480x0_resize_box_3.png 480w, /p/jeu-de-donn%C3%A9es-et-rapport-la-rupture/img/007-power-bi-desktop-report-connect-dataset_hud67de54dc63d96253a422ce5a5638e40_69748_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Connexion du rapport au jeu de données publié"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="183"
+		data-flex-basis="439px"
+	
+></p>
+<ol>
+<li>Dans le menu <strong>Acceuil</strong>, appuyez sur le bouton <strong>Obtenir les données</strong>.</li>
+<li>Sélectionnez <strong>Power Platform</strong>.</li>
+<li>Sélectionnez <strong>Jeu de données Power BI</strong>.</li>
+<li>Appuyez sur <strong>Se connecter</strong>.</li>
+</ol>
+<p>Un écran apparait pour vous permettre de choisir un jeu de données dans le service Power BI :</p>
+<p><img src="/p/jeu-de-donn%C3%A9es-et-rapport-la-rupture/img/008-power-bi-desktop-report-select-dataset.png"
+	width="1421"
+	height="776"
+	srcset="/p/jeu-de-donn%C3%A9es-et-rapport-la-rupture/img/008-power-bi-desktop-report-select-dataset_hu77bf1c1c735613a489ef364481771931_71751_480x0_resize_box_3.png 480w, /p/jeu-de-donn%C3%A9es-et-rapport-la-rupture/img/008-power-bi-desktop-report-select-dataset_hu77bf1c1c735613a489ef364481771931_71751_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Sélection du jeu de données publié"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="183"
+		data-flex-basis="439px"
+	
+></p>
+<ol>
+<li>Sélectionnez votre jeu de données.</li>
+<li>Appuyez sur <strong>Se connecter</strong>.</li>
+</ol>
+<p><img src="/p/jeu-de-donn%C3%A9es-et-rapport-la-rupture/img/009-power-bi-desktop-report-on-dataset.png"
+	width="1421"
+	height="776"
+	srcset="/p/jeu-de-donn%C3%A9es-et-rapport-la-rupture/img/009-power-bi-desktop-report-on-dataset_hua36b3dc7702a024440b551711cb24255_132696_480x0_resize_box_3.png 480w, /p/jeu-de-donn%C3%A9es-et-rapport-la-rupture/img/009-power-bi-desktop-report-on-dataset_hua36b3dc7702a024440b551711cb24255_132696_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Rapport sur le jeu de données publié"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="183"
+		data-flex-basis="439px"
+	
+></p>
+<ol>
+<li>Votre rapport affiche de nouveau vos données.</li>
+<li>Votre modèle de données est de nouveau disponible dans le panneau <strong>Champs</strong>.</li>
+</ol>
+<p>Tout est revenu comme avant, car votre rapport est connecté à un jeu de données compatible avec l&rsquo;ancien jeu de données local. Ce qui est normal puisque c&rsquo;est le même.</p>
+<p>Une fois cela fait, enregistrez votre fichier PBIX sous un nouveau nom, par exemple <em>blog.ddata.fr-simple-report-dataviz.pbix</em>.<br>
+Pour faire cela, allez dans le menu <strong>Fichier</strong> et sélectionnez <strong>Enregistrer sous</strong>.</p>
+<h2 id="vérification-dans-le-service">Vérification dans le service</h2>
+<p>Vous allez maintenant publier le rapport dans le service Power BI puis vous rendre dans l&rsquo;espace de travail dans lequel vous avez publié.</p>
+<p><img src="/p/jeu-de-donn%C3%A9es-et-rapport-la-rupture/img/010-power-bi-service-publish-items.png"
+	width="1624"
+	height="392"
+	srcset="/p/jeu-de-donn%C3%A9es-et-rapport-la-rupture/img/010-power-bi-service-publish-items_hud36ded25718e3108c49412553c202510_37690_480x0_resize_box_3.png 480w, /p/jeu-de-donn%C3%A9es-et-rapport-la-rupture/img/010-power-bi-service-publish-items_hud36ded25718e3108c49412553c202510_37690_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Résultat des publications"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="414"
+		data-flex-basis="994px"
+	
+></p>
+<ol>
+<li>Vous pouvez constater que seul le rapport est publié cette fois, il n&rsquo;y a pas de jeu de données avec le même nom que le rapport.</li>
+<li>Allez dans le menu <strong>Afficher</strong> et sélectionnez <strong>Traçabilité</strong>.</li>
+</ol>
+<p><img src="/p/jeu-de-donn%C3%A9es-et-rapport-la-rupture/img/011-power-bi-service-lineage.png"
+	width="1577"
+	height="415"
+	srcset="/p/jeu-de-donn%C3%A9es-et-rapport-la-rupture/img/011-power-bi-service-lineage_hu9d34bd42d1181fa79fef791f90772a29_35795_480x0_resize_box_3.png 480w, /p/jeu-de-donn%C3%A9es-et-rapport-la-rupture/img/011-power-bi-service-lineage_hu9d34bd42d1181fa79fef791f90772a29_35795_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Vue de traçabilité"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="380"
+		data-flex-basis="912px"
+	
+></p>
+<ol>
+<li>Dans cette vue, on peut voir que l&rsquo;on a 2 rapports sur un jeu de données.</li>
+</ol>
+<ul>
+<li>Le rapport publié en même temps que le jeu de données si vous ne l&rsquo;avez pas supprimé.</li>
+<li>Le rapport que l&rsquo;on vient de publier.</li>
+</ul>
+<ol start="2">
+<li>Allez dans le menu <strong>Afficher</strong> et sélectionnez <strong>Liste</strong> pour revenir à la vue classique.</li>
+</ol>
+<p>Bravo, vous avez réussi la rupture entre votre jeu de données et votre rapport.</p>
+<p>Merci de votre attention.</p>
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/d%C3%A9butant/">Débutant</a>
+        
+            <a href="/tags/auto-formation/">Auto formation</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Contenus liés</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/anatomie-de-power-bi/">
+        
+        
+            <div class="article-image">
+                <img src="/p/anatomie-de-power-bi/_hu82c25fa98cd4e9a8103220017be4b8cb_324346_216d117080fab6b616abea9f55172058.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Power BI : leçon d&#39;anatomie"
+                        data-key="anatomie-de-power-bi" 
+                        data-hash="md5-mVERI5eqRDhuKTFhLvA&#43;1Q==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Power BI : leçon d&#39;anatomie</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/les-applications-power-bi/">
+        
+        
+            <div class="article-image">
+                <img src="/p/les-applications-power-bi/_huae08634171f8756a098e3310c58d8541_2234549_413d9c107e49b581ca210358c113e415.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Les applications Power BI ?!?  A quoi ça sert ?"
+                        data-key="les-applications-power-bi" 
+                        data-hash="md5-9dB9TtMvexvR0JpzcUoXnA==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Les applications Power BI ?!?  A quoi ça sert ?</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/power-bi-create-data-alert/">
+        
+        
+            <div class="article-image">
+                <img src="/p/power-bi-create-data-alert/_hu82c25fa98cd4e9a8103220017be4b8cb_443365_53ef746dea6f8640841f1d97315ce776.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 💡 Power BI : Créer une alerte sur vos données."
+                        data-key="power-bi-create-data-alert" 
+                        data-hash="md5-lZArKS3Xl6Dn49XcpxVzBg==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">💡 Power BI : Créer une alerte sur vos données.</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/power-bi-create-dashboard/">
+        
+        
+            <div class="article-image">
+                <img src="/p/power-bi-create-dashboard/_huf938efc7b2a69af6a2c521a2a8f95bf7_3564155_652f7090deed73ab7c671f2026f1051c.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 💡 Power BI : Créer un tableau de bord Power BI."
+                        data-key="power-bi-create-dashboard" 
+                        data-hash="md5-zfCZOFkRA26yLGk9Oe0ARg==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">💡 Power BI : Créer un tableau de bord Power BI.</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/afficher-date-derniere-mise-a-jour/">
+        
+        
+            <div class="article-image">
+                <img src="/p/afficher-date-derniere-mise-a-jour/_hu9a362b859678502b1d25b6ed7a3ae50f_1047477_7fd7776f83620e67bc278d1bd4df27fb.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 💡 Power BI : Ajouter la date de la dernière mise à jour de votre jeu de données. 📅"
+                        data-key="afficher-date-derniere-mise-a-jour" 
+                        data-hash="md5-2EuE7coC9XLpv&#43;oz7qz/og==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">💡 Power BI : Ajouter la date de la dernière mise à jour de votre jeu de données. 📅</h2>
+        </div>
+    </a>
+</article>
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "ddata" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2022 Le D de Data
+    </section>
+    
+    <section class="powerby">
+        Généré avec <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Thème <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.13.0">Stack</a></b> conçu par <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table des matières</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#contexte">Contexte</a></li>
+    <li><a href="#préparation-des-fichiers">Préparation des fichiers</a></li>
+    <li><a href="#création-du-jeu-de-données">Création du jeu de données</a></li>
+    <li><a href="#création-de-la-data-visualisation">Création de la data visualisation</a></li>
+    <li><a href="#vérification-dans-le-service">Vérification dans le service</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>
