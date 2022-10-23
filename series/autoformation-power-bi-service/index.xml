@@ -6,7 +6,230 @@
         <description>Recent content in Autoformation Power BI Service on Le D de Data</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>fr-fr</language>
-        <lastBuildDate>Sun, 16 Oct 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ddata.fr/series/autoformation-power-bi-service/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sun, 23 Oct 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ddata.fr/series/autoformation-power-bi-service/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Bien partager votre travail</title>
+        <link>https://blog.ddata.fr/p/partager-avec-power-bi/</link>
+        <pubDate>Sun, 23 Oct 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://blog.ddata.fr/p/partager-avec-power-bi/</guid>
+        <description>&lt;img src="https://blog.ddata.fr/p/partager-avec-power-bi/tamanna-rumee-CIfgsywk-_4-unsplash.jpg" alt="Featured image of post Bien partager votre travail" /&gt;&lt;p&gt;Vous avez terminé votre rapport, il est maintenant temps de le partager. Mais quelle est la bonne solution ?&lt;/p&gt;
+&lt;h2 id=&#34;contexte&#34;&gt;Contexte&lt;/h2&gt;
+&lt;p&gt;Dans Power Bi il existe plusieurs options de partage: Partager le fichier pbix, ou publier le rapport dans le service et partager directement le rapport, le partager via un espace de travail ou une application ? Que choisir ?&lt;/p&gt;
+&lt;p&gt;Dans cet article nous allons passer en revue ces différents modes de partage pour bien comprendre lequel est le plus adapté en fonction de vos besoins.&lt;/p&gt;
+&lt;p&gt;Rappelez-vous bien qu&amp;rsquo;il n&amp;rsquo;existe pas une manière unique de partager vos rapports, car il n&amp;rsquo;existe pas un besoin unique de diffusion de nos rapports.&lt;/p&gt;
+&lt;h2 id=&#34;scénarii-de-partage&#34;&gt;Scénarii de partage&lt;/h2&gt;
+&lt;p&gt;Nous partageons un rapport pour répondre à différents besoins, parmi lesquels on retrouve :&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;La co création du rapport avec d&amp;rsquo;autres concepteurs.&lt;/li&gt;
+&lt;li&gt;La validation du rapport avec le demandeur.&lt;/li&gt;
+&lt;li&gt;La diffusion du rapport aux utilisateurs consommant notre rapport.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;partager-son-fichier-pbix&#34;&gt;Partager son fichier pbix&lt;/h2&gt;
+&lt;p&gt;Partager son rapport en partageant le fichier pbix est la manière de partage la plus simple à comprendre et la plus intuitive pour un utilisateur débutant.&lt;br&gt;
+Cette méthode est adaptée pour la co création mais certainement pas pour les autres scénarii de partage.&lt;/p&gt;
+&lt;h3 id=&#34;avantages&#34;&gt;Avantages&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Possibilité de partager le travail de conception du rapport en équipe à condition de ne pas travailler en simultané sur un même fichier.&lt;/li&gt;
+&lt;li&gt;Pas besoin de licence Power BI.&lt;/li&gt;
+&lt;li&gt;Pas de partage sur la cloud.&lt;/li&gt;
+&lt;li&gt;Pas besoin de passerelle pour la mise à jour des données locale.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;inconvénients&#34;&gt;Inconvénients&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Power BI Descktop doit être installée sur le poste de la personne consultant le rapport pour ouvrir le fichier pbix.&lt;/li&gt;
+&lt;li&gt;Le rafraichissement de données du rapport nécessite un accès aux données.&lt;/li&gt;
+&lt;li&gt;Si des copies du fichier sont réalisées pour partager en simultané à plusieurs utilisateurs cela coûte en stockage et en ressources pour rafraichir les données des N rapports identiques.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;publier-son-rapport-dans-power-bi-service&#34;&gt;Publier son rapport dans Power BI Service&lt;/h2&gt;
+&lt;p&gt;La bonne solution pour partager vos rapports est une publication dans le service Power BI.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/partager-avec-power-bi/img/001-power-bi-publish-to-service.png&#34;
+	width=&#34;1360&#34;
+	height=&#34;838&#34;
+	srcset=&#34;https://blog.ddata.fr/p/partager-avec-power-bi/img/001-power-bi-publish-to-service_hu58216aa4b7dcf1497bdb4e6f83ca4509_77717_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/partager-avec-power-bi/img/001-power-bi-publish-to-service_hu58216aa4b7dcf1497bdb4e6f83ca4509_77717_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Publication vers Power Bi Service&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;162&#34;
+		data-flex-basis=&#34;389px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Appuyez sur le bouton &lt;strong&gt;Publier&lt;/strong&gt; dans le menu &lt;strong&gt;Accueil&lt;/strong&gt; de Power BI Desktop.&lt;/li&gt;
+&lt;li&gt;Choisissez un Espace de travail où publier.&lt;/li&gt;
+&lt;li&gt;Appuyez sur le bouton &lt;strong&gt;Sélectionner&lt;/strong&gt; pour démarrer la publication de votre rapport.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Lors de la publication, vous avez 2 types d&amp;rsquo;espace de travail disponible :&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Votre espace de travail personnel.&lt;/li&gt;
+&lt;li&gt;Un espace de travail Pro, PPU ou Premium.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;em&gt;Note&lt;/em&gt; : Quand je parle d&amp;rsquo;espace de travail sans plus de précision, je parle des espaces de travail V2 dans lesquels vous pouvez collaborer avec d&amp;rsquo;autres utilisateurs.&lt;/p&gt;
+&lt;p&gt;Pour la suite nous allons uniquement envisager la seconde possibilité. Cette action nécessite une licence &lt;strong&gt;Power BI Pro&lt;/strong&gt; ou &lt;strong&gt;Power BI Premium Per User&lt;/strong&gt; pour pouvoir publier vers un espace de travail.&lt;/p&gt;
+&lt;h2 id=&#34;partager-directement-un-rapport&#34;&gt;Partager directement un rapport&lt;/h2&gt;
+&lt;p&gt;Vous pouvez partager un rapport de manière unitaire.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/partager-avec-power-bi/img/002-share-report-step-01.png&#34;
+	width=&#34;564&#34;
+	height=&#34;107&#34;
+	srcset=&#34;https://blog.ddata.fr/p/partager-avec-power-bi/img/002-share-report-step-01_hu9d8cfa4d8d1a1c29354aefde65cfcfff_5935_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/partager-avec-power-bi/img/002-share-report-step-01_hu9d8cfa4d8d1a1c29354aefde65cfcfff_5935_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Partager un rapport&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;527&#34;
+		data-flex-basis=&#34;1265px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Utilisez le bouton &lt;strong&gt;Partager&lt;/strong&gt; disponible sur la ligne du rapport dans la liste des objets de l&amp;rsquo;espace de travail.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/partager-avec-power-bi/img/003-share-report-step-02.png&#34;
+	width=&#34;319&#34;
+	height=&#34;463&#34;
+	srcset=&#34;https://blog.ddata.fr/p/partager-avec-power-bi/img/003-share-report-step-02_hub1f8730912744afd904c8c0d7c3b01ff_21065_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/partager-avec-power-bi/img/003-share-report-step-02_hub1f8730912744afd904c8c0d7c3b01ff_21065_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Option de partage&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;68&#34;
+		data-flex-basis=&#34;165px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Sélectionnez le mode de partage.&lt;/li&gt;
+&lt;li&gt;Sélectionnez avec qui partager.&lt;/li&gt;
+&lt;li&gt;Sélectionnez le mode d&amp;rsquo;envoi du lien de partage.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Vous pouvez partager avec :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Un utilisateur interne ou invité (externe à votre organisation).&lt;/li&gt;
+&lt;li&gt;Un groupe de sécurité ou de distribution.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;avantages-1&#34;&gt;Avantages&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Cette méthode et simple et rapide.&lt;/li&gt;
+&lt;li&gt;Fonctionne aussi depuis un espace de travail personnel.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;inconvénients-1&#34;&gt;Inconvénients&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Ce mode de partage ne fonctionne qu&amp;rsquo;avec un seul rapport à la fois. Si vous voulez partager plusieurs rapports, vous devez refaire l&amp;rsquo;opération pour chaque rapport et vous générer un lien par rapport.&lt;/li&gt;
+&lt;li&gt;Pas de partage avec un groupe Teams (Microsoft 365).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;partager-un-espace-de-travail&#34;&gt;Partager un espace de travail&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/partager-avec-power-bi/img/004-share-workspace-step-01.png&#34;
+	width=&#34;1588&#34;
+	height=&#34;437&#34;
+	srcset=&#34;https://blog.ddata.fr/p/partager-avec-power-bi/img/004-share-workspace-step-01_hubf1b1290352728628fd87bc87cac8c80_35812_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/partager-avec-power-bi/img/004-share-workspace-step-01_hubf1b1290352728628fd87bc87cac8c80_35812_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Partager un espace de travail&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;363&#34;
+		data-flex-basis=&#34;872px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Appuyer sur le bouton &lt;strong&gt;Accès&lt;/strong&gt; pour partager votre espace de travail à d&amp;rsquo;autres utilisateurs.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/partager-avec-power-bi/img/005-share-workspace-step-02.png&#34;
+	width=&#34;539&#34;
+	height=&#34;699&#34;
+	srcset=&#34;https://blog.ddata.fr/p/partager-avec-power-bi/img/005-share-workspace-step-02_hu7fe7a29a7c4cb78f35caa59de4d0ef0e_23232_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/partager-avec-power-bi/img/005-share-workspace-step-02_hu7fe7a29a7c4cb78f35caa59de4d0ef0e_23232_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Option de partage d&amp;rsquo;un espace de travail&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;77&#34;
+		data-flex-basis=&#34;185px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Sélectionnez avec qui partager.&lt;/li&gt;
+&lt;li&gt;Sélectionnez le niveau d&amp;rsquo;autorisation.&lt;/li&gt;
+&lt;li&gt;Validez en appuyant sur &lt;strong&gt;Ajouter&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Vous pouvez partager avec :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Un utilisateur interne ou invité (externe à votre organisation).&lt;/li&gt;
+&lt;li&gt;Un groupe de sécurité, de distribution ou une équipe Teams (groupe Microsoft 365).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;avantages-2&#34;&gt;Avantages&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Partage avec une équipe Teams.&lt;/li&gt;
+&lt;li&gt;Possibilité de collaborer pour la conception des rapports.&lt;/li&gt;
+&lt;li&gt;Partage de tous les objets de l&amp;rsquo;espace de travail en une seule opération.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;inconvénients-2&#34;&gt;Inconvénients&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Partage de tous les objets de l&amp;rsquo;espace de travail. Oui comme dans les avantages, mais on ne souhaite pas forcément laisser voir les rapports en cours d&amp;rsquo;élaboration à des utilisateurs finaux.&lt;/li&gt;
+&lt;li&gt;En cas d&amp;rsquo;usage de la sécurité niveau ligne (RLS), seuls les utilisateurs avec l&amp;rsquo;autorisation &lt;strong&gt;Visionneuse&lt;/strong&gt; subissent la RLS.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;utiliser-une-application-power-bi&#34;&gt;Utiliser une application Power BI&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/partager-avec-power-bi/img/006-share-application-step-01.png&#34;
+	width=&#34;228&#34;
+	height=&#34;428&#34;
+	srcset=&#34;https://blog.ddata.fr/p/partager-avec-power-bi/img/006-share-application-step-01_hu48ddd9be4fb52240c19cbe8b49a8a54c_9231_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/partager-avec-power-bi/img/006-share-application-step-01_hu48ddd9be4fb52240c19cbe8b49a8a54c_9231_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Partager une application&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;53&#34;
+		data-flex-basis=&#34;127px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;L&amp;rsquo;accès à vos rapports se fait via l&amp;rsquo;écran &lt;strong&gt;Application&lt;/strong&gt; et non par l&amp;rsquo;accès à l&amp;rsquo;espace de travail.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Pour les détails sur la création d&amp;rsquo;une application Power BI et le partage de celle-ci, je vous invite à lire &lt;a class=&#34;link&#34; href=&#34;https://blog.ddata.fr/p/les-applications-power-bi/&#34; &gt;mon article dédié&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Vous pouvez partager avec :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Un utilisateur interne ou invité (externe à votre organisation).&lt;/li&gt;
+&lt;li&gt;Un groupe de sécurité, de distribution ou une équipe Teams (groupe Microsoft 365).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;avantages-3&#34;&gt;Avantages&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;C&amp;rsquo;est le bon moyen de diffusion des données aux consommateurs de données.&lt;/li&gt;
+&lt;li&gt;Vous avez le contrôle sur les rapports visibles dans l&amp;rsquo;application. Ce n&amp;rsquo;est pas l&amp;rsquo;ensemble de l&amp;rsquo;espace de travail.&lt;/li&gt;
+&lt;li&gt;Tant que vous ne mettez pas à jour l&amp;rsquo;application, les modifications de rapports survenues dans l&amp;rsquo;espace de travail ne sont pas visibles dans l&amp;rsquo;application. Vous pouvez donc travailler sur une nouvelle version de vos rapports sans impacter vos utilisateurs.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;inconvénients-3&#34;&gt;Inconvénients&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Le jeu de données reste commun entre l&amp;rsquo;espace de travail et l&amp;rsquo;application, toute mise à jour de ce dernier doit être faite en conservant la compatibilité pour la version des rapports de l&amp;rsquo;application.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;choisir-son-mode-de-partage&#34;&gt;Choisir son mode de partage&lt;/h2&gt;
+&lt;p&gt;Maintenant que nous avons passé en revue les différents modes de partage, la grande question est : lequel utiliser ?&lt;/p&gt;
+&lt;p&gt;Voici un arbre de décision :&lt;/p&gt;
+&lt;div class=&#34;mermaid&#34;&gt;flowchart TD
+    A{Quel type de permissions est nécessaire ?}
+    A -- Edition --&gt; B[&#34;Partage de l&#39;espace de travail (Adminitrateur, Membre, Contributeur)&#34;]
+    A -- Lecture seule --&gt; C{Quel type de contenu}
+    C -- &#34;Contenu d&#39;entreprise&#34; --&gt; D[&#34;Application&#34;]
+    C -- Contenu collaboratif --&gt; E{Combien d&#39;objets doivent être partagés ?}
+    E -- &#34;Tous ceux de l&#39;espace de travail&#34; --&gt; F[&#34;Partage de l&#39;espace de travail (Visioneuse)&#34;]
+    E -- Un seul --&gt; G[&#34;Partage direct&#34;]
+  &lt;/div&gt;
+  &lt;h3 id=&#34;synthèse-des-partages&#34;&gt;Synthèse des partages&lt;/h3&gt;
+&lt;p&gt;Ce qu&amp;rsquo;il faut bien comprendre pour choisir :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Un espace de travail est comme son nom l&amp;rsquo;indique un lieu dans lequel vous allez travailler. Vous allez travailler sur les modèles de données, les rapports et les tableaux de bord. Je le répète c&amp;rsquo;est un lieu de &lt;strong&gt;travail&lt;/strong&gt; pas un lieu de &lt;strong&gt;diffusion&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;L&amp;rsquo;application Power BI &lt;strong&gt;est&lt;/strong&gt; le bon moyen de diffusion de vos informations.&lt;/li&gt;
+&lt;li&gt;Le partage d&amp;rsquo;un rapport de manière unitaire est un moyen simple pour partager rapidement un rapport à une personne. Il n&amp;rsquo;est pas utilisable pour un grand nombre de rapports ou pour adresser une audience vaste.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Merci de votre attention&lt;/p&gt;</description>
+        </item>
+        <item>
         <title>Jeu de données et rapport : la rupture !</title>
         <link>https://blog.ddata.fr/p/jeu-de-donnees-et-rapport-la-rupture/</link>
         <pubDate>Sun, 16 Oct 2022 00:00:00 +0000</pubDate>

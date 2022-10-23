@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="fr-fr" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Vous avez terminé votre rapport, il est maintenant temps de le partager. Mais quelle est la bonne solution ?
+'><title>Bien partager votre travail</title>
+
+<link rel='canonical' href='https://blog.ddata.fr/p/partager-avec-power-bi/'>
+
+<link rel="stylesheet" href="/scss/style.min.b0b89b0dd996a596c4f3b50239e7a6499c1a59da968562fa4649d097368cdb29.css"><meta property='og:title' content='Bien partager votre travail'>
+<meta property='og:description' content='Vous avez terminé votre rapport, il est maintenant temps de le partager. Mais quelle est la bonne solution ?
+'>
+<meta property='og:url' content='https://blog.ddata.fr/p/partager-avec-power-bi/'>
+<meta property='og:site_name' content='Le D de Data'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Débutant' /><meta property='article:tag' content='Auto formation' /><meta property='article:published_time' content='2022-10-23T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2022-10-23T00:00:00&#43;00:00'/><meta property='og:image' content='https://blog.ddata.fr/p/partager-avec-power-bi/tamanna-rumee-CIfgsywk-_4-unsplash.jpg' />
+<meta name="twitter:title" content="Bien partager votre travail">
+<meta name="twitter:description" content="Vous avez terminé votre rapport, il est maintenant temps de le partager. Mais quelle est la bonne solution ?
+"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://blog.ddata.fr/p/partager-avec-power-bi/tamanna-rumee-CIfgsywk-_4-unsplash.jpg' />
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TY6XFEN6QV"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-TY6XFEN6QV', { 'anonymize_ip': false });
+}
+</script>
+<link rel="alternate"
+      type="application/rss+xml"
+      href="https://blog.ddata.fr/index.xml"
+      title="Le D de Data">
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "dark");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Afficher le menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/pierre_hua6bbc70dde858dd10e363a14d1f7729c_67951_300x0_resize_q75_box.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Le D de Data</a></h1>
+            <h2 class="site-description">Blog francophone autour de la data Microsoft</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/pierreddata'
+                        target="_blank"
+                        title="GitHub"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://www.linkedin.com/in/pierre-dupont-0b532374/'
+                        target="_blank"
+                        title="LinkdIn"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-folders" width="44" height="44" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <rect x="4" y="4" width="16" height="16" rx="2" />
+  <line x1="8" y1="11" x2="8" y2="16" />
+  <line x1="8" y1="8" x2="8" y2="8.01" />
+  <line x1="12" y1="16" x2="12" y2="11" />
+  <path d="M16 16v-3a2 2 0 0 0 -4 0" />
+</svg>
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Accueil</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/a-propos-de-d-de-data/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>A Propos</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/series/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-folders" width="44" height="44" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 4h3l2 2h5a2 2 0 0 1 2 2v7a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-9a2 2 0 0 1 2 -2" />
+  <path d="M17 17v2a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-9a2 2 0 0 1 2 -2h2" />
+</svg>
+
+                
+                <span>Series</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/liens/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Liens</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Rechercher</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Mode sombre</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+<main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/partager-avec-power-bi/">
+                <img src="/p/partager-avec-power-bi/tamanna-rumee-CIfgsywk-_4-unsplash_hu59c2f53d89f061f5e30f7c5261dfb40e_568587_800x0_resize_q75_box.jpg"
+                        srcset="/p/partager-avec-power-bi/tamanna-rumee-CIfgsywk-_4-unsplash_hu59c2f53d89f061f5e30f7c5261dfb40e_568587_800x0_resize_q75_box.jpg 800w, /p/partager-avec-power-bi/tamanna-rumee-CIfgsywk-_4-unsplash_hu59c2f53d89f061f5e30f7c5261dfb40e_568587_1600x0_resize_q75_box.jpg 1600w"
+                        width="800" 
+                        height="533" 
+                        loading="lazy"
+                        alt="Featured image of post Bien partager votre travail" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/powerbi/" style="background-color: #f2c811; color: #fff;">
+                Power BI
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/partager-avec-power-bi/">Bien partager votre travail</a>
+        </h2>
+
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published" datetime="2022-10-23T00:00:00Z">
+                    23 octobre 2022
+                    
+                </time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    6 minutes de lecture
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+    
+    
+        <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+        <script>
+            mermaid.initialize({ startOnLoad: true });
+        </script>
+    
+</div>
+</header>
+
+    <section class="article-content">
+    
+    
+    <p>Vous avez terminé votre rapport, il est maintenant temps de le partager. Mais quelle est la bonne solution ?</p>
+<h2 id="contexte">Contexte</h2>
+<p>Dans Power Bi il existe plusieurs options de partage: Partager le fichier pbix, ou publier le rapport dans le service et partager directement le rapport, le partager via un espace de travail ou une application ? Que choisir ?</p>
+<p>Dans cet article nous allons passer en revue ces différents modes de partage pour bien comprendre lequel est le plus adapté en fonction de vos besoins.</p>
+<p>Rappelez-vous bien qu&rsquo;il n&rsquo;existe pas une manière unique de partager vos rapports, car il n&rsquo;existe pas un besoin unique de diffusion de nos rapports.</p>
+<h2 id="scénarii-de-partage">Scénarii de partage</h2>
+<p>Nous partageons un rapport pour répondre à différents besoins, parmi lesquels on retrouve :</p>
+<ol>
+<li>La co création du rapport avec d&rsquo;autres concepteurs.</li>
+<li>La validation du rapport avec le demandeur.</li>
+<li>La diffusion du rapport aux utilisateurs consommant notre rapport.</li>
+</ol>
+<h2 id="partager-son-fichier-pbix">Partager son fichier pbix</h2>
+<p>Partager son rapport en partageant le fichier pbix est la manière de partage la plus simple à comprendre et la plus intuitive pour un utilisateur débutant.<br>
+Cette méthode est adaptée pour la co création mais certainement pas pour les autres scénarii de partage.</p>
+<h3 id="avantages">Avantages</h3>
+<ul>
+<li>Possibilité de partager le travail de conception du rapport en équipe à condition de ne pas travailler en simultané sur un même fichier.</li>
+<li>Pas besoin de licence Power BI.</li>
+<li>Pas de partage sur la cloud.</li>
+<li>Pas besoin de passerelle pour la mise à jour des données locale.</li>
+</ul>
+<h3 id="inconvénients">Inconvénients</h3>
+<ul>
+<li>Power BI Descktop doit être installée sur le poste de la personne consultant le rapport pour ouvrir le fichier pbix.</li>
+<li>Le rafraichissement de données du rapport nécessite un accès aux données.</li>
+<li>Si des copies du fichier sont réalisées pour partager en simultané à plusieurs utilisateurs cela coûte en stockage et en ressources pour rafraichir les données des N rapports identiques.</li>
+</ul>
+<h2 id="publier-son-rapport-dans-power-bi-service">Publier son rapport dans Power BI Service</h2>
+<p>La bonne solution pour partager vos rapports est une publication dans le service Power BI.</p>
+<p><img src="/p/partager-avec-power-bi/img/001-power-bi-publish-to-service.png"
+	width="1360"
+	height="838"
+	srcset="/p/partager-avec-power-bi/img/001-power-bi-publish-to-service_hu58216aa4b7dcf1497bdb4e6f83ca4509_77717_480x0_resize_box_3.png 480w, /p/partager-avec-power-bi/img/001-power-bi-publish-to-service_hu58216aa4b7dcf1497bdb4e6f83ca4509_77717_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Publication vers Power Bi Service"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="162"
+		data-flex-basis="389px"
+	
+></p>
+<ol>
+<li>Appuyez sur le bouton <strong>Publier</strong> dans le menu <strong>Accueil</strong> de Power BI Desktop.</li>
+<li>Choisissez un Espace de travail où publier.</li>
+<li>Appuyez sur le bouton <strong>Sélectionner</strong> pour démarrer la publication de votre rapport.</li>
+</ol>
+<p>Lors de la publication, vous avez 2 types d&rsquo;espace de travail disponible :</p>
+<ol>
+<li>Votre espace de travail personnel.</li>
+<li>Un espace de travail Pro, PPU ou Premium.</li>
+</ol>
+<p><em>Note</em> : Quand je parle d&rsquo;espace de travail sans plus de précision, je parle des espaces de travail V2 dans lesquels vous pouvez collaborer avec d&rsquo;autres utilisateurs.</p>
+<p>Pour la suite nous allons uniquement envisager la seconde possibilité. Cette action nécessite une licence <strong>Power BI Pro</strong> ou <strong>Power BI Premium Per User</strong> pour pouvoir publier vers un espace de travail.</p>
+<h2 id="partager-directement-un-rapport">Partager directement un rapport</h2>
+<p>Vous pouvez partager un rapport de manière unitaire.</p>
+<p><img src="/p/partager-avec-power-bi/img/002-share-report-step-01.png"
+	width="564"
+	height="107"
+	srcset="/p/partager-avec-power-bi/img/002-share-report-step-01_hu9d8cfa4d8d1a1c29354aefde65cfcfff_5935_480x0_resize_box_3.png 480w, /p/partager-avec-power-bi/img/002-share-report-step-01_hu9d8cfa4d8d1a1c29354aefde65cfcfff_5935_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Partager un rapport"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="527"
+		data-flex-basis="1265px"
+	
+></p>
+<ol>
+<li>Utilisez le bouton <strong>Partager</strong> disponible sur la ligne du rapport dans la liste des objets de l&rsquo;espace de travail.</li>
+</ol>
+<p><img src="/p/partager-avec-power-bi/img/003-share-report-step-02.png"
+	width="319"
+	height="463"
+	srcset="/p/partager-avec-power-bi/img/003-share-report-step-02_hub1f8730912744afd904c8c0d7c3b01ff_21065_480x0_resize_box_3.png 480w, /p/partager-avec-power-bi/img/003-share-report-step-02_hub1f8730912744afd904c8c0d7c3b01ff_21065_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Option de partage"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="68"
+		data-flex-basis="165px"
+	
+></p>
+<ol>
+<li>Sélectionnez le mode de partage.</li>
+<li>Sélectionnez avec qui partager.</li>
+<li>Sélectionnez le mode d&rsquo;envoi du lien de partage.</li>
+</ol>
+<p>Vous pouvez partager avec :</p>
+<ul>
+<li>Un utilisateur interne ou invité (externe à votre organisation).</li>
+<li>Un groupe de sécurité ou de distribution.</li>
+</ul>
+<h3 id="avantages-1">Avantages</h3>
+<ul>
+<li>Cette méthode et simple et rapide.</li>
+<li>Fonctionne aussi depuis un espace de travail personnel.</li>
+</ul>
+<h3 id="inconvénients-1">Inconvénients</h3>
+<ul>
+<li>Ce mode de partage ne fonctionne qu&rsquo;avec un seul rapport à la fois. Si vous voulez partager plusieurs rapports, vous devez refaire l&rsquo;opération pour chaque rapport et vous générer un lien par rapport.</li>
+<li>Pas de partage avec un groupe Teams (Microsoft 365).</li>
+</ul>
+<h2 id="partager-un-espace-de-travail">Partager un espace de travail</h2>
+<p><img src="/p/partager-avec-power-bi/img/004-share-workspace-step-01.png"
+	width="1588"
+	height="437"
+	srcset="/p/partager-avec-power-bi/img/004-share-workspace-step-01_hubf1b1290352728628fd87bc87cac8c80_35812_480x0_resize_box_3.png 480w, /p/partager-avec-power-bi/img/004-share-workspace-step-01_hubf1b1290352728628fd87bc87cac8c80_35812_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Partager un espace de travail"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="363"
+		data-flex-basis="872px"
+	
+></p>
+<ol>
+<li>Appuyer sur le bouton <strong>Accès</strong> pour partager votre espace de travail à d&rsquo;autres utilisateurs.</li>
+</ol>
+<p><img src="/p/partager-avec-power-bi/img/005-share-workspace-step-02.png"
+	width="539"
+	height="699"
+	srcset="/p/partager-avec-power-bi/img/005-share-workspace-step-02_hu7fe7a29a7c4cb78f35caa59de4d0ef0e_23232_480x0_resize_box_3.png 480w, /p/partager-avec-power-bi/img/005-share-workspace-step-02_hu7fe7a29a7c4cb78f35caa59de4d0ef0e_23232_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Option de partage d&rsquo;un espace de travail"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="77"
+		data-flex-basis="185px"
+	
+></p>
+<ol>
+<li>Sélectionnez avec qui partager.</li>
+<li>Sélectionnez le niveau d&rsquo;autorisation.</li>
+<li>Validez en appuyant sur <strong>Ajouter</strong>.</li>
+</ol>
+<p>Vous pouvez partager avec :</p>
+<ul>
+<li>Un utilisateur interne ou invité (externe à votre organisation).</li>
+<li>Un groupe de sécurité, de distribution ou une équipe Teams (groupe Microsoft 365).</li>
+</ul>
+<h3 id="avantages-2">Avantages</h3>
+<ul>
+<li>Partage avec une équipe Teams.</li>
+<li>Possibilité de collaborer pour la conception des rapports.</li>
+<li>Partage de tous les objets de l&rsquo;espace de travail en une seule opération.</li>
+</ul>
+<h3 id="inconvénients-2">Inconvénients</h3>
+<ul>
+<li>Partage de tous les objets de l&rsquo;espace de travail. Oui comme dans les avantages, mais on ne souhaite pas forcément laisser voir les rapports en cours d&rsquo;élaboration à des utilisateurs finaux.</li>
+<li>En cas d&rsquo;usage de la sécurité niveau ligne (RLS), seuls les utilisateurs avec l&rsquo;autorisation <strong>Visionneuse</strong> subissent la RLS.</li>
+</ul>
+<h2 id="utiliser-une-application-power-bi">Utiliser une application Power BI</h2>
+<p><img src="/p/partager-avec-power-bi/img/006-share-application-step-01.png"
+	width="228"
+	height="428"
+	srcset="/p/partager-avec-power-bi/img/006-share-application-step-01_hu48ddd9be4fb52240c19cbe8b49a8a54c_9231_480x0_resize_box_3.png 480w, /p/partager-avec-power-bi/img/006-share-application-step-01_hu48ddd9be4fb52240c19cbe8b49a8a54c_9231_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Partager une application"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="53"
+		data-flex-basis="127px"
+	
+></p>
+<ol>
+<li>L&rsquo;accès à vos rapports se fait via l&rsquo;écran <strong>Application</strong> et non par l&rsquo;accès à l&rsquo;espace de travail.</li>
+</ol>
+<p>Pour les détails sur la création d&rsquo;une application Power BI et le partage de celle-ci, je vous invite à lire <a class="link" href="https://blog.ddata.fr/p/les-applications-power-bi/" >mon article dédié</a>.</p>
+<p>Vous pouvez partager avec :</p>
+<ul>
+<li>Un utilisateur interne ou invité (externe à votre organisation).</li>
+<li>Un groupe de sécurité, de distribution ou une équipe Teams (groupe Microsoft 365).</li>
+</ul>
+<h3 id="avantages-3">Avantages</h3>
+<ul>
+<li>C&rsquo;est le bon moyen de diffusion des données aux consommateurs de données.</li>
+<li>Vous avez le contrôle sur les rapports visibles dans l&rsquo;application. Ce n&rsquo;est pas l&rsquo;ensemble de l&rsquo;espace de travail.</li>
+<li>Tant que vous ne mettez pas à jour l&rsquo;application, les modifications de rapports survenues dans l&rsquo;espace de travail ne sont pas visibles dans l&rsquo;application. Vous pouvez donc travailler sur une nouvelle version de vos rapports sans impacter vos utilisateurs.</li>
+</ul>
+<h3 id="inconvénients-3">Inconvénients</h3>
+<ul>
+<li>Le jeu de données reste commun entre l&rsquo;espace de travail et l&rsquo;application, toute mise à jour de ce dernier doit être faite en conservant la compatibilité pour la version des rapports de l&rsquo;application.</li>
+</ul>
+<h2 id="choisir-son-mode-de-partage">Choisir son mode de partage</h2>
+<p>Maintenant que nous avons passé en revue les différents modes de partage, la grande question est : lequel utiliser ?</p>
+<p>Voici un arbre de décision :</p>
+<div class="mermaid">flowchart TD
+    A{Quel type de permissions est nécessaire ?}
+    A -- Edition --> B["Partage de l'espace de travail (Adminitrateur, Membre, Contributeur)"]
+    A -- Lecture seule --> C{Quel type de contenu}
+    C -- "Contenu d'entreprise" --> D["Application"]
+    C -- Contenu collaboratif --> E{Combien d'objets doivent être partagés ?}
+    E -- "Tous ceux de l'espace de travail" --> F["Partage de l'espace de travail (Visioneuse)"]
+    E -- Un seul --> G["Partage direct"]
+  </div>
+  <h3 id="synthèse-des-partages">Synthèse des partages</h3>
+<p>Ce qu&rsquo;il faut bien comprendre pour choisir :</p>
+<ul>
+<li>Un espace de travail est comme son nom l&rsquo;indique un lieu dans lequel vous allez travailler. Vous allez travailler sur les modèles de données, les rapports et les tableaux de bord. Je le répète c&rsquo;est un lieu de <strong>travail</strong> pas un lieu de <strong>diffusion</strong>.</li>
+<li>L&rsquo;application Power BI <strong>est</strong> le bon moyen de diffusion de vos informations.</li>
+<li>Le partage d&rsquo;un rapport de manière unitaire est un moyen simple pour partager rapidement un rapport à une personne. Il n&rsquo;est pas utilisable pour un grand nombre de rapports ou pour adresser une audience vaste.</li>
+</ul>
+<p>Merci de votre attention</p>
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/d%C3%A9butant/">Débutant</a>
+        
+            <a href="/tags/auto-formation/">Auto formation</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Contenus liés</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/jeu-de-donnees-et-rapport-la-rupture/">
+        
+        
+            <div class="article-image">
+                <img src="/p/jeu-de-donnees-et-rapport-la-rupture/_hu4f849c82d4e14f72bfb032f4fe26f62a_6495568_c0c74b23519d2b31bca3f8d7c87e8405.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Jeu de données et rapport : la rupture !"
+                        data-key="jeu-de-donnees-et-rapport-la-rupture" 
+                        data-hash="md5-uUSTCTw&#43;oM5tgaeFQi3L4w==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Jeu de données et rapport : la rupture !</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/anatomie-de-power-bi/">
+        
+        
+            <div class="article-image">
+                <img src="/p/anatomie-de-power-bi/_hu82c25fa98cd4e9a8103220017be4b8cb_324346_216d117080fab6b616abea9f55172058.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Power BI : leçon d&#39;anatomie"
+                        data-key="anatomie-de-power-bi" 
+                        data-hash="md5-mVERI5eqRDhuKTFhLvA&#43;1Q==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Power BI : leçon d&#39;anatomie</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/les-applications-power-bi/">
+        
+        
+            <div class="article-image">
+                <img src="/p/les-applications-power-bi/_huae08634171f8756a098e3310c58d8541_2234549_413d9c107e49b581ca210358c113e415.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Les applications Power BI ?!?  A quoi ça sert ?"
+                        data-key="les-applications-power-bi" 
+                        data-hash="md5-9dB9TtMvexvR0JpzcUoXnA==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Les applications Power BI ?!?  A quoi ça sert ?</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/power-bi-create-data-alert/">
+        
+        
+            <div class="article-image">
+                <img src="/p/power-bi-create-data-alert/_hu82c25fa98cd4e9a8103220017be4b8cb_443365_53ef746dea6f8640841f1d97315ce776.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 💡 Power BI : Créer une alerte sur vos données."
+                        data-key="power-bi-create-data-alert" 
+                        data-hash="md5-lZArKS3Xl6Dn49XcpxVzBg==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">💡 Power BI : Créer une alerte sur vos données.</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/power-bi-create-dashboard/">
+        
+        
+            <div class="article-image">
+                <img src="/p/power-bi-create-dashboard/_huf938efc7b2a69af6a2c521a2a8f95bf7_3564155_652f7090deed73ab7c671f2026f1051c.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 💡 Power BI : Créer un tableau de bord Power BI."
+                        data-key="power-bi-create-dashboard" 
+                        data-hash="md5-zfCZOFkRA26yLGk9Oe0ARg==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">💡 Power BI : Créer un tableau de bord Power BI.</h2>
+        </div>
+    </a>
+</article>
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "ddata" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2022 Le D de Data
+    </section>
+    
+    <section class="powerby">
+        Généré avec <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Thème <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.14.0">Stack</a></b> conçu par <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table des matières</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#contexte">Contexte</a></li>
+    <li><a href="#scénarii-de-partage">Scénarii de partage</a></li>
+    <li><a href="#partager-son-fichier-pbix">Partager son fichier pbix</a>
+      <ol>
+        <li><a href="#avantages">Avantages</a></li>
+        <li><a href="#inconvénients">Inconvénients</a></li>
+      </ol>
+    </li>
+    <li><a href="#publier-son-rapport-dans-power-bi-service">Publier son rapport dans Power BI Service</a></li>
+    <li><a href="#partager-directement-un-rapport">Partager directement un rapport</a>
+      <ol>
+        <li><a href="#avantages-1">Avantages</a></li>
+        <li><a href="#inconvénients-1">Inconvénients</a></li>
+      </ol>
+    </li>
+    <li><a href="#partager-un-espace-de-travail">Partager un espace de travail</a>
+      <ol>
+        <li><a href="#avantages-2">Avantages</a></li>
+        <li><a href="#inconvénients-2">Inconvénients</a></li>
+      </ol>
+    </li>
+    <li><a href="#utiliser-une-application-power-bi">Utiliser une application Power BI</a>
+      <ol>
+        <li><a href="#avantages-3">Avantages</a></li>
+        <li><a href="#inconvénients-3">Inconvénients</a></li>
+      </ol>
+    </li>
+    <li><a href="#choisir-son-mode-de-partage">Choisir son mode de partage</a>
+      <ol>
+        <li><a href="#synthèse-des-partages">Synthèse des partages</a></li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>
