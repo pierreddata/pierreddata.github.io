@@ -1,0 +1,1075 @@
+<!DOCTYPE html>
+<html lang="fr-fr" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='La BI self-service est une des promesses de Power BI. Mais de quoi parle-t-on exactement ?
+Je vous propose de vous accompagner dans la découverte de l&amp;rsquo;utilisation la plus courante de la BI self-service avec Power BI : la réutilisation d&amp;rsquo;un jeu de données existant.
+'>
+<title> Voyage au coeur de la BI self-service</title>
+
+<link rel='canonical' href='https://blog.ddata.fr/p/self-service-bi-sur-jeu-de-donnees-existant/'>
+
+<link rel="stylesheet" href="/scss/style.min.711787006ce766a1813dd794147899ff920bd0c64d42fbc94a978bb6e117ca65.css"><meta property='og:title' content=' Voyage au coeur de la BI self-service'>
+<meta property='og:description' content='La BI self-service est une des promesses de Power BI. Mais de quoi parle-t-on exactement ?
+Je vous propose de vous accompagner dans la découverte de l&amp;rsquo;utilisation la plus courante de la BI self-service avec Power BI : la réutilisation d&amp;rsquo;un jeu de données existant.
+'>
+<meta property='og:url' content='https://blog.ddata.fr/p/self-service-bi-sur-jeu-de-donnees-existant/'>
+<meta property='og:site_name' content='Le D de Data'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Débutant' /><meta property='article:tag' content='Auto formation' /><meta property='article:published_time' content='2022-11-06T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2022-11-06T00:00:00&#43;00:00'/><meta property='og:image' content='https://blog.ddata.fr/p/self-service-bi-sur-jeu-de-donnees-existant/anna-kolosyuk-D5nh6mCW52c-unsplash.jpg' />
+<meta name="twitter:title" content=" Voyage au coeur de la BI self-service">
+<meta name="twitter:description" content="La BI self-service est une des promesses de Power BI. Mais de quoi parle-t-on exactement ?
+Je vous propose de vous accompagner dans la découverte de l&amp;rsquo;utilisation la plus courante de la BI self-service avec Power BI : la réutilisation d&amp;rsquo;un jeu de données existant.
+"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://blog.ddata.fr/p/self-service-bi-sur-jeu-de-donnees-existant/anna-kolosyuk-D5nh6mCW52c-unsplash.jpg' />
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TY6XFEN6QV"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-TY6XFEN6QV', { 'anonymize_ip': false });
+}
+</script>
+<link rel="alternate"
+      type="application/rss+xml"
+      href="https://blog.ddata.fr/index.xml"
+      title="Le D de Data">
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "dark");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Afficher le menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/pierre_hua6bbc70dde858dd10e363a14d1f7729c_67951_300x0_resize_q75_box.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Le D de Data</a></h1>
+            <h2 class="site-description">Blog francophone autour de la data Microsoft</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/pierreddata'
+                        target="_blank"
+                        title="GitHub"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://www.linkedin.com/in/pierre-dupont-0b532374/'
+                        target="_blank"
+                        title="LinkdIn"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-folders" width="44" height="44" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <rect x="4" y="4" width="16" height="16" rx="2" />
+  <line x1="8" y1="11" x2="8" y2="16" />
+  <line x1="8" y1="8" x2="8" y2="8.01" />
+  <line x1="12" y1="16" x2="12" y2="11" />
+  <path d="M16 16v-3a2 2 0 0 0 -4 0" />
+</svg>
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Accueil</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/a-propos-de-d-de-data/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>A Propos</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/series/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-folders" width="44" height="44" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 4h3l2 2h5a2 2 0 0 1 2 2v7a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-9a2 2 0 0 1 2 -2" />
+  <path d="M17 17v2a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-9a2 2 0 0 1 2 -2h2" />
+</svg>
+
+                
+                <span>Series</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/liens/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Liens</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Rechercher</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Mode sombre</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table des matières</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#contexte">Contexte</a></li>
+    <li><a href="#utiliser-un-jeu-de-données-existant">Utiliser un jeu de données existant</a>
+      <ol>
+        <li><a href="#avec-un-nouveau-rapport-power-bi-directement-dans-le-service">Avec un nouveau rapport Power BI directement dans le service</a></li>
+        <li><a href="#avec-excel">Avec Excel</a></li>
+        <li><a href="#avec-power-bi-desktop">Avec Power BI Desktop</a></li>
+      </ol>
+    </li>
+    <li><a href="#améliorer-un-jeu-de-données-existant">Améliorer un jeu de données existant</a>
+      <ol>
+        <li><a href="#que-fait-exactement-un-rapport-avec-un-jeu-de-données-">Que fait exactement un rapport avec un jeu de données ?</a></li>
+        <li><a href="#créer-une-mesure-dans-notre-rapport">Créer une mesure dans notre rapport</a></li>
+      </ol>
+    </li>
+    <li><a href="#conclusion">Conclusion</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/self-service-bi-sur-jeu-de-donnees-existant/">
+                <img src="/p/self-service-bi-sur-jeu-de-donnees-existant/anna-kolosyuk-D5nh6mCW52c-unsplash_huc8aff4f4bdb05689828a54a86f8617f1_1552202_800x0_resize_q75_box.jpg"
+                        srcset="/p/self-service-bi-sur-jeu-de-donnees-existant/anna-kolosyuk-D5nh6mCW52c-unsplash_huc8aff4f4bdb05689828a54a86f8617f1_1552202_800x0_resize_q75_box.jpg 800w, /p/self-service-bi-sur-jeu-de-donnees-existant/anna-kolosyuk-D5nh6mCW52c-unsplash_huc8aff4f4bdb05689828a54a86f8617f1_1552202_1600x0_resize_q75_box.jpg 1600w"
+                        width="800" 
+                        height="533" 
+                        loading="lazy"
+                        alt="Featured image of post  Voyage au coeur de la BI self-service" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/powerbi/" style="background-color: #f2c811; color: #fff;">
+                Power BI
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/self-service-bi-sur-jeu-de-donnees-existant/"> Voyage au coeur de la BI self-service</a>
+        </h2>
+
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published" datetime="2022-11-06T00:00:00Z">
+                    6 novembre 2022
+                    
+                </time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    6 minutes de lecture
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+    
+    
+</div>
+</header>
+
+    <section class="article-content">
+    
+    
+    <p>La BI self-service est une des promesses de Power BI. Mais de quoi parle-t-on exactement ?<br>
+Je vous propose de vous accompagner dans la découverte de l&rsquo;utilisation la plus courante de la BI self-service avec Power BI : la réutilisation d&rsquo;un jeu de données existant.</p>
+<h2 id="contexte">Contexte</h2>
+<p>Dans mes articles précédents, je vous ai parlé :</p>
+<ul>
+<li>De la composition d&rsquo;un projet Power BI dans l&rsquo;article <a class="link" href="https://blog.ddata.fr/p/anatomie-de-power-bi/" >Power BI : leçon d&rsquo;anatomie</a>.</li>
+<li>De la création d&rsquo;un jeu de données distinct des rapports qui le consomme <a class="link" href="https://blog.ddata.fr/p/jeu-de-donnees-et-rapport-la-rupture/" >Jeu de données et rapport : la rupture !</a>.</li>
+</ul>
+<p>Nous allons maintenant mettre tout cela en œuvre pour faire de la BI self-service.</p>
+<h2 id="utiliser-un-jeu-de-données-existant">Utiliser un jeu de données existant</h2>
+<p>L&rsquo;idée de la BI self-service est de rendre nos utilisateurs autonomes dans leur consommation des données de l&rsquo;entreprise. Nous allons dans cet article non concentré sur l&rsquo;usage le plus commun qui est la réutilisation d&rsquo;un jeu de données existant.<br>
+Mais pourquoi réutiliser un jeu de données existant ? Il peut y avoir plein de raisons, mais principalement, pour profiter du travail de préparation, modélisation et validation des données fait par un de vos collègues.</p>
+<p>Nous allons voir 3 méthodes distinctes pour réutiliser un jeu de données.</p>
+<p>Pour cela je vais utiliser le jeu de données créer lors de la publication du <a class="link" href="https://github.com/pierreddata/blog.ddata.fr/raw/main/powerbi/blog.ddata.fr-simple-report.pbix"  target="_blank" rel="noopener"
+    >rapport simple</a> comme vue dans l&rsquo;article <a class="link" href="https://blog.ddata.fr/p/jeu-de-donnees-et-rapport-la-rupture/" >Jeu de données et rapport : la rupture !</a>.</p>
+<h3 id="avec-un-nouveau-rapport-power-bi-directement-dans-le-service">Avec un nouveau rapport Power BI directement dans le service</h3>
+<p>Dans cette première méthode, nous allons créer un nouveau rapport depuis le service Power BI et utiliser un jeu de données existant.</p>
+<p>Rendez-vous dans <a class="link" href="https://app.powerbi.com/groups/me/list"  target="_blank" rel="noopener"
+    >votre espace de travail personnel</a> ou dans l&rsquo;espace de travail où vous avez publié le jeu de données.</p>
+<p><img src="/p/self-service-bi-sur-jeu-de-donnees-existant/img/001-methode-01-create-report.png"
+	width="1564"
+	height="820"
+	srcset="/p/self-service-bi-sur-jeu-de-donnees-existant/img/001-methode-01-create-report_hu5bc72f44a8dd8d8705b20fda1b95da7a_55555_480x0_resize_box_3.png 480w, /p/self-service-bi-sur-jeu-de-donnees-existant/img/001-methode-01-create-report_hu5bc72f44a8dd8d8705b20fda1b95da7a_55555_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Créer un rapport depuis un jeu de données"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="190"
+		data-flex-basis="457px"
+	
+></p>
+<ol>
+<li>Passez la souris sur votre jeu de données et appuyez sur les 3 points.</li>
+<li>Dans le menu contextuel, appuyez sur <strong>Créer un rapport</strong>.</li>
+</ol>
+<p><img src="/p/self-service-bi-sur-jeu-de-donnees-existant/img/002-methode-01-report-creation.png"
+	width="1699"
+	height="686"
+	srcset="/p/self-service-bi-sur-jeu-de-donnees-existant/img/002-methode-01-report-creation_huca17e7d5de2b57376e95dbf5882aa9de_74796_480x0_resize_box_3.png 480w, /p/self-service-bi-sur-jeu-de-donnees-existant/img/002-methode-01-report-creation_huca17e7d5de2b57376e95dbf5882aa9de_74796_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Création du rapport"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="247"
+		data-flex-basis="594px"
+	
+></p>
+<ol>
+<li>Vous retrouvez la même expérience de création de rapport que dans Power BI Desktop.</li>
+<li>Pour enregistrer votre rapport, appuyez sur le bouton <strong>Enregistrer</strong>.</li>
+</ol>
+<p><img src="/p/self-service-bi-sur-jeu-de-donnees-existant/img/003-methode-01-report-save.png"
+	width="340"
+	height="277"
+	srcset="/p/self-service-bi-sur-jeu-de-donnees-existant/img/003-methode-01-report-save_hu222c416ce671c21beb8a74e9ae927a33_14879_480x0_resize_box_3.png 480w, /p/self-service-bi-sur-jeu-de-donnees-existant/img/003-methode-01-report-save_hu222c416ce671c21beb8a74e9ae927a33_14879_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Création du rapport"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="122"
+		data-flex-basis="294px"
+	
+></p>
+<ol>
+<li>Choisissez un nom pour votre rapport.</li>
+<li>Sélectionnez un espace de travail dans lequel enregistrer votre rapport, le même que celui du jeu de données pour notre exemple.</li>
+<li>Appuyez sur <strong>Enregistrer</strong>.</li>
+</ol>
+<p>Vous pouvez très bien enregistrer votre rapport dans un espace de travail différent de votre jeu de données. Cela vous ouvre des possibilités d&rsquo;organisation très importante. On appelle cela les jeux de données partagés.</p>
+<p>Une fois le rapport enregistrer, revenez dans votre espace de travail.</p>
+<p><img src="/p/self-service-bi-sur-jeu-de-donnees-existant/img/004-methode-01-workspace-lineage.png"
+	width="1584"
+	height="410"
+	srcset="/p/self-service-bi-sur-jeu-de-donnees-existant/img/004-methode-01-workspace-lineage_hufb9767bceac77b283663576914a59b96_33655_480x0_resize_box_3.png 480w, /p/self-service-bi-sur-jeu-de-donnees-existant/img/004-methode-01-workspace-lineage_hufb9767bceac77b283663576914a59b96_33655_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Vue de traçabilité du nouveau rapport"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="386"
+		data-flex-basis="927px"
+	
+></p>
+<ol>
+<li>Passez en vue <strong>Tracabilité</strong>, via le menu <strong>Affichage</strong> en haut à droite de l&rsquo;espace de travail.</li>
+<li>Vous pouvez constater que le rapport utilise le jeu de données existant.</li>
+</ol>
+<p>⚠ Attention, votre rapport existe uniquement dans le service Power BI. Si vous souhaitez en conserver une copie locale vous devez ouvrir le rapport, puis dans le menu <strong>Fichier</strong> choisir <strong>Télécharger ce fichier</strong>.</p>
+<h3 id="avec-excel">Avec Excel</h3>
+<p>Dans cette seconde méthode, nous allons utiliser un jeu de données existant et le consommer directement dans Excel.</p>
+<p>Rendez-vous dans <a class="link" href="https://app.powerbi.com/groups/me/list"  target="_blank" rel="noopener"
+    >votre espace de travail personnel</a> ou dans l&rsquo;espace de travail où vous avez publié le jeu de données.</p>
+<p><img src="/p/self-service-bi-sur-jeu-de-donnees-existant/img/005-methode-02-analyse-in-excel.png"
+	width="1564"
+	height="820"
+	srcset="/p/self-service-bi-sur-jeu-de-donnees-existant/img/005-methode-02-analyse-in-excel_hued723075a42f65d8f9e47a93ac63478e_55802_480x0_resize_box_3.png 480w, /p/self-service-bi-sur-jeu-de-donnees-existant/img/005-methode-02-analyse-in-excel_hued723075a42f65d8f9e47a93ac63478e_55802_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Analyser dans Excel"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="190"
+		data-flex-basis="457px"
+	
+></p>
+<ol>
+<li>Passez la souris sur votre jeu de données et appuyez sur les 3 points.</li>
+<li>Dans le menu contextuel, appuyez sur <strong>Analyser dans Excel</strong>.</li>
+</ol>
+<p>Le service Power BI prépare votre fichier Excel et le mets à disposition dans votre OneDrive. Une fois le processus terminé, le message suivant apparait :</p>
+<p><img src="/p/self-service-bi-sur-jeu-de-donnees-existant/img/006-methode-02-excel-file-ready.png"
+	width="419"
+	height="130"
+	srcset="/p/self-service-bi-sur-jeu-de-donnees-existant/img/006-methode-02-excel-file-ready_hu3bdfa1594487b113c0fb193ab94c95c2_6504_480x0_resize_box_3.png 480w, /p/self-service-bi-sur-jeu-de-donnees-existant/img/006-methode-02-excel-file-ready_hu3bdfa1594487b113c0fb193ab94c95c2_6504_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Fichier Excel disponible"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="322"
+		data-flex-basis="773px"
+	
+></p>
+<p>Le fichier se trouve dans la racine de votre OneDrive et porte le nom du jeu de données.
+Vous pouvez ouvrir le fichier dans Excel Online ou dans votre Excel local, dans ce cas vous devrez activer les modifications et activer le contenu du fichier.</p>
+<p><img src="/p/self-service-bi-sur-jeu-de-donnees-existant/img/007-methode-02-excel-file-open.png"
+	width="1920"
+	height="979"
+	srcset="/p/self-service-bi-sur-jeu-de-donnees-existant/img/007-methode-02-excel-file-open_hucb563120ad66bc7e1fad569b431061dd_122162_480x0_resize_box_3.png 480w, /p/self-service-bi-sur-jeu-de-donnees-existant/img/007-methode-02-excel-file-open_hucb563120ad66bc7e1fad569b431061dd_122162_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Fichier Excel ouvert"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="196"
+		data-flex-basis="470px"
+	
+></p>
+<ol>
+<li>Votre fichier est directement connecté à votre jeu de données, les données sont analysables via un tableau croisé dynamique.</li>
+<li>Vous retrouvez votre modèle de données dans la liste des champs du tableau croisé dynamique.</li>
+</ol>
+<p><img src="/p/self-service-bi-sur-jeu-de-donnees-existant/img/008-methode-02-excel-file-sample.png"
+	width="1920"
+	height="979"
+	srcset="/p/self-service-bi-sur-jeu-de-donnees-existant/img/008-methode-02-excel-file-sample_hu28931385c451b2356b1628abac4c54ad_159853_480x0_resize_box_3.png 480w, /p/self-service-bi-sur-jeu-de-donnees-existant/img/008-methode-02-excel-file-sample_hu28931385c451b2356b1628abac4c54ad_159853_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Exemple de fichier Excel"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="196"
+		data-flex-basis="470px"
+	
+></p>
+<ol>
+<li>Des éléments du modèle sont déposés dans le tableau croisé dynamique.</li>
+<li>Les données affichées proviennent du jeu de données du service Power BI.</li>
+<li>Vous pouvez rafraichir vos données dans Excel via le bouton <strong>Actualiser</strong> di menu <strong>Données</strong>.</li>
+</ol>
+<h3 id="avec-power-bi-desktop">Avec Power BI Desktop</h3>
+<p>Dans cette troisième méthode, nous allons créer un nouveau rapport depuis Power BI Desktop et utiliser un jeu de données existant.</p>
+<p>Ouvrez Power BI desktop, nous allons nous connecter à votre jeu de données Power BI.</p>
+<p><img src="/p/self-service-bi-sur-jeu-de-donnees-existant/img/009-methode-03-poxer-bi-desktop-connect-dataset.png"
+	width="1421"
+	height="776"
+	srcset="/p/self-service-bi-sur-jeu-de-donnees-existant/img/009-methode-03-poxer-bi-desktop-connect-dataset_hue9f1dca2dc042c678b7ecc54af596904_86036_480x0_resize_box_3.png 480w, /p/self-service-bi-sur-jeu-de-donnees-existant/img/009-methode-03-poxer-bi-desktop-connect-dataset_hue9f1dca2dc042c678b7ecc54af596904_86036_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Connecter Power BI Desktop à un jeu de données"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="183"
+		data-flex-basis="439px"
+	
+></p>
+<ol>
+<li>Dans le menu <strong>Accueil</strong> appuyez sur le bouton <strong>Obtenir les données</strong>.</li>
+<li>Sélectionnez <strong>Power Platform</strong>.</li>
+<li>Sélectionnez <strong>Jeux de données Power BI</strong>.</li>
+<li>Appuyer sur <strong>Se connecter</strong> pour passer à l&rsquo;étape suivante.</li>
+</ol>
+<p><img src="/p/self-service-bi-sur-jeu-de-donnees-existant/img/010-methode-03-poxer-bi-desktop-connect-dataset-select.png"
+	width="1082"
+	height="611"
+	srcset="/p/self-service-bi-sur-jeu-de-donnees-existant/img/010-methode-03-poxer-bi-desktop-connect-dataset-select_hu0aaccf048c00759c5349b570a343600f_39871_480x0_resize_box_3.png 480w, /p/self-service-bi-sur-jeu-de-donnees-existant/img/010-methode-03-poxer-bi-desktop-connect-dataset-select_hu0aaccf048c00759c5349b570a343600f_39871_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Sélectionner un jeu de données"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="177"
+		data-flex-basis="425px"
+	
+></p>
+<ol>
+<li>Sélectionnez le jeu de données auquel vous voulez vous connecter.</li>
+<li>Appuyer sur <strong>Se connecter</strong>.</li>
+</ol>
+<p><img src="/p/self-service-bi-sur-jeu-de-donnees-existant/img/011-methode-03-poxer-bi-desktop-connected-to-dataset.png"
+	width="1421"
+	height="776"
+	srcset="/p/self-service-bi-sur-jeu-de-donnees-existant/img/011-methode-03-poxer-bi-desktop-connected-to-dataset_hu9c19ccf9d8bda07b0b9691c5e55c44a0_91313_480x0_resize_box_3.png 480w, /p/self-service-bi-sur-jeu-de-donnees-existant/img/011-methode-03-poxer-bi-desktop-connected-to-dataset_hu9c19ccf9d8bda07b0b9691c5e55c44a0_91313_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Jeu de données disponible dans Power BI Desktop"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="183"
+		data-flex-basis="439px"
+	
+></p>
+<ol>
+<li>Vous retrouvez votre modèle de données dans la liste des champs.</li>
+<li>Dans la barre d&rsquo;information, vous pouvez voir que vous êtes connecté au jeu de données.</li>
+</ol>
+<p>Si vous publiez le rapport dans le service Power BI vous pourrez constater que seul le rapport est publié et si vous passez en affichage <strong>Tracabilité</strong> vous constaterez qu&rsquo;il est connecté au jeu de données.</p>
+<h2 id="améliorer-un-jeu-de-données-existant">Améliorer un jeu de données existant</h2>
+<p>Jusqu&rsquo;à présent non avons fait que réutiliser simplement un jeu de données existant. C&rsquo;est bien, mais parfois nous avons besoin d&rsquo;enrichir le jeu de données afin de créer un calcul spécifique à un rapport, mais non disponible dans le jeu de données.</p>
+<h3 id="que-fait-exactement-un-rapport-avec-un-jeu-de-données-">Que fait exactement un rapport avec un jeu de données ?</h3>
+<p>Pour afficher les données dans un visuel, le rapport crée une requête, dans le langage DAX, puis l&rsquo;envoi au jeu de données qui l&rsquo;exécute et renvoie le résultat afin que ce dernier soit affiché.<br>
+Jusqu&rsquo;à présent nous nous sommes limités à la réutilisation des éléments disponible dans le jeu de données. Pour rappel un jeu de données est constitué des éléments suivants :</p>
+<p><img src="/p/self-service-bi-sur-jeu-de-donnees-existant/img/012-report-dataset-query.png"
+	width="645"
+	height="359"
+	srcset="/p/self-service-bi-sur-jeu-de-donnees-existant/img/012-report-dataset-query_hu0064bf490ee6aa0d1fbadbd20648fcd3_21720_480x0_resize_box_3.png 480w, /p/self-service-bi-sur-jeu-de-donnees-existant/img/012-report-dataset-query_hu0064bf490ee6aa0d1fbadbd20648fcd3_21720_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Schéma de requête entre un rapport et un jeu de données"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="179"
+		data-flex-basis="431px"
+	
+></p>
+<p>Nous pouvons aller plus loin et créer de nouvelles mesures dans notre rapport. Nous sommes limités aux mesures, car au final une mesure est juste un morceau de requêtes DAX réutilisable.<br>
+Les autres éléments comme les tables ou colonnes calculées influent directement sur le jeu de données et ne sont donc pas modifiables dans le cas d&rsquo;un rapport consommant un jeu de données.</p>
+<p><img src="/p/self-service-bi-sur-jeu-de-donnees-existant/img/013-report-dataset-query-with-new-measure.png"
+	width="646"
+	height="359"
+	srcset="/p/self-service-bi-sur-jeu-de-donnees-existant/img/013-report-dataset-query-with-new-measure_hu4761dcbb41964e02f380b945d471ba4e_22312_480x0_resize_box_3.png 480w, /p/self-service-bi-sur-jeu-de-donnees-existant/img/013-report-dataset-query-with-new-measure_hu4761dcbb41964e02f380b945d471ba4e_22312_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Schéma de requête avec ajout de mesure dans le rapport"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="179"
+		data-flex-basis="431px"
+	
+></p>
+<p>Note : Il existe un moyen d&rsquo;enrichir un jeu de données existant avec de nouvelles sources de données, mais ce n&rsquo;est pas le sujet du présent article.</p>
+<h3 id="créer-une-mesure-dans-notre-rapport">Créer une mesure dans notre rapport</h3>
+<p>Pour ajouter une mesure dans votre rapport, vous pouvez le faire uniquement avec Power BI Desktop. Ouvrez votre fichier PBIX contenant seulement un rapport.</p>
+<p><img src="/p/self-service-bi-sur-jeu-de-donnees-existant/img/014-report-dataset-add-new-measure-step-1.png"
+	width="1012"
+	height="131"
+	srcset="/p/self-service-bi-sur-jeu-de-donnees-existant/img/014-report-dataset-add-new-measure-step-1_hu7f12ebab2db88c875e45dbbd1a723589_25977_480x0_resize_box_3.png 480w, /p/self-service-bi-sur-jeu-de-donnees-existant/img/014-report-dataset-add-new-measure-step-1_hu7f12ebab2db88c875e45dbbd1a723589_25977_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Ajout de mesure dans le rapport - étape 1"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="772"
+		data-flex-basis="1854px"
+	
+></p>
+<ol>
+<li>Dans le menu <strong>Modelisation</strong>, sélectionnez <strong>Nouvelle mesure</strong>.</li>
+<li>Vous pouvez constater que les autres options de création du menu sont désactivées.</li>
+</ol>
+<p><img src="/p/self-service-bi-sur-jeu-de-donnees-existant/img/015-report-dataset-add-new-measure-step-2.png"
+	width="1421"
+	height="776"
+	srcset="/p/self-service-bi-sur-jeu-de-donnees-existant/img/015-report-dataset-add-new-measure-step-2_hu1d679e64b9f847c588bfb0081b322a6f_109595_480x0_resize_box_3.png 480w, /p/self-service-bi-sur-jeu-de-donnees-existant/img/015-report-dataset-add-new-measure-step-2_hu1d679e64b9f847c588bfb0081b322a6f_109595_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Ajout de mesure dans le rapport - étape 2"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="183"
+		data-flex-basis="439px"
+	
+></p>
+<ol>
+<li>Créez une nouvelle mesure simple.</li>
+<li>Vous pouvez l&rsquo;utiliser directement dans votre rapport.</li>
+</ol>
+<p>Code de la mesure :</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c#" data-lang="c#"><span class="line"><span class="cl"><span class="err">#</span> <span class="n">Lignes</span> <span class="p">=</span> <span class="n">COUNTROWS</span><span class="p">(</span><span class="n">Ventes</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Maintenant, publiez votre rapport dans le service Power BI et rendez-vous dans votre espace de travail.<br>
+Vous pouvez constater que seul un rapport est publié.
+En utilisant la vue de traçabilité, vous voyez qu&rsquo;il est connecté au jeu de données.</p>
+<p><img src="/p/self-service-bi-sur-jeu-de-donnees-existant/img/016-power-bi-service-lineage.png"
+	width="816"
+	height="477"
+	srcset="/p/self-service-bi-sur-jeu-de-donnees-existant/img/016-power-bi-service-lineage_hu4caca8552a03daec65e6a6b5d40d21ce_32314_480x0_resize_box_3.png 480w, /p/self-service-bi-sur-jeu-de-donnees-existant/img/016-power-bi-service-lineage_hu4caca8552a03daec65e6a6b5d40d21ce_32314_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Vue de traçabilité"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="171"
+		data-flex-basis="410px"
+	
+></p>
+<ol>
+<li>Jeu de données lié.</li>
+<li>Rapport avec une mesure en plus.</li>
+</ol>
+<h2 id="conclusion">Conclusion</h2>
+<p>Nous venons de faire un tour rapide de la principale fonctionnalité de la BI self-service, le partage de jeu de données entre plusieurs rapports.</p>
+<p>Merci de votre attention.</p>
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/d%C3%A9butant/">Débutant</a>
+        
+            <a href="/tags/auto-formation/">Auto formation</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Contenus liés</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/partager-avec-power-bi/">
+        
+        
+            <div class="article-image">
+                <img src="/p/partager-avec-power-bi/_hu59c2f53d89f061f5e30f7c5261dfb40e_568587_7d3ba1f9ee7d313ebf73cc317fc261f7.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Bien partager votre travail"
+                        data-key="partager-avec-power-bi" 
+                        data-hash="md5-xuweQS6Q/R488nCig4eb/g==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Bien partager votre travail</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/jeu-de-donnees-et-rapport-la-rupture/">
+        
+        
+            <div class="article-image">
+                <img src="/p/jeu-de-donnees-et-rapport-la-rupture/_hu4f849c82d4e14f72bfb032f4fe26f62a_6495568_c0c74b23519d2b31bca3f8d7c87e8405.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Jeu de données et rapport : la rupture !"
+                        data-key="jeu-de-donnees-et-rapport-la-rupture" 
+                        data-hash="md5-uUSTCTw&#43;oM5tgaeFQi3L4w==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Jeu de données et rapport : la rupture !</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/anatomie-de-power-bi/">
+        
+        
+            <div class="article-image">
+                <img src="/p/anatomie-de-power-bi/_hu82c25fa98cd4e9a8103220017be4b8cb_324346_216d117080fab6b616abea9f55172058.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Power BI : leçon d&#39;anatomie"
+                        data-key="anatomie-de-power-bi" 
+                        data-hash="md5-mVERI5eqRDhuKTFhLvA&#43;1Q==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Power BI : leçon d&#39;anatomie</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/les-applications-power-bi/">
+        
+        
+            <div class="article-image">
+                <img src="/p/les-applications-power-bi/_huae08634171f8756a098e3310c58d8541_2234549_413d9c107e49b581ca210358c113e415.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Les applications Power BI ?!?  A quoi ça sert ?"
+                        data-key="les-applications-power-bi" 
+                        data-hash="md5-9dB9TtMvexvR0JpzcUoXnA==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Les applications Power BI ?!?  A quoi ça sert ?</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/power-bi-create-data-alert/">
+        
+        
+            <div class="article-image">
+                <img src="/p/power-bi-create-data-alert/_hu82c25fa98cd4e9a8103220017be4b8cb_443365_53ef746dea6f8640841f1d97315ce776.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 💡 Power BI : Créer une alerte sur vos données."
+                        data-key="power-bi-create-data-alert" 
+                        data-hash="md5-lZArKS3Xl6Dn49XcpxVzBg==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">💡 Power BI : Créer une alerte sur vos données.</h2>
+        </div>
+    </a>
+</article>
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "ddata" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2022 Le D de Data
+    </section>
+    
+    <section class="powerby">
+        Généré avec <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Thème <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.15.0">Stack</a></b> conçu par <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

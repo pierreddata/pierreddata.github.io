@@ -6,7 +6,352 @@
         <description>Recent content in Power BI on Le D de Data</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>fr-fr</language>
-        <lastBuildDate>Sun, 23 Oct 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ddata.fr/categories/powerbi/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sun, 06 Nov 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ddata.fr/categories/powerbi/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title> Voyage au coeur de la BI self-service</title>
+        <link>https://blog.ddata.fr/p/self-service-bi-sur-jeu-de-donnees-existant/</link>
+        <pubDate>Sun, 06 Nov 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://blog.ddata.fr/p/self-service-bi-sur-jeu-de-donnees-existant/</guid>
+        <description>&lt;img src="https://blog.ddata.fr/p/self-service-bi-sur-jeu-de-donnees-existant/anna-kolosyuk-D5nh6mCW52c-unsplash.jpg" alt="Featured image of post  Voyage au coeur de la BI self-service" /&gt;&lt;p&gt;La BI self-service est une des promesses de Power BI. Mais de quoi parle-t-on exactement ?&lt;br&gt;
+Je vous propose de vous accompagner dans la découverte de l&amp;rsquo;utilisation la plus courante de la BI self-service avec Power BI : la réutilisation d&amp;rsquo;un jeu de données existant.&lt;/p&gt;
+&lt;h2 id=&#34;contexte&#34;&gt;Contexte&lt;/h2&gt;
+&lt;p&gt;Dans mes articles précédents, je vous ai parlé :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;De la composition d&amp;rsquo;un projet Power BI dans l&amp;rsquo;article &lt;a class=&#34;link&#34; href=&#34;https://blog.ddata.fr/p/anatomie-de-power-bi/&#34; &gt;Power BI : leçon d&amp;rsquo;anatomie&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;De la création d&amp;rsquo;un jeu de données distinct des rapports qui le consomme &lt;a class=&#34;link&#34; href=&#34;https://blog.ddata.fr/p/jeu-de-donnees-et-rapport-la-rupture/&#34; &gt;Jeu de données et rapport : la rupture !&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Nous allons maintenant mettre tout cela en œuvre pour faire de la BI self-service.&lt;/p&gt;
+&lt;h2 id=&#34;utiliser-un-jeu-de-données-existant&#34;&gt;Utiliser un jeu de données existant&lt;/h2&gt;
+&lt;p&gt;L&amp;rsquo;idée de la BI self-service est de rendre nos utilisateurs autonomes dans leur consommation des données de l&amp;rsquo;entreprise. Nous allons dans cet article non concentré sur l&amp;rsquo;usage le plus commun qui est la réutilisation d&amp;rsquo;un jeu de données existant.&lt;br&gt;
+Mais pourquoi réutiliser un jeu de données existant ? Il peut y avoir plein de raisons, mais principalement, pour profiter du travail de préparation, modélisation et validation des données fait par un de vos collègues.&lt;/p&gt;
+&lt;p&gt;Nous allons voir 3 méthodes distinctes pour réutiliser un jeu de données.&lt;/p&gt;
+&lt;p&gt;Pour cela je vais utiliser le jeu de données créer lors de la publication du &lt;a class=&#34;link&#34; href=&#34;https://github.com/pierreddata/blog.ddata.fr/raw/main/powerbi/blog.ddata.fr-simple-report.pbix&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;rapport simple&lt;/a&gt; comme vue dans l&amp;rsquo;article &lt;a class=&#34;link&#34; href=&#34;https://blog.ddata.fr/p/jeu-de-donnees-et-rapport-la-rupture/&#34; &gt;Jeu de données et rapport : la rupture !&lt;/a&gt;.&lt;/p&gt;
+&lt;h3 id=&#34;avec-un-nouveau-rapport-power-bi-directement-dans-le-service&#34;&gt;Avec un nouveau rapport Power BI directement dans le service&lt;/h3&gt;
+&lt;p&gt;Dans cette première méthode, nous allons créer un nouveau rapport depuis le service Power BI et utiliser un jeu de données existant.&lt;/p&gt;
+&lt;p&gt;Rendez-vous dans &lt;a class=&#34;link&#34; href=&#34;https://app.powerbi.com/groups/me/list&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;votre espace de travail personnel&lt;/a&gt; ou dans l&amp;rsquo;espace de travail où vous avez publié le jeu de données.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/self-service-bi-sur-jeu-de-donnees-existant/img/001-methode-01-create-report.png&#34;
+	width=&#34;1564&#34;
+	height=&#34;820&#34;
+	srcset=&#34;https://blog.ddata.fr/p/self-service-bi-sur-jeu-de-donnees-existant/img/001-methode-01-create-report_hu5bc72f44a8dd8d8705b20fda1b95da7a_55555_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/self-service-bi-sur-jeu-de-donnees-existant/img/001-methode-01-create-report_hu5bc72f44a8dd8d8705b20fda1b95da7a_55555_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Créer un rapport depuis un jeu de données&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;190&#34;
+		data-flex-basis=&#34;457px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Passez la souris sur votre jeu de données et appuyez sur les 3 points.&lt;/li&gt;
+&lt;li&gt;Dans le menu contextuel, appuyez sur &lt;strong&gt;Créer un rapport&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/self-service-bi-sur-jeu-de-donnees-existant/img/002-methode-01-report-creation.png&#34;
+	width=&#34;1699&#34;
+	height=&#34;686&#34;
+	srcset=&#34;https://blog.ddata.fr/p/self-service-bi-sur-jeu-de-donnees-existant/img/002-methode-01-report-creation_huca17e7d5de2b57376e95dbf5882aa9de_74796_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/self-service-bi-sur-jeu-de-donnees-existant/img/002-methode-01-report-creation_huca17e7d5de2b57376e95dbf5882aa9de_74796_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Création du rapport&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;247&#34;
+		data-flex-basis=&#34;594px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Vous retrouvez la même expérience de création de rapport que dans Power BI Desktop.&lt;/li&gt;
+&lt;li&gt;Pour enregistrer votre rapport, appuyez sur le bouton &lt;strong&gt;Enregistrer&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/self-service-bi-sur-jeu-de-donnees-existant/img/003-methode-01-report-save.png&#34;
+	width=&#34;340&#34;
+	height=&#34;277&#34;
+	srcset=&#34;https://blog.ddata.fr/p/self-service-bi-sur-jeu-de-donnees-existant/img/003-methode-01-report-save_hu222c416ce671c21beb8a74e9ae927a33_14879_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/self-service-bi-sur-jeu-de-donnees-existant/img/003-methode-01-report-save_hu222c416ce671c21beb8a74e9ae927a33_14879_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Création du rapport&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;122&#34;
+		data-flex-basis=&#34;294px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Choisissez un nom pour votre rapport.&lt;/li&gt;
+&lt;li&gt;Sélectionnez un espace de travail dans lequel enregistrer votre rapport, le même que celui du jeu de données pour notre exemple.&lt;/li&gt;
+&lt;li&gt;Appuyez sur &lt;strong&gt;Enregistrer&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Vous pouvez très bien enregistrer votre rapport dans un espace de travail différent de votre jeu de données. Cela vous ouvre des possibilités d&amp;rsquo;organisation très importante. On appelle cela les jeux de données partagés.&lt;/p&gt;
+&lt;p&gt;Une fois le rapport enregistrer, revenez dans votre espace de travail.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/self-service-bi-sur-jeu-de-donnees-existant/img/004-methode-01-workspace-lineage.png&#34;
+	width=&#34;1584&#34;
+	height=&#34;410&#34;
+	srcset=&#34;https://blog.ddata.fr/p/self-service-bi-sur-jeu-de-donnees-existant/img/004-methode-01-workspace-lineage_hufb9767bceac77b283663576914a59b96_33655_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/self-service-bi-sur-jeu-de-donnees-existant/img/004-methode-01-workspace-lineage_hufb9767bceac77b283663576914a59b96_33655_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Vue de traçabilité du nouveau rapport&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;386&#34;
+		data-flex-basis=&#34;927px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Passez en vue &lt;strong&gt;Tracabilité&lt;/strong&gt;, via le menu &lt;strong&gt;Affichage&lt;/strong&gt; en haut à droite de l&amp;rsquo;espace de travail.&lt;/li&gt;
+&lt;li&gt;Vous pouvez constater que le rapport utilise le jeu de données existant.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;⚠ Attention, votre rapport existe uniquement dans le service Power BI. Si vous souhaitez en conserver une copie locale vous devez ouvrir le rapport, puis dans le menu &lt;strong&gt;Fichier&lt;/strong&gt; choisir &lt;strong&gt;Télécharger ce fichier&lt;/strong&gt;.&lt;/p&gt;
+&lt;h3 id=&#34;avec-excel&#34;&gt;Avec Excel&lt;/h3&gt;
+&lt;p&gt;Dans cette seconde méthode, nous allons utiliser un jeu de données existant et le consommer directement dans Excel.&lt;/p&gt;
+&lt;p&gt;Rendez-vous dans &lt;a class=&#34;link&#34; href=&#34;https://app.powerbi.com/groups/me/list&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;votre espace de travail personnel&lt;/a&gt; ou dans l&amp;rsquo;espace de travail où vous avez publié le jeu de données.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/self-service-bi-sur-jeu-de-donnees-existant/img/005-methode-02-analyse-in-excel.png&#34;
+	width=&#34;1564&#34;
+	height=&#34;820&#34;
+	srcset=&#34;https://blog.ddata.fr/p/self-service-bi-sur-jeu-de-donnees-existant/img/005-methode-02-analyse-in-excel_hued723075a42f65d8f9e47a93ac63478e_55802_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/self-service-bi-sur-jeu-de-donnees-existant/img/005-methode-02-analyse-in-excel_hued723075a42f65d8f9e47a93ac63478e_55802_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Analyser dans Excel&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;190&#34;
+		data-flex-basis=&#34;457px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Passez la souris sur votre jeu de données et appuyez sur les 3 points.&lt;/li&gt;
+&lt;li&gt;Dans le menu contextuel, appuyez sur &lt;strong&gt;Analyser dans Excel&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Le service Power BI prépare votre fichier Excel et le mets à disposition dans votre OneDrive. Une fois le processus terminé, le message suivant apparait :&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/self-service-bi-sur-jeu-de-donnees-existant/img/006-methode-02-excel-file-ready.png&#34;
+	width=&#34;419&#34;
+	height=&#34;130&#34;
+	srcset=&#34;https://blog.ddata.fr/p/self-service-bi-sur-jeu-de-donnees-existant/img/006-methode-02-excel-file-ready_hu3bdfa1594487b113c0fb193ab94c95c2_6504_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/self-service-bi-sur-jeu-de-donnees-existant/img/006-methode-02-excel-file-ready_hu3bdfa1594487b113c0fb193ab94c95c2_6504_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Fichier Excel disponible&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;322&#34;
+		data-flex-basis=&#34;773px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Le fichier se trouve dans la racine de votre OneDrive et porte le nom du jeu de données.
+Vous pouvez ouvrir le fichier dans Excel Online ou dans votre Excel local, dans ce cas vous devrez activer les modifications et activer le contenu du fichier.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/self-service-bi-sur-jeu-de-donnees-existant/img/007-methode-02-excel-file-open.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;979&#34;
+	srcset=&#34;https://blog.ddata.fr/p/self-service-bi-sur-jeu-de-donnees-existant/img/007-methode-02-excel-file-open_hucb563120ad66bc7e1fad569b431061dd_122162_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/self-service-bi-sur-jeu-de-donnees-existant/img/007-methode-02-excel-file-open_hucb563120ad66bc7e1fad569b431061dd_122162_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Fichier Excel ouvert&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;196&#34;
+		data-flex-basis=&#34;470px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Votre fichier est directement connecté à votre jeu de données, les données sont analysables via un tableau croisé dynamique.&lt;/li&gt;
+&lt;li&gt;Vous retrouvez votre modèle de données dans la liste des champs du tableau croisé dynamique.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/self-service-bi-sur-jeu-de-donnees-existant/img/008-methode-02-excel-file-sample.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;979&#34;
+	srcset=&#34;https://blog.ddata.fr/p/self-service-bi-sur-jeu-de-donnees-existant/img/008-methode-02-excel-file-sample_hu28931385c451b2356b1628abac4c54ad_159853_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/self-service-bi-sur-jeu-de-donnees-existant/img/008-methode-02-excel-file-sample_hu28931385c451b2356b1628abac4c54ad_159853_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Exemple de fichier Excel&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;196&#34;
+		data-flex-basis=&#34;470px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Des éléments du modèle sont déposés dans le tableau croisé dynamique.&lt;/li&gt;
+&lt;li&gt;Les données affichées proviennent du jeu de données du service Power BI.&lt;/li&gt;
+&lt;li&gt;Vous pouvez rafraichir vos données dans Excel via le bouton &lt;strong&gt;Actualiser&lt;/strong&gt; di menu &lt;strong&gt;Données&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;avec-power-bi-desktop&#34;&gt;Avec Power BI Desktop&lt;/h3&gt;
+&lt;p&gt;Dans cette troisième méthode, nous allons créer un nouveau rapport depuis Power BI Desktop et utiliser un jeu de données existant.&lt;/p&gt;
+&lt;p&gt;Ouvrez Power BI desktop, nous allons nous connecter à votre jeu de données Power BI.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/self-service-bi-sur-jeu-de-donnees-existant/img/009-methode-03-poxer-bi-desktop-connect-dataset.png&#34;
+	width=&#34;1421&#34;
+	height=&#34;776&#34;
+	srcset=&#34;https://blog.ddata.fr/p/self-service-bi-sur-jeu-de-donnees-existant/img/009-methode-03-poxer-bi-desktop-connect-dataset_hue9f1dca2dc042c678b7ecc54af596904_86036_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/self-service-bi-sur-jeu-de-donnees-existant/img/009-methode-03-poxer-bi-desktop-connect-dataset_hue9f1dca2dc042c678b7ecc54af596904_86036_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Connecter Power BI Desktop à un jeu de données&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;183&#34;
+		data-flex-basis=&#34;439px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Dans le menu &lt;strong&gt;Accueil&lt;/strong&gt; appuyez sur le bouton &lt;strong&gt;Obtenir les données&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;Sélectionnez &lt;strong&gt;Power Platform&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;Sélectionnez &lt;strong&gt;Jeux de données Power BI&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;Appuyer sur &lt;strong&gt;Se connecter&lt;/strong&gt; pour passer à l&amp;rsquo;étape suivante.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/self-service-bi-sur-jeu-de-donnees-existant/img/010-methode-03-poxer-bi-desktop-connect-dataset-select.png&#34;
+	width=&#34;1082&#34;
+	height=&#34;611&#34;
+	srcset=&#34;https://blog.ddata.fr/p/self-service-bi-sur-jeu-de-donnees-existant/img/010-methode-03-poxer-bi-desktop-connect-dataset-select_hu0aaccf048c00759c5349b570a343600f_39871_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/self-service-bi-sur-jeu-de-donnees-existant/img/010-methode-03-poxer-bi-desktop-connect-dataset-select_hu0aaccf048c00759c5349b570a343600f_39871_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Sélectionner un jeu de données&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;177&#34;
+		data-flex-basis=&#34;425px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Sélectionnez le jeu de données auquel vous voulez vous connecter.&lt;/li&gt;
+&lt;li&gt;Appuyer sur &lt;strong&gt;Se connecter&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/self-service-bi-sur-jeu-de-donnees-existant/img/011-methode-03-poxer-bi-desktop-connected-to-dataset.png&#34;
+	width=&#34;1421&#34;
+	height=&#34;776&#34;
+	srcset=&#34;https://blog.ddata.fr/p/self-service-bi-sur-jeu-de-donnees-existant/img/011-methode-03-poxer-bi-desktop-connected-to-dataset_hu9c19ccf9d8bda07b0b9691c5e55c44a0_91313_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/self-service-bi-sur-jeu-de-donnees-existant/img/011-methode-03-poxer-bi-desktop-connected-to-dataset_hu9c19ccf9d8bda07b0b9691c5e55c44a0_91313_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Jeu de données disponible dans Power BI Desktop&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;183&#34;
+		data-flex-basis=&#34;439px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Vous retrouvez votre modèle de données dans la liste des champs.&lt;/li&gt;
+&lt;li&gt;Dans la barre d&amp;rsquo;information, vous pouvez voir que vous êtes connecté au jeu de données.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Si vous publiez le rapport dans le service Power BI vous pourrez constater que seul le rapport est publié et si vous passez en affichage &lt;strong&gt;Tracabilité&lt;/strong&gt; vous constaterez qu&amp;rsquo;il est connecté au jeu de données.&lt;/p&gt;
+&lt;h2 id=&#34;améliorer-un-jeu-de-données-existant&#34;&gt;Améliorer un jeu de données existant&lt;/h2&gt;
+&lt;p&gt;Jusqu&amp;rsquo;à présent non avons fait que réutiliser simplement un jeu de données existant. C&amp;rsquo;est bien, mais parfois nous avons besoin d&amp;rsquo;enrichir le jeu de données afin de créer un calcul spécifique à un rapport, mais non disponible dans le jeu de données.&lt;/p&gt;
+&lt;h3 id=&#34;que-fait-exactement-un-rapport-avec-un-jeu-de-données-&#34;&gt;Que fait exactement un rapport avec un jeu de données ?&lt;/h3&gt;
+&lt;p&gt;Pour afficher les données dans un visuel, le rapport crée une requête, dans le langage DAX, puis l&amp;rsquo;envoi au jeu de données qui l&amp;rsquo;exécute et renvoie le résultat afin que ce dernier soit affiché.&lt;br&gt;
+Jusqu&amp;rsquo;à présent nous nous sommes limités à la réutilisation des éléments disponible dans le jeu de données. Pour rappel un jeu de données est constitué des éléments suivants :&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/self-service-bi-sur-jeu-de-donnees-existant/img/012-report-dataset-query.png&#34;
+	width=&#34;645&#34;
+	height=&#34;359&#34;
+	srcset=&#34;https://blog.ddata.fr/p/self-service-bi-sur-jeu-de-donnees-existant/img/012-report-dataset-query_hu0064bf490ee6aa0d1fbadbd20648fcd3_21720_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/self-service-bi-sur-jeu-de-donnees-existant/img/012-report-dataset-query_hu0064bf490ee6aa0d1fbadbd20648fcd3_21720_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Schéma de requête entre un rapport et un jeu de données&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;179&#34;
+		data-flex-basis=&#34;431px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Nous pouvons aller plus loin et créer de nouvelles mesures dans notre rapport. Nous sommes limités aux mesures, car au final une mesure est juste un morceau de requêtes DAX réutilisable.&lt;br&gt;
+Les autres éléments comme les tables ou colonnes calculées influent directement sur le jeu de données et ne sont donc pas modifiables dans le cas d&amp;rsquo;un rapport consommant un jeu de données.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/self-service-bi-sur-jeu-de-donnees-existant/img/013-report-dataset-query-with-new-measure.png&#34;
+	width=&#34;646&#34;
+	height=&#34;359&#34;
+	srcset=&#34;https://blog.ddata.fr/p/self-service-bi-sur-jeu-de-donnees-existant/img/013-report-dataset-query-with-new-measure_hu4761dcbb41964e02f380b945d471ba4e_22312_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/self-service-bi-sur-jeu-de-donnees-existant/img/013-report-dataset-query-with-new-measure_hu4761dcbb41964e02f380b945d471ba4e_22312_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Schéma de requête avec ajout de mesure dans le rapport&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;179&#34;
+		data-flex-basis=&#34;431px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Note : Il existe un moyen d&amp;rsquo;enrichir un jeu de données existant avec de nouvelles sources de données, mais ce n&amp;rsquo;est pas le sujet du présent article.&lt;/p&gt;
+&lt;h3 id=&#34;créer-une-mesure-dans-notre-rapport&#34;&gt;Créer une mesure dans notre rapport&lt;/h3&gt;
+&lt;p&gt;Pour ajouter une mesure dans votre rapport, vous pouvez le faire uniquement avec Power BI Desktop. Ouvrez votre fichier PBIX contenant seulement un rapport.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/self-service-bi-sur-jeu-de-donnees-existant/img/014-report-dataset-add-new-measure-step-1.png&#34;
+	width=&#34;1012&#34;
+	height=&#34;131&#34;
+	srcset=&#34;https://blog.ddata.fr/p/self-service-bi-sur-jeu-de-donnees-existant/img/014-report-dataset-add-new-measure-step-1_hu7f12ebab2db88c875e45dbbd1a723589_25977_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/self-service-bi-sur-jeu-de-donnees-existant/img/014-report-dataset-add-new-measure-step-1_hu7f12ebab2db88c875e45dbbd1a723589_25977_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Ajout de mesure dans le rapport - étape 1&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;772&#34;
+		data-flex-basis=&#34;1854px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Dans le menu &lt;strong&gt;Modelisation&lt;/strong&gt;, sélectionnez &lt;strong&gt;Nouvelle mesure&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;Vous pouvez constater que les autres options de création du menu sont désactivées.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/self-service-bi-sur-jeu-de-donnees-existant/img/015-report-dataset-add-new-measure-step-2.png&#34;
+	width=&#34;1421&#34;
+	height=&#34;776&#34;
+	srcset=&#34;https://blog.ddata.fr/p/self-service-bi-sur-jeu-de-donnees-existant/img/015-report-dataset-add-new-measure-step-2_hu1d679e64b9f847c588bfb0081b322a6f_109595_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/self-service-bi-sur-jeu-de-donnees-existant/img/015-report-dataset-add-new-measure-step-2_hu1d679e64b9f847c588bfb0081b322a6f_109595_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Ajout de mesure dans le rapport - étape 2&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;183&#34;
+		data-flex-basis=&#34;439px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Créez une nouvelle mesure simple.&lt;/li&gt;
+&lt;li&gt;Vous pouvez l&amp;rsquo;utiliser directement dans votre rapport.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Code de la mesure :&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c#&#34; data-lang=&#34;c#&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;#&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Lignes&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;COUNTROWS&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Ventes&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Maintenant, publiez votre rapport dans le service Power BI et rendez-vous dans votre espace de travail.&lt;br&gt;
+Vous pouvez constater que seul un rapport est publié.
+En utilisant la vue de traçabilité, vous voyez qu&amp;rsquo;il est connecté au jeu de données.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/self-service-bi-sur-jeu-de-donnees-existant/img/016-power-bi-service-lineage.png&#34;
+	width=&#34;816&#34;
+	height=&#34;477&#34;
+	srcset=&#34;https://blog.ddata.fr/p/self-service-bi-sur-jeu-de-donnees-existant/img/016-power-bi-service-lineage_hu4caca8552a03daec65e6a6b5d40d21ce_32314_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/self-service-bi-sur-jeu-de-donnees-existant/img/016-power-bi-service-lineage_hu4caca8552a03daec65e6a6b5d40d21ce_32314_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Vue de traçabilité&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;171&#34;
+		data-flex-basis=&#34;410px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Jeu de données lié.&lt;/li&gt;
+&lt;li&gt;Rapport avec une mesure en plus.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h2&gt;
+&lt;p&gt;Nous venons de faire un tour rapide de la principale fonctionnalité de la BI self-service, le partage de jeu de données entre plusieurs rapports.&lt;/p&gt;
+&lt;p&gt;Merci de votre attention.&lt;/p&gt;</description>
+        </item>
+        <item>
         <title>Bien partager votre travail</title>
         <link>https://blog.ddata.fr/p/partager-avec-power-bi/</link>
         <pubDate>Sun, 23 Oct 2022 00:00:00 +0000</pubDate>
