@@ -6,7 +6,65 @@
         <description>Recent content in Outils pratiques on Le D de Data</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>fr-fr</language>
-        <lastBuildDate>Sun, 30 Oct 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ddata.fr/series/outils-pratiques/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sun, 13 Nov 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ddata.fr/series/outils-pratiques/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>ZoomIt : devenez plus percutant en réunion Teams !</title>
+        <link>https://blog.ddata.fr/p/zoomit/</link>
+        <pubDate>Sun, 13 Nov 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://blog.ddata.fr/p/zoomit/</guid>
+        <description>&lt;img src="https://blog.ddata.fr/p/zoomit/nick-fewings-zF_pTLx_Dkg-unsplash.jpg" alt="Featured image of post ZoomIt : devenez plus percutant en réunion Teams !" /&gt;&lt;p&gt;Vous partagez votre écran en réunion Teams et vous voulez mettre en avant quelque chose sur votre écran ?&lt;br&gt;
+Devenez plus percutant avec ZoomIt.&lt;/p&gt;
+&lt;h2 id=&#34;installation&#34;&gt;Installation&lt;/h2&gt;
+&lt;p&gt;ZoomIt est un outil gratuit disponible sur le site de Microsoft &lt;a class=&#34;link&#34; href=&#34;https://learn.microsoft.com/en-us/sysinternals/downloads/zoomit&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://learn.microsoft.com/en-us/sysinternals/downloads/zoomit&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Pour installer ZoomIt, téléchargez le fichier Zip sur le page de l&amp;rsquo;outil, décompressez-le dans le dossier où vous voulez installer ZoomIt puis lancer le programme ZoomIt64 dans le dossier.&lt;/p&gt;
+&lt;p&gt;Au premier démarrage le produit vous demande d&amp;rsquo;accepter la licence, puis vous pouvez le configurer.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/zoomit/img/001-zoomit-config-screen.png&#34;
+	width=&#34;382&#34;
+	height=&#34;453&#34;
+	srcset=&#34;https://blog.ddata.fr/p/zoomit/img/001-zoomit-config-screen_hucc68675319f1745379141d0e91f729d2_19125_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/zoomit/img/001-zoomit-config-screen_hucc68675319f1745379141d0e91f729d2_19125_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Page d’accueil&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;84&#34;
+		data-flex-basis=&#34;202px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Vous pouvez cocher la case pour que ZoomIt se lance au démarrage.&lt;/li&gt;
+&lt;li&gt;Appuyez sur &lt;strong&gt;Ok&lt;/strong&gt; pour terminer. ZoomIt est maintenant en attente avec les icônes à côté de l&amp;rsquo;heure en bas à droite.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;utilisation&#34;&gt;Utilisation&lt;/h2&gt;
+&lt;p&gt;Voici les principales commandes de ZoomIt que j&amp;rsquo;utilise.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;ctrl + 1&lt;/strong&gt; : permets de déclencher un zoom, le zoom est réglable avec la molette de la souris. Appuyez sur &lt;strong&gt;Echap&lt;/strong&gt; pour sortir du zoom ou faites un clic gauche pour passer en mode dessin comme avec &lt;strong&gt;ctrl + 2&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;ctrl + 2&lt;/strong&gt; : permets de passer en mode dessin.
+&lt;ul&gt;
+&lt;li&gt;Vous pouvez dessiner à main levée avec la souris en faisant un clic gauche.&lt;/li&gt;
+&lt;li&gt;Vous pouvez dessiner un rectangle avec la souris en faisant un clic gauche et en maintenant la touche &lt;strong&gt;ctrl&lt;/strong&gt; enfoncée.&lt;/li&gt;
+&lt;li&gt;Vous pouvez dessiner une flèche avec la souris en faisant un clic gauche et en maintenant la touche &lt;strong&gt;ctrl + maj&lt;/strong&gt; enfoncée.&lt;/li&gt;
+&lt;li&gt;Vous pouvez écrire un texte en appuyant sur la touche &lt;strong&gt;T&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;Vous pouvez changer la couleur des dessins
+&lt;ul&gt;
+&lt;li&gt;B : bleu (Blue)&lt;/li&gt;
+&lt;li&gt;P : rose (Pink)&lt;/li&gt;
+&lt;li&gt;Y : jaune (Yellow)&lt;/li&gt;
+&lt;li&gt;R : Rouge (Red)&lt;/li&gt;
+&lt;li&gt;O : orange (Orange)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Vous pouvez revenir à votre écran normal en appuyant sur &lt;strong&gt;Echap&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Entrainez-vous avant une première utilisation en live, cet outil va changer votre manière de présenter.
+Bien entendu cela ne fonctionne pas seulement avec Teams.&lt;/p&gt;
+&lt;p&gt;Merci de votre attention.&lt;/p&gt;</description>
+        </item>
+        <item>
         <title>QuiteRSS : suivez l&#39;actualité de vos blogs préférés.</title>
         <link>https://blog.ddata.fr/p/quiterss/</link>
         <pubDate>Sun, 30 Oct 2022 00:00:00 +0000</pubDate>

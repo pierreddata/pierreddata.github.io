@@ -6,21 +6,21 @@
         <description>Recent content in Series on Le D de Data</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>fr-fr</language>
-        <lastBuildDate>Sun, 06 Nov 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ddata.fr/series/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sun, 13 Nov 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ddata.fr/series/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Outils pratiques</title>
+        <link>https://blog.ddata.fr/series/outils-pratiques/</link>
+        <pubDate>Sun, 13 Nov 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://blog.ddata.fr/series/outils-pratiques/</guid>
+        <description></description>
+        </item>
+        <item>
         <title>Autoformation Power BI Service</title>
         <link>https://blog.ddata.fr/series/autoformation-power-bi-service/</link>
         <pubDate>Sun, 06 Nov 2022 00:00:00 +0000</pubDate>
         
         <guid>https://blog.ddata.fr/series/autoformation-power-bi-service/</guid>
         <description>&lt;img src="https://blog.ddata.fr/series/autoformation-power-bi-service/AutoformationPowerBIService.png" alt="Featured image of post Autoformation Power BI Service" /&gt;</description>
-        </item>
-        <item>
-        <title>Outils pratiques</title>
-        <link>https://blog.ddata.fr/series/outils-pratiques/</link>
-        <pubDate>Sun, 30 Oct 2022 00:00:00 +0000</pubDate>
-        
-        <guid>https://blog.ddata.fr/series/outils-pratiques/</guid>
-        <description></description>
         </item>
         <item>
         <title>Cékoidonc ?</title>
