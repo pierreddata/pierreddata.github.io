@@ -1492,7 +1492,7 @@ Suivez le guide &amp;hellip;&lt;/p&gt;
 &lt;h2 id=&#34;préparons-nous&#34;&gt;Préparons-nous&lt;/h2&gt;
 &lt;p&gt;Pour créer une alerte sur vos données dans Power BI vous devez le faire dans un tableau de bord. Si ce n&amp;rsquo;est pas déjà fait créer un tableau de bord tel que je le décris dans ce &lt;a class=&#34;link&#34; href=&#34;https://blog.ddata.fr/p/power-bi-create-dashboard/&#34; &gt;précédent article&lt;/a&gt;.&lt;/p&gt;
 &lt;h2 id=&#34;création-dune-alerte&#34;&gt;Création d&amp;rsquo;une alerte&lt;/h2&gt;
-&lt;p&gt;Un seul type de visuel permet de créer des alertes, il s&amp;rsquo;agit des cartes de données.&lt;/p&gt;
+&lt;p&gt;Un des seuls types de visuel qui permet de créer des alertes est la carte de données. Les autres visuels que vous pouvez utiliser sont la jauge et l&amp;rsquo;indicateur de perfomance clé (KPI).&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/power-bi-create-data-alert/img/001-card-visual.png&#34;
 	width=&#34;180&#34;
 	height=&#34;310&#34;

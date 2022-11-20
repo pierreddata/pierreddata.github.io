@@ -6,7 +6,106 @@
         <description>Recent content in Posts on Le D de Data</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>fr-fr</language>
-        <lastBuildDate>Sun, 13 Nov 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ddata.fr/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sun, 20 Nov 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ddata.fr/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Certification : attrapez votre badge !</title>
+        <link>https://blog.ddata.fr/p/guide-pour-votre-certification/</link>
+        <pubDate>Sun, 20 Nov 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://blog.ddata.fr/p/guide-pour-votre-certification/</guid>
+        <description>&lt;img src="https://blog.ddata.fr/p/guide-pour-votre-certification/chuttersnap-VMKsKFSuEg8-unsplash.jpg" alt="Featured image of post Certification : attrapez votre badge !" /&gt;&lt;p&gt;Vous avez des connaissances dans l&amp;rsquo;écosystème Microsoft ?&lt;br&gt;
+Valider vos acquis avec les certifications et ajouter de jolis badges à votre CV.&lt;br&gt;
+Je vais vous expliquer comment cela se passe.&lt;/p&gt;
+&lt;h2 id=&#34;prérequis&#34;&gt;Prérequis&lt;/h2&gt;
+&lt;p&gt;Je vais ici parler exclusivement des certifications Microsoft. Avant de commencer, vérifiez que vous avez bien un compte Microsoft Learn associé à votre email personnel. Cela est très important, car vous pourrez toujours y associer plus tard votre compte email professionnel, mais ce compte Microsoft Learn vous suivra au long de votre parcours professionnel.&lt;/p&gt;
+&lt;p&gt;Pour vous inscrire, rendez-vous sur &lt;a class=&#34;link&#34; href=&#34;https://learn.microsoft.com/fr-fr/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;le portail de Microsoft Learn&lt;/a&gt; pour créer &lt;strong&gt;un compte gratuit&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;Votre compte Microsoft Learn vous permettra de suivre vos avancées dans les différents parcours de formation et conservera la trace de vos futures certifications.&lt;/p&gt;
+&lt;h2 id=&#34;choisir-une-certification&#34;&gt;Choisir une certification&lt;/h2&gt;
+&lt;p&gt;Vous trouverez l&amp;rsquo;ensemble des certifications Microsoft sur &lt;a class=&#34;link&#34; href=&#34;https://learn.microsoft.com/fr-fr/certifications/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;le portail des certifications&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Ce que vous devez savoir sur les certifications :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Les certifications avec le chiffre 900 sont sur les fondamentaux d&amp;rsquo;un thème.&lt;/li&gt;
+&lt;li&gt;Les certifications sont classées en fonction de leur code :
+&lt;ul&gt;
+&lt;li&gt;AZ : Azure&lt;/li&gt;
+&lt;li&gt;DP : Data Product&lt;/li&gt;
+&lt;li&gt;PL : Power Plateform&lt;/li&gt;
+&lt;li&gt;SC : Sécurité&lt;/li&gt;
+&lt;li&gt;MS : Microsoft 365&lt;/li&gt;
+&lt;li&gt;AI : Inteligence Artificielle&lt;/li&gt;
+&lt;li&gt;MB : Dynamics 365&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Les certifications doivent être renouvelées tous les ans, sauf les 900 qui sont acquises définitivement.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Choisissez une certification en fonction de vos besoins et noter bien le code (par exemple AZ-900) cela vous servira de mot clé pour trouver des ressources autour de cette certification.&lt;/p&gt;
+&lt;h2 id=&#34;se-préparer-à-la-certification&#34;&gt;Se préparer à la certification&lt;/h2&gt;
+&lt;p&gt;Il existe une multitude de ressources pour préparer une certification, je vais vous présenter celles qui me paraissent indispensables.&lt;/p&gt;
+&lt;h3 id=&#34;consultez-le-programme-de-lexamen&#34;&gt;Consultez le programme de l&amp;rsquo;examen&lt;/h3&gt;
+&lt;p&gt;Sur la page dédiée à votre examen, vous trouverez un guide d&amp;rsquo;étude au format PDF. Ce guide en anglais vous donnera en détail les compétences testées avec le pourcentage de question sur ce sujet (une fourchette en général) et vous aurez aussi le détail des compétences testées en dessous. Cela vous permet de comprendre sur quoi portera l&amp;rsquo;examen.&lt;/p&gt;
+&lt;h3 id=&#34;parcour-microsoft-learn&#34;&gt;Parcour Microsoft Learn&lt;/h3&gt;
+&lt;p&gt;Sur la page dédiée à votre examen, vous trouverez un parcours Microsoft Learn associé à cette certification. N&amp;rsquo;hésitez pas à explorer Microsoft Learn pour trouver d&amp;rsquo;autres contenus sur les thèmes de votre certification.&lt;/p&gt;
+&lt;h3 id=&#34;youtube&#34;&gt;Youtube&lt;/h3&gt;
+&lt;p&gt;Recherche sur Youtube le code de votre certification, vous trouverez certainement beaucoup de ressource de formations gratuite.&lt;br&gt;
+Pour Azure et la sécurité je vous recommande chaudement &lt;a class=&#34;link&#34; href=&#34;https://www.youtube.com/@NTFAQGuy&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;la chaine de John Savill&lt;/a&gt; c&amp;rsquo;est en anglais, mais c&amp;rsquo;est le meilleur.&lt;/p&gt;
+&lt;h2 id=&#34;sentrainer-à-la-certification&#34;&gt;S&amp;quot;entrainer à la certification&lt;/h2&gt;
+&lt;p&gt;L&amp;rsquo;examen peut faire peur, je vous conseille de regarder sur Internet, vous trouverez, en anglais, des exemples de questions de l&amp;rsquo;examen. 
+Vous pouvez commencer par &lt;a class=&#34;link&#34; href=&#34;https://www.examtopics.com/exams/microsoft/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;ExamTopics&lt;/a&gt;.
+Par contre attention certaines réponses sont fausse, regardez les commentaires en cas de doute.&lt;/p&gt;
+&lt;h2 id=&#34;sinscrire-à-la-certification&#34;&gt;S&amp;rsquo;inscrire à la certification&lt;/h2&gt;
+&lt;h3 id=&#34;obtenir-des-vouchers&#34;&gt;Obtenir des vouchers&lt;/h3&gt;
+&lt;p&gt;Un voucher est un bon gratuit pour passer une certification. Vous pouvez en obtenir lors d&amp;rsquo;évènement organisé par Microsoft.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Les vouchers pour les certifications 900 sont distribués si vous participez à des training day vous trouverez sur &lt;a class=&#34;link&#34; href=&#34;https://azure.microsoft.com/fr-fr/resources/events/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;le portail dédié&lt;/a&gt;. Lisez le descriptif de l&amp;rsquo;évènement pour savoir s’il est éligible à un voucher.&lt;/li&gt;
+&lt;li&gt;Lors des évènements Build et Ignite, Microsoft organise des challenges consistant à valider des parcours Microsoft Learn. Suite à la participation aux challenges, vous pouvez recevoir un voucher pour certaines certifications (la liste change pour chaque challenge)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;procédure-dinscription&#34;&gt;Procédure d&amp;rsquo;inscription&lt;/h3&gt;
+&lt;p&gt;La procédure d&amp;rsquo;inscription est plutôt simple, si vous programmez votre examen suffisamment à l&amp;rsquo;avance, vous aurez un grand choix de dates et heures. Vous pouvez passer une certification à 4h00 le matin si vous voulez 😁.&lt;br&gt;
+Par contre, prévoyez d&amp;rsquo;arriver 30 minutes avant pour la procédure d&amp;rsquo;inscription.&lt;br&gt;
+Vous retrouverez les informations de l&amp;rsquo;examen dans le portail Microsoft Learn dans votre profil.&lt;/p&gt;
+&lt;h2 id=&#34;se-préparer-pour-le-jour-de-la-certification&#34;&gt;Se préparer pour le jour de la certification&lt;/h2&gt;
+&lt;p&gt;C&amp;rsquo;est le grand jour, attention, il reste quelques pièges à éviter.&lt;/p&gt;
+&lt;h3 id=&#34;préparez-le-lieu-de-votre-examen&#34;&gt;Préparez le lieu de votre examen&lt;/h3&gt;
+&lt;p&gt;Si vous passez l&amp;rsquo;examen chez vous ou au bureau, prenez le temps de tout enlever et d&amp;rsquo;avoir une zone de travail dégager. Vous allez devoir photographier votre lieu d&amp;rsquo;examen et moins il est chargé plus c&amp;rsquo;est simple lors de la validation.&lt;/p&gt;
+&lt;p&gt;Pour faire simple :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Pas de papier qui traine sur le bureau, pas de livres techniques dans les étagères ou de posters techniques.&lt;/li&gt;
+&lt;li&gt;Pas de montre, pas de casque, pas d&amp;rsquo;enceinte, pas de téléphone.&lt;/li&gt;
+&lt;li&gt;Vous devrez être en mono-écran. Personnellement je démonte les écrans de mon bureau pour être tranquille.&lt;/li&gt;
+&lt;li&gt;Une connexion Internet stable, car vous serez filmé durant tout l&amp;rsquo;examen via Internet.&lt;/li&gt;
+&lt;li&gt;Pas de visiteurs pendant l&amp;rsquo;examen.&lt;/li&gt;
+&lt;li&gt;Ne pas parler pendant l&amp;rsquo;examen.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;La liste n&amp;rsquo;est pas exhaustive 😀&lt;/p&gt;
+&lt;h3 id=&#34;les-types-de-questions&#34;&gt;Les types de questions&lt;/h3&gt;
+&lt;p&gt;Lors de votre certification, vous allez avoir différents types de questions dont voici les principaux types :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Le choix simple : Une question une liste de choix, n&amp;rsquo;hésiter pas à éliminer les réponses aberrantes en cas de doute.&lt;/li&gt;
+&lt;li&gt;Le choix multiple : Une question une liste de choix dans lequel on sélectionne plusieurs valeurs.&lt;/li&gt;
+&lt;li&gt;Le choix multiple ordonné : Une question une liste de choix dans lequel on sélectionne plusieurs valeurs que l&amp;rsquo;on ordonne.&lt;/li&gt;
+&lt;li&gt;L&amp;rsquo;exemple de script : Un exemple de script a complété à l&amp;rsquo;aide de liste déroulante.&lt;/li&gt;
+&lt;li&gt;L&amp;rsquo;étude de cas : On vous présente un cas métier puis un ensemble de questions dessus. Une fois répondu, &lt;strong&gt;vous ne pourrez pas revenir dessus&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;La série sans retour : Une série avec la même question une liste de choix, mais pas possible de revenir en arrière après avoir répondu.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;conseils-pour-lexamen&#34;&gt;Conseils pour l&amp;rsquo;examen&lt;/h3&gt;
+&lt;h4 id=&#34;lire-lécran-au-début-de-lexamen&#34;&gt;Lire l&amp;rsquo;écran au début de l&amp;rsquo;examen&lt;/h4&gt;
+&lt;p&gt;Au début de l&amp;rsquo;examen, vous aurez un écran qui vous rappelle le temps de l&amp;rsquo;examen, mais qui vous donne aussi le nombre de questions et le nombre d&amp;rsquo;études de cas pour votre examen. Cela peut changer d&amp;rsquo;une session à une autre. Penser à bien conserver du temps pour les études de cas si elles sont en fin de session. Généralement elles sont soit en premier soit en dernier.&lt;/p&gt;
+&lt;h4 id=&#34;objectif-700&#34;&gt;Objectif 700&lt;/h4&gt;
+&lt;p&gt;Vous aurez votre certification si vous atteignez 700 points sur 1000. Que vous ayez 701 ou 990 le résultat est le même : vous être reçu. Alors, si une question vous pose problème, ne perdez pas trop de temps avec. Vous pouvez la marquer pour revenir plus tard dessus.&lt;/p&gt;
+&lt;h4 id=&#34;bien-lire-les-questions&#34;&gt;Bien lire les questions&lt;/h4&gt;
+&lt;p&gt;C&amp;rsquo;est bête, mais pour certaines questions on vous demande de choisir plusieurs réponses, en général le nombre de réponses attendues est indiqué dans le texte de la question alors ne cocher pas une seule valeur si deux sont attendus&amp;hellip;.&lt;/p&gt;
+&lt;h4 id=&#34;répondre-à-toutes-les-questions&#34;&gt;Répondre à toutes les questions&lt;/h4&gt;
+&lt;p&gt;Il ne semble pas y avoir de point négatif pour les mauvaises réponses. Il est donc conseillé de répondre a &lt;em&gt;TOUTES&lt;/em&gt; les questions?&lt;/p&gt;
+&lt;h4 id=&#34;une-mauvaise-pratique-nest-pas-une-mauvaise-réponse&#34;&gt;Une mauvaise pratique n&amp;rsquo;est pas une mauvaise réponse&lt;/h4&gt;
+&lt;p&gt;Certaines questions vous font une proposition et vous demande si cela &lt;strong&gt;fonctionne&lt;/strong&gt; pas si c&amp;rsquo;est la bonne manière de faire. J&amp;rsquo;ai vu pas mal de question qui propose des choses qu&amp;rsquo;il ne faut pas faire, mais qui effectivement fonctionne.&lt;/p&gt;
+&lt;h2 id=&#34;bonne-chance-à-vous&#34;&gt;Bonne chance à vous&lt;/h2&gt;
+&lt;p&gt;Merci de votre attention.&lt;/p&gt;</description>
+        </item>
+        <item>
         <title>ZoomIt : devenez plus percutant en réunion Teams !</title>
         <link>https://blog.ddata.fr/p/zoomit/</link>
         <pubDate>Sun, 13 Nov 2022 00:00:00 +0000</pubDate>
@@ -2068,7 +2167,7 @@ Suivez le guide &amp;hellip;&lt;/p&gt;
 &lt;h2 id=&#34;préparons-nous&#34;&gt;Préparons-nous&lt;/h2&gt;
 &lt;p&gt;Pour créer une alerte sur vos données dans Power BI vous devez le faire dans un tableau de bord. Si ce n&amp;rsquo;est pas déjà fait créer un tableau de bord tel que je le décris dans ce &lt;a class=&#34;link&#34; href=&#34;https://blog.ddata.fr/p/power-bi-create-dashboard/&#34; &gt;précédent article&lt;/a&gt;.&lt;/p&gt;
 &lt;h2 id=&#34;création-dune-alerte&#34;&gt;Création d&amp;rsquo;une alerte&lt;/h2&gt;
-&lt;p&gt;Un seul type de visuel permet de créer des alertes, il s&amp;rsquo;agit des cartes de données.&lt;/p&gt;
+&lt;p&gt;Un des seuls types de visuel qui permet de créer des alertes est la carte de données. Les autres visuels que vous pouvez utiliser sont la jauge et l&amp;rsquo;indicateur de perfomance clé (KPI).&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/power-bi-create-data-alert/img/001-card-visual.png&#34;
 	width=&#34;180&#34;
 	height=&#34;310&#34;
