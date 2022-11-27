@@ -3,12 +3,39 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://blog.ddata.fr/</loc>
-    <lastmod>2022-11-20T00:00:00+00:00</lastmod>
+    <lastmod>2022-11-27T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://blog.ddata.fr/tags/auto-formation/</loc>
-    <lastmod>2022-11-20T00:00:00+00:00</lastmod>
+    <loc>https://blog.ddata.fr/p/modelisation-de-donnees-les-bases/</loc>
+    <lastmod>2022-11-27T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://blog.ddata.fr/categories/</loc>
+    <lastmod>2022-11-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.ddata.fr/tags/d%C3%A9butant/</loc>
+    <lastmod>2022-11-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.ddata.fr/tags/mod%C3%A8le-de-donn%C3%A9es/</loc>
+    <lastmod>2022-11-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.ddata.fr/series/mod%C3%A9lisation-de-donn%C3%A9es/</loc>
+    <lastmod>2022-11-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.ddata.fr/post/</loc>
+    <lastmod>2022-11-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.ddata.fr/categories/powerapps/</loc>
+    <lastmod>2022-11-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.ddata.fr/categories/powerbi/</loc>
+    <lastmod>2022-11-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.ddata.fr/series/</loc>
+    <lastmod>2022-11-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.ddata.fr/tags/</loc>
+    <lastmod>2022-11-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.ddata.fr/tags/auto-formation/</loc>
     <lastmod>2022-11-20T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://blog.ddata.fr/p/guide-pour-votre-certification/</loc>
@@ -20,19 +47,10 @@
     <loc>https://blog.ddata.fr/tags/gratuit/</loc>
     <lastmod>2022-11-20T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://blog.ddata.fr/post/</loc>
-    <lastmod>2022-11-20T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://blog.ddata.fr/tags/</loc>
-    <lastmod>2022-11-20T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://blog.ddata.fr/categories/outils/</loc>
     <lastmod>2022-11-13T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://blog.ddata.fr/series/outils-pratiques/</loc>
-    <lastmod>2022-11-13T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://blog.ddata.fr/series/</loc>
     <lastmod>2022-11-13T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://blog.ddata.fr/p/zoomit/</loc>
@@ -42,12 +60,6 @@
     <lastmod>2022-11-06T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://blog.ddata.fr/series/autoformation-power-bi-service/</loc>
-    <lastmod>2022-11-06T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://blog.ddata.fr/tags/d%C3%A9butant/</loc>
-    <lastmod>2022-11-06T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://blog.ddata.fr/categories/powerbi/</loc>
     <lastmod>2022-11-06T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://blog.ddata.fr/p/quiterss/</loc>
@@ -88,9 +100,6 @@
   </url><url>
     <loc>https://blog.ddata.fr/p/afficher-date-derniere-mise-a-jour/</loc>
     <lastmod>2022-08-30T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://blog.ddata.fr/categories/powerapps/</loc>
-    <lastmod>2022-08-26T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://blog.ddata.fr/p/power-apps-developer-plan/</loc>
     <lastmod>2022-08-26T00:00:00+00:00</lastmod>

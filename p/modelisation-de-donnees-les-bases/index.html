@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="fr-fr" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Vous travaillez avec des données ? Il est temps de parler modélisation de données.
+'>
+<title>C&#39;est quoi la modélisation de données ?</title>
+
+<link rel='canonical' href='https://blog.ddata.fr/p/modelisation-de-donnees-les-bases/'>
+
+<link rel="stylesheet" href="/scss/style.min.5be32ca3f6e1a997c75795c4359147cc6d4fbd34948c0acd51e31d237033978a.css"><meta property='og:title' content='C&#39;est quoi la modélisation de données ?'>
+<meta property='og:description' content='Vous travaillez avec des données ? Il est temps de parler modélisation de données.
+'>
+<meta property='og:url' content='https://blog.ddata.fr/p/modelisation-de-donnees-les-bases/'>
+<meta property='og:site_name' content='Le D de Data'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Modèle de données' /><meta property='article:tag' content='Débutant' /><meta property='article:published_time' content='2022-11-27T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2022-11-27T00:00:00&#43;00:00'/><meta property='og:image' content='https://blog.ddata.fr/p/modelisation-de-donnees-les-bases/robert-anasch-McX3XuJRsUM-unsplash.jpg' />
+<meta name="twitter:title" content="C&#39;est quoi la modélisation de données ?">
+<meta name="twitter:description" content="Vous travaillez avec des données ? Il est temps de parler modélisation de données.
+"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://blog.ddata.fr/p/modelisation-de-donnees-les-bases/robert-anasch-McX3XuJRsUM-unsplash.jpg' />
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TY6XFEN6QV"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-TY6XFEN6QV', { 'anonymize_ip': false });
+}
+</script>
+<link rel="alternate"
+      type="application/rss+xml"
+      href="https://blog.ddata.fr/index.xml"
+      title="Le D de Data">
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "dark");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Afficher le menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/pierre_hua6bbc70dde858dd10e363a14d1f7729c_67951_300x0_resize_q75_box.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Le D de Data</a></h1>
+            <h2 class="site-description">Blog francophone autour de la data Microsoft</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/pierreddata'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://www.linkedin.com/in/pierre-dupont-0b532374/'
+                        target="_blank"
+                        title="LinkdIn"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-folders" width="44" height="44" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <rect x="4" y="4" width="16" height="16" rx="2" />
+  <line x1="8" y1="11" x2="8" y2="16" />
+  <line x1="8" y1="8" x2="8" y2="8.01" />
+  <line x1="12" y1="16" x2="12" y2="11" />
+  <path d="M16 16v-3a2 2 0 0 0 -4 0" />
+</svg>
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Accueil</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/a-propos-de-d-de-data/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>A Propos</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/series/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-folders" width="44" height="44" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 4h3l2 2h5a2 2 0 0 1 2 2v7a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-9a2 2 0 0 1 2 -2" />
+  <path d="M17 17v2a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-9a2 2 0 0 1 2 -2h2" />
+</svg>
+
+                
+                <span>Series</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/liens/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Liens</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Rechercher</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Mode sombre</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table des matières</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#avertissement">Avertissement</a></li>
+    <li><a href="#pourquoi-modéliser-les-données">Pourquoi modéliser les données</a></li>
+    <li><a href="#la-modélisation-cest-quoi-">La modélisation c&rsquo;est quoi ?</a></li>
+    <li><a href="#les-3-grands-types-de-modélisation">Les 3 grands types de modélisation</a>
+      <ol>
+        <li><a href="#pour-les-applications-classiques">Pour les applications classiques</a></li>
+        <li><a href="#pour-le-reporting">Pour le reporting</a></li>
+        <li><a href="#pour-les-applications-distribuées">Pour les applications distribuées</a></li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/modelisation-de-donnees-les-bases/">
+                <img src="/p/modelisation-de-donnees-les-bases/robert-anasch-McX3XuJRsUM-unsplash_hu24d5abd74ebb0a153cabc62bc39d7d45_1806570_800x0_resize_q75_box.jpg"
+                        srcset="/p/modelisation-de-donnees-les-bases/robert-anasch-McX3XuJRsUM-unsplash_hu24d5abd74ebb0a153cabc62bc39d7d45_1806570_800x0_resize_q75_box.jpg 800w, /p/modelisation-de-donnees-les-bases/robert-anasch-McX3XuJRsUM-unsplash_hu24d5abd74ebb0a153cabc62bc39d7d45_1806570_1600x0_resize_q75_box.jpg 1600w"
+                        width="800" 
+                        height="477" 
+                        loading="lazy"
+                        alt="Featured image of post C&#39;est quoi la modélisation de données ?" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/powerbi/" style="background-color: #f2c811; color: #fff;">
+                Power BI
+            </a>
+        
+            <a href="/categories/powerapps/" style="background-color: #742774; color: #fff;">
+                Power Apps
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/modelisation-de-donnees-les-bases/">C&#39;est quoi la modélisation de données ?</a>
+        </h2>
+
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published" datetime="2022-11-27T00:00:00Z">
+                    27 novembre 2022
+                    
+                </time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    5 minutes de lecture
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+    
+    
+</div>
+</header>
+
+    <section class="article-content">
+    
+    
+    <p>Vous travaillez avec des données ? Il est temps de parler modélisation de données.</p>
+<h2 id="avertissement">Avertissement</h2>
+<p>Je commence ici une série d&rsquo;articles portant sur la modélisation de données.<br>
+Mon objectif est d&rsquo;initier toutes personnes devant travailler avec les données aux notions de base de la modélisation, je m&rsquo;adresse donc aux personnes ayant peu ou pas du tout de notion dans ce domaine.<br>
+Je vais donc me permettre d&rsquo;être incomplet, voire même simpliste, le but n&rsquo;étant pas de faire de vous des maitres de la modélisation, mais juste de vous apporter les bases afin de comprendre les enjeux et l&rsquo;importance de la modélisation quand on travaille avec les données.</p>
+<h2 id="pourquoi-modéliser-les-données">Pourquoi modéliser les données</h2>
+<p><img src="/p/modelisation-de-donnees-les-bases/img/BousierVsAbeille.png"
+	width="949"
+	height="300"
+	srcset="/p/modelisation-de-donnees-les-bases/img/BousierVsAbeille_hu5d01a036224eb85d63087b24c591c217_541648_480x0_resize_box_3.png 480w, /p/modelisation-de-donnees-les-bases/img/BousierVsAbeille_hu5d01a036224eb85d63087b24c591c217_541648_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Bousier VS Abeille"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="316"
+		data-flex-basis="759px"
+	
+></p>
+<p>Commençons par une analogie avec le monde animal, vos données sont des ressources et vous pouvez soit faire comme le bousier, accumuler vos ressources pour en faire une boule qui aura sont utilité, mais principalement en surface, soit organiser vos ressources comme un abeille et les transformer en nectar.</p>
+<p>La modélisation de données va vous permettre de passer du bousier à l&rsquo;abeille 🤩.</p>
+<h2 id="la-modélisation-cest-quoi-">La modélisation c&rsquo;est quoi ?</h2>
+<p>La modélisation des données c&rsquo;est simplement le fait d&rsquo;organiser et de structurer vos données d&rsquo;une manière spécifique afin de répondre à votre besoin. En général le résultat de la modélisation est un ensemble de tables organiser selon une certaine logique.</p>
+<h2 id="les-3-grands-types-de-modélisation">Les 3 grands types de modélisation</h2>
+<p>Il existe plusieurs manières de modéliser les données. La première chose à comprendre est pourquoi nous avons différentes manières de faire. La réponse est simple : nous avons des besoins différents :</p>
+<ul>
+<li>Quand vous réaliser une application classique, avec Power apps par exemple, vous allez faire beaucoup d&rsquo;écriture de données, à chaque enregistrement et beaucoup de lecture unitaire, à chaque fois qu&rsquo;un utilisateur ouvre un enregistrement. Cet usage demande pour être performant d&rsquo;avoir des tables le plus segmentées possible afin de ne pas avoir de redondance de données afin d&rsquo;optimiser les multiples lecture et écriture. Il en ressort en général un modèle avec beaucoup de tables reliées entre elles avec des relations.</li>
+<li>Quand vous faite du reporting de données, avec Power BI par exemple, vous allez faire une seule écriture de données, lors du chargement du modèle et beaucoup de lecture massive voir totale des données. Dans ce cas un grand nombre de tables avec un grand nombre de relations pénalise les performances. Pour résoudre ce problème, nous allons modéliser nos données différemment que pour l&rsquo;application source de la donnée.</li>
+</ul>
+<h3 id="pour-les-applications-classiques">Pour les applications classiques</h3>
+<p>Pour les applications classiques, nous allons faire une modélisation de données ayant pour but d&rsquo;éviter la redondance de données et garantir la cohérence de nos données. On parle en général de modèle relationnel.
+En termes de méthodologie de modélisation, vous retrouverez principalement la notion de <strong>formes normales</strong> et de modélisation selon la méthode Merise pour les plus anciens.<br>
+L&rsquo;objectif de cette modélisation est de garantir le caractère ACID des transactions d&rsquo;écriture des données :</p>
+<ul>
+<li>A - Atomicité : La propriété d&rsquo;atomicité assure qu&rsquo;une transaction se fait au complet ou pas du tout.</li>
+<li>C - Cohérence : La propriété de cohérence assure que chaque transaction amènera le système d&rsquo;un état valide à un autre état valide.</li>
+<li>I - Isolation : Toute transaction doit s&rsquo;exécuter comme si elle était la seule sur le système.</li>
+<li>D - Durabilité : La propriété de durabilité assure que lorsqu&rsquo;une transaction a été confirmée.</li>
+</ul>
+<p><a class="link" href="https://fr.wikipedia.org/wiki/Propri%C3%A9t%C3%A9s_ACID"  target="_blank" rel="noopener"
+    >Source Wikipédia</a></p>
+<h3 id="pour-le-reporting">Pour le reporting</h3>
+<p>Schématiquement, lorsque vous faites du reporting, vous ne faites qu&rsquo;une seule écriture en masse de votre base, comme pour le chargement d&rsquo;un datawarehouse par un ETL ou le mode import de Power BI. Puis vous réalisez exclusivement des lectures sur un très gros volume de données.<br>
+Vous allez donc optimiser votre modélisation pour être performante en lecture et croisement de données, or ce qui est couteux pour ce genre d&rsquo;opération c&rsquo;est un grand nombre de relations entre les tables.<br>
+C&rsquo;est pour cette raison que nous modélisons les données pour Power BI suivant le modèle en étoile. Ce modèle est centré sur des tables de faits et des tables de dimensions. Généralement les tables de faits vont provenir de systèmes différents et nous allons faire communiquer entre elles les différentes tables de fait grâce aux dimensions qu&rsquo;elles ont en commun.</p>
+<p><img src="/p/modelisation-de-donnees-les-bases/img/star-schema-example1.png"
+	width="1235"
+	height="872"
+	srcset="/p/modelisation-de-donnees-les-bases/img/star-schema-example1_hu4e1966b24e50b98b6e99b5f580ee2974_29131_480x0_resize_box_3.png 480w, /p/modelisation-de-donnees-les-bases/img/star-schema-example1_hu4e1966b24e50b98b6e99b5f580ee2974_29131_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Modèle en étoile"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="141"
+		data-flex-basis="339px"
+	
+></p>
+<p><a class="link" href="https://learn.microsoft.com/fr-fr/power-bi/guidance/star-schema"  target="_blank" rel="noopener"
+    >Source Microsoft Learn</a></p>
+<h3 id="pour-les-applications-distribuées">Pour les applications distribuées</h3>
+<p>Pou les applications distribuées, application dans le cloud nécessitant de fortes montées en charge et/ou des croissances exponentielles, nous allons faire une modélisation de données ayant pour but de permettre la monter en charge. Un moteur de base de données classique ne peut que faire de la croissance verticale. Si vous avez besoin de plus de puissance, vous utilisez une machine plus puissante. Ce modèle a des limites aussi bien physiques qu’économique, plus une machine est puissante, plus elle est chère.<br>
+Pour absorber des montées en charge exponentielles, le cloud propose des architectures permettant une montée en charge horizontale. Pour montée en puissance vous ajoutez des machines peu chères puis vous les retirez quand vous n&rsquo;en avez plus besoin.
+Cela fonctionne bien avec les bases NoSQL (Not Only SQL). Ces bases proposent une modélisation différente des 2 précédentes. Pour faire simple, ces bases ne vont pas avoir le même niveau de service que les bases de données relationnelles traditionnelles et vont par exemple être optimisées pour des usages très particuliers. Par exemple une base comme MongoDB va proposer de stocker l&rsquo;ensemble des données d&rsquo;un client pour un site de e-commerce dans un seul document de type JSON. Ce document aura des données redondantes par rapport aux autres documents en base pour les autres clients. Mais chaque client pourra modifier son propre document, lors d&rsquo;une nouvelle commande par exemple, sans créer une contrainte sur l&rsquo;ensemble de la base, mais uniquement sur son document.</p>
+<p><a class="link" href="https://learn.microsoft.com/fr-fr/training/modules/implement-non-relational-data-model/"  target="_blank" rel="noopener"
+    >Parcour Microsoft Learn - Implémenter un modèle de données non relationnelles</a></p>
+<p>Merci de votre attention.</p>
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/mod%C3%A8le-de-donn%C3%A9es/">Modèle de données</a>
+        
+            <a href="/tags/d%C3%A9butant/">Débutant</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Contenus liés</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/self-service-bi-sur-jeu-de-donnees-existant/">
+        
+        
+            <div class="article-image">
+                <img src="/p/self-service-bi-sur-jeu-de-donnees-existant/_huc8aff4f4bdb05689828a54a86f8617f1_1552202_5d36e9619bc730ebb8e2c073105e58a2.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post  Voyage au coeur de la BI self-service"
+                        data-key="self-service-bi-sur-jeu-de-donnees-existant" 
+                        data-hash="md5-S6l97x4yJRdZgzQ0Vmj0dQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title"> Voyage au coeur de la BI self-service</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/partager-avec-power-bi/">
+        
+        
+            <div class="article-image">
+                <img src="/p/partager-avec-power-bi/_hu59c2f53d89f061f5e30f7c5261dfb40e_568587_7d3ba1f9ee7d313ebf73cc317fc261f7.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Bien partager votre travail"
+                        data-key="partager-avec-power-bi" 
+                        data-hash="md5-xuweQS6Q/R488nCig4eb/g==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Bien partager votre travail</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/jeu-de-donnees-et-rapport-la-rupture/">
+        
+        
+            <div class="article-image">
+                <img src="/p/jeu-de-donnees-et-rapport-la-rupture/_hu4f849c82d4e14f72bfb032f4fe26f62a_6495568_c0c74b23519d2b31bca3f8d7c87e8405.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Jeu de données et rapport : la rupture !"
+                        data-key="jeu-de-donnees-et-rapport-la-rupture" 
+                        data-hash="md5-uUSTCTw&#43;oM5tgaeFQi3L4w==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Jeu de données et rapport : la rupture !</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/anatomie-de-power-bi/">
+        
+        
+            <div class="article-image">
+                <img src="/p/anatomie-de-power-bi/_hu82c25fa98cd4e9a8103220017be4b8cb_324346_216d117080fab6b616abea9f55172058.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Power BI : leçon d&#39;anatomie"
+                        data-key="anatomie-de-power-bi" 
+                        data-hash="md5-mVERI5eqRDhuKTFhLvA&#43;1Q==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Power BI : leçon d&#39;anatomie</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/les-applications-power-bi/">
+        
+        
+            <div class="article-image">
+                <img src="/p/les-applications-power-bi/_huae08634171f8756a098e3310c58d8541_2234549_413d9c107e49b581ca210358c113e415.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Les applications Power BI ?!?  A quoi ça sert ?"
+                        data-key="les-applications-power-bi" 
+                        data-hash="md5-9dB9TtMvexvR0JpzcUoXnA==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Les applications Power BI ?!?  A quoi ça sert ?</h2>
+        </div>
+    </a>
+</article>
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "ddata" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2022 Le D de Data
+    </section>
+    
+    <section class="powerby">
+        Généré avec <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Thème <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.16.0">Stack</a></b> conçu par <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

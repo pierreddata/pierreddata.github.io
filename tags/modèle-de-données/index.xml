@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Modèle de données on Le D de Data</title>
+        <link>https://blog.ddata.fr/tags/mod%C3%A8le-de-donn%C3%A9es/</link>
+        <description>Recent content in Modèle de données on Le D de Data</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>fr-fr</language>
+        <lastBuildDate>Sun, 27 Nov 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ddata.fr/tags/mod%C3%A8le-de-donn%C3%A9es/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>C&#39;est quoi la modélisation de données ?</title>
+        <link>https://blog.ddata.fr/p/modelisation-de-donnees-les-bases/</link>
+        <pubDate>Sun, 27 Nov 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://blog.ddata.fr/p/modelisation-de-donnees-les-bases/</guid>
+        <description>&lt;img src="https://blog.ddata.fr/p/modelisation-de-donnees-les-bases/robert-anasch-McX3XuJRsUM-unsplash.jpg" alt="Featured image of post C&#39;est quoi la modélisation de données ?" /&gt;&lt;p&gt;Vous travaillez avec des données ? Il est temps de parler modélisation de données.&lt;/p&gt;
+&lt;h2 id=&#34;avertissement&#34;&gt;Avertissement&lt;/h2&gt;
+&lt;p&gt;Je commence ici une série d&amp;rsquo;articles portant sur la modélisation de données.&lt;br&gt;
+Mon objectif est d&amp;rsquo;initier toutes personnes devant travailler avec les données aux notions de base de la modélisation, je m&amp;rsquo;adresse donc aux personnes ayant peu ou pas du tout de notion dans ce domaine.&lt;br&gt;
+Je vais donc me permettre d&amp;rsquo;être incomplet, voire même simpliste, le but n&amp;rsquo;étant pas de faire de vous des maitres de la modélisation, mais juste de vous apporter les bases afin de comprendre les enjeux et l&amp;rsquo;importance de la modélisation quand on travaille avec les données.&lt;/p&gt;
+&lt;h2 id=&#34;pourquoi-modéliser-les-données&#34;&gt;Pourquoi modéliser les données&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/modelisation-de-donnees-les-bases/img/BousierVsAbeille.png&#34;
+	width=&#34;949&#34;
+	height=&#34;300&#34;
+	srcset=&#34;https://blog.ddata.fr/p/modelisation-de-donnees-les-bases/img/BousierVsAbeille_hu5d01a036224eb85d63087b24c591c217_541648_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/modelisation-de-donnees-les-bases/img/BousierVsAbeille_hu5d01a036224eb85d63087b24c591c217_541648_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Bousier VS Abeille&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;316&#34;
+		data-flex-basis=&#34;759px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Commençons par une analogie avec le monde animal, vos données sont des ressources et vous pouvez soit faire comme le bousier, accumuler vos ressources pour en faire une boule qui aura sont utilité, mais principalement en surface, soit organiser vos ressources comme un abeille et les transformer en nectar.&lt;/p&gt;
+&lt;p&gt;La modélisation de données va vous permettre de passer du bousier à l&amp;rsquo;abeille 🤩.&lt;/p&gt;
+&lt;h2 id=&#34;la-modélisation-cest-quoi-&#34;&gt;La modélisation c&amp;rsquo;est quoi ?&lt;/h2&gt;
+&lt;p&gt;La modélisation des données c&amp;rsquo;est simplement le fait d&amp;rsquo;organiser et de structurer vos données d&amp;rsquo;une manière spécifique afin de répondre à votre besoin. En général le résultat de la modélisation est un ensemble de tables organiser selon une certaine logique.&lt;/p&gt;
+&lt;h2 id=&#34;les-3-grands-types-de-modélisation&#34;&gt;Les 3 grands types de modélisation&lt;/h2&gt;
+&lt;p&gt;Il existe plusieurs manières de modéliser les données. La première chose à comprendre est pourquoi nous avons différentes manières de faire. La réponse est simple : nous avons des besoins différents :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Quand vous réaliser une application classique, avec Power apps par exemple, vous allez faire beaucoup d&amp;rsquo;écriture de données, à chaque enregistrement et beaucoup de lecture unitaire, à chaque fois qu&amp;rsquo;un utilisateur ouvre un enregistrement. Cet usage demande pour être performant d&amp;rsquo;avoir des tables le plus segmentées possible afin de ne pas avoir de redondance de données afin d&amp;rsquo;optimiser les multiples lecture et écriture. Il en ressort en général un modèle avec beaucoup de tables reliées entre elles avec des relations.&lt;/li&gt;
+&lt;li&gt;Quand vous faite du reporting de données, avec Power BI par exemple, vous allez faire une seule écriture de données, lors du chargement du modèle et beaucoup de lecture massive voir totale des données. Dans ce cas un grand nombre de tables avec un grand nombre de relations pénalise les performances. Pour résoudre ce problème, nous allons modéliser nos données différemment que pour l&amp;rsquo;application source de la donnée.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;pour-les-applications-classiques&#34;&gt;Pour les applications classiques&lt;/h3&gt;
+&lt;p&gt;Pour les applications classiques, nous allons faire une modélisation de données ayant pour but d&amp;rsquo;éviter la redondance de données et garantir la cohérence de nos données. On parle en général de modèle relationnel.
+En termes de méthodologie de modélisation, vous retrouverez principalement la notion de &lt;strong&gt;formes normales&lt;/strong&gt; et de modélisation selon la méthode Merise pour les plus anciens.&lt;br&gt;
+L&amp;rsquo;objectif de cette modélisation est de garantir le caractère ACID des transactions d&amp;rsquo;écriture des données :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;A - Atomicité : La propriété d&amp;rsquo;atomicité assure qu&amp;rsquo;une transaction se fait au complet ou pas du tout.&lt;/li&gt;
+&lt;li&gt;C - Cohérence : La propriété de cohérence assure que chaque transaction amènera le système d&amp;rsquo;un état valide à un autre état valide.&lt;/li&gt;
+&lt;li&gt;I - Isolation : Toute transaction doit s&amp;rsquo;exécuter comme si elle était la seule sur le système.&lt;/li&gt;
+&lt;li&gt;D - Durabilité : La propriété de durabilité assure que lorsqu&amp;rsquo;une transaction a été confirmée.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://fr.wikipedia.org/wiki/Propri%C3%A9t%C3%A9s_ACID&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Source Wikipédia&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;pour-le-reporting&#34;&gt;Pour le reporting&lt;/h3&gt;
+&lt;p&gt;Schématiquement, lorsque vous faites du reporting, vous ne faites qu&amp;rsquo;une seule écriture en masse de votre base, comme pour le chargement d&amp;rsquo;un datawarehouse par un ETL ou le mode import de Power BI. Puis vous réalisez exclusivement des lectures sur un très gros volume de données.&lt;br&gt;
+Vous allez donc optimiser votre modélisation pour être performante en lecture et croisement de données, or ce qui est couteux pour ce genre d&amp;rsquo;opération c&amp;rsquo;est un grand nombre de relations entre les tables.&lt;br&gt;
+C&amp;rsquo;est pour cette raison que nous modélisons les données pour Power BI suivant le modèle en étoile. Ce modèle est centré sur des tables de faits et des tables de dimensions. Généralement les tables de faits vont provenir de systèmes différents et nous allons faire communiquer entre elles les différentes tables de fait grâce aux dimensions qu&amp;rsquo;elles ont en commun.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/modelisation-de-donnees-les-bases/img/star-schema-example1.png&#34;
+	width=&#34;1235&#34;
+	height=&#34;872&#34;
+	srcset=&#34;https://blog.ddata.fr/p/modelisation-de-donnees-les-bases/img/star-schema-example1_hu4e1966b24e50b98b6e99b5f580ee2974_29131_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/modelisation-de-donnees-les-bases/img/star-schema-example1_hu4e1966b24e50b98b6e99b5f580ee2974_29131_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Modèle en étoile&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;141&#34;
+		data-flex-basis=&#34;339px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://learn.microsoft.com/fr-fr/power-bi/guidance/star-schema&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Source Microsoft Learn&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;pour-les-applications-distribuées&#34;&gt;Pour les applications distribuées&lt;/h3&gt;
+&lt;p&gt;Pou les applications distribuées, application dans le cloud nécessitant de fortes montées en charge et/ou des croissances exponentielles, nous allons faire une modélisation de données ayant pour but de permettre la monter en charge. Un moteur de base de données classique ne peut que faire de la croissance verticale. Si vous avez besoin de plus de puissance, vous utilisez une machine plus puissante. Ce modèle a des limites aussi bien physiques qu’économique, plus une machine est puissante, plus elle est chère.&lt;br&gt;
+Pour absorber des montées en charge exponentielles, le cloud propose des architectures permettant une montée en charge horizontale. Pour montée en puissance vous ajoutez des machines peu chères puis vous les retirez quand vous n&amp;rsquo;en avez plus besoin.
+Cela fonctionne bien avec les bases NoSQL (Not Only SQL). Ces bases proposent une modélisation différente des 2 précédentes. Pour faire simple, ces bases ne vont pas avoir le même niveau de service que les bases de données relationnelles traditionnelles et vont par exemple être optimisées pour des usages très particuliers. Par exemple une base comme MongoDB va proposer de stocker l&amp;rsquo;ensemble des données d&amp;rsquo;un client pour un site de e-commerce dans un seul document de type JSON. Ce document aura des données redondantes par rapport aux autres documents en base pour les autres clients. Mais chaque client pourra modifier son propre document, lors d&amp;rsquo;une nouvelle commande par exemple, sans créer une contrainte sur l&amp;rsquo;ensemble de la base, mais uniquement sur son document.&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://learn.microsoft.com/fr-fr/training/modules/implement-non-relational-data-model/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Parcour Microsoft Learn - Implémenter un modèle de données non relationnelles&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Merci de votre attention.&lt;/p&gt;</description>
+        </item>
+        
+    </channel>
+</rss>
