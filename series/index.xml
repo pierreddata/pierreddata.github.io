@@ -6,20 +6,20 @@
         <description>Recent content in Series on Le D de Data</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>fr-fr</language>
-        <lastBuildDate>Sun, 27 Nov 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ddata.fr/series/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sun, 04 Dec 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ddata.fr/series/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Outils pratiques</title>
+        <link>https://blog.ddata.fr/series/outils-pratiques/</link>
+        <pubDate>Sun, 04 Dec 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://blog.ddata.fr/series/outils-pratiques/</guid>
+        <description></description>
+        </item>
+        <item>
         <title>Modélisation de données</title>
         <link>https://blog.ddata.fr/series/mod%C3%A9lisation-de-donn%C3%A9es/</link>
         <pubDate>Sun, 27 Nov 2022 00:00:00 +0000</pubDate>
         
         <guid>https://blog.ddata.fr/series/mod%C3%A9lisation-de-donn%C3%A9es/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>Outils pratiques</title>
-        <link>https://blog.ddata.fr/series/outils-pratiques/</link>
-        <pubDate>Sun, 13 Nov 2022 00:00:00 +0000</pubDate>
-        
-        <guid>https://blog.ddata.fr/series/outils-pratiques/</guid>
         <description></description>
         </item>
         <item>
