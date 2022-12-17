@@ -6,7 +6,53 @@
         <description>Recent content in Outils on Le D de Data</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>fr-fr</language>
-        <lastBuildDate>Sun, 11 Dec 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ddata.fr/categories/outils/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sat, 17 Dec 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ddata.fr/categories/outils/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Power BI Monitor</title>
+        <link>https://blog.ddata.fr/p/pbimonitor/</link>
+        <pubDate>Sat, 17 Dec 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://blog.ddata.fr/p/pbimonitor/</guid>
+        <description>&lt;img src="https://blog.ddata.fr/p/pbimonitor/tamanna-rumee-FtJEat_S7Q4-unsplash.jpg" alt="Featured image of post Power BI Monitor" /&gt;&lt;p&gt;Dans cet article je vous présente Power BI Monitor, l&amp;rsquo;outil indispensable dans le cadre d&amp;rsquo;une bonne gouvernance de Power BI.&lt;/p&gt;
+&lt;h2 id=&#34;context&#34;&gt;Context&lt;/h2&gt;
+&lt;p&gt;Dès que vous utilisez le service Power BI régulièrement dans le cadre d&amp;rsquo;une self-service BI d&amp;rsquo;entreprise, vous allez avoir besoin de pouvoir monitorer en détail ce qu&amp;rsquo;il se passe dans votre service Power BI, cela fait partie de la gouvernance Power BI.&lt;br&gt;
+Microsoft vous met à disposition un grand nombre d&amp;rsquo;informations, tel que les logs d&amp;rsquo;activité Power BI, mais pas d&amp;rsquo;outils pour les exploiter facilement. C&amp;rsquo;est ici qu&amp;rsquo;intervient Power BI Monitor. Cet outil gratuit va vous permettre d&amp;rsquo;avoir une vision globale de votre service Power BI en exploitant diverses informations déjà disponibles.&lt;/p&gt;
+&lt;h2 id=&#34;installation&#34;&gt;Installation&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/RuiRomano/pbimonitor&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Power BI Monitor&lt;/a&gt; est un projet que vous trouverez sur Github : &lt;a class=&#34;link&#34; href=&#34;https://github.com/RuiRomano/pbimonitor&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/RuiRomano/pbimonitor&lt;/a&gt;.&lt;br&gt;
+Ce projet est composé d&amp;rsquo;un ensemble de scripts PowerShell qui vont automatiser un certain nombre de tâches d&amp;rsquo;extraction de données pour vous et de template Power BI afin de mettre ces données en forme.&lt;br&gt;
+Le guide d&amp;rsquo;installation sur la page d&amp;rsquo;accueil est très complet, vous avez 2 modes d&amp;rsquo;utilisation des scripts : en local ou via des services Azure afin de tout automatiser.&lt;br&gt;
+Les scripts PowerShell s&amp;rsquo;appuient sur le module PowerShell Power BI qui doit être installé. Vous trouverez ce module dans le projet Github : &lt;a class=&#34;link&#34; href=&#34;https://github.com/Microsoft/powerbi-powershell&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/Microsoft/powerbi-powershell&lt;/a&gt;. Vous pouvez simplement utiliser la commande d&amp;rsquo;installation suivante dans un fenêtre PowerShell (en mode Administrateur) :&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-powershell&#34; data-lang=&#34;powershell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;Install-Module&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;-Name&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;MicrosoftPowerBIMgmt&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;-RequiredVersion&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;1026&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Vous pouvez utiliser ces scripts avec un service principal pour vous authentifier (recommandé) ou avec votre compte utilisateur.&lt;/p&gt;
+&lt;h2 id=&#34;usage&#34;&gt;Usage&lt;/h2&gt;
+&lt;p&gt;Pour lancer le script, vous devez modifier le fichier Config.json :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Pour vous authentifier avec un compte utilisateur, supprimé la section &lt;em&gt;ServicePrincipal&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Pour vous authentifier avec un service principal, renseigné la section &lt;em&gt;ServicePrincipal&lt;/em&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Le script &lt;em&gt;Fetch - Run.ps1&lt;/em&gt; sert de lanceur pour les autres scripts. Vous pouvez choisir les scripts que vous lancez en mettant en commentaire les appels du tableau *scriptsToRun * de la ligne 4.
+Les 4 scripts appelés ont chacun une fonction différente :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;Fetch - Activity.ps1&lt;/em&gt; : Permets de lire et de stocker les logs du service Power BI. &lt;strong&gt;Attention&lt;/strong&gt; seul les 30 derniers jours de log sont disponible dans le service, pensez à exécuter ce script régulièrement.&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Fetch - Catalog.ps1&lt;/em&gt; : Permets d&amp;rsquo;obtenir l&amp;rsquo;ensemble des objets présents dans le service Power BI via les API admin WorkspaceInfo.&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Fetch - DataSetRefresh.ps1&lt;/em&gt; : Permets d&amp;rsquo;obtenir les informations des refreshs des jeux de données, ne fonctionne que pour les espaces de travail dont l&amp;rsquo;utilisateur ou le service principal sont membres.&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Fetch - Graph.ps1&lt;/em&gt; : Permets d&amp;rsquo;obtenir les informations de l&amp;rsquo;API Graph notamment l&amp;rsquo;état des licences Power BI.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Si vous lancez les scripts avec vos logins utilisateur vous devrez avoir un niveau Administrateur Power BI pour les 2 premiers.&lt;/p&gt;
+&lt;p&gt;Une fois les données collectées, utilisez les templates Power BI pour exploiter les données. Changer le paramètre &lt;em&gt;DataLocation&lt;/em&gt; en indiquant le dossier contenant les données.&lt;/p&gt;
+&lt;p&gt;Maintenant vous avez une bonne vision de votre service Power BI.&lt;/p&gt;
+&lt;p&gt;Merci de votre attention.&lt;/p&gt;</description>
+        </item>
+        <item>
         <title>Tabular Editor - Allez plus loin avec Power BI</title>
         <link>https://blog.ddata.fr/p/tabulareditor/</link>
         <pubDate>Sun, 11 Dec 2022 00:00:00 +0000</pubDate>
