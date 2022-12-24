@@ -6,7 +6,29 @@
         <description>Recent content in Outils pratiques on Le D de Data</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>fr-fr</language>
-        <lastBuildDate>Sat, 17 Dec 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ddata.fr/series/outils-pratiques/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sat, 24 Dec 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ddata.fr/series/outils-pratiques/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Power BI Gateway Monitor</title>
+        <link>https://blog.ddata.fr/p/pbigwtmonitor/</link>
+        <pubDate>Sat, 24 Dec 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://blog.ddata.fr/p/pbigwtmonitor/</guid>
+        <description>&lt;img src="https://blog.ddata.fr/p/pbigwtmonitor/matt-artz-4KaY-etsnKc-unsplash.jpg" alt="Featured image of post Power BI Gateway Monitor" /&gt;&lt;p&gt;Dans cet article je vous présente Power BI Gateway Monitor, l&amp;rsquo;outil qui vous permet de centraliser les logs de vos différentes passerelles Power BI et de les analyser.&lt;/p&gt;
+&lt;h2 id=&#34;context&#34;&gt;Context&lt;/h2&gt;
+&lt;p&gt;Si vous utilisez des sources de données, on premise, vous utilisez une passerelle Power BI. Rapidement dans le cadre d&amp;rsquo;une bonne gouvernance de votre Power BI vous allez devoir mettre en œuvre des outils pour suivre l&amp;rsquo;activité des différents composants de Power BI.&lt;/p&gt;
+&lt;p&gt;Power BI Gateway Monitor, un outil gratuit, va vous permettre de centraliser les logs de vos passerelles, soit sur un stockage Azure, soit sur un partage réseau on premise, et vous pourrez ainsi avoir un suivi centralisé de vos passerelles.&lt;/p&gt;
+&lt;h2 id=&#34;installation&#34;&gt;Installation&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/RuiRomano/pbigtwmonitor&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Power BI Gateway Monitor&lt;/a&gt; est un projet que vous trouverez sur Github : &lt;a class=&#34;link&#34; href=&#34;https://github.com/RuiRomano/pbigtwmonitor&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/RuiRomano/pbigtwmonitor&lt;/a&gt;.&lt;br&gt;
+Ce projet est composé d&amp;rsquo;un script PowerShell qui va automatiser l&amp;rsquo;extraction de données de log de vos passerelles pour vous et de template Power BI afin de mettre ces données en forme.&lt;br&gt;
+Le guide d&amp;rsquo;installation sur la page d&amp;rsquo;accueil est très complet, vous avez 2 modes d&amp;rsquo;utilisation des scripts : en local ou via un stockage Azure afin de centraliser les logs dans un espace directement accessible à Power BI.&lt;/p&gt;
+&lt;h2 id=&#34;usage&#34;&gt;Usage&lt;/h2&gt;
+&lt;p&gt;Le script &lt;em&gt;Run.ps1&lt;/em&gt; doit être installé et planifié sur chaque passerelle.&lt;br&gt;
+Modifiez le fichier de configuration &lt;em&gt;Config.json&lt;/em&gt; pour chaque passerelle.
+Utilisez le template Power BI associé à votre choix de stockage pour avoir une bonne vision de vos passerelles Power BI.&lt;/p&gt;
+&lt;p&gt;Merci de votre attention.&lt;/p&gt;</description>
+        </item>
+        <item>
         <title>Power BI Monitor</title>
         <link>https://blog.ddata.fr/p/pbimonitor/</link>
         <pubDate>Sat, 17 Dec 2022 00:00:00 +0000</pubDate>
