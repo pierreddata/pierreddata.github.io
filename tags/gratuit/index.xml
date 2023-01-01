@@ -6,7 +6,51 @@
         <description>Recent content in Gratuit on Le D de Data</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>fr-fr</language>
-        <lastBuildDate>Sat, 24 Dec 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ddata.fr/tags/gratuit/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sun, 01 Jan 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ddata.fr/tags/gratuit/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Power BI Model Documenter</title>
+        <link>https://blog.ddata.fr/p/powerbimodeldocumenter/</link>
+        <pubDate>Sun, 01 Jan 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://blog.ddata.fr/p/powerbimodeldocumenter/</guid>
+        <description>&lt;img src="https://blog.ddata.fr/p/powerbimodeldocumenter/bernd-klutsch-nE2HV5AUXFo-unsplash.jpg" alt="Featured image of post Power BI Model Documenter" /&gt;&lt;p&gt;Dans cet article je vous présente Power BI Model Documenter, l&amp;rsquo;outil qui extrait automatiquement des informations de vos fichiers Power BI pour créer une documentation technique.&lt;/p&gt;
+&lt;h2 id=&#34;context&#34;&gt;Context&lt;/h2&gt;
+&lt;p&gt;La documentation est une tâche fastidieuse sur vos créations et encore plus compliquée à faire sur des fichiers Power BI que vous n&amp;rsquo;avez pas créés. Power BI Model Documenter est là pour vous aider à réaliser cette étape de vos projets BI.&lt;/p&gt;
+&lt;h2 id=&#34;installation&#34;&gt;Installation&lt;/h2&gt;
+&lt;p&gt;Pour installer Power BI Model Documenter, cliquez sur le lien &lt;a class=&#34;link&#34; href=&#34;https://data-marc.com/model-documenter/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Power BI Model Documenter v2.1.0&lt;/a&gt; de la page d&amp;rsquo;accueil du site de Power BI Model Documenter. Le numéro de version peut changer après la publication de cet article. Téléchargez et installez la version disponible. Dans un contexte d&amp;rsquo;entreprise, vous aurez probablement besoin de l&amp;rsquo;autorisation et/ou le support de l&amp;rsquo;IT pour faire cette opération.&lt;/p&gt;
+&lt;p&gt;Une fois installé vous retrouverez Power BI Model Documenter dans le menu &lt;em&gt;Outils externes&lt;/em&gt; de Power BI. Si Power BI était ouvert lors de l&amp;rsquo;installation, fermez-le et réouvrez-le.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/powerbimodeldocumenter/img/001-powerbi-menu-model-documenter.png&#34;
+	width=&#34;609&#34;
+	height=&#34;127&#34;
+	srcset=&#34;https://blog.ddata.fr/p/powerbimodeldocumenter/img/001-powerbi-menu-model-documenter_hu77fd9000e1c40ec1ce082d5f96b5160d_7561_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/powerbimodeldocumenter/img/001-powerbi-menu-model-documenter_hu77fd9000e1c40ec1ce082d5f96b5160d_7561_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Power BI Model Documenter dans le menu Outils externes&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;479&#34;
+		data-flex-basis=&#34;1150px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;usage&#34;&gt;Usage&lt;/h2&gt;
+&lt;p&gt;Pour utiliser Power BI Model Documenter commencer par ouvrir le fichier PBIX que vous souhaitez documenter, puis rendez-vous dans le menu &lt;em&gt;Outils externes&lt;/em&gt; de Power BI et appuyez sur &lt;em&gt;Model Documenter&lt;/em&gt;. Une fenêtre noire de script apparait un instant, l&amp;rsquo;outil est en train d&amp;rsquo;extraire les informations du fichier actuel de Power BI puis ouvre une nouvelle fenêtre de Power BI pour importer les informations extraites dans un nouveau fichier Power BI qui contiendra la documentation de votre premier fichier.&lt;br&gt;
+Dans cette documentation vous trouverez :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Les paramètres Power Query.&lt;/li&gt;
+&lt;li&gt;Les tables.&lt;/li&gt;
+&lt;li&gt;Les partitions&lt;/li&gt;
+&lt;li&gt;Les colonnes.&lt;/li&gt;
+&lt;li&gt;Les groupes de calcul.&lt;/li&gt;
+&lt;li&gt;Les paramètres de champs.&lt;/li&gt;
+&lt;li&gt;Les mesures.&lt;/li&gt;
+&lt;li&gt;Les relations.&lt;/li&gt;
+&lt;li&gt;Les informations de sécurité RLS et OLS.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Bref, toutes les informations concernant votre modèle de données dans un Power BI.&lt;/p&gt;
+&lt;p&gt;Merci de votre attention.&lt;/p&gt;</description>
+        </item>
+        <item>
         <title>Power BI Gateway Monitor</title>
         <link>https://blog.ddata.fr/p/pbigwtmonitor/</link>
         <pubDate>Sat, 24 Dec 2022 00:00:00 +0000</pubDate>
@@ -95,8 +139,8 @@ Autre point important, si vous passez la certification DP-500, vous aurez des qu
 &lt;/ul&gt;
 &lt;p&gt;Dans cet article je vais exclusivement parler de la version gratuite.&lt;/p&gt;
 &lt;p&gt;Pour installer Tabular Editor, cliquez sur le lien &lt;a class=&#34;link&#34; href=&#34;https://github.com/otykier/TabularEditor/releases/latest&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;Download&lt;/a&gt; de la page d&amp;rsquo;accueil du site de Tabular Editor. Vous aurez accès. Téléchargez et installez la version avec l&amp;rsquo;extension msi, qui est un installeur Windows facile à utiliser. Dans un contexte d&amp;rsquo;entreprise, vous aurez probablement besoin de l&amp;rsquo;autorisation et/ou le support de l&amp;rsquo;IT pour faire cette opération.&lt;/p&gt;
-&lt;p&gt;Une fois installé vous retrouverez Tabular Editor dans le menu &lt;em&gt;Outils externes&lt;/em&gt; de Power BI. Si Power BI était ouvert lors de l&amp;rsquo;installation fermée le et réouvrez-le.&lt;/p&gt;
+    &gt;Download&lt;/a&gt; de la page d&amp;rsquo;accueil du site de Tabular Editor. Téléchargez et installez la version avec l&amp;rsquo;extension msi, qui est un installeur Windows facile à utiliser. Dans un contexte d&amp;rsquo;entreprise, vous aurez probablement besoin de l&amp;rsquo;autorisation et/ou le support de l&amp;rsquo;IT pour faire cette opération.&lt;/p&gt;
+&lt;p&gt;Une fois installé vous retrouverez Tabular Editor dans le menu &lt;em&gt;Outils externes&lt;/em&gt; de Power BI. Si Power BI était ouvert lors de l&amp;rsquo;installation fermez-le et réouvrez-le.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/tabulareditor/img/001-powerbi-menu-tabular-editor.png&#34;
 	width=&#34;644&#34;
 	height=&#34;131&#34;
