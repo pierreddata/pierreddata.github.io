@@ -6,7 +6,106 @@
         <description>Recent content on Le D de Data</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>fr-fr</language>
-        <lastBuildDate>Sun, 01 Jan 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ddata.fr/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sun, 08 Jan 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ddata.fr/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Comment faire un projet BI.</title>
+        <link>https://blog.ddata.fr/p/comment-faire-un-projet-bi/</link>
+        <pubDate>Sun, 08 Jan 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://blog.ddata.fr/p/comment-faire-un-projet-bi/</guid>
+        <description>&lt;img src="https://blog.ddata.fr/p/comment-faire-un-projet-bi/un-liu-5t9qbyCslIs-unsplash.jpg" alt="Featured image of post Comment faire un projet BI." /&gt;&lt;p&gt;Vous avez décidé de vous lancer dans un projet Power BI et vous vous demandez comment vous y prendre ? Je vous propose de vous présenter, dans les grandes lignes, comment mener un projet BI.&lt;/p&gt;
+&lt;h2 id=&#34;contexte&#34;&gt;Contexte&lt;/h2&gt;
+&lt;p&gt;Vous débutez dans la réalisation d&amp;rsquo;un projet BI ?&lt;br&gt;
+Bonne nouvelle, quel que soit l&amp;rsquo;outil que vous utiliserez un projet BI se réalise toujours de la même manière. Je vous propose dans cet article une présentation simple de la réalisation d&amp;rsquo;un projet BI, dans le cadre de l&amp;rsquo;utilisation de Power BI.&lt;/p&gt;
+&lt;h2 id=&#34;les-phases-dun-projet-bi&#34;&gt;Les phases d&amp;rsquo;un projet BI&lt;/h2&gt;
+&lt;p&gt;Avant tout, un projet BI n&amp;rsquo;est pas un projet statique, mais un projet en perpétuel enrichissement. Vous allez commencer en intégrant certaines données, puis au fil des itérations du projet vous allez améliorer votre projet en répétant les différentes phases du projet qui sont les suivantes :&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/comment-faire-un-projet-bi/img/001-bi-project-schema.png&#34;
+	width=&#34;798&#34;
+	height=&#34;463&#34;
+	srcset=&#34;https://blog.ddata.fr/p/comment-faire-un-projet-bi/img/001-bi-project-schema_hub454a630702912bb4392e7da37b726cd_17827_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/comment-faire-un-projet-bi/img/001-bi-project-schema_hub454a630702912bb4392e7da37b726cd_17827_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Vision schématique d&amp;rsquo;un projet BI&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;172&#34;
+		data-flex-basis=&#34;413px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;phase-0--identification-des-sources-de-données&#34;&gt;Phase 0 : identification des sources de données&lt;/h3&gt;
+&lt;p&gt;Lors de cette phase, vous identifiez les sources de données que vous souhaitez intégrer dans votre projet. Pensez déjà à la méthode que vous utiliserez pour rafraichir la donnée en privilégiant les solutions automatisables.&lt;/p&gt;
+&lt;h3 id=&#34;phase-1--préparation-des-données&#34;&gt;Phase 1 : préparation des données&lt;/h3&gt;
+&lt;p&gt;Lors de cette phase, vous allez mettre en place un processus de traitement de données que l&amp;rsquo;on appelle ETL dans les projets BI, c&amp;rsquo;est l&amp;rsquo;acronyme anglais de &lt;strong&gt;Extract Transform Load&lt;/strong&gt;.
+Dans le cadre d&amp;rsquo;un projet Power BI vous utiliserez l&amp;rsquo;outil Power Query, intégrer à Power BI, pour réaliser cette phase du projet. Voici les tâches à réaliser :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Extraire les données : l&amp;rsquo;objectif est de lire les données depuis la source de données (Base de données, fichier Excel, API Web ou autres). Un projet BI doit &lt;strong&gt;TOUJOURS&lt;/strong&gt; être en lecture seule sur la source. On ne réalise pas de modifications dans la source, mais dans une copie lors de l&amp;rsquo;étape de transformation.&lt;/li&gt;
+&lt;li&gt;Transformer les données : Lors de cette phase nous allons transformer les données sources notre objectif est de créer une tables de faits ou une table de dimension pour notre modèle de données en étoile. Les principales étapes consisteront à :
+&lt;ul&gt;
+&lt;li&gt;Définir les colonnes que l&amp;rsquo;on conserve&lt;/li&gt;
+&lt;li&gt;Nommer les colonnes dans le langage métier.&lt;/li&gt;
+&lt;li&gt;Mettre le bon type de données aux colonnes (texte, entier, date &amp;hellip;).&lt;/li&gt;
+&lt;li&gt;Nettoyer les données dans les lignes si besoin.&lt;/li&gt;
+&lt;li&gt;Restructurer les données si besoin afin de créer des tables de faits ou de dimensions.&lt;/li&gt;
+&lt;li&gt;Enrichir notre table avec d&amp;rsquo;autres sources de données.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Charger les données : Maintenant que nos données sont prêtes nous allons les charger dans Power BI, pour cela on utilise le bouton &lt;strong&gt;Fermer et appliquer&lt;/strong&gt; de Power Query.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;À la fin de cette étape, Power BI contient un ensemble de tables chargées que vous allez utiliser lors de la prochaine phase.&lt;/p&gt;
+&lt;h3 id=&#34;phase-2--modélisation-des-données&#34;&gt;Phase 2 : modélisation des données&lt;/h3&gt;
+&lt;p&gt;Vos données sont maintenant disponibles sous forme de table dans Power BI. L&amp;rsquo;objectif est maintenant de réaliser un modèle de données métier qui sera utilisé par vos utilisateurs dans le cadre d&amp;rsquo;une self-service BI par exemple.&lt;/p&gt;
+&lt;p&gt;Le modèle de données est essentiel, il est composé :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Des tables de données reçues de Power Query.&lt;/li&gt;
+&lt;li&gt;De relations entre les tables.&lt;/li&gt;
+&lt;li&gt;De mesures et colonnes calculées créées en DAX.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Un bon modèle de données est un modèle que les utilisateurs comprennent rapidement. Il doit être documenté afin que la définition des mesures soit partagée et comprise. Idéalement il ne doit pas y avoir d&amp;rsquo;éléments techniques visibles de l&amp;rsquo;utilisateur de modèle.&lt;/p&gt;
+&lt;p&gt;Le langage DAX s&amp;rsquo;appuie sur un modèle en étoile afin d&amp;rsquo;exprimer toute sa puissance, si vous ne comprenez pas de quoi je parle, documentez-vous avant 😁.&lt;/p&gt;
+&lt;h3 id=&#34;phase-3--présentation-des-données&#34;&gt;Phase 3 : présentation des données&lt;/h3&gt;
+&lt;p&gt;On arrive à la phase visible du projet. Vous allez utiliser le modèle de données créer lors de la phase précédente pour alimenter les différentes visualisations de votre futur rapport. 
+Naturellement vous ne trouverez pas immédiatement le bon indicateur ou vous découvrirez qu&amp;rsquo;il vous manque des données. Vous devrez alors repartir dans le cycle afin de&amp;rsquo;enrichir votre modèle.&lt;/p&gt;
+&lt;h2 id=&#34;self-service-bi-vs-bi-dentreprise-quelles-différences-&#34;&gt;Self-service BI vs BI d&amp;rsquo;entreprise, quelles différences ?&lt;/h2&gt;
+&lt;p&gt;Si un projet BI se fait toujours de la même manière, quelle est donc la différence entre la self-service BI et BI d&amp;rsquo;entreprise ?&lt;/p&gt;
+&lt;p&gt;C&amp;rsquo;est principalement une question d&amp;rsquo;approche projet : qui fait quoi ? Mais aussi cela dépend aussi souvent de la source de données.&lt;/p&gt;
+&lt;h3 id=&#34;responsabilité-de-réalisation&#34;&gt;Responsabilité de réalisation&lt;/h3&gt;
+&lt;p&gt;Un projet BI d&amp;rsquo;entreprise est souvent mené par l&amp;rsquo;IT de l&amp;rsquo;entreprise. Il s&amp;rsquo;agit de mettre à disposition des modèles de données et des rapports respectant des standards de qualité. La méthodologie de projet et les techniques utilisées pour le développement de logiciel sont utilisées pour la réalisation du projet BI d&amp;rsquo;entreprise. 
+L&amp;rsquo;IT mène ce genre de projet dans le cadre de ses autres activités, et comme pour tout projet informatique vous rencontrerez notamment les inconvénients suivants :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Mauvaise compréhension de besoin.&lt;/li&gt;
+&lt;li&gt;Mauvaise expression du besoin.&lt;/li&gt;
+&lt;li&gt;Modification du besoin entre la collecte de ce dernier et la mise à disposition de résultat.&lt;/li&gt;
+&lt;li&gt;Délai de réalisation (toujours) trop long.
+Et comme la loi de Murphy s&amp;rsquo;applique, vous avez de grande chance de tous les rencontrer à chaque fois.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Un projet en self-service BI est réalisé par un service ou une personne ayant de bonnes connaissances du métier et des données, car elle travaille déjà avec régulièrement. Cette personne doit apprendre l&amp;rsquo;utilisation d&amp;rsquo;un outil comme Power BI et réalise le projet BI par elle-même ou avec de l&amp;rsquo;accompagnement.&lt;/p&gt;
+&lt;p&gt;On peut représenter simplement cette différence ainsi :&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/comment-faire-un-projet-bi/img/002-self-vs-enterprise.png&#34;
+	width=&#34;980&#34;
+	height=&#34;617&#34;
+	srcset=&#34;https://blog.ddata.fr/p/comment-faire-un-projet-bi/img/002-self-vs-enterprise_hucaa761cfc10400d2538d909012f0e4b3_29584_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/comment-faire-un-projet-bi/img/002-self-vs-enterprise_hucaa761cfc10400d2538d909012f0e4b3_29584_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Self-service BI vs BI d&amp;rsquo;entreprise&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;158&#34;
+		data-flex-basis=&#34;381px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;nature-des-sources-de-données&#34;&gt;Nature des sources de données&lt;/h3&gt;
+&lt;p&gt;Un projet BI d&amp;rsquo;entreprise a pour objectif de mettre à disposition du plus grand nombre des données d&amp;rsquo;entreprise. En général il permet d&amp;rsquo;accéder à l&amp;rsquo;ensemble des données dans un seul modèle intégrant les contraintes de sécurité d&amp;rsquo;accès aux données. De plus les sources primaires de type base de données ou API demandent des compétences spécifiques que l&amp;rsquo;on retrouve dans les services IT. 
+Enfin ce type de projet utilise fréquemment des couches intermédiaires de données permettant une première modélisation. Cette couche est fréquemment sous la forme d&amp;rsquo;un datawarehouse ou d&amp;rsquo;un datalakehouse pour les architectures modernes dans le cloud.&lt;/p&gt;
+&lt;p&gt;Un projet en self-service BI est en général fait avec les moyens du bord, les données utilisées sont souvent des données spécifiques à un service en termes de scope. Vous n&amp;rsquo;avez pas forcément l&amp;rsquo;accès à la donnée source primaire en termes de sécurité ou de connaissance. Dans ce cas des extractions limitées à un sous-ensemble de données sont utilisées pour ces projets qui de fait ne pourront pas répondre à des besoins d&amp;rsquo;entreprise.&lt;/p&gt;
+&lt;h3 id=&#34;au-delà-de-cette-organisation&#34;&gt;Au-delà de cette organisation&lt;/h3&gt;
+&lt;p&gt;Entre self-service BI et BI d&amp;rsquo;entreprise on peut imaginer d&amp;rsquo;autres niveaux de partage de responsabilité, on parle parfait de self-service managed BI pour des scénarii dans lesquels l&amp;rsquo;IT développe et modélise les couches bases de données et les mets à la disposition des métiers qui peuvent être en responsabilité de l&amp;rsquo;enrichissement, par exemple l&amp;rsquo;ajout des objectifs, mais aussi de la réalisation des rapports. Libre à vous d&amp;rsquo;adapter le produit à votre mode de fonctionnement.&lt;/p&gt;
+&lt;h2 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h2&gt;
+&lt;p&gt;Retenez qu&amp;rsquo;un projet BI n&amp;rsquo;est jamais un projet statique. Vos données bougent, vos besoins changent et plus vous exposez de la donnée, plus de nouveaux besoins apparaissent comme par magie. 
+Vous devez donc être agile, quand vous réalisez une tâche pensez à celui qui devra venir après vous dans quelque temps pour changer des choses. Votre Moi futur vous remerciera, car cette personne c&amp;rsquo;est probablement vous même.&lt;/p&gt;
+&lt;p&gt;Merci de votre attention.&lt;/p&gt;</description>
+        </item>
+        <item>
         <title>Power BI Model Documenter</title>
         <link>https://blog.ddata.fr/p/powerbimodeldocumenter/</link>
         <pubDate>Sun, 01 Jan 2023 00:00:00 +0000</pubDate>

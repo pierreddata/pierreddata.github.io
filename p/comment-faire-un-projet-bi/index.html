@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="fr-fr" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Vous avez décidé de vous lancer dans un projet Power BI et vous vous demandez comment vous y prendre ? Je vous propose de vous présenter, dans les grandes lignes, comment mener un projet BI.
+'>
+<title>Comment faire un projet BI.</title>
+
+<link rel='canonical' href='https://blog.ddata.fr/p/comment-faire-un-projet-bi/'>
+
+<link rel="stylesheet" href="/scss/style.min.5be32ca3f6e1a997c75795c4359147cc6d4fbd34948c0acd51e31d237033978a.css"><meta property='og:title' content='Comment faire un projet BI.'>
+<meta property='og:description' content='Vous avez décidé de vous lancer dans un projet Power BI et vous vous demandez comment vous y prendre ? Je vous propose de vous présenter, dans les grandes lignes, comment mener un projet BI.
+'>
+<meta property='og:url' content='https://blog.ddata.fr/p/comment-faire-un-projet-bi/'>
+<meta property='og:site_name' content='Le D de Data'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Auto formation' /><meta property='article:published_time' content='2023-01-08T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2023-01-08T00:00:00&#43;00:00'/><meta property='og:image' content='https://blog.ddata.fr/p/comment-faire-un-projet-bi/un-liu-5t9qbyCslIs-unsplash.jpg' />
+<meta name="twitter:title" content="Comment faire un projet BI.">
+<meta name="twitter:description" content="Vous avez décidé de vous lancer dans un projet Power BI et vous vous demandez comment vous y prendre ? Je vous propose de vous présenter, dans les grandes lignes, comment mener un projet BI.
+"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://blog.ddata.fr/p/comment-faire-un-projet-bi/un-liu-5t9qbyCslIs-unsplash.jpg' />
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TY6XFEN6QV"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-TY6XFEN6QV', { 'anonymize_ip': false });
+}
+</script>
+<link rel="alternate"
+      type="application/rss+xml"
+      href="https://blog.ddata.fr/index.xml"
+      title="Le D de Data">
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "dark");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Afficher le menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/pierre_hua6bbc70dde858dd10e363a14d1f7729c_67951_300x0_resize_q75_box.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Le D de Data</a></h1>
+            <h2 class="site-description">Blog francophone autour de la data Microsoft</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/pierreddata'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://www.linkedin.com/in/pierre-dupont-0b532374/'
+                        target="_blank"
+                        title="LinkdIn"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-folders" width="44" height="44" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <rect x="4" y="4" width="16" height="16" rx="2" />
+  <line x1="8" y1="11" x2="8" y2="16" />
+  <line x1="8" y1="8" x2="8" y2="8.01" />
+  <line x1="12" y1="16" x2="12" y2="11" />
+  <path d="M16 16v-3a2 2 0 0 0 -4 0" />
+</svg>
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Accueil</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/a-propos-de-d-de-data/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>A Propos</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/series/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-folders" width="44" height="44" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 4h3l2 2h5a2 2 0 0 1 2 2v7a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-9a2 2 0 0 1 2 -2" />
+  <path d="M17 17v2a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-9a2 2 0 0 1 2 -2h2" />
+</svg>
+
+                
+                <span>Series</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/liens/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Liens</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Rechercher</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Mode sombre</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table des matières</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#contexte">Contexte</a></li>
+    <li><a href="#les-phases-dun-projet-bi">Les phases d&rsquo;un projet BI</a>
+      <ol>
+        <li><a href="#phase-0--identification-des-sources-de-données">Phase 0 : identification des sources de données</a></li>
+        <li><a href="#phase-1--préparation-des-données">Phase 1 : préparation des données</a></li>
+        <li><a href="#phase-2--modélisation-des-données">Phase 2 : modélisation des données</a></li>
+        <li><a href="#phase-3--présentation-des-données">Phase 3 : présentation des données</a></li>
+      </ol>
+    </li>
+    <li><a href="#self-service-bi-vs-bi-dentreprise-quelles-différences-">Self-service BI vs BI d&rsquo;entreprise, quelles différences ?</a>
+      <ol>
+        <li><a href="#responsabilité-de-réalisation">Responsabilité de réalisation</a></li>
+        <li><a href="#nature-des-sources-de-données">Nature des sources de données</a></li>
+        <li><a href="#au-delà-de-cette-organisation">Au-delà de cette organisation</a></li>
+      </ol>
+    </li>
+    <li><a href="#conclusion">Conclusion</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/comment-faire-un-projet-bi/">
+                <img src="/p/comment-faire-un-projet-bi/un-liu-5t9qbyCslIs-unsplash_hu633350e3efb25b0fa50f31c8f536a31f_1331748_800x0_resize_q75_box.jpg"
+                        srcset="/p/comment-faire-un-projet-bi/un-liu-5t9qbyCslIs-unsplash_hu633350e3efb25b0fa50f31c8f536a31f_1331748_800x0_resize_q75_box.jpg 800w, /p/comment-faire-un-projet-bi/un-liu-5t9qbyCslIs-unsplash_hu633350e3efb25b0fa50f31c8f536a31f_1331748_1600x0_resize_q75_box.jpg 1600w"
+                        width="800" 
+                        height="1067" 
+                        loading="lazy"
+                        alt="Featured image of post Comment faire un projet BI." />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/powerbi/" style="background-color: #f2c811; color: #fff;">
+                Power BI
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/comment-faire-un-projet-bi/">Comment faire un projet BI.</a>
+        </h2>
+
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published" datetime="2023-01-08T00:00:00Z">
+                    8 janvier 2023
+                    
+                </time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    6 minutes de lecture
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+    
+    
+</div>
+</header>
+
+    <section class="article-content">
+    
+    
+    <p>Vous avez décidé de vous lancer dans un projet Power BI et vous vous demandez comment vous y prendre ? Je vous propose de vous présenter, dans les grandes lignes, comment mener un projet BI.</p>
+<h2 id="contexte">Contexte</h2>
+<p>Vous débutez dans la réalisation d&rsquo;un projet BI ?<br>
+Bonne nouvelle, quel que soit l&rsquo;outil que vous utiliserez un projet BI se réalise toujours de la même manière. Je vous propose dans cet article une présentation simple de la réalisation d&rsquo;un projet BI, dans le cadre de l&rsquo;utilisation de Power BI.</p>
+<h2 id="les-phases-dun-projet-bi">Les phases d&rsquo;un projet BI</h2>
+<p>Avant tout, un projet BI n&rsquo;est pas un projet statique, mais un projet en perpétuel enrichissement. Vous allez commencer en intégrant certaines données, puis au fil des itérations du projet vous allez améliorer votre projet en répétant les différentes phases du projet qui sont les suivantes :</p>
+<p><img src="/p/comment-faire-un-projet-bi/img/001-bi-project-schema.png"
+	width="798"
+	height="463"
+	srcset="/p/comment-faire-un-projet-bi/img/001-bi-project-schema_hub454a630702912bb4392e7da37b726cd_17827_480x0_resize_box_3.png 480w, /p/comment-faire-un-projet-bi/img/001-bi-project-schema_hub454a630702912bb4392e7da37b726cd_17827_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Vision schématique d&rsquo;un projet BI"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="172"
+		data-flex-basis="413px"
+	
+></p>
+<h3 id="phase-0--identification-des-sources-de-données">Phase 0 : identification des sources de données</h3>
+<p>Lors de cette phase, vous identifiez les sources de données que vous souhaitez intégrer dans votre projet. Pensez déjà à la méthode que vous utiliserez pour rafraichir la donnée en privilégiant les solutions automatisables.</p>
+<h3 id="phase-1--préparation-des-données">Phase 1 : préparation des données</h3>
+<p>Lors de cette phase, vous allez mettre en place un processus de traitement de données que l&rsquo;on appelle ETL dans les projets BI, c&rsquo;est l&rsquo;acronyme anglais de <strong>Extract Transform Load</strong>.
+Dans le cadre d&rsquo;un projet Power BI vous utiliserez l&rsquo;outil Power Query, intégrer à Power BI, pour réaliser cette phase du projet. Voici les tâches à réaliser :</p>
+<ul>
+<li>Extraire les données : l&rsquo;objectif est de lire les données depuis la source de données (Base de données, fichier Excel, API Web ou autres). Un projet BI doit <strong>TOUJOURS</strong> être en lecture seule sur la source. On ne réalise pas de modifications dans la source, mais dans une copie lors de l&rsquo;étape de transformation.</li>
+<li>Transformer les données : Lors de cette phase nous allons transformer les données sources notre objectif est de créer une tables de faits ou une table de dimension pour notre modèle de données en étoile. Les principales étapes consisteront à :
+<ul>
+<li>Définir les colonnes que l&rsquo;on conserve</li>
+<li>Nommer les colonnes dans le langage métier.</li>
+<li>Mettre le bon type de données aux colonnes (texte, entier, date &hellip;).</li>
+<li>Nettoyer les données dans les lignes si besoin.</li>
+<li>Restructurer les données si besoin afin de créer des tables de faits ou de dimensions.</li>
+<li>Enrichir notre table avec d&rsquo;autres sources de données.</li>
+</ul>
+</li>
+<li>Charger les données : Maintenant que nos données sont prêtes nous allons les charger dans Power BI, pour cela on utilise le bouton <strong>Fermer et appliquer</strong> de Power Query.</li>
+</ul>
+<p>À la fin de cette étape, Power BI contient un ensemble de tables chargées que vous allez utiliser lors de la prochaine phase.</p>
+<h3 id="phase-2--modélisation-des-données">Phase 2 : modélisation des données</h3>
+<p>Vos données sont maintenant disponibles sous forme de table dans Power BI. L&rsquo;objectif est maintenant de réaliser un modèle de données métier qui sera utilisé par vos utilisateurs dans le cadre d&rsquo;une self-service BI par exemple.</p>
+<p>Le modèle de données est essentiel, il est composé :</p>
+<ul>
+<li>Des tables de données reçues de Power Query.</li>
+<li>De relations entre les tables.</li>
+<li>De mesures et colonnes calculées créées en DAX.</li>
+</ul>
+<p>Un bon modèle de données est un modèle que les utilisateurs comprennent rapidement. Il doit être documenté afin que la définition des mesures soit partagée et comprise. Idéalement il ne doit pas y avoir d&rsquo;éléments techniques visibles de l&rsquo;utilisateur de modèle.</p>
+<p>Le langage DAX s&rsquo;appuie sur un modèle en étoile afin d&rsquo;exprimer toute sa puissance, si vous ne comprenez pas de quoi je parle, documentez-vous avant 😁.</p>
+<h3 id="phase-3--présentation-des-données">Phase 3 : présentation des données</h3>
+<p>On arrive à la phase visible du projet. Vous allez utiliser le modèle de données créer lors de la phase précédente pour alimenter les différentes visualisations de votre futur rapport. 
+Naturellement vous ne trouverez pas immédiatement le bon indicateur ou vous découvrirez qu&rsquo;il vous manque des données. Vous devrez alors repartir dans le cycle afin de&rsquo;enrichir votre modèle.</p>
+<h2 id="self-service-bi-vs-bi-dentreprise-quelles-différences-">Self-service BI vs BI d&rsquo;entreprise, quelles différences ?</h2>
+<p>Si un projet BI se fait toujours de la même manière, quelle est donc la différence entre la self-service BI et BI d&rsquo;entreprise ?</p>
+<p>C&rsquo;est principalement une question d&rsquo;approche projet : qui fait quoi ? Mais aussi cela dépend aussi souvent de la source de données.</p>
+<h3 id="responsabilité-de-réalisation">Responsabilité de réalisation</h3>
+<p>Un projet BI d&rsquo;entreprise est souvent mené par l&rsquo;IT de l&rsquo;entreprise. Il s&rsquo;agit de mettre à disposition des modèles de données et des rapports respectant des standards de qualité. La méthodologie de projet et les techniques utilisées pour le développement de logiciel sont utilisées pour la réalisation du projet BI d&rsquo;entreprise. 
+L&rsquo;IT mène ce genre de projet dans le cadre de ses autres activités, et comme pour tout projet informatique vous rencontrerez notamment les inconvénients suivants :</p>
+<ul>
+<li>Mauvaise compréhension de besoin.</li>
+<li>Mauvaise expression du besoin.</li>
+<li>Modification du besoin entre la collecte de ce dernier et la mise à disposition de résultat.</li>
+<li>Délai de réalisation (toujours) trop long.
+Et comme la loi de Murphy s&rsquo;applique, vous avez de grande chance de tous les rencontrer à chaque fois.</li>
+</ul>
+<p>Un projet en self-service BI est réalisé par un service ou une personne ayant de bonnes connaissances du métier et des données, car elle travaille déjà avec régulièrement. Cette personne doit apprendre l&rsquo;utilisation d&rsquo;un outil comme Power BI et réalise le projet BI par elle-même ou avec de l&rsquo;accompagnement.</p>
+<p>On peut représenter simplement cette différence ainsi :</p>
+<p><img src="/p/comment-faire-un-projet-bi/img/002-self-vs-enterprise.png"
+	width="980"
+	height="617"
+	srcset="/p/comment-faire-un-projet-bi/img/002-self-vs-enterprise_hucaa761cfc10400d2538d909012f0e4b3_29584_480x0_resize_box_3.png 480w, /p/comment-faire-un-projet-bi/img/002-self-vs-enterprise_hucaa761cfc10400d2538d909012f0e4b3_29584_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Self-service BI vs BI d&rsquo;entreprise"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="158"
+		data-flex-basis="381px"
+	
+></p>
+<h3 id="nature-des-sources-de-données">Nature des sources de données</h3>
+<p>Un projet BI d&rsquo;entreprise a pour objectif de mettre à disposition du plus grand nombre des données d&rsquo;entreprise. En général il permet d&rsquo;accéder à l&rsquo;ensemble des données dans un seul modèle intégrant les contraintes de sécurité d&rsquo;accès aux données. De plus les sources primaires de type base de données ou API demandent des compétences spécifiques que l&rsquo;on retrouve dans les services IT. 
+Enfin ce type de projet utilise fréquemment des couches intermédiaires de données permettant une première modélisation. Cette couche est fréquemment sous la forme d&rsquo;un datawarehouse ou d&rsquo;un datalakehouse pour les architectures modernes dans le cloud.</p>
+<p>Un projet en self-service BI est en général fait avec les moyens du bord, les données utilisées sont souvent des données spécifiques à un service en termes de scope. Vous n&rsquo;avez pas forcément l&rsquo;accès à la donnée source primaire en termes de sécurité ou de connaissance. Dans ce cas des extractions limitées à un sous-ensemble de données sont utilisées pour ces projets qui de fait ne pourront pas répondre à des besoins d&rsquo;entreprise.</p>
+<h3 id="au-delà-de-cette-organisation">Au-delà de cette organisation</h3>
+<p>Entre self-service BI et BI d&rsquo;entreprise on peut imaginer d&rsquo;autres niveaux de partage de responsabilité, on parle parfait de self-service managed BI pour des scénarii dans lesquels l&rsquo;IT développe et modélise les couches bases de données et les mets à la disposition des métiers qui peuvent être en responsabilité de l&rsquo;enrichissement, par exemple l&rsquo;ajout des objectifs, mais aussi de la réalisation des rapports. Libre à vous d&rsquo;adapter le produit à votre mode de fonctionnement.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>Retenez qu&rsquo;un projet BI n&rsquo;est jamais un projet statique. Vos données bougent, vos besoins changent et plus vous exposez de la donnée, plus de nouveaux besoins apparaissent comme par magie. 
+Vous devez donc être agile, quand vous réalisez une tâche pensez à celui qui devra venir après vous dans quelque temps pour changer des choses. Votre Moi futur vous remerciera, car cette personne c&rsquo;est probablement vous même.</p>
+<p>Merci de votre attention.</p>
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/auto-formation/">Auto formation</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Contenus liés</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/powerbimodeldocumenter/">
+        
+        
+            <div class="article-image">
+                <img src="/p/powerbimodeldocumenter/_hu7b4b3bff9c5502582b0d9cd34cf4487c_862909_a141452c073a1be2b17521dc1661bb9b.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Power BI Model Documenter"
+                        data-key="powerbimodeldocumenter" 
+                        data-hash="md5-IXhvU04k1mW4yf&#43;B1wlnkA==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Power BI Model Documenter</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/pbigwtmonitor/">
+        
+        
+            <div class="article-image">
+                <img src="/p/pbigwtmonitor/_hu758a226a991c2b16a831eb60265cd660_934145_7f17c01379a278f3c699bfe950966a98.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Power BI Gateway Monitor"
+                        data-key="pbigwtmonitor" 
+                        data-hash="md5-WI3wlDgEJ3mnY0m8kvtNmg==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Power BI Gateway Monitor</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/pbimonitor/">
+        
+        
+            <div class="article-image">
+                <img src="/p/pbimonitor/_hu38957ebb2a36eb160a7da9484a087a83_913911_42b6fdb7ee839f271ec3658b9500ecf5.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Power BI Monitor"
+                        data-key="pbimonitor" 
+                        data-hash="md5-H4R4Wlqpk9Mdx/V91chr&#43;A==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Power BI Monitor</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/tabulareditor/">
+        
+        
+            <div class="article-image">
+                <img src="/p/tabulareditor/_huded2a096120cee03ed9ff78bdbe4646d_2227739_5d9903b4708cdc0743669b65ef257370.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Tabular Editor - Allez plus loin avec Power BI"
+                        data-key="tabulareditor" 
+                        data-hash="md5-GZiMQGsuVd5ZyKkA/Areyg==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Tabular Editor - Allez plus loin avec Power BI</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/self-service-bi-sur-jeu-de-donnees-existant/">
+        
+        
+            <div class="article-image">
+                <img src="/p/self-service-bi-sur-jeu-de-donnees-existant/_huc8aff4f4bdb05689828a54a86f8617f1_1552202_5d36e9619bc730ebb8e2c073105e58a2.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post  Voyage au coeur de la BI self-service"
+                        data-key="self-service-bi-sur-jeu-de-donnees-existant" 
+                        data-hash="md5-S6l97x4yJRdZgzQ0Vmj0dQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title"> Voyage au coeur de la BI self-service</h2>
+        </div>
+    </a>
+</article>
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "ddata" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2022 - 
+        
+        2023 Le D de Data
+    </section>
+    
+    <section class="powerby">
+        Généré avec <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Thème <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.16.0">Stack</a></b> conçu par <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>
