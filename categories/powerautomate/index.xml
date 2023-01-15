@@ -218,8 +218,8 @@ Suivez le guide &amp;hellip;&lt;/p&gt;
 		data-flex-basis=&#34;461px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;Nous retrouvons notre étape de message dans Teams tel que nous l&amp;rsquo;avions enregistré. 
-Pour l&amp;rsquo;améliorer, nous allons créer un lien propre inclus dans un texte. 
+&lt;p&gt;Nous retrouvons notre étape de message dans Teams tel que nous l&amp;rsquo;avions enregistré.
+Pour l&amp;rsquo;améliorer, nous allons créer un lien propre inclus dans un texte.
 Pour créer le lien, nous devons lz créer directement en HTML.&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;Appuyez sur l&amp;rsquo;icône &lt;strong&gt;&amp;lt;/&amp;gt;&lt;/strong&gt; pour basculer le message en mode HTML.&lt;/li&gt;

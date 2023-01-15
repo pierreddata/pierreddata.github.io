@@ -6,7 +6,112 @@
         <description>Recent content on Le D de Data</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>fr-fr</language>
-        <lastBuildDate>Sun, 08 Jan 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ddata.fr/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sun, 15 Jan 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ddata.fr/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Measure Killer</title>
+        <link>https://blog.ddata.fr/p/measurekiller/</link>
+        <pubDate>Sun, 15 Jan 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://blog.ddata.fr/p/measurekiller/</guid>
+        <description>&lt;img src="https://blog.ddata.fr/p/measurekiller/jeshoots-com-__ZMnefoI3k-unsplash.jpg" alt="Featured image of post Measure Killer" /&gt;&lt;p&gt;Dans cet article je vous présente Measure Killer, l&amp;rsquo;outil qui vous permet de nettoyer votre jeu de données Power BI.&lt;/p&gt;
+&lt;h2 id=&#34;context&#34;&gt;Context&lt;/h2&gt;
+&lt;p&gt;Votre projet Power BI à bien grandit et vous vous demandez comment faire le tri entre les éléments de votre modèle que vous utilisez et les éléments inutiles. Measure Killer va vous aider à faire le tri.&lt;/p&gt;
+&lt;h2 id=&#34;installation&#34;&gt;Installation&lt;/h2&gt;
+&lt;p&gt;Il existe une version gratuite et 2 versions payantes de cet outil.&lt;br&gt;
+Dans cet article je vais exclusivement parler de la version gratuite.&lt;/p&gt;
+&lt;p&gt;Pour installer Measure Killer, cliquez sur un &lt;a class=&#34;link&#34; href=&#34;https://en.brunner.bi/measurekiller&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;des liens&lt;/a&gt; dans la section *Current version *de la page d&amp;rsquo;accueil du site de Measure Killer. Téléchargez et installez la version admin ou portable. Dans un contexte d&amp;rsquo;entreprise, vous aurez probablement besoin de l&amp;rsquo;autorisation et/ou le support de l&amp;rsquo;IT pour faire cette opération.&lt;/p&gt;
+&lt;p&gt;Une fois installé vous retrouverez Measure Killer dans le menu &lt;em&gt;Outils externes&lt;/em&gt; de Power BI. Si Power BI était ouvert lors de l&amp;rsquo;installation, fermez-le et réouvrez-le.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/measurekiller/img/001-powerbi-menu-measure-killer.png&#34;
+	width=&#34;616&#34;
+	height=&#34;129&#34;
+	srcset=&#34;https://blog.ddata.fr/p/measurekiller/img/001-powerbi-menu-measure-killer_hu85f04941cc87c268c1f4163f69e9303e_10004_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/measurekiller/img/001-powerbi-menu-measure-killer_hu85f04941cc87c268c1f4163f69e9303e_10004_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Measure Killer dans le menu Outils externes&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;477&#34;
+		data-flex-basis=&#34;1146px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;usage&#34;&gt;Usage&lt;/h2&gt;
+&lt;p&gt;Ouvrez le rapport que vous souhaitez traiter, dans le cadre de test, une copie sera plus appropriée.&lt;br&gt;
+Dans le menu &lt;em&gt;Outils externes&lt;/em&gt; de Power BI, sélectionnez &lt;strong&gt;Measure Killer&lt;/strong&gt; pour lancer le programme.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/measurekiller/img/002-powerbi-measure-killer-start.png&#34;
+	width=&#34;502&#34;
+	height=&#34;527&#34;
+	srcset=&#34;https://blog.ddata.fr/p/measurekiller/img/002-powerbi-measure-killer-start_huda3be7ffdf7b88d291adf1a5cb5f767b_25388_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/measurekiller/img/002-powerbi-measure-killer-start_huda3be7ffdf7b88d291adf1a5cb5f767b_25388_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Menu de démarrage de Measure Killer&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;95&#34;
+		data-flex-basis=&#34;228px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Sélectionnez &lt;strong&gt;Start (Free version)&lt;/strong&gt; pour démarrer la version gratuite&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/measurekiller/img/003-powerbi-measure-killer-select-source.png&#34;
+	width=&#34;502&#34;
+	height=&#34;527&#34;
+	srcset=&#34;https://blog.ddata.fr/p/measurekiller/img/003-powerbi-measure-killer-select-source_hu9c4fb2b83cafdf16f5141d4c0b629016_26647_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/measurekiller/img/003-powerbi-measure-killer-select-source_hu9c4fb2b83cafdf16f5141d4c0b629016_26647_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Sélection de la source&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;95&#34;
+		data-flex-basis=&#34;228px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Sélectionnez &lt;strong&gt;Single report/dataset&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/measurekiller/img/004-powerbi-measure-killer-first-screen.png&#34;
+	width=&#34;1282&#34;
+	height=&#34;752&#34;
+	srcset=&#34;https://blog.ddata.fr/p/measurekiller/img/004-powerbi-measure-killer-first-screen_hu75ea0130e5424b82bc98434ab3b1ce93_32034_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/measurekiller/img/004-powerbi-measure-killer-first-screen_hu75ea0130e5424b82bc98434ab3b1ce93_32034_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Écran d&amp;rsquo;accueil&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;170&#34;
+		data-flex-basis=&#34;409px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Sélectionnez &lt;strong&gt;Execute&lt;/strong&gt; pour démarrer l&amp;rsquo;analyse et indiquer au programme où se trouve le fichier source dans l&amp;rsquo;écran suivant.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/measurekiller/img/005-powerbi-measure-killer-analyse-screen.png&#34;
+	width=&#34;1282&#34;
+	height=&#34;752&#34;
+	srcset=&#34;https://blog.ddata.fr/p/measurekiller/img/005-powerbi-measure-killer-analyse-screen_hu79ea5c26c5cf41cc1e610154bf55b9aa_72462_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/measurekiller/img/005-powerbi-measure-killer-analyse-screen_hu79ea5c26c5cf41cc1e610154bf55b9aa_72462_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Écran d&amp;rsquo;analyse&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;170&#34;
+		data-flex-basis=&#34;409px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Vous pouvez explorer le résultat de l&amp;rsquo;analyse ici.&lt;/li&gt;
+&lt;li&gt;Vous pouvez supprimer automatiquement les mesures et colonnes non utilisées.&lt;/li&gt;
+&lt;li&gt;Vous pouvez exporter le résultat dans Excel pour documenter votre modèle.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Cet outil est très utile pour vous permettre de nettoyer vos projets Power BI mais faite très attention, les mesures non utilisées le sont dans le rapport en cours, dans le cadre de self-service BI et de jeu de données partagé où ces mesures sont peut être utilisé. Votre expertise du modèle doit primer sur la suppression automatique.&lt;/p&gt;
+&lt;p&gt;Merci de votre attention.&lt;/p&gt;</description>
+        </item>
+        <item>
         <title>Comment faire un projet BI.</title>
         <link>https://blog.ddata.fr/p/comment-faire-un-projet-bi/</link>
         <pubDate>Sun, 08 Jan 2023 00:00:00 +0000</pubDate>
@@ -63,13 +168,13 @@ Dans le cadre d&amp;rsquo;un projet Power BI vous utiliserez l&amp;rsquo;outil P
 &lt;p&gt;Un bon modèle de données est un modèle que les utilisateurs comprennent rapidement. Il doit être documenté afin que la définition des mesures soit partagée et comprise. Idéalement il ne doit pas y avoir d&amp;rsquo;éléments techniques visibles de l&amp;rsquo;utilisateur de modèle.&lt;/p&gt;
 &lt;p&gt;Le langage DAX s&amp;rsquo;appuie sur un modèle en étoile afin d&amp;rsquo;exprimer toute sa puissance, si vous ne comprenez pas de quoi je parle, documentez-vous avant 😁.&lt;/p&gt;
 &lt;h3 id=&#34;phase-3--présentation-des-données&#34;&gt;Phase 3 : présentation des données&lt;/h3&gt;
-&lt;p&gt;On arrive à la phase visible du projet. Vous allez utiliser le modèle de données créer lors de la phase précédente pour alimenter les différentes visualisations de votre futur rapport. 
+&lt;p&gt;On arrive à la phase visible du projet. Vous allez utiliser le modèle de données créer lors de la phase précédente pour alimenter les différentes visualisations de votre futur rapport.
 Naturellement vous ne trouverez pas immédiatement le bon indicateur ou vous découvrirez qu&amp;rsquo;il vous manque des données. Vous devrez alors repartir dans le cycle afin de&amp;rsquo;enrichir votre modèle.&lt;/p&gt;
 &lt;h2 id=&#34;self-service-bi-vs-bi-dentreprise-quelles-différences-&#34;&gt;Self-service BI vs BI d&amp;rsquo;entreprise, quelles différences ?&lt;/h2&gt;
 &lt;p&gt;Si un projet BI se fait toujours de la même manière, quelle est donc la différence entre la self-service BI et BI d&amp;rsquo;entreprise ?&lt;/p&gt;
 &lt;p&gt;C&amp;rsquo;est principalement une question d&amp;rsquo;approche projet : qui fait quoi ? Mais aussi cela dépend aussi souvent de la source de données.&lt;/p&gt;
 &lt;h3 id=&#34;responsabilité-de-réalisation&#34;&gt;Responsabilité de réalisation&lt;/h3&gt;
-&lt;p&gt;Un projet BI d&amp;rsquo;entreprise est souvent mené par l&amp;rsquo;IT de l&amp;rsquo;entreprise. Il s&amp;rsquo;agit de mettre à disposition des modèles de données et des rapports respectant des standards de qualité. La méthodologie de projet et les techniques utilisées pour le développement de logiciel sont utilisées pour la réalisation du projet BI d&amp;rsquo;entreprise. 
+&lt;p&gt;Un projet BI d&amp;rsquo;entreprise est souvent mené par l&amp;rsquo;IT de l&amp;rsquo;entreprise. Il s&amp;rsquo;agit de mettre à disposition des modèles de données et des rapports respectant des standards de qualité. La méthodologie de projet et les techniques utilisées pour le développement de logiciel sont utilisées pour la réalisation du projet BI d&amp;rsquo;entreprise.
 L&amp;rsquo;IT mène ce genre de projet dans le cadre de ses autres activités, et comme pour tout projet informatique vous rencontrerez notamment les inconvénients suivants :&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Mauvaise compréhension de besoin.&lt;/li&gt;
@@ -95,13 +200,13 @@ Et comme la loi de Murphy s&amp;rsquo;applique, vous avez de grande chance de to
 	
 &gt;&lt;/p&gt;
 &lt;h3 id=&#34;nature-des-sources-de-données&#34;&gt;Nature des sources de données&lt;/h3&gt;
-&lt;p&gt;Un projet BI d&amp;rsquo;entreprise a pour objectif de mettre à disposition du plus grand nombre des données d&amp;rsquo;entreprise. En général il permet d&amp;rsquo;accéder à l&amp;rsquo;ensemble des données dans un seul modèle intégrant les contraintes de sécurité d&amp;rsquo;accès aux données. De plus les sources primaires de type base de données ou API demandent des compétences spécifiques que l&amp;rsquo;on retrouve dans les services IT. 
+&lt;p&gt;Un projet BI d&amp;rsquo;entreprise a pour objectif de mettre à disposition du plus grand nombre des données d&amp;rsquo;entreprise. En général il permet d&amp;rsquo;accéder à l&amp;rsquo;ensemble des données dans un seul modèle intégrant les contraintes de sécurité d&amp;rsquo;accès aux données. De plus les sources primaires de type base de données ou API demandent des compétences spécifiques que l&amp;rsquo;on retrouve dans les services IT.
 Enfin ce type de projet utilise fréquemment des couches intermédiaires de données permettant une première modélisation. Cette couche est fréquemment sous la forme d&amp;rsquo;un datawarehouse ou d&amp;rsquo;un datalakehouse pour les architectures modernes dans le cloud.&lt;/p&gt;
 &lt;p&gt;Un projet en self-service BI est en général fait avec les moyens du bord, les données utilisées sont souvent des données spécifiques à un service en termes de scope. Vous n&amp;rsquo;avez pas forcément l&amp;rsquo;accès à la donnée source primaire en termes de sécurité ou de connaissance. Dans ce cas des extractions limitées à un sous-ensemble de données sont utilisées pour ces projets qui de fait ne pourront pas répondre à des besoins d&amp;rsquo;entreprise.&lt;/p&gt;
 &lt;h3 id=&#34;au-delà-de-cette-organisation&#34;&gt;Au-delà de cette organisation&lt;/h3&gt;
 &lt;p&gt;Entre self-service BI et BI d&amp;rsquo;entreprise on peut imaginer d&amp;rsquo;autres niveaux de partage de responsabilité, on parle parfait de self-service managed BI pour des scénarii dans lesquels l&amp;rsquo;IT développe et modélise les couches bases de données et les mets à la disposition des métiers qui peuvent être en responsabilité de l&amp;rsquo;enrichissement, par exemple l&amp;rsquo;ajout des objectifs, mais aussi de la réalisation des rapports. Libre à vous d&amp;rsquo;adapter le produit à votre mode de fonctionnement.&lt;/p&gt;
 &lt;h2 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h2&gt;
-&lt;p&gt;Retenez qu&amp;rsquo;un projet BI n&amp;rsquo;est jamais un projet statique. Vos données bougent, vos besoins changent et plus vous exposez de la donnée, plus de nouveaux besoins apparaissent comme par magie. 
+&lt;p&gt;Retenez qu&amp;rsquo;un projet BI n&amp;rsquo;est jamais un projet statique. Vos données bougent, vos besoins changent et plus vous exposez de la donnée, plus de nouveaux besoins apparaissent comme par magie.
 Vous devez donc être agile, quand vous réalisez une tâche pensez à celui qui devra venir après vous dans quelque temps pour changer des choses. Votre Moi futur vous remerciera, car cette personne c&amp;rsquo;est probablement vous même.&lt;/p&gt;
 &lt;p&gt;Merci de votre attention.&lt;/p&gt;</description>
         </item>
@@ -194,7 +299,7 @@ Les scripts PowerShell s&amp;rsquo;appuient sur le module PowerShell Power BI qu
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
 &lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-powershell&#34; data-lang=&#34;powershell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;Install-Module&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;-Name&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;MicrosoftPowerBIMgmt&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;-RequiredVersion&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;1026&lt;/span&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-powershell&#34; data-lang=&#34;powershell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;Install-Module&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;-Name&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;MicrosoftPowerBIMgmt&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;-RequiredVersion&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;1.2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;py&#34;&gt;1026&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;Vous pouvez utiliser ces scripts avec un service principal pour vous authentifier (recommandé) ou avec votre compte utilisateur.&lt;/p&gt;
@@ -463,7 +568,7 @@ Je vais vous expliquer comment cela se passe.&lt;/p&gt;
 Pour Azure et la sécurité je vous recommande chaudement &lt;a class=&#34;link&#34; href=&#34;https://www.youtube.com/@NTFAQGuy&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;la chaine de John Savill&lt;/a&gt; c&amp;rsquo;est en anglais, mais c&amp;rsquo;est le meilleur.&lt;/p&gt;
 &lt;h2 id=&#34;sentrainer-à-la-certification&#34;&gt;S&amp;quot;entrainer à la certification&lt;/h2&gt;
-&lt;p&gt;L&amp;rsquo;examen peut faire peur, je vous conseille de regarder sur Internet, vous trouverez, en anglais, des exemples de questions de l&amp;rsquo;examen. 
+&lt;p&gt;L&amp;rsquo;examen peut faire peur, je vous conseille de regarder sur Internet, vous trouverez, en anglais, des exemples de questions de l&amp;rsquo;examen.
 Vous pouvez commencer par &lt;a class=&#34;link&#34; href=&#34;https://www.examtopics.com/exams/microsoft/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;ExamTopics&lt;/a&gt;.
 Par contre attention certaines réponses sont fausse, regardez les commentaires en cas de doute.&lt;/p&gt;
@@ -2037,8 +2142,8 @@ Suivez le guide &amp;hellip;&lt;/p&gt;
 		data-flex-basis=&#34;461px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;Nous retrouvons notre étape de message dans Teams tel que nous l&amp;rsquo;avions enregistré. 
-Pour l&amp;rsquo;améliorer, nous allons créer un lien propre inclus dans un texte. 
+&lt;p&gt;Nous retrouvons notre étape de message dans Teams tel que nous l&amp;rsquo;avions enregistré.
+Pour l&amp;rsquo;améliorer, nous allons créer un lien propre inclus dans un texte.
 Pour créer le lien, nous devons lz créer directement en HTML.&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;Appuyez sur l&amp;rsquo;icône &lt;strong&gt;&amp;lt;/&amp;gt;&lt;/strong&gt; pour basculer le message en mode HTML.&lt;/li&gt;
@@ -3038,7 +3143,7 @@ Enfin appuyer sur &lt;strong&gt;Fermer &amp;amp; appliquer&lt;/strong&gt; dans l
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
 &lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c#&#34; data-lang=&#34;c#&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;Date&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;de&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;dernière&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;mise&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;à&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;jour&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;MAX&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;&amp;#39;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Mise&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;à&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;jour&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Last&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;refresh&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;date&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;])&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;2&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;/&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;24&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c#&#34; data-lang=&#34;c#&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;Date&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;de&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;derni&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;è&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;re&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;mise&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;à&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;jour&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;MAX&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;&amp;#39;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Mise&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;à&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;jour&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Last&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;refresh&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;date&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;])&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;2&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;/&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;24&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;Nous ajoutons 2 heures pour passer en heure d&amp;rsquo;été local de Paris. Nous ne traiterons pas les problèmes d&amp;rsquo;heure d&amp;rsquo;été / heure d&amp;rsquo;hiver dans le cadre de cet article.&lt;/p&gt;
@@ -3050,7 +3155,7 @@ Si on souhaite afficher le temps passé depuis la dernière mise à jour, nous a
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
 &lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c#&#34; data-lang=&#34;c#&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;Durée&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;depuis&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;dernier&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;rafraichissement&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;DATEDIFF&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;MAX&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;&amp;#39;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Mise&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;à&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;jour&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Last&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;refresh&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;date&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]),&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;UTCNOW&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(),&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;MINUTE&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c#&#34; data-lang=&#34;c#&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;Dur&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;é&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;e&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;depuis&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;dernier&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;rafraichissement&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;DATEDIFF&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;MAX&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;&amp;#39;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Mise&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;à&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;jour&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Last&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;refresh&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;date&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]),&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;UTCNOW&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(),&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;MINUTE&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;Pour afficher un texte propre à nos utilisateurs, on peut créer une autre mesure DAX avec la formule suivante :&lt;/p&gt;
@@ -3064,8 +3169,8 @@ Si on souhaite afficher le temps passé depuis la dernière mise à jour, nous a
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
 &lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c#&#34; data-lang=&#34;c#&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;Texte&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Durée&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;depuis&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;dernier&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;rafraichissement&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; 
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kt&#34;&gt;var&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;vMinutes&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;=[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Durée&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;depuis&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;dernier&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;rafraichissement&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c#&#34; data-lang=&#34;c#&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;Texte&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Dur&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;é&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;e&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;depuis&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;dernier&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;rafraichissement&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kt&#34;&gt;var&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;vMinutes&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;=[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Dur&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;é&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;e&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;depuis&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;dernier&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;rafraichissement&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kt&#34;&gt;var&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;vHeures&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;vMinutes&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;60&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kt&#34;&gt;var&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;vMinutesRestantes&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;MOD&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;vMinutes&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;60&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;return&lt;/span&gt;
