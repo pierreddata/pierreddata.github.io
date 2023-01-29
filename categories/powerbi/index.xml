@@ -6,7 +6,53 @@
         <description>Recent content in Power BI on Le D de Data</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>fr-fr</language>
-        <lastBuildDate>Sun, 22 Jan 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ddata.fr/categories/powerbi/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sun, 29 Jan 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ddata.fr/categories/powerbi/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>pbi-tools : diviser pour mieux régner</title>
+        <link>https://blog.ddata.fr/p/pbitools/</link>
+        <pubDate>Sun, 29 Jan 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://blog.ddata.fr/p/pbitools/</guid>
+        <description>&lt;img src="https://blog.ddata.fr/p/pbitools/amy-shamblen-eT8vx7LLorY-unsplash.jpg" alt="Featured image of post pbi-tools : diviser pour mieux régner" /&gt;&lt;p&gt;Dans cet article je vous présente pbi-tools, l&amp;rsquo;outil qui vous permet de faire du suivi de version sur vos projets Power BI et bien plus.&lt;/p&gt;
+&lt;h2 id=&#34;context&#34;&gt;Context&lt;/h2&gt;
+&lt;p&gt;Dans tout projet informatique, on est confronté aux problèmes de suivi des changements dans le code source. Un projet Power BI n&amp;rsquo;échappe pas à ce problème et à l&amp;rsquo;heure actuelle Microsoft ne propose pas de solution &lt;em&gt;In the box&lt;/em&gt; pour répondre à ce problème.&lt;/p&gt;
+&lt;p&gt;L&amp;rsquo;outil Power BI tools va vous permettre de diviser un fichier Power BI en une multitude de fichiers et vous pourrez ensuite utiliser un outil de gestion de configuration tel que Git pour suivre les changements dans votre projet Power BI.&lt;/p&gt;
+&lt;p&gt;Le but du présent article n&amp;rsquo;est pas de vous expliquez le fonctionnement des outils de gestion de configuration tels que Git, vous trouverez beaucoup de ressources d&amp;rsquo;apprentissage sur Git comme par exemple celle de &lt;a class=&#34;link&#34; href=&#34;https://korben.info/les-bases-a-savoir-pour-debuter-avec-git.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;korben.info&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;installation&#34;&gt;Installation&lt;/h2&gt;
+&lt;p&gt;Pour installer pbi-tools, cliquez sur le lien de téléchargement de la version &lt;strong&gt;pbi-tools Desktop CLI&lt;/strong&gt;  de la page d&amp;rsquo;accueil du site de pbi-tools pour tester l&amp;rsquo;outil. Téléchargez et installez l&amp;rsquo;outil tel que décrit &lt;a class=&#34;link&#34; href=&#34;https://pbi.tools/tutorials/getting-started-cli.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;sur la page dédiée du site&lt;/a&gt;. Dans un contexte d&amp;rsquo;entreprise, vous aurez probablement besoin de l&amp;rsquo;autorisation et/ou le support de l&amp;rsquo;IT pour faire cette opération.&lt;/p&gt;
+&lt;h2 id=&#34;usage&#34;&gt;Usage&lt;/h2&gt;
+&lt;p&gt;pbi-tools est un outil technique, il ne possède pas d&amp;rsquo;interface graphique utilisateur, il s&amp;rsquo;utilise en ligne de commande.&lt;br&gt;
+Au-delà de son interface austère, pbi-tools peut vous apporter un grand service, en effet il vous permet de décomposer un fichier PBIX en un ensemble de fichiers texte, un pour chaque sous composant notamment :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Dans le dossier &lt;strong&gt;Model&lt;/strong&gt; on retrouve :
+&lt;ul&gt;
+&lt;li&gt;un dossier &lt;strong&gt;query&lt;/strong&gt; contenant un fichier par requête Power Query. Les fichiers ont l&amp;rsquo;extention &lt;em&gt;m&lt;/em&gt; mais contienne du texte.&lt;/li&gt;
+&lt;li&gt;Un dossier &lt;strong&gt;tables&lt;/strong&gt; contenant un dossier par table du modèle Power BI, chaque dossier contient (si besoin) :
+&lt;ul&gt;
+&lt;li&gt;un fichier &lt;strong&gt;table.json&lt;/strong&gt; contenant les données techniques de la table.&lt;/li&gt;
+&lt;li&gt;un dossier &lt;strong&gt;columns&lt;/strong&gt; avec un fichier &lt;em&gt;json&lt;/em&gt; décrivant chaque colonne de la table et un fichier &lt;em&gt;dax&lt;/em&gt; contenant le code DAX de chaque colonne calculée du modèle.&lt;/li&gt;
+&lt;li&gt;un dossier &lt;strong&gt;hierarchies&lt;/strong&gt; avec un fichier &lt;em&gt;json&lt;/em&gt; décrivant chaque hiérarchie du modèle.&lt;/li&gt;
+&lt;li&gt;un dossier &lt;strong&gt;measures&lt;/strong&gt; avec un fichier &lt;em&gt;json&lt;/em&gt; décrivant chaque mesure et un fichier &lt;em&gt;dax&lt;/em&gt; contenant le code DAX de la mesure.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Un dossier &lt;strong&gt;Report&lt;/strong&gt; contenant un dossier &lt;strong&gt;section&lt;/strong&gt; par table du modèle Power BI, chaque dossier contient (si besoin) :
+&lt;ul&gt;
+&lt;li&gt;un fichier &lt;strong&gt;config.json&lt;/strong&gt; et &lt;strong&gt;report.json&lt;/strong&gt; contenant des informations sur les pages.&lt;/li&gt;
+&lt;li&gt;un dossier &lt;strong&gt;reports&lt;/strong&gt; avec un dossier par page de vos rapports contenant 3 fichiers par visuel (config.json / filters.json / visualContainer.json)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Votre fichier PBIX est donc fragmenté en une multitude de fichiers.&lt;br&gt;
+À quoi cela peut-il servir ? Avec un outil tel que Git vous allez pouvoir monitorer les changements dans chaque fichier et vous pourrez comparer chaque version que vous aurez dans Git l&amp;rsquo;une par rapport à l&amp;rsquo;autre.&lt;br&gt;
+Prenons un exemple, vous cherchez à comprendre quelle modification a subie une mesure DAX dans les 10 dernières versions, sur les 6 derniers mois ? Si votre fichier PBIX est décomposé par pbi-tools et suivi régulièrement dans Git vous ne mettrez que quelques secondes à répondre à la question. Dans le cas contraire, je vous laisse évaluer la charge de travail&amp;hellip;&lt;/p&gt;
+&lt;p&gt;pbi-tools vous permet aussi de recréer votre fichier PBIX à partir de l&amp;rsquo;ensemble des fichiers. On peut imaginer des scénarii d&amp;rsquo;automatisation dans lesquels vous réalisez des modifications manuelles sur les fichiers avant de les recomposer.&lt;br&gt;
+Ce genre de scénario avancé demande de procéder avec la plus grande précaution et beaucoup de tests pour valider que tout ce passe bien jusqu&amp;rsquo;à la mise en production.&lt;/p&gt;
+&lt;p&gt;Merci de votre attention.&lt;/p&gt;</description>
+        </item>
+        <item>
         <title>ALM Toolkit</title>
         <link>https://blog.ddata.fr/p/almtoolkit/</link>
         <pubDate>Sun, 22 Jan 2023 00:00:00 +0000</pubDate>
@@ -18,7 +64,7 @@
     &gt;ALM Toolkit&lt;/a&gt; fait partie des outils à connaitre. Cet outil va vous permettre de comparer la structure de deux jeux de données Power Bi, qu&amp;rsquo;ils soient locaux dans votre Power BI Desktop ou publiés dans le service.&lt;/p&gt;
 &lt;h2 id=&#34;installation&#34;&gt;Installation&lt;/h2&gt;
 &lt;p&gt;Pour installer ALM Toolkit, cliquez sur le lien &lt;a class=&#34;link&#34; href=&#34;https://github.com/microsoft/Analysis-Services/releases/latest/download/AlmToolkitSetup.msi&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;Download latest version&lt;/a&gt; de la page d&amp;rsquo;accueil du site d&amp;rsquo;ALM Toolkit&amp;rsquo;. Téléchargez et installez le fichier msi. Dans un contexte d&amp;rsquo;entreprise, vous aurez probablement besoin de l&amp;rsquo;autorisation et/ou le support de l&amp;rsquo;IT pour faire cette opération.&lt;/p&gt;
+    &gt;Download latest version&lt;/a&gt; de la page d&amp;rsquo;accueil du site d&amp;rsquo;ALM Toolkit. Téléchargez et installez le fichier msi. Dans un contexte d&amp;rsquo;entreprise, vous aurez probablement besoin de l&amp;rsquo;autorisation et/ou le support de l&amp;rsquo;IT pour faire cette opération.&lt;/p&gt;
 &lt;p&gt;Une fois installé vous retrouverez ALM Toolkit dans le menu &lt;em&gt;Outils externes&lt;/em&gt; de Power BI. Si Power BI était ouvert lors de l&amp;rsquo;installation, fermez-le et réouvrez-le.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/almtoolkit/img/001-powerbi-menu-alm-toolkit.png&#34;
 	width=&#34;601&#34;
