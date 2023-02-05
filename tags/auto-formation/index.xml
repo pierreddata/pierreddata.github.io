@@ -6,14 +6,142 @@
         <description>Recent content in Auto formation on Le D de Data</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>fr-fr</language>
-        <lastBuildDate>Sun, 29 Jan 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ddata.fr/tags/auto-formation/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sun, 05 Feb 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ddata.fr/tags/auto-formation/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Datawarehouse ou datalakehouse, quelle source pour vos reportings ?</title>
+        <link>https://blog.ddata.fr/p/reporting-datawarehouse-datalakehouse/</link>
+        <pubDate>Sun, 05 Feb 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://blog.ddata.fr/p/reporting-datawarehouse-datalakehouse/</guid>
+        <description>&lt;img src="https://blog.ddata.fr/p/reporting-datawarehouse-datalakehouse/antoine-petitteville-RIdYHUISNuM-unsplash.jpg" alt="Featured image of post Datawarehouse ou datalakehouse, quelle source pour vos reportings ?" /&gt;&lt;p&gt;Dans cet article, je vous présente les différentes sources possibles pour vos reportings. Les solutions natives de vos applications, un datawarehouse ou un datalakehouse ? Je vous propose de passer en revue ces solutions.&lt;/p&gt;
+&lt;h2 id=&#34;le-reporting-de-données-sans-la-bi&#34;&gt;Le reporting de données sans la BI&lt;/h2&gt;
+&lt;p&gt;Vos applications sont en général fournies avec des possibilités de reporting dédié fournies par l&amp;rsquo;éditeur de la solution.&lt;/p&gt;
+&lt;p&gt;Les avantages de ces solutions de reporting natives sont principalement :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Le coût normalement inclut dans la solution.&lt;/li&gt;
+&lt;li&gt;Des rapports en lien très fort avec les données de la solution.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Par contre les inconvénients sont en général :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Une faible capacité de customisation et d&amp;rsquo;intégration de règle spécifique à votre usage.&lt;/li&gt;
+&lt;li&gt;L&amp;rsquo;impossibilité de croiser avec d&amp;rsquo;autres sources de données extérieures à la solution.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Si l’on faisait une analogie avec la cuisine, nous avons affaire à un plat industriel prêt à être consommé.&lt;/p&gt;
+&lt;p&gt;On peut donc représenter cette solution avec le schéma ci-dessous avec des applications en silo qui délivre des rapports aux utilisateurs via des outils de reporting différents les uns des autres.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/reporting-datawarehouse-datalakehouse/img/001-data-sans-bi.png&#34;
+	width=&#34;601&#34;
+	height=&#34;706&#34;
+	srcset=&#34;https://blog.ddata.fr/p/reporting-datawarehouse-datalakehouse/img/001-data-sans-bi_hu8a19905e549f9e1eaa5a52d8f8030dd9_33837_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/reporting-datawarehouse-datalakehouse/img/001-data-sans-bi_hu8a19905e549f9e1eaa5a52d8f8030dd9_33837_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Le reporting sans BI&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;85&#34;
+		data-flex-basis=&#34;204px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;la-bi-à-la-rescousse-&#34;&gt;La BI à la rescousse !&lt;/h2&gt;
+&lt;p&gt;Comment faire mieux que cette solution de données en silo ? La réponse est simplement l&amp;rsquo;informatique décisionnelle souvent appelée BI acronyme de son nom anglais Business Inteligence.&lt;/p&gt;
+&lt;p&gt;L&amp;rsquo;objectif de la BI est de vous permettre d&amp;rsquo;utiliser un seul outil pour tous vos reportings, basé sur une source de données consolidées permettant le croisement des données de vos différents silos de données grâce à la mise en relation des données communes.&lt;/p&gt;
+&lt;h2 id=&#34;les-services-attendus-dune-couche-data&#34;&gt;Les services attendus d&amp;rsquo;une couche data&lt;/h2&gt;
+&lt;p&gt;Pour réaliser cet objectif, les solutions proposées par la BI ont évoluée dans le temps, mais les services attendus par cette couche intermédiaire reste les mêmes :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Capacité de traitement et de stockage dédié distinct de l&amp;rsquo;infrastructure de l&amp;rsquo;application&lt;/li&gt;
+&lt;li&gt;Centralisation des données&lt;/li&gt;
+&lt;li&gt;Modélisation des données optimisée pour le reporting (modèle en étoile)&lt;/li&gt;
+&lt;li&gt;Historisation des données
+&lt;ul&gt;
+&lt;li&gt;Pour certaine dimension, il est nécessaire de conserver la trace des changements, on parle en général de dimension à variation lente (Slow changing dimension).&lt;/li&gt;
+&lt;li&gt;Pour certaines tables de faits, comme les stocks, on souhaite conserver des photos à un instant T des données afin de les assembler en un film de données permettant de suivre l&amp;rsquo;évolution des changements dans le temps.&lt;/li&gt;
+&lt;li&gt;Réaliser des transformations des données sources comme par exemple passées de données cumulées (non agrégable) en données journalière (agrégable).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Cette liste n&amp;rsquo;est pas exhaustive des services attendus par les datatrucs.&lt;/p&gt;
+&lt;h2 id=&#34;les-datawarehouses&#34;&gt;Les datawarehouses&lt;/h2&gt;
+&lt;p&gt;La solution que l&amp;rsquo;on retrouve le plus fréquemment dans les solutions BI historiques des entreprises est le datawarehouse ou entrepôt de données en bon français.&lt;/p&gt;
+&lt;p&gt;Un datawarehouse est basiquement une base de données dédiée au reporting. Cette base de données est chargée via un ETL (acronyme d&amp;rsquo;Extract Transform Load). Le chargement est en général réalisé par des traitements en mode batch, en opposition à un traitement en temps réel, qui charge les données à une fréquence prédéfinies, classiquement une fois par jour.&lt;/p&gt;
+&lt;p&gt;Les données subissent des transformations lors du chargement afin que les tables résultantes soient optimisées pour le reporting, on passe en général d&amp;rsquo;une modélisation OLTP (celle de l&amp;rsquo;application) à une modélisation en étoile.&lt;/p&gt;
+&lt;p&gt;Les datawarehouses sont des projets techniques en général réalisés par l&amp;rsquo;IT de l&amp;rsquo;entreprise.&lt;/p&gt;
+&lt;p&gt;Si l’on faisait une analogie avec la cuisine, nous avons affaire à un plat fait maison, mais l&amp;rsquo;œuf utilisé pour la tarte ne peut plus servir à faire des crêpes.&lt;/p&gt;
+&lt;p&gt;On peut donc représenter cette solution avec le schéma ci-dessous avec des applications en silo qui sont chargées dans une base intermédiaire dédié au reporting, le datawarehouse.&lt;br&gt;
+Le reporting peut être réalisé par un outil unique  ou pas en fonction des besoins des utilisateurs.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/reporting-datawarehouse-datalakehouse/img/002-datawarehouse.png&#34;
+	width=&#34;578&#34;
+	height=&#34;675&#34;
+	srcset=&#34;https://blog.ddata.fr/p/reporting-datawarehouse-datalakehouse/img/002-datawarehouse_hu65ec1f30ab54919c049d7a2243557acb_25785_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/reporting-datawarehouse-datalakehouse/img/002-datawarehouse_hu65ec1f30ab54919c049d7a2243557acb_25785_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Le reporting avec un datawarehouse&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;85&#34;
+		data-flex-basis=&#34;205px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;les-datalakehouses&#34;&gt;Les datalakehouses&lt;/h2&gt;
+&lt;p&gt;Les datawarehouses ont certains inconvénients et ne sont pas optimisés pour répondre à certains besoins modernes :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Les données étant stockées dans une base de données, ils supportent très mal les données non structurées et les changements de structure des données dans le temps.&lt;/li&gt;
+&lt;li&gt;Les données de type streaming (données en temps réel comme un capteur ou flux de données twitter) sont difficiles à intégrer dans un datawarehouse.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Pour répondre à ces besoins modernes tout en gardant les services fournis par les datawarehouses, la BI moderne propose comme réponse les datalakehouses.&lt;/p&gt;
+&lt;p&gt;Un datalakehouse est la fusion des datalakes et des datawarehouses. J&amp;rsquo;ai expliqué ce qu&amp;rsquo;est un datawarehouse ci-dessus, je vais donc expliqué le concept de datalake.&lt;/p&gt;
+&lt;p&gt;Les datalakes sont la réponse au stockage de données répondant aux critères suivants :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Il accepte les formats multiples
+&lt;ul&gt;
+&lt;li&gt;Données structurées en provenance des bases de données&lt;/li&gt;
+&lt;li&gt;Données semis structuré comme des fichiers Excel, JSON, CSV&lt;/li&gt;
+&lt;li&gt;Données non structurées comme des images ou vidéos, qui pourront subir des traitements de type IA pour en extraire de l&amp;rsquo;information exploitable.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Il supporte des fréquences de chargement variables allant du mode batch de datawarehouse au temps réel.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Ce stockage permettant tous ces cas d&amp;rsquo;usages n&amp;rsquo;est ni plus ni moins qu&amp;rsquo;un stockage avec les mêmes services qu&amp;rsquo;un disque dur, mais disponible en général dans le cloud.&lt;/p&gt;
+&lt;p&gt;Le plus important avec un datalake est la rigueur avec laquelle on range ces données afin de ne pas finir avec un dataswamp ou marais de données.&lt;/p&gt;
+&lt;p&gt;Un datalakehouse est donc une architecture de raffinage de données composé d&amp;rsquo;un datalake et de divers outils permettant le raffinage des données. Différents outils peuvent être utilisés aux différentes phases de raffinage en fonction des besoins.&lt;/p&gt;
+&lt;p&gt;Les principales étapes de raffinage des données sont :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;L&amp;rsquo;alimentation du datalake avec les données brutes, sans transformation, dans une zone que l&amp;rsquo;on nomme couramment &lt;em&gt;Bronze&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Le raffinage des données brut à l&amp;rsquo;aide de divers traitements en fonction des besoins, on stocke le résultat dans une zone que l&amp;rsquo;on nomme couramment &lt;em&gt;Silver&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;La mise à disposition des données de reporting dans une zone que l&amp;rsquo;on nomme couramment &lt;em&gt;Gold&lt;/em&gt;. Les données peuvent par exemple être préaggrégées pour améliorer le reporting.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;On conserve les données de chaque étape ainsi on peut, si besoin, ajouter de nouveaux traitements sur d&amp;rsquo;anciennes données.&lt;br&gt;
+Les données du datalake du dalakehouse seront donc disponibles pour d&amp;rsquo;autres usages tels que :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Du machine learning.&lt;/li&gt;
+&lt;li&gt;Un référentiel d&amp;rsquo;entreprise mis à disposition d&amp;rsquo;autres applications.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Si l’on faisait une analogie avec la cuisine, nous avons affaire à un garde-manger où on en prend les éléments que l&amp;rsquo;on souhaite cuisiner en fonction des besoins.&lt;/p&gt;
+&lt;p&gt;On peut donc représenter cette solution avec le schéma ci-dessous avec des applications en silo qui sont chargées dans un stockage intermédiaire sans usage spécifique puis préparé en fonction des besoins, notamment le reporting.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/reporting-datawarehouse-datalakehouse/img/003-datalakehouse.png&#34;
+	width=&#34;589&#34;
+	height=&#34;754&#34;
+	srcset=&#34;https://blog.ddata.fr/p/reporting-datawarehouse-datalakehouse/img/003-datalakehouse_hu24dae463978d3b0f2f8d47f596271f5e_31506_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/reporting-datawarehouse-datalakehouse/img/003-datalakehouse_hu24dae463978d3b0f2f8d47f596271f5e_31506_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Le reporting avec un datalakehouse&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;78&#34;
+		data-flex-basis=&#34;187px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;J&amp;rsquo;espère que maintenant vous comprenez mieux l&amp;rsquo;utilisation de ces différents datatrucs.&lt;/p&gt;
+&lt;p&gt;Merci de votre attention.&lt;/p&gt;</description>
+        </item>
+        <item>
         <title>pbi-tools : diviser pour mieux régner</title>
         <link>https://blog.ddata.fr/p/pbitools/</link>
         <pubDate>Sun, 29 Jan 2023 00:00:00 +0000</pubDate>
         
         <guid>https://blog.ddata.fr/p/pbitools/</guid>
         <description>&lt;img src="https://blog.ddata.fr/p/pbitools/amy-shamblen-eT8vx7LLorY-unsplash.jpg" alt="Featured image of post pbi-tools : diviser pour mieux régner" /&gt;&lt;p&gt;Dans cet article je vous présente pbi-tools, l&amp;rsquo;outil qui vous permet de faire du suivi de version sur vos projets Power BI et bien plus.&lt;/p&gt;
-&lt;h2 id=&#34;context&#34;&gt;Context&lt;/h2&gt;
+&lt;h2 id=&#34;contexte&#34;&gt;Contexte&lt;/h2&gt;
 &lt;p&gt;Dans tout projet informatique, on est confronté aux problèmes de suivi des changements dans le code source. Un projet Power BI n&amp;rsquo;échappe pas à ce problème et à l&amp;rsquo;heure actuelle Microsoft ne propose pas de solution &lt;em&gt;In the box&lt;/em&gt; pour répondre à ce problème.&lt;/p&gt;
 &lt;p&gt;L&amp;rsquo;outil Power BI tools va vous permettre de diviser un fichier Power BI en une multitude de fichiers et vous pourrez ensuite utiliser un outil de gestion de configuration tel que Git pour suivre les changements dans votre projet Power BI.&lt;/p&gt;
 &lt;p&gt;Le but du présent article n&amp;rsquo;est pas de vous expliquez le fonctionnement des outils de gestion de configuration tels que Git, vous trouverez beaucoup de ressources d&amp;rsquo;apprentissage sur Git comme par exemple celle de &lt;a class=&#34;link&#34; href=&#34;https://korben.info/les-bases-a-savoir-pour-debuter-avec-git.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -59,7 +187,7 @@ Ce genre de scénario avancé demande de procéder avec la plus grande précauti
         
         <guid>https://blog.ddata.fr/p/almtoolkit/</guid>
         <description>&lt;img src="https://blog.ddata.fr/p/almtoolkit/laura-ockel-UQ2Fw_9oApU-unsplash.jpg" alt="Featured image of post ALM Toolkit" /&gt;&lt;p&gt;Dans cet article je vous présente ALM Toolkit, l&amp;rsquo;outil qui vous permet de comparer 2 jeux de données Power BI.&lt;/p&gt;
-&lt;h2 id=&#34;context&#34;&gt;Context&lt;/h2&gt;
+&lt;h2 id=&#34;contexte&#34;&gt;Contexte&lt;/h2&gt;
 &lt;p&gt;Parmi les outils externes de Power BI, &lt;a class=&#34;link&#34; href=&#34;http://alm-toolkit.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;ALM Toolkit&lt;/a&gt; fait partie des outils à connaitre. Cet outil va vous permettre de comparer la structure de deux jeux de données Power Bi, qu&amp;rsquo;ils soient locaux dans votre Power BI Desktop ou publiés dans le service.&lt;/p&gt;
 &lt;h2 id=&#34;installation&#34;&gt;Installation&lt;/h2&gt;
@@ -136,7 +264,7 @@ Ce genre de scénario avancé demande de procéder avec la plus grande précauti
         
         <guid>https://blog.ddata.fr/p/measurekiller/</guid>
         <description>&lt;img src="https://blog.ddata.fr/p/measurekiller/jeshoots-com-__ZMnefoI3k-unsplash.jpg" alt="Featured image of post Measure Killer" /&gt;&lt;p&gt;Dans cet article je vous présente Measure Killer, l&amp;rsquo;outil qui vous permet de nettoyer votre jeu de données Power BI.&lt;/p&gt;
-&lt;h2 id=&#34;context&#34;&gt;Context&lt;/h2&gt;
+&lt;h2 id=&#34;contexte&#34;&gt;Contexte&lt;/h2&gt;
 &lt;p&gt;Votre projet Power BI à bien grandit et vous vous demandez comment faire le tri entre les éléments de votre modèle que vous utilisez et les éléments inutiles. Measure Killer va vous aider à faire le tri.&lt;/p&gt;
 &lt;h2 id=&#34;installation&#34;&gt;Installation&lt;/h2&gt;
 &lt;p&gt;Il existe une version gratuite et 2 versions payantes de cet outil.&lt;br&gt;
@@ -340,7 +468,7 @@ Vous devez donc être agile, quand vous réalisez une tâche pensez à celui qui
         
         <guid>https://blog.ddata.fr/p/powerbimodeldocumenter/</guid>
         <description>&lt;img src="https://blog.ddata.fr/p/powerbimodeldocumenter/bernd-klutsch-nE2HV5AUXFo-unsplash.jpg" alt="Featured image of post Power BI Model Documenter" /&gt;&lt;p&gt;Dans cet article je vous présente Power BI Model Documenter, l&amp;rsquo;outil qui extrait automatiquement des informations de vos fichiers Power BI pour créer une documentation technique.&lt;/p&gt;
-&lt;h2 id=&#34;context&#34;&gt;Context&lt;/h2&gt;
+&lt;h2 id=&#34;contexte&#34;&gt;Contexte&lt;/h2&gt;
 &lt;p&gt;La documentation est une tâche fastidieuse sur vos créations et encore plus compliquée à faire sur des fichiers Power BI que vous n&amp;rsquo;avez pas créés. Power BI Model Documenter est là pour vous aider à réaliser cette étape de vos projets BI.&lt;/p&gt;
 &lt;h2 id=&#34;installation&#34;&gt;Installation&lt;/h2&gt;
 &lt;p&gt;Pour installer Power BI Model Documenter, cliquez sur le lien &lt;a class=&#34;link&#34; href=&#34;https://data-marc.com/model-documenter/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -384,7 +512,7 @@ Dans cette documentation vous trouverez :&lt;/p&gt;
         
         <guid>https://blog.ddata.fr/p/pbigwtmonitor/</guid>
         <description>&lt;img src="https://blog.ddata.fr/p/pbigwtmonitor/matt-artz-4KaY-etsnKc-unsplash.jpg" alt="Featured image of post Power BI Gateway Monitor" /&gt;&lt;p&gt;Dans cet article je vous présente Power BI Gateway Monitor, l&amp;rsquo;outil qui vous permet de centraliser les logs de vos différentes passerelles Power BI et de les analyser.&lt;/p&gt;
-&lt;h2 id=&#34;context&#34;&gt;Context&lt;/h2&gt;
+&lt;h2 id=&#34;contexte&#34;&gt;Contexte&lt;/h2&gt;
 &lt;p&gt;Si vous utilisez des sources de données, on premise, vous utilisez une passerelle Power BI. Rapidement dans le cadre d&amp;rsquo;une bonne gouvernance de votre Power BI vous allez devoir mettre en œuvre des outils pour suivre l&amp;rsquo;activité des différents composants de Power BI.&lt;/p&gt;
 &lt;p&gt;Power BI Gateway Monitor, un outil gratuit, va vous permettre de centraliser les logs de vos passerelles, soit sur un stockage Azure, soit sur un partage réseau on premise, et vous pourrez ainsi avoir un suivi centralisé de vos passerelles.&lt;/p&gt;
 &lt;h2 id=&#34;installation&#34;&gt;Installation&lt;/h2&gt;
@@ -406,7 +534,7 @@ Utilisez le template Power BI associé à votre choix de stockage pour avoir une
         
         <guid>https://blog.ddata.fr/p/pbimonitor/</guid>
         <description>&lt;img src="https://blog.ddata.fr/p/pbimonitor/tamanna-rumee-FtJEat_S7Q4-unsplash.jpg" alt="Featured image of post Power BI Monitor" /&gt;&lt;p&gt;Dans cet article je vous présente Power BI Monitor, l&amp;rsquo;outil indispensable dans le cadre d&amp;rsquo;une bonne gouvernance de Power BI.&lt;/p&gt;
-&lt;h2 id=&#34;context&#34;&gt;Context&lt;/h2&gt;
+&lt;h2 id=&#34;contexte&#34;&gt;Contexte&lt;/h2&gt;
 &lt;p&gt;Dès que vous utilisez le service Power BI régulièrement dans le cadre d&amp;rsquo;une self-service BI d&amp;rsquo;entreprise, vous allez avoir besoin de pouvoir monitorer en détail ce qu&amp;rsquo;il se passe dans votre service Power BI, cela fait partie de la gouvernance Power BI.&lt;br&gt;
 Microsoft vous met à disposition un grand nombre d&amp;rsquo;informations, tel que les logs d&amp;rsquo;activité Power BI, mais pas d&amp;rsquo;outils pour les exploiter facilement. C&amp;rsquo;est ici qu&amp;rsquo;intervient Power BI Monitor. Cet outil gratuit va vous permettre d&amp;rsquo;avoir une vision globale de votre service Power BI en exploitant diverses informations déjà disponibles.&lt;/p&gt;
 &lt;h2 id=&#34;installation&#34;&gt;Installation&lt;/h2&gt;
@@ -452,7 +580,7 @@ Les 4 scripts appelés ont chacun une fonction différente :&lt;/p&gt;
         
         <guid>https://blog.ddata.fr/p/tabulareditor/</guid>
         <description>&lt;img src="https://blog.ddata.fr/p/tabulareditor/dan-cristian-padure-noOXRT9gfQ8-unsplash.jpg" alt="Featured image of post Tabular Editor - Allez plus loin avec Power BI" /&gt;&lt;p&gt;Dans cet article je vous présente Tabular Editor, l&amp;rsquo;outil qui vous permet d&amp;rsquo;allez plus loin avec vos modèles de données Power BI.&lt;/p&gt;
-&lt;h2 id=&#34;context&#34;&gt;Context&lt;/h2&gt;
+&lt;h2 id=&#34;contexte&#34;&gt;Contexte&lt;/h2&gt;
 &lt;p&gt;Dans la galaxie des outils externe de Power BI, &lt;a class=&#34;link&#34; href=&#34;https://tabulareditor.github.io/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Tabular Editor&lt;/a&gt; est sans conteste sur le podium. Cet outil va vous permettre d&amp;rsquo;entrer dans les entrailles de vos modèles Power BI et d&amp;rsquo;étendre vos possibilités.&lt;br&gt;
 Autre point important, si vous passez la certification DP-500, vous aurez des questions sur l&amp;rsquo;utilisation de cet outil.&lt;/p&gt;
@@ -1083,7 +1211,7 @@ En utilisant la vue de traçabilité, vous voyez qu&amp;rsquo;il est connecté a
         
         <guid>https://blog.ddata.fr/p/quiterss/</guid>
         <description>&lt;img src="https://blog.ddata.fr/p/quiterss/sai-abhinivesh-burla-WEv76KgEysk-unsplash.jpg" alt="Featured image of post QuiteRSS : suivez l&#39;actualité de vos blogs préférés." /&gt;&lt;p&gt;Dans cet article je vous présente QuiteRSS, l&amp;rsquo;outil qui me permet de suivre l&amp;rsquo;actualité de la Power Platform.&lt;/p&gt;
-&lt;h2 id=&#34;context&#34;&gt;Context&lt;/h2&gt;
+&lt;h2 id=&#34;contexte&#34;&gt;Contexte&lt;/h2&gt;
 &lt;p&gt;Rester informer sur les sujets techniques est une tâche chronophage et répétitive. Les sources d&amp;rsquo;informations sont multiples et mises à jour de manière irrégulière.&lt;/p&gt;
 &lt;p&gt;Beaucoup de mes sources d&amp;rsquo;informations préférer sont des blogs ou des chaines Youtube.&lt;/p&gt;
 &lt;p&gt;Afin de rester informer des sorties sur ces différentes sources, j&amp;rsquo;utilise QuiteRSS, un outil gratuit, permettant d&amp;rsquo;agréger les différents flux RSS en un seul point.&lt;/p&gt;

@@ -13,7 +13,7 @@
         
         <guid>https://blog.ddata.fr/p/pbitools/</guid>
         <description>&lt;img src="https://blog.ddata.fr/p/pbitools/amy-shamblen-eT8vx7LLorY-unsplash.jpg" alt="Featured image of post pbi-tools : diviser pour mieux régner" /&gt;&lt;p&gt;Dans cet article je vous présente pbi-tools, l&amp;rsquo;outil qui vous permet de faire du suivi de version sur vos projets Power BI et bien plus.&lt;/p&gt;
-&lt;h2 id=&#34;context&#34;&gt;Context&lt;/h2&gt;
+&lt;h2 id=&#34;contexte&#34;&gt;Contexte&lt;/h2&gt;
 &lt;p&gt;Dans tout projet informatique, on est confronté aux problèmes de suivi des changements dans le code source. Un projet Power BI n&amp;rsquo;échappe pas à ce problème et à l&amp;rsquo;heure actuelle Microsoft ne propose pas de solution &lt;em&gt;In the box&lt;/em&gt; pour répondre à ce problème.&lt;/p&gt;
 &lt;p&gt;L&amp;rsquo;outil Power BI tools va vous permettre de diviser un fichier Power BI en une multitude de fichiers et vous pourrez ensuite utiliser un outil de gestion de configuration tel que Git pour suivre les changements dans votre projet Power BI.&lt;/p&gt;
 &lt;p&gt;Le but du présent article n&amp;rsquo;est pas de vous expliquez le fonctionnement des outils de gestion de configuration tels que Git, vous trouverez beaucoup de ressources d&amp;rsquo;apprentissage sur Git comme par exemple celle de &lt;a class=&#34;link&#34; href=&#34;https://korben.info/les-bases-a-savoir-pour-debuter-avec-git.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -59,7 +59,7 @@ Ce genre de scénario avancé demande de procéder avec la plus grande précauti
         
         <guid>https://blog.ddata.fr/p/almtoolkit/</guid>
         <description>&lt;img src="https://blog.ddata.fr/p/almtoolkit/laura-ockel-UQ2Fw_9oApU-unsplash.jpg" alt="Featured image of post ALM Toolkit" /&gt;&lt;p&gt;Dans cet article je vous présente ALM Toolkit, l&amp;rsquo;outil qui vous permet de comparer 2 jeux de données Power BI.&lt;/p&gt;
-&lt;h2 id=&#34;context&#34;&gt;Context&lt;/h2&gt;
+&lt;h2 id=&#34;contexte&#34;&gt;Contexte&lt;/h2&gt;
 &lt;p&gt;Parmi les outils externes de Power BI, &lt;a class=&#34;link&#34; href=&#34;http://alm-toolkit.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;ALM Toolkit&lt;/a&gt; fait partie des outils à connaitre. Cet outil va vous permettre de comparer la structure de deux jeux de données Power Bi, qu&amp;rsquo;ils soient locaux dans votre Power BI Desktop ou publiés dans le service.&lt;/p&gt;
 &lt;h2 id=&#34;installation&#34;&gt;Installation&lt;/h2&gt;
@@ -136,7 +136,7 @@ Ce genre de scénario avancé demande de procéder avec la plus grande précauti
         
         <guid>https://blog.ddata.fr/p/measurekiller/</guid>
         <description>&lt;img src="https://blog.ddata.fr/p/measurekiller/jeshoots-com-__ZMnefoI3k-unsplash.jpg" alt="Featured image of post Measure Killer" /&gt;&lt;p&gt;Dans cet article je vous présente Measure Killer, l&amp;rsquo;outil qui vous permet de nettoyer votre jeu de données Power BI.&lt;/p&gt;
-&lt;h2 id=&#34;context&#34;&gt;Context&lt;/h2&gt;
+&lt;h2 id=&#34;contexte&#34;&gt;Contexte&lt;/h2&gt;
 &lt;p&gt;Votre projet Power BI à bien grandit et vous vous demandez comment faire le tri entre les éléments de votre modèle que vous utilisez et les éléments inutiles. Measure Killer va vous aider à faire le tri.&lt;/p&gt;
 &lt;h2 id=&#34;installation&#34;&gt;Installation&lt;/h2&gt;
 &lt;p&gt;Il existe une version gratuite et 2 versions payantes de cet outil.&lt;br&gt;
@@ -241,7 +241,7 @@ Dans le menu &lt;em&gt;Outils externes&lt;/em&gt; de Power BI, sélectionnez &lt
         
         <guid>https://blog.ddata.fr/p/powerbimodeldocumenter/</guid>
         <description>&lt;img src="https://blog.ddata.fr/p/powerbimodeldocumenter/bernd-klutsch-nE2HV5AUXFo-unsplash.jpg" alt="Featured image of post Power BI Model Documenter" /&gt;&lt;p&gt;Dans cet article je vous présente Power BI Model Documenter, l&amp;rsquo;outil qui extrait automatiquement des informations de vos fichiers Power BI pour créer une documentation technique.&lt;/p&gt;
-&lt;h2 id=&#34;context&#34;&gt;Context&lt;/h2&gt;
+&lt;h2 id=&#34;contexte&#34;&gt;Contexte&lt;/h2&gt;
 &lt;p&gt;La documentation est une tâche fastidieuse sur vos créations et encore plus compliquée à faire sur des fichiers Power BI que vous n&amp;rsquo;avez pas créés. Power BI Model Documenter est là pour vous aider à réaliser cette étape de vos projets BI.&lt;/p&gt;
 &lt;h2 id=&#34;installation&#34;&gt;Installation&lt;/h2&gt;
 &lt;p&gt;Pour installer Power BI Model Documenter, cliquez sur le lien &lt;a class=&#34;link&#34; href=&#34;https://data-marc.com/model-documenter/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -285,7 +285,7 @@ Dans cette documentation vous trouverez :&lt;/p&gt;
         
         <guid>https://blog.ddata.fr/p/pbigwtmonitor/</guid>
         <description>&lt;img src="https://blog.ddata.fr/p/pbigwtmonitor/matt-artz-4KaY-etsnKc-unsplash.jpg" alt="Featured image of post Power BI Gateway Monitor" /&gt;&lt;p&gt;Dans cet article je vous présente Power BI Gateway Monitor, l&amp;rsquo;outil qui vous permet de centraliser les logs de vos différentes passerelles Power BI et de les analyser.&lt;/p&gt;
-&lt;h2 id=&#34;context&#34;&gt;Context&lt;/h2&gt;
+&lt;h2 id=&#34;contexte&#34;&gt;Contexte&lt;/h2&gt;
 &lt;p&gt;Si vous utilisez des sources de données, on premise, vous utilisez une passerelle Power BI. Rapidement dans le cadre d&amp;rsquo;une bonne gouvernance de votre Power BI vous allez devoir mettre en œuvre des outils pour suivre l&amp;rsquo;activité des différents composants de Power BI.&lt;/p&gt;
 &lt;p&gt;Power BI Gateway Monitor, un outil gratuit, va vous permettre de centraliser les logs de vos passerelles, soit sur un stockage Azure, soit sur un partage réseau on premise, et vous pourrez ainsi avoir un suivi centralisé de vos passerelles.&lt;/p&gt;
 &lt;h2 id=&#34;installation&#34;&gt;Installation&lt;/h2&gt;
@@ -307,7 +307,7 @@ Utilisez le template Power BI associé à votre choix de stockage pour avoir une
         
         <guid>https://blog.ddata.fr/p/pbimonitor/</guid>
         <description>&lt;img src="https://blog.ddata.fr/p/pbimonitor/tamanna-rumee-FtJEat_S7Q4-unsplash.jpg" alt="Featured image of post Power BI Monitor" /&gt;&lt;p&gt;Dans cet article je vous présente Power BI Monitor, l&amp;rsquo;outil indispensable dans le cadre d&amp;rsquo;une bonne gouvernance de Power BI.&lt;/p&gt;
-&lt;h2 id=&#34;context&#34;&gt;Context&lt;/h2&gt;
+&lt;h2 id=&#34;contexte&#34;&gt;Contexte&lt;/h2&gt;
 &lt;p&gt;Dès que vous utilisez le service Power BI régulièrement dans le cadre d&amp;rsquo;une self-service BI d&amp;rsquo;entreprise, vous allez avoir besoin de pouvoir monitorer en détail ce qu&amp;rsquo;il se passe dans votre service Power BI, cela fait partie de la gouvernance Power BI.&lt;br&gt;
 Microsoft vous met à disposition un grand nombre d&amp;rsquo;informations, tel que les logs d&amp;rsquo;activité Power BI, mais pas d&amp;rsquo;outils pour les exploiter facilement. C&amp;rsquo;est ici qu&amp;rsquo;intervient Power BI Monitor. Cet outil gratuit va vous permettre d&amp;rsquo;avoir une vision globale de votre service Power BI en exploitant diverses informations déjà disponibles.&lt;/p&gt;
 &lt;h2 id=&#34;installation&#34;&gt;Installation&lt;/h2&gt;
@@ -353,7 +353,7 @@ Les 4 scripts appelés ont chacun une fonction différente :&lt;/p&gt;
         
         <guid>https://blog.ddata.fr/p/tabulareditor/</guid>
         <description>&lt;img src="https://blog.ddata.fr/p/tabulareditor/dan-cristian-padure-noOXRT9gfQ8-unsplash.jpg" alt="Featured image of post Tabular Editor - Allez plus loin avec Power BI" /&gt;&lt;p&gt;Dans cet article je vous présente Tabular Editor, l&amp;rsquo;outil qui vous permet d&amp;rsquo;allez plus loin avec vos modèles de données Power BI.&lt;/p&gt;
-&lt;h2 id=&#34;context&#34;&gt;Context&lt;/h2&gt;
+&lt;h2 id=&#34;contexte&#34;&gt;Contexte&lt;/h2&gt;
 &lt;p&gt;Dans la galaxie des outils externe de Power BI, &lt;a class=&#34;link&#34; href=&#34;https://tabulareditor.github.io/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Tabular Editor&lt;/a&gt; est sans conteste sur le podium. Cet outil va vous permettre d&amp;rsquo;entrer dans les entrailles de vos modèles Power BI et d&amp;rsquo;étendre vos possibilités.&lt;br&gt;
 Autre point important, si vous passez la certification DP-500, vous aurez des questions sur l&amp;rsquo;utilisation de cet outil.&lt;/p&gt;
@@ -536,7 +536,7 @@ Bien entendu cela ne fonctionne pas seulement avec Teams.&lt;/p&gt;
         
         <guid>https://blog.ddata.fr/p/quiterss/</guid>
         <description>&lt;img src="https://blog.ddata.fr/p/quiterss/sai-abhinivesh-burla-WEv76KgEysk-unsplash.jpg" alt="Featured image of post QuiteRSS : suivez l&#39;actualité de vos blogs préférés." /&gt;&lt;p&gt;Dans cet article je vous présente QuiteRSS, l&amp;rsquo;outil qui me permet de suivre l&amp;rsquo;actualité de la Power Platform.&lt;/p&gt;
-&lt;h2 id=&#34;context&#34;&gt;Context&lt;/h2&gt;
+&lt;h2 id=&#34;contexte&#34;&gt;Contexte&lt;/h2&gt;
 &lt;p&gt;Rester informer sur les sujets techniques est une tâche chronophage et répétitive. Les sources d&amp;rsquo;informations sont multiples et mises à jour de manière irrégulière.&lt;/p&gt;
 &lt;p&gt;Beaucoup de mes sources d&amp;rsquo;informations préférer sont des blogs ou des chaines Youtube.&lt;/p&gt;
 &lt;p&gt;Afin de rester informer des sorties sur ces différentes sources, j&amp;rsquo;utilise QuiteRSS, un outil gratuit, permettant d&amp;rsquo;agréger les différents flux RSS en un seul point.&lt;/p&gt;
