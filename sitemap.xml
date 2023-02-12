@@ -3,24 +3,33 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://blog.ddata.fr/</loc>
-    <lastmod>2023-02-05T00:00:00+00:00</lastmod>
+    <lastmod>2023-02-12T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://blog.ddata.fr/tags/auto-formation/</loc>
-    <lastmod>2023-02-05T00:00:00+00:00</lastmod>
+    <lastmod>2023-02-12T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://blog.ddata.fr/categories/</loc>
-    <lastmod>2023-02-05T00:00:00+00:00</lastmod>
+    <lastmod>2023-02-12T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.ddata.fr/tags/d%C3%A9butant/</loc>
+    <lastmod>2023-02-12T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.ddata.fr/p/parametres-power-qwery/</loc>
+    <lastmod>2023-02-12T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.ddata.fr/post/</loc>
+    <lastmod>2023-02-12T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.ddata.fr/categories/powerbi/</loc>
+    <lastmod>2023-02-12T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.ddata.fr/tags/</loc>
+    <lastmod>2023-02-12T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://blog.ddata.fr/categories/data/</loc>
     <lastmod>2023-02-05T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://blog.ddata.fr/p/reporting-datawarehouse-datalakehouse/</loc>
-    <lastmod>2023-02-05T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://blog.ddata.fr/post/</loc>
-    <lastmod>2023-02-05T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://blog.ddata.fr/tags/</loc>
     <lastmod>2023-02-05T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://blog.ddata.fr/tags/gratuit/</loc>
@@ -33,9 +42,6 @@
     <lastmod>2023-01-29T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://blog.ddata.fr/p/pbitools/</loc>
-    <lastmod>2023-01-29T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://blog.ddata.fr/categories/powerbi/</loc>
     <lastmod>2023-01-29T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://blog.ddata.fr/series/</loc>
@@ -66,9 +72,6 @@
     <lastmod>2022-12-04T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://blog.ddata.fr/p/modelisation-de-donnees-les-bases/</loc>
-    <lastmod>2022-11-27T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://blog.ddata.fr/tags/d%C3%A9butant/</loc>
     <lastmod>2022-11-27T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://blog.ddata.fr/tags/mod%C3%A8le-de-donn%C3%A9es/</loc>
@@ -190,6 +193,8 @@
   </url><url>
     <loc>https://blog.ddata.fr/series/</loc>
     <lastmod>2022-08-11T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.ddata.fr/categories/excel/</loc>
   </url><url>
     <loc>https://blog.ddata.fr/search/</loc>
   </url>

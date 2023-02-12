@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="fr-fr" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Méconnu des débutants, ils permettent de modifier la configuration d&amp;rsquo;un jeu de données après sa publication dans Power BI Service. Ce sont les paramètres Power Query.
+'>
+<title>Les paramètres Power Query</title>
+
+<link rel='canonical' href='https://blog.ddata.fr/p/parametres-power-qwery/'>
+
+<link rel="stylesheet" href="/scss/style.min.5be32ca3f6e1a997c75795c4359147cc6d4fbd34948c0acd51e31d237033978a.css"><meta property='og:title' content='Les paramètres Power Query'>
+<meta property='og:description' content='Méconnu des débutants, ils permettent de modifier la configuration d&amp;rsquo;un jeu de données après sa publication dans Power BI Service. Ce sont les paramètres Power Query.
+'>
+<meta property='og:url' content='https://blog.ddata.fr/p/parametres-power-qwery/'>
+<meta property='og:site_name' content='Le D de Data'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Débutant' /><meta property='article:tag' content='Auto formation' /><meta property='article:published_time' content='2023-02-12T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2023-02-12T00:00:00&#43;00:00'/><meta property='og:image' content='https://blog.ddata.fr/p/parametres-power-qwery/moises-de-paula-HPZZHJ-LuDI-unsplash.jpg' />
+<meta name="twitter:title" content="Les paramètres Power Query">
+<meta name="twitter:description" content="Méconnu des débutants, ils permettent de modifier la configuration d&amp;rsquo;un jeu de données après sa publication dans Power BI Service. Ce sont les paramètres Power Query.
+"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://blog.ddata.fr/p/parametres-power-qwery/moises-de-paula-HPZZHJ-LuDI-unsplash.jpg' />
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TY6XFEN6QV"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-TY6XFEN6QV', { 'anonymize_ip': false });
+}
+</script>
+<link rel="alternate"
+      type="application/rss+xml"
+      href="https://blog.ddata.fr/index.xml"
+      title="Le D de Data">
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "dark");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Afficher le menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/pierre_hua6bbc70dde858dd10e363a14d1f7729c_67951_300x0_resize_q75_box.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Le D de Data</a></h1>
+            <h2 class="site-description">Blog francophone autour de la data Microsoft</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/pierreddata'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://www.linkedin.com/in/pierre-dupont-0b532374/'
+                        target="_blank"
+                        title="LinkdIn"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-folders" width="44" height="44" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <rect x="4" y="4" width="16" height="16" rx="2" />
+  <line x1="8" y1="11" x2="8" y2="16" />
+  <line x1="8" y1="8" x2="8" y2="8.01" />
+  <line x1="12" y1="16" x2="12" y2="11" />
+  <path d="M16 16v-3a2 2 0 0 0 -4 0" />
+</svg>
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Accueil</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/a-propos-de-d-de-data/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>A Propos</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/series/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-folders" width="44" height="44" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 4h3l2 2h5a2 2 0 0 1 2 2v7a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-9a2 2 0 0 1 2 -2" />
+  <path d="M17 17v2a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-9a2 2 0 0 1 2 -2h2" />
+</svg>
+
+                
+                <span>Series</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/liens/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Liens</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Rechercher</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Mode sombre</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table des matières</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#contexte">Contexte</a></li>
+    <li><a href="#création-et-utilisation-de-paramètre-dans-power-query">Création et utilisation de paramètre dans Power Query</a>
+      <ol>
+        <li><a href="#création-du-paramètre">Création du paramètre</a></li>
+        <li><a href="#modification-dune-requête-power-query">Modification d&rsquo;une requête Power Query</a></li>
+      </ol>
+    </li>
+    <li><a href="#modification-du-paramètre-dans-le-service">Modification du paramètre dans le service</a></li>
+    <li><a href="#scénarii-dusage-des-paramètres">Scénarii d&rsquo;usage des paramètres</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/parametres-power-qwery/">
+                <img src="/p/parametres-power-qwery/moises-de-paula-HPZZHJ-LuDI-unsplash_hu792653f7b7326a670abe032c0e66ac08_1629682_800x0_resize_q75_box.jpg"
+                        srcset="/p/parametres-power-qwery/moises-de-paula-HPZZHJ-LuDI-unsplash_hu792653f7b7326a670abe032c0e66ac08_1629682_800x0_resize_q75_box.jpg 800w, /p/parametres-power-qwery/moises-de-paula-HPZZHJ-LuDI-unsplash_hu792653f7b7326a670abe032c0e66ac08_1629682_1600x0_resize_q75_box.jpg 1600w"
+                        width="800" 
+                        height="532" 
+                        loading="lazy"
+                        alt="Featured image of post Les paramètres Power Query" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/powerbi/" style="background-color: #f2c811; color: #fff;">
+                Power BI
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/parametres-power-qwery/">Les paramètres Power Query</a>
+        </h2>
+
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published" datetime="2023-02-12T00:00:00Z">
+                    12 février 2023
+                    
+                </time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    4 minutes de lecture
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+    
+    
+</div>
+</header>
+
+    <section class="article-content">
+    
+    
+    <p>Méconnu des débutants, ils permettent de modifier la configuration d&rsquo;un jeu de données après sa publication dans Power BI Service. Ce sont les paramètres Power Query.</p>
+<h2 id="contexte">Contexte</h2>
+<p>Lorsque vous réalisez un projet Power BI, dans la phase d&rsquo;intégration de données, vous allez utiliser Power Query et très certainement utiliser des éléments de configuration que vous répétez dans plusieurs requêtes. Par exemple si vous faites 3 requêtes sur le même  dossier Sharepoint vous aurez 3 fois l&rsquo;adresse de site utilisé dans vos requêtes, idem pour les informations de connexion à une base de données.<br>
+Si vous devez modifier ces informations, cela va rapidement être fastidieux à corriger.</p>
+<p>Les paramètres Power Query sont là pour vous simplifier la vie. Vous allez pouvoir créer autant de paramètres que nécessaire dans Power Query et les utilisez afin de variabiliser vos autres requêtes Power Query.</p>
+<p>En termes de maintenance les paramètres Power Query permettent de simplifier la réutilisation d&rsquo;éléments dans plusieurs requêtes du même projet.</p>
+<p>Vous allez aussi pouvoir variabiliser des informations de connexion aux sources de données et les modifier dans le service Power BI. Dans ce genre de scénarii vous pouvez avoir des sources de données que vous utilisez pour le développement, une fois le jeu de données publié vous modifier le paramètre afin que votre source de données pointe vers une source de production.</p>
+<h2 id="création-et-utilisation-de-paramètre-dans-power-query">Création et utilisation de paramètre dans Power Query</h2>
+<h3 id="création-du-paramètre">Création du paramètre</h3>
+<p>Pour créer un paramètre Power Query, ouvrez votre projet Power BI et rendez-vous dans l&rsquo;éditeur Power Query.</p>
+<p><img src="/p/parametres-power-qwery/img/001-power-bi-open-power-query.png"
+	width="1226"
+	height="126"
+	srcset="/p/parametres-power-qwery/img/001-power-bi-open-power-query_hua18b7033da939e8e6f80b2a1946411ee_25511_480x0_resize_box_3.png 480w, /p/parametres-power-qwery/img/001-power-bi-open-power-query_hua18b7033da939e8e6f80b2a1946411ee_25511_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Accéder à l&rsquo;éditeur Power Query"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="973"
+		data-flex-basis="2335px"
+	
+></p>
+<ol>
+<li>Appuyez ici pour ouvrir l&rsquo;éditeur Power Query.</li>
+</ol>
+<p>Une fois, dans l&rsquo;éditeur Power Query, ouvrez le panneau de gestion des paramètres.</p>
+<p><img src="/p/parametres-power-qwery/img/002-power-query-manage-parameters.png"
+	width="1650"
+	height="121"
+	srcset="/p/parametres-power-qwery/img/002-power-query-manage-parameters_hu91fb276468d8c8e5ae02705c15906f99_25848_480x0_resize_box_3.png 480w, /p/parametres-power-qwery/img/002-power-query-manage-parameters_hu91fb276468d8c8e5ae02705c15906f99_25848_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Accéder au panneau de gestion des paramètres"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="1363"
+		data-flex-basis="3272px"
+	
+></p>
+<ol>
+<li>Appuyez ici pour ouvrir le panneau de gestion des paramètres.</li>
+</ol>
+<p>L&rsquo;écran de gestion des paramètres apparait, vous pouvez maintenant créer un nouveau paramètre :</p>
+<p><img src="/p/parametres-power-qwery/img/003-power-query-create-parameter.png"
+	width="599"
+	height="649"
+	srcset="/p/parametres-power-qwery/img/003-power-query-create-parameter_hucac2c76ede3dbafd0f2a16b199987a09_25149_480x0_resize_box_3.png 480w, /p/parametres-power-qwery/img/003-power-query-create-parameter_hucac2c76ede3dbafd0f2a16b199987a09_25149_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Création d&rsquo;un paramètre"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="92"
+		data-flex-basis="221px"
+	
+></p>
+<ol>
+<li>Appuyez sur <strong>Nouveau</strong> pour ajouter un paramètre.</li>
+<li>Définir un nom et donner une description à votre paramètre.</li>
+<li>Définir si la valeur du paramètre est obligatoire (interdire les valeurs vides).</li>
+<li>Donner un type de donnée au paramètre.</li>
+<li>Donner une valeur au paramètre.</li>
+<li>Appuyez sur <strong>OK</strong> pour enregistrer vos modifications.</li>
+<li>Vous pouvez voir la liste de tous les paramètres ici.</li>
+</ol>
+<p>Vous pouvez créer plusieurs paramètres avant d&rsquo;appuyer sur OK.<br>
+Dans <em>Valeurs suggérées</em> vous pouvez aussi choisir une liste de valeur possible saisie manuellement ou étant le résultat d&rsquo;une requête.</p>
+<p>Une fois votre ou vos paramètres créer vous les retrouver dans le panneau de requête.</p>
+<p><img src="/p/parametres-power-qwery/img/004-power-query-parameter.png"
+	width="563"
+	height="133"
+	srcset="/p/parametres-power-qwery/img/004-power-query-parameter_hu3937603d7bb5ec67d984189996dfb29b_5401_480x0_resize_box_3.png 480w, /p/parametres-power-qwery/img/004-power-query-parameter_hu3937603d7bb5ec67d984189996dfb29b_5401_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Création d&rsquo;un paramètre"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="423"
+		data-flex-basis="1015px"
+	
+></p>
+<h3 id="modification-dune-requête-power-query">Modification d&rsquo;une requête Power Query</h3>
+<p>Une fois votre paramètre créer vous pouvez l&rsquo;utiliser dans vos requêtes Power Query où vous. En fonction de son type, vous pourrez :</p>
+<ul>
+<li>Pour les paramètres texte, les utiliser dans une concaténation ou un filtre.</li>
+<li>Pour des nombres, les utiliser comme multiplicateur ou autres opérations mathématiques.</li>
+<li>Pour les dates, les utiliser pour filtrer vos requêtes.</li>
+</ul>
+<p>Voici comment par exemple remplacer l&rsquo;adresse d&rsquo;un site SharePoint dans une requête par un paramètre.</p>
+<p><img src="/p/parametres-power-qwery/img/005-power-query-edit-query-advanced.png"
+	width="403"
+	height="434"
+	srcset="/p/parametres-power-qwery/img/005-power-query-edit-query-advanced_huf9f3c33ef8e3968cdcb08f359485684c_18779_480x0_resize_box_3.png 480w, /p/parametres-power-qwery/img/005-power-query-edit-query-advanced_huf9f3c33ef8e3968cdcb08f359485684c_18779_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Ouvrir la requête dans l&rsquo;éditeur avancé"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="92"
+		data-flex-basis="222px"
+	
+></p>
+<ol>
+<li>Faite un clic droit sur la requête.</li>
+<li>Sélectionnez <strong>Editeur avancé</strong>.</li>
+</ol>
+<p>Vous pouvez aussi appeler l&rsquo;éditeur avancé depuis le menu <em>Accueil</em>.</p>
+<p>L&rsquo;éditeur de requête avancé s&rsquo;ouvre.</p>
+<p><img src="/p/parametres-power-qwery/img/006-power-query-query-advanced-sample.png"
+	width="1643"
+	height="482"
+	srcset="/p/parametres-power-qwery/img/006-power-query-query-advanced-sample_hud67c4fc2799f5a26483d547f217e498d_33660_480x0_resize_box_3.png 480w, /p/parametres-power-qwery/img/006-power-query-query-advanced-sample_hud67c4fc2799f5a26483d547f217e498d_33660_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Requête originale dans l&rsquo;éditeur avancé"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="340"
+		data-flex-basis="818px"
+	
+></p>
+<p>L&rsquo;adresse du site SharePoint est présente 2 fois dans mon code en dehors du nom des étapes.</p>
+<p>Vous pouvez donc remplacer la valeur textuelle par la valeur de votre paramètre. Pour rappel la concaténation de chaine de caractère se fait à l&rsquo;aide de l&rsquo;opérateur <strong>&amp;</strong> en Power Query.<br>
+Attention n&rsquo;oubliez pas que Power Query est sensible à la casse (distinction minuscule/majuscule) c&rsquo;est une grosse source d&rsquo;erreur quand on édite une requête Power Query.</p>
+<p>Le résultat de l&rsquo;exemple précédent est donc :</p>
+<p><img src="/p/parametres-power-qwery/img/007-power-query-query-advanced-sample-edited.png"
+	width="1555"
+	height="457"
+	srcset="/p/parametres-power-qwery/img/007-power-query-query-advanced-sample-edited_hu7bdea6c5e8a70b16aec3bd8ef91792b7_32920_480x0_resize_box_3.png 480w, /p/parametres-power-qwery/img/007-power-query-query-advanced-sample-edited_hu7bdea6c5e8a70b16aec3bd8ef91792b7_32920_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Requête modifiée dans l&rsquo;éditeur avancé"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="340"
+		data-flex-basis="816px"
+	
+></p>
+<ol>
+<li>Appuyez sur <strong>OK</strong> pour enregistrer vos modifications.</li>
+</ol>
+<h2 id="modification-du-paramètre-dans-le-service">Modification du paramètre dans le service</h2>
+<p>Une fois que votre fichier PBIX sera publié dans le service Power BI vous pourrez accéder aux paramètres est agir sur leur valeur.</p>
+<p>Rendez-vous dans l&rsquo;espace de travail où se trouve le rapport.</p>
+<p><img src="/p/parametres-power-qwery/img/008-power-bi-service-dataset-parameter.png"
+	width="924"
+	height="636"
+	srcset="/p/parametres-power-qwery/img/008-power-bi-service-dataset-parameter_hub3ede7c545443ec7eebea71b0aa22968_53465_480x0_resize_box_3.png 480w, /p/parametres-power-qwery/img/008-power-bi-service-dataset-parameter_hub3ede7c545443ec7eebea71b0aa22968_53465_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Paramètre du jeu de données"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="145"
+		data-flex-basis="348px"
+	
+></p>
+<ol>
+<li>Sur votre jeu de données, sélectionnez les 3 points.</li>
+<li>Cliquez sur <em>Paramètres</em>.</li>
+</ol>
+<p>Il s&rsquo;agit ici des paramètres du jeu de données, ils contiennent les paramètres Power Query mais pas seulement.</p>
+<p><img src="/p/parametres-power-qwery/img/009-power-bi-service-dataset-parameter-power-query.png"
+	width="1072"
+	height="747"
+	srcset="/p/parametres-power-qwery/img/009-power-bi-service-dataset-parameter-power-query_hu94bae31d6d03216675c6907046ac47db_41455_480x0_resize_box_3.png 480w, /p/parametres-power-qwery/img/009-power-bi-service-dataset-parameter-power-query_hu94bae31d6d03216675c6907046ac47db_41455_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Modification des paramètres Power Query du jeu de données"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="143"
+		data-flex-basis="344px"
+	
+></p>
+<ol>
+<li>Ouvrez la section <em>Paramètres</em>.</li>
+<li>Modifiez les valeurs de paramètres si besoin.</li>
+<li>Appuyez sur <em>Appliquer</em> pour enregistrer vos modifications.</li>
+</ol>
+<p>Ça y est vos requêtes Power Query vont se rafraichir avec de nouveaux paramètres au prochain rafraichissement du jeu de données.</p>
+<h2 id="scénarii-dusage-des-paramètres">Scénarii d&rsquo;usage des paramètres</h2>
+<p>Les paramètres répondent à de nombreux scénarii d&rsquo;usage, notamment :</p>
+<ul>
+<li>La modification dans le service des informations de connexion aux sources de données, cela permet d&rsquo;avoir un seul PBIX pour des environnements DEV / UAT / PROD par exemple.</li>
+<li>La centralisation d&rsquo;élément variable dans plusieurs requêtes d&rsquo;un projet.</li>
+<li>La mise en place d&rsquo;un filtre dynamique sur nos données pour par exemple ne prendre qu&rsquo;un sous-ensemble des valeurs de notre base de données en développement, mais pas en production.</li>
+</ul>
+<p>Merci de votre attention.</p>
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/d%C3%A9butant/">Débutant</a>
+        
+            <a href="/tags/auto-formation/">Auto formation</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Contenus liés</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/self-service-bi-sur-jeu-de-donnees-existant/">
+        
+        
+            <div class="article-image">
+                <img src="/p/self-service-bi-sur-jeu-de-donnees-existant/_huc8aff4f4bdb05689828a54a86f8617f1_1552202_5d36e9619bc730ebb8e2c073105e58a2.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post  Voyage au coeur de la BI self-service"
+                        data-key="self-service-bi-sur-jeu-de-donnees-existant" 
+                        data-hash="md5-S6l97x4yJRdZgzQ0Vmj0dQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title"> Voyage au coeur de la BI self-service</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/partager-avec-power-bi/">
+        
+        
+            <div class="article-image">
+                <img src="/p/partager-avec-power-bi/_hu59c2f53d89f061f5e30f7c5261dfb40e_568587_7d3ba1f9ee7d313ebf73cc317fc261f7.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Bien partager votre travail"
+                        data-key="partager-avec-power-bi" 
+                        data-hash="md5-xuweQS6Q/R488nCig4eb/g==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Bien partager votre travail</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/jeu-de-donnees-et-rapport-la-rupture/">
+        
+        
+            <div class="article-image">
+                <img src="/p/jeu-de-donnees-et-rapport-la-rupture/_hu4f849c82d4e14f72bfb032f4fe26f62a_6495568_c0c74b23519d2b31bca3f8d7c87e8405.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Jeu de données et rapport : la rupture !"
+                        data-key="jeu-de-donnees-et-rapport-la-rupture" 
+                        data-hash="md5-uUSTCTw&#43;oM5tgaeFQi3L4w==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Jeu de données et rapport : la rupture !</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/anatomie-de-power-bi/">
+        
+        
+            <div class="article-image">
+                <img src="/p/anatomie-de-power-bi/_hu82c25fa98cd4e9a8103220017be4b8cb_324346_216d117080fab6b616abea9f55172058.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Power BI : leçon d&#39;anatomie"
+                        data-key="anatomie-de-power-bi" 
+                        data-hash="md5-mVERI5eqRDhuKTFhLvA&#43;1Q==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Power BI : leçon d&#39;anatomie</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/les-applications-power-bi/">
+        
+        
+            <div class="article-image">
+                <img src="/p/les-applications-power-bi/_huae08634171f8756a098e3310c58d8541_2234549_413d9c107e49b581ca210358c113e415.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Les applications Power BI ?!?  A quoi ça sert ?"
+                        data-key="les-applications-power-bi" 
+                        data-hash="md5-9dB9TtMvexvR0JpzcUoXnA==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Les applications Power BI ?!?  A quoi ça sert ?</h2>
+        </div>
+    </a>
+</article>
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "ddata" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2022 - 
+        
+        2023 Le D de Data
+    </section>
+    
+    <section class="powerby">
+        Généré avec <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Thème <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.16.0">Stack</a></b> conçu par <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

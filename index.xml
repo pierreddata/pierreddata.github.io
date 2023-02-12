@@ -6,7 +6,213 @@
         <description>Recent content on Le D de Data</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>fr-fr</language>
-        <lastBuildDate>Sun, 05 Feb 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ddata.fr/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sun, 12 Feb 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ddata.fr/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Les paramètres Power Query</title>
+        <link>https://blog.ddata.fr/p/parametres-power-qwery/</link>
+        <pubDate>Sun, 12 Feb 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://blog.ddata.fr/p/parametres-power-qwery/</guid>
+        <description>&lt;img src="https://blog.ddata.fr/p/parametres-power-qwery/moises-de-paula-HPZZHJ-LuDI-unsplash.jpg" alt="Featured image of post Les paramètres Power Query" /&gt;&lt;p&gt;Méconnu des débutants, ils permettent de modifier la configuration d&amp;rsquo;un jeu de données après sa publication dans Power BI Service. Ce sont les paramètres Power Query.&lt;/p&gt;
+&lt;h2 id=&#34;contexte&#34;&gt;Contexte&lt;/h2&gt;
+&lt;p&gt;Lorsque vous réalisez un projet Power BI, dans la phase d&amp;rsquo;intégration de données, vous allez utiliser Power Query et très certainement utiliser des éléments de configuration que vous répétez dans plusieurs requêtes. Par exemple si vous faites 3 requêtes sur le même  dossier Sharepoint vous aurez 3 fois l&amp;rsquo;adresse de site utilisé dans vos requêtes, idem pour les informations de connexion à une base de données.&lt;br&gt;
+Si vous devez modifier ces informations, cela va rapidement être fastidieux à corriger.&lt;/p&gt;
+&lt;p&gt;Les paramètres Power Query sont là pour vous simplifier la vie. Vous allez pouvoir créer autant de paramètres que nécessaire dans Power Query et les utilisez afin de variabiliser vos autres requêtes Power Query.&lt;/p&gt;
+&lt;p&gt;En termes de maintenance les paramètres Power Query permettent de simplifier la réutilisation d&amp;rsquo;éléments dans plusieurs requêtes du même projet.&lt;/p&gt;
+&lt;p&gt;Vous allez aussi pouvoir variabiliser des informations de connexion aux sources de données et les modifier dans le service Power BI. Dans ce genre de scénarii vous pouvez avoir des sources de données que vous utilisez pour le développement, une fois le jeu de données publié vous modifier le paramètre afin que votre source de données pointe vers une source de production.&lt;/p&gt;
+&lt;h2 id=&#34;création-et-utilisation-de-paramètre-dans-power-query&#34;&gt;Création et utilisation de paramètre dans Power Query&lt;/h2&gt;
+&lt;h3 id=&#34;création-du-paramètre&#34;&gt;Création du paramètre&lt;/h3&gt;
+&lt;p&gt;Pour créer un paramètre Power Query, ouvrez votre projet Power BI et rendez-vous dans l&amp;rsquo;éditeur Power Query.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/parametres-power-qwery/img/001-power-bi-open-power-query.png&#34;
+	width=&#34;1226&#34;
+	height=&#34;126&#34;
+	srcset=&#34;https://blog.ddata.fr/p/parametres-power-qwery/img/001-power-bi-open-power-query_hua18b7033da939e8e6f80b2a1946411ee_25511_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/parametres-power-qwery/img/001-power-bi-open-power-query_hua18b7033da939e8e6f80b2a1946411ee_25511_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Accéder à l&amp;rsquo;éditeur Power Query&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;973&#34;
+		data-flex-basis=&#34;2335px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Appuyez ici pour ouvrir l&amp;rsquo;éditeur Power Query.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Une fois, dans l&amp;rsquo;éditeur Power Query, ouvrez le panneau de gestion des paramètres.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/parametres-power-qwery/img/002-power-query-manage-parameters.png&#34;
+	width=&#34;1650&#34;
+	height=&#34;121&#34;
+	srcset=&#34;https://blog.ddata.fr/p/parametres-power-qwery/img/002-power-query-manage-parameters_hu91fb276468d8c8e5ae02705c15906f99_25848_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/parametres-power-qwery/img/002-power-query-manage-parameters_hu91fb276468d8c8e5ae02705c15906f99_25848_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Accéder au panneau de gestion des paramètres&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;1363&#34;
+		data-flex-basis=&#34;3272px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Appuyez ici pour ouvrir le panneau de gestion des paramètres.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;L&amp;rsquo;écran de gestion des paramètres apparait, vous pouvez maintenant créer un nouveau paramètre :&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/parametres-power-qwery/img/003-power-query-create-parameter.png&#34;
+	width=&#34;599&#34;
+	height=&#34;649&#34;
+	srcset=&#34;https://blog.ddata.fr/p/parametres-power-qwery/img/003-power-query-create-parameter_hucac2c76ede3dbafd0f2a16b199987a09_25149_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/parametres-power-qwery/img/003-power-query-create-parameter_hucac2c76ede3dbafd0f2a16b199987a09_25149_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Création d&amp;rsquo;un paramètre&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;92&#34;
+		data-flex-basis=&#34;221px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Appuyez sur &lt;strong&gt;Nouveau&lt;/strong&gt; pour ajouter un paramètre.&lt;/li&gt;
+&lt;li&gt;Définir un nom et donner une description à votre paramètre.&lt;/li&gt;
+&lt;li&gt;Définir si la valeur du paramètre est obligatoire (interdire les valeurs vides).&lt;/li&gt;
+&lt;li&gt;Donner un type de donnée au paramètre.&lt;/li&gt;
+&lt;li&gt;Donner une valeur au paramètre.&lt;/li&gt;
+&lt;li&gt;Appuyez sur &lt;strong&gt;OK&lt;/strong&gt; pour enregistrer vos modifications.&lt;/li&gt;
+&lt;li&gt;Vous pouvez voir la liste de tous les paramètres ici.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Vous pouvez créer plusieurs paramètres avant d&amp;rsquo;appuyer sur OK.&lt;br&gt;
+Dans &lt;em&gt;Valeurs suggérées&lt;/em&gt; vous pouvez aussi choisir une liste de valeur possible saisie manuellement ou étant le résultat d&amp;rsquo;une requête.&lt;/p&gt;
+&lt;p&gt;Une fois votre ou vos paramètres créer vous les retrouver dans le panneau de requête.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/parametres-power-qwery/img/004-power-query-parameter.png&#34;
+	width=&#34;563&#34;
+	height=&#34;133&#34;
+	srcset=&#34;https://blog.ddata.fr/p/parametres-power-qwery/img/004-power-query-parameter_hu3937603d7bb5ec67d984189996dfb29b_5401_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/parametres-power-qwery/img/004-power-query-parameter_hu3937603d7bb5ec67d984189996dfb29b_5401_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Création d&amp;rsquo;un paramètre&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;423&#34;
+		data-flex-basis=&#34;1015px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;modification-dune-requête-power-query&#34;&gt;Modification d&amp;rsquo;une requête Power Query&lt;/h3&gt;
+&lt;p&gt;Une fois votre paramètre créer vous pouvez l&amp;rsquo;utiliser dans vos requêtes Power Query où vous. En fonction de son type, vous pourrez :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Pour les paramètres texte, les utiliser dans une concaténation ou un filtre.&lt;/li&gt;
+&lt;li&gt;Pour des nombres, les utiliser comme multiplicateur ou autres opérations mathématiques.&lt;/li&gt;
+&lt;li&gt;Pour les dates, les utiliser pour filtrer vos requêtes.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Voici comment par exemple remplacer l&amp;rsquo;adresse d&amp;rsquo;un site SharePoint dans une requête par un paramètre.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/parametres-power-qwery/img/005-power-query-edit-query-advanced.png&#34;
+	width=&#34;403&#34;
+	height=&#34;434&#34;
+	srcset=&#34;https://blog.ddata.fr/p/parametres-power-qwery/img/005-power-query-edit-query-advanced_huf9f3c33ef8e3968cdcb08f359485684c_18779_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/parametres-power-qwery/img/005-power-query-edit-query-advanced_huf9f3c33ef8e3968cdcb08f359485684c_18779_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Ouvrir la requête dans l&amp;rsquo;éditeur avancé&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;92&#34;
+		data-flex-basis=&#34;222px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Faite un clic droit sur la requête.&lt;/li&gt;
+&lt;li&gt;Sélectionnez &lt;strong&gt;Editeur avancé&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Vous pouvez aussi appeler l&amp;rsquo;éditeur avancé depuis le menu &lt;em&gt;Accueil&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;L&amp;rsquo;éditeur de requête avancé s&amp;rsquo;ouvre.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/parametres-power-qwery/img/006-power-query-query-advanced-sample.png&#34;
+	width=&#34;1643&#34;
+	height=&#34;482&#34;
+	srcset=&#34;https://blog.ddata.fr/p/parametres-power-qwery/img/006-power-query-query-advanced-sample_hud67c4fc2799f5a26483d547f217e498d_33660_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/parametres-power-qwery/img/006-power-query-query-advanced-sample_hud67c4fc2799f5a26483d547f217e498d_33660_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Requête originale dans l&amp;rsquo;éditeur avancé&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;340&#34;
+		data-flex-basis=&#34;818px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;L&amp;rsquo;adresse du site SharePoint est présente 2 fois dans mon code en dehors du nom des étapes.&lt;/p&gt;
+&lt;p&gt;Vous pouvez donc remplacer la valeur textuelle par la valeur de votre paramètre. Pour rappel la concaténation de chaine de caractère se fait à l&amp;rsquo;aide de l&amp;rsquo;opérateur &lt;strong&gt;&amp;amp;&lt;/strong&gt; en Power Query.&lt;br&gt;
+Attention n&amp;rsquo;oubliez pas que Power Query est sensible à la casse (distinction minuscule/majuscule) c&amp;rsquo;est une grosse source d&amp;rsquo;erreur quand on édite une requête Power Query.&lt;/p&gt;
+&lt;p&gt;Le résultat de l&amp;rsquo;exemple précédent est donc :&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/parametres-power-qwery/img/007-power-query-query-advanced-sample-edited.png&#34;
+	width=&#34;1555&#34;
+	height=&#34;457&#34;
+	srcset=&#34;https://blog.ddata.fr/p/parametres-power-qwery/img/007-power-query-query-advanced-sample-edited_hu7bdea6c5e8a70b16aec3bd8ef91792b7_32920_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/parametres-power-qwery/img/007-power-query-query-advanced-sample-edited_hu7bdea6c5e8a70b16aec3bd8ef91792b7_32920_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Requête modifiée dans l&amp;rsquo;éditeur avancé&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;340&#34;
+		data-flex-basis=&#34;816px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Appuyez sur &lt;strong&gt;OK&lt;/strong&gt; pour enregistrer vos modifications.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;modification-du-paramètre-dans-le-service&#34;&gt;Modification du paramètre dans le service&lt;/h2&gt;
+&lt;p&gt;Une fois que votre fichier PBIX sera publié dans le service Power BI vous pourrez accéder aux paramètres est agir sur leur valeur.&lt;/p&gt;
+&lt;p&gt;Rendez-vous dans l&amp;rsquo;espace de travail où se trouve le rapport.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/parametres-power-qwery/img/008-power-bi-service-dataset-parameter.png&#34;
+	width=&#34;924&#34;
+	height=&#34;636&#34;
+	srcset=&#34;https://blog.ddata.fr/p/parametres-power-qwery/img/008-power-bi-service-dataset-parameter_hub3ede7c545443ec7eebea71b0aa22968_53465_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/parametres-power-qwery/img/008-power-bi-service-dataset-parameter_hub3ede7c545443ec7eebea71b0aa22968_53465_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Paramètre du jeu de données&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;145&#34;
+		data-flex-basis=&#34;348px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Sur votre jeu de données, sélectionnez les 3 points.&lt;/li&gt;
+&lt;li&gt;Cliquez sur &lt;em&gt;Paramètres&lt;/em&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Il s&amp;rsquo;agit ici des paramètres du jeu de données, ils contiennent les paramètres Power Query mais pas seulement.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/parametres-power-qwery/img/009-power-bi-service-dataset-parameter-power-query.png&#34;
+	width=&#34;1072&#34;
+	height=&#34;747&#34;
+	srcset=&#34;https://blog.ddata.fr/p/parametres-power-qwery/img/009-power-bi-service-dataset-parameter-power-query_hu94bae31d6d03216675c6907046ac47db_41455_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/parametres-power-qwery/img/009-power-bi-service-dataset-parameter-power-query_hu94bae31d6d03216675c6907046ac47db_41455_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Modification des paramètres Power Query du jeu de données&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;143&#34;
+		data-flex-basis=&#34;344px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Ouvrez la section &lt;em&gt;Paramètres&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Modifiez les valeurs de paramètres si besoin.&lt;/li&gt;
+&lt;li&gt;Appuyez sur &lt;em&gt;Appliquer&lt;/em&gt; pour enregistrer vos modifications.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Ça y est vos requêtes Power Query vont se rafraichir avec de nouveaux paramètres au prochain rafraichissement du jeu de données.&lt;/p&gt;
+&lt;h2 id=&#34;scénarii-dusage-des-paramètres&#34;&gt;Scénarii d&amp;rsquo;usage des paramètres&lt;/h2&gt;
+&lt;p&gt;Les paramètres répondent à de nombreux scénarii d&amp;rsquo;usage, notamment :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;La modification dans le service des informations de connexion aux sources de données, cela permet d&amp;rsquo;avoir un seul PBIX pour des environnements DEV / UAT / PROD par exemple.&lt;/li&gt;
+&lt;li&gt;La centralisation d&amp;rsquo;élément variable dans plusieurs requêtes d&amp;rsquo;un projet.&lt;/li&gt;
+&lt;li&gt;La mise en place d&amp;rsquo;un filtre dynamique sur nos données pour par exemple ne prendre qu&amp;rsquo;un sous-ensemble des valeurs de notre base de données en développement, mais pas en production.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Merci de votre attention.&lt;/p&gt;</description>
+        </item>
+        <item>
         <title>Datawarehouse ou datalakehouse, quelle source pour vos reportings ?</title>
         <link>https://blog.ddata.fr/p/reporting-datawarehouse-datalakehouse/</link>
         <pubDate>Sun, 05 Feb 2023 00:00:00 +0000</pubDate>
