@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="fr-fr" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Dans cet article je vous présente le concept de Datalake ou lac de données en bon français. Un datalake est la fondation d&amp;rsquo;un projet data moderne, vous le retrouverez dans la plupart de vos futurs projets.
+'>
+<title>Datalake : la base d&#39;un projet data moderne</title>
+
+<link rel='canonical' href='https://blog.ddata.fr/p/datalake-la-base/'>
+
+<link rel="stylesheet" href="/scss/style.min.5be32ca3f6e1a997c75795c4359147cc6d4fbd34948c0acd51e31d237033978a.css"><meta property='og:title' content='Datalake : la base d&#39;un projet data moderne'>
+<meta property='og:description' content='Dans cet article je vous présente le concept de Datalake ou lac de données en bon français. Un datalake est la fondation d&amp;rsquo;un projet data moderne, vous le retrouverez dans la plupart de vos futurs projets.
+'>
+<meta property='og:url' content='https://blog.ddata.fr/p/datalake-la-base/'>
+<meta property='og:site_name' content='Le D de Data'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Auto formation' /><meta property='article:published_time' content='2023-02-26T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2023-02-26T00:00:00&#43;00:00'/><meta property='og:image' content='https://blog.ddata.fr/p/datalake-la-base/ticka-kao-o87vASD6Ksk-unsplash.jpg' />
+<meta name="twitter:title" content="Datalake : la base d&#39;un projet data moderne">
+<meta name="twitter:description" content="Dans cet article je vous présente le concept de Datalake ou lac de données en bon français. Un datalake est la fondation d&amp;rsquo;un projet data moderne, vous le retrouverez dans la plupart de vos futurs projets.
+"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://blog.ddata.fr/p/datalake-la-base/ticka-kao-o87vASD6Ksk-unsplash.jpg' />
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TY6XFEN6QV"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-TY6XFEN6QV', { 'anonymize_ip': false });
+}
+</script>
+<link rel="alternate"
+      type="application/rss+xml"
+      href="https://blog.ddata.fr/index.xml"
+      title="Le D de Data">
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "dark");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Afficher le menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/pierre_hua6bbc70dde858dd10e363a14d1f7729c_67951_300x0_resize_q75_box.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Le D de Data</a></h1>
+            <h2 class="site-description">Blog francophone autour de la data Microsoft</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/pierreddata'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://www.linkedin.com/in/pierre-dupont-0b532374/'
+                        target="_blank"
+                        title="LinkdIn"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-folders" width="44" height="44" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <rect x="4" y="4" width="16" height="16" rx="2" />
+  <line x1="8" y1="11" x2="8" y2="16" />
+  <line x1="8" y1="8" x2="8" y2="8.01" />
+  <line x1="12" y1="16" x2="12" y2="11" />
+  <path d="M16 16v-3a2 2 0 0 0 -4 0" />
+</svg>
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Accueil</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/a-propos-de-d-de-data/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>A Propos</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/series/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-folders" width="44" height="44" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 4h3l2 2h5a2 2 0 0 1 2 2v7a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-9a2 2 0 0 1 2 -2" />
+  <path d="M17 17v2a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-9a2 2 0 0 1 2 -2h2" />
+</svg>
+
+                
+                <span>Series</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/liens/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Liens</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Rechercher</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Mode sombre</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table des matières</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#contexte">Contexte</a></li>
+    <li><a href="#le-stockage">Le stockage</a></li>
+    <li><a href="#lorganisation">L&rsquo;organisation</a>
+      <ol>
+        <li><a href="#les-zones">Les zones</a></li>
+        <li><a href="#les-partitions">Les partitions</a></li>
+      </ol>
+    </li>
+    <li><a href="#les-principaux-formats-de-données">Les principaux formats de données</a></li>
+    <li><a href="#la-sécurité">La sécurité</a></li>
+    <li><a href="#traitement-des-données">Traitement des données</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/datalake-la-base/">
+                <img src="/p/datalake-la-base/ticka-kao-o87vASD6Ksk-unsplash_hu0aa3f93b2631ba2a32af5171088bce89_2286693_800x0_resize_q75_box.jpg"
+                        srcset="/p/datalake-la-base/ticka-kao-o87vASD6Ksk-unsplash_hu0aa3f93b2631ba2a32af5171088bce89_2286693_800x0_resize_q75_box.jpg 800w, /p/datalake-la-base/ticka-kao-o87vASD6Ksk-unsplash_hu0aa3f93b2631ba2a32af5171088bce89_2286693_1600x0_resize_q75_box.jpg 1600w"
+                        width="800" 
+                        height="575" 
+                        loading="lazy"
+                        alt="Featured image of post Datalake : la base d&#39;un projet data moderne" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/data/" style="background-color: #EE1F25; color: #fff;">
+                Data
+            </a>
+        
+            <a href="/categories/azure/" style="background-color: #0078d4; color: #fff;">
+                Azure
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/datalake-la-base/">Datalake : la base d&#39;un projet data moderne</a>
+        </h2>
+
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published" datetime="2023-02-26T00:00:00Z">
+                    26 février 2023
+                    
+                </time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    5 minutes de lecture
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+    
+    
+</div>
+</header>
+
+    <section class="article-content">
+    
+    
+    <p>Dans cet article je vous présente le concept de Datalake ou lac de données en bon français. Un datalake est la fondation d&rsquo;un projet data moderne, vous le retrouverez dans la plupart de vos futurs projets.</p>
+<h2 id="contexte">Contexte</h2>
+<p>Comme je vous l&rsquo;ai présenté <a class="link" href="https://blog.ddata.fr/p/reporting-datawarehouse-datalakehouse/" >dans ce précédent article</a>, le datalake est un élément clé des projets data moderne. Je me propose maintenant de vous présenter plus en détail ce qu&rsquo;est un datalake, comment on le structure et comment on peut s&rsquo;en servir.<br>
+Contrairement à ce que l&rsquo;on pourrait croire, les datalakes ne sont pas réservés aux gros projets de data et leur philosophie d&rsquo;usage peut-être reprise dans tout projet data.</p>
+<h2 id="le-stockage">Le stockage</h2>
+<p>Lorsque l&rsquo;on parle datalake on parle avant tout d&rsquo;un stockage de données pouvant accepter tout type de format de données.<br>
+En général lorsque l&rsquo;on parle de datalake on pense stockage cloud, l&rsquo;avantage de ce type de stockage est sa capacité à être étendue en fonction de vos besoins et de vos finances. Bien que cette solution est la plus souple, on peut très bien créer un datalake en dehors du cloud.<br>
+Les principaux types de stockages pour vos datalakes peuvent être :</p>
+<ul>
+<li>En cloud dans l&rsquo;écosystème Microsoft
+<ul>
+<li>Azure Datalake Gen 2</li>
+<li>Sharepoint</li>
+</ul>
+</li>
+<li>Sur vos infrastructures locales
+<ul>
+<li>Un partage réseau</li>
+<li>Un disque dur</li>
+</ul>
+</li>
+</ul>
+<h2 id="lorganisation">L&rsquo;organisation</h2>
+<p>Une fois la solution de stockage choisie, il est indispensable de réfléchir à l&rsquo;organisation de votre datalake.<br>
+Sans rigueur votre lac de données deviendra un marais de données (dataswamp).</p>
+<h3 id="les-zones">Les zones</h3>
+<p>Bien que chacun puisse créer l&rsquo;organisation qu&rsquo;il souhaite, on retrouve en général les 3 zones suivantes :</p>
+<p><img src="/p/datalake-la-base/img/001-datalake-zone.png"
+	width="799"
+	height="230"
+	srcset="/p/datalake-la-base/img/001-datalake-zone_hu727fac40be1e93915e54196ea9c46c88_7320_480x0_resize_box_3.png 480w, /p/datalake-la-base/img/001-datalake-zone_hu727fac40be1e93915e54196ea9c46c88_7320_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Les zones d&rsquo;un datalake"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="347"
+		data-flex-basis="833px"
+	
+></p>
+<ul>
+<li>Bronze : Cette zone sert de landing zone pour les données, elle permet d&rsquo;écrire les données brutes reçues dans le datalake. Aucune transformation n&rsquo;est réalisée sur les données.</li>
+<li>Silver : cette zone permet de raffiner les données de la zone Bronze et d&rsquo;effectuer les traitements de préparation de données parmi lesquels on retrouve :
+<ul>
+<li>La transformation de données en un format de table avec
+<ul>
+<li>Le nommage des colonnes</li>
+<li>Le typage des colonnes</li>
+</ul>
+</li>
+<li>La détection des anomalies</li>
+<li>La détection des problèmes de qualité</li>
+</ul>
+</li>
+<li>Gold : cette zone contient les données avec le plus haut niveau de raffinage, on retrouve par exemple
+<ul>
+<li>Des données modélisées pour le reporting (modèle en étoile).</li>
+<li>Des données préaggrégées.</li>
+</ul>
+</li>
+</ul>
+<p>Le nom de ces zones peut varier, mais leur usage reste. D&rsquo;autres zones peuvent être créées en fonction de vos besoins spécifiques, par exemple une zone sandbox pour des expérimentations.</p>
+<p>Les coûts de stockage étant relativement bas, en général, les traitements permettant le raffinage des données d&rsquo;une zone à l&rsquo;autre ne suppriment pas les données traitées. Ainsi si vous traitez des données sources en utilisant 10 champs sur 50 dans le fichier brut et que vos besoins évoluent, vous aurez toujours la possibilité de retraiter l&rsquo;ensemble des données brut pour répondre à vos nouveaux besoins.</p>
+<h3 id="les-partitions">Les partitions</h3>
+<p>Le partitionnement des données va vous permettre de ranger vos données de manière précise. Quand on parle de partitionnement, il s&rsquo;agit simplement de mettre vos fichiers dans des dossiers et sous dossier différent. L&rsquo;avantage du partitionnement est notamment de pouvoir accéder rapidement à des données en ne lisant que les fichiers présents dans les partitions qui nous intéressent.<br>
+Vous pouvez mixer les partitions comme vous le souhaitez.</p>
+<p><img src="/p/datalake-la-base/img/002-datalake-partition.png"
+	width="774"
+	height="436"
+	srcset="/p/datalake-la-base/img/002-datalake-partition_hu0016a9332b0f3ada4911fd5db105c496_15833_480x0_resize_box_3.png 480w, /p/datalake-la-base/img/002-datalake-partition_hu0016a9332b0f3ada4911fd5db105c496_15833_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Exemple de partitions"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="177"
+		data-flex-basis="426px"
+	
+></p>
+<p>En général, on crée des partitions en créant des  dossiers sous la forme <em>NomPartition=ValeurPartition</em>.<br>
+Les principaux partitionnements que vous utiliserez sont :</p>
+<ul>
+<li>Par source de données avec par exemple des dossiers sous la forme <em>/service=rh/application=monapplication</em></li>
+<li>Par version de traitement ou de format de fichier avec par exemple des dossiers sous la forme <em>/version=2.0</em></li>
+<li>Par date avec par exemple des dossiers sous la forme <em>/year=2023/month=02/day=26</em></li>
+</ul>
+<h2 id="les-principaux-formats-de-données">Les principaux formats de données</h2>
+<p>Votre datalake va contenir des fichiers, voici quelque format classique que vous y trouverez :</p>
+<ul>
+<li>Parquet : C&rsquo;est le format roi des datalakes, il s&rsquo;agit d&rsquo;un format de fichier dédier aux données analytiques, il conserve le nom et le type de données des colonnes et compresse les données contenues dans le fichier.</li>
+<li>CSV : Format classique d&rsquo;extraction de données, il contient le nom des colonnes, mais les séparateurs utilisés peuvent varier en fonction de l&rsquo;origine régionale du fichier (les séparateurs US et FR sont différents).</li>
+<li>Excel : Est-ce besoin de le présenter ? Un incontournable dans tous projets data.</li>
+<li>json, yaml, xml : Il s&rsquo;agit en général de fichiers issus de traitement automatisé tel des API. Ces fichiers sont semi-structuré.</li>
+<li>log : les fichiers de log pourront être stockés longtemps et conserver une possibilité de traitement dans un datalake. Ces fichiers sont en général semi-structuré.</li>
+<li>Binaire : les vidéos et images sont des formats de données binaires, ils peuvent contenir certaines métadonnées exploitables directement (coordonnée GPS pour une photo par exemple), mais en général un traitement de type IA et nécessaire pour qualifier le contenu du fichier.</li>
+</ul>
+<h2 id="la-sécurité">La sécurité</h2>
+<p>La sécurité est un point clé de votre datalake, elle est portée par les possibilités offertes par la solution de stockage que vous avez choisie.<br>
+Dans tous les cas, penser à créer plusieurs datalakes si vous avez des besoins forts de sécurité, une séparation des données peut prémunir contre des niveaux de droits inadéquats accordés à certain utilisateur.</p>
+<h2 id="traitement-des-données">Traitement des données</h2>
+<p>Le traitement des données d&rsquo;un datalake fera l&rsquo;objet d&rsquo;un prochain article.</p>
+<p>Merci de votre attention.</p>
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/auto-formation/">Auto formation</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Contenus liés</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/reporting-datawarehouse-datalakehouse/">
+        
+        
+            <div class="article-image">
+                <img src="/p/reporting-datawarehouse-datalakehouse/_hu8a7a29d89b178f9f3af884e9f947f179_1540306_a39e37980e7df0688f4036850d2fcd37.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Datawarehouse ou datalakehouse, quelle source pour vos reportings ?"
+                        data-key="reporting-datawarehouse-datalakehouse" 
+                        data-hash="md5-46O1YGqAYHItTg1OSNTwaw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Datawarehouse ou datalakehouse, quelle source pour vos reportings ?</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/c%C3%A9koidonc-azure/">
+        
+        
+            <div class="article-image">
+                <img src="/p/c%C3%A9koidonc-azure/_hueac9fc876ba4dc6d3988d92735221d11_1415592_8801c8f4a91236e0a0717f0c364ffb86.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Cékoidonc Azure ?"
+                        
+                        data-hash="md5-O2q/&#43;CDKWqSGB4ME&#43;/Kmcg==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Cékoidonc Azure ?</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/c%C3%A9koidonc-azure-active-directory/">
+        
+        
+            <div class="article-image">
+                <img src="/p/c%C3%A9koidonc-azure-active-directory/_hu35525c2077e7c31a5937113b838474e5_621905_74a6b7a80d79db3487b280189da877b4.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Cékoidonc Azure Active Directory ?"
+                        
+                        data-hash="md5-A2zAyxOtMalePCd8psbKfg==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Cékoidonc Azure Active Directory ?</h2>
+        </div>
+    </a>
+</article>
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "ddata" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2022 - 
+        
+        2023 Le D de Data
+    </section>
+    
+    <section class="powerby">
+        Généré avec <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Thème <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.16.0">Stack</a></b> conçu par <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

@@ -6,7 +6,118 @@
         <description>Recent content in Data on Le D de Data</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>fr-fr</language>
-        <lastBuildDate>Sun, 05 Feb 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ddata.fr/categories/data/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sun, 26 Feb 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ddata.fr/categories/data/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Datalake : la base d&#39;un projet data moderne</title>
+        <link>https://blog.ddata.fr/p/datalake-la-base/</link>
+        <pubDate>Sun, 26 Feb 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://blog.ddata.fr/p/datalake-la-base/</guid>
+        <description>&lt;img src="https://blog.ddata.fr/p/datalake-la-base/ticka-kao-o87vASD6Ksk-unsplash.jpg" alt="Featured image of post Datalake : la base d&#39;un projet data moderne" /&gt;&lt;p&gt;Dans cet article je vous présente le concept de Datalake ou lac de données en bon français. Un datalake est la fondation d&amp;rsquo;un projet data moderne, vous le retrouverez dans la plupart de vos futurs projets.&lt;/p&gt;
+&lt;h2 id=&#34;contexte&#34;&gt;Contexte&lt;/h2&gt;
+&lt;p&gt;Comme je vous l&amp;rsquo;ai présenté &lt;a class=&#34;link&#34; href=&#34;https://blog.ddata.fr/p/reporting-datawarehouse-datalakehouse/&#34; &gt;dans ce précédent article&lt;/a&gt;, le datalake est un élément clé des projets data moderne. Je me propose maintenant de vous présenter plus en détail ce qu&amp;rsquo;est un datalake, comment on le structure et comment on peut s&amp;rsquo;en servir.&lt;br&gt;
+Contrairement à ce que l&amp;rsquo;on pourrait croire, les datalakes ne sont pas réservés aux gros projets de data et leur philosophie d&amp;rsquo;usage peut-être reprise dans tout projet data.&lt;/p&gt;
+&lt;h2 id=&#34;le-stockage&#34;&gt;Le stockage&lt;/h2&gt;
+&lt;p&gt;Lorsque l&amp;rsquo;on parle datalake on parle avant tout d&amp;rsquo;un stockage de données pouvant accepter tout type de format de données.&lt;br&gt;
+En général lorsque l&amp;rsquo;on parle de datalake on pense stockage cloud, l&amp;rsquo;avantage de ce type de stockage est sa capacité à être étendue en fonction de vos besoins et de vos finances. Bien que cette solution est la plus souple, on peut très bien créer un datalake en dehors du cloud.&lt;br&gt;
+Les principaux types de stockages pour vos datalakes peuvent être :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;En cloud dans l&amp;rsquo;écosystème Microsoft
+&lt;ul&gt;
+&lt;li&gt;Azure Datalake Gen 2&lt;/li&gt;
+&lt;li&gt;Sharepoint&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Sur vos infrastructures locales
+&lt;ul&gt;
+&lt;li&gt;Un partage réseau&lt;/li&gt;
+&lt;li&gt;Un disque dur&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;lorganisation&#34;&gt;L&amp;rsquo;organisation&lt;/h2&gt;
+&lt;p&gt;Une fois la solution de stockage choisie, il est indispensable de réfléchir à l&amp;rsquo;organisation de votre datalake.&lt;br&gt;
+Sans rigueur votre lac de données deviendra un marais de données (dataswamp).&lt;/p&gt;
+&lt;h3 id=&#34;les-zones&#34;&gt;Les zones&lt;/h3&gt;
+&lt;p&gt;Bien que chacun puisse créer l&amp;rsquo;organisation qu&amp;rsquo;il souhaite, on retrouve en général les 3 zones suivantes :&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/datalake-la-base/img/001-datalake-zone.png&#34;
+	width=&#34;799&#34;
+	height=&#34;230&#34;
+	srcset=&#34;https://blog.ddata.fr/p/datalake-la-base/img/001-datalake-zone_hu727fac40be1e93915e54196ea9c46c88_7320_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/datalake-la-base/img/001-datalake-zone_hu727fac40be1e93915e54196ea9c46c88_7320_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Les zones d&amp;rsquo;un datalake&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;347&#34;
+		data-flex-basis=&#34;833px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Bronze : Cette zone sert de landing zone pour les données, elle permet d&amp;rsquo;écrire les données brutes reçues dans le datalake. Aucune transformation n&amp;rsquo;est réalisée sur les données.&lt;/li&gt;
+&lt;li&gt;Silver : cette zone permet de raffiner les données de la zone Bronze et d&amp;rsquo;effectuer les traitements de préparation de données parmi lesquels on retrouve :
+&lt;ul&gt;
+&lt;li&gt;La transformation de données en un format de table avec
+&lt;ul&gt;
+&lt;li&gt;Le nommage des colonnes&lt;/li&gt;
+&lt;li&gt;Le typage des colonnes&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;La détection des anomalies&lt;/li&gt;
+&lt;li&gt;La détection des problèmes de qualité&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Gold : cette zone contient les données avec le plus haut niveau de raffinage, on retrouve par exemple
+&lt;ul&gt;
+&lt;li&gt;Des données modélisées pour le reporting (modèle en étoile).&lt;/li&gt;
+&lt;li&gt;Des données préaggrégées.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Le nom de ces zones peut varier, mais leur usage reste. D&amp;rsquo;autres zones peuvent être créées en fonction de vos besoins spécifiques, par exemple une zone sandbox pour des expérimentations.&lt;/p&gt;
+&lt;p&gt;Les coûts de stockage étant relativement bas, en général, les traitements permettant le raffinage des données d&amp;rsquo;une zone à l&amp;rsquo;autre ne suppriment pas les données traitées. Ainsi si vous traitez des données sources en utilisant 10 champs sur 50 dans le fichier brut et que vos besoins évoluent, vous aurez toujours la possibilité de retraiter l&amp;rsquo;ensemble des données brut pour répondre à vos nouveaux besoins.&lt;/p&gt;
+&lt;h3 id=&#34;les-partitions&#34;&gt;Les partitions&lt;/h3&gt;
+&lt;p&gt;Le partitionnement des données va vous permettre de ranger vos données de manière précise. Quand on parle de partitionnement, il s&amp;rsquo;agit simplement de mettre vos fichiers dans des dossiers et sous dossier différent. L&amp;rsquo;avantage du partitionnement est notamment de pouvoir accéder rapidement à des données en ne lisant que les fichiers présents dans les partitions qui nous intéressent.&lt;br&gt;
+Vous pouvez mixer les partitions comme vous le souhaitez.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/datalake-la-base/img/002-datalake-partition.png&#34;
+	width=&#34;774&#34;
+	height=&#34;436&#34;
+	srcset=&#34;https://blog.ddata.fr/p/datalake-la-base/img/002-datalake-partition_hu0016a9332b0f3ada4911fd5db105c496_15833_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/datalake-la-base/img/002-datalake-partition_hu0016a9332b0f3ada4911fd5db105c496_15833_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Exemple de partitions&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;177&#34;
+		data-flex-basis=&#34;426px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;En général, on crée des partitions en créant des  dossiers sous la forme &lt;em&gt;NomPartition=ValeurPartition&lt;/em&gt;.&lt;br&gt;
+Les principaux partitionnements que vous utiliserez sont :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Par source de données avec par exemple des dossiers sous la forme &lt;em&gt;/service=rh/application=monapplication&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;Par version de traitement ou de format de fichier avec par exemple des dossiers sous la forme &lt;em&gt;/version=2.0&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;Par date avec par exemple des dossiers sous la forme &lt;em&gt;/year=2023/month=02/day=26&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;les-principaux-formats-de-données&#34;&gt;Les principaux formats de données&lt;/h2&gt;
+&lt;p&gt;Votre datalake va contenir des fichiers, voici quelque format classique que vous y trouverez :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Parquet : C&amp;rsquo;est le format roi des datalakes, il s&amp;rsquo;agit d&amp;rsquo;un format de fichier dédier aux données analytiques, il conserve le nom et le type de données des colonnes et compresse les données contenues dans le fichier.&lt;/li&gt;
+&lt;li&gt;CSV : Format classique d&amp;rsquo;extraction de données, il contient le nom des colonnes, mais les séparateurs utilisés peuvent varier en fonction de l&amp;rsquo;origine régionale du fichier (les séparateurs US et FR sont différents).&lt;/li&gt;
+&lt;li&gt;Excel : Est-ce besoin de le présenter ? Un incontournable dans tous projets data.&lt;/li&gt;
+&lt;li&gt;json, yaml, xml : Il s&amp;rsquo;agit en général de fichiers issus de traitement automatisé tel des API. Ces fichiers sont semi-structuré.&lt;/li&gt;
+&lt;li&gt;log : les fichiers de log pourront être stockés longtemps et conserver une possibilité de traitement dans un datalake. Ces fichiers sont en général semi-structuré.&lt;/li&gt;
+&lt;li&gt;Binaire : les vidéos et images sont des formats de données binaires, ils peuvent contenir certaines métadonnées exploitables directement (coordonnée GPS pour une photo par exemple), mais en général un traitement de type IA et nécessaire pour qualifier le contenu du fichier.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;la-sécurité&#34;&gt;La sécurité&lt;/h2&gt;
+&lt;p&gt;La sécurité est un point clé de votre datalake, elle est portée par les possibilités offertes par la solution de stockage que vous avez choisie.&lt;br&gt;
+Dans tous les cas, penser à créer plusieurs datalakes si vous avez des besoins forts de sécurité, une séparation des données peut prémunir contre des niveaux de droits inadéquats accordés à certain utilisateur.&lt;/p&gt;
+&lt;h2 id=&#34;traitement-des-données&#34;&gt;Traitement des données&lt;/h2&gt;
+&lt;p&gt;Le traitement des données d&amp;rsquo;un datalake fera l&amp;rsquo;objet d&amp;rsquo;un prochain article.&lt;/p&gt;
+&lt;p&gt;Merci de votre attention.&lt;/p&gt;</description>
+        </item>
+        <item>
         <title>Datawarehouse ou datalakehouse, quelle source pour vos reportings ?</title>
         <link>https://blog.ddata.fr/p/reporting-datawarehouse-datalakehouse/</link>
         <pubDate>Sun, 05 Feb 2023 00:00:00 +0000</pubDate>
