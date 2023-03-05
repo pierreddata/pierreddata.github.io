@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="fr-fr" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Dans cet article je vous présente les principaux services permettant de traiter les données d&amp;rsquo;un datalake dans Azure.
+'>
+<title>Datalake : comment traiter les données d&#39;un datalake dans Azure</title>
+
+<link rel='canonical' href='https://blog.ddata.fr/p/datalake-compute/'>
+
+<link rel="stylesheet" href="/scss/style.min.5be32ca3f6e1a997c75795c4359147cc6d4fbd34948c0acd51e31d237033978a.css"><meta property='og:title' content='Datalake : comment traiter les données d&#39;un datalake dans Azure'>
+<meta property='og:description' content='Dans cet article je vous présente les principaux services permettant de traiter les données d&amp;rsquo;un datalake dans Azure.
+'>
+<meta property='og:url' content='https://blog.ddata.fr/p/datalake-compute/'>
+<meta property='og:site_name' content='Le D de Data'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Auto formation' /><meta property='article:published_time' content='2023-03-05T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2023-03-05T00:00:00&#43;00:00'/><meta property='og:image' content='https://blog.ddata.fr/p/datalake-compute/deepmind-ZJKE4XVlKIA-unsplash.jpg' />
+<meta name="twitter:title" content="Datalake : comment traiter les données d&#39;un datalake dans Azure">
+<meta name="twitter:description" content="Dans cet article je vous présente les principaux services permettant de traiter les données d&amp;rsquo;un datalake dans Azure.
+"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://blog.ddata.fr/p/datalake-compute/deepmind-ZJKE4XVlKIA-unsplash.jpg' />
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TY6XFEN6QV"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-TY6XFEN6QV', { 'anonymize_ip': false });
+}
+</script>
+<link rel="alternate"
+      type="application/rss+xml"
+      href="https://blog.ddata.fr/index.xml"
+      title="Le D de Data">
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "dark");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Afficher le menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/pierre_hua6bbc70dde858dd10e363a14d1f7729c_67951_300x0_resize_q75_box.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Le D de Data</a></h1>
+            <h2 class="site-description">Blog francophone autour de la data Microsoft</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/pierreddata'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://www.linkedin.com/in/pierre-dupont-0b532374/'
+                        target="_blank"
+                        title="LinkdIn"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-folders" width="44" height="44" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <rect x="4" y="4" width="16" height="16" rx="2" />
+  <line x1="8" y1="11" x2="8" y2="16" />
+  <line x1="8" y1="8" x2="8" y2="8.01" />
+  <line x1="12" y1="16" x2="12" y2="11" />
+  <path d="M16 16v-3a2 2 0 0 0 -4 0" />
+</svg>
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Accueil</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/a-propos-de-d-de-data/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>A Propos</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/series/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-folders" width="44" height="44" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 4h3l2 2h5a2 2 0 0 1 2 2v7a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-9a2 2 0 0 1 2 -2" />
+  <path d="M17 17v2a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-9a2 2 0 0 1 2 -2h2" />
+</svg>
+
+                
+                <span>Series</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/liens/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Liens</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Rechercher</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Mode sombre</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table des matières</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#rappel">Rappel</a></li>
+    <li><a href="#les-services-de-données-spécialisés">Les services de données spécialisés</a>
+      <ol>
+        <li><a href="#img10126-icon-service-data-factorypng-azure-data-factory"><img src="img/10126-icon-service-Data-Factory.png" alt=""> Azure Data Factory</a></li>
+        <li><a href="#img00606-icon-service-azure-synapse-analyticspng-azure-synapse-analytics"><img src="img/00606-icon-service-Azure-Synapse-Analytics.png" alt=""> Azure Synapse Analytics</a></li>
+        <li><a href="#img10787-icon-service-azure-databrickspng-azure-databricks"><img src="img/10787-icon-service-Azure-Databricks.png" alt=""> Azure Databricks</a></li>
+        <li><a href="#img10145-icon-service-azure-data-explorer-clusterspng-azure-data-explorer"><img src="img/10145-icon-service-Azure-Data-Explorer-Clusters.png" alt=""> Azure Data Explorer</a></li>
+      </ol>
+    </li>
+    <li><a href="#les-services-cognitifs">Les services cognitifs</a>
+      <ol>
+        <li><a href="#img10162-icon-service-cognitive-servicespng-azure-cognitive-services"><img src="img/10162-icon-service-Cognitive-Services.png" alt=""> Azure Cognitive Services</a></li>
+        <li><a href="#img10167-icon-service-machine-learning-studio-workspacespng-azure-machine-learning"><img src="img/10167-icon-service-Machine-Learning-Studio-Workspaces.png" alt=""> Azure Machine Learning</a></li>
+      </ol>
+    </li>
+    <li><a href="#les-services-de-calcul-utilisable-pour-traiter-les-données">Les services de calcul utilisable pour traiter les données</a>
+      <ol>
+        <li><a href="#img10029-icon-service-function-appspng-azure-functions"><img src="img/10029-icon-service-Function-Apps.png" alt=""> Azure Functions</a></li>
+        <li><a href="#img10201-icon-service-logic-appspng-azure-logic-apps"><img src="img/10201-icon-service-Logic-Apps.png" alt=""> Azure Logic Apps</a></li>
+      </ol>
+    </li>
+    <li><a href="#autres-services-azure-à-intégrer">Autres services Azure à intégrer</a>
+      <ol>
+        <li><a href="#img10245-icon-service-key-vaultspng-azure-key-vault"><img src="img/10245-icon-service-Key-Vaults.png" alt=""> Azure Key Vault</a></li>
+        <li><a href="#imgpurviewpng-microsoft-purview"><img src="img/purview.png" alt=""> Microsoft Purview</a></li>
+      </ol>
+    </li>
+    <li><a href="#architecture-type">Architecture type</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/datalake-compute/">
+                <img src="/p/datalake-compute/deepmind-ZJKE4XVlKIA-unsplash_huabd43efd91f25ddf48b57b8258cba1be_7710978_800x0_resize_q75_box.jpg"
+                        srcset="/p/datalake-compute/deepmind-ZJKE4XVlKIA-unsplash_huabd43efd91f25ddf48b57b8258cba1be_7710978_800x0_resize_q75_box.jpg 800w, /p/datalake-compute/deepmind-ZJKE4XVlKIA-unsplash_huabd43efd91f25ddf48b57b8258cba1be_7710978_1600x0_resize_q75_box.jpg 1600w"
+                        width="800" 
+                        height="480" 
+                        loading="lazy"
+                        alt="Featured image of post Datalake : comment traiter les données d&#39;un datalake dans Azure" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/data/" style="background-color: #EE1F25; color: #fff;">
+                Data
+            </a>
+        
+            <a href="/categories/azure/" style="background-color: #0078d4; color: #fff;">
+                Azure
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/datalake-compute/">Datalake : comment traiter les données d&#39;un datalake dans Azure</a>
+        </h2>
+
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published" datetime="2023-03-05T00:00:00Z">
+                    5 mars 2023
+                    
+                </time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    5 minutes de lecture
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+    
+    
+</div>
+</header>
+
+    <section class="article-content">
+    
+    
+    <p>Dans cet article je vous présente les principaux services permettant de traiter les données d&rsquo;un datalake dans Azure.</p>
+<h2 id="rappel">Rappel</h2>
+<p>Vous trouverez dans mes articles précédents les explications concernant :</p>
+<ul>
+<li>Les architectures de type datalakehouse : <a class="link" href="https://blog.ddata.fr/p/reporting-datawarehouse-datalakehouse/" >Datawarehouse ou datalakehouse, quelle source pour vos reportings ?</a>.</li>
+<li>Les datalakes :<a class="link" href="https://blog.ddata.fr/p/datalake-la-base/" >Datalake : la base d&rsquo;un projet data moderne</a>.</li>
+</ul>
+<h2 id="les-services-de-données-spécialisés">Les services de données spécialisés</h2>
+<h3 id="img10126-icon-service-data-factorypng-azure-data-factory"><img src="/p/datalake-compute/img/10126-icon-service-Data-Factory.png"
+	width="30"
+	height="30"
+	srcset="/p/datalake-compute/img/10126-icon-service-Data-Factory_hu8e9af3290ac174282009dd85995d7eea_896_480x0_resize_box_3.png 480w, /p/datalake-compute/img/10126-icon-service-Data-Factory_hu8e9af3290ac174282009dd85995d7eea_896_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="100"
+		data-flex-basis="240px"
+	
+> Azure Data Factory</h3>
+<p>Azure Data Factory est un outil de type ETL/ELT (Extract Transform Load / Extract Load Transform), il permet de réaliser des déplacements de données d&rsquo;un point à un autre en réalisant des transformations sur les données. Parmi les usages classiques, on retrouve :</p>
+<ul>
+<li>Alimentation de la zone Bronze d&rsquo;un datalake avec des données en provenance de service cloud et de vos réseaux d&rsquo;entreprise (via un programme installé sur vos serveurs)</li>
+<li>Transformation et structuration des données :
+<ul>
+<li>Création de fichiers structurés de type Parquet</li>
+<li>Re modélisation des données applicative vers un modèle en étoile</li>
+<li>Transformation de données semi-structurées de type JSON en données structuré de type Parquet</li>
+</ul>
+</li>
+<li>Suivi de l&rsquo;exécution des traitements de transformation</li>
+</ul>
+<p>Vous retrouverez les informations sur le produit <a class="link" href="https://azure.microsoft.com/fr-fr/products/data-factory/"  target="_blank" rel="noopener"
+    >ici</a>.</p>
+<h3 id="img00606-icon-service-azure-synapse-analyticspng-azure-synapse-analytics"><img src="/p/datalake-compute/img/00606-icon-service-Azure-Synapse-Analytics.png"
+	width="30"
+	height="30"
+	srcset="/p/datalake-compute/img/00606-icon-service-Azure-Synapse-Analytics_hu8e9af3290ac174282009dd85995d7eea_1467_480x0_resize_box_3.png 480w, /p/datalake-compute/img/00606-icon-service-Azure-Synapse-Analytics_hu8e9af3290ac174282009dd85995d7eea_1467_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="100"
+		data-flex-basis="240px"
+	
+> Azure Synapse Analytics</h3>
+<p>Azure Synapse Analytics est avant tout une suite d&rsquo;outils comprenant :</p>
+<ul>
+<li>un outil de type ETL/ELT, qui est simplement une version d&rsquo;Azure Data Factory</li>
+<li>des moteurs de traitements de données :
+<ul>
+<li>SQL
+<ul>
+<li>Pools provisionnés : Vous louez des capacités de traitements SQL dédiés.</li>
+<li>Serverless : Vous payez vos traitements SQL à la requête.</li>
+</ul>
+</li>
+<li>Apache Spark : le moteur de traitement de données Apache Spark qui permet de créer des traitements de données fortement scalable. Vous pouvez écrire des traitements dans différents langages (Python/R/Scala/Java) et les exécuter sur la plate-forme Spark.</li>
+<li>Data Explorer : un moteur de traitement spécialisé dans les traitements des logs et des séries temporelles.</li>
+</ul>
+</li>
+<li>un outil de monitoring</li>
+<li>un espace de création regroupant tous les services ci-dessus.</li>
+</ul>
+<p>Azure Synapse Analytics est le service phare de la suite Azure pour les traitements de données.</p>
+<p>Vous retrouverez les informations sur le produit <a class="link" href="https://azure.microsoft.com/fr-fr/products/synapse-analytics/"  target="_blank" rel="noopener"
+    >ici</a>.</p>
+<h3 id="img10787-icon-service-azure-databrickspng-azure-databricks"><img src="/p/datalake-compute/img/10787-icon-service-Azure-Databricks.png"
+	width="30"
+	height="30"
+	srcset="/p/datalake-compute/img/10787-icon-service-Azure-Databricks_hu8e9af3290ac174282009dd85995d7eea_1519_480x0_resize_box_3.png 480w, /p/datalake-compute/img/10787-icon-service-Azure-Databricks_hu8e9af3290ac174282009dd85995d7eea_1519_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="100"
+		data-flex-basis="240px"
+	
+> Azure Databricks</h3>
+<p>Azure Databricks est l&rsquo;implémentation de Databricks dans Azure.<br>
+Databricks est un outil basé sur Apache Spark tout en incluant des services complémentaires. Au même titre qu&rsquo;Azure Synapse Analytics, il permet de créer des traitements d&rsquo;ingestion et de préparation de données.</p>
+<p>Contrairement à Azure Synapse Analytics, Databricks est prévu pour être multicloud, vous retrouverez ce service dans AWS (Amazon) ou GCP (Google).</p>
+<p>Vous retrouverez les informations sur le produit <a class="link" href="https://azure.microsoft.com/fr-fr/products/databricks/"  target="_blank" rel="noopener"
+    >ici</a>.</p>
+<h3 id="img10145-icon-service-azure-data-explorer-clusterspng-azure-data-explorer"><img src="/p/datalake-compute/img/10145-icon-service-Azure-Data-Explorer-Clusters.png"
+	width="30"
+	height="30"
+	srcset="/p/datalake-compute/img/10145-icon-service-Azure-Data-Explorer-Clusters_hu8e9af3290ac174282009dd85995d7eea_1395_480x0_resize_box_3.png 480w, /p/datalake-compute/img/10145-icon-service-Azure-Data-Explorer-Clusters_hu8e9af3290ac174282009dd85995d7eea_1395_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="100"
+		data-flex-basis="240px"
+	
+> Azure Data Explorer</h3>
+<p>Azure Data Explorer est un moteur de traitement spécialisé dans les traitements des logs et des séries temporelles.<br>
+Microsoft a créé un langage de requête dédié nommé KQL (Kusto Query Language) permettant de plonger dans les puits de logs comme le commandant Cousteau dans la mer.</p>
+<p>Vous retrouverez les informations sur le produit <a class="link" href="https://azure.microsoft.com/fr-fr/products/data-explorer/"  target="_blank" rel="noopener"
+    >ici</a>.</p>
+<h2 id="les-services-cognitifs">Les services cognitifs</h2>
+<h3 id="img10162-icon-service-cognitive-servicespng-azure-cognitive-services"><img src="/p/datalake-compute/img/10162-icon-service-Cognitive-Services.png"
+	width="30"
+	height="30"
+	srcset="/p/datalake-compute/img/10162-icon-service-Cognitive-Services_hu8e9af3290ac174282009dd85995d7eea_1235_480x0_resize_box_3.png 480w, /p/datalake-compute/img/10162-icon-service-Cognitive-Services_hu8e9af3290ac174282009dd85995d7eea_1235_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="100"
+		data-flex-basis="240px"
+	
+> Azure Cognitive Services</h3>
+<p>Azure Cognitive Services est un ensemble de service de type IA préentrainé que vous pouvez consommer directement sous forme d&rsquo;API.<br>
+Parmi les principaux services proposés, on retrouve :</p>
+<ul>
+<li>La reconnaissance de texte</li>
+<li>La reconnaissance faciale</li>
+<li>La reconnaissance d&rsquo;entité sur des images ou vidéos</li>
+</ul>
+<p>Vous pouvez intégrer ces services dans vos traitements de données pour enrichir ces dernières.</p>
+<p>Vous retrouverez les informations sur le produit <a class="link" href="https://azure.microsoft.com/fr-fr/products/cognitive-services/"  target="_blank" rel="noopener"
+    >ici</a>.</p>
+<h3 id="img10167-icon-service-machine-learning-studio-workspacespng-azure-machine-learning"><img src="/p/datalake-compute/img/10167-icon-service-Machine-Learning-Studio-Workspaces.png"
+	width="30"
+	height="30"
+	srcset="/p/datalake-compute/img/10167-icon-service-Machine-Learning-Studio-Workspaces_hu8e9af3290ac174282009dd85995d7eea_868_480x0_resize_box_3.png 480w, /p/datalake-compute/img/10167-icon-service-Machine-Learning-Studio-Workspaces_hu8e9af3290ac174282009dd85995d7eea_868_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="100"
+		data-flex-basis="240px"
+	
+> Azure Machine Learning</h3>
+<p>Azure Machine Learning est un outil de création d&rsquo;expérience de Machine Learning, il prend en charge de bout en bout ce type de projet de la création du modèle à son exploitation en production.<br>
+Les modèles ainsi créés pourront enrichir vos traitements de données.</p>
+<p>Vous retrouverez les informations sur le produit <a class="link" href="https://azure.microsoft.com/fr-fr/products/machine-learning/"  target="_blank" rel="noopener"
+    >ici</a>.</p>
+<h2 id="les-services-de-calcul-utilisable-pour-traiter-les-données">Les services de calcul utilisable pour traiter les données</h2>
+<h3 id="img10029-icon-service-function-appspng-azure-functions"><img src="/p/datalake-compute/img/10029-icon-service-Function-Apps.png"
+	width="30"
+	height="30"
+	srcset="/p/datalake-compute/img/10029-icon-service-Function-Apps_hu8e9af3290ac174282009dd85995d7eea_1188_480x0_resize_box_3.png 480w, /p/datalake-compute/img/10029-icon-service-Function-Apps_hu8e9af3290ac174282009dd85995d7eea_1188_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="100"
+		data-flex-basis="240px"
+	
+> Azure Functions</h3>
+<p>Azure Functions permet d&rsquo;exécuter du code à la demande dans Azure, sans louer de ressources en permanence. Vous êtes facturé à l&rsquo;usage.<br>
+Vous pouvez créer des traitements s&rsquo;exécutant à la demande, sur des évènements Azure ou de manière planifiée.<br>
+Les principaux langages disponibles sont :</p>
+<ul>
+<li>C#</li>
+<li>JavaScript</li>
+<li>Java</li>
+<li>PowerShell</li>
+<li>Python</li>
+<li>TypeScript</li>
+</ul>
+<p>Par défaut les Azure Functions sont limitées à 5 minutes d&rsquo;exécutions, 10 maximum. Si vous avez besoin de plus regarder <a class="link" href="https://learn.microsoft.com/en-us/azure/azure-functions/durable/durable-functions-overview?tabs=csharp-inproc"  target="_blank" rel="noopener"
+    >les fonctions durables.</a></p>
+<p>Vous retrouverez les informations sur le produit <a class="link" href="https://azure.microsoft.com/fr-fr/products/functions/"  target="_blank" rel="noopener"
+    >ici</a>.</p>
+<h3 id="img10201-icon-service-logic-appspng-azure-logic-apps"><img src="/p/datalake-compute/img/10201-icon-service-Logic-Apps.png"
+	width="30"
+	height="30"
+	srcset="/p/datalake-compute/img/10201-icon-service-Logic-Apps_hu8e9af3290ac174282009dd85995d7eea_949_480x0_resize_box_3.png 480w, /p/datalake-compute/img/10201-icon-service-Logic-Apps_hu8e9af3290ac174282009dd85995d7eea_949_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="100"
+		data-flex-basis="240px"
+	
+> Azure Logic Apps</h3>
+<p>Azure Logic Apps est un outil de création de traitement low code. Il est très proche en termes d&rsquo;interface et d&rsquo;utilisation de Power Automate, mais contrairement à ce dernier vous payez les traitements à l&rsquo;exécution, quels que soient les connecteurs utilisés.<br>
+Vous pouvez créer des traitements s&rsquo;exécutant à la demande, sur des évènements Azure ou de manière planifiée.</p>
+<p>Vous retrouverez les informations sur le produit <a class="link" href="https://azure.microsoft.com/fr-fr/products/logic-apps/"  target="_blank" rel="noopener"
+    >ici</a>.</p>
+<h2 id="autres-services-azure-à-intégrer">Autres services Azure à intégrer</h2>
+<h3 id="img10245-icon-service-key-vaultspng-azure-key-vault"><img src="/p/datalake-compute/img/10245-icon-service-Key-Vaults.png"
+	width="30"
+	height="30"
+	srcset="/p/datalake-compute/img/10245-icon-service-Key-Vaults_hu7a6ed2925b8411b46ca180016908f0d9_1806_480x0_resize_box_3.png 480w, /p/datalake-compute/img/10245-icon-service-Key-Vaults_hu7a6ed2925b8411b46ca180016908f0d9_1806_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="100"
+		data-flex-basis="240px"
+	
+> Azure Key Vault</h3>
+<p>Azure Key Vault est un coffre-fort pour vos mots de passe, est-il besoin de rappeler qu&rsquo;un mot de passe n&rsquo;a rien à faire en clair dans un code ?<br>
+Azure Key Vault vous permettra de sécurisé vos mots de passe et autres secrets et le mettra à disposition des applications ayant le droit de les utiliser. Vos différentes briques de services Azure ou autre pourront ainsi utiliser des secrets en toute discrétion.</p>
+<p>Vous retrouverez les informations sur le produit <a class="link" href="https://azure.microsoft.com/fr-fr/products/key-vault/"  target="_blank" rel="noopener"
+    >ici</a>.</p>
+<h3 id="imgpurviewpng-microsoft-purview"><img src="/p/datalake-compute/img/purview.png"
+	width="30"
+	height="19"
+	srcset="/p/datalake-compute/img/purview_huebae1058d42e27fb2cdbb3964620300c_1234_480x0_resize_box_3.png 480w, /p/datalake-compute/img/purview_huebae1058d42e27fb2cdbb3964620300c_1234_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="157"
+		data-flex-basis="378px"
+	
+> Microsoft Purview</h3>
+<p>Microsoft Purview est en ensemble d&rsquo;outils permettant de mettre en place une gouvernance de données globale. Il vous permet aussi de mettre en place un catalogue de données d&rsquo;entreprise.</p>
+<p>Vous retrouverez les informations sur le produit <a class="link" href="https://azure.microsoft.com/fr-fr/products/purview/"  target="_blank" rel="noopener"
+    >ici</a>.</p>
+<h2 id="architecture-type">Architecture type</h2>
+<p>Tous les outils présentés ci-dessus peuvent travailler ensemble dans des architectures data moderne, ma préférée étant celle autour de Synapse pour un usage BI:</p>
+<p><img src="/p/datalake-compute/img/enterprise-bi-scoped-architecture.png"
+	width="1200"
+	height="846"
+	srcset="/p/datalake-compute/img/enterprise-bi-scoped-architecture_hu1f3b34477e815894fea8669db0f97484_250544_480x0_resize_box_3.png 480w, /p/datalake-compute/img/enterprise-bi-scoped-architecture_hu1f3b34477e815894fea8669db0f97484_250544_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Décisionnel d’entreprise"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="141"
+		data-flex-basis="340px"
+	
+></p>
+<p>Vous trouverez les références de cette architecture <a class="link" href="https://learn.microsoft.com/fr-fr/azure/architecture/example-scenario/analytics/enterprise-bi-synapse"  target="_blank" rel="noopener"
+    >ici</a> et une version plus globale <a class="link" href="https://learn.microsoft.com/fr-fr/azure/architecture/example-scenario/dataplate2e/data-platform-end-to-end"  target="_blank" rel="noopener"
+    >ici</a>.</p>
+<p>Merci de votre attention.</p>
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/auto-formation/">Auto formation</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Contenus liés</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/datalake-la-base/">
+        
+        
+            <div class="article-image">
+                <img src="/p/datalake-la-base/_hu0aa3f93b2631ba2a32af5171088bce89_2286693_99fe5381d1849f007a28d9e271f98a19.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Datalake : la base d&#39;un projet data moderne"
+                        data-key="datalake-la-base" 
+                        data-hash="md5-XS8IKKiJI9HVYcDLGszlMA==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Datalake : la base d&#39;un projet data moderne</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/reporting-datawarehouse-datalakehouse/">
+        
+        
+            <div class="article-image">
+                <img src="/p/reporting-datawarehouse-datalakehouse/_hu8a7a29d89b178f9f3af884e9f947f179_1540306_a39e37980e7df0688f4036850d2fcd37.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Datawarehouse ou datalakehouse, quelle source pour vos reportings ?"
+                        data-key="reporting-datawarehouse-datalakehouse" 
+                        data-hash="md5-46O1YGqAYHItTg1OSNTwaw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Datawarehouse ou datalakehouse, quelle source pour vos reportings ?</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/c%C3%A9koidonc-azure/">
+        
+        
+            <div class="article-image">
+                <img src="/p/c%C3%A9koidonc-azure/_hueac9fc876ba4dc6d3988d92735221d11_1415592_8801c8f4a91236e0a0717f0c364ffb86.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Cékoidonc Azure ?"
+                        
+                        data-hash="md5-O2q/&#43;CDKWqSGB4ME&#43;/Kmcg==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Cékoidonc Azure ?</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/c%C3%A9koidonc-azure-active-directory/">
+        
+        
+            <div class="article-image">
+                <img src="/p/c%C3%A9koidonc-azure-active-directory/_hu35525c2077e7c31a5937113b838474e5_621905_74a6b7a80d79db3487b280189da877b4.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Cékoidonc Azure Active Directory ?"
+                        
+                        data-hash="md5-A2zAyxOtMalePCd8psbKfg==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Cékoidonc Azure Active Directory ?</h2>
+        </div>
+    </a>
+</article>
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "ddata" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2022 - 
+        
+        2023 Le D de Data
+    </section>
+    
+    <section class="powerby">
+        Généré avec <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Thème <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.16.0">Stack</a></b> conçu par <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

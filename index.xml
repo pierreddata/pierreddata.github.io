@@ -6,7 +6,249 @@
         <description>Recent content on Le D de Data</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>fr-fr</language>
-        <lastBuildDate>Sun, 26 Feb 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ddata.fr/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sun, 05 Mar 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ddata.fr/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Datalake : comment traiter les données d&#39;un datalake dans Azure</title>
+        <link>https://blog.ddata.fr/p/datalake-compute/</link>
+        <pubDate>Sun, 05 Mar 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://blog.ddata.fr/p/datalake-compute/</guid>
+        <description>&lt;img src="https://blog.ddata.fr/p/datalake-compute/deepmind-ZJKE4XVlKIA-unsplash.jpg" alt="Featured image of post Datalake : comment traiter les données d&#39;un datalake dans Azure" /&gt;&lt;p&gt;Dans cet article je vous présente les principaux services permettant de traiter les données d&amp;rsquo;un datalake dans Azure.&lt;/p&gt;
+&lt;h2 id=&#34;rappel&#34;&gt;Rappel&lt;/h2&gt;
+&lt;p&gt;Vous trouverez dans mes articles précédents les explications concernant :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Les architectures de type datalakehouse : &lt;a class=&#34;link&#34; href=&#34;https://blog.ddata.fr/p/reporting-datawarehouse-datalakehouse/&#34; &gt;Datawarehouse ou datalakehouse, quelle source pour vos reportings ?&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Les datalakes :&lt;a class=&#34;link&#34; href=&#34;https://blog.ddata.fr/p/datalake-la-base/&#34; &gt;Datalake : la base d&amp;rsquo;un projet data moderne&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;les-services-de-données-spécialisés&#34;&gt;Les services de données spécialisés&lt;/h2&gt;
+&lt;h3 id=&#34;img10126-icon-service-data-factorypng-azure-data-factory&#34;&gt;&lt;img src=&#34;https://blog.ddata.fr/p/datalake-compute/img/10126-icon-service-Data-Factory.png&#34;
+	width=&#34;30&#34;
+	height=&#34;30&#34;
+	srcset=&#34;https://blog.ddata.fr/p/datalake-compute/img/10126-icon-service-Data-Factory_hu8e9af3290ac174282009dd85995d7eea_896_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/datalake-compute/img/10126-icon-service-Data-Factory_hu8e9af3290ac174282009dd85995d7eea_896_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;100&#34;
+		data-flex-basis=&#34;240px&#34;
+	
+&gt; Azure Data Factory&lt;/h3&gt;
+&lt;p&gt;Azure Data Factory est un outil de type ETL/ELT (Extract Transform Load / Extract Load Transform), il permet de réaliser des déplacements de données d&amp;rsquo;un point à un autre en réalisant des transformations sur les données. Parmi les usages classiques, on retrouve :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Alimentation de la zone Bronze d&amp;rsquo;un datalake avec des données en provenance de service cloud et de vos réseaux d&amp;rsquo;entreprise (via un programme installé sur vos serveurs)&lt;/li&gt;
+&lt;li&gt;Transformation et structuration des données :
+&lt;ul&gt;
+&lt;li&gt;Création de fichiers structurés de type Parquet&lt;/li&gt;
+&lt;li&gt;Re modélisation des données applicative vers un modèle en étoile&lt;/li&gt;
+&lt;li&gt;Transformation de données semi-structurées de type JSON en données structuré de type Parquet&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Suivi de l&amp;rsquo;exécution des traitements de transformation&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Vous retrouverez les informations sur le produit &lt;a class=&#34;link&#34; href=&#34;https://azure.microsoft.com/fr-fr/products/data-factory/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;ici&lt;/a&gt;.&lt;/p&gt;
+&lt;h3 id=&#34;img00606-icon-service-azure-synapse-analyticspng-azure-synapse-analytics&#34;&gt;&lt;img src=&#34;https://blog.ddata.fr/p/datalake-compute/img/00606-icon-service-Azure-Synapse-Analytics.png&#34;
+	width=&#34;30&#34;
+	height=&#34;30&#34;
+	srcset=&#34;https://blog.ddata.fr/p/datalake-compute/img/00606-icon-service-Azure-Synapse-Analytics_hu8e9af3290ac174282009dd85995d7eea_1467_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/datalake-compute/img/00606-icon-service-Azure-Synapse-Analytics_hu8e9af3290ac174282009dd85995d7eea_1467_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;100&#34;
+		data-flex-basis=&#34;240px&#34;
+	
+&gt; Azure Synapse Analytics&lt;/h3&gt;
+&lt;p&gt;Azure Synapse Analytics est avant tout une suite d&amp;rsquo;outils comprenant :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;un outil de type ETL/ELT, qui est simplement une version d&amp;rsquo;Azure Data Factory&lt;/li&gt;
+&lt;li&gt;des moteurs de traitements de données :
+&lt;ul&gt;
+&lt;li&gt;SQL
+&lt;ul&gt;
+&lt;li&gt;Pools provisionnés : Vous louez des capacités de traitements SQL dédiés.&lt;/li&gt;
+&lt;li&gt;Serverless : Vous payez vos traitements SQL à la requête.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Apache Spark : le moteur de traitement de données Apache Spark qui permet de créer des traitements de données fortement scalable. Vous pouvez écrire des traitements dans différents langages (Python/R/Scala/Java) et les exécuter sur la plate-forme Spark.&lt;/li&gt;
+&lt;li&gt;Data Explorer : un moteur de traitement spécialisé dans les traitements des logs et des séries temporelles.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;un outil de monitoring&lt;/li&gt;
+&lt;li&gt;un espace de création regroupant tous les services ci-dessus.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Azure Synapse Analytics est le service phare de la suite Azure pour les traitements de données.&lt;/p&gt;
+&lt;p&gt;Vous retrouverez les informations sur le produit &lt;a class=&#34;link&#34; href=&#34;https://azure.microsoft.com/fr-fr/products/synapse-analytics/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;ici&lt;/a&gt;.&lt;/p&gt;
+&lt;h3 id=&#34;img10787-icon-service-azure-databrickspng-azure-databricks&#34;&gt;&lt;img src=&#34;https://blog.ddata.fr/p/datalake-compute/img/10787-icon-service-Azure-Databricks.png&#34;
+	width=&#34;30&#34;
+	height=&#34;30&#34;
+	srcset=&#34;https://blog.ddata.fr/p/datalake-compute/img/10787-icon-service-Azure-Databricks_hu8e9af3290ac174282009dd85995d7eea_1519_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/datalake-compute/img/10787-icon-service-Azure-Databricks_hu8e9af3290ac174282009dd85995d7eea_1519_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;100&#34;
+		data-flex-basis=&#34;240px&#34;
+	
+&gt; Azure Databricks&lt;/h3&gt;
+&lt;p&gt;Azure Databricks est l&amp;rsquo;implémentation de Databricks dans Azure.&lt;br&gt;
+Databricks est un outil basé sur Apache Spark tout en incluant des services complémentaires. Au même titre qu&amp;rsquo;Azure Synapse Analytics, il permet de créer des traitements d&amp;rsquo;ingestion et de préparation de données.&lt;/p&gt;
+&lt;p&gt;Contrairement à Azure Synapse Analytics, Databricks est prévu pour être multicloud, vous retrouverez ce service dans AWS (Amazon) ou GCP (Google).&lt;/p&gt;
+&lt;p&gt;Vous retrouverez les informations sur le produit &lt;a class=&#34;link&#34; href=&#34;https://azure.microsoft.com/fr-fr/products/databricks/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;ici&lt;/a&gt;.&lt;/p&gt;
+&lt;h3 id=&#34;img10145-icon-service-azure-data-explorer-clusterspng-azure-data-explorer&#34;&gt;&lt;img src=&#34;https://blog.ddata.fr/p/datalake-compute/img/10145-icon-service-Azure-Data-Explorer-Clusters.png&#34;
+	width=&#34;30&#34;
+	height=&#34;30&#34;
+	srcset=&#34;https://blog.ddata.fr/p/datalake-compute/img/10145-icon-service-Azure-Data-Explorer-Clusters_hu8e9af3290ac174282009dd85995d7eea_1395_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/datalake-compute/img/10145-icon-service-Azure-Data-Explorer-Clusters_hu8e9af3290ac174282009dd85995d7eea_1395_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;100&#34;
+		data-flex-basis=&#34;240px&#34;
+	
+&gt; Azure Data Explorer&lt;/h3&gt;
+&lt;p&gt;Azure Data Explorer est un moteur de traitement spécialisé dans les traitements des logs et des séries temporelles.&lt;br&gt;
+Microsoft a créé un langage de requête dédié nommé KQL (Kusto Query Language) permettant de plonger dans les puits de logs comme le commandant Cousteau dans la mer.&lt;/p&gt;
+&lt;p&gt;Vous retrouverez les informations sur le produit &lt;a class=&#34;link&#34; href=&#34;https://azure.microsoft.com/fr-fr/products/data-explorer/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;ici&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;les-services-cognitifs&#34;&gt;Les services cognitifs&lt;/h2&gt;
+&lt;h3 id=&#34;img10162-icon-service-cognitive-servicespng-azure-cognitive-services&#34;&gt;&lt;img src=&#34;https://blog.ddata.fr/p/datalake-compute/img/10162-icon-service-Cognitive-Services.png&#34;
+	width=&#34;30&#34;
+	height=&#34;30&#34;
+	srcset=&#34;https://blog.ddata.fr/p/datalake-compute/img/10162-icon-service-Cognitive-Services_hu8e9af3290ac174282009dd85995d7eea_1235_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/datalake-compute/img/10162-icon-service-Cognitive-Services_hu8e9af3290ac174282009dd85995d7eea_1235_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;100&#34;
+		data-flex-basis=&#34;240px&#34;
+	
+&gt; Azure Cognitive Services&lt;/h3&gt;
+&lt;p&gt;Azure Cognitive Services est un ensemble de service de type IA préentrainé que vous pouvez consommer directement sous forme d&amp;rsquo;API.&lt;br&gt;
+Parmi les principaux services proposés, on retrouve :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;La reconnaissance de texte&lt;/li&gt;
+&lt;li&gt;La reconnaissance faciale&lt;/li&gt;
+&lt;li&gt;La reconnaissance d&amp;rsquo;entité sur des images ou vidéos&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Vous pouvez intégrer ces services dans vos traitements de données pour enrichir ces dernières.&lt;/p&gt;
+&lt;p&gt;Vous retrouverez les informations sur le produit &lt;a class=&#34;link&#34; href=&#34;https://azure.microsoft.com/fr-fr/products/cognitive-services/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;ici&lt;/a&gt;.&lt;/p&gt;
+&lt;h3 id=&#34;img10167-icon-service-machine-learning-studio-workspacespng-azure-machine-learning&#34;&gt;&lt;img src=&#34;https://blog.ddata.fr/p/datalake-compute/img/10167-icon-service-Machine-Learning-Studio-Workspaces.png&#34;
+	width=&#34;30&#34;
+	height=&#34;30&#34;
+	srcset=&#34;https://blog.ddata.fr/p/datalake-compute/img/10167-icon-service-Machine-Learning-Studio-Workspaces_hu8e9af3290ac174282009dd85995d7eea_868_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/datalake-compute/img/10167-icon-service-Machine-Learning-Studio-Workspaces_hu8e9af3290ac174282009dd85995d7eea_868_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;100&#34;
+		data-flex-basis=&#34;240px&#34;
+	
+&gt; Azure Machine Learning&lt;/h3&gt;
+&lt;p&gt;Azure Machine Learning est un outil de création d&amp;rsquo;expérience de Machine Learning, il prend en charge de bout en bout ce type de projet de la création du modèle à son exploitation en production.&lt;br&gt;
+Les modèles ainsi créés pourront enrichir vos traitements de données.&lt;/p&gt;
+&lt;p&gt;Vous retrouverez les informations sur le produit &lt;a class=&#34;link&#34; href=&#34;https://azure.microsoft.com/fr-fr/products/machine-learning/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;ici&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;les-services-de-calcul-utilisable-pour-traiter-les-données&#34;&gt;Les services de calcul utilisable pour traiter les données&lt;/h2&gt;
+&lt;h3 id=&#34;img10029-icon-service-function-appspng-azure-functions&#34;&gt;&lt;img src=&#34;https://blog.ddata.fr/p/datalake-compute/img/10029-icon-service-Function-Apps.png&#34;
+	width=&#34;30&#34;
+	height=&#34;30&#34;
+	srcset=&#34;https://blog.ddata.fr/p/datalake-compute/img/10029-icon-service-Function-Apps_hu8e9af3290ac174282009dd85995d7eea_1188_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/datalake-compute/img/10029-icon-service-Function-Apps_hu8e9af3290ac174282009dd85995d7eea_1188_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;100&#34;
+		data-flex-basis=&#34;240px&#34;
+	
+&gt; Azure Functions&lt;/h3&gt;
+&lt;p&gt;Azure Functions permet d&amp;rsquo;exécuter du code à la demande dans Azure, sans louer de ressources en permanence. Vous êtes facturé à l&amp;rsquo;usage.&lt;br&gt;
+Vous pouvez créer des traitements s&amp;rsquo;exécutant à la demande, sur des évènements Azure ou de manière planifiée.&lt;br&gt;
+Les principaux langages disponibles sont :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;C#&lt;/li&gt;
+&lt;li&gt;JavaScript&lt;/li&gt;
+&lt;li&gt;Java&lt;/li&gt;
+&lt;li&gt;PowerShell&lt;/li&gt;
+&lt;li&gt;Python&lt;/li&gt;
+&lt;li&gt;TypeScript&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Par défaut les Azure Functions sont limitées à 5 minutes d&amp;rsquo;exécutions, 10 maximum. Si vous avez besoin de plus regarder &lt;a class=&#34;link&#34; href=&#34;https://learn.microsoft.com/en-us/azure/azure-functions/durable/durable-functions-overview?tabs=csharp-inproc&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;les fonctions durables.&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Vous retrouverez les informations sur le produit &lt;a class=&#34;link&#34; href=&#34;https://azure.microsoft.com/fr-fr/products/functions/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;ici&lt;/a&gt;.&lt;/p&gt;
+&lt;h3 id=&#34;img10201-icon-service-logic-appspng-azure-logic-apps&#34;&gt;&lt;img src=&#34;https://blog.ddata.fr/p/datalake-compute/img/10201-icon-service-Logic-Apps.png&#34;
+	width=&#34;30&#34;
+	height=&#34;30&#34;
+	srcset=&#34;https://blog.ddata.fr/p/datalake-compute/img/10201-icon-service-Logic-Apps_hu8e9af3290ac174282009dd85995d7eea_949_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/datalake-compute/img/10201-icon-service-Logic-Apps_hu8e9af3290ac174282009dd85995d7eea_949_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;100&#34;
+		data-flex-basis=&#34;240px&#34;
+	
+&gt; Azure Logic Apps&lt;/h3&gt;
+&lt;p&gt;Azure Logic Apps est un outil de création de traitement low code. Il est très proche en termes d&amp;rsquo;interface et d&amp;rsquo;utilisation de Power Automate, mais contrairement à ce dernier vous payez les traitements à l&amp;rsquo;exécution, quels que soient les connecteurs utilisés.&lt;br&gt;
+Vous pouvez créer des traitements s&amp;rsquo;exécutant à la demande, sur des évènements Azure ou de manière planifiée.&lt;/p&gt;
+&lt;p&gt;Vous retrouverez les informations sur le produit &lt;a class=&#34;link&#34; href=&#34;https://azure.microsoft.com/fr-fr/products/logic-apps/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;ici&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;autres-services-azure-à-intégrer&#34;&gt;Autres services Azure à intégrer&lt;/h2&gt;
+&lt;h3 id=&#34;img10245-icon-service-key-vaultspng-azure-key-vault&#34;&gt;&lt;img src=&#34;https://blog.ddata.fr/p/datalake-compute/img/10245-icon-service-Key-Vaults.png&#34;
+	width=&#34;30&#34;
+	height=&#34;30&#34;
+	srcset=&#34;https://blog.ddata.fr/p/datalake-compute/img/10245-icon-service-Key-Vaults_hu7a6ed2925b8411b46ca180016908f0d9_1806_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/datalake-compute/img/10245-icon-service-Key-Vaults_hu7a6ed2925b8411b46ca180016908f0d9_1806_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;100&#34;
+		data-flex-basis=&#34;240px&#34;
+	
+&gt; Azure Key Vault&lt;/h3&gt;
+&lt;p&gt;Azure Key Vault est un coffre-fort pour vos mots de passe, est-il besoin de rappeler qu&amp;rsquo;un mot de passe n&amp;rsquo;a rien à faire en clair dans un code ?&lt;br&gt;
+Azure Key Vault vous permettra de sécurisé vos mots de passe et autres secrets et le mettra à disposition des applications ayant le droit de les utiliser. Vos différentes briques de services Azure ou autre pourront ainsi utiliser des secrets en toute discrétion.&lt;/p&gt;
+&lt;p&gt;Vous retrouverez les informations sur le produit &lt;a class=&#34;link&#34; href=&#34;https://azure.microsoft.com/fr-fr/products/key-vault/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;ici&lt;/a&gt;.&lt;/p&gt;
+&lt;h3 id=&#34;imgpurviewpng-microsoft-purview&#34;&gt;&lt;img src=&#34;https://blog.ddata.fr/p/datalake-compute/img/purview.png&#34;
+	width=&#34;30&#34;
+	height=&#34;19&#34;
+	srcset=&#34;https://blog.ddata.fr/p/datalake-compute/img/purview_huebae1058d42e27fb2cdbb3964620300c_1234_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/datalake-compute/img/purview_huebae1058d42e27fb2cdbb3964620300c_1234_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;157&#34;
+		data-flex-basis=&#34;378px&#34;
+	
+&gt; Microsoft Purview&lt;/h3&gt;
+&lt;p&gt;Microsoft Purview est en ensemble d&amp;rsquo;outils permettant de mettre en place une gouvernance de données globale. Il vous permet aussi de mettre en place un catalogue de données d&amp;rsquo;entreprise.&lt;/p&gt;
+&lt;p&gt;Vous retrouverez les informations sur le produit &lt;a class=&#34;link&#34; href=&#34;https://azure.microsoft.com/fr-fr/products/purview/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;ici&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;architecture-type&#34;&gt;Architecture type&lt;/h2&gt;
+&lt;p&gt;Tous les outils présentés ci-dessus peuvent travailler ensemble dans des architectures data moderne, ma préférée étant celle autour de Synapse pour un usage BI:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/datalake-compute/img/enterprise-bi-scoped-architecture.png&#34;
+	width=&#34;1200&#34;
+	height=&#34;846&#34;
+	srcset=&#34;https://blog.ddata.fr/p/datalake-compute/img/enterprise-bi-scoped-architecture_hu1f3b34477e815894fea8669db0f97484_250544_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/datalake-compute/img/enterprise-bi-scoped-architecture_hu1f3b34477e815894fea8669db0f97484_250544_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Décisionnel d’entreprise&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;141&#34;
+		data-flex-basis=&#34;340px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Vous trouverez les références de cette architecture &lt;a class=&#34;link&#34; href=&#34;https://learn.microsoft.com/fr-fr/azure/architecture/example-scenario/analytics/enterprise-bi-synapse&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;ici&lt;/a&gt; et une version plus globale &lt;a class=&#34;link&#34; href=&#34;https://learn.microsoft.com/fr-fr/azure/architecture/example-scenario/dataplate2e/data-platform-end-to-end&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;ici&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Merci de votre attention.&lt;/p&gt;</description>
+        </item>
+        <item>
         <title>Datalake : la base d&#39;un projet data moderne</title>
         <link>https://blog.ddata.fr/p/datalake-la-base/</link>
         <pubDate>Sun, 26 Feb 2023 00:00:00 +0000</pubDate>
