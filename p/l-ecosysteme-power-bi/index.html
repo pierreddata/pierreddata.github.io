@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="fr-fr" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Vous voulez commencer avec Power BI ? Faisons ensemble un rapide tour de l&amp;rsquo;écosystème du produit.
+'>
+<title>Présentation de l&#39;écosystème Power BI.</title>
+
+<link rel='canonical' href='https://blog.ddata.fr/p/l-ecosysteme-power-bi/'>
+
+<link rel="stylesheet" href="/scss/style.min.5be32ca3f6e1a997c75795c4359147cc6d4fbd34948c0acd51e31d237033978a.css"><meta property='og:title' content='Présentation de l&#39;écosystème Power BI.'>
+<meta property='og:description' content='Vous voulez commencer avec Power BI ? Faisons ensemble un rapide tour de l&amp;rsquo;écosystème du produit.
+'>
+<meta property='og:url' content='https://blog.ddata.fr/p/l-ecosysteme-power-bi/'>
+<meta property='og:site_name' content='Le D de Data'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Architecture' /><meta property='article:tag' content='Débutant' /><meta property='article:published_time' content='2023-03-12T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2023-03-12T00:00:00&#43;00:00'/><meta property='og:image' content='https://blog.ddata.fr/p/l-ecosysteme-power-bi/no-revisions-sVrEI2myiv4-unsplash.jpg' />
+<meta name="twitter:title" content="Présentation de l&#39;écosystème Power BI.">
+<meta name="twitter:description" content="Vous voulez commencer avec Power BI ? Faisons ensemble un rapide tour de l&amp;rsquo;écosystème du produit.
+"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://blog.ddata.fr/p/l-ecosysteme-power-bi/no-revisions-sVrEI2myiv4-unsplash.jpg' />
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TY6XFEN6QV"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-TY6XFEN6QV', { 'anonymize_ip': false });
+}
+</script>
+<link rel="alternate"
+      type="application/rss+xml"
+      href="https://blog.ddata.fr/index.xml"
+      title="Le D de Data">
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "dark");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Afficher le menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/pierre_hua6bbc70dde858dd10e363a14d1f7729c_67951_300x0_resize_q75_box.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Le D de Data</a></h1>
+            <h2 class="site-description">Blog francophone autour de la data Microsoft</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/pierreddata'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://www.linkedin.com/in/pierre-dupont-0b532374/'
+                        target="_blank"
+                        title="LinkdIn"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-folders" width="44" height="44" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <rect x="4" y="4" width="16" height="16" rx="2" />
+  <line x1="8" y1="11" x2="8" y2="16" />
+  <line x1="8" y1="8" x2="8" y2="8.01" />
+  <line x1="12" y1="16" x2="12" y2="11" />
+  <path d="M16 16v-3a2 2 0 0 0 -4 0" />
+</svg>
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Accueil</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/a-propos-de-d-de-data/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>A Propos</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/series/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-folders" width="44" height="44" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 4h3l2 2h5a2 2 0 0 1 2 2v7a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-9a2 2 0 0 1 2 -2" />
+  <path d="M17 17v2a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-9a2 2 0 0 1 2 -2h2" />
+</svg>
+
+                
+                <span>Series</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/liens/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Liens</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Rechercher</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Mode sombre</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table des matières</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#que-faire-avec-power-bi-">Que faire avec Power BI ?</a></li>
+    <li><a href="#qui-peut-utiliser-power-bi-">Qui peut utiliser Power BI ?</a>
+      <ol>
+        <li><a href="#comment-faire-un-projet-bi-">Comment faire un projet BI ?</a></li>
+      </ol>
+    </li>
+    <li><a href="#la-famille-power-bi">La famille Power BI</a>
+      <ol>
+        <li><a href="#power-bi-desktop">Power BI Desktop</a></li>
+        <li><a href="#power-bi-report-builder">Power BI Report Builder</a></li>
+        <li><a href="#power-bi-service">Power BI Service</a>
+          <ol>
+            <li><a href="#espace-de-travail-workspace">Espace de travail (Workspace)</a></li>
+            <li><a href="#applications-apps">Applications (Apps)</a></li>
+          </ol>
+        </li>
+        <li><a href="#power-bi-mobile">Power BI Mobile</a></li>
+        <li><a href="#passerelle-power-bi-power-bi-gateway">Passerelle Power BI (Power BI Gateway)</a></li>
+        <li><a href="#power-bi-embeded">Power BI Embeded</a></li>
+        <li><a href="#power-bi-report-server">Power BI Report Server</a></li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/l-ecosysteme-power-bi/">
+                <img src="/p/l-ecosysteme-power-bi/no-revisions-sVrEI2myiv4-unsplash_huf6962dbb77908a28d639e0c5b85edf9e_1022577_800x0_resize_q75_box.jpg"
+                        srcset="/p/l-ecosysteme-power-bi/no-revisions-sVrEI2myiv4-unsplash_huf6962dbb77908a28d639e0c5b85edf9e_1022577_800x0_resize_q75_box.jpg 800w, /p/l-ecosysteme-power-bi/no-revisions-sVrEI2myiv4-unsplash_huf6962dbb77908a28d639e0c5b85edf9e_1022577_1600x0_resize_q75_box.jpg 1600w"
+                        width="800" 
+                        height="1000" 
+                        loading="lazy"
+                        alt="Featured image of post Présentation de l&#39;écosystème Power BI." />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/powerbi/" style="background-color: #f2c811; color: #fff;">
+                Power BI
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/l-ecosysteme-power-bi/">Présentation de l&#39;écosystème Power BI.</a>
+        </h2>
+
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published" datetime="2023-03-12T00:00:00Z">
+                    12 mars 2023
+                    
+                </time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    6 minutes de lecture
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+    
+    
+</div>
+</header>
+
+    <section class="article-content">
+    
+    
+    <p>Vous voulez commencer avec Power BI ? Faisons ensemble un rapide tour de l&rsquo;écosystème du produit.</p>
+<h2 id="que-faire-avec-power-bi-">Que faire avec Power BI ?</h2>
+<p>BI est l&rsquo;acronyme de Buisiness Inteligence ou Informatique décisionnelle en bon français. C&rsquo;est la branche de l&rsquo;informatique spécialisée dans l&rsquo;analyse de données.
+Le résultat final sera un rapport ou un tableau de bord, mais Power BI est bien plus que cela. Il va vous permettre :</p>
+<ul>
+<li>De collecter vos données depuis différentes sources</li>
+<li>De modéliser vos données et calculer des KPI/mesures/Indoicateurs</li>
+<li>De présenter vos données dans des rapports ou tableaux de bord</li>
+</ul>
+<p>Power BI va vous accompagner tout au long de votre projet BI.</p>
+<h2 id="qui-peut-utiliser-power-bi-">Qui peut utiliser Power BI ?</h2>
+<p>Cette question est de loin la plus importante.
+Power BI n&rsquo;est pas un outil destiné aux informaticiens, mais aux métiers. Qu&rsquo;on les nomme Power User, Citizen developper ou autrement, le concept de base du produit est de permettre à des non-informaticiens de réaliser par eux même des projets BI, sacré challenge !</p>
+<h3 id="comment-faire-un-projet-bi-">Comment faire un projet BI ?</h3>
+<p>Pour répondre à cette question, je vous invite à lire mon article <em><a class="link" href="https://blog.ddata.fr/p/comment-faire-un-projet-bi/" >Comment faire un projet BI.</a></em>.</p>
+<p>Un projet BI ne sera jamais linéaire. Vos données sont vivantes. Votre projet BI doit être itératif. Avec Power BI vous allez pouvoir obtenir rapidement un premier résultat, puis retravailler entièrement vos phases de projets pour obtenir de nouveaux résultats.</p>
+<h2 id="la-famille-power-bi">La famille Power BI</h2>
+<p><img src="/p/l-ecosysteme-power-bi/img/001-power-bi-ecosystem.png"
+	width="1443"
+	height="674"
+	srcset="/p/l-ecosysteme-power-bi/img/001-power-bi-ecosystem_hu3bd491151509bd2d54e450c05db2a2b9_145967_480x0_resize_box_3.png 480w, /p/l-ecosysteme-power-bi/img/001-power-bi-ecosystem_hu3bd491151509bd2d54e450c05db2a2b9_145967_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="L&rsquo;écosystème de Power BI)"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="214"
+		data-flex-basis="513px"
+	
+></p>
+<h3 id="power-bi-desktop">Power BI Desktop</h3>
+<p>Power BI Desktop est l&rsquo;outil de création des projets Power BI. Les rapports produits à l&rsquo;aide de Power BI Desktop sont prévus pour être utilisés sur des écrans de manière interactive. Power BI Desktop est un outil de la gamme Office 365, il cible aussi bien un public d&rsquo;utilisateurs métier voulant prendre en main leur BI qui des professionnels de la BI.</p>
+<p>Power BI Desktop est composé de 3 éléments.</p>
+<p><img src="/p/l-ecosysteme-power-bi/img/002-power-bi.png"
+	width="1421"
+	height="776"
+	srcset="/p/l-ecosysteme-power-bi/img/002-power-bi_hud497b974bd0419bd5d1dc53026851824_91273_480x0_resize_box_3.png 480w, /p/l-ecosysteme-power-bi/img/002-power-bi_hud497b974bd0419bd5d1dc53026851824_91273_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="L&rsquo;interface de Power BI)"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="183"
+		data-flex-basis="439px"
+	
+></p>
+<ul>
+<li>L&rsquo;éditeur Power Query qui permet de gérer la phase ETL du projet BI (1).</li>
+<li>Des outils de modélisation de données (2) &amp; (3).</li>
+<li>Des outils de visualisation des données (4) &amp; (5).</li>
+</ul>
+<p>Le fichier PBIX produit par Power BI desktop contiennent l&rsquo;ensemble des éléments de votre projet.</p>
+<p>Une fois votre projet terminé dans Power BI Desktop, vous allez publier ce projet dans le service Power BI pour le diffuser auprès de vos utilisateurs.</p>
+<h3 id="power-bi-report-builder">Power BI Report Builder</h3>
+<p>Power BI Report Builder est l&rsquo;outil de création de rapport paginé. Contrairement aux rapports créer avec Power BI Desktop, les rapports paginés sont conçus pour être consommés sous forme statique, PDF ou impression papier par exemple.</p>
+<p>En résumé :</p>
+<ul>
+<li>Les rapports créés avec <strong>Power BI desktop</strong> sont destiné à être consommé sur un écran</li>
+<li>Les rapports créés avec <strong>Power BI Report Builder</strong> sont destinés à être consommés sur papier (PDF inclus)</li>
+</ul>
+<p>Il est facile de comprendre le besoin de 2 outils différents : un tableau avec un ascenseur marche très bien sur écran, mais pas du tout sur papier.</p>
+<p>Contrairement à Power BI Desktop c&rsquo;est un outil visant un public technique.</p>
+<h3 id="power-bi-service">Power BI Service</h3>
+<p>Power BI Service est un service disponible sur le web à l&rsquo;adresse <a class="link" href="https://app.powerbi.com/home"  target="_blank" rel="noopener"
+    >https://app.powerbi.com</a>, c&rsquo;est là que vous allez publier vos rapports et les partager avec vos utilisateurs.</p>
+<p>Power BI Service est composée des éléments suivants</p>
+<h4 id="espace-de-travail-workspace">Espace de travail (Workspace)</h4>
+<p>Un espace de travail est l&rsquo;endroit où vous publiez vos projets Power BI. Lors de la publication, un fichier PBIX est séparé en 2 entités, le jeu de données et le rapport.<br>
+Vous trouverez plus d&rsquo;information à ce sujet dans mes précédents articles :</p>
+<ul>
+<li><a class="link" href="https://blog.ddata.fr/p/jeu-de-donnees-et-rapport-la-rupture/" >Jeu de données et rapport : la rupture !</a></li>
+<li><a class="link" href="https://blog.ddata.fr/p/self-service-bi-sur-jeu-de-donnees-existant/" >Voyage au cœur de la BI self-service</a></li>
+</ul>
+<h5 id="jeux-de-données-datasets">Jeux de données (Datasets)</h5>
+<p>Le jeu de données contient les requêtes Power Query, vos données ainsi que le modèle de données avec vos mesures.<br>
+Dans le service vous pourrez paramétrer votre jeu de données :</p>
+<ul>
+<li>En définissant les informations de connexion aux sources de données Cloud ou OnPremise via la passerelle Power BI.</li>
+<li>En gérant les droits d&rsquo;accès.</li>
+<li>En modifiant la valeur des paramètres Power Query</li>
+<li>En définissant les rôles de sécurité si vous avez de la sécurité niveau ligne ou RLS pour Row Level Security en anglais.</li>
+</ul>
+<h5 id="rapports-reports">Rapports (Reports)</h5>
+<p>Les rapports dans le service Power BI sont la partie datavisualisation de votre projet BI de Power BI Desktop.<br>
+Vous avez aussi la possibilité de créer directement des rapports dans l&rsquo;espace de travail sur un jeu de données déjà existant.<br>
+Un rapport ne peut avoir qu&rsquo;un seul jeu de données comme source.</p>
+<h5 id="rapports-paginés-paginated-reports">Rapports paginés (Paginated Reports)</h5>
+<p>Les rapports dans le service Power BI sont les rapports créés avec Power BI Report Builder.</p>
+<h5 id="tableau-de-bord-dashbord">Tableau de bord (Dashbord)</h5>
+<p>Les tableaux de bord vous permettent d&rsquo;épingler des visuels en provenance de différents rapports dans un endroit unique.<br>
+Vous trouverez plus d&rsquo;information dans mon article <a class="link" href="https://blog.ddata.fr/p/power-bi-create-dashboard/" >Power BI : Créer un tableau de bord Power BI</a>.</p>
+<h5 id="flux-de-données-dataflows">Flux de données (Dataflows)</h5>
+<p>Les flux de données sont essentiellement du Power Query Online, ils permettent d&rsquo;exécuter des requêtes Power Query et de stocker le résultat dans le service Power BI.<br>
+Vous trouverez plus d&rsquo;information dans mon article <a class="link" href="https://blog.ddata.fr/p/mutualiser-vos-donnees-avec-les-dataflow/" >Mutualiser vos données avec les dataflows</a>.</p>
+<h4 id="applications-apps">Applications (Apps)</h4>
+<p>Les applications sont le bon moyen de diffusion de vos rapports et tableaux de bord à vos audiences.<br>
+Vous trouverez plus d&rsquo;information dans mon article <a class="link" href="https://blog.ddata.fr/p/les-applications-power-bi/" >Les applications Power BI ?!?  A quoi ça sert ?</a>.</p>
+<h3 id="power-bi-mobile">Power BI Mobile</h3>
+<p>Power BI Mobile est une application disponible dans les magasins d&rsquo;applications (Apple ou Android) qui vous permet de consulter les rapports publiés dans le service Power BI directement depuis votre téléphone mobile.</p>
+<h3 id="passerelle-power-bi-power-bi-gateway">Passerelle Power BI (Power BI Gateway)</h3>
+<p>La passerelle Power BI est une application qui s&rsquo;installe sur vos serveurs d&rsquo;entreprise afin de créer un lien entre le service Power BI et vos données dans votre réseau d&rsquo;entreprise. Elle permet au service Power BI de rafraichir des données se trouvant dans votre réseau d&rsquo;entreprise.</p>
+<p><img src="/p/l-ecosysteme-power-bi/img/003-on-premises-data-gateway.png"
+	width="730"
+	height="528"
+	srcset="/p/l-ecosysteme-power-bi/img/003-on-premises-data-gateway_hu989ec6c9b48993f5b77a6188224065f4_24200_480x0_resize_box_3.png 480w, /p/l-ecosysteme-power-bi/img/003-on-premises-data-gateway_hu989ec6c9b48993f5b77a6188224065f4_24200_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Architecture de la passerelle Power BI)"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="138"
+		data-flex-basis="331px"
+	
+></p>
+<p>Elle existe en 2 versions :</p>
+<ul>
+<li>Standard : la version que l&rsquo;on utilise en entreprise, elle permet de connecter différents services Microsoft à vos données d&rsquo;entreprise. Elle est utilisable par toutes personnes autorisées.</li>
+<li>Personnel : utilisable uniquement par la personne l&rsquo;ayant installé et uniquement pour Power BI</li>
+</ul>
+<p>Vous trouverez plus de détail <a class="link" href="https://powerbi.microsoft.com/fr-fr/gateway/"  target="_blank" rel="noopener"
+    >ici</a>.</p>
+<h3 id="power-bi-embeded">Power BI Embeded</h3>
+<p>Power BI Embeded est l&rsquo;appellation de l&rsquo;utilisation de rapports publiés dans le service Power BI au sein d&rsquo;application destiné à des utilisateurs internes ou externes à votre entreprise. Son usage est soumis à des licences spécifiques en fonction des cas d&rsquo;utilisations.</p>
+<h3 id="power-bi-report-server">Power BI Report Server</h3>
+<p>Power BI Report Server est une application s&rsquo;installant dans votre réseau d&rsquo;entreprise équivalente au service Power BI mais avec beaucoup moins de fonctionnalités. Une version spécifique de Power BI Desktop doit être utilisé pour créer et publier du contenu dans Power BI Report Server.<br>
+Cette solution est intéressante si vos données ne doivent pas être hébergées dans le cloud.</p>
+<p>Merci de votre attention.</p>
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/architecture/">Architecture</a>
+        
+            <a href="/tags/d%C3%A9butant/">Débutant</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Contenus liés</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/parametres-power-qwery/">
+        
+        
+            <div class="article-image">
+                <img src="/p/parametres-power-qwery/_hu792653f7b7326a670abe032c0e66ac08_1629682_1192a9017b0db82456cebdf9c5a1f42f.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Les paramètres Power Query"
+                        data-key="parametres-power-qwery" 
+                        data-hash="md5-bj6qxrIsSOwymxHRoef17A==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Les paramètres Power Query</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/modelisation-de-donnees-les-bases/">
+        
+        
+            <div class="article-image">
+                <img src="/p/modelisation-de-donnees-les-bases/_hu24d5abd74ebb0a153cabc62bc39d7d45_1806570_6565ff5e03b71a24fb8586b0ca590f5b.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post C&#39;est quoi la modélisation de données ?"
+                        data-key="modelisation-de-donnees-les-bases" 
+                        data-hash="md5-xOpjIhDvvDM670TateFYsw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">C&#39;est quoi la modélisation de données ?</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/self-service-bi-sur-jeu-de-donnees-existant/">
+        
+        
+            <div class="article-image">
+                <img src="/p/self-service-bi-sur-jeu-de-donnees-existant/_huc8aff4f4bdb05689828a54a86f8617f1_1552202_5d36e9619bc730ebb8e2c073105e58a2.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post  Voyage au coeur de la BI self-service"
+                        data-key="self-service-bi-sur-jeu-de-donnees-existant" 
+                        data-hash="md5-S6l97x4yJRdZgzQ0Vmj0dQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title"> Voyage au coeur de la BI self-service</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/partager-avec-power-bi/">
+        
+        
+            <div class="article-image">
+                <img src="/p/partager-avec-power-bi/_hu59c2f53d89f061f5e30f7c5261dfb40e_568587_7d3ba1f9ee7d313ebf73cc317fc261f7.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Bien partager votre travail"
+                        data-key="partager-avec-power-bi" 
+                        data-hash="md5-xuweQS6Q/R488nCig4eb/g==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Bien partager votre travail</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/jeu-de-donnees-et-rapport-la-rupture/">
+        
+        
+            <div class="article-image">
+                <img src="/p/jeu-de-donnees-et-rapport-la-rupture/_hu4f849c82d4e14f72bfb032f4fe26f62a_6495568_c0c74b23519d2b31bca3f8d7c87e8405.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Jeu de données et rapport : la rupture !"
+                        data-key="jeu-de-donnees-et-rapport-la-rupture" 
+                        data-hash="md5-uUSTCTw&#43;oM5tgaeFQi3L4w==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Jeu de données et rapport : la rupture !</h2>
+        </div>
+    </a>
+</article>
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "ddata" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2022 - 
+        
+        2023 Le D de Data
+    </section>
+    
+    <section class="powerby">
+        Généré avec <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Thème <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.16.0">Stack</a></b> conçu par <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

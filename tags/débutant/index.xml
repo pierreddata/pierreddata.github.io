@@ -6,7 +6,144 @@
         <description>Recent content in Débutant on Le D de Data</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>fr-fr</language>
-        <lastBuildDate>Sun, 12 Feb 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ddata.fr/tags/d%C3%A9butant/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sun, 12 Mar 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ddata.fr/tags/d%C3%A9butant/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Présentation de l&#39;écosystème Power BI.</title>
+        <link>https://blog.ddata.fr/p/l-ecosysteme-power-bi/</link>
+        <pubDate>Sun, 12 Mar 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://blog.ddata.fr/p/l-ecosysteme-power-bi/</guid>
+        <description>&lt;img src="https://blog.ddata.fr/p/l-ecosysteme-power-bi/no-revisions-sVrEI2myiv4-unsplash.jpg" alt="Featured image of post Présentation de l&#39;écosystème Power BI." /&gt;&lt;p&gt;Vous voulez commencer avec Power BI ? Faisons ensemble un rapide tour de l&amp;rsquo;écosystème du produit.&lt;/p&gt;
+&lt;h2 id=&#34;que-faire-avec-power-bi-&#34;&gt;Que faire avec Power BI ?&lt;/h2&gt;
+&lt;p&gt;BI est l&amp;rsquo;acronyme de Buisiness Inteligence ou Informatique décisionnelle en bon français. C&amp;rsquo;est la branche de l&amp;rsquo;informatique spécialisée dans l&amp;rsquo;analyse de données.
+Le résultat final sera un rapport ou un tableau de bord, mais Power BI est bien plus que cela. Il va vous permettre :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;De collecter vos données depuis différentes sources&lt;/li&gt;
+&lt;li&gt;De modéliser vos données et calculer des KPI/mesures/Indoicateurs&lt;/li&gt;
+&lt;li&gt;De présenter vos données dans des rapports ou tableaux de bord&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Power BI va vous accompagner tout au long de votre projet BI.&lt;/p&gt;
+&lt;h2 id=&#34;qui-peut-utiliser-power-bi-&#34;&gt;Qui peut utiliser Power BI ?&lt;/h2&gt;
+&lt;p&gt;Cette question est de loin la plus importante.
+Power BI n&amp;rsquo;est pas un outil destiné aux informaticiens, mais aux métiers. Qu&amp;rsquo;on les nomme Power User, Citizen developper ou autrement, le concept de base du produit est de permettre à des non-informaticiens de réaliser par eux même des projets BI, sacré challenge !&lt;/p&gt;
+&lt;h3 id=&#34;comment-faire-un-projet-bi-&#34;&gt;Comment faire un projet BI ?&lt;/h3&gt;
+&lt;p&gt;Pour répondre à cette question, je vous invite à lire mon article &lt;em&gt;&lt;a class=&#34;link&#34; href=&#34;https://blog.ddata.fr/p/comment-faire-un-projet-bi/&#34; &gt;Comment faire un projet BI.&lt;/a&gt;&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;Un projet BI ne sera jamais linéaire. Vos données sont vivantes. Votre projet BI doit être itératif. Avec Power BI vous allez pouvoir obtenir rapidement un premier résultat, puis retravailler entièrement vos phases de projets pour obtenir de nouveaux résultats.&lt;/p&gt;
+&lt;h2 id=&#34;la-famille-power-bi&#34;&gt;La famille Power BI&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/l-ecosysteme-power-bi/img/001-power-bi-ecosystem.png&#34;
+	width=&#34;1443&#34;
+	height=&#34;674&#34;
+	srcset=&#34;https://blog.ddata.fr/p/l-ecosysteme-power-bi/img/001-power-bi-ecosystem_hu3bd491151509bd2d54e450c05db2a2b9_145967_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/l-ecosysteme-power-bi/img/001-power-bi-ecosystem_hu3bd491151509bd2d54e450c05db2a2b9_145967_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;L&amp;rsquo;écosystème de Power BI)&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;214&#34;
+		data-flex-basis=&#34;513px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;power-bi-desktop&#34;&gt;Power BI Desktop&lt;/h3&gt;
+&lt;p&gt;Power BI Desktop est l&amp;rsquo;outil de création des projets Power BI. Les rapports produits à l&amp;rsquo;aide de Power BI Desktop sont prévus pour être utilisés sur des écrans de manière interactive. Power BI Desktop est un outil de la gamme Office 365, il cible aussi bien un public d&amp;rsquo;utilisateurs métier voulant prendre en main leur BI qui des professionnels de la BI.&lt;/p&gt;
+&lt;p&gt;Power BI Desktop est composé de 3 éléments.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/l-ecosysteme-power-bi/img/002-power-bi.png&#34;
+	width=&#34;1421&#34;
+	height=&#34;776&#34;
+	srcset=&#34;https://blog.ddata.fr/p/l-ecosysteme-power-bi/img/002-power-bi_hud497b974bd0419bd5d1dc53026851824_91273_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/l-ecosysteme-power-bi/img/002-power-bi_hud497b974bd0419bd5d1dc53026851824_91273_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;L&amp;rsquo;interface de Power BI)&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;183&#34;
+		data-flex-basis=&#34;439px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;L&amp;rsquo;éditeur Power Query qui permet de gérer la phase ETL du projet BI (1).&lt;/li&gt;
+&lt;li&gt;Des outils de modélisation de données (2) &amp;amp; (3).&lt;/li&gt;
+&lt;li&gt;Des outils de visualisation des données (4) &amp;amp; (5).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Le fichier PBIX produit par Power BI desktop contiennent l&amp;rsquo;ensemble des éléments de votre projet.&lt;/p&gt;
+&lt;p&gt;Une fois votre projet terminé dans Power BI Desktop, vous allez publier ce projet dans le service Power BI pour le diffuser auprès de vos utilisateurs.&lt;/p&gt;
+&lt;h3 id=&#34;power-bi-report-builder&#34;&gt;Power BI Report Builder&lt;/h3&gt;
+&lt;p&gt;Power BI Report Builder est l&amp;rsquo;outil de création de rapport paginé. Contrairement aux rapports créer avec Power BI Desktop, les rapports paginés sont conçus pour être consommés sous forme statique, PDF ou impression papier par exemple.&lt;/p&gt;
+&lt;p&gt;En résumé :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Les rapports créés avec &lt;strong&gt;Power BI desktop&lt;/strong&gt; sont destiné à être consommé sur un écran&lt;/li&gt;
+&lt;li&gt;Les rapports créés avec &lt;strong&gt;Power BI Report Builder&lt;/strong&gt; sont destinés à être consommés sur papier (PDF inclus)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Il est facile de comprendre le besoin de 2 outils différents : un tableau avec un ascenseur marche très bien sur écran, mais pas du tout sur papier.&lt;/p&gt;
+&lt;p&gt;Contrairement à Power BI Desktop c&amp;rsquo;est un outil visant un public technique.&lt;/p&gt;
+&lt;h3 id=&#34;power-bi-service&#34;&gt;Power BI Service&lt;/h3&gt;
+&lt;p&gt;Power BI Service est un service disponible sur le web à l&amp;rsquo;adresse &lt;a class=&#34;link&#34; href=&#34;https://app.powerbi.com/home&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://app.powerbi.com&lt;/a&gt;, c&amp;rsquo;est là que vous allez publier vos rapports et les partager avec vos utilisateurs.&lt;/p&gt;
+&lt;p&gt;Power BI Service est composée des éléments suivants&lt;/p&gt;
+&lt;h4 id=&#34;espace-de-travail-workspace&#34;&gt;Espace de travail (Workspace)&lt;/h4&gt;
+&lt;p&gt;Un espace de travail est l&amp;rsquo;endroit où vous publiez vos projets Power BI. Lors de la publication, un fichier PBIX est séparé en 2 entités, le jeu de données et le rapport.&lt;br&gt;
+Vous trouverez plus d&amp;rsquo;information à ce sujet dans mes précédents articles :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://blog.ddata.fr/p/jeu-de-donnees-et-rapport-la-rupture/&#34; &gt;Jeu de données et rapport : la rupture !&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://blog.ddata.fr/p/self-service-bi-sur-jeu-de-donnees-existant/&#34; &gt;Voyage au cœur de la BI self-service&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&#34;jeux-de-données-datasets&#34;&gt;Jeux de données (Datasets)&lt;/h5&gt;
+&lt;p&gt;Le jeu de données contient les requêtes Power Query, vos données ainsi que le modèle de données avec vos mesures.&lt;br&gt;
+Dans le service vous pourrez paramétrer votre jeu de données :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;En définissant les informations de connexion aux sources de données Cloud ou OnPremise via la passerelle Power BI.&lt;/li&gt;
+&lt;li&gt;En gérant les droits d&amp;rsquo;accès.&lt;/li&gt;
+&lt;li&gt;En modifiant la valeur des paramètres Power Query&lt;/li&gt;
+&lt;li&gt;En définissant les rôles de sécurité si vous avez de la sécurité niveau ligne ou RLS pour Row Level Security en anglais.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&#34;rapports-reports&#34;&gt;Rapports (Reports)&lt;/h5&gt;
+&lt;p&gt;Les rapports dans le service Power BI sont la partie datavisualisation de votre projet BI de Power BI Desktop.&lt;br&gt;
+Vous avez aussi la possibilité de créer directement des rapports dans l&amp;rsquo;espace de travail sur un jeu de données déjà existant.&lt;br&gt;
+Un rapport ne peut avoir qu&amp;rsquo;un seul jeu de données comme source.&lt;/p&gt;
+&lt;h5 id=&#34;rapports-paginés-paginated-reports&#34;&gt;Rapports paginés (Paginated Reports)&lt;/h5&gt;
+&lt;p&gt;Les rapports dans le service Power BI sont les rapports créés avec Power BI Report Builder.&lt;/p&gt;
+&lt;h5 id=&#34;tableau-de-bord-dashbord&#34;&gt;Tableau de bord (Dashbord)&lt;/h5&gt;
+&lt;p&gt;Les tableaux de bord vous permettent d&amp;rsquo;épingler des visuels en provenance de différents rapports dans un endroit unique.&lt;br&gt;
+Vous trouverez plus d&amp;rsquo;information dans mon article &lt;a class=&#34;link&#34; href=&#34;https://blog.ddata.fr/p/power-bi-create-dashboard/&#34; &gt;Power BI : Créer un tableau de bord Power BI&lt;/a&gt;.&lt;/p&gt;
+&lt;h5 id=&#34;flux-de-données-dataflows&#34;&gt;Flux de données (Dataflows)&lt;/h5&gt;
+&lt;p&gt;Les flux de données sont essentiellement du Power Query Online, ils permettent d&amp;rsquo;exécuter des requêtes Power Query et de stocker le résultat dans le service Power BI.&lt;br&gt;
+Vous trouverez plus d&amp;rsquo;information dans mon article &lt;a class=&#34;link&#34; href=&#34;https://blog.ddata.fr/p/mutualiser-vos-donnees-avec-les-dataflow/&#34; &gt;Mutualiser vos données avec les dataflows&lt;/a&gt;.&lt;/p&gt;
+&lt;h4 id=&#34;applications-apps&#34;&gt;Applications (Apps)&lt;/h4&gt;
+&lt;p&gt;Les applications sont le bon moyen de diffusion de vos rapports et tableaux de bord à vos audiences.&lt;br&gt;
+Vous trouverez plus d&amp;rsquo;information dans mon article &lt;a class=&#34;link&#34; href=&#34;https://blog.ddata.fr/p/les-applications-power-bi/&#34; &gt;Les applications Power BI ?!?  A quoi ça sert ?&lt;/a&gt;.&lt;/p&gt;
+&lt;h3 id=&#34;power-bi-mobile&#34;&gt;Power BI Mobile&lt;/h3&gt;
+&lt;p&gt;Power BI Mobile est une application disponible dans les magasins d&amp;rsquo;applications (Apple ou Android) qui vous permet de consulter les rapports publiés dans le service Power BI directement depuis votre téléphone mobile.&lt;/p&gt;
+&lt;h3 id=&#34;passerelle-power-bi-power-bi-gateway&#34;&gt;Passerelle Power BI (Power BI Gateway)&lt;/h3&gt;
+&lt;p&gt;La passerelle Power BI est une application qui s&amp;rsquo;installe sur vos serveurs d&amp;rsquo;entreprise afin de créer un lien entre le service Power BI et vos données dans votre réseau d&amp;rsquo;entreprise. Elle permet au service Power BI de rafraichir des données se trouvant dans votre réseau d&amp;rsquo;entreprise.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/l-ecosysteme-power-bi/img/003-on-premises-data-gateway.png&#34;
+	width=&#34;730&#34;
+	height=&#34;528&#34;
+	srcset=&#34;https://blog.ddata.fr/p/l-ecosysteme-power-bi/img/003-on-premises-data-gateway_hu989ec6c9b48993f5b77a6188224065f4_24200_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/l-ecosysteme-power-bi/img/003-on-premises-data-gateway_hu989ec6c9b48993f5b77a6188224065f4_24200_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Architecture de la passerelle Power BI)&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;138&#34;
+		data-flex-basis=&#34;331px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Elle existe en 2 versions :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Standard : la version que l&amp;rsquo;on utilise en entreprise, elle permet de connecter différents services Microsoft à vos données d&amp;rsquo;entreprise. Elle est utilisable par toutes personnes autorisées.&lt;/li&gt;
+&lt;li&gt;Personnel : utilisable uniquement par la personne l&amp;rsquo;ayant installé et uniquement pour Power BI&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Vous trouverez plus de détail &lt;a class=&#34;link&#34; href=&#34;https://powerbi.microsoft.com/fr-fr/gateway/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;ici&lt;/a&gt;.&lt;/p&gt;
+&lt;h3 id=&#34;power-bi-embeded&#34;&gt;Power BI Embeded&lt;/h3&gt;
+&lt;p&gt;Power BI Embeded est l&amp;rsquo;appellation de l&amp;rsquo;utilisation de rapports publiés dans le service Power BI au sein d&amp;rsquo;application destiné à des utilisateurs internes ou externes à votre entreprise. Son usage est soumis à des licences spécifiques en fonction des cas d&amp;rsquo;utilisations.&lt;/p&gt;
+&lt;h3 id=&#34;power-bi-report-server&#34;&gt;Power BI Report Server&lt;/h3&gt;
+&lt;p&gt;Power BI Report Server est une application s&amp;rsquo;installant dans votre réseau d&amp;rsquo;entreprise équivalente au service Power BI mais avec beaucoup moins de fonctionnalités. Une version spécifique de Power BI Desktop doit être utilisé pour créer et publier du contenu dans Power BI Report Server.&lt;br&gt;
+Cette solution est intéressante si vos données ne doivent pas être hébergées dans le cloud.&lt;/p&gt;
+&lt;p&gt;Merci de votre attention.&lt;/p&gt;</description>
+        </item>
+        <item>
         <title>Les paramètres Power Query</title>
         <link>https://blog.ddata.fr/p/parametres-power-qwery/</link>
         <pubDate>Sun, 12 Feb 2023 00:00:00 +0000</pubDate>
