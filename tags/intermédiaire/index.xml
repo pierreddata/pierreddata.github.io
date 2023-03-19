@@ -6,7 +6,199 @@
         <description>Recent content in Intermédiaire on Le D de Data</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>fr-fr</language>
-        <lastBuildDate>Fri, 17 Feb 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ddata.fr/tags/interm%C3%A9diaire/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sun, 19 Mar 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ddata.fr/tags/interm%C3%A9diaire/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Bien utiliser l&#39;éditeur avancé de Power Query</title>
+        <link>https://blog.ddata.fr/p/power-query-advanced-editor/</link>
+        <pubDate>Sun, 19 Mar 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://blog.ddata.fr/p/power-query-advanced-editor/</guid>
+        <description>&lt;img src="https://blog.ddata.fr/p/power-query-advanced-editor/anastasiia-kamil--uQZPtoJ8nk-unsplash.jpg" alt="Featured image of post Bien utiliser l&#39;éditeur avancé de Power Query" /&gt;&lt;p&gt;Power Query est la brique de Power BI qui permet l&amp;rsquo;ingestion et la transformation de vos sources de données. Si vous débutez, je vous propose de vous montrer les principales options avancées .&lt;/p&gt;
+&lt;h2 id=&#34;contexte&#34;&gt;Contexte&lt;/h2&gt;
+&lt;p&gt;Il y a 2 manières d&amp;rsquo;utiliser Power Query :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;avec les assistants quand on débute&lt;/li&gt;
+&lt;li&gt;en modifiant directement le code produit.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;En effet, lorsque vous utilisez Power Query via les assistants, ce dernier produit un code correspondant aux différentes étapes des transformations demandées, ce sont les requêtes Power Query.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/power-query-advanced-editor/img/001-power-query.png&#34;
+	width=&#34;1084&#34;
+	height=&#34;753&#34;
+	srcset=&#34;https://blog.ddata.fr/p/power-query-advanced-editor/img/001-power-query_hu596983896e3aec9f23121c5aecbdc502_53253_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/power-query-advanced-editor/img/001-power-query_hu596983896e3aec9f23121c5aecbdc502_53253_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Editeur Power Query&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;143&#34;
+		data-flex-basis=&#34;345px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Liste des requêtes Power Query&lt;/li&gt;
+&lt;li&gt;Liste des étapes de la requête sélectionnée.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Le code des requêtes Power Query est écrit dans le langage M.&lt;/p&gt;
+&lt;h2 id=&#34;afficher-le-code-m-dans-léditeur-power-query&#34;&gt;Afficher le code M dans l&amp;rsquo;éditeur Power Query&lt;/h2&gt;
+&lt;p&gt;Pour pouvoir comprendre comment fonctionne le code M, la première chose à faire est d&amp;rsquo;afficher le code généré dans l&amp;rsquo;éditeur Power Query.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/power-query-advanced-editor/img/002-power-query-activate-formula-bar.png&#34;
+	width=&#34;1390&#34;
+	height=&#34;372&#34;
+	srcset=&#34;https://blog.ddata.fr/p/power-query-advanced-editor/img/002-power-query-activate-formula-bar_hu7b071219469418873b9a030f07bd07e8_41576_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/power-query-advanced-editor/img/002-power-query-activate-formula-bar_hu7b071219469418873b9a030f07bd07e8_41576_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Afficher la barre de formule&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;373&#34;
+		data-flex-basis=&#34;896px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Dans Power Query, sélectionnez le menu &lt;em&gt;Affichage&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Cochez &lt;em&gt;Barre de formule&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Vous pouvez voir le code de l&amp;rsquo;étape dans la barre de formule.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Vous pouvez modifier directement le code M depuis la barre de formule, parfois c&amp;rsquo;est plus simple et rapide que de repasser par les assistants.&lt;/p&gt;
+&lt;h2 id=&#34;ouvrir-léditeur-avancé&#34;&gt;Ouvrir l&amp;rsquo;éditeur avancé&lt;/h2&gt;
+&lt;p&gt;La barre de formule permet de modifier une transformation précise. Chaque transformation correspond à une étape de votre requête Power Query, vous pouvez éditer toutes les transformations d&amp;rsquo;un coup à l&amp;rsquo;aide de l&amp;rsquo;éditeur avancé.&lt;/p&gt;
+&lt;p&gt;Pour ouvrir l&amp;rsquo;éditeur avancé, vous devez :&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/power-query-advanced-editor/img/003-power-query-open-advanced-editor.png&#34;
+	width=&#34;1083&#34;
+	height=&#34;754&#34;
+	srcset=&#34;https://blog.ddata.fr/p/power-query-advanced-editor/img/003-power-query-open-advanced-editor_hu18ed3178c5688987678d91395e07b8b8_63873_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/power-query-advanced-editor/img/003-power-query-open-advanced-editor_hu18ed3178c5688987678d91395e07b8b8_63873_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Ouvrir l&amp;rsquo;éditeur avancé de Power Query&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;143&#34;
+		data-flex-basis=&#34;344px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Première manière de faire, sélectionnez le menu &lt;em&gt;Accueil&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Appuyez sur &lt;em&gt;Éditeur avancé&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Seconde manière, faire un clic droit sur une requête.&lt;/li&gt;
+&lt;li&gt;Appuyez sur &lt;em&gt;Éditeur avancé&lt;/em&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;L&amp;rsquo;éditeur avancé s&amp;rsquo;affiche :&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/power-query-advanced-editor/img/004-power-query-show-advanced-editor.png&#34;
+	width=&#34;883&#34;
+	height=&#34;553&#34;
+	srcset=&#34;https://blog.ddata.fr/p/power-query-advanced-editor/img/004-power-query-show-advanced-editor_hudc9442729af645933dd632654054ada9_65171_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/power-query-advanced-editor/img/004-power-query-show-advanced-editor_hudc9442729af645933dd632654054ada9_65171_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Éditeur avancé de Power Query&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;159&#34;
+		data-flex-basis=&#34;383px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;personnaliser-laffichage&#34;&gt;Personnaliser l&amp;rsquo;affichage&lt;/h3&gt;
+&lt;p&gt;Vous pouvez modifier l&amp;rsquo;affichage de l&amp;rsquo;éditeur en activant certaines options pratiques.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/power-query-advanced-editor/img/005-power-query-show-advanced-editor-option.png&#34;
+	width=&#34;883&#34;
+	height=&#34;553&#34;
+	srcset=&#34;https://blog.ddata.fr/p/power-query-advanced-editor/img/005-power-query-show-advanced-editor-option_hu983e6ce06e43a4fcef160dfef0e4dad6_74670_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/power-query-advanced-editor/img/005-power-query-show-advanced-editor-option_hu983e6ce06e43a4fcef160dfef0e4dad6_74670_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Option de l&amp;rsquo;éditeur avancé de Power Query&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;159&#34;
+		data-flex-basis=&#34;383px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Appuyez sur &lt;em&gt;Option d&amp;rsquo;affichage&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Sélectionnez ou désélectionnez les options qui vous intéressent.&lt;/li&gt;
+&lt;li&gt;L&amp;rsquo;option &lt;em&gt;Afficher les numéros de ligne&lt;/em&gt; permet d&amp;rsquo;y voir plus clair dans le code affiché, surtout si on doit en parler avec quelqu&amp;rsquo;un.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Vous pouvez mettre des commentaires dans votre code
+&lt;img src=&#34;https://blog.ddata.fr/p/power-query-advanced-editor/img/006-power-query-show-advanced-editor-comment.png&#34;
+	width=&#34;883&#34;
+	height=&#34;553&#34;
+	srcset=&#34;https://blog.ddata.fr/p/power-query-advanced-editor/img/006-power-query-show-advanced-editor-comment_hu124936b963f8327b9ecf7c7e7b30aefa_54650_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/power-query-advanced-editor/img/006-power-query-show-advanced-editor-comment_hu124936b963f8327b9ecf7c7e7b30aefa_54650_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Commentaires dans l&amp;rsquo;éditeur avancé de Power Query&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;159&#34;
+		data-flex-basis=&#34;383px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Pour les commentaires sur une ligne : //&lt;/li&gt;
+&lt;li&gt;Pour les commentaires multiligne : /* */&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Les commentaires apparaissent en vert dans l&amp;rsquo;éditeur.&lt;br&gt;
+Les commentaires apparaissent dans les étapes de l&amp;rsquo;éditeur Power Query.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/power-query-advanced-editor/img/007-power-query-show-comment.png&#34;
+	width=&#34;241&#34;
+	height=&#34;132&#34;
+	srcset=&#34;https://blog.ddata.fr/p/power-query-advanced-editor/img/007-power-query-show-comment_hu2911773ea2281d32a19f5ceb834219f8_6965_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/power-query-advanced-editor/img/007-power-query-show-comment_hu2911773ea2281d32a19f5ceb834219f8_6965_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Commentaires dans les étapes Power Query&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;182&#34;
+		data-flex-basis=&#34;438px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Pointez-les avec la souris pour les lire.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;comprendre-les-requêtes-power-query&#34;&gt;Comprendre les requêtes Power Query&lt;/h2&gt;
+&lt;p&gt;Il faut comprendre la relation qui existe entre le code et les étapes de votre requête Power Query.&lt;br&gt;
+Pour commencer, vous pouvez remarquer que chaque étape dans le code ressemble à ce pattern : &lt;strong&gt;NomDeMonEtape = FamilledeFonction.NomdeLafonction(Mes, Paramètres)&lt;/strong&gt;&lt;br&gt;
+Les lignes se terminent par une virgule pour séparer les étapes (sauf la dernière étape).&lt;br&gt;
+Donc ce que l&amp;rsquo;on trouve avant le symbole égal dans l&amp;rsquo;éditeur avancé est juste le nom de l&amp;rsquo;étape. Si le nom de cette étape contient des espaces, elle est entourée des symboles &lt;strong&gt;#&amp;quot;&amp;quot;&lt;/strong&gt;, par exemple &lt;strong&gt;#&amp;ldquo;Mon nom d&amp;rsquo;étape avec des espaces&amp;rdquo;&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;Je vais maintenant vous expliquer plus en détail les autres choses que l&amp;rsquo;on trouve dans l&amp;rsquo;éditeur Power Query.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/power-query-advanced-editor/img/008-power-query-advanced-editor-explain.png&#34;
+	width=&#34;1081&#34;
+	height=&#34;753&#34;
+	srcset=&#34;https://blog.ddata.fr/p/power-query-advanced-editor/img/008-power-query-advanced-editor-explain_hu409ffbed0d335ac41e0f7ba38dc4d917_126537_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/power-query-advanced-editor/img/008-power-query-advanced-editor-explain_hu409ffbed0d335ac41e0f7ba38dc4d917_126537_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Relation entre le code et les étapes Power Query&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;143&#34;
+		data-flex-basis=&#34;344px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;L&amp;rsquo;étape &lt;em&gt;Type modifié&lt;/em&gt; présente dans la liste des étapes est définie sur la ligne 8 de notre exemple, elle se voit affecter le résultat de la fonction se trouvant après le symbole égal de la ligne 8. Cette fonction renvoie une table.&lt;/li&gt;
+&lt;li&gt;L&amp;rsquo;étape suivante sur la ligne 9, &lt;em&gt;Année insérée&lt;/em&gt;, utilise une fonction qui prend en paramètre la table résultat de l&amp;rsquo;étape &lt;em&gt;Type modifié&lt;/em&gt; (en jaune)&lt;/li&gt;
+&lt;li&gt;On retrouve la même chose pour les étapes suivantes. Une étape correspond donc a un résultat pouvant être réutilisé.&lt;/li&gt;
+&lt;li&gt;L&amp;rsquo;étape n&amp;rsquo;est pas forcément réutilisée dans l&amp;rsquo;étape suivante et les fonctions ne renvoient pas forcément des tables. Vous pouvez voir que les étapes des lignes 3 et 4, &lt;em&gt;DateDebut&lt;/em&gt; et &lt;em&gt;DateFin&lt;/em&gt;, sont utilisées dans l&amp;rsquo;étape 5.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Vous remarquerez que le code M appelle toujours des fonctions dont le nom est du type &lt;em&gt;FamilledeFonction.NomdeLafonction&lt;/em&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;aller-plus-loin-avec-le-langage-m&#34;&gt;Aller plus loin avec le langage M&lt;/h2&gt;
+&lt;h3 id=&#34;aide-du-langage&#34;&gt;Aide du langage&lt;/h3&gt;
+&lt;p&gt;Une grande partie des fonctions du langage M ne sont pas disponibles via les assistants, mais sont utilisables directement dans le code.&lt;br&gt;
+Pour les fonctions disponibles, on trouve souvent un grand nombre d&amp;rsquo;options non disponible via les assistants.
+Pour connaitre les détails du langage, rendez-vous sur la documentation de &lt;a class=&#34;link&#34; href=&#34;https://learn.microsoft.com/en-us/powerquery-m/power-query-m-function-reference&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Microsoft&lt;/a&gt;. Elles sont classées par famille, il n&amp;rsquo;est pas inutile de passer un peu de temps à explorer pour vos futurs besoins.&lt;/p&gt;
+&lt;h3 id=&#34;taper-sans-les-points&#34;&gt;Taper sans les points&lt;/h3&gt;
+&lt;p&gt;Lorsque vous saisissez une fonction M, dans la barre de formule ou l&amp;rsquo;éditeur avancé, l&amp;rsquo;aide à la saisie se déclenche. Pour en profiter au maximum, ne saisissez pas le point entre la famille de fonction et le nom de la fonction, quand le focus est sur la fonction que vous souhaitez utiliser la touche Tabulation (à gauche au-dessus du verrouillage numérique) pour terminer automatiquement la saisie.&lt;/p&gt;
+&lt;h3 id=&#34;les-fonctions-avancées&#34;&gt;Les fonctions avancées&lt;/h3&gt;
+&lt;p&gt;Le code M permet des usages très avancés, ce sont les Helper, certaines de ces fonctions sont documentées par &lt;a class=&#34;link&#34; href=&#34;https://learn.microsoft.com/en-us/power-query/helper-functions&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Microsoft ici&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Merci de votre attention.&lt;/p&gt;</description>
+        </item>
+        <item>
         <title>Mutualiser vos données avec les dataflows</title>
         <link>https://blog.ddata.fr/p/mutualiser-vos-donnees-avec-les-dataflow/</link>
         <pubDate>Fri, 17 Feb 2023 00:00:00 +0000</pubDate>
