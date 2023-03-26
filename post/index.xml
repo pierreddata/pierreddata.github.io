@@ -6,13 +6,153 @@
         <description>Recent content in Posts on Le D de Data</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>fr-fr</language>
-        <lastBuildDate>Sun, 19 Mar 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ddata.fr/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sun, 26 Mar 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ddata.fr/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Datalake : les principaux formats de fichiers</title>
+        <link>https://blog.ddata.fr/p/datalake-file-format/</link>
+        <pubDate>Sun, 26 Mar 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://blog.ddata.fr/p/datalake-file-format/</guid>
+        <description>&lt;img src="https://blog.ddata.fr/p/datalake-file-format/david-bruno-silva-Z19vToWBDIc-unsplash.jpg" alt="Featured image of post Datalake : les principaux formats de fichiers" /&gt;&lt;p&gt;Dans cet article je vous présente les principaux formats de fichier que l&amp;rsquo;on trouve dans un datalake.&lt;/p&gt;
+&lt;h2 id=&#34;contexte&#34;&gt;Contexte&lt;/h2&gt;
+&lt;p&gt;Lorsque vous travaillez avec un datalake vous allez manipuler un certain nombre de formats de fichier. Je vous présente ici ceux que vous rencontrerez le plus souvent.&lt;/p&gt;
+&lt;p&gt;Vous trouverez dans mes articles précédents les explications concernant :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Les architectures de type datalakehouse : &lt;a class=&#34;link&#34; href=&#34;https://blog.ddata.fr/p/reporting-datawarehouse-datalakehouse/&#34; &gt;Datawarehouse ou datalakehouse, quelle source pour vos reportings ?&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Les datalakes :&lt;a class=&#34;link&#34; href=&#34;https://blog.ddata.fr/p/datalake-la-base/&#34; &gt;Datalake : la base d&amp;rsquo;un projet data moderne&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;quest-ce-quun-fichier-&#34;&gt;Qu&amp;rsquo;est-ce qu&amp;rsquo;un fichier ?&lt;/h2&gt;
+&lt;p&gt;La question peut sembler triviale pour certain j&amp;rsquo;ai rencontré suffisamment de personnes pour qui cela n&amp;rsquo;était pas clair pour prendre le temps de l&amp;rsquo;expliquer.&lt;br&gt;
+En informatique on utilise des fichiers pour stocker de l&amp;rsquo;information et des dossiers pour ranger nos fichiers dans des structures hiérarchiques.&lt;br&gt;
+Un fichier peut contenir tous types d&amp;rsquo;informations, du code binaire de vos programmes aux données des documents que vous réalisez avec ces programmes.&lt;br&gt;
+On appelle un format de fichier l&amp;rsquo;extension du fichier.&lt;br&gt;
+L&amp;rsquo;extension du fichier est simplement la suite de caractères se trouvant après le dernier point du nom complet du fichier. Les extensions sont souvent masquées dans l&amp;rsquo;explorateur de fichier de Windows.&lt;br&gt;
+Par exemple, &lt;em&gt;MonFichier.json&lt;/em&gt; est un fichier de type json.
+Attention l&amp;rsquo;extension du fichier ne garantit en aucun cas que le contenu du fichier est bien celui prétendu par l&amp;rsquo;extension. Il s&amp;rsquo;agit simplement d&amp;rsquo;une convention, pas d&amp;rsquo;une contrainte.
+Enfin on peut distinguer 2 grands types de contenus dans nos fichiers :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;les contenus texte, les fichiers sont lisibles et éditables avec un éditeur de texte.&lt;/li&gt;
+&lt;li&gt;les contenus binaires, les fichiers sont utilisables avec des programmes particuliers.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;json&#34;&gt;JSON&lt;/h2&gt;
+&lt;p&gt;Les fichiers JSON :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;on en général l&amp;rsquo;extension &lt;em&gt;.json&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;ils contiennent du texte&lt;/li&gt;
+&lt;li&gt;ils sont produits par des systèmes automatisés comme des API.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Un fichier JSON permet de stocker de l&amp;rsquo;information hiérarchique, en effet ce format provient de la programmation est est utilisé pour stockée des objets complexes.&lt;br&gt;
+Pour faire simple, dans un JSON vous stockez des couples clé/valeur sous la forme &lt;em&gt;&amp;ldquo;MaClé&amp;rdquo;: &amp;ldquo;MaValeur&amp;rdquo;&lt;/em&gt; chaque couple est séparé par une virgule.&lt;br&gt;
+La valeur peut être :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Une chaine de caractères, dans ce cas elle est entre quote &lt;em&gt;&amp;quot;&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;une valeur numérique, dans ce cas elle est saisie directement après les 2 points. On utilise le point comme séparateur décimal.&lt;/li&gt;
+&lt;li&gt;un valeur booléenne, dans ce cas on saisie directement &lt;em&gt;true&lt;/em&gt; ou &lt;em&gt;false&lt;/em&gt; sans quote.&lt;/li&gt;
+&lt;li&gt;un objet, qui n&amp;rsquo;est défini comme un ensemble de clés/valeur correspondant à une clé. Dans ce cas la valeur se trouve entre accolades.&lt;/li&gt;
+&lt;li&gt;un tableau, qui peut contenir plusieurs valeurs de n&amp;rsquo;importe quel type.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Voici un exemple de fichier JSON :&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nt&#34;&gt;&amp;#34;MonObjet&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;Nom&amp;#34;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;Nom de mon objet&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;&amp;#34;Quantite&amp;#34;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;10&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;},&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nt&#34;&gt;&amp;#34;MonTableauDeNombre&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;],&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nt&#34;&gt;&amp;#34;MonTableauDObjet&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;Titre&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;Mon livre&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;&amp;#34;Auteur&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;Max&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;},&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;Titre&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;Mon second livre&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;&amp;#34;Auteur&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;Max&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;csv&#34;&gt;CSV&lt;/h2&gt;
+&lt;p&gt;Les fichiers CSV :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;on en général l&amp;rsquo;extension &lt;em&gt;.csv&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;ils contiennent du texte&lt;/li&gt;
+&lt;li&gt;ils sont produits par des systèmes automatisés comme des exports de logiciel métier.&lt;/li&gt;
+&lt;li&gt;le format peut différer en fonction des informations régionales utilisées pour le produire.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Un fichier CSV permet de stocker de l&amp;rsquo;information sous la forme d&amp;rsquo;un tableau de données.&lt;br&gt;
+On retrouve une ligne dans le fichier par ligne dans la table, toutes les lignes du fichier doivent avoir la même structure.&lt;/p&gt;
+&lt;p&gt;Pour chaque fichier CSV on doit connaitre les informations le constituant afin de pouvoir le lire sans erreur, notamment :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Quel est le séparateur de colonne, le point-virgule en français ou la virgule en américain.&lt;/li&gt;
+&lt;li&gt;Quel est le séparateur décimal, la virgule en français ou le point en américain.&lt;/li&gt;
+&lt;li&gt;Qu’elle est de délimiteur de colonne s’il existe, en général la double quote &lt;em&gt;&amp;quot;&lt;/em&gt; qui permet d&amp;rsquo;utiliser les séparateurs de colonnes dans du texte sans qu&amp;rsquo;il soit interprété.&lt;/li&gt;
+&lt;li&gt;Si la première ligne est l&amp;rsquo;en tête des colonnes ou une ligne de données.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Voici un exemple de fichier CSV américain :&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Titre,Auteur,Quantité
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Mon livre, Max, 10
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Mon second livre, Max, 25
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;excel&#34;&gt;Excel&lt;/h2&gt;
+&lt;p&gt;Les fichiers Excel :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;on en général l&amp;rsquo;extension &lt;em&gt;.xls&lt;/em&gt; ou &lt;em&gt;.xlsx&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;ils contiennent des données binaires.&lt;/li&gt;
+&lt;li&gt;ils sont produits par Microsoft Excel ou des systèmes d&amp;rsquo;export de données.&lt;/li&gt;
+&lt;li&gt;le nombre de lignes d&amp;rsquo;une feuille de calcul est limité (1 048 576 lignes pour les fichiers xlsx)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Les fichiers Excel sont en général une source de problème, car étant à la main des utilisateurs, ils ont tendance à modifier la structure de leur fichier sans connaitre les conséquences sur les traitements de données utilisant leurs fichiers.&lt;br&gt;
+Attention on trouve encore beaucoup de fichier Excel 97-2003, ceux avec l&amp;rsquo;extension &lt;em&gt;xls&lt;/em&gt;, ce format de fichier est vieillissant. Évitez-les si vous le pouvez.&lt;/p&gt;
+&lt;h2 id=&#34;parquet&#34;&gt;Parquet&lt;/h2&gt;
+&lt;p&gt;Les fichiers Parquet :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;on en général l&amp;rsquo;extension &lt;em&gt;.parquet&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;ils contiennent des données binaires.&lt;/li&gt;
+&lt;li&gt;ils sont inmutables, une fois le fichier créer vous ne pouvez pas modifier sont contenu.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Les fichiers parquet sont le format roi des datalakes. Ils stockent des tables et apportent grand nombre de services :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Présence des métadonnées de la table
+&lt;ul&gt;
+&lt;li&gt;nom de colonne&lt;/li&gt;
+&lt;li&gt;type de données&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Stockage colonne optimisée pour les traitements analytiques.&lt;/li&gt;
+&lt;li&gt;Compression des données.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Étant inmutable, l&amp;rsquo;utilisation de ces fichiers demande une bonne stratégie d&amp;rsquo;alimentation pour optimiser vos traitements. En général on trouve les scénarii suivant :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Remplacement intégral des fichiers avec la nouvelle version des données.&lt;/li&gt;
+&lt;li&gt;Remplacement partiel des fichiers avec un sous-ensemble des données, on ne remplace que certains fichiers, chaque fichier correspond à une partition de données connue.&lt;/li&gt;
+&lt;li&gt;Ajout uniquement des nouvelles données dans de nouveaux fichiers.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Le format parquet est un format open source géré par la &lt;a class=&#34;link&#34; href=&#34;https://parquet.apache.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;fondation Apache&lt;/a&gt;.&lt;/p&gt;
+&lt;h3 id=&#34;delta-lake&#34;&gt;Delta lake&lt;/h3&gt;
+&lt;p&gt;La gestion des suppression et modification de données dans le système source n&amp;rsquo;est pas simple à gérer avec les fichiers parquets.&lt;br&gt;
+Afin de simplifier cela, il existe le format Delta lake qui permet de gérer ces problèmes. Le résultat est un ensemble de fichiers parquet et json qui représente l&amp;rsquo;état des données. Chaque modification créée de nouveaux fichiers.
+Vous trouverez plus d&amp;rsquo;information sur le &lt;a class=&#34;link&#34; href=&#34;https://delta.io/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;site de delta lake&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Merci de votre attention.&lt;/p&gt;</description>
+        </item>
+        <item>
         <title>Bien utiliser l&#39;éditeur avancé de Power Query</title>
         <link>https://blog.ddata.fr/p/power-query-advanced-editor/</link>
         <pubDate>Sun, 19 Mar 2023 00:00:00 +0000</pubDate>
         
         <guid>https://blog.ddata.fr/p/power-query-advanced-editor/</guid>
-        <description>&lt;img src="https://blog.ddata.fr/p/power-query-advanced-editor/anastasiia-kamil--uQZPtoJ8nk-unsplash.jpg" alt="Featured image of post Bien utiliser l&#39;éditeur avancé de Power Query" /&gt;&lt;p&gt;Power Query est la brique de Power BI qui permet l&amp;rsquo;ingestion et la transformation de vos sources de données. Si vous débutez, je vous propose de vous montrer les principales options avancées .&lt;/p&gt;
+        <description>&lt;img src="https://blog.ddata.fr/p/power-query-advanced-editor/anastasiia-kamil--uQZPtoJ8nk-unsplash.jpg" alt="Featured image of post Bien utiliser l&#39;éditeur avancé de Power Query" /&gt;&lt;p&gt;Power Query est la brique de Power BI qui permet l&amp;rsquo;ingestion et la transformation de vos sources de données. Si vous débutez, je vous propose de vous montrer les principales options avancées.&lt;/p&gt;
 &lt;h2 id=&#34;contexte&#34;&gt;Contexte&lt;/h2&gt;
 &lt;p&gt;Il y a 2 manières d&amp;rsquo;utiliser Power Query :&lt;/p&gt;
 &lt;ul&gt;

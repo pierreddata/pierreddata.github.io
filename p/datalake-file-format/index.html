@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="fr-fr" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Dans cet article je vous présente les principaux formats de fichier que l&amp;rsquo;on trouve dans un datalake.
+'>
+<title>Datalake : les principaux formats de fichiers</title>
+
+<link rel='canonical' href='https://blog.ddata.fr/p/datalake-file-format/'>
+
+<link rel="stylesheet" href="/scss/style.min.5be32ca3f6e1a997c75795c4359147cc6d4fbd34948c0acd51e31d237033978a.css"><meta property='og:title' content='Datalake : les principaux formats de fichiers'>
+<meta property='og:description' content='Dans cet article je vous présente les principaux formats de fichier que l&amp;rsquo;on trouve dans un datalake.
+'>
+<meta property='og:url' content='https://blog.ddata.fr/p/datalake-file-format/'>
+<meta property='og:site_name' content='Le D de Data'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Auto formation' /><meta property='article:published_time' content='2023-03-26T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2023-03-26T00:00:00&#43;00:00'/><meta property='og:image' content='https://blog.ddata.fr/p/datalake-file-format/david-bruno-silva-Z19vToWBDIc-unsplash.jpg' />
+<meta name="twitter:title" content="Datalake : les principaux formats de fichiers">
+<meta name="twitter:description" content="Dans cet article je vous présente les principaux formats de fichier que l&amp;rsquo;on trouve dans un datalake.
+"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://blog.ddata.fr/p/datalake-file-format/david-bruno-silva-Z19vToWBDIc-unsplash.jpg' />
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TY6XFEN6QV"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-TY6XFEN6QV', { 'anonymize_ip': false });
+}
+</script>
+<link rel="alternate"
+      type="application/rss+xml"
+      href="https://blog.ddata.fr/index.xml"
+      title="Le D de Data">
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "dark");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Afficher le menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/pierre_hua6bbc70dde858dd10e363a14d1f7729c_67951_300x0_resize_q75_box.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Le D de Data</a></h1>
+            <h2 class="site-description">Blog francophone autour de la data Microsoft</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/pierreddata'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://www.linkedin.com/in/pierre-dupont-0b532374/'
+                        target="_blank"
+                        title="LinkdIn"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-folders" width="44" height="44" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <rect x="4" y="4" width="16" height="16" rx="2" />
+  <line x1="8" y1="11" x2="8" y2="16" />
+  <line x1="8" y1="8" x2="8" y2="8.01" />
+  <line x1="12" y1="16" x2="12" y2="11" />
+  <path d="M16 16v-3a2 2 0 0 0 -4 0" />
+</svg>
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Accueil</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/a-propos-de-d-de-data/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>A Propos</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/series/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-folders" width="44" height="44" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 4h3l2 2h5a2 2 0 0 1 2 2v7a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-9a2 2 0 0 1 2 -2" />
+  <path d="M17 17v2a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-9a2 2 0 0 1 2 -2h2" />
+</svg>
+
+                
+                <span>Series</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/liens/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Liens</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Rechercher</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Mode sombre</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table des matières</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#contexte">Contexte</a></li>
+    <li><a href="#quest-ce-quun-fichier-">Qu&rsquo;est-ce qu&rsquo;un fichier ?</a></li>
+    <li><a href="#json">JSON</a></li>
+    <li><a href="#csv">CSV</a></li>
+    <li><a href="#excel">Excel</a></li>
+    <li><a href="#parquet">Parquet</a>
+      <ol>
+        <li><a href="#delta-lake">Delta lake</a></li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/datalake-file-format/">
+                <img src="/p/datalake-file-format/david-bruno-silva-Z19vToWBDIc-unsplash_hu7b96a42f0cce3c959105b317d2a6b238_2704901_800x0_resize_q75_box.jpg"
+                        srcset="/p/datalake-file-format/david-bruno-silva-Z19vToWBDIc-unsplash_hu7b96a42f0cce3c959105b317d2a6b238_2704901_800x0_resize_q75_box.jpg 800w, /p/datalake-file-format/david-bruno-silva-Z19vToWBDIc-unsplash_hu7b96a42f0cce3c959105b317d2a6b238_2704901_1600x0_resize_q75_box.jpg 1600w"
+                        width="800" 
+                        height="533" 
+                        loading="lazy"
+                        alt="Featured image of post Datalake : les principaux formats de fichiers" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/data/" style="background-color: #EE1F25; color: #fff;">
+                Data
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/datalake-file-format/">Datalake : les principaux formats de fichiers</a>
+        </h2>
+
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published" datetime="2023-03-26T00:00:00Z">
+                    26 mars 2023
+                    
+                </time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    5 minutes de lecture
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+    
+    
+</div>
+</header>
+
+    <section class="article-content">
+    
+    
+    <p>Dans cet article je vous présente les principaux formats de fichier que l&rsquo;on trouve dans un datalake.</p>
+<h2 id="contexte">Contexte</h2>
+<p>Lorsque vous travaillez avec un datalake vous allez manipuler un certain nombre de formats de fichier. Je vous présente ici ceux que vous rencontrerez le plus souvent.</p>
+<p>Vous trouverez dans mes articles précédents les explications concernant :</p>
+<ul>
+<li>Les architectures de type datalakehouse : <a class="link" href="https://blog.ddata.fr/p/reporting-datawarehouse-datalakehouse/" >Datawarehouse ou datalakehouse, quelle source pour vos reportings ?</a>.</li>
+<li>Les datalakes :<a class="link" href="https://blog.ddata.fr/p/datalake-la-base/" >Datalake : la base d&rsquo;un projet data moderne</a>.</li>
+</ul>
+<h2 id="quest-ce-quun-fichier-">Qu&rsquo;est-ce qu&rsquo;un fichier ?</h2>
+<p>La question peut sembler triviale pour certain j&rsquo;ai rencontré suffisamment de personnes pour qui cela n&rsquo;était pas clair pour prendre le temps de l&rsquo;expliquer.<br>
+En informatique on utilise des fichiers pour stocker de l&rsquo;information et des dossiers pour ranger nos fichiers dans des structures hiérarchiques.<br>
+Un fichier peut contenir tous types d&rsquo;informations, du code binaire de vos programmes aux données des documents que vous réalisez avec ces programmes.<br>
+On appelle un format de fichier l&rsquo;extension du fichier.<br>
+L&rsquo;extension du fichier est simplement la suite de caractères se trouvant après le dernier point du nom complet du fichier. Les extensions sont souvent masquées dans l&rsquo;explorateur de fichier de Windows.<br>
+Par exemple, <em>MonFichier.json</em> est un fichier de type json.
+Attention l&rsquo;extension du fichier ne garantit en aucun cas que le contenu du fichier est bien celui prétendu par l&rsquo;extension. Il s&rsquo;agit simplement d&rsquo;une convention, pas d&rsquo;une contrainte.
+Enfin on peut distinguer 2 grands types de contenus dans nos fichiers :</p>
+<ul>
+<li>les contenus texte, les fichiers sont lisibles et éditables avec un éditeur de texte.</li>
+<li>les contenus binaires, les fichiers sont utilisables avec des programmes particuliers.</li>
+</ul>
+<h2 id="json">JSON</h2>
+<p>Les fichiers JSON :</p>
+<ul>
+<li>on en général l&rsquo;extension <em>.json</em></li>
+<li>ils contiennent du texte</li>
+<li>ils sont produits par des systèmes automatisés comme des API.</li>
+</ul>
+<p>Un fichier JSON permet de stocker de l&rsquo;information hiérarchique, en effet ce format provient de la programmation est est utilisé pour stockée des objets complexes.<br>
+Pour faire simple, dans un JSON vous stockez des couples clé/valeur sous la forme <em>&ldquo;MaClé&rdquo;: &ldquo;MaValeur&rdquo;</em> chaque couple est séparé par une virgule.<br>
+La valeur peut être :</p>
+<ul>
+<li>Une chaine de caractères, dans ce cas elle est entre quote <em>&quot;</em>.</li>
+<li>une valeur numérique, dans ce cas elle est saisie directement après les 2 points. On utilise le point comme séparateur décimal.</li>
+<li>un valeur booléenne, dans ce cas on saisie directement <em>true</em> ou <em>false</em> sans quote.</li>
+<li>un objet, qui n&rsquo;est défini comme un ensemble de clés/valeur correspondant à une clé. Dans ce cas la valeur se trouve entre accolades.</li>
+<li>un tableau, qui peut contenir plusieurs valeurs de n&rsquo;importe quel type.</li>
+</ul>
+<p>Voici un exemple de fichier JSON :</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;MonObjet&#34;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&#34;Nom&#34;</span> <span class="p">:</span> <span class="s2">&#34;Nom de mon objet&#34;</span><span class="p">,</span> <span class="nt">&#34;Quantite&#34;</span> <span class="p">:</span> <span class="mi">10</span><span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;MonTableauDeNombre&#34;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;MonTableauDObjet&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">      <span class="p">{</span><span class="nt">&#34;Titre&#34;</span><span class="p">:</span> <span class="s2">&#34;Mon livre&#34;</span><span class="p">,</span> <span class="nt">&#34;Auteur&#34;</span><span class="p">:</span> <span class="s2">&#34;Max&#34;</span><span class="p">},</span> 
+</span></span><span class="line"><span class="cl">      <span class="p">{</span><span class="nt">&#34;Titre&#34;</span><span class="p">:</span> <span class="s2">&#34;Mon second livre&#34;</span><span class="p">,</span> <span class="nt">&#34;Auteur&#34;</span><span class="p">:</span> <span class="s2">&#34;Max&#34;</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">      <span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="csv">CSV</h2>
+<p>Les fichiers CSV :</p>
+<ul>
+<li>on en général l&rsquo;extension <em>.csv</em></li>
+<li>ils contiennent du texte</li>
+<li>ils sont produits par des systèmes automatisés comme des exports de logiciel métier.</li>
+<li>le format peut différer en fonction des informations régionales utilisées pour le produire.</li>
+</ul>
+<p>Un fichier CSV permet de stocker de l&rsquo;information sous la forme d&rsquo;un tableau de données.<br>
+On retrouve une ligne dans le fichier par ligne dans la table, toutes les lignes du fichier doivent avoir la même structure.</p>
+<p>Pour chaque fichier CSV on doit connaitre les informations le constituant afin de pouvoir le lire sans erreur, notamment :</p>
+<ul>
+<li>Quel est le séparateur de colonne, le point-virgule en français ou la virgule en américain.</li>
+<li>Quel est le séparateur décimal, la virgule en français ou le point en américain.</li>
+<li>Qu’elle est de délimiteur de colonne s’il existe, en général la double quote <em>&quot;</em> qui permet d&rsquo;utiliser les séparateurs de colonnes dans du texte sans qu&rsquo;il soit interprété.</li>
+<li>Si la première ligne est l&rsquo;en tête des colonnes ou une ligne de données.</li>
+</ul>
+<p>Voici un exemple de fichier CSV américain :</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Titre,Auteur,Quantité
+</span></span><span class="line"><span class="cl">Mon livre, Max, 10
+</span></span><span class="line"><span class="cl">Mon second livre, Max, 25
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="excel">Excel</h2>
+<p>Les fichiers Excel :</p>
+<ul>
+<li>on en général l&rsquo;extension <em>.xls</em> ou <em>.xlsx</em>.</li>
+<li>ils contiennent des données binaires.</li>
+<li>ils sont produits par Microsoft Excel ou des systèmes d&rsquo;export de données.</li>
+<li>le nombre de lignes d&rsquo;une feuille de calcul est limité (1 048 576 lignes pour les fichiers xlsx)</li>
+</ul>
+<p>Les fichiers Excel sont en général une source de problème, car étant à la main des utilisateurs, ils ont tendance à modifier la structure de leur fichier sans connaitre les conséquences sur les traitements de données utilisant leurs fichiers.<br>
+Attention on trouve encore beaucoup de fichier Excel 97-2003, ceux avec l&rsquo;extension <em>xls</em>, ce format de fichier est vieillissant. Évitez-les si vous le pouvez.</p>
+<h2 id="parquet">Parquet</h2>
+<p>Les fichiers Parquet :</p>
+<ul>
+<li>on en général l&rsquo;extension <em>.parquet</em>.</li>
+<li>ils contiennent des données binaires.</li>
+<li>ils sont inmutables, une fois le fichier créer vous ne pouvez pas modifier sont contenu.</li>
+</ul>
+<p>Les fichiers parquet sont le format roi des datalakes. Ils stockent des tables et apportent grand nombre de services :</p>
+<ul>
+<li>Présence des métadonnées de la table
+<ul>
+<li>nom de colonne</li>
+<li>type de données</li>
+</ul>
+</li>
+<li>Stockage colonne optimisée pour les traitements analytiques.</li>
+<li>Compression des données.</li>
+</ul>
+<p>Étant inmutable, l&rsquo;utilisation de ces fichiers demande une bonne stratégie d&rsquo;alimentation pour optimiser vos traitements. En général on trouve les scénarii suivant :</p>
+<ul>
+<li>Remplacement intégral des fichiers avec la nouvelle version des données.</li>
+<li>Remplacement partiel des fichiers avec un sous-ensemble des données, on ne remplace que certains fichiers, chaque fichier correspond à une partition de données connue.</li>
+<li>Ajout uniquement des nouvelles données dans de nouveaux fichiers.</li>
+</ul>
+<p>Le format parquet est un format open source géré par la <a class="link" href="https://parquet.apache.org/"  target="_blank" rel="noopener"
+    >fondation Apache</a>.</p>
+<h3 id="delta-lake">Delta lake</h3>
+<p>La gestion des suppression et modification de données dans le système source n&rsquo;est pas simple à gérer avec les fichiers parquets.<br>
+Afin de simplifier cela, il existe le format Delta lake qui permet de gérer ces problèmes. Le résultat est un ensemble de fichiers parquet et json qui représente l&rsquo;état des données. Chaque modification créée de nouveaux fichiers.
+Vous trouverez plus d&rsquo;information sur le <a class="link" href="https://delta.io/"  target="_blank" rel="noopener"
+    >site de delta lake</a>.</p>
+<p>Merci de votre attention.</p>
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/auto-formation/">Auto formation</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Contenus liés</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/datalake-compute/">
+        
+        
+            <div class="article-image">
+                <img src="/p/datalake-compute/_huabd43efd91f25ddf48b57b8258cba1be_7710978_32b7f7cc909a6d06bc2538c6fd73bfb4.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Datalake : comment traiter les données d&#39;un datalake dans Azure"
+                        data-key="datalake-compute" 
+                        data-hash="md5-VLy4um3&#43;GCs9fx6xPJ1AoQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Datalake : comment traiter les données d&#39;un datalake dans Azure</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/datalake-la-base/">
+        
+        
+            <div class="article-image">
+                <img src="/p/datalake-la-base/_hu0aa3f93b2631ba2a32af5171088bce89_2286693_99fe5381d1849f007a28d9e271f98a19.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Datalake : la base d&#39;un projet data moderne"
+                        data-key="datalake-la-base" 
+                        data-hash="md5-XS8IKKiJI9HVYcDLGszlMA==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Datalake : la base d&#39;un projet data moderne</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/reporting-datawarehouse-datalakehouse/">
+        
+        
+            <div class="article-image">
+                <img src="/p/reporting-datawarehouse-datalakehouse/_hu8a7a29d89b178f9f3af884e9f947f179_1540306_a39e37980e7df0688f4036850d2fcd37.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Datawarehouse ou datalakehouse, quelle source pour vos reportings ?"
+                        data-key="reporting-datawarehouse-datalakehouse" 
+                        data-hash="md5-46O1YGqAYHItTg1OSNTwaw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Datawarehouse ou datalakehouse, quelle source pour vos reportings ?</h2>
+        </div>
+    </a>
+</article>
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "ddata" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2022 - 
+        
+        2023 Le D de Data
+    </section>
+    
+    <section class="powerby">
+        Généré avec <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Thème <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.16.0">Stack</a></b> conçu par <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>
