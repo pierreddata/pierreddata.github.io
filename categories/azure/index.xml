@@ -209,7 +209,7 @@ Vous pouvez créer des traitements s&amp;rsquo;exécutant à la demande, sur des
 	
 &gt; Azure Key Vault&lt;/h3&gt;
 &lt;p&gt;Azure Key Vault est un coffre-fort pour vos mots de passe, est-il besoin de rappeler qu&amp;rsquo;un mot de passe n&amp;rsquo;a rien à faire en clair dans un code ?&lt;br&gt;
-Azure Key Vault vous permettra de sécurisé vos mots de passe et autres secrets et le mettra à disposition des applications ayant le droit de les utiliser. Vos différentes briques de services Azure ou autre pourront ainsi utiliser des secrets en toute discrétion.&lt;/p&gt;
+Azure Key Vault vous permettra de sécuriser vos mots de passe et autres secrets et le mettra à disposition des applications ayant le droit de les utiliser. Vos différentes briques de services Azure ou autre pourront ainsi utiliser des secrets en toute discrétion.&lt;/p&gt;
 &lt;p&gt;Vous retrouverez les informations sur le produit &lt;a class=&#34;link&#34; href=&#34;https://azure.microsoft.com/fr-fr/products/key-vault/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;ici&lt;/a&gt;.&lt;/p&gt;
 &lt;h3 id=&#34;imgpurviewpng-microsoft-purview&#34;&gt;&lt;img src=&#34;https://blog.ddata.fr/p/datalake-compute/img/purview.png&#34;

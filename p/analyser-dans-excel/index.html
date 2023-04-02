@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<html lang="fr-fr" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Excel est votre premier amour ? Et s’il rencontré votre service Power BI.
+'>
+<title>Analyser dans Excel, la rencontre d&#39;Excel et du service Power BI</title>
+
+<link rel='canonical' href='https://blog.ddata.fr/p/analyser-dans-excel/'>
+
+<link rel="stylesheet" href="/scss/style.min.5be32ca3f6e1a997c75795c4359147cc6d4fbd34948c0acd51e31d237033978a.css"><meta property='og:title' content='Analyser dans Excel, la rencontre d&#39;Excel et du service Power BI'>
+<meta property='og:description' content='Excel est votre premier amour ? Et s’il rencontré votre service Power BI.
+'>
+<meta property='og:url' content='https://blog.ddata.fr/p/analyser-dans-excel/'>
+<meta property='og:site_name' content='Le D de Data'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Intermédiaire' /><meta property='article:tag' content='Auto formation' /><meta property='article:published_time' content='2023-04-02T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2023-04-02T00:00:00&#43;00:00'/><meta property='og:image' content='https://blog.ddata.fr/p/analyser-dans-excel/matcha-co-pC16vUGYCL4-unsplash.jpg' />
+<meta name="twitter:title" content="Analyser dans Excel, la rencontre d&#39;Excel et du service Power BI">
+<meta name="twitter:description" content="Excel est votre premier amour ? Et s’il rencontré votre service Power BI.
+"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://blog.ddata.fr/p/analyser-dans-excel/matcha-co-pC16vUGYCL4-unsplash.jpg' />
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TY6XFEN6QV"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-TY6XFEN6QV', { 'anonymize_ip': false });
+}
+</script>
+<link rel="alternate"
+      type="application/rss+xml"
+      href="https://blog.ddata.fr/index.xml"
+      title="Le D de Data">
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "dark");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Afficher le menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/pierre_hua6bbc70dde858dd10e363a14d1f7729c_67951_300x0_resize_q75_box.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Le D de Data</a></h1>
+            <h2 class="site-description">Blog francophone autour de la data Microsoft</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/pierreddata'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://www.linkedin.com/in/pierre-dupont-0b532374/'
+                        target="_blank"
+                        title="LinkdIn"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-folders" width="44" height="44" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <rect x="4" y="4" width="16" height="16" rx="2" />
+  <line x1="8" y1="11" x2="8" y2="16" />
+  <line x1="8" y1="8" x2="8" y2="8.01" />
+  <line x1="12" y1="16" x2="12" y2="11" />
+  <path d="M16 16v-3a2 2 0 0 0 -4 0" />
+</svg>
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Accueil</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/a-propos-de-d-de-data/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>A Propos</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/series/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-folders" width="44" height="44" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 4h3l2 2h5a2 2 0 0 1 2 2v7a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-9a2 2 0 0 1 2 -2" />
+  <path d="M17 17v2a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-9a2 2 0 0 1 2 -2h2" />
+</svg>
+
+                
+                <span>Series</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/liens/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Liens</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Rechercher</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Mode sombre</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table des matières</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#contexte">Contexte</a></li>
+    <li><a href="#principe-de-fonctionnement">Principe de fonctionnement</a></li>
+    <li><a href="#analyser-dans-excel">Analyser dans Excel</a>
+      <ol>
+        <li><a href="#directement-depuis-un-jeu-de-données">Directement depuis un jeu de données</a></li>
+        <li><a href="#directement-depuis-un-rapport">Directement depuis un rapport</a></li>
+        <li><a href="#exporter-des-données-vers-excel-avec-une-connexion-dynamique">Exporter des données vers Excel avec une connexion dynamique</a></li>
+      </ol>
+    </li>
+    <li><a href="#paramétrages-nécessaires">Paramétrages nécessaires</a>
+      <ol>
+        <li><a href="#paramétrages-nécessaires-au-niveau-global">Paramétrages nécessaires au niveau global</a></li>
+        <li><a href="#paramétrages-nécessaires-au-niveau-du-jeu-de-données">Paramétrages nécessaires au niveau du jeu de données</a></li>
+      </ol>
+    </li>
+    <li><a href="#limitations">Limitations</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/analyser-dans-excel/">
+                <img src="/p/analyser-dans-excel/matcha-co-pC16vUGYCL4-unsplash_hu8221600bfe6cac469e7179ce07dc706c_5513366_800x0_resize_q75_box.jpg"
+                        srcset="/p/analyser-dans-excel/matcha-co-pC16vUGYCL4-unsplash_hu8221600bfe6cac469e7179ce07dc706c_5513366_800x0_resize_q75_box.jpg 800w, /p/analyser-dans-excel/matcha-co-pC16vUGYCL4-unsplash_hu8221600bfe6cac469e7179ce07dc706c_5513366_1600x0_resize_q75_box.jpg 1600w"
+                        width="800" 
+                        height="533" 
+                        loading="lazy"
+                        alt="Featured image of post Analyser dans Excel, la rencontre d&#39;Excel et du service Power BI" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/powerbi/" style="background-color: #f2c811; color: #fff;">
+                Power BI
+            </a>
+        
+            <a href="/categories/excel/" style="background-color: #1D6F42; color: #fff;">
+                Excel
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/analyser-dans-excel/">Analyser dans Excel, la rencontre d&#39;Excel et du service Power BI</a>
+        </h2>
+
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published" datetime="2023-04-02T00:00:00Z">
+                    2 avril 2023
+                    
+                </time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    4 minutes de lecture
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+    
+    
+</div>
+</header>
+
+    <section class="article-content">
+    
+    
+    <p>Excel est votre premier amour ? Et s’il rencontré votre service Power BI.</p>
+<h2 id="contexte">Contexte</h2>
+<p>On vous demande fréquemment d&rsquo;avoir les données de votre joli rapport dans Excel, mais vous ne voulez pas perdre la connexion aux données rafraichie automatiquement par le service Power BI ?<br>
+Il existe une solution : Analyser dans Excel</p>
+<h2 id="principe-de-fonctionnement">Principe de fonctionnement</h2>
+<p>Le principe de fonctionnement est plutôt simple comme le montre le schéma ci-dessous :</p>
+<p><img src="/p/analyser-dans-excel/img/001-analyse-in-excel.png"
+	width="649"
+	height="280"
+	srcset="/p/analyser-dans-excel/img/001-analyse-in-excel_hua0cba7a18ce1becee2523c4ad5350185_14603_480x0_resize_box_3.png 480w, /p/analyser-dans-excel/img/001-analyse-in-excel_hua0cba7a18ce1becee2523c4ad5350185_14603_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Principe de la fonctionnalité Analyser dans Excel"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="231"
+		data-flex-basis="556px"
+	
+></p>
+<p>Le service Power BI expose le jeu de données et Excel peut se connecter directement dessus. L&rsquo;avantage par rapport à un export de données classique est qu&rsquo;Excel peut rafraichir la source de données. Il profite ainsi d&rsquo;une source de données vivante plutôt que morte dans le cas d&rsquo;un export.</p>
+<h2 id="analyser-dans-excel">Analyser dans Excel</h2>
+<p>Il existe plusieurs manières d&rsquo;accéder à cette fonctionnalité.<br>
+Dans tous les cas le service Power BI va créer un fichier Excel qui inclut la connexion vers le jeu de données.</p>
+<h3 id="directement-depuis-un-jeu-de-données">Directement depuis un jeu de données</h3>
+<p>Vous pouvez créer une connexion vers Excel directement depuis un jeu de données, pour cela rendez-vous dans l&rsquo;espace de travail contenant le jeu de données.</p>
+<p><img src="/p/analyser-dans-excel/img/002-analyse-in-excel-from-dataset.png"
+	width="1526"
+	height="595"
+	srcset="/p/analyser-dans-excel/img/002-analyse-in-excel-from-dataset_hu3195c7dd73a22ef7ffa593eef52cf3c9_35500_480x0_resize_box_3.png 480w, /p/analyser-dans-excel/img/002-analyse-in-excel-from-dataset_hu3195c7dd73a22ef7ffa593eef52cf3c9_35500_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Analyser dans Excel depuis un jeu de données"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="256"
+		data-flex-basis="615px"
+	
+></p>
+<ol>
+<li>Cliquez sur les 3 points de la ligne du jeu de données pour ouvrir le menu contextuel.</li>
+<li>Sélectionnez <em>Analyser dans Excel</em>.</li>
+</ol>
+<p><img src="/p/analyser-dans-excel/img/003-analyse-in-excel-from-dataset-file-preparation.png"
+	width="492"
+	height="171"
+	srcset="/p/analyser-dans-excel/img/003-analyse-in-excel-from-dataset-file-preparation_hu85b8c0ca6276b0dfad207f4c347e8944_10011_480x0_resize_box_3.png 480w, /p/analyser-dans-excel/img/003-analyse-in-excel-from-dataset-file-preparation_hu85b8c0ca6276b0dfad207f4c347e8944_10011_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Préparation du fichier Excel"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="287"
+		data-flex-basis="690px"
+	
+></p>
+<p>Vous pouvez voir en haut à droite de votre écran que le service Power BI prépare votre fichier.</p>
+<p>Une fois le fichier prêt, il est déposé dans votre OneDrive</p>
+<p><img src="/p/analyser-dans-excel/img/004-analyse-in-excel-from-dataset-file-save-onedrive.png"
+	width="477"
+	height="235"
+	srcset="/p/analyser-dans-excel/img/004-analyse-in-excel-from-dataset-file-save-onedrive_hu21893057da35403baadff6236dadeaf5_13082_480x0_resize_box_3.png 480w, /p/analyser-dans-excel/img/004-analyse-in-excel-from-dataset-file-save-onedrive_hu21893057da35403baadff6236dadeaf5_13082_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Fichier Excel prêt dans OneDrive"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="202"
+		data-flex-basis="487px"
+	
+></p>
+<p>Si le service n&rsquo;arrive pas à accéder à votre OneDrive le fichier est téléchargé en local.</p>
+<p><img src="/p/analyser-dans-excel/img/005-analyse-in-excel-from-dataset-file-save-local.png"
+	width="481"
+	height="185"
+	srcset="/p/analyser-dans-excel/img/005-analyse-in-excel-from-dataset-file-save-local_hu746a685edb75905225a89b6e8636102b_11911_480x0_resize_box_3.png 480w, /p/analyser-dans-excel/img/005-analyse-in-excel-from-dataset-file-save-local_hu746a685edb75905225a89b6e8636102b_11911_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Fichier Excel en local"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="260"
+		data-flex-basis="624px"
+	
+></p>
+<p>Vous pouvez donc ouvrir le fichier Excel et activer le contenu.</p>
+<p><img src="/p/analyser-dans-excel/img/006-analyse-in-excel-file-open.png"
+	width="1210"
+	height="767"
+	srcset="/p/analyser-dans-excel/img/006-analyse-in-excel-file-open_hud360b2e7232c956a4fd6daba98f361c3_80932_480x0_resize_box_3.png 480w, /p/analyser-dans-excel/img/006-analyse-in-excel-file-open_hud360b2e7232c956a4fd6daba98f361c3_80932_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Fichier Excel connecté a un jeu de données"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="157"
+		data-flex-basis="378px"
+	
+></p>
+<ol>
+<li>Vous retrouvez votre jeu de données.</li>
+<li>Vous pouvez l&rsquo;exploiter comme un tableau croisé dynamique.</li>
+</ol>
+<h3 id="directement-depuis-un-rapport">Directement depuis un rapport</h3>
+<p>Une autre solution si vous n&rsquo;avez pas accès à l&rsquo;espace de travail contenant le jeu de données est de passer par le rapport pour créer le fichier Excel se connectant aux données.</p>
+<p><img src="/p/analyser-dans-excel/img/007-analyse-in-excel-from-report.png"
+	width="997"
+	height="166"
+	srcset="/p/analyser-dans-excel/img/007-analyse-in-excel-from-report_hu167671d20d1f20ce244c9ef79ac7e550_18355_480x0_resize_box_3.png 480w, /p/analyser-dans-excel/img/007-analyse-in-excel-from-report_hu167671d20d1f20ce244c9ef79ac7e550_18355_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Analyser dans Excel depuis un rapport"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="600"
+		data-flex-basis="1441px"
+	
+></p>
+<ol>
+<li>Cliquez sur le menu <em>Exporter</em>.</li>
+<li>Sélectionnez <em>Analyser dans Excel</em>.</li>
+</ol>
+<p>Le même processus que celui décrit pour le jeu de données créer votre fichier Excel.</p>
+<h3 id="exporter-des-données-vers-excel-avec-une-connexion-dynamique">Exporter des données vers Excel avec une connexion dynamique</h3>
+<p>Cette option va produire un fichier Excel différent des 2 cas précédents.<br>
+Pour l&rsquo;utiliser, pointer sur un visuel de votre rapport.</p>
+<p><img src="/p/analyser-dans-excel/img/008-export-data-from-report.png"
+	width="454"
+	height="216"
+	srcset="/p/analyser-dans-excel/img/008-export-data-from-report_hu8237361a8ef8c6f407ca532181e99659_17321_480x0_resize_box_3.png 480w, /p/analyser-dans-excel/img/008-export-data-from-report_hu8237361a8ef8c6f407ca532181e99659_17321_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Exporter des données avec une connexion dynamique"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="210"
+		data-flex-basis="504px"
+	
+></p>
+<ol>
+<li>Sur votre visuel, sélectionnez les 3 points pour ouvrir le menu contextuel.</li>
+<li>Sélectionnez <em>Exporter des données</em>.</li>
+</ol>
+<p><img src="/p/analyser-dans-excel/img/009-export-data-from-report-option.png"
+	width="652"
+	height="599"
+	srcset="/p/analyser-dans-excel/img/009-export-data-from-report-option_hu1e351e1d6caa25e4b9eaa8fa5eed6b77_40772_480x0_resize_box_3.png 480w, /p/analyser-dans-excel/img/009-export-data-from-report-option_hu1e351e1d6caa25e4b9eaa8fa5eed6b77_40772_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Option de l&rsquo;export des données avec une connexion dynamique"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="108"
+		data-flex-basis="261px"
+	
+></p>
+<ol>
+<li>Choisissez le type d&rsquo;export souhaité parmi les choix actifs.</li>
+<li>Sélectionnez <em>.xlsx (Excel) avec connexion active</em>.</li>
+<li>Appuyez sur le bouton <em>Exporter</em> pour télécharger le fichier Excel localement.</li>
+</ol>
+<p><img src="/p/analyser-dans-excel/img/010-export-data-from-report-open-file.png"
+	width="1440"
+	height="767"
+	srcset="/p/analyser-dans-excel/img/010-export-data-from-report-open-file_hu49568a085c91101f9da770792119fba1_84950_480x0_resize_box_3.png 480w, /p/analyser-dans-excel/img/010-export-data-from-report-open-file_hu49568a085c91101f9da770792119fba1_84950_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Fichier Excel avec un export actif"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="187"
+		data-flex-basis="450px"
+	
+></p>
+<ol>
+<li>Vos données sont directement disponibles sans avoir à les reconstruire avec un tableau croisé dynamique.</li>
+<li>Vous pouvez les rafraichir à l&rsquo;aide du bouton <em>Actualiser tout</em> du menu <em>Données</em>.</li>
+<li>Vous pouvez ouvrir le panneau de requêtes et connexions à l&rsquo;aide du bouton <em>Requêtes et connexions</em> du menu <em>Données</em>.</li>
+<li>Vous pouvez constater que vous avez une connexion active vers votre jeu de données.</li>
+</ol>
+<p>Pour aller plus loin, faites un clic droit sur la connexion et choisissez <em>Propriétés&hellip;</em>.</p>
+<p><img src="/p/analyser-dans-excel/img/011-export-data-from-report-connexion-properties.png"
+	width="472"
+	height="523"
+	srcset="/p/analyser-dans-excel/img/011-export-data-from-report-connexion-properties_hu4966da65d4c98bf85ba3d06427901e0b_25732_480x0_resize_box_3.png 480w, /p/analyser-dans-excel/img/011-export-data-from-report-connexion-properties_hu4966da65d4c98bf85ba3d06427901e0b_25732_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Propriétés de la connexion du fichier Excel avec un export actif"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="90"
+		data-flex-basis="216px"
+	
+></p>
+<ol>
+<li>Allez sur l&rsquo;onglet <em>Définition</em>.</li>
+<li>Vous pouvez voir la chaine de connexion à votre jeu de données Power BI.</li>
+<li>Vous retrouvez ici la requête DAX permettant d&rsquo;alimenter le tableau Excel.</li>
+</ol>
+<p>Bien entendu vous pouvez modifier ces éléments pour les adapter à vos besoins.</p>
+<h2 id="paramétrages-nécessaires">Paramétrages nécessaires</h2>
+<p>Pour que la fonction <em>Analyser dans Excel</em> fonctionne, il est nécessaire de vérifier que vous êtes autorisé à l&rsquo;utiliser.<br>
+Les autorisations nécessaires sont à la fois globales et au niveau du jeu de données.</p>
+<h3 id="paramétrages-nécessaires-au-niveau-global">Paramétrages nécessaires au niveau global</h3>
+<p>Au niveau de service Power BI, deux autorisations doivent être actives dans les paramètres du client du portail d&rsquo;administration Power BI :</p>
+<ul>
+<li>L&rsquo;option <strong>Les utilisateurs peuvent utiliser Power BI jeux de données dans Excel à l’aide d’une connexion active</strong> doit être active.</li>
+<li>L&rsquo;option <strong>Autoriser les points de terminaison XMLA et Analyser dans Excel avec les jeux de données locaux</strong> doit être active.</li>
+</ul>
+<h3 id="paramétrages-nécessaires-au-niveau-du-jeu-de-données">Paramétrages nécessaires au niveau du jeu de données</h3>
+<p>Pour utiliser la fonction analysée dans Excel, vous devez avoir le droit d&rsquo;accéder au jeu de données en lecture, mais aussi d&rsquo;avoir le droit de créer du contenu sur le jeu de données. Ces droits peuvent être affectés :</p>
+<ul>
+<li>Automatiquement pour les membres de l&rsquo;espace de travail du jeu de données.</li>
+<li>Spécifiquement pour les audiences de l&rsquo;application</li>
+<li>Spécifiquement sur le jeu de données lui-même</li>
+</ul>
+<p>Bien entendu si de la sécurité niveau ligne est défini sur le jeu de données, elle s&rsquo;applique.</p>
+<h2 id="limitations">Limitations</h2>
+<p>Un certain nombre de limitations sont applicables comme le précise <a class="link" href="https://learn.microsoft.com/fr-fr/power-bi/collaborate-share/service-analyze-in-excel#considerations-and-limitations"  target="_blank" rel="noopener"
+    >la documentation</a>.</p>
+<p>Merci de votre attention.</p>
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/interm%C3%A9diaire/">Intermédiaire</a>
+        
+            <a href="/tags/auto-formation/">Auto formation</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Contenus liés</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/power-query-advanced-editor/">
+        
+        
+            <div class="article-image">
+                <img src="/p/power-query-advanced-editor/_huf15fa593426db9a90f89c3ece54be71a_1377284_db140170abfb6d1453dfd875e2ef4e67.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Bien utiliser l&#39;éditeur avancé de Power Query"
+                        data-key="power-query-advanced-editor" 
+                        data-hash="md5-ja2X8&#43;dQEC4Gc4RY6igB2g==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Bien utiliser l&#39;éditeur avancé de Power Query</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/mutualiser-vos-donnees-avec-les-dataflow/">
+        
+        
+            <div class="article-image">
+                <img src="/p/mutualiser-vos-donnees-avec-les-dataflow/_hu0f99de747ff578d771608bd9e3bcfcad_2719124_9f986955606f6710ac579612b65cdbcc.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Mutualiser vos données avec les dataflows"
+                        data-key="mutualiser-vos-donnees-avec-les-dataflow" 
+                        data-hash="md5-7r6nkEDPtzPCiFbRX8nXlQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Mutualiser vos données avec les dataflows</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/parametres-power-qwery/">
+        
+        
+            <div class="article-image">
+                <img src="/p/parametres-power-qwery/_hu792653f7b7326a670abe032c0e66ac08_1629682_1192a9017b0db82456cebdf9c5a1f42f.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Les paramètres Power Query"
+                        data-key="parametres-power-qwery" 
+                        data-hash="md5-bj6qxrIsSOwymxHRoef17A==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Les paramètres Power Query</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/pbitools/">
+        
+        
+            <div class="article-image">
+                <img src="/p/pbitools/_hu82c25fa98cd4e9a8103220017be4b8cb_577052_6ceafda1beb41d1d88277abb8aade4af.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post pbi-tools : diviser pour mieux régner"
+                        data-key="pbitools" 
+                        data-hash="md5-7gEPBW1Oy8tzkbCHzW9XvQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">pbi-tools : diviser pour mieux régner</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/almtoolkit/">
+        
+        
+            <div class="article-image">
+                <img src="/p/almtoolkit/_hu272b112faa2067d59f4abbc2a04e4757_1908708_f2647968508539f392ae824ab6eb433f.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post ALM Toolkit"
+                        data-key="almtoolkit" 
+                        data-hash="md5-BbmzDkJMotBh2WZBtA&#43;ozg==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">ALM Toolkit</h2>
+        </div>
+    </a>
+</article>
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "ddata" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2022 - 
+        
+        2023 Le D de Data
+    </section>
+    
+    <section class="powerby">
+        Généré avec <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Thème <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.16.0">Stack</a></b> conçu par <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

@@ -5,6 +5,245 @@
         <link>https://blog.ddata.fr/categories/excel/</link>
         <description>Recent content in Excel on Le D de Data</description>
         <generator>Hugo -- gohugo.io</generator>
-        <language>fr-fr</language><atom:link href="https://blog.ddata.fr/categories/excel/index.xml" rel="self" type="application/rss+xml" />
+        <language>fr-fr</language>
+        <lastBuildDate>Sun, 02 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ddata.fr/categories/excel/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Analyser dans Excel, la rencontre d&#39;Excel et du service Power BI</title>
+        <link>https://blog.ddata.fr/p/analyser-dans-excel/</link>
+        <pubDate>Sun, 02 Apr 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://blog.ddata.fr/p/analyser-dans-excel/</guid>
+        <description>&lt;img src="https://blog.ddata.fr/p/analyser-dans-excel/matcha-co-pC16vUGYCL4-unsplash.jpg" alt="Featured image of post Analyser dans Excel, la rencontre d&#39;Excel et du service Power BI" /&gt;&lt;p&gt;Excel est votre premier amour ? Et s’il rencontré votre service Power BI.&lt;/p&gt;
+&lt;h2 id=&#34;contexte&#34;&gt;Contexte&lt;/h2&gt;
+&lt;p&gt;On vous demande fréquemment d&amp;rsquo;avoir les données de votre joli rapport dans Excel, mais vous ne voulez pas perdre la connexion aux données rafraichie automatiquement par le service Power BI ?&lt;br&gt;
+Il existe une solution : Analyser dans Excel&lt;/p&gt;
+&lt;h2 id=&#34;principe-de-fonctionnement&#34;&gt;Principe de fonctionnement&lt;/h2&gt;
+&lt;p&gt;Le principe de fonctionnement est plutôt simple comme le montre le schéma ci-dessous :&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/analyser-dans-excel/img/001-analyse-in-excel.png&#34;
+	width=&#34;649&#34;
+	height=&#34;280&#34;
+	srcset=&#34;https://blog.ddata.fr/p/analyser-dans-excel/img/001-analyse-in-excel_hua0cba7a18ce1becee2523c4ad5350185_14603_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/analyser-dans-excel/img/001-analyse-in-excel_hua0cba7a18ce1becee2523c4ad5350185_14603_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Principe de la fonctionnalité Analyser dans Excel&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;231&#34;
+		data-flex-basis=&#34;556px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Le service Power BI expose le jeu de données et Excel peut se connecter directement dessus. L&amp;rsquo;avantage par rapport à un export de données classique est qu&amp;rsquo;Excel peut rafraichir la source de données. Il profite ainsi d&amp;rsquo;une source de données vivante plutôt que morte dans le cas d&amp;rsquo;un export.&lt;/p&gt;
+&lt;h2 id=&#34;analyser-dans-excel&#34;&gt;Analyser dans Excel&lt;/h2&gt;
+&lt;p&gt;Il existe plusieurs manières d&amp;rsquo;accéder à cette fonctionnalité.&lt;br&gt;
+Dans tous les cas le service Power BI va créer un fichier Excel qui inclut la connexion vers le jeu de données.&lt;/p&gt;
+&lt;h3 id=&#34;directement-depuis-un-jeu-de-données&#34;&gt;Directement depuis un jeu de données&lt;/h3&gt;
+&lt;p&gt;Vous pouvez créer une connexion vers Excel directement depuis un jeu de données, pour cela rendez-vous dans l&amp;rsquo;espace de travail contenant le jeu de données.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/analyser-dans-excel/img/002-analyse-in-excel-from-dataset.png&#34;
+	width=&#34;1526&#34;
+	height=&#34;595&#34;
+	srcset=&#34;https://blog.ddata.fr/p/analyser-dans-excel/img/002-analyse-in-excel-from-dataset_hu3195c7dd73a22ef7ffa593eef52cf3c9_35500_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/analyser-dans-excel/img/002-analyse-in-excel-from-dataset_hu3195c7dd73a22ef7ffa593eef52cf3c9_35500_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Analyser dans Excel depuis un jeu de données&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;256&#34;
+		data-flex-basis=&#34;615px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Cliquez sur les 3 points de la ligne du jeu de données pour ouvrir le menu contextuel.&lt;/li&gt;
+&lt;li&gt;Sélectionnez &lt;em&gt;Analyser dans Excel&lt;/em&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/analyser-dans-excel/img/003-analyse-in-excel-from-dataset-file-preparation.png&#34;
+	width=&#34;492&#34;
+	height=&#34;171&#34;
+	srcset=&#34;https://blog.ddata.fr/p/analyser-dans-excel/img/003-analyse-in-excel-from-dataset-file-preparation_hu85b8c0ca6276b0dfad207f4c347e8944_10011_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/analyser-dans-excel/img/003-analyse-in-excel-from-dataset-file-preparation_hu85b8c0ca6276b0dfad207f4c347e8944_10011_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Préparation du fichier Excel&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;287&#34;
+		data-flex-basis=&#34;690px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Vous pouvez voir en haut à droite de votre écran que le service Power BI prépare votre fichier.&lt;/p&gt;
+&lt;p&gt;Une fois le fichier prêt, il est déposé dans votre OneDrive&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/analyser-dans-excel/img/004-analyse-in-excel-from-dataset-file-save-onedrive.png&#34;
+	width=&#34;477&#34;
+	height=&#34;235&#34;
+	srcset=&#34;https://blog.ddata.fr/p/analyser-dans-excel/img/004-analyse-in-excel-from-dataset-file-save-onedrive_hu21893057da35403baadff6236dadeaf5_13082_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/analyser-dans-excel/img/004-analyse-in-excel-from-dataset-file-save-onedrive_hu21893057da35403baadff6236dadeaf5_13082_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Fichier Excel prêt dans OneDrive&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;202&#34;
+		data-flex-basis=&#34;487px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Si le service n&amp;rsquo;arrive pas à accéder à votre OneDrive le fichier est téléchargé en local.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/analyser-dans-excel/img/005-analyse-in-excel-from-dataset-file-save-local.png&#34;
+	width=&#34;481&#34;
+	height=&#34;185&#34;
+	srcset=&#34;https://blog.ddata.fr/p/analyser-dans-excel/img/005-analyse-in-excel-from-dataset-file-save-local_hu746a685edb75905225a89b6e8636102b_11911_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/analyser-dans-excel/img/005-analyse-in-excel-from-dataset-file-save-local_hu746a685edb75905225a89b6e8636102b_11911_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Fichier Excel en local&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;260&#34;
+		data-flex-basis=&#34;624px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Vous pouvez donc ouvrir le fichier Excel et activer le contenu.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/analyser-dans-excel/img/006-analyse-in-excel-file-open.png&#34;
+	width=&#34;1210&#34;
+	height=&#34;767&#34;
+	srcset=&#34;https://blog.ddata.fr/p/analyser-dans-excel/img/006-analyse-in-excel-file-open_hud360b2e7232c956a4fd6daba98f361c3_80932_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/analyser-dans-excel/img/006-analyse-in-excel-file-open_hud360b2e7232c956a4fd6daba98f361c3_80932_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Fichier Excel connecté a un jeu de données&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;157&#34;
+		data-flex-basis=&#34;378px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Vous retrouvez votre jeu de données.&lt;/li&gt;
+&lt;li&gt;Vous pouvez l&amp;rsquo;exploiter comme un tableau croisé dynamique.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;directement-depuis-un-rapport&#34;&gt;Directement depuis un rapport&lt;/h3&gt;
+&lt;p&gt;Une autre solution si vous n&amp;rsquo;avez pas accès à l&amp;rsquo;espace de travail contenant le jeu de données est de passer par le rapport pour créer le fichier Excel se connectant aux données.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/analyser-dans-excel/img/007-analyse-in-excel-from-report.png&#34;
+	width=&#34;997&#34;
+	height=&#34;166&#34;
+	srcset=&#34;https://blog.ddata.fr/p/analyser-dans-excel/img/007-analyse-in-excel-from-report_hu167671d20d1f20ce244c9ef79ac7e550_18355_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/analyser-dans-excel/img/007-analyse-in-excel-from-report_hu167671d20d1f20ce244c9ef79ac7e550_18355_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Analyser dans Excel depuis un rapport&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;600&#34;
+		data-flex-basis=&#34;1441px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Cliquez sur le menu &lt;em&gt;Exporter&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Sélectionnez &lt;em&gt;Analyser dans Excel&lt;/em&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Le même processus que celui décrit pour le jeu de données créer votre fichier Excel.&lt;/p&gt;
+&lt;h3 id=&#34;exporter-des-données-vers-excel-avec-une-connexion-dynamique&#34;&gt;Exporter des données vers Excel avec une connexion dynamique&lt;/h3&gt;
+&lt;p&gt;Cette option va produire un fichier Excel différent des 2 cas précédents.&lt;br&gt;
+Pour l&amp;rsquo;utiliser, pointer sur un visuel de votre rapport.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/analyser-dans-excel/img/008-export-data-from-report.png&#34;
+	width=&#34;454&#34;
+	height=&#34;216&#34;
+	srcset=&#34;https://blog.ddata.fr/p/analyser-dans-excel/img/008-export-data-from-report_hu8237361a8ef8c6f407ca532181e99659_17321_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/analyser-dans-excel/img/008-export-data-from-report_hu8237361a8ef8c6f407ca532181e99659_17321_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Exporter des données avec une connexion dynamique&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;210&#34;
+		data-flex-basis=&#34;504px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Sur votre visuel, sélectionnez les 3 points pour ouvrir le menu contextuel.&lt;/li&gt;
+&lt;li&gt;Sélectionnez &lt;em&gt;Exporter des données&lt;/em&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/analyser-dans-excel/img/009-export-data-from-report-option.png&#34;
+	width=&#34;652&#34;
+	height=&#34;599&#34;
+	srcset=&#34;https://blog.ddata.fr/p/analyser-dans-excel/img/009-export-data-from-report-option_hu1e351e1d6caa25e4b9eaa8fa5eed6b77_40772_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/analyser-dans-excel/img/009-export-data-from-report-option_hu1e351e1d6caa25e4b9eaa8fa5eed6b77_40772_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Option de l&amp;rsquo;export des données avec une connexion dynamique&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;108&#34;
+		data-flex-basis=&#34;261px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Choisissez le type d&amp;rsquo;export souhaité parmi les choix actifs.&lt;/li&gt;
+&lt;li&gt;Sélectionnez &lt;em&gt;.xlsx (Excel) avec connexion active&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Appuyez sur le bouton &lt;em&gt;Exporter&lt;/em&gt; pour télécharger le fichier Excel localement.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/analyser-dans-excel/img/010-export-data-from-report-open-file.png&#34;
+	width=&#34;1440&#34;
+	height=&#34;767&#34;
+	srcset=&#34;https://blog.ddata.fr/p/analyser-dans-excel/img/010-export-data-from-report-open-file_hu49568a085c91101f9da770792119fba1_84950_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/analyser-dans-excel/img/010-export-data-from-report-open-file_hu49568a085c91101f9da770792119fba1_84950_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Fichier Excel avec un export actif&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;187&#34;
+		data-flex-basis=&#34;450px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Vos données sont directement disponibles sans avoir à les reconstruire avec un tableau croisé dynamique.&lt;/li&gt;
+&lt;li&gt;Vous pouvez les rafraichir à l&amp;rsquo;aide du bouton &lt;em&gt;Actualiser tout&lt;/em&gt; du menu &lt;em&gt;Données&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Vous pouvez ouvrir le panneau de requêtes et connexions à l&amp;rsquo;aide du bouton &lt;em&gt;Requêtes et connexions&lt;/em&gt; du menu &lt;em&gt;Données&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Vous pouvez constater que vous avez une connexion active vers votre jeu de données.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Pour aller plus loin, faites un clic droit sur la connexion et choisissez &lt;em&gt;Propriétés&amp;hellip;&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/analyser-dans-excel/img/011-export-data-from-report-connexion-properties.png&#34;
+	width=&#34;472&#34;
+	height=&#34;523&#34;
+	srcset=&#34;https://blog.ddata.fr/p/analyser-dans-excel/img/011-export-data-from-report-connexion-properties_hu4966da65d4c98bf85ba3d06427901e0b_25732_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/analyser-dans-excel/img/011-export-data-from-report-connexion-properties_hu4966da65d4c98bf85ba3d06427901e0b_25732_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Propriétés de la connexion du fichier Excel avec un export actif&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;90&#34;
+		data-flex-basis=&#34;216px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Allez sur l&amp;rsquo;onglet &lt;em&gt;Définition&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Vous pouvez voir la chaine de connexion à votre jeu de données Power BI.&lt;/li&gt;
+&lt;li&gt;Vous retrouvez ici la requête DAX permettant d&amp;rsquo;alimenter le tableau Excel.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Bien entendu vous pouvez modifier ces éléments pour les adapter à vos besoins.&lt;/p&gt;
+&lt;h2 id=&#34;paramétrages-nécessaires&#34;&gt;Paramétrages nécessaires&lt;/h2&gt;
+&lt;p&gt;Pour que la fonction &lt;em&gt;Analyser dans Excel&lt;/em&gt; fonctionne, il est nécessaire de vérifier que vous êtes autorisé à l&amp;rsquo;utiliser.&lt;br&gt;
+Les autorisations nécessaires sont à la fois globales et au niveau du jeu de données.&lt;/p&gt;
+&lt;h3 id=&#34;paramétrages-nécessaires-au-niveau-global&#34;&gt;Paramétrages nécessaires au niveau global&lt;/h3&gt;
+&lt;p&gt;Au niveau de service Power BI, deux autorisations doivent être actives dans les paramètres du client du portail d&amp;rsquo;administration Power BI :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;L&amp;rsquo;option &lt;strong&gt;Les utilisateurs peuvent utiliser Power BI jeux de données dans Excel à l’aide d’une connexion active&lt;/strong&gt; doit être active.&lt;/li&gt;
+&lt;li&gt;L&amp;rsquo;option &lt;strong&gt;Autoriser les points de terminaison XMLA et Analyser dans Excel avec les jeux de données locaux&lt;/strong&gt; doit être active.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;paramétrages-nécessaires-au-niveau-du-jeu-de-données&#34;&gt;Paramétrages nécessaires au niveau du jeu de données&lt;/h3&gt;
+&lt;p&gt;Pour utiliser la fonction analysée dans Excel, vous devez avoir le droit d&amp;rsquo;accéder au jeu de données en lecture, mais aussi d&amp;rsquo;avoir le droit de créer du contenu sur le jeu de données. Ces droits peuvent être affectés :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Automatiquement pour les membres de l&amp;rsquo;espace de travail du jeu de données.&lt;/li&gt;
+&lt;li&gt;Spécifiquement pour les audiences de l&amp;rsquo;application&lt;/li&gt;
+&lt;li&gt;Spécifiquement sur le jeu de données lui-même&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Bien entendu si de la sécurité niveau ligne est défini sur le jeu de données, elle s&amp;rsquo;applique.&lt;/p&gt;
+&lt;h2 id=&#34;limitations&#34;&gt;Limitations&lt;/h2&gt;
+&lt;p&gt;Un certain nombre de limitations sont applicables comme le précise &lt;a class=&#34;link&#34; href=&#34;https://learn.microsoft.com/fr-fr/power-bi/collaborate-share/service-analyze-in-excel#considerations-and-limitations&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;la documentation&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Merci de votre attention.&lt;/p&gt;</description>
+        </item>
+        
     </channel>
 </rss>
