@@ -6,7 +6,367 @@
         <description>Recent content in Posts on Le D de Data</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>fr-fr</language>
-        <lastBuildDate>Sun, 02 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ddata.fr/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sun, 09 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ddata.fr/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Projet data : les principales transformations des données</title>
+        <link>https://blog.ddata.fr/p/datalake-transformation/</link>
+        <pubDate>Sun, 09 Apr 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://blog.ddata.fr/p/datalake-transformation/</guid>
+        <description>&lt;img src="https://blog.ddata.fr/p/datalake-transformation/katrin-hauf-sD-WFeC8WEs-unsplash.jpg" alt="Featured image of post Projet data : les principales transformations des données" /&gt;&lt;p&gt;Dans cet article, je vous présente les principales transformations des données que vous ferez dans un projet data.&lt;/p&gt;
+&lt;h2 id=&#34;contexte&#34;&gt;Contexte&lt;/h2&gt;
+&lt;p&gt;Lorsque vous traitez les données d&amp;rsquo;un projet data vous allez faire une succession de transformation pour obtenir votre résultat final.&lt;br&gt;
+Par exemple la chaine de traitement dans le cadre d&amp;rsquo;un projet datawarehouse est la suivante :&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/datalake-transformation/img/001-datalake-transformation.png&#34;
+	width=&#34;741&#34;
+	height=&#34;388&#34;
+	srcset=&#34;https://blog.ddata.fr/p/datalake-transformation/img/001-datalake-transformation_hu95166b86ce920fe6fdef2e75a6837833_25021_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/datalake-transformation/img/001-datalake-transformation_hu95166b86ce920fe6fdef2e75a6837833_25021_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Chaine de transformation typique d&amp;rsquo;un datalakehouse&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;190&#34;
+		data-flex-basis=&#34;458px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;On retrouve un ensemble de traitement permettant la transformation des données d&amp;rsquo;une zone à l&amp;rsquo;autre :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Dans la zone bronze, un maelstrom de données brut.&lt;/li&gt;
+&lt;li&gt;Dans la zone silver, des données préparées sous forme de table structurée.&lt;/li&gt;
+&lt;li&gt;Dans la zone gold, des données à forte valeur ajoutée comme par exemple des tables modéliser en étoile pour de reporting avec potentiellement des données pré agrégé.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Mais, quels que soient les outils que vous utiliserez pour votre projet, vous utiliserez presque toujours les mêmes transformations de données.&lt;br&gt;
+Je vous propose de passer en revue ces transformations.&lt;/p&gt;
+&lt;h2 id=&#34;structuration-des-données&#34;&gt;Structuration des données&lt;/h2&gt;
+&lt;p&gt;La phase de structuration des données va vous permettre de transformer vos données en données structurées sous forme de table.&lt;/p&gt;
+&lt;h3 id=&#34;la-table&#34;&gt;La table&lt;/h3&gt;
+&lt;p&gt;La table est la structure de données que vous allez utiliser pour toutes vos transformations de données.&lt;br&gt;
+Une table a les caractéristiques suivantes :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Les données sont stockées en ligne&lt;/li&gt;
+&lt;li&gt;Chaque colonne d&amp;rsquo;une table contient des valeurs cohérentes
+&lt;ul&gt;
+&lt;li&gt;De nature : une colonne contient des données métier de même nature. Par exemple dans une colonne contenant le nom d&amp;rsquo;une personne on ne met pas sa date de naissance.&lt;/li&gt;
+&lt;li&gt;De type : une colonne ne contient que des valeurs ayant le même type ou pas de valeur. Par exemple une colonne de date ne contient que des dates.&lt;/li&gt;
+&lt;li&gt;De format : une colonne de date ne contient que des dates au même format, par exemple on ne stocke pas le 31 décembre 2022 sous ces 2 formes dans la même colonne :
+&lt;ul&gt;
+&lt;li&gt;31/12/2022&lt;/li&gt;
+&lt;li&gt;2022-12-31&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/datalake-transformation/img/002-table.png&#34;
+	width=&#34;952&#34;
+	height=&#34;265&#34;
+	srcset=&#34;https://blog.ddata.fr/p/datalake-transformation/img/002-table_hud391b07d078a580a6feb81061bc5f572_17212_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/datalake-transformation/img/002-table_hud391b07d078a580a6feb81061bc5f572_17212_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Structure d&amp;rsquo;une table&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;359&#34;
+		data-flex-basis=&#34;862px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;nommage-des-colonnes&#34;&gt;Nommage des colonnes&lt;/h3&gt;
+&lt;p&gt;Le nommage des colonnes d&amp;rsquo;une table est une phase très importante dans un projet BI. En général vous avez des données dont le nom n&amp;rsquo;est pas adapté à la création d&amp;rsquo;un modèle métier. La phase de renommage des colonnes d&amp;rsquo;une table vous permet d&amp;rsquo;apporter cette cohérence métier.&lt;br&gt;
+Prenez grand soin à avoir un nommage cohérent et d&amp;rsquo;utiliser le bon vocabulaire du modèle métier cible, en effet si votre modèle de données doit être utilisé par des personnes d&amp;rsquo;un métier parlé leur langage et masquer tous les éléments techniques inutiles.&lt;/p&gt;
+&lt;h3 id=&#34;typage-de-données&#34;&gt;Typage de données&lt;/h3&gt;
+&lt;p&gt;Le typage des données permet de conserver la cohérence d&amp;rsquo;une table.  Parmi les types de données disponibles dans votre outil, choisissez toujours des types de données vous apportant une forte garantie sur le contenu de la colonne.&lt;br&gt;
+Par exemple, si vous stockez vos dates dans une colonne stockant du texte, vous n&amp;rsquo;aurez pas la garantie d&amp;rsquo;avoir des dates dedans.&lt;br&gt;
+Les principaux types de données que l&amp;rsquo;on utilise sont :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Le texte ou chaine de caractères&lt;/li&gt;
+&lt;li&gt;Les nombres
+&lt;ul&gt;
+&lt;li&gt;Entier&lt;/li&gt;
+&lt;li&gt;Décimaux&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Le temps
+&lt;ul&gt;
+&lt;li&gt;Date&lt;/li&gt;
+&lt;li&gt;Date/Heure&lt;/li&gt;
+&lt;li&gt;Date/Heure/Fuseau horaire&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Les booléens (vrai/faux)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Attention, chaque type de données a ses propres pièges et on rencontre souvent les mêmes problèmes. Par exemple :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Les formats de date ou de nombre décimaux différents entre les systèmes français et américain&lt;/li&gt;
+&lt;li&gt;L&amp;rsquo;encodage du texte, si les termes ASCII, UTF-8 ou UNICODE ne vous sont pas familiers vous risquez des ennuis lors du traitement de données avec des caractères spéciaux.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;sélection-des-colonnes&#34;&gt;Sélection des colonnes&lt;/h3&gt;
+&lt;p&gt;Ne sélectionnez que les colonnes utiles d&amp;rsquo;un point de vue métier ou technique à votre modèle de données. Il est en général plus simple d&amp;rsquo;ajouter une nouvelle colonne à un modèle existant pour répondre à un nouveau besoin que de créer un modèle cohérent avec un grand nombre de colonnes inutile.&lt;/p&gt;
+&lt;h2 id=&#34;préparation-des-données&#34;&gt;Préparation des données&lt;/h2&gt;
+&lt;p&gt;Nous allons maintenant passer en revue les principales transformations que vous ferez sur vos données lors d&amp;rsquo;un projet data.&lt;/p&gt;
+&lt;h3 id=&#34;filtrage-des-données&#34;&gt;Filtrage des données&lt;/h3&gt;
+&lt;p&gt;Un filtre permet de sélectionner les lignes que l&amp;rsquo;on souhaite conserver en fonction de critères prédéfinis.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/datalake-transformation/img/003-filter.png&#34;
+	width=&#34;1043&#34;
+	height=&#34;254&#34;
+	srcset=&#34;https://blog.ddata.fr/p/datalake-transformation/img/003-filter_hu295087bdfaebbb443fd5fd45d8b80859_25711_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/datalake-transformation/img/003-filter_hu295087bdfaebbb443fd5fd45d8b80859_25711_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Exemple d&amp;rsquo;un filtre&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;410&#34;
+		data-flex-basis=&#34;985px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;remplacer-des-données&#34;&gt;Remplacer des données&lt;/h3&gt;
+&lt;p&gt;Le remplacement de données permet de remplacer une valeur par une autre valeur.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/datalake-transformation/img/004-replace.png&#34;
+	width=&#34;1048&#34;
+	height=&#34;258&#34;
+	srcset=&#34;https://blog.ddata.fr/p/datalake-transformation/img/004-replace_hub2f149565f883ffa61f4566d7d21573f_28594_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/datalake-transformation/img/004-replace_hub2f149565f883ffa61f4566d7d21573f_28594_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Exemple d&amp;rsquo;un remplacement&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;406&#34;
+		data-flex-basis=&#34;974px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Attention, certains outils sont sensibles à la casse, il différencie minuscules et majuscules. Par exemple, &lt;em&gt;rouge&lt;/em&gt; sera différent de &lt;em&gt;Rouge&lt;/em&gt;.&lt;/p&gt;
+&lt;h3 id=&#34;tri-des-données&#34;&gt;Tri des données&lt;/h3&gt;
+&lt;p&gt;Le tri des données permet d&amp;rsquo;imposer l&amp;rsquo;ordre des lignes les unes par rapport aux autres. Le tri peut être ascendant ou descendant et peu porter sur plusieurs colonnes afin de forcer le tri des lignes sur des sous-critères.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/datalake-transformation/img/005-sort.png&#34;
+	width=&#34;1040&#34;
+	height=&#34;248&#34;
+	srcset=&#34;https://blog.ddata.fr/p/datalake-transformation/img/005-sort_hue1dd40990003dd15ac4aa7fd74bbc98c_26701_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/datalake-transformation/img/005-sort_hue1dd40990003dd15ac4aa7fd74bbc98c_26701_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Exemple de tri&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;419&#34;
+		data-flex-basis=&#34;1006px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Attention, tant que vous n&amp;rsquo;avez pas trié vos données ne préjugé pas du tri de celle-ci.&lt;/p&gt;
+&lt;h3 id=&#34;partitionnement-des-données&#34;&gt;Partitionnement des données&lt;/h3&gt;
+&lt;p&gt;Le partitionnement des données permet de séparer physiquement vos données. On utilise cette technique sur les gros volumes de données en général pour améliorer les performances.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/datalake-transformation/img/006-partition.png&#34;
+	width=&#34;1061&#34;
+	height=&#34;339&#34;
+	srcset=&#34;https://blog.ddata.fr/p/datalake-transformation/img/006-partition_hue74bb6e30d0e32723710751280f8827c_34954_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/datalake-transformation/img/006-partition_hue74bb6e30d0e32723710751280f8827c_34954_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Exemple de partitionnement&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;312&#34;
+		data-flex-basis=&#34;751px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;pivoter-dépivoter-et-transposer&#34;&gt;Pivoter Dépivoter et Transposer&lt;/h3&gt;
+&lt;p&gt;Ces 3 opérations permettent de faire des transformations sur la structure de la table. Elles sont souvent utilisées pour transformer des données formatées pour la saisie utilisateur dans Excel en données sous la forme d&amp;rsquo;une table utilisable.&lt;/p&gt;
+&lt;h4 id=&#34;pivoter&#34;&gt;Pivoter&lt;/h4&gt;
+&lt;p&gt;Permets de basculer des valeurs stockées dans les lignes d&amp;rsquo;une colonne en valeur stockée en colonne. Une opération d&amp;rsquo;agrégation de données peut aussi être réalisée lors du pivot pour regrouper les valeurs sources identiques en une seule valeur cible.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/datalake-transformation/img/007-pivot.png&#34;
+	width=&#34;1166&#34;
+	height=&#34;365&#34;
+	srcset=&#34;https://blog.ddata.fr/p/datalake-transformation/img/007-pivot_hu57a42e3ab360df31f6b3c7ec0a581137_43302_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/datalake-transformation/img/007-pivot_hu57a42e3ab360df31f6b3c7ec0a581137_43302_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Exemple de pivot&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;319&#34;
+		data-flex-basis=&#34;766px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h4 id=&#34;dépivoter&#34;&gt;Dépivoter&lt;/h4&gt;
+&lt;p&gt;Permets de basculer des valeurs stockées dans les noms de colonne d&amp;rsquo;une table en valeur stockée en ligne. C&amp;rsquo;est l&amp;rsquo;opération inverse de pivoter.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/datalake-transformation/img/008-unpivot.png&#34;
+	width=&#34;957&#34;
+	height=&#34;359&#34;
+	srcset=&#34;https://blog.ddata.fr/p/datalake-transformation/img/008-unpivot_hu9741ec229875aad0855941f7d9632802_30130_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/datalake-transformation/img/008-unpivot_hu9741ec229875aad0855941f7d9632802_30130_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Exemple de dépivot&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;266&#34;
+		data-flex-basis=&#34;639px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h4 id=&#34;transposer&#34;&gt;Transposer&lt;/h4&gt;
+&lt;p&gt;Permets de réaliser une rotation à 90° de votre table.&lt;br&gt;
+Si vous transposez une table déjà transposée vous retrouvez la table initiale.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/datalake-transformation/img/009-transpose.png&#34;
+	width=&#34;1030&#34;
+	height=&#34;172&#34;
+	srcset=&#34;https://blog.ddata.fr/p/datalake-transformation/img/009-transpose_hu1e912de131ba385d75e1589577f9ed95_20258_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/datalake-transformation/img/009-transpose_hu1e912de131ba385d75e1589577f9ed95_20258_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Exemple de transpose&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;598&#34;
+		data-flex-basis=&#34;1437px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;créer-des-colonnes&#34;&gt;Créer des colonnes&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Par fractionnement, vous divisez une colonne en plusieurs autres colonnes à l&amp;rsquo;aide d&amp;rsquo;un séparateur.&lt;/li&gt;
+&lt;li&gt;Par calcul, vous créer une colonne en vous basant sur des informations en provenance d&amp;rsquo;autres colonnes de la même ligne.&lt;/li&gt;
+&lt;li&gt;Par extraction d&amp;rsquo;un terme, vous créer une colonne en extrayant un sous-ensemble d&amp;rsquo;information d&amp;rsquo;une colonne.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;les-jointures&#34;&gt;Les jointures&lt;/h3&gt;
+&lt;p&gt;Les jointures sont une transformation de données très puissantes. Elles peuvent avoir plusieurs usages, notamment :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;L&amp;rsquo;enrichissement d&amp;rsquo;une table via une autre table.&lt;/li&gt;
+&lt;li&gt;La suppression de ligne d&amp;rsquo;une table par une autre table.&lt;/li&gt;
+&lt;li&gt;La création de ligne dans une table.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;jointure-externe-gauche&#34;&gt;Jointure externe gauche&lt;/h4&gt;
+&lt;p&gt;La jointure externe gauche permet d&amp;rsquo;intégrer dans la table de gauche toutes les valeurs de la table de droite correspondant à la relation de jointure.&lt;br&gt;
+Avec ce tpe de jointure on à la garantie de conserver TOUTES les lignes de la table de gauche.&lt;br&gt;
+Par contre s&amp;rsquo;il existe plusieurs occurrences d&amp;rsquo;une même valeur dans la table de droite pour la relation, cela va créer des lignes dans la table de gauche.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/datalake-transformation/img/010-left-join.png&#34;
+	width=&#34;902&#34;
+	height=&#34;754&#34;
+	srcset=&#34;https://blog.ddata.fr/p/datalake-transformation/img/010-left-join_hu0d32a9d40bfd9a804900732601d4a70a_60783_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/datalake-transformation/img/010-left-join_hu0d32a9d40bfd9a804900732601d4a70a_60783_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Exemple de jointure externe gauche&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;119&#34;
+		data-flex-basis=&#34;287px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;La valeur &lt;em&gt;null&lt;/em&gt; représente par convention une absence de valeur dans la table de droite.&lt;/p&gt;
+&lt;h4 id=&#34;jointure-externe-droite&#34;&gt;Jointure externe droite&lt;/h4&gt;
+&lt;p&gt;La jointure externe droite permet de filtrer les lignes de table de gauche à l&amp;rsquo;aide des données de la table de droite.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/datalake-transformation/img/011-right-join.png&#34;
+	width=&#34;877&#34;
+	height=&#34;618&#34;
+	srcset=&#34;https://blog.ddata.fr/p/datalake-transformation/img/011-right-join_hue6467861ea40fd427e5cbb792ee7e795_47893_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/datalake-transformation/img/011-right-join_hue6467861ea40fd427e5cbb792ee7e795_47893_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Exemple de jointure externe droite&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;141&#34;
+		data-flex-basis=&#34;340px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h4 id=&#34;jointure-externe-entière&#34;&gt;Jointure externe entière&lt;/h4&gt;
+&lt;p&gt;La jointure externe entière permet de conserver toutes les lignes des 2 tables.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/datalake-transformation/img/012-outer-join.png&#34;
+	width=&#34;899&#34;
+	height=&#34;640&#34;
+	srcset=&#34;https://blog.ddata.fr/p/datalake-transformation/img/012-outer-join_hucea240b1dd0705a3ca2860825525de0a_51336_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/datalake-transformation/img/012-outer-join_hucea240b1dd0705a3ca2860825525de0a_51336_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Exemple de jointure externe entière&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;140&#34;
+		data-flex-basis=&#34;337px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h4 id=&#34;jointure-interne&#34;&gt;Jointure interne&lt;/h4&gt;
+&lt;p&gt;La jointure interne permet de ne conserver que les lignes appartenant aux 2 tables.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/datalake-transformation/img/013-inner-join.png&#34;
+	width=&#34;842&#34;
+	height=&#34;704&#34;
+	srcset=&#34;https://blog.ddata.fr/p/datalake-transformation/img/013-inner-join_hubb93a21d63a59400ebb47ad774e75d44_55204_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/datalake-transformation/img/013-inner-join_hubb93a21d63a59400ebb47ad774e75d44_55204_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Exemple de jointure interne&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;119&#34;
+		data-flex-basis=&#34;287px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;lunion&#34;&gt;L&amp;rsquo;union&lt;/h3&gt;
+&lt;p&gt;L&amp;rsquo;union permet de cumuler les lignes de 2 tables ou plus en une seule table. Suivant les outils les tables doivent avoir la même structure de colonnes ou non.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/datalake-transformation/img/014-union.png&#34;
+	width=&#34;1230&#34;
+	height=&#34;387&#34;
+	srcset=&#34;https://blog.ddata.fr/p/datalake-transformation/img/014-union_hu08b8b2936bcec6aec09cf50f2e96f724_39688_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/datalake-transformation/img/014-union_hu08b8b2936bcec6aec09cf50f2e96f724_39688_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Exemple d&amp;rsquo;union de 2 tables&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;317&#34;
+		data-flex-basis=&#34;762px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;le-dédoublonnage&#34;&gt;Le dédoublonnage&lt;/h3&gt;
+&lt;p&gt;Le dédoublonnage est une opération qui permet de supprimer les lignes identiques. On à deux types d&amp;rsquo;opération de dédoublonnage :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Dédoublonage pur pour les lignes complètement identiques.&lt;/li&gt;
+&lt;li&gt;Dédoublonage partiel, sur un critère choisi d&amp;rsquo;une ou plusieurs colonnes, dans ce cas il faut faire attention à quelle valeur est conservé.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/datalake-transformation/img/015-remove-duplicate.png&#34;
+	width=&#34;961&#34;
+	height=&#34;290&#34;
+	srcset=&#34;https://blog.ddata.fr/p/datalake-transformation/img/015-remove-duplicate_hu242f1629717d92cf66906aeffe83af4e_27840_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/datalake-transformation/img/015-remove-duplicate_hu242f1629717d92cf66906aeffe83af4e_27840_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Exemple de dédoublonnage&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;331&#34;
+		data-flex-basis=&#34;795px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;agrégation&#34;&gt;Agrégation&lt;/h3&gt;
+&lt;p&gt;L&amp;rsquo;agrégation est une opération qui permet de réduire le nombre de lignes d&amp;rsquo;une table. On supprime certaines colonnes, et en perdant ce détail, on peut regrouper les lignes en faisant une opération mathématique sur les colonnes numériques, en général une somme.&lt;br&gt;
+Les opérations d&amp;rsquo;agrégations classiques sont :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Somme&lt;/li&gt;
+&lt;li&gt;Minimum&lt;/li&gt;
+&lt;li&gt;Maximum&lt;/li&gt;
+&lt;li&gt;Moyenne&lt;/li&gt;
+&lt;li&gt;Écart type&lt;/li&gt;
+&lt;li&gt;Compter le nombre de lignes agrégé&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/datalake-transformation/img/016-aggregate.png&#34;
+	width=&#34;948&#34;
+	height=&#34;276&#34;
+	srcset=&#34;https://blog.ddata.fr/p/datalake-transformation/img/016-aggregate_hu6266293f44db3af5f37240e3d8650a9a_23713_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/datalake-transformation/img/016-aggregate_hu6266293f44db3af5f37240e3d8650a9a_23713_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Exemple d&amp;rsquo;agrégation&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;343&#34;
+		data-flex-basis=&#34;824px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;L&amp;rsquo;opération d&amp;rsquo;agrégation est une opération qui modifie la granularité de la table. La table résultante a un niveau de détail moins important que la table source, on perd donc de l&amp;rsquo;information.&lt;/p&gt;
+&lt;p&gt;Merci de votre attention.&lt;/p&gt;</description>
+        </item>
+        <item>
         <title>Analyser dans Excel, la rencontre d&#39;Excel et du service Power BI</title>
         <link>https://blog.ddata.fr/p/analyser-dans-excel/</link>
         <pubDate>Sun, 02 Apr 2023 00:00:00 +0000</pubDate>

@@ -1,0 +1,1081 @@
+<!DOCTYPE html>
+<html lang="fr-fr" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Dans cet article, je vous présente les principales transformations des données que vous ferez dans un projet data.
+'>
+<title>Projet data : les principales transformations des données</title>
+
+<link rel='canonical' href='https://blog.ddata.fr/p/datalake-transformation/'>
+
+<link rel="stylesheet" href="/scss/style.min.5be32ca3f6e1a997c75795c4359147cc6d4fbd34948c0acd51e31d237033978a.css"><meta property='og:title' content='Projet data : les principales transformations des données'>
+<meta property='og:description' content='Dans cet article, je vous présente les principales transformations des données que vous ferez dans un projet data.
+'>
+<meta property='og:url' content='https://blog.ddata.fr/p/datalake-transformation/'>
+<meta property='og:site_name' content='Le D de Data'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Auto formation' /><meta property='article:published_time' content='2023-04-09T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2023-04-09T00:00:00&#43;00:00'/><meta property='og:image' content='https://blog.ddata.fr/p/datalake-transformation/katrin-hauf-sD-WFeC8WEs-unsplash.jpg' />
+<meta name="twitter:title" content="Projet data : les principales transformations des données">
+<meta name="twitter:description" content="Dans cet article, je vous présente les principales transformations des données que vous ferez dans un projet data.
+"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://blog.ddata.fr/p/datalake-transformation/katrin-hauf-sD-WFeC8WEs-unsplash.jpg' />
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TY6XFEN6QV"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-TY6XFEN6QV', { 'anonymize_ip': false });
+}
+</script>
+<link rel="alternate"
+      type="application/rss+xml"
+      href="https://blog.ddata.fr/index.xml"
+      title="Le D de Data">
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "dark");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Afficher le menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/pierre_hua6bbc70dde858dd10e363a14d1f7729c_67951_300x0_resize_q75_box.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Le D de Data</a></h1>
+            <h2 class="site-description">Blog francophone autour de la data Microsoft</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/pierreddata'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://www.linkedin.com/in/pierre-dupont-0b532374/'
+                        target="_blank"
+                        title="LinkdIn"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-folders" width="44" height="44" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <rect x="4" y="4" width="16" height="16" rx="2" />
+  <line x1="8" y1="11" x2="8" y2="16" />
+  <line x1="8" y1="8" x2="8" y2="8.01" />
+  <line x1="12" y1="16" x2="12" y2="11" />
+  <path d="M16 16v-3a2 2 0 0 0 -4 0" />
+</svg>
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Accueil</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/a-propos-de-d-de-data/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>A Propos</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/series/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-folders" width="44" height="44" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 4h3l2 2h5a2 2 0 0 1 2 2v7a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-9a2 2 0 0 1 2 -2" />
+  <path d="M17 17v2a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-9a2 2 0 0 1 2 -2h2" />
+</svg>
+
+                
+                <span>Series</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/liens/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Liens</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Rechercher</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Mode sombre</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table des matières</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#contexte">Contexte</a></li>
+    <li><a href="#structuration-des-données">Structuration des données</a>
+      <ol>
+        <li><a href="#la-table">La table</a></li>
+        <li><a href="#nommage-des-colonnes">Nommage des colonnes</a></li>
+        <li><a href="#typage-de-données">Typage de données</a></li>
+        <li><a href="#sélection-des-colonnes">Sélection des colonnes</a></li>
+      </ol>
+    </li>
+    <li><a href="#préparation-des-données">Préparation des données</a>
+      <ol>
+        <li><a href="#filtrage-des-données">Filtrage des données</a></li>
+        <li><a href="#remplacer-des-données">Remplacer des données</a></li>
+        <li><a href="#tri-des-données">Tri des données</a></li>
+        <li><a href="#partitionnement-des-données">Partitionnement des données</a></li>
+        <li><a href="#pivoter-dépivoter-et-transposer">Pivoter Dépivoter et Transposer</a>
+          <ol>
+            <li><a href="#pivoter">Pivoter</a></li>
+            <li><a href="#dépivoter">Dépivoter</a></li>
+            <li><a href="#transposer">Transposer</a></li>
+          </ol>
+        </li>
+        <li><a href="#créer-des-colonnes">Créer des colonnes</a></li>
+        <li><a href="#les-jointures">Les jointures</a>
+          <ol>
+            <li><a href="#jointure-externe-gauche">Jointure externe gauche</a></li>
+            <li><a href="#jointure-externe-droite">Jointure externe droite</a></li>
+            <li><a href="#jointure-externe-entière">Jointure externe entière</a></li>
+            <li><a href="#jointure-interne">Jointure interne</a></li>
+          </ol>
+        </li>
+        <li><a href="#lunion">L&rsquo;union</a></li>
+        <li><a href="#le-dédoublonnage">Le dédoublonnage</a></li>
+        <li><a href="#agrégation">Agrégation</a></li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/datalake-transformation/">
+                <img src="/p/datalake-transformation/katrin-hauf-sD-WFeC8WEs-unsplash_hue23c27c3ff840c33b0fdb3aeccafd101_470448_800x0_resize_q75_box.jpg"
+                        srcset="/p/datalake-transformation/katrin-hauf-sD-WFeC8WEs-unsplash_hue23c27c3ff840c33b0fdb3aeccafd101_470448_800x0_resize_q75_box.jpg 800w, /p/datalake-transformation/katrin-hauf-sD-WFeC8WEs-unsplash_hue23c27c3ff840c33b0fdb3aeccafd101_470448_1600x0_resize_q75_box.jpg 1600w"
+                        width="800" 
+                        height="533" 
+                        loading="lazy"
+                        alt="Featured image of post Projet data : les principales transformations des données" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/data/" style="background-color: #EE1F25; color: #fff;">
+                Data
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/datalake-transformation/">Projet data : les principales transformations des données</a>
+        </h2>
+
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published" datetime="2023-04-09T00:00:00Z">
+                    9 avril 2023
+                    
+                </time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    7 minutes de lecture
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+    
+    
+</div>
+</header>
+
+    <section class="article-content">
+    
+    
+    <p>Dans cet article, je vous présente les principales transformations des données que vous ferez dans un projet data.</p>
+<h2 id="contexte">Contexte</h2>
+<p>Lorsque vous traitez les données d&rsquo;un projet data vous allez faire une succession de transformation pour obtenir votre résultat final.<br>
+Par exemple la chaine de traitement dans le cadre d&rsquo;un projet datawarehouse est la suivante :</p>
+<p><img src="/p/datalake-transformation/img/001-datalake-transformation.png"
+	width="741"
+	height="388"
+	srcset="/p/datalake-transformation/img/001-datalake-transformation_hu95166b86ce920fe6fdef2e75a6837833_25021_480x0_resize_box_3.png 480w, /p/datalake-transformation/img/001-datalake-transformation_hu95166b86ce920fe6fdef2e75a6837833_25021_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Chaine de transformation typique d&rsquo;un datalakehouse"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="190"
+		data-flex-basis="458px"
+	
+></p>
+<p>On retrouve un ensemble de traitement permettant la transformation des données d&rsquo;une zone à l&rsquo;autre :</p>
+<ul>
+<li>Dans la zone bronze, un maelstrom de données brut.</li>
+<li>Dans la zone silver, des données préparées sous forme de table structurée.</li>
+<li>Dans la zone gold, des données à forte valeur ajoutée comme par exemple des tables modéliser en étoile pour de reporting avec potentiellement des données pré agrégé.</li>
+</ul>
+<p>Mais, quels que soient les outils que vous utiliserez pour votre projet, vous utiliserez presque toujours les mêmes transformations de données.<br>
+Je vous propose de passer en revue ces transformations.</p>
+<h2 id="structuration-des-données">Structuration des données</h2>
+<p>La phase de structuration des données va vous permettre de transformer vos données en données structurées sous forme de table.</p>
+<h3 id="la-table">La table</h3>
+<p>La table est la structure de données que vous allez utiliser pour toutes vos transformations de données.<br>
+Une table a les caractéristiques suivantes :</p>
+<ul>
+<li>Les données sont stockées en ligne</li>
+<li>Chaque colonne d&rsquo;une table contient des valeurs cohérentes
+<ul>
+<li>De nature : une colonne contient des données métier de même nature. Par exemple dans une colonne contenant le nom d&rsquo;une personne on ne met pas sa date de naissance.</li>
+<li>De type : une colonne ne contient que des valeurs ayant le même type ou pas de valeur. Par exemple une colonne de date ne contient que des dates.</li>
+<li>De format : une colonne de date ne contient que des dates au même format, par exemple on ne stocke pas le 31 décembre 2022 sous ces 2 formes dans la même colonne :
+<ul>
+<li>31/12/2022</li>
+<li>2022-12-31</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="/p/datalake-transformation/img/002-table.png"
+	width="952"
+	height="265"
+	srcset="/p/datalake-transformation/img/002-table_hud391b07d078a580a6feb81061bc5f572_17212_480x0_resize_box_3.png 480w, /p/datalake-transformation/img/002-table_hud391b07d078a580a6feb81061bc5f572_17212_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Structure d&rsquo;une table"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="359"
+		data-flex-basis="862px"
+	
+></p>
+<h3 id="nommage-des-colonnes">Nommage des colonnes</h3>
+<p>Le nommage des colonnes d&rsquo;une table est une phase très importante dans un projet BI. En général vous avez des données dont le nom n&rsquo;est pas adapté à la création d&rsquo;un modèle métier. La phase de renommage des colonnes d&rsquo;une table vous permet d&rsquo;apporter cette cohérence métier.<br>
+Prenez grand soin à avoir un nommage cohérent et d&rsquo;utiliser le bon vocabulaire du modèle métier cible, en effet si votre modèle de données doit être utilisé par des personnes d&rsquo;un métier parlé leur langage et masquer tous les éléments techniques inutiles.</p>
+<h3 id="typage-de-données">Typage de données</h3>
+<p>Le typage des données permet de conserver la cohérence d&rsquo;une table.  Parmi les types de données disponibles dans votre outil, choisissez toujours des types de données vous apportant une forte garantie sur le contenu de la colonne.<br>
+Par exemple, si vous stockez vos dates dans une colonne stockant du texte, vous n&rsquo;aurez pas la garantie d&rsquo;avoir des dates dedans.<br>
+Les principaux types de données que l&rsquo;on utilise sont :</p>
+<ul>
+<li>Le texte ou chaine de caractères</li>
+<li>Les nombres
+<ul>
+<li>Entier</li>
+<li>Décimaux</li>
+</ul>
+</li>
+<li>Le temps
+<ul>
+<li>Date</li>
+<li>Date/Heure</li>
+<li>Date/Heure/Fuseau horaire</li>
+</ul>
+</li>
+<li>Les booléens (vrai/faux)</li>
+</ul>
+<p>Attention, chaque type de données a ses propres pièges et on rencontre souvent les mêmes problèmes. Par exemple :</p>
+<ul>
+<li>Les formats de date ou de nombre décimaux différents entre les systèmes français et américain</li>
+<li>L&rsquo;encodage du texte, si les termes ASCII, UTF-8 ou UNICODE ne vous sont pas familiers vous risquez des ennuis lors du traitement de données avec des caractères spéciaux.</li>
+</ul>
+<h3 id="sélection-des-colonnes">Sélection des colonnes</h3>
+<p>Ne sélectionnez que les colonnes utiles d&rsquo;un point de vue métier ou technique à votre modèle de données. Il est en général plus simple d&rsquo;ajouter une nouvelle colonne à un modèle existant pour répondre à un nouveau besoin que de créer un modèle cohérent avec un grand nombre de colonnes inutile.</p>
+<h2 id="préparation-des-données">Préparation des données</h2>
+<p>Nous allons maintenant passer en revue les principales transformations que vous ferez sur vos données lors d&rsquo;un projet data.</p>
+<h3 id="filtrage-des-données">Filtrage des données</h3>
+<p>Un filtre permet de sélectionner les lignes que l&rsquo;on souhaite conserver en fonction de critères prédéfinis.</p>
+<p><img src="/p/datalake-transformation/img/003-filter.png"
+	width="1043"
+	height="254"
+	srcset="/p/datalake-transformation/img/003-filter_hu295087bdfaebbb443fd5fd45d8b80859_25711_480x0_resize_box_3.png 480w, /p/datalake-transformation/img/003-filter_hu295087bdfaebbb443fd5fd45d8b80859_25711_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Exemple d&rsquo;un filtre"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="410"
+		data-flex-basis="985px"
+	
+></p>
+<h3 id="remplacer-des-données">Remplacer des données</h3>
+<p>Le remplacement de données permet de remplacer une valeur par une autre valeur.</p>
+<p><img src="/p/datalake-transformation/img/004-replace.png"
+	width="1048"
+	height="258"
+	srcset="/p/datalake-transformation/img/004-replace_hub2f149565f883ffa61f4566d7d21573f_28594_480x0_resize_box_3.png 480w, /p/datalake-transformation/img/004-replace_hub2f149565f883ffa61f4566d7d21573f_28594_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Exemple d&rsquo;un remplacement"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="406"
+		data-flex-basis="974px"
+	
+></p>
+<p>Attention, certains outils sont sensibles à la casse, il différencie minuscules et majuscules. Par exemple, <em>rouge</em> sera différent de <em>Rouge</em>.</p>
+<h3 id="tri-des-données">Tri des données</h3>
+<p>Le tri des données permet d&rsquo;imposer l&rsquo;ordre des lignes les unes par rapport aux autres. Le tri peut être ascendant ou descendant et peu porter sur plusieurs colonnes afin de forcer le tri des lignes sur des sous-critères.</p>
+<p><img src="/p/datalake-transformation/img/005-sort.png"
+	width="1040"
+	height="248"
+	srcset="/p/datalake-transformation/img/005-sort_hue1dd40990003dd15ac4aa7fd74bbc98c_26701_480x0_resize_box_3.png 480w, /p/datalake-transformation/img/005-sort_hue1dd40990003dd15ac4aa7fd74bbc98c_26701_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Exemple de tri"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="419"
+		data-flex-basis="1006px"
+	
+></p>
+<p>Attention, tant que vous n&rsquo;avez pas trié vos données ne préjugé pas du tri de celle-ci.</p>
+<h3 id="partitionnement-des-données">Partitionnement des données</h3>
+<p>Le partitionnement des données permet de séparer physiquement vos données. On utilise cette technique sur les gros volumes de données en général pour améliorer les performances.</p>
+<p><img src="/p/datalake-transformation/img/006-partition.png"
+	width="1061"
+	height="339"
+	srcset="/p/datalake-transformation/img/006-partition_hue74bb6e30d0e32723710751280f8827c_34954_480x0_resize_box_3.png 480w, /p/datalake-transformation/img/006-partition_hue74bb6e30d0e32723710751280f8827c_34954_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Exemple de partitionnement"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="312"
+		data-flex-basis="751px"
+	
+></p>
+<h3 id="pivoter-dépivoter-et-transposer">Pivoter Dépivoter et Transposer</h3>
+<p>Ces 3 opérations permettent de faire des transformations sur la structure de la table. Elles sont souvent utilisées pour transformer des données formatées pour la saisie utilisateur dans Excel en données sous la forme d&rsquo;une table utilisable.</p>
+<h4 id="pivoter">Pivoter</h4>
+<p>Permets de basculer des valeurs stockées dans les lignes d&rsquo;une colonne en valeur stockée en colonne. Une opération d&rsquo;agrégation de données peut aussi être réalisée lors du pivot pour regrouper les valeurs sources identiques en une seule valeur cible.</p>
+<p><img src="/p/datalake-transformation/img/007-pivot.png"
+	width="1166"
+	height="365"
+	srcset="/p/datalake-transformation/img/007-pivot_hu57a42e3ab360df31f6b3c7ec0a581137_43302_480x0_resize_box_3.png 480w, /p/datalake-transformation/img/007-pivot_hu57a42e3ab360df31f6b3c7ec0a581137_43302_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Exemple de pivot"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="319"
+		data-flex-basis="766px"
+	
+></p>
+<h4 id="dépivoter">Dépivoter</h4>
+<p>Permets de basculer des valeurs stockées dans les noms de colonne d&rsquo;une table en valeur stockée en ligne. C&rsquo;est l&rsquo;opération inverse de pivoter.</p>
+<p><img src="/p/datalake-transformation/img/008-unpivot.png"
+	width="957"
+	height="359"
+	srcset="/p/datalake-transformation/img/008-unpivot_hu9741ec229875aad0855941f7d9632802_30130_480x0_resize_box_3.png 480w, /p/datalake-transformation/img/008-unpivot_hu9741ec229875aad0855941f7d9632802_30130_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Exemple de dépivot"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="266"
+		data-flex-basis="639px"
+	
+></p>
+<h4 id="transposer">Transposer</h4>
+<p>Permets de réaliser une rotation à 90° de votre table.<br>
+Si vous transposez une table déjà transposée vous retrouvez la table initiale.</p>
+<p><img src="/p/datalake-transformation/img/009-transpose.png"
+	width="1030"
+	height="172"
+	srcset="/p/datalake-transformation/img/009-transpose_hu1e912de131ba385d75e1589577f9ed95_20258_480x0_resize_box_3.png 480w, /p/datalake-transformation/img/009-transpose_hu1e912de131ba385d75e1589577f9ed95_20258_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Exemple de transpose"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="598"
+		data-flex-basis="1437px"
+	
+></p>
+<h3 id="créer-des-colonnes">Créer des colonnes</h3>
+<ul>
+<li>Par fractionnement, vous divisez une colonne en plusieurs autres colonnes à l&rsquo;aide d&rsquo;un séparateur.</li>
+<li>Par calcul, vous créer une colonne en vous basant sur des informations en provenance d&rsquo;autres colonnes de la même ligne.</li>
+<li>Par extraction d&rsquo;un terme, vous créer une colonne en extrayant un sous-ensemble d&rsquo;information d&rsquo;une colonne.</li>
+</ul>
+<h3 id="les-jointures">Les jointures</h3>
+<p>Les jointures sont une transformation de données très puissantes. Elles peuvent avoir plusieurs usages, notamment :</p>
+<ul>
+<li>L&rsquo;enrichissement d&rsquo;une table via une autre table.</li>
+<li>La suppression de ligne d&rsquo;une table par une autre table.</li>
+<li>La création de ligne dans une table.</li>
+</ul>
+<h4 id="jointure-externe-gauche">Jointure externe gauche</h4>
+<p>La jointure externe gauche permet d&rsquo;intégrer dans la table de gauche toutes les valeurs de la table de droite correspondant à la relation de jointure.<br>
+Avec ce tpe de jointure on à la garantie de conserver TOUTES les lignes de la table de gauche.<br>
+Par contre s&rsquo;il existe plusieurs occurrences d&rsquo;une même valeur dans la table de droite pour la relation, cela va créer des lignes dans la table de gauche.</p>
+<p><img src="/p/datalake-transformation/img/010-left-join.png"
+	width="902"
+	height="754"
+	srcset="/p/datalake-transformation/img/010-left-join_hu0d32a9d40bfd9a804900732601d4a70a_60783_480x0_resize_box_3.png 480w, /p/datalake-transformation/img/010-left-join_hu0d32a9d40bfd9a804900732601d4a70a_60783_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Exemple de jointure externe gauche"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="119"
+		data-flex-basis="287px"
+	
+></p>
+<p>La valeur <em>null</em> représente par convention une absence de valeur dans la table de droite.</p>
+<h4 id="jointure-externe-droite">Jointure externe droite</h4>
+<p>La jointure externe droite permet de filtrer les lignes de table de gauche à l&rsquo;aide des données de la table de droite.</p>
+<p><img src="/p/datalake-transformation/img/011-right-join.png"
+	width="877"
+	height="618"
+	srcset="/p/datalake-transformation/img/011-right-join_hue6467861ea40fd427e5cbb792ee7e795_47893_480x0_resize_box_3.png 480w, /p/datalake-transformation/img/011-right-join_hue6467861ea40fd427e5cbb792ee7e795_47893_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Exemple de jointure externe droite"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="141"
+		data-flex-basis="340px"
+	
+></p>
+<h4 id="jointure-externe-entière">Jointure externe entière</h4>
+<p>La jointure externe entière permet de conserver toutes les lignes des 2 tables.</p>
+<p><img src="/p/datalake-transformation/img/012-outer-join.png"
+	width="899"
+	height="640"
+	srcset="/p/datalake-transformation/img/012-outer-join_hucea240b1dd0705a3ca2860825525de0a_51336_480x0_resize_box_3.png 480w, /p/datalake-transformation/img/012-outer-join_hucea240b1dd0705a3ca2860825525de0a_51336_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Exemple de jointure externe entière"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="140"
+		data-flex-basis="337px"
+	
+></p>
+<h4 id="jointure-interne">Jointure interne</h4>
+<p>La jointure interne permet de ne conserver que les lignes appartenant aux 2 tables.</p>
+<p><img src="/p/datalake-transformation/img/013-inner-join.png"
+	width="842"
+	height="704"
+	srcset="/p/datalake-transformation/img/013-inner-join_hubb93a21d63a59400ebb47ad774e75d44_55204_480x0_resize_box_3.png 480w, /p/datalake-transformation/img/013-inner-join_hubb93a21d63a59400ebb47ad774e75d44_55204_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Exemple de jointure interne"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="119"
+		data-flex-basis="287px"
+	
+></p>
+<h3 id="lunion">L&rsquo;union</h3>
+<p>L&rsquo;union permet de cumuler les lignes de 2 tables ou plus en une seule table. Suivant les outils les tables doivent avoir la même structure de colonnes ou non.</p>
+<p><img src="/p/datalake-transformation/img/014-union.png"
+	width="1230"
+	height="387"
+	srcset="/p/datalake-transformation/img/014-union_hu08b8b2936bcec6aec09cf50f2e96f724_39688_480x0_resize_box_3.png 480w, /p/datalake-transformation/img/014-union_hu08b8b2936bcec6aec09cf50f2e96f724_39688_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Exemple d&rsquo;union de 2 tables"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="317"
+		data-flex-basis="762px"
+	
+></p>
+<h3 id="le-dédoublonnage">Le dédoublonnage</h3>
+<p>Le dédoublonnage est une opération qui permet de supprimer les lignes identiques. On à deux types d&rsquo;opération de dédoublonnage :</p>
+<ul>
+<li>Dédoublonage pur pour les lignes complètement identiques.</li>
+<li>Dédoublonage partiel, sur un critère choisi d&rsquo;une ou plusieurs colonnes, dans ce cas il faut faire attention à quelle valeur est conservé.</li>
+</ul>
+<p><img src="/p/datalake-transformation/img/015-remove-duplicate.png"
+	width="961"
+	height="290"
+	srcset="/p/datalake-transformation/img/015-remove-duplicate_hu242f1629717d92cf66906aeffe83af4e_27840_480x0_resize_box_3.png 480w, /p/datalake-transformation/img/015-remove-duplicate_hu242f1629717d92cf66906aeffe83af4e_27840_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Exemple de dédoublonnage"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="331"
+		data-flex-basis="795px"
+	
+></p>
+<h3 id="agrégation">Agrégation</h3>
+<p>L&rsquo;agrégation est une opération qui permet de réduire le nombre de lignes d&rsquo;une table. On supprime certaines colonnes, et en perdant ce détail, on peut regrouper les lignes en faisant une opération mathématique sur les colonnes numériques, en général une somme.<br>
+Les opérations d&rsquo;agrégations classiques sont :</p>
+<ul>
+<li>Somme</li>
+<li>Minimum</li>
+<li>Maximum</li>
+<li>Moyenne</li>
+<li>Écart type</li>
+<li>Compter le nombre de lignes agrégé</li>
+</ul>
+<p><img src="/p/datalake-transformation/img/016-aggregate.png"
+	width="948"
+	height="276"
+	srcset="/p/datalake-transformation/img/016-aggregate_hu6266293f44db3af5f37240e3d8650a9a_23713_480x0_resize_box_3.png 480w, /p/datalake-transformation/img/016-aggregate_hu6266293f44db3af5f37240e3d8650a9a_23713_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Exemple d&rsquo;agrégation"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="343"
+		data-flex-basis="824px"
+	
+></p>
+<p>L&rsquo;opération d&rsquo;agrégation est une opération qui modifie la granularité de la table. La table résultante a un niveau de détail moins important que la table source, on perd donc de l&rsquo;information.</p>
+<p>Merci de votre attention.</p>
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/auto-formation/">Auto formation</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Contenus liés</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/datalake-file-format/">
+        
+        
+            <div class="article-image">
+                <img src="/p/datalake-file-format/_hu7b96a42f0cce3c959105b317d2a6b238_2704901_d05340663a76ba7ca7995590a82a1f0b.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Datalake : les principaux formats de fichiers"
+                        data-key="datalake-file-format" 
+                        data-hash="md5-culewf0Zt34Lo225FWAiQw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Datalake : les principaux formats de fichiers</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/datalake-compute/">
+        
+        
+            <div class="article-image">
+                <img src="/p/datalake-compute/_huabd43efd91f25ddf48b57b8258cba1be_7710978_32b7f7cc909a6d06bc2538c6fd73bfb4.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Datalake : comment traiter les données d&#39;un datalake dans Azure"
+                        data-key="datalake-compute" 
+                        data-hash="md5-VLy4um3&#43;GCs9fx6xPJ1AoQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Datalake : comment traiter les données d&#39;un datalake dans Azure</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/datalake-la-base/">
+        
+        
+            <div class="article-image">
+                <img src="/p/datalake-la-base/_hu0aa3f93b2631ba2a32af5171088bce89_2286693_99fe5381d1849f007a28d9e271f98a19.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Datalake : la base d&#39;un projet data moderne"
+                        data-key="datalake-la-base" 
+                        data-hash="md5-XS8IKKiJI9HVYcDLGszlMA==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Datalake : la base d&#39;un projet data moderne</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/reporting-datawarehouse-datalakehouse/">
+        
+        
+            <div class="article-image">
+                <img src="/p/reporting-datawarehouse-datalakehouse/_hu8a7a29d89b178f9f3af884e9f947f179_1540306_a39e37980e7df0688f4036850d2fcd37.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Datawarehouse ou datalakehouse, quelle source pour vos reportings ?"
+                        data-key="reporting-datawarehouse-datalakehouse" 
+                        data-hash="md5-46O1YGqAYHItTg1OSNTwaw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Datawarehouse ou datalakehouse, quelle source pour vos reportings ?</h2>
+        </div>
+    </a>
+</article>
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "ddata" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2022 - 
+        
+        2023 Le D de Data
+    </section>
+    
+    <section class="powerby">
+        Généré avec <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Thème <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.16.0">Stack</a></b> conçu par <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>
