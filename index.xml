@@ -6,7 +6,127 @@
         <description>Recent content on Le D de Data</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>fr-fr</language>
-        <lastBuildDate>Sun, 09 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ddata.fr/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Fri, 14 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ddata.fr/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Les bases du cloud</title>
+        <link>https://blog.ddata.fr/p/les-bases-du-cloud/</link>
+        <pubDate>Fri, 14 Apr 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://blog.ddata.fr/p/les-bases-du-cloud/</guid>
+        <description>&lt;img src="https://blog.ddata.fr/p/les-bases-du-cloud/jakob-bartenschlager-GaTZTnODU_Y-unsplash.jpg" alt="Featured image of post Les bases du cloud" /&gt;&lt;p&gt;L&amp;rsquo;informatique devient cloud. Mais que se cache-t-il derrière ce mot ?&lt;br&gt;
+Je vous propose de passer en revue les points qu&amp;rsquo;il me semble important à comprendre autour du Cloud.&lt;/p&gt;
+&lt;h2 id=&#34;contexte&#34;&gt;Contexte&lt;/h2&gt;
+&lt;p&gt;Depuis quelques années l&amp;rsquo;informatique d&amp;rsquo;entreprise classique bascule vers le Cloud.&lt;br&gt;
+Pour repartir des bases, ce que l&amp;rsquo;on appelle informatique d&amp;rsquo;entreprise est un ensemble de serveurs (ordinateur spécialisé) délivrant des services aux utilisateurs de l&amp;rsquo;entreprise.&lt;br&gt;
+Les services délivrés sont ceux de vos logiciels métiers et sont composé d&amp;rsquo;un sous-ensemble de service informatique de base, tel que :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;les serveurs web&lt;/li&gt;
+&lt;li&gt;les serveurs de messagerie&lt;/li&gt;
+&lt;li&gt;les serveurs de fichiers&lt;/li&gt;
+&lt;li&gt;les serveurs de base de données&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;En général ces serveurs sont stockés dans des datacenters qui sont des lieux sécurisés en terme :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;d&amp;rsquo;accès&lt;/li&gt;
+&lt;li&gt;d&amp;rsquo;alimentation électrique&lt;/li&gt;
+&lt;li&gt;de connectivité réseau&lt;/li&gt;
+&lt;li&gt;de climatisation.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Un service informatique peut être décomposé ainsi :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Réseau : permets au service de communiquer.&lt;/li&gt;
+&lt;li&gt;Stockage : permets de stocker de l&amp;rsquo;information, du code des programmes aux données utilisateur.&lt;/li&gt;
+&lt;li&gt;Serveur : l&amp;rsquo;ordinateur lui-même.&lt;/li&gt;
+&lt;li&gt;Virtualisation : permets de partager une machine physique en plusieurs machines virtuelles.&lt;/li&gt;
+&lt;li&gt;Système d&amp;rsquo;exploitation : en général Linux ou Windows Server.&lt;/li&gt;
+&lt;li&gt;Middleware : les logiciels tels que les serveurs web ou les serveurs de bases de données.&lt;/li&gt;
+&lt;li&gt;Runtime : vos programmes métiers.&lt;/li&gt;
+&lt;li&gt;Données utilisateur : vos données.&lt;/li&gt;
+&lt;li&gt;Application : votre application utilisant toutes les couches précédentes.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Le cloud est l&amp;rsquo;appellation générique des prestataires qui se propose de prendre en charge pour vous tout ou parti de ces composantes.&lt;/p&gt;
+&lt;h2 id=&#34;as-a-service&#34;&gt;As a service&lt;/h2&gt;
+&lt;p&gt;Dans le monde du cloud, tout est considéré comme des services fournis à votre entreprise par votre prestataire de Cloud.
+Comme vous pouvez le voir ci-dessous, chaque service cloud sera affublé d&amp;rsquo;un acronyme permettant de comprendre quelle est la répartition des responsabilités entre vous et le prestataire.&lt;/p&gt;
+&lt;p&gt;IaaS, PaaS ou SaaS sont 3 acronymes indispensables à comprendre dans le cloud.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;IaaS : Infrastructure as a Service&lt;/li&gt;
+&lt;li&gt;PaaS : Platform as a Service&lt;/li&gt;
+&lt;li&gt;SaaS : Software as a Service&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/les-bases-du-cloud/img/001-iaas-paas-saas.png&#34;
+	width=&#34;912&#34;
+	height=&#34;578&#34;
+	srcset=&#34;https://blog.ddata.fr/p/les-bases-du-cloud/img/001-iaas-paas-saas_hub1dd5fdcd1070f14292664b801899ede_45671_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/les-bases-du-cloud/img/001-iaas-paas-saas_hub1dd5fdcd1070f14292664b801899ede_45671_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Répartition des responsabilités&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;157&#34;
+		data-flex-basis=&#34;378px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Vous trouverez d&amp;rsquo;autres acronymes correspondants à d&amp;rsquo;autre répartition, mais je ne vous présente que les 3 plus importante.&lt;/p&gt;
+&lt;p&gt;Afin de digérer cela, voici ces mêmes concepts expliqués avec le monde de la pizza.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/les-bases-du-cloud/img/002-pizza-as-a-service.png&#34;
+	width=&#34;1222&#34;
+	height=&#34;570&#34;
+	srcset=&#34;https://blog.ddata.fr/p/les-bases-du-cloud/img/002-pizza-as-a-service_hue2f2e66a52166345d811ebd7ee788e1f_47076_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/les-bases-du-cloud/img/002-pizza-as-a-service_hue2f2e66a52166345d811ebd7ee788e1f_47076_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Pizza as a Service&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;214&#34;
+		data-flex-basis=&#34;514px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;changement-de-paradigme&#34;&gt;Changement de paradigme&lt;/h2&gt;
+&lt;p&gt;Le passage d&amp;rsquo;une informatique d&amp;rsquo;entreprise gérer en interne à l&amp;rsquo;utilisation massive de service Cloud est un vrai changement de paradigme pour l&amp;rsquo;entreprise et la DSI.&lt;br&gt;
+Je vais en détailler certains maintenant.&lt;/p&gt;
+&lt;h3 id=&#34;achat-vs-location&#34;&gt;Achat vs location&lt;/h3&gt;
+&lt;p&gt;Le premier changement majeur est le passage d&amp;rsquo;un modèle d&amp;rsquo;achat à un modèle de location. En effet, lorsqu&amp;rsquo;une entreprise gère ses propres serveurs, en général, ils sont achetés.&lt;br&gt;
+À partir du moment où vous allez dans le Cloud, le matériel n&amp;rsquo;est plus la propriété de l&amp;rsquo;entreprise, cela a d&amp;rsquo;ailleurs un impact très important d&amp;rsquo;un point de vue financier, on passe d&amp;rsquo;un modèle CAPEX (les dépenses sont des coûts d&amp;rsquo;investissement) à un modèle OPEX (les dépenses sont des coûts d&amp;rsquo;exploitation).&lt;/p&gt;
+&lt;p&gt;Comme on ne gère pas de la même manière un véhicule en location qu&amp;rsquo;un véhicule que l&amp;rsquo;on possède, on doit garder cela à l&amp;rsquo;esprit pour mieux comprendre les changements de paradigme suivants.&lt;/p&gt;
+&lt;h3 id=&#34;des-services-managés&#34;&gt;Des services managés&lt;/h3&gt;
+&lt;p&gt;Les prestataires de service Cloud proposent avant tout des services managés, c&amp;rsquo;est-à-dire des services informatiques, dont la complexité d&amp;rsquo;implémentation, et d&amp;rsquo;exploitation est masquée à l&amp;rsquo;utilisateur de ce service sous la forme d&amp;rsquo;un ensemble d&amp;rsquo;options simplifié.&lt;br&gt;
+Par exemple, utiliser un service de base de données en ligne est beaucoup plus simple que d&amp;rsquo;installer et exploiter vous-même ce type de service.&lt;/p&gt;
+&lt;p&gt;Les services managés permettent aux entreprises d&amp;rsquo;accéder à des services informatiques complexes sans pour autant disposer en interne des ressources pour exploiter ces services.&lt;/p&gt;
+&lt;h3 id=&#34;animal-de-compagnie-vs-bétail&#34;&gt;Animal de compagnie vs Bétail&lt;/h3&gt;
+&lt;p&gt;Les équipes informatiques ont souvent un attachement particulier à leurs serveurs locaux, en effet ils les ont installés, les ont fait évoluer. Il y a un attachement comme avec un animal de compagnie.&lt;/p&gt;
+&lt;p&gt;Dans une approche cloud, on aura plus la même approche, on va devoir pouvoir reproduire automatiquement des configurations, automatiser des déploiements, cloner des systèmes, en résumé, industrialiser nos processus. Cette approche empêche d&amp;rsquo;avoir un attachement aux ressources informatiques lié on travail maintenant avec du bétail.&lt;/p&gt;
+&lt;h3 id=&#34;industrialisation&#34;&gt;Industrialisation&lt;/h3&gt;
+&lt;p&gt;L&amp;rsquo;industrialisation de vos processus informatique est donc une phase importante a mettre en œuvre lors d&amp;rsquo;un passage vers des services Cloud.&lt;br&gt;
+En général, les équipes projet souhaitent déployer rapidement pour mettre à disposition aux utilisateurs les nouveautés et les équipes d&amp;rsquo;exploitation ont besoin de garantir un usage stable des plateformes et préfère donc éviter les changements.&lt;br&gt;
+Une approche DevOps de vos projets informatiques devra être mise en place. Cette approche permet de mieux faire communiquer vos équipes de projets (Dev), de développement interne ou de déploiement de solution logiciel externe, avec vos équipes d&amp;rsquo;exploitation (Ops) en charge du bon fonctionnement quotidien des applications.&lt;/p&gt;
+&lt;p&gt;Parmi les points clés d&amp;rsquo;une approche DevOps on retiendra la mise en œuvre des éléments suivant :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Infrastructure As Code : On défini l&amp;rsquo;infrastructure cible et on la déploie à l&amp;rsquo;aide d&amp;rsquo;outils d&amp;rsquo;automatisation, comme Terraform. L&amp;rsquo;infrastructure est maintenue via des fichiers de configuration comme le code informatique.&lt;/li&gt;
+&lt;li&gt;Continous integration / Continous delvery (CI/CD) : On met en place des processus automatisés permettant de préparer et réaliser les évolutions logiciels de vos environnements. Cette automatisation permet d&amp;rsquo;augmenter la fiabilité de ce processus et permet donc des mises à jour plus fréquentes.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;la-clé-de-la-réussite&#34;&gt;La clé de la réussite&lt;/h2&gt;
+&lt;p&gt;Vous pouvez mettre en place tout ce que vous voulez, mais il y a à mon sens une seule clé de la réussite d&amp;rsquo;un projet Cloud : la maitrise des coûts.&lt;br&gt;
+Cette maitrise des coûts passe par une bonne compréhension des paradigmes présentés ci-dessus, mais aussi une forte sensibilisation des toutes vos équipes, on ne fait pas de l&amp;rsquo;informatique dans le cloud comme on fait de l&amp;rsquo;informatique localement.&lt;br&gt;
+Quelques exemples pour mieux comprendre :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Vous avez un serveur virtualisé (IAaS) que vous utilisé 12 h par jour.
+&lt;ul&gt;
+&lt;li&gt;En informatique traditionnelle ce serveur est disponible en permanence.&lt;/li&gt;
+&lt;li&gt;En Cloud stoppé ce serveur quand il n&amp;rsquo;est pas utilisé pour arrêté la facturation et redémarré le quand vous en avez besoin.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Vous avez un serveur de base de données qui consomme régulièrement entre 60 et 80 % de ses ressources.
+&lt;ul&gt;
+&lt;li&gt;En informatique traditionnelle, vous allez penser à augmenter les capacités matérielles pour prévoir l&amp;rsquo;avenir, les délais de commande de matériel peuvent être longs.&lt;/li&gt;
+&lt;li&gt;En Cloud vous cherchez à maximiser la consommation des ressources louées, en cas de besoin vous pourrez l&amp;rsquo;augmenter en quelques secondes et même automatiser ce processus.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Merci de votre attention.&lt;/p&gt;</description>
+        </item>
+        <item>
         <title>Projet data : les principales transformations des données</title>
         <link>https://blog.ddata.fr/p/datalake-transformation/</link>
         <pubDate>Sun, 09 Apr 2023 00:00:00 +0000</pubDate>
