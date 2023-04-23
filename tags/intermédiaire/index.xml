@@ -6,7 +6,304 @@
         <description>Recent content in Intermédiaire on Le D de Data</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>fr-fr</language>
-        <lastBuildDate>Sun, 02 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ddata.fr/tags/interm%C3%A9diaire/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sun, 23 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ddata.fr/tags/interm%C3%A9diaire/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Installer et configurer votre passerelle de données pour Power BI.</title>
+        <link>https://blog.ddata.fr/p/power-bi-gateway/</link>
+        <pubDate>Sun, 23 Apr 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://blog.ddata.fr/p/power-bi-gateway/</guid>
+        <description>&lt;img src="https://blog.ddata.fr/p/power-bi-gateway/jocelyn-allen-GfujWJ6TGj0-unsplash.jpg" alt="Featured image of post Installer et configurer votre passerelle de données pour Power BI." /&gt;&lt;p&gt;Vous souhaitez mettre à jour vos données d&amp;rsquo;entreprise dans le service Power BI ?&lt;br&gt;
+Vous avez donc besoin d&amp;rsquo;une passerelle de données Power BI.&lt;/p&gt;
+&lt;h2 id=&#34;contexte&#34;&gt;Contexte&lt;/h2&gt;
+&lt;p&gt;Dans un projet Power BI vous pouvez intégrer 2 types de données :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Les données cloud, type SharePoint Online ou Azure SQL.&lt;/li&gt;
+&lt;li&gt;Les données de votre réseau d&amp;rsquo;entreprise non accessible depuis Internet.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Quand vous publiez un rapport dans le service Power BI vous souhaitez pouvoir automatiser le rafraichissement de vos données. Pour que le service Power BI puisse accéder à vos données d&amp;rsquo;entreprise, vous devez installer une passerelle de données Power BI.&lt;/p&gt;
+&lt;h2 id=&#34;comment-marche-la-passerelle-de-données&#34;&gt;Comment marche la passerelle de données&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/power-bi-gateway/img/001-gateway-how-to.png&#34;
+	width=&#34;714&#34;
+	height=&#34;647&#34;
+	srcset=&#34;https://blog.ddata.fr/p/power-bi-gateway/img/001-gateway-how-to_hu743be23af5e85cb10fd3208e5ad3bdde_37056_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/power-bi-gateway/img/001-gateway-how-to_hu743be23af5e85cb10fd3208e5ad3bdde_37056_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Fonctionnement simplifié de la passerelle&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;110&#34;
+		data-flex-basis=&#34;264px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Les jeux de données et les flux de données créent des demandes de requêtes à exécuter sur la passerelle lors du rafraichissement des données.&lt;/li&gt;
+&lt;li&gt;Le service Azure Service Bus crée un message crypter contenant la requête et les informations liées aux connexions aux sources de données à utiliser.&lt;/li&gt;
+&lt;li&gt;La passerelle Power BI installée sur votre réseau interne lit la file d&amp;rsquo;attente des demandes dans le service Azure Service Bus. Les données sont décryptées par la passerelle. Il s&amp;rsquo;agit donc seulement de flux sortant HTTPS de votre réseau. Ce n&amp;rsquo;est pas Azure ou Power BI qui entre dans votre réseau, c&amp;rsquo;est la passerelle qui écoute les demandes.&lt;/li&gt;
+&lt;li&gt;Les requêtes sont envoyées par la passerelle et exécutées sur vos sources de données locales.&lt;/li&gt;
+&lt;li&gt;Le résultat est renvoyé vers le service Power BI sous forme cryptée, où il sera intégré dans le jeu de données ou le flux de données demandeur.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;type-de-passerelle&#34;&gt;Type de passerelle&lt;/h2&gt;
+&lt;p&gt;Il existe 2 versions de la passerelle de données Power BI. Les 2 versions sont gratuites.&lt;/p&gt;
+&lt;h3 id=&#34;standard&#34;&gt;Standard&lt;/h3&gt;
+&lt;p&gt;La passerelle standard est la passerelle à utiliser dans un cadre professionnel, elle permet de partager vos données d&amp;rsquo;entreprise avec Power BI mais aussi d&amp;rsquo;autres services de Microsoft.&lt;br&gt;
+Elle est utilisable par tous les utilisateurs de l&amp;rsquo;entreprise autorisés.&lt;br&gt;
+Il est possible de créer un cluster de passerelle, plusieurs machines faisant tourner la même passerelle, afin d&amp;rsquo;adresser des scénarii de haute disponibilité.&lt;/p&gt;
+&lt;h3 id=&#34;personnel&#34;&gt;Personnel&lt;/h3&gt;
+&lt;p&gt;La passerelle personnelle permet d&amp;rsquo;accéder aux données depuis un profil utilisateur unique. Sauf cas d&amp;rsquo;usage particulier, évitez de l&amp;rsquo;utiliser et privilégiez la passerelle standard qui est adaptée à un usage professionnel.&lt;br&gt;
+Les cas d&amp;rsquo;usages particuliers peuvent être :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Permettre l&amp;rsquo;accès à des données sur un poste de travail particulier.&lt;/li&gt;
+&lt;li&gt;Créer un poc rapide avec des données d&amp;rsquo;entreprise.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Dans tous les cas, posez-vous la question du bon usage de vos données dans un cadre professionnel.&lt;/p&gt;
+&lt;h2 id=&#34;installation-de-la-passerelle&#34;&gt;Installation de la passerelle&lt;/h2&gt;
+&lt;p&gt;Pour installer la passerelle standard, téléchargez le programme à l&amp;rsquo;adresse suivante &lt;a class=&#34;link&#34; href=&#34;https://powerbi.microsoft.com/fr-fr/gateway/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://powerbi.microsoft.com/fr-fr/gateway/&lt;/a&gt; puis lancez-le.&lt;/p&gt;
+&lt;p&gt;Lors de la phase d&amp;rsquo;installation, vous devrez fournir 2 informations essentielles :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;l&amp;rsquo;utilisateur enregistrant la passerelle dans Power BI, en vous authentifiant avec son profil, cet utilisateur n&amp;rsquo;est pas forcément votre profil local. Il sera l&amp;rsquo;administrateur par défaut de la passerelle.&lt;/li&gt;
+&lt;li&gt;Une clé de récupération, cette clé vous permettra d&amp;rsquo;installer la passerelle sur une nouvelle machine ou un nœud supplémentaire dans le cluster de passerelle. Cette clé permet d&amp;rsquo;accéder aux connexions enregistrées pour cette passerelle.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/power-bi-gateway/img/003-gateway-install-admin-email.png&#34;
+	width=&#34;640&#34;
+	height=&#34;590&#34;
+	srcset=&#34;https://blog.ddata.fr/p/power-bi-gateway/img/003-gateway-install-admin-email_hub53868fbf6114f70f432ce180e323ce7_18074_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/power-bi-gateway/img/003-gateway-install-admin-email_hub53868fbf6114f70f432ce180e323ce7_18074_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Saisie de l&amp;rsquo;administrateur par défaut&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;108&#34;
+		data-flex-basis=&#34;260px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Entrez l&amp;rsquo;adresse de l&amp;rsquo;administrateur par défaut de la passerelle.&lt;/li&gt;
+&lt;li&gt;Appuyez sur &lt;em&gt;Se connecter&lt;/em&gt;, pour vous identifier avec le profil administrateur.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/power-bi-gateway/img/004-gateway-install-type-install.png&#34;
+	width=&#34;640&#34;
+	height=&#34;631&#34;
+	srcset=&#34;https://blog.ddata.fr/p/power-bi-gateway/img/004-gateway-install-type-install_huc3d1cd88d90dcc173c039f14bc11e591_24791_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/power-bi-gateway/img/004-gateway-install-type-install_huc3d1cd88d90dcc173c039f14bc11e591_24791_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Sélection du type d&amp;rsquo;installation&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;101&#34;
+		data-flex-basis=&#34;243px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Choisissez le type d&amp;rsquo;installation çà faire, vous avez le choix entre créer une nouvelle passerelle et interagir avec une déjà enregistrer dans le service Power BI.&lt;/li&gt;
+&lt;li&gt;Appuyez sur &lt;em&gt;Suivant&lt;/em&gt; pour continuer.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/power-bi-gateway/img/005-gateway-install-configure.png&#34;
+	width=&#34;640&#34;
+	height=&#34;591&#34;
+	srcset=&#34;https://blog.ddata.fr/p/power-bi-gateway/img/005-gateway-install-configure_hu6e8a1d72fbee2d635885dab07bfa80ab_35456_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/power-bi-gateway/img/005-gateway-install-configure_hu6e8a1d72fbee2d635885dab07bfa80ab_35456_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Configuration de la passerelle&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;108&#34;
+		data-flex-basis=&#34;259px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Saisir le nom de votre passerelle&lt;/li&gt;
+&lt;li&gt;Cochez cette case pour ajouter la machine sur laquelle vous installez dans un cluster de passerelle existant. Par défaut une passerelle est un cluster à 1 nœud.&lt;/li&gt;
+&lt;li&gt;Tapez la clé de récupération. Cette clé permet l&amp;rsquo;encodage/décodage des messages échangés entre la passerelle et le service Power BI. Si vous perdez cette clé, vous ne pourrez plus décrypter les sources de données liées à la passerelle.&lt;/li&gt;
+&lt;li&gt;Appuyez sur &lt;em&gt;Configurer&lt;/em&gt; pour terminer la configuration de votre passerelle.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;L&amp;rsquo;écran suivant vous permet d&amp;rsquo;accéder à des paramètres avancés et des informations concernant la passerelle. On va tout laisser par défaut.&lt;/p&gt;
+&lt;p&gt;Une fois la passerelle installée, rendez-vous dans l&amp;rsquo;administration des passerelles depuis le portail du service Power BI.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/power-bi-gateway/img/006-gateway-admin.png&#34;
+	width=&#34;336&#34;
+	height=&#34;287&#34;
+	srcset=&#34;https://blog.ddata.fr/p/power-bi-gateway/img/006-gateway-admin_hu5c3bd35c32d2ad5b6c7baf91321c3ebf_13130_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/power-bi-gateway/img/006-gateway-admin_hu5c3bd35c32d2ad5b6c7baf91321c3ebf_13130_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Accès à l&amp;rsquo;administration des passerelles&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;117&#34;
+		data-flex-basis=&#34;280px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Cliquez sur la roue crantée.&lt;/li&gt;
+&lt;li&gt;Cliquez sur &lt;em&gt;Gérer des connexions et des passerelles&lt;/em&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/power-bi-gateway/img/007-gateway-admin-view.png&#34;
+	width=&#34;1836&#34;
+	height=&#34;399&#34;
+	srcset=&#34;https://blog.ddata.fr/p/power-bi-gateway/img/007-gateway-admin-view_hud3d93d1fd29faa11e7c8b4b97cf6f0a3_43392_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/power-bi-gateway/img/007-gateway-admin-view_hud3d93d1fd29faa11e7c8b4b97cf6f0a3_43392_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Administration des passerelles&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;460&#34;
+		data-flex-basis=&#34;1104px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Allez dans &lt;em&gt;Passerelle de données locales&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Vous trouvez la liste des passerelles installées.&lt;/li&gt;
+&lt;li&gt;Cliquez sur les 3 points pour gérer les utilisateurs et paramètres de la passerelle ou supprimer la passerelle.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;comprendre-les-sources-de-données&#34;&gt;Comprendre les sources de données&lt;/h2&gt;
+&lt;p&gt;L&amp;rsquo;accès aux données est réalisé à l&amp;rsquo;aide de sources de données. Cette notion de sources de données permet de réaliser une bonne ségrégation des informations de sécurité.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Celui qui créer la source de données est le sachant des informations de connexion notamment le login et mot de passe. En général c&amp;rsquo;est une personne de l&amp;rsquo;IT.&lt;/li&gt;
+&lt;li&gt;Celui qui utilise la source de données est le propriétaire du jeu de données, il n&amp;rsquo;a pas besoin de connaitre le login et mot de passe utilisé pour accéder aux données.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/power-bi-gateway/img/002-gateway-connection.png&#34;
+	width=&#34;795&#34;
+	height=&#34;472&#34;
+	srcset=&#34;https://blog.ddata.fr/p/power-bi-gateway/img/002-gateway-connection_hu852879c05998d4d60df2fd105b2f48c0_28043_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/power-bi-gateway/img/002-gateway-connection_hu852879c05998d4d60df2fd105b2f48c0_28043_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Fonctionnement des sources de données&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;168&#34;
+		data-flex-basis=&#34;404px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Une personne avec le rôle &lt;em&gt;administrateur de la passerelle&lt;/em&gt; ou &lt;em&gt;créateur de connexion&lt;/em&gt; crée une source de données pour une passerelle donnée.&lt;/li&gt;
+&lt;li&gt;Une personne avec le rôle &lt;em&gt;administrateur de la passerelle&lt;/em&gt; ou &lt;em&gt;créateur de connexion avec repartage&lt;/em&gt; autorise des utilisateurs à utiliser cette source de données.&lt;/li&gt;
+&lt;li&gt;Le propriétaire d&amp;rsquo;un jeu de données affecte les sources de données qu&amp;rsquo;il peut utiliser à son jeu de données.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;créer-une-source-de-données&#34;&gt;Créer une source de données&lt;/h3&gt;
+&lt;p&gt;Pour créer une source de données, rendez-vous dans l&amp;rsquo;administration des passerelles depuis le portail du service Power BI.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/power-bi-gateway/img/006-gateway-admin.png&#34;
+	width=&#34;336&#34;
+	height=&#34;287&#34;
+	srcset=&#34;https://blog.ddata.fr/p/power-bi-gateway/img/006-gateway-admin_hu5c3bd35c32d2ad5b6c7baf91321c3ebf_13130_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/power-bi-gateway/img/006-gateway-admin_hu5c3bd35c32d2ad5b6c7baf91321c3ebf_13130_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Accès à l&amp;rsquo;administration des passerelles&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;117&#34;
+		data-flex-basis=&#34;280px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Cliquez sur la roue crantée.&lt;/li&gt;
+&lt;li&gt;Cliquez sur &lt;em&gt;Gérer des connexions et des passerelles&lt;/em&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/power-bi-gateway/img/008-gateway-datasource-add.png&#34;
+	width=&#34;1439&#34;
+	height=&#34;410&#34;
+	srcset=&#34;https://blog.ddata.fr/p/power-bi-gateway/img/008-gateway-datasource-add_hu8a1be8263a65d5f0bc73d8734ef5ec55_25362_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/power-bi-gateway/img/008-gateway-datasource-add_hu8a1be8263a65d5f0bc73d8734ef5ec55_25362_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Ajout d&amp;rsquo;une source de données&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;350&#34;
+		data-flex-basis=&#34;842px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Allez dans &lt;em&gt;Sources de données&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Appuyez sur &lt;em&gt;Nouveau&lt;/em&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/power-bi-gateway/img/009-gateway-datasource-config.png&#34;
+	width=&#34;447&#34;
+	height=&#34;923&#34;
+	srcset=&#34;https://blog.ddata.fr/p/power-bi-gateway/img/009-gateway-datasource-config_hud1b805954fb976b80967bff942375098_43624_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/power-bi-gateway/img/009-gateway-datasource-config_hud1b805954fb976b80967bff942375098_43624_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Configuration d&amp;rsquo;une source de données&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;48&#34;
+		data-flex-basis=&#34;116px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Choisissez la passerelle pour laquelle vous créer la source de données. La passerelle doit avoir accès à cette source sur votre réseau local.&lt;/li&gt;
+&lt;li&gt;Donnez un nom à votre source de données.&lt;/li&gt;
+&lt;li&gt;Sélectionnez le type de source de données dans la liste.&lt;/li&gt;
+&lt;li&gt;En fonction du type de la source de données renseignez les informations permettant de s&amp;quot;y connecter. Cette partie est différente pour chaque type de source de données.&lt;/li&gt;
+&lt;li&gt;Donnez le niveau de confidentialité de la source de données.&lt;/li&gt;
+&lt;li&gt;Appuyez sur &lt;em&gt;Créer&lt;/em&gt; pour ajouter cette source de données.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;partager-une-source-de-données&#34;&gt;Partager une source de données&lt;/h3&gt;
+&lt;p&gt;Une fois la source de données créer, vous pouvez déléguer son utilisation aux personnes en ayant besoin.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/power-bi-gateway/img/010-gateway-datasource-share.png&#34;
+	width=&#34;1852&#34;
+	height=&#34;931&#34;
+	srcset=&#34;https://blog.ddata.fr/p/power-bi-gateway/img/010-gateway-datasource-share_hu92a28a71b195367d3906b7b52fb9e317_92452_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/power-bi-gateway/img/010-gateway-datasource-share_hu92a28a71b195367d3906b7b52fb9e317_92452_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Partage d&amp;rsquo;une source de données&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;198&#34;
+		data-flex-basis=&#34;477px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Allez dans &lt;em&gt;Sources de données&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Cliquez sur les 3 points pour gérer les utilisateurs.&lt;/li&gt;
+&lt;li&gt;Recherchez les utilisateurs à ajouter.&lt;/li&gt;
+&lt;li&gt;Sélectionnez un nouvel utilisateur ou un utilisateur existant.&lt;/li&gt;
+&lt;li&gt;Configurez le niveau de droit souhaité.&lt;/li&gt;
+&lt;li&gt;Appuyez sur &lt;em&gt;Partager&lt;/em&gt; pour valider vos modifications.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;configurer-votre-jeu-de-données-pour-utiliser-la-passerelle&#34;&gt;Configurer votre jeu de données pour utiliser la passerelle&lt;/h2&gt;
+&lt;p&gt;Pour configurer l&amp;rsquo;utilisation de la passerelle sur un jeu de données, vous devez utiliser un jeu de données consommant des données sur l&amp;rsquo;infrastructure locale de l&amp;rsquo;entreprise.&lt;br&gt;
+Rendez-vous dans les paramètres du jeu de données pour configurer la passerelle. Pour vous y rendre, allez sur les 3 points de la ligne du jeu de données dans votre espace de travail et choisissez &lt;em&gt;Paramètres&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/power-bi-gateway/img/011-gateway-on-dataset.png&#34;
+	width=&#34;854&#34;
+	height=&#34;517&#34;
+	srcset=&#34;https://blog.ddata.fr/p/power-bi-gateway/img/011-gateway-on-dataset_hu4ce01184615897274994d4a20cfc2da4_41212_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/power-bi-gateway/img/011-gateway-on-dataset_hu4ce01184615897274994d4a20cfc2da4_41212_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Configuration de la passerelle sur le jeu de données&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;165&#34;
+		data-flex-basis=&#34;396px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Dans ce bloc, vous avez toutes les informations concernant la passerelle. Si ce bloc n&amp;rsquo;apparait pas, vous ne devez pas avoir le droit d&amp;rsquo;utiliser les sources de données nécessaires. Si ce bloc apparait plusieurs fois c&amp;rsquo;est que vous avez plusieurs passerelles compatibles avec votre source de données.&lt;/li&gt;
+&lt;li&gt;Vous trouverez ici la liste des sources de données de la passerelle compatible avec la signature (3) de votre source de données dans Power Query.&lt;/li&gt;
+&lt;li&gt;Ceci est la signature de votre source de données dans Power Query.&lt;/li&gt;
+&lt;li&gt;Appuyez sur &lt;em&gt;Appliquer&lt;/em&gt; pour enregistrer vos modifications, puis tester le rafraichissement de votre jeu de données.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Le service Power BI va rechercher des sources de données configurées dans votre passerelle correspondant à la signature de votre source de données dans votre jeu de données. Cette signature est constituée :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Du type de source de données.&lt;/li&gt;
+&lt;li&gt;Des informations de connexions spécifiques au type de données.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Vous pouvez rendre cela dynamique en utilisant des paramètres dans vos requêtes Power Query. Cela vous permet de variabiliser des éléments spécifiques, par exemple modifié après publication du jeu de donner le nom de serveur SQL.&lt;br&gt;
+Un autre point d&amp;rsquo;attention, vous pouvez remplacer des sources de données de type fichier dans Power Query par source de données de type dossier dans la passerelle à condition que le chemin de dossier soit un parent de celui du fichier.&lt;/p&gt;
+&lt;h3 id=&#34;limitation&#34;&gt;Limitation&lt;/h3&gt;
+&lt;p&gt;Une limitation importante à connaitre est que vous ne pouvez utilisez qu&amp;rsquo;une même passerelle pour un jeu de données. Cela à pour conséquence que toutes les connexions dont vous avez besoin doivent être disponible sur cette passerelle.&lt;/p&gt;
+&lt;p&gt;Merci de votre attention.&lt;/p&gt;</description>
+        </item>
+        <item>
         <title>Analyser dans Excel, la rencontre d&#39;Excel et du service Power BI</title>
         <link>https://blog.ddata.fr/p/analyser-dans-excel/</link>
         <pubDate>Sun, 02 Apr 2023 00:00:00 +0000</pubDate>

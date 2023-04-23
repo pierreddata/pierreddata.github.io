@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html lang="fr-fr" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Vous souhaitez mettre à jour vos données d&amp;rsquo;entreprise dans le service Power BI ?
+Vous avez donc besoin d&amp;rsquo;une passerelle de données Power BI.
+'>
+<title>Installer et configurer votre passerelle de données pour Power BI.</title>
+
+<link rel='canonical' href='https://blog.ddata.fr/p/power-bi-gateway/'>
+
+<link rel="stylesheet" href="/scss/style.min.5be32ca3f6e1a997c75795c4359147cc6d4fbd34948c0acd51e31d237033978a.css"><meta property='og:title' content='Installer et configurer votre passerelle de données pour Power BI.'>
+<meta property='og:description' content='Vous souhaitez mettre à jour vos données d&amp;rsquo;entreprise dans le service Power BI ?
+Vous avez donc besoin d&amp;rsquo;une passerelle de données Power BI.
+'>
+<meta property='og:url' content='https://blog.ddata.fr/p/power-bi-gateway/'>
+<meta property='og:site_name' content='Le D de Data'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Intermédiaire' /><meta property='article:tag' content='Auto formation' /><meta property='article:published_time' content='2023-04-23T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2023-04-23T00:00:00&#43;00:00'/><meta property='og:image' content='https://blog.ddata.fr/p/power-bi-gateway/jocelyn-allen-GfujWJ6TGj0-unsplash.jpg' />
+<meta name="twitter:title" content="Installer et configurer votre passerelle de données pour Power BI.">
+<meta name="twitter:description" content="Vous souhaitez mettre à jour vos données d&amp;rsquo;entreprise dans le service Power BI ?
+Vous avez donc besoin d&amp;rsquo;une passerelle de données Power BI.
+"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://blog.ddata.fr/p/power-bi-gateway/jocelyn-allen-GfujWJ6TGj0-unsplash.jpg' />
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TY6XFEN6QV"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-TY6XFEN6QV', { 'anonymize_ip': false });
+}
+</script>
+<link rel="alternate"
+      type="application/rss+xml"
+      href="https://blog.ddata.fr/index.xml"
+      title="Le D de Data">
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "dark");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Afficher le menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/pierre_hua6bbc70dde858dd10e363a14d1f7729c_67951_300x0_resize_q75_box.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Le D de Data</a></h1>
+            <h2 class="site-description">Blog francophone autour de la data Microsoft</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/pierreddata'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://www.linkedin.com/in/pierre-dupont-0b532374/'
+                        target="_blank"
+                        title="LinkdIn"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-folders" width="44" height="44" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <rect x="4" y="4" width="16" height="16" rx="2" />
+  <line x1="8" y1="11" x2="8" y2="16" />
+  <line x1="8" y1="8" x2="8" y2="8.01" />
+  <line x1="12" y1="16" x2="12" y2="11" />
+  <path d="M16 16v-3a2 2 0 0 0 -4 0" />
+</svg>
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Accueil</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/a-propos-de-d-de-data/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>A Propos</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/series/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-folders" width="44" height="44" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 4h3l2 2h5a2 2 0 0 1 2 2v7a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-9a2 2 0 0 1 2 -2" />
+  <path d="M17 17v2a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-9a2 2 0 0 1 2 -2h2" />
+</svg>
+
+                
+                <span>Series</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/liens/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Liens</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Rechercher</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Mode sombre</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table des matières</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#contexte">Contexte</a></li>
+    <li><a href="#comment-marche-la-passerelle-de-données">Comment marche la passerelle de données</a></li>
+    <li><a href="#type-de-passerelle">Type de passerelle</a>
+      <ol>
+        <li><a href="#standard">Standard</a></li>
+        <li><a href="#personnel">Personnel</a></li>
+      </ol>
+    </li>
+    <li><a href="#installation-de-la-passerelle">Installation de la passerelle</a></li>
+    <li><a href="#comprendre-les-sources-de-données">Comprendre les sources de données</a>
+      <ol>
+        <li><a href="#créer-une-source-de-données">Créer une source de données</a></li>
+        <li><a href="#partager-une-source-de-données">Partager une source de données</a></li>
+      </ol>
+    </li>
+    <li><a href="#configurer-votre-jeu-de-données-pour-utiliser-la-passerelle">Configurer votre jeu de données pour utiliser la passerelle</a>
+      <ol>
+        <li><a href="#limitation">Limitation</a></li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/power-bi-gateway/">
+                <img src="/p/power-bi-gateway/jocelyn-allen-GfujWJ6TGj0-unsplash_hu81c52007d2e7fffec5d58774b441b07a_2250510_800x0_resize_q75_box.jpg"
+                        srcset="/p/power-bi-gateway/jocelyn-allen-GfujWJ6TGj0-unsplash_hu81c52007d2e7fffec5d58774b441b07a_2250510_800x0_resize_q75_box.jpg 800w, /p/power-bi-gateway/jocelyn-allen-GfujWJ6TGj0-unsplash_hu81c52007d2e7fffec5d58774b441b07a_2250510_1600x0_resize_q75_box.jpg 1600w"
+                        width="800" 
+                        height="533" 
+                        loading="lazy"
+                        alt="Featured image of post Installer et configurer votre passerelle de données pour Power BI." />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/powerbi/" style="background-color: #f2c811; color: #fff;">
+                Power BI
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/power-bi-gateway/">Installer et configurer votre passerelle de données pour Power BI.</a>
+        </h2>
+
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published" datetime="2023-04-23T00:00:00Z">
+                    23 avril 2023
+                    
+                </time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    7 minutes de lecture
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+    
+    
+</div>
+</header>
+
+    <section class="article-content">
+    
+    
+    <p>Vous souhaitez mettre à jour vos données d&rsquo;entreprise dans le service Power BI ?<br>
+Vous avez donc besoin d&rsquo;une passerelle de données Power BI.</p>
+<h2 id="contexte">Contexte</h2>
+<p>Dans un projet Power BI vous pouvez intégrer 2 types de données :</p>
+<ul>
+<li>Les données cloud, type SharePoint Online ou Azure SQL.</li>
+<li>Les données de votre réseau d&rsquo;entreprise non accessible depuis Internet.</li>
+</ul>
+<p>Quand vous publiez un rapport dans le service Power BI vous souhaitez pouvoir automatiser le rafraichissement de vos données. Pour que le service Power BI puisse accéder à vos données d&rsquo;entreprise, vous devez installer une passerelle de données Power BI.</p>
+<h2 id="comment-marche-la-passerelle-de-données">Comment marche la passerelle de données</h2>
+<p><img src="/p/power-bi-gateway/img/001-gateway-how-to.png"
+	width="714"
+	height="647"
+	srcset="/p/power-bi-gateway/img/001-gateway-how-to_hu743be23af5e85cb10fd3208e5ad3bdde_37056_480x0_resize_box_3.png 480w, /p/power-bi-gateway/img/001-gateway-how-to_hu743be23af5e85cb10fd3208e5ad3bdde_37056_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Fonctionnement simplifié de la passerelle"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="110"
+		data-flex-basis="264px"
+	
+></p>
+<ol>
+<li>Les jeux de données et les flux de données créent des demandes de requêtes à exécuter sur la passerelle lors du rafraichissement des données.</li>
+<li>Le service Azure Service Bus crée un message crypter contenant la requête et les informations liées aux connexions aux sources de données à utiliser.</li>
+<li>La passerelle Power BI installée sur votre réseau interne lit la file d&rsquo;attente des demandes dans le service Azure Service Bus. Les données sont décryptées par la passerelle. Il s&rsquo;agit donc seulement de flux sortant HTTPS de votre réseau. Ce n&rsquo;est pas Azure ou Power BI qui entre dans votre réseau, c&rsquo;est la passerelle qui écoute les demandes.</li>
+<li>Les requêtes sont envoyées par la passerelle et exécutées sur vos sources de données locales.</li>
+<li>Le résultat est renvoyé vers le service Power BI sous forme cryptée, où il sera intégré dans le jeu de données ou le flux de données demandeur.</li>
+</ol>
+<h2 id="type-de-passerelle">Type de passerelle</h2>
+<p>Il existe 2 versions de la passerelle de données Power BI. Les 2 versions sont gratuites.</p>
+<h3 id="standard">Standard</h3>
+<p>La passerelle standard est la passerelle à utiliser dans un cadre professionnel, elle permet de partager vos données d&rsquo;entreprise avec Power BI mais aussi d&rsquo;autres services de Microsoft.<br>
+Elle est utilisable par tous les utilisateurs de l&rsquo;entreprise autorisés.<br>
+Il est possible de créer un cluster de passerelle, plusieurs machines faisant tourner la même passerelle, afin d&rsquo;adresser des scénarii de haute disponibilité.</p>
+<h3 id="personnel">Personnel</h3>
+<p>La passerelle personnelle permet d&rsquo;accéder aux données depuis un profil utilisateur unique. Sauf cas d&rsquo;usage particulier, évitez de l&rsquo;utiliser et privilégiez la passerelle standard qui est adaptée à un usage professionnel.<br>
+Les cas d&rsquo;usages particuliers peuvent être :</p>
+<ul>
+<li>Permettre l&rsquo;accès à des données sur un poste de travail particulier.</li>
+<li>Créer un poc rapide avec des données d&rsquo;entreprise.</li>
+</ul>
+<p>Dans tous les cas, posez-vous la question du bon usage de vos données dans un cadre professionnel.</p>
+<h2 id="installation-de-la-passerelle">Installation de la passerelle</h2>
+<p>Pour installer la passerelle standard, téléchargez le programme à l&rsquo;adresse suivante <a class="link" href="https://powerbi.microsoft.com/fr-fr/gateway/"  target="_blank" rel="noopener"
+    >https://powerbi.microsoft.com/fr-fr/gateway/</a> puis lancez-le.</p>
+<p>Lors de la phase d&rsquo;installation, vous devrez fournir 2 informations essentielles :</p>
+<ul>
+<li>l&rsquo;utilisateur enregistrant la passerelle dans Power BI, en vous authentifiant avec son profil, cet utilisateur n&rsquo;est pas forcément votre profil local. Il sera l&rsquo;administrateur par défaut de la passerelle.</li>
+<li>Une clé de récupération, cette clé vous permettra d&rsquo;installer la passerelle sur une nouvelle machine ou un nœud supplémentaire dans le cluster de passerelle. Cette clé permet d&rsquo;accéder aux connexions enregistrées pour cette passerelle.</li>
+</ul>
+<p><img src="/p/power-bi-gateway/img/003-gateway-install-admin-email.png"
+	width="640"
+	height="590"
+	srcset="/p/power-bi-gateway/img/003-gateway-install-admin-email_hub53868fbf6114f70f432ce180e323ce7_18074_480x0_resize_box_3.png 480w, /p/power-bi-gateway/img/003-gateway-install-admin-email_hub53868fbf6114f70f432ce180e323ce7_18074_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Saisie de l&rsquo;administrateur par défaut"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="108"
+		data-flex-basis="260px"
+	
+></p>
+<ol>
+<li>Entrez l&rsquo;adresse de l&rsquo;administrateur par défaut de la passerelle.</li>
+<li>Appuyez sur <em>Se connecter</em>, pour vous identifier avec le profil administrateur.</li>
+</ol>
+<p><img src="/p/power-bi-gateway/img/004-gateway-install-type-install.png"
+	width="640"
+	height="631"
+	srcset="/p/power-bi-gateway/img/004-gateway-install-type-install_huc3d1cd88d90dcc173c039f14bc11e591_24791_480x0_resize_box_3.png 480w, /p/power-bi-gateway/img/004-gateway-install-type-install_huc3d1cd88d90dcc173c039f14bc11e591_24791_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Sélection du type d&rsquo;installation"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="101"
+		data-flex-basis="243px"
+	
+></p>
+<ol>
+<li>Choisissez le type d&rsquo;installation çà faire, vous avez le choix entre créer une nouvelle passerelle et interagir avec une déjà enregistrer dans le service Power BI.</li>
+<li>Appuyez sur <em>Suivant</em> pour continuer.</li>
+</ol>
+<p><img src="/p/power-bi-gateway/img/005-gateway-install-configure.png"
+	width="640"
+	height="591"
+	srcset="/p/power-bi-gateway/img/005-gateway-install-configure_hu6e8a1d72fbee2d635885dab07bfa80ab_35456_480x0_resize_box_3.png 480w, /p/power-bi-gateway/img/005-gateway-install-configure_hu6e8a1d72fbee2d635885dab07bfa80ab_35456_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Configuration de la passerelle"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="108"
+		data-flex-basis="259px"
+	
+></p>
+<ol>
+<li>Saisir le nom de votre passerelle</li>
+<li>Cochez cette case pour ajouter la machine sur laquelle vous installez dans un cluster de passerelle existant. Par défaut une passerelle est un cluster à 1 nœud.</li>
+<li>Tapez la clé de récupération. Cette clé permet l&rsquo;encodage/décodage des messages échangés entre la passerelle et le service Power BI. Si vous perdez cette clé, vous ne pourrez plus décrypter les sources de données liées à la passerelle.</li>
+<li>Appuyez sur <em>Configurer</em> pour terminer la configuration de votre passerelle.</li>
+</ol>
+<p>L&rsquo;écran suivant vous permet d&rsquo;accéder à des paramètres avancés et des informations concernant la passerelle. On va tout laisser par défaut.</p>
+<p>Une fois la passerelle installée, rendez-vous dans l&rsquo;administration des passerelles depuis le portail du service Power BI.</p>
+<p><img src="/p/power-bi-gateway/img/006-gateway-admin.png"
+	width="336"
+	height="287"
+	srcset="/p/power-bi-gateway/img/006-gateway-admin_hu5c3bd35c32d2ad5b6c7baf91321c3ebf_13130_480x0_resize_box_3.png 480w, /p/power-bi-gateway/img/006-gateway-admin_hu5c3bd35c32d2ad5b6c7baf91321c3ebf_13130_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Accès à l&rsquo;administration des passerelles"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="117"
+		data-flex-basis="280px"
+	
+></p>
+<ol>
+<li>Cliquez sur la roue crantée.</li>
+<li>Cliquez sur <em>Gérer des connexions et des passerelles</em>.</li>
+</ol>
+<p><img src="/p/power-bi-gateway/img/007-gateway-admin-view.png"
+	width="1836"
+	height="399"
+	srcset="/p/power-bi-gateway/img/007-gateway-admin-view_hud3d93d1fd29faa11e7c8b4b97cf6f0a3_43392_480x0_resize_box_3.png 480w, /p/power-bi-gateway/img/007-gateway-admin-view_hud3d93d1fd29faa11e7c8b4b97cf6f0a3_43392_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Administration des passerelles"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="460"
+		data-flex-basis="1104px"
+	
+></p>
+<ol>
+<li>Allez dans <em>Passerelle de données locales</em>.</li>
+<li>Vous trouvez la liste des passerelles installées.</li>
+<li>Cliquez sur les 3 points pour gérer les utilisateurs et paramètres de la passerelle ou supprimer la passerelle.</li>
+</ol>
+<h2 id="comprendre-les-sources-de-données">Comprendre les sources de données</h2>
+<p>L&rsquo;accès aux données est réalisé à l&rsquo;aide de sources de données. Cette notion de sources de données permet de réaliser une bonne ségrégation des informations de sécurité.</p>
+<ul>
+<li>Celui qui créer la source de données est le sachant des informations de connexion notamment le login et mot de passe. En général c&rsquo;est une personne de l&rsquo;IT.</li>
+<li>Celui qui utilise la source de données est le propriétaire du jeu de données, il n&rsquo;a pas besoin de connaitre le login et mot de passe utilisé pour accéder aux données.</li>
+</ul>
+<p><img src="/p/power-bi-gateway/img/002-gateway-connection.png"
+	width="795"
+	height="472"
+	srcset="/p/power-bi-gateway/img/002-gateway-connection_hu852879c05998d4d60df2fd105b2f48c0_28043_480x0_resize_box_3.png 480w, /p/power-bi-gateway/img/002-gateway-connection_hu852879c05998d4d60df2fd105b2f48c0_28043_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Fonctionnement des sources de données"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="168"
+		data-flex-basis="404px"
+	
+></p>
+<ol>
+<li>Une personne avec le rôle <em>administrateur de la passerelle</em> ou <em>créateur de connexion</em> crée une source de données pour une passerelle donnée.</li>
+<li>Une personne avec le rôle <em>administrateur de la passerelle</em> ou <em>créateur de connexion avec repartage</em> autorise des utilisateurs à utiliser cette source de données.</li>
+<li>Le propriétaire d&rsquo;un jeu de données affecte les sources de données qu&rsquo;il peut utiliser à son jeu de données.</li>
+</ol>
+<h3 id="créer-une-source-de-données">Créer une source de données</h3>
+<p>Pour créer une source de données, rendez-vous dans l&rsquo;administration des passerelles depuis le portail du service Power BI.</p>
+<p><img src="/p/power-bi-gateway/img/006-gateway-admin.png"
+	width="336"
+	height="287"
+	srcset="/p/power-bi-gateway/img/006-gateway-admin_hu5c3bd35c32d2ad5b6c7baf91321c3ebf_13130_480x0_resize_box_3.png 480w, /p/power-bi-gateway/img/006-gateway-admin_hu5c3bd35c32d2ad5b6c7baf91321c3ebf_13130_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Accès à l&rsquo;administration des passerelles"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="117"
+		data-flex-basis="280px"
+	
+></p>
+<ol>
+<li>Cliquez sur la roue crantée.</li>
+<li>Cliquez sur <em>Gérer des connexions et des passerelles</em>.</li>
+</ol>
+<p><img src="/p/power-bi-gateway/img/008-gateway-datasource-add.png"
+	width="1439"
+	height="410"
+	srcset="/p/power-bi-gateway/img/008-gateway-datasource-add_hu8a1be8263a65d5f0bc73d8734ef5ec55_25362_480x0_resize_box_3.png 480w, /p/power-bi-gateway/img/008-gateway-datasource-add_hu8a1be8263a65d5f0bc73d8734ef5ec55_25362_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Ajout d&rsquo;une source de données"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="350"
+		data-flex-basis="842px"
+	
+></p>
+<ol>
+<li>Allez dans <em>Sources de données</em>.</li>
+<li>Appuyez sur <em>Nouveau</em>.</li>
+</ol>
+<p><img src="/p/power-bi-gateway/img/009-gateway-datasource-config.png"
+	width="447"
+	height="923"
+	srcset="/p/power-bi-gateway/img/009-gateway-datasource-config_hud1b805954fb976b80967bff942375098_43624_480x0_resize_box_3.png 480w, /p/power-bi-gateway/img/009-gateway-datasource-config_hud1b805954fb976b80967bff942375098_43624_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Configuration d&rsquo;une source de données"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="48"
+		data-flex-basis="116px"
+	
+></p>
+<ol>
+<li>Choisissez la passerelle pour laquelle vous créer la source de données. La passerelle doit avoir accès à cette source sur votre réseau local.</li>
+<li>Donnez un nom à votre source de données.</li>
+<li>Sélectionnez le type de source de données dans la liste.</li>
+<li>En fonction du type de la source de données renseignez les informations permettant de s&quot;y connecter. Cette partie est différente pour chaque type de source de données.</li>
+<li>Donnez le niveau de confidentialité de la source de données.</li>
+<li>Appuyez sur <em>Créer</em> pour ajouter cette source de données.</li>
+</ol>
+<h3 id="partager-une-source-de-données">Partager une source de données</h3>
+<p>Une fois la source de données créer, vous pouvez déléguer son utilisation aux personnes en ayant besoin.</p>
+<p><img src="/p/power-bi-gateway/img/010-gateway-datasource-share.png"
+	width="1852"
+	height="931"
+	srcset="/p/power-bi-gateway/img/010-gateway-datasource-share_hu92a28a71b195367d3906b7b52fb9e317_92452_480x0_resize_box_3.png 480w, /p/power-bi-gateway/img/010-gateway-datasource-share_hu92a28a71b195367d3906b7b52fb9e317_92452_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Partage d&rsquo;une source de données"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="198"
+		data-flex-basis="477px"
+	
+></p>
+<ol>
+<li>Allez dans <em>Sources de données</em>.</li>
+<li>Cliquez sur les 3 points pour gérer les utilisateurs.</li>
+<li>Recherchez les utilisateurs à ajouter.</li>
+<li>Sélectionnez un nouvel utilisateur ou un utilisateur existant.</li>
+<li>Configurez le niveau de droit souhaité.</li>
+<li>Appuyez sur <em>Partager</em> pour valider vos modifications.</li>
+</ol>
+<h2 id="configurer-votre-jeu-de-données-pour-utiliser-la-passerelle">Configurer votre jeu de données pour utiliser la passerelle</h2>
+<p>Pour configurer l&rsquo;utilisation de la passerelle sur un jeu de données, vous devez utiliser un jeu de données consommant des données sur l&rsquo;infrastructure locale de l&rsquo;entreprise.<br>
+Rendez-vous dans les paramètres du jeu de données pour configurer la passerelle. Pour vous y rendre, allez sur les 3 points de la ligne du jeu de données dans votre espace de travail et choisissez <em>Paramètres</em>.</p>
+<p><img src="/p/power-bi-gateway/img/011-gateway-on-dataset.png"
+	width="854"
+	height="517"
+	srcset="/p/power-bi-gateway/img/011-gateway-on-dataset_hu4ce01184615897274994d4a20cfc2da4_41212_480x0_resize_box_3.png 480w, /p/power-bi-gateway/img/011-gateway-on-dataset_hu4ce01184615897274994d4a20cfc2da4_41212_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Configuration de la passerelle sur le jeu de données"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="165"
+		data-flex-basis="396px"
+	
+></p>
+<ol>
+<li>Dans ce bloc, vous avez toutes les informations concernant la passerelle. Si ce bloc n&rsquo;apparait pas, vous ne devez pas avoir le droit d&rsquo;utiliser les sources de données nécessaires. Si ce bloc apparait plusieurs fois c&rsquo;est que vous avez plusieurs passerelles compatibles avec votre source de données.</li>
+<li>Vous trouverez ici la liste des sources de données de la passerelle compatible avec la signature (3) de votre source de données dans Power Query.</li>
+<li>Ceci est la signature de votre source de données dans Power Query.</li>
+<li>Appuyez sur <em>Appliquer</em> pour enregistrer vos modifications, puis tester le rafraichissement de votre jeu de données.</li>
+</ol>
+<p>Le service Power BI va rechercher des sources de données configurées dans votre passerelle correspondant à la signature de votre source de données dans votre jeu de données. Cette signature est constituée :</p>
+<ul>
+<li>Du type de source de données.</li>
+<li>Des informations de connexions spécifiques au type de données.</li>
+</ul>
+<p>Vous pouvez rendre cela dynamique en utilisant des paramètres dans vos requêtes Power Query. Cela vous permet de variabiliser des éléments spécifiques, par exemple modifié après publication du jeu de donner le nom de serveur SQL.<br>
+Un autre point d&rsquo;attention, vous pouvez remplacer des sources de données de type fichier dans Power Query par source de données de type dossier dans la passerelle à condition que le chemin de dossier soit un parent de celui du fichier.</p>
+<h3 id="limitation">Limitation</h3>
+<p>Une limitation importante à connaitre est que vous ne pouvez utilisez qu&rsquo;une même passerelle pour un jeu de données. Cela à pour conséquence que toutes les connexions dont vous avez besoin doivent être disponible sur cette passerelle.</p>
+<p>Merci de votre attention.</p>
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/interm%C3%A9diaire/">Intermédiaire</a>
+        
+            <a href="/tags/auto-formation/">Auto formation</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Contenus liés</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/analyser-dans-excel/">
+        
+        
+            <div class="article-image">
+                <img src="/p/analyser-dans-excel/_hu8221600bfe6cac469e7179ce07dc706c_5513366_7fc22be89f43d5af161b8663ef07a4ef.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Analyser dans Excel, la rencontre d&#39;Excel et du service Power BI"
+                        data-key="analyser-dans-excel" 
+                        data-hash="md5-7zWz9UWLgrEIRn1qMkyXhw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Analyser dans Excel, la rencontre d&#39;Excel et du service Power BI</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/power-query-advanced-editor/">
+        
+        
+            <div class="article-image">
+                <img src="/p/power-query-advanced-editor/_huf15fa593426db9a90f89c3ece54be71a_1377284_db140170abfb6d1453dfd875e2ef4e67.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Bien utiliser l&#39;éditeur avancé de Power Query"
+                        data-key="power-query-advanced-editor" 
+                        data-hash="md5-ja2X8&#43;dQEC4Gc4RY6igB2g==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Bien utiliser l&#39;éditeur avancé de Power Query</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/mutualiser-vos-donnees-avec-les-dataflow/">
+        
+        
+            <div class="article-image">
+                <img src="/p/mutualiser-vos-donnees-avec-les-dataflow/_hu0f99de747ff578d771608bd9e3bcfcad_2719124_9f986955606f6710ac579612b65cdbcc.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Mutualiser vos données avec les dataflows"
+                        data-key="mutualiser-vos-donnees-avec-les-dataflow" 
+                        data-hash="md5-7r6nkEDPtzPCiFbRX8nXlQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Mutualiser vos données avec les dataflows</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/parametres-power-qwery/">
+        
+        
+            <div class="article-image">
+                <img src="/p/parametres-power-qwery/_hu792653f7b7326a670abe032c0e66ac08_1629682_1192a9017b0db82456cebdf9c5a1f42f.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Les paramètres Power Query"
+                        data-key="parametres-power-qwery" 
+                        data-hash="md5-bj6qxrIsSOwymxHRoef17A==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Les paramètres Power Query</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/pbitools/">
+        
+        
+            <div class="article-image">
+                <img src="/p/pbitools/_hu82c25fa98cd4e9a8103220017be4b8cb_577052_6ceafda1beb41d1d88277abb8aade4af.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post pbi-tools : diviser pour mieux régner"
+                        data-key="pbitools" 
+                        data-hash="md5-7gEPBW1Oy8tzkbCHzW9XvQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">pbi-tools : diviser pour mieux régner</h2>
+        </div>
+    </a>
+</article>
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "ddata" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2022 - 
+        
+        2023 Le D de Data
+    </section>
+    
+    <section class="powerby">
+        Généré avec <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Thème <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.16.0">Stack</a></b> conçu par <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>
