@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="fr-fr" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Et si vous pouviez maintenir un référentiel d&amp;rsquo;entreprise dans le service Power BI et le consommer dans Excel ?
+'>
+<title>Vos référentiels d&#39;entreprise directement dans Excel.</title>
+
+<link rel='canonical' href='https://blog.ddata.fr/p/tables-recommandees-powerbi/'>
+
+<link rel="stylesheet" href="/scss/style.min.5be32ca3f6e1a997c75795c4359147cc6d4fbd34948c0acd51e31d237033978a.css"><meta property='og:title' content='Vos référentiels d&#39;entreprise directement dans Excel.'>
+<meta property='og:description' content='Et si vous pouviez maintenir un référentiel d&amp;rsquo;entreprise dans le service Power BI et le consommer dans Excel ?
+'>
+<meta property='og:url' content='https://blog.ddata.fr/p/tables-recommandees-powerbi/'>
+<meta property='og:site_name' content='Le D de Data'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Intermédiaire' /><meta property='article:tag' content='Auto formation' /><meta property='article:published_time' content='2023-04-30T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2023-04-30T00:00:00&#43;00:00'/><meta property='og:image' content='https://blog.ddata.fr/p/tables-recommandees-powerbi/micheile-dot-com-SoT4-mZhyhE-unsplash.jpg' />
+<meta name="twitter:title" content="Vos référentiels d&#39;entreprise directement dans Excel.">
+<meta name="twitter:description" content="Et si vous pouviez maintenir un référentiel d&amp;rsquo;entreprise dans le service Power BI et le consommer dans Excel ?
+"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://blog.ddata.fr/p/tables-recommandees-powerbi/micheile-dot-com-SoT4-mZhyhE-unsplash.jpg' />
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TY6XFEN6QV"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-TY6XFEN6QV', { 'anonymize_ip': false });
+}
+</script>
+<link rel="alternate"
+      type="application/rss+xml"
+      href="https://blog.ddata.fr/index.xml"
+      title="Le D de Data">
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "dark");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Afficher le menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/pierre_hua6bbc70dde858dd10e363a14d1f7729c_67951_300x0_resize_q75_box.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Le D de Data</a></h1>
+            <h2 class="site-description">Blog francophone autour de la data Microsoft</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/pierreddata'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://www.linkedin.com/in/pierre-dupont-0b532374/'
+                        target="_blank"
+                        title="LinkdIn"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-folders" width="44" height="44" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <rect x="4" y="4" width="16" height="16" rx="2" />
+  <line x1="8" y1="11" x2="8" y2="16" />
+  <line x1="8" y1="8" x2="8" y2="8.01" />
+  <line x1="12" y1="16" x2="12" y2="11" />
+  <path d="M16 16v-3a2 2 0 0 0 -4 0" />
+</svg>
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Accueil</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/a-propos-de-d-de-data/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>A Propos</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/series/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-folders" width="44" height="44" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 4h3l2 2h5a2 2 0 0 1 2 2v7a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-9a2 2 0 0 1 2 -2" />
+  <path d="M17 17v2a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-9a2 2 0 0 1 2 -2h2" />
+</svg>
+
+                
+                <span>Series</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/liens/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Liens</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Rechercher</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Mode sombre</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table des matières</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#contexte">Contexte</a></li>
+    <li><a href="#création-dune-table-recommandée">Création d&rsquo;une table recommandée</a></li>
+    <li><a href="#utilisation-des-tables-recommandées">Utilisation des tables recommandées</a></li>
+    <li><a href="#paramétrages-nécessaires">Paramétrages nécessaires</a></li>
+    <li><a href="#limitations">Limitations</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/tables-recommandees-powerbi/">
+                <img src="/p/tables-recommandees-powerbi/micheile-dot-com-SoT4-mZhyhE-unsplash_hucaac4cc3511e7b1acfab0972cfec5559_699224_800x0_resize_q75_box.jpg"
+                        srcset="/p/tables-recommandees-powerbi/micheile-dot-com-SoT4-mZhyhE-unsplash_hucaac4cc3511e7b1acfab0972cfec5559_699224_800x0_resize_q75_box.jpg 800w, /p/tables-recommandees-powerbi/micheile-dot-com-SoT4-mZhyhE-unsplash_hucaac4cc3511e7b1acfab0972cfec5559_699224_1600x0_resize_q75_box.jpg 1600w"
+                        width="800" 
+                        height="533" 
+                        loading="lazy"
+                        alt="Featured image of post Vos référentiels d&#39;entreprise directement dans Excel." />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/powerbi/" style="background-color: #f2c811; color: #fff;">
+                Power BI
+            </a>
+        
+            <a href="/categories/excel/" style="background-color: #1D6F42; color: #fff;">
+                Excel
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/tables-recommandees-powerbi/">Vos référentiels d&#39;entreprise directement dans Excel.</a>
+        </h2>
+
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published" datetime="2023-04-30T00:00:00Z">
+                    30 avril 2023
+                    
+                </time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    3 minutes de lecture
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+    
+    
+</div>
+</header>
+
+    <section class="article-content">
+    
+    
+    <p>Et si vous pouviez maintenir un référentiel d&rsquo;entreprise dans le service Power BI et le consommer dans Excel ?</p>
+<h2 id="contexte">Contexte</h2>
+<p>Dans votre modèle de données, vous avez des données qui sont des référentiels d&rsquo;entreprise. Avec le service Power BI vous avez la possibilité d&rsquo;utiliser ces référentiels directement depuis Excel.<br>
+Je vous montre comment faire.</p>
+<h2 id="création-dune-table-recommandée">Création d&rsquo;une table recommandée</h2>
+<p>Pour créer une table recommandée, cela se passe dans Power BI Desktop.<br>
+Pour cette démonstration j&rsquo;ai créé une simple table directement dans Power BI Desktop, via la fonction <em>Entrer des données</em>.<br>
+Le résultat est le suivant :<br>
+<img src="/p/tables-recommandees-powerbi/img/001-demo-data.png"
+	width="404"
+	height="220"
+	srcset="/p/tables-recommandees-powerbi/img/001-demo-data_hu157b20aef058bc4bc7e6fffeea84cee6_10071_480x0_resize_box_3.png 480w, /p/tables-recommandees-powerbi/img/001-demo-data_hu157b20aef058bc4bc7e6fffeea84cee6_10071_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Données utilisées pour la démonstration"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="183"
+		data-flex-basis="440px"
+	
+></p>
+<p>Maintenant que vos données sont disponibles, nous allons créer la table recommandée.</p>
+<p><img src="/p/tables-recommandees-powerbi/img/002-table-recommandee-config.png"
+	width="1066"
+	height="780"
+	srcset="/p/tables-recommandees-powerbi/img/002-table-recommandee-config_hu1d12f3ce7bd0775459303dac9ad00702_61641_480x0_resize_box_3.png 480w, /p/tables-recommandees-powerbi/img/002-table-recommandee-config_hu1d12f3ce7bd0775459303dac9ad00702_61641_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Configuration de la table recommandée"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="136"
+		data-flex-basis="328px"
+	
+></p>
+<ol>
+<li>Allez dans <em>Vue de modèle</em>.</li>
+<li>Sélectionnez la table que vous souhaitez proposer.</li>
+<li>Allez dans les propriétés.</li>
+<li>Basculez le sélecteur <em>Est une table proposée</em> sur <em>Oui</em>.</li>
+</ol>
+<p>Un écran de configuration apparait.</p>
+<p><img src="/p/tables-recommandees-powerbi/img/003-table-recommandee-config-edit.png"
+	width="650"
+	height="454"
+	srcset="/p/tables-recommandees-powerbi/img/003-table-recommandee-config-edit_hub2a1ba980a5b96032c7e050407d39e6e_19671_480x0_resize_box_3.png 480w, /p/tables-recommandees-powerbi/img/003-table-recommandee-config-edit_hub2a1ba980a5b96032c7e050407d39e6e_19671_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Paramétrage de la table recommandée"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="143"
+		data-flex-basis="343px"
+	
+></p>
+<ol>
+<li>Saisissez une description.</li>
+<li>Sélectionnez la colonne des étiquettes de données. Il s&rsquo;agit de la colonne qui va permettre à vos utilisateurs de retrouver une ligne de données depuis Excel.</li>
+<li>Sélectionnez la colonne de clé. Il s&rsquo;agit de la colonne qui va permettre à Excel d&rsquo;identifier une ligne de manière unique.</li>
+<li>Appuyez sur <em>Enregistrer</em> pour terminer et enregistrerez vos modifications.</li>
+</ol>
+<p>Ne publiez pas tout de suite votre rapport.</p>
+<h2 id="utilisation-des-tables-recommandées">Utilisation des tables recommandées</h2>
+<p>Ouvrez Excel et rendez-vous dans le bandeau de menu <em>Données</em>.</p>
+<p><img src="/p/tables-recommandees-powerbi/img/004-table-recommandee-excel-step1.png"
+	width="1526"
+	height="220"
+	srcset="/p/tables-recommandees-powerbi/img/004-table-recommandee-excel-step1_hu8e1aaccb8743499344efc8755978879c_37159_480x0_resize_box_3.png 480w, /p/tables-recommandees-powerbi/img/004-table-recommandee-excel-step1_hu8e1aaccb8743499344efc8755978879c_37159_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Type de données dans Excel avant publication"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="693"
+		data-flex-basis="1664px"
+	
+></p>
+<ol>
+<li>Ouvrez l&rsquo;élément de menu <em>Type de données</em>.</li>
+<li>Vous pouvez constater que vous n&rsquo;avez pas la table recommandée que vous venez de créer.</li>
+</ol>
+<p>Fermer votre Excel.</p>
+<p>Si cela ne fonctionne pas, essayer avec Excel Web car vous n&rsquo;avez peut être pas une version d&rsquo;Excel 365 sur votre poste de travail.</p>
+<p>Nous allons maintenant publier notre rapport dans le service Power BI.<br>
+Une fois la publication faite, nous allons réouvrir Excel et retourner dans le bandeau de menu <em>Données</em>.</p>
+<p><img src="/p/tables-recommandees-powerbi/img/005-table-recommandee-excel-step2.png"
+	width="879"
+	height="385"
+	srcset="/p/tables-recommandees-powerbi/img/005-table-recommandee-excel-step2_hu0819ddc1141aa77fa4047ad2338101aa_34166_480x0_resize_box_3.png 480w, /p/tables-recommandees-powerbi/img/005-table-recommandee-excel-step2_hu0819ddc1141aa77fa4047ad2338101aa_34166_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Type de données dans Excel après publication"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="228"
+		data-flex-basis="547px"
+	
+></p>
+<ol>
+<li>Ouvrez l&rsquo;élément de menu <em>Type de données</em>.</li>
+<li>Vous pouvez constater que vous avez maintenant une section <em>De votre organisation</em>.</li>
+<li>Dans cette section, vous retrouvez les données en provenance de votre jeu de données publié dans le service Power BI.</li>
+</ol>
+<p>Il se peut qu&rsquo;il y ait un délai entre la publication et la visibilité dans Excel. N&rsquo;hésitez pas à fermer et réouvrir Excel si nécessaire. De plus votre Excel doit être connecté au service Office 365, votre profil doit apparaitre en haut à droite de la barre de titre d&rsquo;Excel.</p>
+<p>Maintenant que votre référentiel est visible dans Excel, voilà comment vous allez pouvoir l&rsquo;utiliser.</p>
+<p>Dans votre feuille Excel, saisir dans des cellules des valeurs correspondant aux étiquettes de ligne.</p>
+<p><img src="/p/tables-recommandees-powerbi/img/006-table-recommandee-excel-use-step1.png"
+	width="200"
+	height="108"
+	srcset="/p/tables-recommandees-powerbi/img/006-table-recommandee-excel-use-step1_hu0973a25980aa53bcd0730db169c8a47e_1772_480x0_resize_box_3.png 480w, /p/tables-recommandees-powerbi/img/006-table-recommandee-excel-use-step1_hu0973a25980aa53bcd0730db169c8a47e_1772_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Utilisation des types de données dans Excel - étape 1"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="185"
+		data-flex-basis="444px"
+	
+></p>
+<p><img src="/p/tables-recommandees-powerbi/img/007-table-recommandee-excel-use-step2.png"
+	width="863"
+	height="499"
+	srcset="/p/tables-recommandees-powerbi/img/007-table-recommandee-excel-use-step2_hu4d3d032151b383fe0e02741dd05ccfe4_40998_480x0_resize_box_3.png 480w, /p/tables-recommandees-powerbi/img/007-table-recommandee-excel-use-step2_hu4d3d032151b383fe0e02741dd05ccfe4_40998_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Utilisation des types de données dans Excel - étape 2"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="172"
+		data-flex-basis="415px"
+	
+></p>
+<ol>
+<li>Sélectionnez vos cellules.</li>
+<li>Ouvrez l&rsquo;élément de menu <em>Type de données</em>.</li>
+<li>Sélectionnez le type de données que vous avez créé.</li>
+</ol>
+<p>Les données dans vos cellules apparaissent maintenant avec une icône du type de données.</p>
+<p><img src="/p/tables-recommandees-powerbi/img/008-table-recommandee-excel-use-step3.png"
+	width="142"
+	height="103"
+	srcset="/p/tables-recommandees-powerbi/img/008-table-recommandee-excel-use-step3_hu6de0a117e25401bfab2a961e08f654a3_1699_480x0_resize_box_3.png 480w, /p/tables-recommandees-powerbi/img/008-table-recommandee-excel-use-step3_hu6de0a117e25401bfab2a961e08f654a3_1699_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Utilisation des types de données dans Excel - étape 3"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="137"
+		data-flex-basis="330px"
+	
+></p>
+<p><img src="/p/tables-recommandees-powerbi/img/009-table-recommandee-excel-use-step4.png"
+	width="461"
+	height="226"
+	srcset="/p/tables-recommandees-powerbi/img/009-table-recommandee-excel-use-step4_hu83384e1fcef3bb07d5882c0874f2d821_11714_480x0_resize_box_3.png 480w, /p/tables-recommandees-powerbi/img/009-table-recommandee-excel-use-step4_hu83384e1fcef3bb07d5882c0874f2d821_11714_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Utilisation des types de données dans Excel - étape 4"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="203"
+		data-flex-basis="489px"
+	
+></p>
+<ol>
+<li>Vous pouvez maintenant créer des formules Excel référençant vos données d&rsquo;entreprise.</li>
+<li>Les autres champs de la table recommandée sont disponibles.</li>
+</ol>
+<p>Voici le résultat final des formules appliqué à chaque ligne :</p>
+<p><img src="/p/tables-recommandees-powerbi/img/010-table-recommandee-excel-use-step5.png"
+	width="363"
+	height="204"
+	srcset="/p/tables-recommandees-powerbi/img/010-table-recommandee-excel-use-step5_hu08c7b4802835cba445865ce47df4b971_5115_480x0_resize_box_3.png 480w, /p/tables-recommandees-powerbi/img/010-table-recommandee-excel-use-step5_hu08c7b4802835cba445865ce47df4b971_5115_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Utilisation des types de données dans Excel - étape 5"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="177"
+		data-flex-basis="427px"
+	
+></p>
+<p>Les données étant liées à votre jeu de données Power BI, elles pourront donc être rafraichies directement dans Excel.</p>
+<h2 id="paramétrages-nécessaires">Paramétrages nécessaires</h2>
+<p>Pour que les tables recommandées fonctionnent, il est nécessaire de vérifier que dans les paramètres du client de l&rsquo;administration du service Power BI, que la fonctionnalité <em>Autoriser les connexions aux tables proposées</em> soit activée.</p>
+<h2 id="limitations">Limitations</h2>
+<p>Vous retrouverez l&rsquo;ensemble des limitations dans la documentation officielle <a class="link" href="https://learn.microsoft.com/fr-fr/power-bi/collaborate-share/service-excel-featured-tables#considerations-and-limitations"  target="_blank" rel="noopener"
+    >https://learn.microsoft.com/fr-fr/power-bi/collaborate-share/service-excel-featured-tables#considerations-and-limitations</a>.</p>
+<p>Merci de votre attention.</p>
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/interm%C3%A9diaire/">Intermédiaire</a>
+        
+            <a href="/tags/auto-formation/">Auto formation</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Contenus liés</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/analyser-dans-excel/">
+        
+        
+            <div class="article-image">
+                <img src="/p/analyser-dans-excel/_hu8221600bfe6cac469e7179ce07dc706c_5513366_7fc22be89f43d5af161b8663ef07a4ef.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Analyser dans Excel, la rencontre d&#39;Excel et du service Power BI"
+                        data-key="analyser-dans-excel" 
+                        data-hash="md5-7zWz9UWLgrEIRn1qMkyXhw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Analyser dans Excel, la rencontre d&#39;Excel et du service Power BI</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/power-bi-gateway/">
+        
+        
+            <div class="article-image">
+                <img src="/p/power-bi-gateway/_hu81c52007d2e7fffec5d58774b441b07a_2250510_61cdb05e3cd283da80984a55f3e9ea9a.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Installer et configurer votre passerelle de données pour Power BI."
+                        data-key="power-bi-gateway" 
+                        data-hash="md5-TAa&#43;LHiuZbtti4Yj3Ng96Q==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Installer et configurer votre passerelle de données pour Power BI.</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/power-query-advanced-editor/">
+        
+        
+            <div class="article-image">
+                <img src="/p/power-query-advanced-editor/_huf15fa593426db9a90f89c3ece54be71a_1377284_db140170abfb6d1453dfd875e2ef4e67.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Bien utiliser l&#39;éditeur avancé de Power Query"
+                        data-key="power-query-advanced-editor" 
+                        data-hash="md5-ja2X8&#43;dQEC4Gc4RY6igB2g==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Bien utiliser l&#39;éditeur avancé de Power Query</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/mutualiser-vos-donnees-avec-les-dataflow/">
+        
+        
+            <div class="article-image">
+                <img src="/p/mutualiser-vos-donnees-avec-les-dataflow/_hu0f99de747ff578d771608bd9e3bcfcad_2719124_9f986955606f6710ac579612b65cdbcc.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Mutualiser vos données avec les dataflows"
+                        data-key="mutualiser-vos-donnees-avec-les-dataflow" 
+                        data-hash="md5-7r6nkEDPtzPCiFbRX8nXlQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Mutualiser vos données avec les dataflows</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/parametres-power-qwery/">
+        
+        
+            <div class="article-image">
+                <img src="/p/parametres-power-qwery/_hu792653f7b7326a670abe032c0e66ac08_1629682_1192a9017b0db82456cebdf9c5a1f42f.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Les paramètres Power Query"
+                        data-key="parametres-power-qwery" 
+                        data-hash="md5-bj6qxrIsSOwymxHRoef17A==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Les paramètres Power Query</h2>
+        </div>
+    </a>
+</article>
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "ddata" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2022 - 
+        
+        2023 Le D de Data
+    </section>
+    
+    <section class="powerby">
+        Généré avec <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Thème <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.16.0">Stack</a></b> conçu par <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

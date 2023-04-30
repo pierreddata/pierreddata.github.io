@@ -6,7 +6,213 @@
         <description>Recent content in Posts on Le D de Data</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>fr-fr</language>
-        <lastBuildDate>Sun, 23 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ddata.fr/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sun, 30 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ddata.fr/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Vos référentiels d&#39;entreprise directement dans Excel.</title>
+        <link>https://blog.ddata.fr/p/tables-recommandees-powerbi/</link>
+        <pubDate>Sun, 30 Apr 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://blog.ddata.fr/p/tables-recommandees-powerbi/</guid>
+        <description>&lt;img src="https://blog.ddata.fr/p/tables-recommandees-powerbi/micheile-dot-com-SoT4-mZhyhE-unsplash.jpg" alt="Featured image of post Vos référentiels d&#39;entreprise directement dans Excel." /&gt;&lt;p&gt;Et si vous pouviez maintenir un référentiel d&amp;rsquo;entreprise dans le service Power BI et le consommer dans Excel ?&lt;/p&gt;
+&lt;h2 id=&#34;contexte&#34;&gt;Contexte&lt;/h2&gt;
+&lt;p&gt;Dans votre modèle de données, vous avez des données qui sont des référentiels d&amp;rsquo;entreprise. Avec le service Power BI vous avez la possibilité d&amp;rsquo;utiliser ces référentiels directement depuis Excel.&lt;br&gt;
+Je vous montre comment faire.&lt;/p&gt;
+&lt;h2 id=&#34;création-dune-table-recommandée&#34;&gt;Création d&amp;rsquo;une table recommandée&lt;/h2&gt;
+&lt;p&gt;Pour créer une table recommandée, cela se passe dans Power BI Desktop.&lt;br&gt;
+Pour cette démonstration j&amp;rsquo;ai créé une simple table directement dans Power BI Desktop, via la fonction &lt;em&gt;Entrer des données&lt;/em&gt;.&lt;br&gt;
+Le résultat est le suivant :&lt;br&gt;
+&lt;img src=&#34;https://blog.ddata.fr/p/tables-recommandees-powerbi/img/001-demo-data.png&#34;
+	width=&#34;404&#34;
+	height=&#34;220&#34;
+	srcset=&#34;https://blog.ddata.fr/p/tables-recommandees-powerbi/img/001-demo-data_hu157b20aef058bc4bc7e6fffeea84cee6_10071_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/tables-recommandees-powerbi/img/001-demo-data_hu157b20aef058bc4bc7e6fffeea84cee6_10071_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Données utilisées pour la démonstration&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;183&#34;
+		data-flex-basis=&#34;440px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Maintenant que vos données sont disponibles, nous allons créer la table recommandée.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/tables-recommandees-powerbi/img/002-table-recommandee-config.png&#34;
+	width=&#34;1066&#34;
+	height=&#34;780&#34;
+	srcset=&#34;https://blog.ddata.fr/p/tables-recommandees-powerbi/img/002-table-recommandee-config_hu1d12f3ce7bd0775459303dac9ad00702_61641_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/tables-recommandees-powerbi/img/002-table-recommandee-config_hu1d12f3ce7bd0775459303dac9ad00702_61641_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Configuration de la table recommandée&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;136&#34;
+		data-flex-basis=&#34;328px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Allez dans &lt;em&gt;Vue de modèle&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Sélectionnez la table que vous souhaitez proposer.&lt;/li&gt;
+&lt;li&gt;Allez dans les propriétés.&lt;/li&gt;
+&lt;li&gt;Basculez le sélecteur &lt;em&gt;Est une table proposée&lt;/em&gt; sur &lt;em&gt;Oui&lt;/em&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Un écran de configuration apparait.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/tables-recommandees-powerbi/img/003-table-recommandee-config-edit.png&#34;
+	width=&#34;650&#34;
+	height=&#34;454&#34;
+	srcset=&#34;https://blog.ddata.fr/p/tables-recommandees-powerbi/img/003-table-recommandee-config-edit_hub2a1ba980a5b96032c7e050407d39e6e_19671_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/tables-recommandees-powerbi/img/003-table-recommandee-config-edit_hub2a1ba980a5b96032c7e050407d39e6e_19671_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Paramétrage de la table recommandée&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;143&#34;
+		data-flex-basis=&#34;343px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Saisissez une description.&lt;/li&gt;
+&lt;li&gt;Sélectionnez la colonne des étiquettes de données. Il s&amp;rsquo;agit de la colonne qui va permettre à vos utilisateurs de retrouver une ligne de données depuis Excel.&lt;/li&gt;
+&lt;li&gt;Sélectionnez la colonne de clé. Il s&amp;rsquo;agit de la colonne qui va permettre à Excel d&amp;rsquo;identifier une ligne de manière unique.&lt;/li&gt;
+&lt;li&gt;Appuyez sur &lt;em&gt;Enregistrer&lt;/em&gt; pour terminer et enregistrerez vos modifications.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Ne publiez pas tout de suite votre rapport.&lt;/p&gt;
+&lt;h2 id=&#34;utilisation-des-tables-recommandées&#34;&gt;Utilisation des tables recommandées&lt;/h2&gt;
+&lt;p&gt;Ouvrez Excel et rendez-vous dans le bandeau de menu &lt;em&gt;Données&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/tables-recommandees-powerbi/img/004-table-recommandee-excel-step1.png&#34;
+	width=&#34;1526&#34;
+	height=&#34;220&#34;
+	srcset=&#34;https://blog.ddata.fr/p/tables-recommandees-powerbi/img/004-table-recommandee-excel-step1_hu8e1aaccb8743499344efc8755978879c_37159_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/tables-recommandees-powerbi/img/004-table-recommandee-excel-step1_hu8e1aaccb8743499344efc8755978879c_37159_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Type de données dans Excel avant publication&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;693&#34;
+		data-flex-basis=&#34;1664px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Ouvrez l&amp;rsquo;élément de menu &lt;em&gt;Type de données&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Vous pouvez constater que vous n&amp;rsquo;avez pas la table recommandée que vous venez de créer.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Fermer votre Excel.&lt;/p&gt;
+&lt;p&gt;Si cela ne fonctionne pas, essayer avec Excel Web car vous n&amp;rsquo;avez peut être pas une version d&amp;rsquo;Excel 365 sur votre poste de travail.&lt;/p&gt;
+&lt;p&gt;Nous allons maintenant publier notre rapport dans le service Power BI.&lt;br&gt;
+Une fois la publication faite, nous allons réouvrir Excel et retourner dans le bandeau de menu &lt;em&gt;Données&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/tables-recommandees-powerbi/img/005-table-recommandee-excel-step2.png&#34;
+	width=&#34;879&#34;
+	height=&#34;385&#34;
+	srcset=&#34;https://blog.ddata.fr/p/tables-recommandees-powerbi/img/005-table-recommandee-excel-step2_hu0819ddc1141aa77fa4047ad2338101aa_34166_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/tables-recommandees-powerbi/img/005-table-recommandee-excel-step2_hu0819ddc1141aa77fa4047ad2338101aa_34166_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Type de données dans Excel après publication&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;228&#34;
+		data-flex-basis=&#34;547px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Ouvrez l&amp;rsquo;élément de menu &lt;em&gt;Type de données&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Vous pouvez constater que vous avez maintenant une section &lt;em&gt;De votre organisation&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Dans cette section, vous retrouvez les données en provenance de votre jeu de données publié dans le service Power BI.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Il se peut qu&amp;rsquo;il y ait un délai entre la publication et la visibilité dans Excel. N&amp;rsquo;hésitez pas à fermer et réouvrir Excel si nécessaire. De plus votre Excel doit être connecté au service Office 365, votre profil doit apparaitre en haut à droite de la barre de titre d&amp;rsquo;Excel.&lt;/p&gt;
+&lt;p&gt;Maintenant que votre référentiel est visible dans Excel, voilà comment vous allez pouvoir l&amp;rsquo;utiliser.&lt;/p&gt;
+&lt;p&gt;Dans votre feuille Excel, saisir dans des cellules des valeurs correspondant aux étiquettes de ligne.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/tables-recommandees-powerbi/img/006-table-recommandee-excel-use-step1.png&#34;
+	width=&#34;200&#34;
+	height=&#34;108&#34;
+	srcset=&#34;https://blog.ddata.fr/p/tables-recommandees-powerbi/img/006-table-recommandee-excel-use-step1_hu0973a25980aa53bcd0730db169c8a47e_1772_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/tables-recommandees-powerbi/img/006-table-recommandee-excel-use-step1_hu0973a25980aa53bcd0730db169c8a47e_1772_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Utilisation des types de données dans Excel - étape 1&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;185&#34;
+		data-flex-basis=&#34;444px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/tables-recommandees-powerbi/img/007-table-recommandee-excel-use-step2.png&#34;
+	width=&#34;863&#34;
+	height=&#34;499&#34;
+	srcset=&#34;https://blog.ddata.fr/p/tables-recommandees-powerbi/img/007-table-recommandee-excel-use-step2_hu4d3d032151b383fe0e02741dd05ccfe4_40998_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/tables-recommandees-powerbi/img/007-table-recommandee-excel-use-step2_hu4d3d032151b383fe0e02741dd05ccfe4_40998_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Utilisation des types de données dans Excel - étape 2&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;172&#34;
+		data-flex-basis=&#34;415px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Sélectionnez vos cellules.&lt;/li&gt;
+&lt;li&gt;Ouvrez l&amp;rsquo;élément de menu &lt;em&gt;Type de données&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Sélectionnez le type de données que vous avez créé.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Les données dans vos cellules apparaissent maintenant avec une icône du type de données.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/tables-recommandees-powerbi/img/008-table-recommandee-excel-use-step3.png&#34;
+	width=&#34;142&#34;
+	height=&#34;103&#34;
+	srcset=&#34;https://blog.ddata.fr/p/tables-recommandees-powerbi/img/008-table-recommandee-excel-use-step3_hu6de0a117e25401bfab2a961e08f654a3_1699_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/tables-recommandees-powerbi/img/008-table-recommandee-excel-use-step3_hu6de0a117e25401bfab2a961e08f654a3_1699_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Utilisation des types de données dans Excel - étape 3&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;137&#34;
+		data-flex-basis=&#34;330px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/tables-recommandees-powerbi/img/009-table-recommandee-excel-use-step4.png&#34;
+	width=&#34;461&#34;
+	height=&#34;226&#34;
+	srcset=&#34;https://blog.ddata.fr/p/tables-recommandees-powerbi/img/009-table-recommandee-excel-use-step4_hu83384e1fcef3bb07d5882c0874f2d821_11714_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/tables-recommandees-powerbi/img/009-table-recommandee-excel-use-step4_hu83384e1fcef3bb07d5882c0874f2d821_11714_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Utilisation des types de données dans Excel - étape 4&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;203&#34;
+		data-flex-basis=&#34;489px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Vous pouvez maintenant créer des formules Excel référençant vos données d&amp;rsquo;entreprise.&lt;/li&gt;
+&lt;li&gt;Les autres champs de la table recommandée sont disponibles.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Voici le résultat final des formules appliqué à chaque ligne :&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/tables-recommandees-powerbi/img/010-table-recommandee-excel-use-step5.png&#34;
+	width=&#34;363&#34;
+	height=&#34;204&#34;
+	srcset=&#34;https://blog.ddata.fr/p/tables-recommandees-powerbi/img/010-table-recommandee-excel-use-step5_hu08c7b4802835cba445865ce47df4b971_5115_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/tables-recommandees-powerbi/img/010-table-recommandee-excel-use-step5_hu08c7b4802835cba445865ce47df4b971_5115_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Utilisation des types de données dans Excel - étape 5&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;177&#34;
+		data-flex-basis=&#34;427px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Les données étant liées à votre jeu de données Power BI, elles pourront donc être rafraichies directement dans Excel.&lt;/p&gt;
+&lt;h2 id=&#34;paramétrages-nécessaires&#34;&gt;Paramétrages nécessaires&lt;/h2&gt;
+&lt;p&gt;Pour que les tables recommandées fonctionnent, il est nécessaire de vérifier que dans les paramètres du client de l&amp;rsquo;administration du service Power BI, que la fonctionnalité &lt;em&gt;Autoriser les connexions aux tables proposées&lt;/em&gt; soit activée.&lt;/p&gt;
+&lt;h2 id=&#34;limitations&#34;&gt;Limitations&lt;/h2&gt;
+&lt;p&gt;Vous retrouverez l&amp;rsquo;ensemble des limitations dans la documentation officielle &lt;a class=&#34;link&#34; href=&#34;https://learn.microsoft.com/fr-fr/power-bi/collaborate-share/service-excel-featured-tables#considerations-and-limitations&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://learn.microsoft.com/fr-fr/power-bi/collaborate-share/service-excel-featured-tables#considerations-and-limitations&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Merci de votre attention.&lt;/p&gt;</description>
+        </item>
+        <item>
         <title>Installer et configurer votre passerelle de données pour Power BI.</title>
         <link>https://blog.ddata.fr/p/power-bi-gateway/</link>
         <pubDate>Sun, 23 Apr 2023 00:00:00 +0000</pubDate>
