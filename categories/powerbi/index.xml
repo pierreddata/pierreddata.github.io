@@ -6,7 +6,132 @@
         <description>Recent content in Power BI on Le D de Data</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>fr-fr</language>
-        <lastBuildDate>Sun, 30 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ddata.fr/categories/powerbi/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sun, 07 May 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ddata.fr/categories/powerbi/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Comprendre les licences Power BI</title>
+        <link>https://blog.ddata.fr/p/comprendre-les-licences-power-bi/</link>
+        <pubDate>Sun, 07 May 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://blog.ddata.fr/p/comprendre-les-licences-power-bi/</guid>
+        <description>&lt;img src="https://blog.ddata.fr/p/comprendre-les-licences-power-bi/cristina-matos-albers-Ltv7a5m8i4c-unsplash.jpg" alt="Featured image of post Comprendre les licences Power BI" /&gt;&lt;p&gt;Perdu dans les licences de Power BI ? Faisons le point ensemble.&lt;/p&gt;
+&lt;h2 id=&#34;contexte&#34;&gt;Contexte&lt;/h2&gt;
+&lt;p&gt;Power Bi n&amp;rsquo;est pas gratuit. Pourtant, beaucoup de fonctionnalités sont accessibles gratuitement. C&amp;rsquo;est ce que j&amp;rsquo;appelle la technique du pot de confiture, on vous laisse mettre les doigts dedans et quand vous aimez vous devez acheter.&lt;/p&gt;
+&lt;h2 id=&#34;les-produits-power-bi&#34;&gt;Les produits Power BI&lt;/h2&gt;
+&lt;p&gt;Il existe 2 types de produit Power BI que vous pouvez acheter&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Les licences utilisateur que l&amp;rsquo;on affecte à des personnes.&lt;/li&gt;
+&lt;li&gt;Les capacités premium qui permettent de créer des espaces de travail premium, c&amp;rsquo;est de l&amp;rsquo;infrastructure que vous louez auprès de Microsoft.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Les informations importantes à retenir pour les licences :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;En général vous devez payer à partir du moment où vous diffuser vos rapports Power BI.&lt;/li&gt;
+&lt;li&gt;Dès que vous accédez au service Power BI vous devez avoir une licence.&lt;/li&gt;
+&lt;li&gt;Un niveau de licence vous octroie des usages en fonction des types d&amp;rsquo;espace de travail. Les usages peuvent être répartis sur 2 profils utilisateur :
+&lt;ul&gt;
+&lt;li&gt;Créateur : ce sont les créateurs de contenus, ils accèdent aux espaces de travail pour collaborer et publier des contenus&lt;/li&gt;
+&lt;li&gt;Consomateur : ce sont les utilisateurs qui consomment les contenus au travers des applications.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;les-licences-power-bi&#34;&gt;Les licences Power BI&lt;/h2&gt;
+&lt;p&gt;Voici un résumé des usages possibles par niveau de licence.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/comprendre-les-licences-power-bi/img/001-tableau-de-synthese-des-licences.png&#34;
+	width=&#34;767&#34;
+	height=&#34;571&#34;
+	srcset=&#34;https://blog.ddata.fr/p/comprendre-les-licences-power-bi/img/001-tableau-de-synthese-des-licences_huff7aec6d9219f155b97372c9e42301d9_36617_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/comprendre-les-licences-power-bi/img/001-tableau-de-synthese-des-licences_huff7aec6d9219f155b97372c9e42301d9_36617_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Les licences par usage&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;134&#34;
+		data-flex-basis=&#34;322px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;licence-gratuite&#34;&gt;Licence gratuite&lt;/h3&gt;
+&lt;p&gt;Coût : 0 €&lt;/p&gt;
+&lt;p&gt;Créateur :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Mon espace de travail&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Consommateur :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Espace de travail Premium&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;licence-pro&#34;&gt;Licence Pro&lt;/h3&gt;
+&lt;p&gt;Coût : 9,4 € par utilisateur / mois&lt;/p&gt;
+&lt;p&gt;A les mêmes usages que la licence gratuite avec en plus :&lt;/p&gt;
+&lt;p&gt;Créateur :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Espace de travail&lt;/li&gt;
+&lt;li&gt;Espace de travail Premium&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Consommateur :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Espace de travail&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;licence-premium-par-utilisateur&#34;&gt;Licence Premium par utilisateur&lt;/h3&gt;
+&lt;p&gt;Coût : 18,7 € par utilisateur / mois&lt;/p&gt;
+&lt;p&gt;A les mêmes usages que la licence Pro avec en plus :&lt;/p&gt;
+&lt;p&gt;Créateur :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Espace de travail Premium par utilisateur&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Consommateur :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Espace de travail Premium par utilisateur&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;les-capacités-premium&#34;&gt;Les capacités Premium&lt;/h2&gt;
+&lt;p&gt;À partir de 4 675,60 € par capacité / mois&lt;/p&gt;
+&lt;p&gt;Une capacité Premium permet de créer des espaces de travail Premium.&lt;/p&gt;
+&lt;p&gt;Il existe différents types de capacité Premium :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Capacité de type P : Capacité permettant de consulter vos rapports depuis le portail Power BI.&lt;/li&gt;
+&lt;li&gt;Capacité de type EM : Capacité permettant de consulter vos rapports depuis Sharepoint.&lt;/li&gt;
+&lt;li&gt;Capacité de type A : Capacité permettant de consulter vos rapports depuis vos applications métiers (Power BI Embeded).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Les capacités ont un numéro après leur lettre qui donne le niveau de puissance, vous retrouverez &lt;a class=&#34;link&#34; href=&#34;https://learn.microsoft.com/fr-fr/power-bi/enterprise/service-premium-what-is#capacities-and-skus&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;plus d&amp;rsquo;information ici&lt;/a&gt;. Ce qu&amp;rsquo;il faut retenir c&amp;rsquo;est que l&amp;rsquo;on multiplie par 2 la puissance et le prix entre chaque niveau (P3 = 2 x P2 = 4 x P1).&lt;br&gt;
+Vous pouvez louer plusieurs capacités de type et de puissance différente.&lt;/p&gt;
+&lt;h2 id=&#34;les-types-despace-de-travail&#34;&gt;Les types d&amp;rsquo;espace de travail&lt;/h2&gt;
+&lt;p&gt;Comme nous venons de le voir, les différents produits Power BI permettent l&amp;rsquo;accès à différent niveau d&amp;rsquo;espace de travail.
+Je vais maintenant vous présenter les principales différences entre ces espaces de travail&lt;/p&gt;
+&lt;h3 id=&#34;mon-espace-de-travail&#34;&gt;Mon espace de travail&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Permets seulement le partage direct de contenu&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;normal&#34;&gt;Normal&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Est un espace de travail collaboratif.&lt;/li&gt;
+&lt;li&gt;Il supporte le partage de contenu via les applications.&lt;/li&gt;
+&lt;li&gt;Il supporte les flux de données.&lt;/li&gt;
+&lt;li&gt;Les modèles de données sont limités à 1 Go.&lt;/li&gt;
+&lt;li&gt;Permets 8 rafraichissements d&amp;rsquo;un jeu de données par jour.&lt;/li&gt;
+&lt;li&gt;10 Go de stockage multiplié par le nombre de licences Pro.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;premium&#34;&gt;Premium&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Est un espace de travail collaboratif.&lt;/li&gt;
+&lt;li&gt;Il supporte le partage de contenu via les applications.&lt;/li&gt;
+&lt;li&gt;Il supporte les fonctions avancées des flux de données.&lt;/li&gt;
+&lt;li&gt;Les modèles de données sont limités à 400 Go.&lt;/li&gt;
+&lt;li&gt;Permets 48 rafraichissements d&amp;rsquo;un jeu de données par jour&lt;/li&gt;
+&lt;li&gt;100 To de stockage par capacité.&lt;/li&gt;
+&lt;li&gt;Support des datamarts, des fonctions IA avancées et d&amp;rsquo;un point de terminaison XMLA.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;premium-par-utilisateur&#34;&gt;Premium par utilisateur&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Est un espace de travail collaboratif.&lt;/li&gt;
+&lt;li&gt;Il supporte le partage de contenu via les applications.&lt;/li&gt;
+&lt;li&gt;Il supporte les fonctions avancées des flux de données.&lt;/li&gt;
+&lt;li&gt;Les modèles de données sont limités à 100 Go.&lt;/li&gt;
+&lt;li&gt;Permets 48 rafraichissements d&amp;rsquo;un jeu de données par jour.&lt;/li&gt;
+&lt;li&gt;100 To de stockage au global pour ce type d&amp;rsquo;espace de travail .&lt;/li&gt;
+&lt;li&gt;Support des datamarts, des fonctions IA avancées et d&amp;rsquo;un point de terminaison XMLA.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Merci de votre attention.&lt;/p&gt;</description>
+        </item>
+        <item>
         <title>Vos référentiels d&#39;entreprise directement dans Excel.</title>
         <link>https://blog.ddata.fr/p/tables-recommandees-powerbi/</link>
         <pubDate>Sun, 30 Apr 2023 00:00:00 +0000</pubDate>
