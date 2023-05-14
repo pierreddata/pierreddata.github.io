@@ -6,7 +6,76 @@
         <description>Recent content on Le D de Data</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>fr-fr</language>
-        <lastBuildDate>Sun, 07 May 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ddata.fr/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sun, 14 May 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ddata.fr/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Guide des mauvaises pratiques du service Power BI.</title>
+        <link>https://blog.ddata.fr/p/power-bi-service-bad-practice/</link>
+        <pubDate>Sun, 14 May 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://blog.ddata.fr/p/power-bi-service-bad-practice/</guid>
+        <description>&lt;img src="https://blog.ddata.fr/p/power-bi-service-bad-practice/jas-min-egqR_zUd4NI-unsplash.jpg" alt="Featured image of post Guide des mauvaises pratiques du service Power BI." /&gt;&lt;p&gt;Il est temps d&amp;rsquo;apprendre à mal utiliser le service Power BI !&lt;br&gt;
+Je me propose de vous présenter un florilège de mauvaises pratiques à appliquer dans votre service Power BI afin de maximiser les chances d&amp;rsquo;échec de votre projet.&lt;/p&gt;
+&lt;h2 id=&#34;ne-formez-pas-vos-utilisateurs-finaux&#34;&gt;Ne formez pas vos utilisateurs finaux&lt;/h2&gt;
+&lt;p&gt;Vos utilisateurs finaux, ceux qui consomme les rapports n&amp;rsquo;ont pas besoin d&amp;rsquo;apprendre à utiliser le filtrage interactif des visuels ni de découvrir toutes les fonctions qui font d&amp;rsquo;un rapport Power BI un produit agréable à utiliser. D&amp;rsquo;ailleurs un simple PDF devrait leur suffire plutôt qu&amp;rsquo;un outil de self-service BI.&lt;/p&gt;
+&lt;h2 id=&#34;ne-mettez-pas-de-page-de-documentation-dans-vos-rapports&#34;&gt;Ne mettez pas de page de documentation dans vos rapports&lt;/h2&gt;
+&lt;p&gt;Pas besoin d&amp;rsquo;ajouter des pages de documentation dans vos rapports, ces pages sont une perte de temps, car vos utilisateurs savent de manière innée qu&amp;rsquo;elles sont les règles de calcul derrière chaque mesure de votre modèle. Et s’ils ne savent pas, ils vous demanderont, répéter 50 fois la même chose à 50 personnes vous permettra de justifier de votre temps de travail.&lt;/p&gt;
+&lt;h2 id=&#34;partager-vos-rapports-en-direct&#34;&gt;Partager vos rapports en direct&lt;/h2&gt;
+&lt;p&gt;Partager directement vos rapports, un par un depuis votre espace de travail. Pas besoin de structurer cela au sein d&amp;rsquo;une application Power BI ni de pouvoir monitor facilement qui à accès à quel rapport.&lt;/p&gt;
+&lt;h2 id=&#34;diffuser-vos-rapports-en-partageant-les-espaces-de-travail&#34;&gt;Diffuser vos rapports en partageant les espaces de travail&lt;/h2&gt;
+&lt;p&gt;Vous avez besoin de partager plusieurs rapports d&amp;rsquo;un coup, inviter vos consommateurs dans vos espaces de travail, pas besoin des applications Power BI et plus on est de fou plus on rit ! En plus vous pouvez leur donner des droits pour qu&amp;rsquo;ils modifient eux-mêmes les rapports. De plus ils peuvent voir tous les travaux en cours et consulter des rapports non finalisés.&lt;/p&gt;
+&lt;h2 id=&#34;mettez-tout-le-monde-administrateur-des-espaces-de-travail&#34;&gt;Mettez tout le monde administrateur des espaces de travail&lt;/h2&gt;
+&lt;p&gt;Il existe 4 rôles différents pour les membres d&amp;rsquo;un espace de travail, pourquoi vous embêter à comprendre à quoi cela peut servir ? Le plus simple est de mettre le niveau de droit maximum à tout le monde. Tous administrateurs comme cela pas de jaloux.&lt;/p&gt;
+&lt;h2 id=&#34;laissez-les-paramétrages-globaux-par-défaut&#34;&gt;Laissez les paramétrages globaux par défaut&lt;/h2&gt;
+&lt;p&gt;Dans l&amp;rsquo;administration du service Power BI on retrouve un grand nombre de paramétrages vous permettant d&amp;rsquo;adapter le service à vos besoins, mais vous pouvez faire confiance à l&amp;rsquo;éditeur pour que la valeur par défaut soit en cohérence avec votre politique de sécurité d&amp;rsquo;entreprise, après tout c&amp;rsquo;est vous le client.&lt;/p&gt;
+&lt;h2 id=&#34;affecter-les-droits-au-niveau-utilisateur&#34;&gt;Affecter les droits au niveau utilisateur&lt;/h2&gt;
+&lt;p&gt;C&amp;rsquo;est toujours plus simple de voir la liste des utilisateurs qui ont des droits alors n&amp;rsquo;utilisez pas les groupes 365 ou de sécurité, car cela pourrait simplifier l&amp;rsquo;administration de vos projets Power BI. Au moins quand vous avez 500 utilisateurs à affecter manuellement cela justifie votre journée de travail.&lt;/p&gt;
+&lt;h2 id=&#34;ne-versionnez-pas-les-fichiers-publiés&#34;&gt;Ne versionnez pas les fichiers publiés&lt;/h2&gt;
+&lt;p&gt;Quand vous publiez un rapport, il remplace le précédent, comme vous ne faites jamais d&amp;rsquo;erreur pas besoin de conserver un historique des anciennes versions pour revenir en arrière si besoin.&lt;/p&gt;
+&lt;h2 id=&#34;ne-monitor-pas-le-service-power-bi&#34;&gt;Ne monitor pas le service Power BI&lt;/h2&gt;
+&lt;p&gt;Pourquoi mettre en place un outil de monitoring de Power BI alors que le rapport par défaut vous apporte toutes les informations nécessaires pour ne pas monitor correctement votre service.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/power-bi-service-bad-practice/img/001-power-bi-service-default-monitoring.png&#34;
+	width=&#34;1677&#34;
+	height=&#34;979&#34;
+	srcset=&#34;https://blog.ddata.fr/p/power-bi-service-bad-practice/img/001-power-bi-service-default-monitoring_huc859f3327d7cb3655624f7a6f5c7e4f9_95159_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/power-bi-service-bad-practice/img/001-power-bi-service-default-monitoring_huc859f3327d7cb3655624f7a6f5c7e4f9_95159_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Monitoring du service intégré&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;171&#34;
+		data-flex-basis=&#34;411px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;laissez-tous-le-monde-installer-des-passerelles&#34;&gt;Laissez tous le monde installer des passerelles&lt;/h2&gt;
+&lt;p&gt;Les passerelles permettent d&amp;rsquo;extraire des données de vos réseaux d&amp;rsquo;entreprise pour les exposer dans le service Power BI. Pas besoin de surveiller qui sort quoi comme données et comment elles sont utilisées ? Laissez vos utilisateurs libres d&amp;rsquo;installer les passerelles.&lt;/p&gt;
+&lt;h2 id=&#34;ne-personnalisez-pas-le-service-power-bi&#34;&gt;Ne personnalisez pas le service Power BI&lt;/h2&gt;
+&lt;p&gt;Ne prenez pas 2 minutes pour ajouter votre logo et choisir une couleur par défaut.&lt;br&gt;
+En effet quelle est l&amp;rsquo;utilité d&amp;rsquo;une identité d&amp;rsquo;entreprise ?&lt;br&gt;
+N&amp;rsquo;allez donc pas dans cet écran :&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/power-bi-service-bad-practice/img/002-power-bi-service-marque-perso.png&#34;
+	width=&#34;1648&#34;
+	height=&#34;754&#34;
+	srcset=&#34;https://blog.ddata.fr/p/power-bi-service-bad-practice/img/002-power-bi-service-marque-perso_huf4635d2e33d5f6e3812f07e0960f5c9a_58015_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/power-bi-service-bad-practice/img/002-power-bi-service-marque-perso_huf4635d2e33d5f6e3812f07e0960f5c9a_58015_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Marque personnalisée&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;218&#34;
+		data-flex-basis=&#34;524px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;utiliser-la-fonction-publier-sur-le-web-public-pour-diffuser-vos-données-dentreprise-sans-payer-de-licence&#34;&gt;Utiliser la fonction &amp;ldquo;Publier sur le web public&amp;rdquo; pour diffuser vos données d&amp;rsquo;entreprise sans payer de licence&lt;/h2&gt;
+&lt;p&gt;La fonction &lt;strong&gt;Publier sur le web public&lt;/strong&gt; vous permet de publier un rapport Power BI qui est consultable sans payer de licence pour tous les utilisateurs qui consomme ce rapport.&lt;br&gt;
+N&amp;rsquo;hésiter pas a utiliser cette méthode pour diffuser de manière publique vos données comptables et financières. Pensez à ajouter les salaires des employées.&lt;br&gt;
+Bien sûr l&amp;rsquo;adresse Web de ce rapport n&amp;rsquo;est connue que de vous seul, mais aussi de tous les utilisateurs avec qui vous l&amp;rsquo;avez partagé et de tous ceux avec qui ils ont eux-mêmes partagé.
+Cerise sur le gâteau, une adresse Web passe en clair dans tous les équipements réseau qui traitent votre demande.&lt;br&gt;
+Grâce à cette méthode vous avez la presque certitude de voir exposé vos données privées à n&amp;rsquo;importe qui, alors n&amp;rsquo;hésitez pas à l&amp;rsquo;utiliser pour autre chose que la diffusion de données publique c&amp;rsquo;est gratuit.&lt;/p&gt;
+&lt;p&gt;Bien entendu je ne garantis pas l&amp;rsquo;échec de votre projet même si vous appliquez toutes ces mauvaises pratiques : l&amp;rsquo;informatique n&amp;rsquo;est pas une science exacte, on n’est pas à l&amp;rsquo;abri d&amp;rsquo;un succès!&lt;/p&gt;
+&lt;p&gt;Merci de votre attention.&lt;/p&gt;</description>
+        </item>
+        <item>
         <title>Comprendre les licences Power BI</title>
         <link>https://blog.ddata.fr/p/comprendre-les-licences-power-bi/</link>
         <pubDate>Sun, 07 May 2023 00:00:00 +0000</pubDate>
