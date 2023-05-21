@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+<html lang="fr-fr" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Vous avez la même intégration de données à répéter ? Par exemple un dossier avec des fichiers Excel au même format ? Power Query vous simplifie la vie avec les fonctions.
+'>
+<title>Power Query le pouvoir des fonctions.</title>
+
+<link rel='canonical' href='https://blog.ddata.fr/p/power-query-function/'>
+
+<link rel="stylesheet" href="/scss/style.min.5be32ca3f6e1a997c75795c4359147cc6d4fbd34948c0acd51e31d237033978a.css"><meta property='og:title' content='Power Query le pouvoir des fonctions.'>
+<meta property='og:description' content='Vous avez la même intégration de données à répéter ? Par exemple un dossier avec des fichiers Excel au même format ? Power Query vous simplifie la vie avec les fonctions.
+'>
+<meta property='og:url' content='https://blog.ddata.fr/p/power-query-function/'>
+<meta property='og:site_name' content='Le D de Data'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Intermédiaire' /><meta property='article:tag' content='Auto formation' /><meta property='article:published_time' content='2023-05-21T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2023-05-21T00:00:00&#43;00:00'/><meta property='og:image' content='https://blog.ddata.fr/p/power-query-function/chinh-le-duc-poK5c-QWy1E-unsplash.jpg' />
+<meta name="twitter:title" content="Power Query le pouvoir des fonctions.">
+<meta name="twitter:description" content="Vous avez la même intégration de données à répéter ? Par exemple un dossier avec des fichiers Excel au même format ? Power Query vous simplifie la vie avec les fonctions.
+"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://blog.ddata.fr/p/power-query-function/chinh-le-duc-poK5c-QWy1E-unsplash.jpg' />
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TY6XFEN6QV"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-TY6XFEN6QV', { 'anonymize_ip': false });
+}
+</script>
+<link rel="alternate"
+      type="application/rss+xml"
+      href="https://blog.ddata.fr/index.xml"
+      title="Le D de Data">
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "dark");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Afficher le menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/pierre_hua6bbc70dde858dd10e363a14d1f7729c_67951_300x0_resize_q75_box.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Le D de Data</a></h1>
+            <h2 class="site-description">Blog francophone autour de la data Microsoft</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/pierreddata'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://www.linkedin.com/in/pierre-dupont-0b532374/'
+                        target="_blank"
+                        title="LinkdIn"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-folders" width="44" height="44" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <rect x="4" y="4" width="16" height="16" rx="2" />
+  <line x1="8" y1="11" x2="8" y2="16" />
+  <line x1="8" y1="8" x2="8" y2="8.01" />
+  <line x1="12" y1="16" x2="12" y2="11" />
+  <path d="M16 16v-3a2 2 0 0 0 -4 0" />
+</svg>
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Accueil</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/a-propos-de-d-de-data/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>A Propos</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/series/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-folders" width="44" height="44" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 4h3l2 2h5a2 2 0 0 1 2 2v7a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-9a2 2 0 0 1 2 -2" />
+  <path d="M17 17v2a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-9a2 2 0 0 1 2 -2h2" />
+</svg>
+
+                
+                <span>Series</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/liens/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Liens</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Rechercher</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Mode sombre</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table des matières</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#contexte">Contexte</a></li>
+    <li><a href="#cas-dusage">Cas d&rsquo;usage</a></li>
+    <li><a href="#exemple">Exemple</a>
+      <ol>
+        <li><a href="#sans-lusage-dune-fonction">Sans l&rsquo;usage d&rsquo;une fonction</a></li>
+        <li><a href="#avec-une-fonction-power-query">Avec une fonction Power Query</a></li>
+      </ol>
+    </li>
+    <li><a href="#aller-plus-loin-avec-les-fonctions">Aller plus loin avec les fonctions</a>
+      <ol>
+        <li><a href="#table-utiliser-pour-appeler-la-fonction">Table utiliser pour appeler la fonction</a></li>
+        <li><a href="#valeur-en-sortie-de-la-fonction">Valeur en sortie de la fonction</a></li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/power-query-function/">
+                <img src="/p/power-query-function/chinh-le-duc-poK5c-QWy1E-unsplash_hu1bbec3486f773b072d538975f65a80c0_2311333_800x0_resize_q75_box.jpg"
+                        srcset="/p/power-query-function/chinh-le-duc-poK5c-QWy1E-unsplash_hu1bbec3486f773b072d538975f65a80c0_2311333_800x0_resize_q75_box.jpg 800w, /p/power-query-function/chinh-le-duc-poK5c-QWy1E-unsplash_hu1bbec3486f773b072d538975f65a80c0_2311333_1600x0_resize_q75_box.jpg 1600w"
+                        width="800" 
+                        height="533" 
+                        loading="lazy"
+                        alt="Featured image of post Power Query le pouvoir des fonctions." />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/powerbi/" style="background-color: #f2c811; color: #fff;">
+                Power BI
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/power-query-function/">Power Query le pouvoir des fonctions.</a>
+        </h2>
+
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published" datetime="2023-05-21T00:00:00Z">
+                    21 mai 2023
+                    
+                </time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    7 minutes de lecture
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+    
+    
+</div>
+</header>
+
+    <section class="article-content">
+    
+    
+    <p>Vous avez la même intégration de données à répéter ? Par exemple un dossier avec des fichiers Excel au même format ? Power Query vous simplifie la vie avec les fonctions.</p>
+<h2 id="contexte">Contexte</h2>
+<p>Power Query est un outil formidable pour automatiser vos préparations de données.<br>
+Mais souvent vous vous retrouvez à refaire les mêmes requêtes avec juste un paramètre qui change, c&rsquo;est à ce moment que vous devez apprendre les fonctions afin d&rsquo;automatiser ce type de tâche.</p>
+<p>Pour bien comprendre cet article il est recommandé de maitriser l&rsquo;éditeur avancé de Power Query présenter dans l&rsquo;article <a class="link" href="https://blog.ddata.fr/p/power-query-advanced-editor/" >Bien utiliser l&rsquo;éditeur avancé de Power Query</a></p>
+<h2 id="cas-dusage">Cas d&rsquo;usage</h2>
+<p>Les cas d&rsquo;usages des fonctions sont multiples, voici quelques exemples classiques à garder en tête :</p>
+<ul>
+<li>Appliquer un même ensemble de transformations sur des fichiers, Excel par exemple, contenu dans un dossier.</li>
+<li>Appliquer un même ensemble de transformations sur les feuilles d&rsquo;un fichier Excel.</li>
+<li>Appliquer un ensemble de transformations dans plusieurs requêtes Power Query différentes.</li>
+</ul>
+<p>Les exemples ci-dessus ont tous en commun l&rsquo;usage de fonction.<br>
+En informatique une fonction est une portion de code réalisant une tâche spécifique.<br>
+Une fonction est une requête Power Query spécifique, elle est donc :</p>
+<ul>
+<li>Écrite et maintenue en dehors des autres requêtes Power Query.</li>
+<li>Appelable par n&rsquo;importe quelles autres requêtes Power Query.</li>
+<li>Elle peut prendre ou non des paramètres en entrée afin de variabiliser son exécution.</li>
+</ul>
+<h2 id="exemple">Exemple</h2>
+<p>Imaginons le traitement dans lequel vous souhaitez intégrer un flux RSS sous la forme d&rsquo;une table dans Power Query.
+Les étapes de transformation seront les suivantes :</p>
+<p><img src="/p/power-query-function/img/001-power-query-simple-RSS.png"
+	width="1479"
+	height="694"
+	srcset="/p/power-query-function/img/001-power-query-simple-RSS_hu5bc8cb3ff55157996954c652df2e3f3b_86939_480x0_resize_box_3.png 480w, /p/power-query-function/img/001-power-query-simple-RSS_hu5bc8cb3ff55157996954c652df2e3f3b_86939_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Intégration simple d&rsquo;un flux RSS en Power Query"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="213"
+		data-flex-basis="511px"
+	
+></p>
+<p>Le code brut Power Query est le suivant :</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kd">let</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">Source</span> <span class="o">=</span> <span class="nx">Xml</span><span class="p">.</span><span class="nx">Tables</span><span class="p">(</span><span class="nx">Web</span><span class="p">.</span><span class="nx">Contents</span><span class="p">(</span><span class="s2">&#34;https://www.nasa.gov/rss/dyn/breaking_news.rss&#34;</span><span class="p">)),</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">channel</span> <span class="o">=</span> <span class="nx">Source</span><span class="p">{</span><span class="mi">0</span><span class="p">}[</span><span class="nx">channel</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">item</span> <span class="o">=</span> <span class="nx">channel</span><span class="p">{</span><span class="mi">0</span><span class="p">}[</span><span class="nx">item</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="k">in</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">item</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Maintenant que nous avons fait cette première intégration, nous souhaitons ajoute de nouveaux flux RSS en plus dans la même table. Nous avons 2 manières pour faire cela.</p>
+<h3 id="sans-lusage-dune-fonction">Sans l&rsquo;usage d&rsquo;une fonction</h3>
+<p>Vous devrez</p>
+<ul>
+<li>Créer une requête par flux RSS</li>
+<li>Fusionner toutes les requêtes ensemble.</li>
+</ul>
+<p>Cette solution est fastidieuse et difficilement maintenable.</p>
+<h3 id="avec-une-fonction-power-query">Avec une fonction Power Query</h3>
+<p>Nous allons avoir besoin de seulement 2 requêtes Power Query :</p>
+<ul>
+<li>Une requête contenant la fonction</li>
+<li>Une requête contenant la liste des flux RSS que l&rsquo;on souhaite traiter.</li>
+</ul>
+<p>Nous allons donc commencer par transformer le code précédent en fonction. Pour faire cela, nous devons analyser le code et réfléchir à l&rsquo;automatisation que l&rsquo;on veut mettre en place.<br>
+Les numéros de lignes que je cite correspondent à ceux visibles dans l&rsquo;éditeur avancé de la copie d&rsquo;écran précédente.</p>
+<ul>
+<li>Sur la ligne 2, on lit le contenu d&rsquo;une URL via la fonction <em>Web.Contents</em> et on envoie le résultat de cette lecture à la fonction <em>Xml.Tables</em> afin d&rsquo;interpréter le résultat en tant que table XML. Le résultat est stocké dans <em>Source</em>.</li>
+<li>Sur la ligne 3, on lit la colonne channel ,via <em>[channel]</em>, de la première ligne, via <em>{0}</em>, de <em>Source</em>. En Power Query la première ligne à l&rsquo;indice zéro. Le résultat est stocké dans <em>channel</em>.</li>
+<li>Sur la ligne 4, on lit la colonne item ,via <em>[item]</em>, de la première ligne, via <em>{0}</em>, de <em>channel</em>. Le résultat est stocké dans <em>item</em>.</li>
+<li>Le contenu de <em>item</em> est renvoyé par la requête Power Query.</li>
+</ul>
+<p>Maintenant que nous avons analysé le code, on se rend compte que si on variabilise l&rsquo;URL, on peut répéter les autres opérations sur des données ayant la même structure.</p>
+<p>La fonction Power Query sera donc la suivante :</p>
+<p><img src="/p/power-query-function/img/002-power-query-function-simple-RSS.png"
+	width="1010"
+	height="393"
+	srcset="/p/power-query-function/img/002-power-query-function-simple-RSS_hud5a11b00ac257005f850cc2c77df5337_16905_480x0_resize_box_3.png 480w, /p/power-query-function/img/002-power-query-function-simple-RSS_hud5a11b00ac257005f850cc2c77df5337_16905_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Fonction Power Query d&rsquo;intégration d&rsquo;un flux RSS"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="256"
+		data-flex-basis="616px"
+	
+></p>
+<p>Le code brut Power Query est le suivant :</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kd">let</span> <span class="nx">readFeed</span> <span class="o">=</span> <span class="p">(</span><span class="nx">URLFeed</span><span class="p">)</span> <span class="p">=&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">let</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">Source</span> <span class="o">=</span> <span class="nx">Xml</span><span class="p">.</span><span class="nx">Tables</span><span class="p">(</span><span class="nx">Web</span><span class="p">.</span><span class="nx">Contents</span><span class="p">(</span><span class="nx">URLFeed</span><span class="p">)),</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">channel</span> <span class="o">=</span> <span class="nx">Source</span><span class="p">{</span><span class="mi">0</span><span class="p">}[</span><span class="nx">channel</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">item</span> <span class="o">=</span> <span class="nx">channel</span><span class="p">{</span><span class="mi">0</span><span class="p">}[</span><span class="nx">item</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="k">in</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">item</span>
+</span></span><span class="line"><span class="cl"><span class="k">in</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">readFeed</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>Sur la ligne 1, nous déclarons la fonction <em>readFeed</em> qui prend comme paramètre <em>URLFeed</em>.</li>
+<li>Le bloc de code entre la ligne 2 et 7 correspond à notre code de l&rsquo;exemple initial, vous remarquerez sur la ligne 3 une modification, on a remplacé la valeur de l&rsquo;URL par la valeur du paramètre <em>URLFeed</em> de la fonction.</li>
+<li>Sur les lignes 8 et 9 la fonction renvoie la valeur retournée par le bloc de code entre les lignes 2 et 7.</li>
+</ul>
+<p><img src="/p/power-query-function/img/003-power-query-function-simple-RSS-test.png"
+	width="608"
+	height="294"
+	srcset="/p/power-query-function/img/003-power-query-function-simple-RSS-test_hu52b976cf0c6181aa14b7e4f959add95f_15626_480x0_resize_box_3.png 480w, /p/power-query-function/img/003-power-query-function-simple-RSS-test_hu52b976cf0c6181aa14b7e4f959add95f_15626_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Test de la fonction Power Query d&rsquo;intégration d&rsquo;un flux RSS"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="206"
+		data-flex-basis="496px"
+	
+></p>
+<ol>
+<li>Pour tester votre fonction, sélectionnez-la.</li>
+<li>Remplir le paramètre avec la valeur souhaitée.</li>
+<li>Appuyez sur le bouton <em>Appeler</em>.</li>
+<li>Une nouvelle requête est créée avec l&rsquo;appel de la fonction et son résultat.</li>
+</ol>
+<p>⚠ Notez bien que la requête Power Query qui contient la fonction s&rsquo;appelle <em>fctNasaFeed</em>, comme on le voit dans la liste des requêtes. Le nom de la fonction <em>readFeed</em> utiliser dans le code Power Query n&rsquo;est accessible que dans le code Power Query, les appels de la fonction par d&rsquo;autres requêtes Power Query ce fera par le nom de la requête <em>fctNasaFeed</em>.</p>
+<p>Testez toujours votre fonction une fois pour être sûr que cette dernière fonctionne.</p>
+<p>Nous allons maintenant utiliser notre fonction sur un ensemble d&rsquo;URL, pour faire cela nous avons besoin de créer une table contenant les données sur lesquelles on souhaite appliquer la fonction.</p>
+<p><img src="/p/power-query-function/img/004-power-query-list-RSS-feed.png"
+	width="1082"
+	height="583"
+	srcset="/p/power-query-function/img/004-power-query-list-RSS-feed_hu9a4eb54e2f2dffc8c6324b82914635c4_37613_480x0_resize_box_3.png 480w, /p/power-query-function/img/004-power-query-list-RSS-feed_hu9a4eb54e2f2dffc8c6324b82914635c4_37613_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Requête Power Query avec la liste des flux RSS"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="185"
+		data-flex-basis="445px"
+	
+></p>
+<p>Le code brut Power Query est le suivant :</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kd">let</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">Source</span> <span class="o">=</span> <span class="nx">Table</span><span class="p">.</span><span class="nx">FromRows</span><span class="p">(</span><span class="nx">Json</span><span class="p">.</span><span class="nx">Document</span><span class="p">(</span><span class="nx">Binary</span><span class="p">.</span><span class="nx">Decompress</span><span class="p">(</span><span class="nx">Binary</span><span class="p">.</span><span class="nx">FromText</span><span class="p">(</span><span class="s2">&#34;jc0xD8IgEIbhv0KYG9gdjQ4uOjiS5nIKpUQ9TI9K+PdiqyZOdf3y3nPGyPXg8BLIi73LLBvZp3TnldY5Z0XIqHx86IFZ20L69I6BaqzqKtvGyK0dz5hCpL8M96l/jN0NvROxE6l3YoNlSbl6CK8TiB3UE7BYvtaBJuWYpjdLUqQa89xCHWemfQI=&#34;</span><span class="p">,</span> <span class="nx">BinaryEncoding</span><span class="p">.</span><span class="nx">Base64</span><span class="p">),</span> <span class="nx">Compression</span><span class="p">.</span><span class="nx">Deflate</span><span class="p">)),</span> <span class="kd">let</span> <span class="nx">_t</span> <span class="o">=</span> <span class="p">((</span><span class="nx">type</span> <span class="nx">nullable</span> <span class="nx">text</span><span class="p">)</span> <span class="nx">meta</span> <span class="p">[</span><span class="nx">Serialized</span><span class="p">.</span><span class="nx">Text</span> <span class="o">=</span> <span class="kc">true</span><span class="p">])</span> <span class="k">in</span> <span class="nx">type</span> <span class="nx">table</span> <span class="p">[</span><span class="nx">Nom</span> <span class="o">=</span> <span class="nx">_t</span><span class="p">,</span> <span class="nx">Feed</span> <span class="o">=</span> <span class="nx">_t</span><span class="p">]),</span>
+</span></span><span class="line"><span class="cl">    <span class="err">#</span><span class="s2">&#34;Type modifié&#34;</span> <span class="o">=</span> <span class="nx">Table</span><span class="p">.</span><span class="nx">TransformColumnTypes</span><span class="p">(</span><span class="nx">Source</span><span class="p">,{{</span><span class="s2">&#34;Nom&#34;</span><span class="p">,</span> <span class="nx">type</span> <span class="nx">text</span><span class="p">},</span> <span class="p">{</span><span class="s2">&#34;Feed&#34;</span><span class="p">,</span> <span class="nx">type</span> <span class="nx">text</span><span class="p">}})</span>
+</span></span><span class="line"><span class="cl"><span class="k">in</span>
+</span></span><span class="line"><span class="cl">    <span class="err">#</span><span class="s2">&#34;Type modifié&#34;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Cette table, créer avec via l&rsquo;option <em>Entrer des données</em> du menu <strong>Accueil</strong>, contient 2 colonnes, une avec le nom du flux et la seconde avec l&rsquo;URL.</p>
+<p>Nous allons maintenant appliquer la fonction sur chaque ligne de cette table :</p>
+<p><img src="/p/power-query-function/img/005-power-query-list-RSS-feed-step1.png"
+	width="1094"
+	height="768"
+	srcset="/p/power-query-function/img/005-power-query-list-RSS-feed-step1_hu90f475ff6911ac68ecda2a7a5ce0e09b_66373_480x0_resize_box_3.png 480w, /p/power-query-function/img/005-power-query-list-RSS-feed-step1_hu90f475ff6911ac68ecda2a7a5ce0e09b_66373_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Ajout de l&rsquo;appel de la fonction"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="142"
+		data-flex-basis="341px"
+	
+></p>
+<ol>
+<li>Sélectionnez la requête <em>FeedList</em> créer avec le code ci-dessus.</li>
+<li>Allez dans le menu <em>Ajouter une colonne</em>.</li>
+<li>Sélectionnez <em>Colonne personnalisée</em>.</li>
+<li>Saisissez un nom pour votre nouvelle colonne.</li>
+<li>Rentrez le code <em>fctNasaFeed([Feed])</em> pour appeler la fonction.</li>
+<li>Appuyez sur <em>OK</em> pour valider.</li>
+</ol>
+<p>La fonction sera appelée pour chaque ligne de la table en utilisant la valeur de la colonne <em>[Feed]</em> comme paramètre de la fonction.</p>
+<p>Le résultat est donc le suivant :</p>
+<p><img src="/p/power-query-function/img/006-power-query-list-RSS-feed-step1-end.png"
+	width="1082"
+	height="330"
+	srcset="/p/power-query-function/img/006-power-query-list-RSS-feed-step1-end_hu0c65bb2591a96d8f7a2f56330bdcaae1_38367_480x0_resize_box_3.png 480w, /p/power-query-function/img/006-power-query-list-RSS-feed-step1-end_hu0c65bb2591a96d8f7a2f56330bdcaae1_38367_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Résultat de l&rsquo;appel de la fonction"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="327"
+		data-flex-basis="786px"
+	
+></p>
+<ol>
+<li>Vous pouvez constater que nous avons une table dans chaque cellule de la nouvelle colonne. C&rsquo;est le résultat de la fonction.</li>
+<li>Pour voir le contenu d&rsquo;une table, cliquer dans la zone blanche de la cellule, pas sur le texte <em>table</em>.</li>
+<li>Vous voyez en bas le contenu de la table.</li>
+</ol>
+<p>Si vous cliquez sur le texte <em>table</em>, une nouvelle étape et automatiquement créer avec le contenu de la table et vous devrez supprimer manuellement cette étape pour continuer cet exemple.</p>
+<p>Nous allons maintenant obtenir une table avec l&rsquo;ensemble des valeurs.</p>
+<p><img src="/p/power-query-function/img/007-power-query-list-RSS-feed-step2.png"
+	width="695"
+	height="436"
+	srcset="/p/power-query-function/img/007-power-query-list-RSS-feed-step2_hu677a615a7f9151ea3d9e0af5a8baa333_31289_480x0_resize_box_3.png 480w, /p/power-query-function/img/007-power-query-list-RSS-feed-step2_hu677a615a7f9151ea3d9e0af5a8baa333_31289_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Développer la table"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="159"
+		data-flex-basis="382px"
+	
+></p>
+<ol>
+<li>Appuyez sur le bouton développé à droite de l&rsquo;entête de la colonne.</li>
+<li>Sélectionner les champs que vous souhaitez récupérer.</li>
+<li>Désélectionner <em>Utiliser le nom de la colonne d&rsquo;origine comme préfixe</em> car nous n’avons pas de risque de nom de colonne en double.</li>
+<li>Appuyez sur <em>OK</em> pour valider.</li>
+</ol>
+<p><img src="/p/power-query-function/img/008-power-query-list-RSS-feed-step2-end.png"
+	width="1475"
+	height="840"
+	srcset="/p/power-query-function/img/008-power-query-list-RSS-feed-step2-end_hu1849772e76bfd769622936ec223f93af_234742_480x0_resize_box_3.png 480w, /p/power-query-function/img/008-power-query-list-RSS-feed-step2-end_hu1849772e76bfd769622936ec223f93af_234742_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Résultat final"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="175"
+		data-flex-basis="421px"
+	
+></p>
+<p>Vous avez maintenant une table avec l&rsquo;ensemble des données en provenance des différents flux RSS, le tout appelé à l&rsquo;aide d&rsquo;une seul fonction Power Query.</p>
+<p>Le code final brut Power Query est le suivant :</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kd">let</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">Source</span> <span class="o">=</span> <span class="nx">Table</span><span class="p">.</span><span class="nx">FromRows</span><span class="p">(</span><span class="nx">Json</span><span class="p">.</span><span class="nx">Document</span><span class="p">(</span><span class="nx">Binary</span><span class="p">.</span><span class="nx">Decompress</span><span class="p">(</span><span class="nx">Binary</span><span class="p">.</span><span class="nx">FromText</span><span class="p">(</span><span class="s2">&#34;jc0xD8IgEIbhv0KYG9gdjQ4uOjiS5nIKpUQ9TI9K+PdiqyZOdf3y3nPGyPXg8BLIi73LLBvZp3TnldY5Z0XIqHx86IFZ20L69I6BaqzqKtvGyK0dz5hCpL8M96l/jN0NvROxE6l3YoNlSbl6CK8TiB3UE7BYvtaBJuWYpjdLUqQa89xCHWemfQI=&#34;</span><span class="p">,</span> <span class="nx">BinaryEncoding</span><span class="p">.</span><span class="nx">Base64</span><span class="p">),</span> <span class="nx">Compression</span><span class="p">.</span><span class="nx">Deflate</span><span class="p">)),</span> <span class="kd">let</span> <span class="nx">_t</span> <span class="o">=</span> <span class="p">((</span><span class="nx">type</span> <span class="nx">nullable</span> <span class="nx">text</span><span class="p">)</span> <span class="nx">meta</span> <span class="p">[</span><span class="nx">Serialized</span><span class="p">.</span><span class="nx">Text</span> <span class="o">=</span> <span class="kc">true</span><span class="p">])</span> <span class="k">in</span> <span class="nx">type</span> <span class="nx">table</span> <span class="p">[</span><span class="nx">Nom</span> <span class="o">=</span> <span class="nx">_t</span><span class="p">,</span> <span class="nx">Feed</span> <span class="o">=</span> <span class="nx">_t</span><span class="p">]),</span>
+</span></span><span class="line"><span class="cl">    <span class="err">#</span><span class="s2">&#34;Type modifié&#34;</span> <span class="o">=</span> <span class="nx">Table</span><span class="p">.</span><span class="nx">TransformColumnTypes</span><span class="p">(</span><span class="nx">Source</span><span class="p">,{{</span><span class="s2">&#34;Nom&#34;</span><span class="p">,</span> <span class="nx">type</span> <span class="nx">text</span><span class="p">},</span> <span class="p">{</span><span class="s2">&#34;Feed&#34;</span><span class="p">,</span> <span class="nx">type</span> <span class="nx">text</span><span class="p">}}),</span>
+</span></span><span class="line"><span class="cl">    <span class="err">#</span><span class="s2">&#34;Personnalisée ajoutée&#34;</span> <span class="o">=</span> <span class="nx">Table</span><span class="p">.</span><span class="nx">AddColumn</span><span class="p">(</span><span class="err">#</span><span class="s2">&#34;Type modifié&#34;</span><span class="p">,</span> <span class="s2">&#34;Retour de la fonction&#34;</span><span class="p">,</span> <span class="nx">each</span> <span class="nx">fctNasaFeed</span><span class="p">([</span><span class="nx">Feed</span><span class="p">])),</span>
+</span></span><span class="line"><span class="cl">    <span class="err">#</span><span class="s2">&#34;Retour de la fonction développé&#34;</span> <span class="o">=</span> <span class="nx">Table</span><span class="p">.</span><span class="nx">ExpandTableColumn</span><span class="p">(</span><span class="err">#</span><span class="s2">&#34;Personnalisée ajoutée&#34;</span><span class="p">,</span> <span class="s2">&#34;Retour de la fonction&#34;</span><span class="p">,</span> <span class="p">{</span><span class="s2">&#34;title&#34;</span><span class="p">,</span> <span class="s2">&#34;link&#34;</span><span class="p">,</span> <span class="s2">&#34;description&#34;</span><span class="p">,</span> <span class="s2">&#34;enclosure&#34;</span><span class="p">,</span> <span class="s2">&#34;guid&#34;</span><span class="p">,</span> <span class="s2">&#34;pubDate&#34;</span><span class="p">,</span> <span class="s2">&#34;source&#34;</span><span class="p">,</span> <span class="s2">&#34;http://purl.org/dc/elements/1.1/&#34;</span><span class="p">},</span> <span class="p">{</span><span class="s2">&#34;title&#34;</span><span class="p">,</span> <span class="s2">&#34;link&#34;</span><span class="p">,</span> <span class="s2">&#34;description&#34;</span><span class="p">,</span> <span class="s2">&#34;enclosure&#34;</span><span class="p">,</span> <span class="s2">&#34;guid&#34;</span><span class="p">,</span> <span class="s2">&#34;pubDate&#34;</span><span class="p">,</span> <span class="s2">&#34;source&#34;</span><span class="p">,</span> <span class="s2">&#34;http://purl.org/dc/elements/1.1/&#34;</span><span class="p">})</span>
+</span></span><span class="line"><span class="cl"><span class="k">in</span>
+</span></span><span class="line"><span class="cl">    <span class="err">#</span><span class="s2">&#34;Retour de la fonction développé&#34;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="aller-plus-loin-avec-les-fonctions">Aller plus loin avec les fonctions</h2>
+<h3 id="table-utiliser-pour-appeler-la-fonction">Table utiliser pour appeler la fonction</h3>
+<p>Comme nous l&rsquo;avons vu dans l&rsquo;exemple ci-dessus, pour utiliser une fonction, il faut avoir une table sur laquelle l&rsquo;appliquer. Classiquement cette table peut être :</p>
+<ul>
+<li>La liste des fichiers d&rsquo;un dossier et ses sous-dossiers, locaux ou dans SharePoint.</li>
+<li>La liste des onglets d&rsquo;un classeur Excel, cette liste est disponible dans l&rsquo;étape suivant l&rsquo;ouverture du fichier Excel dans Power Query (le résultat de la fonction Power Query Excel.Workbook).</li>
+<li>La liste des tables d&rsquo;une base de données.</li>
+</ul>
+<p>Bien entendu cette liste n&rsquo;est pas exhaustive.</p>
+<h3 id="valeur-en-sortie-de-la-fonction">Valeur en sortie de la fonction</h3>
+<p>Dans notre exemple, la fonction a renvoyé une table. Bien entendu, une fonction peut renvoyer tous les types de données supportées en sortie d&rsquo;une requête Power Query, comme  une chaine de caractère, une date ou une valeur numérique.</p>
+<p>Merci de votre attention.</p>
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/interm%C3%A9diaire/">Intermédiaire</a>
+        
+            <a href="/tags/auto-formation/">Auto formation</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Contenus liés</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/comprendre-les-licences-power-bi/">
+        
+        
+            <div class="article-image">
+                <img src="/p/comprendre-les-licences-power-bi/_hu9694657f3c697ac35f9080995597d89a_217872_34c60cea0abb30e97a116c23faead41a.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Comprendre les licences Power BI"
+                        data-key="comprendre-les-licences-power-bi" 
+                        data-hash="md5-Tqm03iJ7lbxz/5qcFYYkrg==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Comprendre les licences Power BI</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/tables-recommandees-powerbi/">
+        
+        
+            <div class="article-image">
+                <img src="/p/tables-recommandees-powerbi/_hucaac4cc3511e7b1acfab0972cfec5559_699224_cad85dcfe262173e6e61f48562f1686a.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Vos référentiels d&#39;entreprise directement dans Excel."
+                        data-key="tables-recommandees-powerbi" 
+                        data-hash="md5-zTxeLVq9XPFPYMxjyRSnCg==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Vos référentiels d&#39;entreprise directement dans Excel.</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/power-bi-gateway/">
+        
+        
+            <div class="article-image">
+                <img src="/p/power-bi-gateway/_hu81c52007d2e7fffec5d58774b441b07a_2250510_61cdb05e3cd283da80984a55f3e9ea9a.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Installer et configurer votre passerelle de données pour Power BI."
+                        data-key="power-bi-gateway" 
+                        data-hash="md5-TAa&#43;LHiuZbtti4Yj3Ng96Q==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Installer et configurer votre passerelle de données pour Power BI.</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/analyser-dans-excel/">
+        
+        
+            <div class="article-image">
+                <img src="/p/analyser-dans-excel/_hu8221600bfe6cac469e7179ce07dc706c_5513366_7fc22be89f43d5af161b8663ef07a4ef.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Analyser dans Excel, la rencontre d&#39;Excel et du service Power BI"
+                        data-key="analyser-dans-excel" 
+                        data-hash="md5-7zWz9UWLgrEIRn1qMkyXhw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Analyser dans Excel, la rencontre d&#39;Excel et du service Power BI</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/power-query-advanced-editor/">
+        
+        
+            <div class="article-image">
+                <img src="/p/power-query-advanced-editor/_huf15fa593426db9a90f89c3ece54be71a_1377284_db140170abfb6d1453dfd875e2ef4e67.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Bien utiliser l&#39;éditeur avancé de Power Query"
+                        data-key="power-query-advanced-editor" 
+                        data-hash="md5-ja2X8&#43;dQEC4Gc4RY6igB2g==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Bien utiliser l&#39;éditeur avancé de Power Query</h2>
+        </div>
+    </a>
+</article>
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "ddata" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2022 - 
+        
+        2023 Le D de Data
+    </section>
+    
+    <section class="powerby">
+        Généré avec <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Thème <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.16.0">Stack</a></b> conçu par <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

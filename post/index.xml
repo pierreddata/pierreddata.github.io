@@ -6,7 +6,307 @@
         <description>Recent content in Posts on Le D de Data</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>fr-fr</language>
-        <lastBuildDate>Sun, 14 May 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ddata.fr/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sun, 21 May 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ddata.fr/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Power Query le pouvoir des fonctions.</title>
+        <link>https://blog.ddata.fr/p/power-query-function/</link>
+        <pubDate>Sun, 21 May 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://blog.ddata.fr/p/power-query-function/</guid>
+        <description>&lt;img src="https://blog.ddata.fr/p/power-query-function/chinh-le-duc-poK5c-QWy1E-unsplash.jpg" alt="Featured image of post Power Query le pouvoir des fonctions." /&gt;&lt;p&gt;Vous avez la même intégration de données à répéter ? Par exemple un dossier avec des fichiers Excel au même format ? Power Query vous simplifie la vie avec les fonctions.&lt;/p&gt;
+&lt;h2 id=&#34;contexte&#34;&gt;Contexte&lt;/h2&gt;
+&lt;p&gt;Power Query est un outil formidable pour automatiser vos préparations de données.&lt;br&gt;
+Mais souvent vous vous retrouvez à refaire les mêmes requêtes avec juste un paramètre qui change, c&amp;rsquo;est à ce moment que vous devez apprendre les fonctions afin d&amp;rsquo;automatiser ce type de tâche.&lt;/p&gt;
+&lt;p&gt;Pour bien comprendre cet article il est recommandé de maitriser l&amp;rsquo;éditeur avancé de Power Query présenter dans l&amp;rsquo;article &lt;a class=&#34;link&#34; href=&#34;https://blog.ddata.fr/p/power-query-advanced-editor/&#34; &gt;Bien utiliser l&amp;rsquo;éditeur avancé de Power Query&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;cas-dusage&#34;&gt;Cas d&amp;rsquo;usage&lt;/h2&gt;
+&lt;p&gt;Les cas d&amp;rsquo;usages des fonctions sont multiples, voici quelques exemples classiques à garder en tête :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Appliquer un même ensemble de transformations sur des fichiers, Excel par exemple, contenu dans un dossier.&lt;/li&gt;
+&lt;li&gt;Appliquer un même ensemble de transformations sur les feuilles d&amp;rsquo;un fichier Excel.&lt;/li&gt;
+&lt;li&gt;Appliquer un ensemble de transformations dans plusieurs requêtes Power Query différentes.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Les exemples ci-dessus ont tous en commun l&amp;rsquo;usage de fonction.&lt;br&gt;
+En informatique une fonction est une portion de code réalisant une tâche spécifique.&lt;br&gt;
+Une fonction est une requête Power Query spécifique, elle est donc :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Écrite et maintenue en dehors des autres requêtes Power Query.&lt;/li&gt;
+&lt;li&gt;Appelable par n&amp;rsquo;importe quelles autres requêtes Power Query.&lt;/li&gt;
+&lt;li&gt;Elle peut prendre ou non des paramètres en entrée afin de variabiliser son exécution.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;exemple&#34;&gt;Exemple&lt;/h2&gt;
+&lt;p&gt;Imaginons le traitement dans lequel vous souhaitez intégrer un flux RSS sous la forme d&amp;rsquo;une table dans Power Query.
+Les étapes de transformation seront les suivantes :&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/power-query-function/img/001-power-query-simple-RSS.png&#34;
+	width=&#34;1479&#34;
+	height=&#34;694&#34;
+	srcset=&#34;https://blog.ddata.fr/p/power-query-function/img/001-power-query-simple-RSS_hu5bc8cb3ff55157996954c652df2e3f3b_86939_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/power-query-function/img/001-power-query-simple-RSS_hu5bc8cb3ff55157996954c652df2e3f3b_86939_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Intégration simple d&amp;rsquo;un flux RSS en Power Query&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;213&#34;
+		data-flex-basis=&#34;511px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Le code brut Power Query est le suivant :&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kd&#34;&gt;let&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nx&#34;&gt;Source&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;Xml&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;Tables&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;Web&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;Contents&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;https://www.nasa.gov/rss/dyn/breaking_news.rss&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)),&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nx&#34;&gt;channel&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;Source&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}[&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;channel&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;],&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nx&#34;&gt;item&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;channel&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}[&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;item&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;in&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nx&#34;&gt;item&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Maintenant que nous avons fait cette première intégration, nous souhaitons ajoute de nouveaux flux RSS en plus dans la même table. Nous avons 2 manières pour faire cela.&lt;/p&gt;
+&lt;h3 id=&#34;sans-lusage-dune-fonction&#34;&gt;Sans l&amp;rsquo;usage d&amp;rsquo;une fonction&lt;/h3&gt;
+&lt;p&gt;Vous devrez&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Créer une requête par flux RSS&lt;/li&gt;
+&lt;li&gt;Fusionner toutes les requêtes ensemble.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Cette solution est fastidieuse et difficilement maintenable.&lt;/p&gt;
+&lt;h3 id=&#34;avec-une-fonction-power-query&#34;&gt;Avec une fonction Power Query&lt;/h3&gt;
+&lt;p&gt;Nous allons avoir besoin de seulement 2 requêtes Power Query :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Une requête contenant la fonction&lt;/li&gt;
+&lt;li&gt;Une requête contenant la liste des flux RSS que l&amp;rsquo;on souhaite traiter.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Nous allons donc commencer par transformer le code précédent en fonction. Pour faire cela, nous devons analyser le code et réfléchir à l&amp;rsquo;automatisation que l&amp;rsquo;on veut mettre en place.&lt;br&gt;
+Les numéros de lignes que je cite correspondent à ceux visibles dans l&amp;rsquo;éditeur avancé de la copie d&amp;rsquo;écran précédente.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Sur la ligne 2, on lit le contenu d&amp;rsquo;une URL via la fonction &lt;em&gt;Web.Contents&lt;/em&gt; et on envoie le résultat de cette lecture à la fonction &lt;em&gt;Xml.Tables&lt;/em&gt; afin d&amp;rsquo;interpréter le résultat en tant que table XML. Le résultat est stocké dans &lt;em&gt;Source&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Sur la ligne 3, on lit la colonne channel ,via &lt;em&gt;[channel]&lt;/em&gt;, de la première ligne, via &lt;em&gt;{0}&lt;/em&gt;, de &lt;em&gt;Source&lt;/em&gt;. En Power Query la première ligne à l&amp;rsquo;indice zéro. Le résultat est stocké dans &lt;em&gt;channel&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Sur la ligne 4, on lit la colonne item ,via &lt;em&gt;[item]&lt;/em&gt;, de la première ligne, via &lt;em&gt;{0}&lt;/em&gt;, de &lt;em&gt;channel&lt;/em&gt;. Le résultat est stocké dans &lt;em&gt;item&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Le contenu de &lt;em&gt;item&lt;/em&gt; est renvoyé par la requête Power Query.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Maintenant que nous avons analysé le code, on se rend compte que si on variabilise l&amp;rsquo;URL, on peut répéter les autres opérations sur des données ayant la même structure.&lt;/p&gt;
+&lt;p&gt;La fonction Power Query sera donc la suivante :&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/power-query-function/img/002-power-query-function-simple-RSS.png&#34;
+	width=&#34;1010&#34;
+	height=&#34;393&#34;
+	srcset=&#34;https://blog.ddata.fr/p/power-query-function/img/002-power-query-function-simple-RSS_hud5a11b00ac257005f850cc2c77df5337_16905_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/power-query-function/img/002-power-query-function-simple-RSS_hud5a11b00ac257005f850cc2c77df5337_16905_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Fonction Power Query d&amp;rsquo;intégration d&amp;rsquo;un flux RSS&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;256&#34;
+		data-flex-basis=&#34;616px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Le code brut Power Query est le suivant :&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;9
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kd&#34;&gt;let&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;readFeed&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;URLFeed&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;kd&#34;&gt;let&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;nx&#34;&gt;Source&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;Xml&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;Tables&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;Web&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;Contents&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;URLFeed&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)),&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;nx&#34;&gt;channel&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;Source&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}[&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;channel&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;],&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;nx&#34;&gt;item&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;channel&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}[&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;item&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;in&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;nx&#34;&gt;item&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;in&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nx&#34;&gt;readFeed&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;Sur la ligne 1, nous déclarons la fonction &lt;em&gt;readFeed&lt;/em&gt; qui prend comme paramètre &lt;em&gt;URLFeed&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Le bloc de code entre la ligne 2 et 7 correspond à notre code de l&amp;rsquo;exemple initial, vous remarquerez sur la ligne 3 une modification, on a remplacé la valeur de l&amp;rsquo;URL par la valeur du paramètre &lt;em&gt;URLFeed&lt;/em&gt; de la fonction.&lt;/li&gt;
+&lt;li&gt;Sur les lignes 8 et 9 la fonction renvoie la valeur retournée par le bloc de code entre les lignes 2 et 7.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/power-query-function/img/003-power-query-function-simple-RSS-test.png&#34;
+	width=&#34;608&#34;
+	height=&#34;294&#34;
+	srcset=&#34;https://blog.ddata.fr/p/power-query-function/img/003-power-query-function-simple-RSS-test_hu52b976cf0c6181aa14b7e4f959add95f_15626_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/power-query-function/img/003-power-query-function-simple-RSS-test_hu52b976cf0c6181aa14b7e4f959add95f_15626_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Test de la fonction Power Query d&amp;rsquo;intégration d&amp;rsquo;un flux RSS&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;206&#34;
+		data-flex-basis=&#34;496px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Pour tester votre fonction, sélectionnez-la.&lt;/li&gt;
+&lt;li&gt;Remplir le paramètre avec la valeur souhaitée.&lt;/li&gt;
+&lt;li&gt;Appuyez sur le bouton &lt;em&gt;Appeler&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Une nouvelle requête est créée avec l&amp;rsquo;appel de la fonction et son résultat.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;⚠ Notez bien que la requête Power Query qui contient la fonction s&amp;rsquo;appelle &lt;em&gt;fctNasaFeed&lt;/em&gt;, comme on le voit dans la liste des requêtes. Le nom de la fonction &lt;em&gt;readFeed&lt;/em&gt; utiliser dans le code Power Query n&amp;rsquo;est accessible que dans le code Power Query, les appels de la fonction par d&amp;rsquo;autres requêtes Power Query ce fera par le nom de la requête &lt;em&gt;fctNasaFeed&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;Testez toujours votre fonction une fois pour être sûr que cette dernière fonctionne.&lt;/p&gt;
+&lt;p&gt;Nous allons maintenant utiliser notre fonction sur un ensemble d&amp;rsquo;URL, pour faire cela nous avons besoin de créer une table contenant les données sur lesquelles on souhaite appliquer la fonction.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/power-query-function/img/004-power-query-list-RSS-feed.png&#34;
+	width=&#34;1082&#34;
+	height=&#34;583&#34;
+	srcset=&#34;https://blog.ddata.fr/p/power-query-function/img/004-power-query-list-RSS-feed_hu9a4eb54e2f2dffc8c6324b82914635c4_37613_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/power-query-function/img/004-power-query-list-RSS-feed_hu9a4eb54e2f2dffc8c6324b82914635c4_37613_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Requête Power Query avec la liste des flux RSS&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;185&#34;
+		data-flex-basis=&#34;445px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Le code brut Power Query est le suivant :&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kd&#34;&gt;let&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nx&#34;&gt;Source&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;Table&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;FromRows&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;Json&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;Document&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;Binary&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;Decompress&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;Binary&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;FromText&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;jc0xD8IgEIbhv0KYG9gdjQ4uOjiS5nIKpUQ9TI9K+PdiqyZOdf3y3nPGyPXg8BLIi73LLBvZp3TnldY5Z0XIqHx86IFZ20L69I6BaqzqKtvGyK0dz5hCpL8M96l/jN0NvROxE6l3YoNlSbl6CK8TiB3UE7BYvtaBJuWYpjdLUqQa89xCHWemfQI=&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;BinaryEncoding&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;Base64&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;Compression&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;Deflate&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)),&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;let&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;_t&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;((&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;type&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;nullable&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;text&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;meta&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;Serialized&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;Text&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;true&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;])&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;in&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;type&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;table&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;Nom&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;_t&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;Feed&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;_t&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]),&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;err&#34;&gt;#&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;Type modifié&amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;Table&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;TransformColumnTypes&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;Source&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,{{&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;Nom&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;type&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;text&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;},&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;Feed&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;type&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;text&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}})&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;in&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;err&#34;&gt;#&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;Type modifié&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Cette table, créer avec via l&amp;rsquo;option &lt;em&gt;Entrer des données&lt;/em&gt; du menu &lt;strong&gt;Accueil&lt;/strong&gt;, contient 2 colonnes, une avec le nom du flux et la seconde avec l&amp;rsquo;URL.&lt;/p&gt;
+&lt;p&gt;Nous allons maintenant appliquer la fonction sur chaque ligne de cette table :&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/power-query-function/img/005-power-query-list-RSS-feed-step1.png&#34;
+	width=&#34;1094&#34;
+	height=&#34;768&#34;
+	srcset=&#34;https://blog.ddata.fr/p/power-query-function/img/005-power-query-list-RSS-feed-step1_hu90f475ff6911ac68ecda2a7a5ce0e09b_66373_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/power-query-function/img/005-power-query-list-RSS-feed-step1_hu90f475ff6911ac68ecda2a7a5ce0e09b_66373_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Ajout de l&amp;rsquo;appel de la fonction&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;142&#34;
+		data-flex-basis=&#34;341px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Sélectionnez la requête &lt;em&gt;FeedList&lt;/em&gt; créer avec le code ci-dessus.&lt;/li&gt;
+&lt;li&gt;Allez dans le menu &lt;em&gt;Ajouter une colonne&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Sélectionnez &lt;em&gt;Colonne personnalisée&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Saisissez un nom pour votre nouvelle colonne.&lt;/li&gt;
+&lt;li&gt;Rentrez le code &lt;em&gt;fctNasaFeed([Feed])&lt;/em&gt; pour appeler la fonction.&lt;/li&gt;
+&lt;li&gt;Appuyez sur &lt;em&gt;OK&lt;/em&gt; pour valider.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;La fonction sera appelée pour chaque ligne de la table en utilisant la valeur de la colonne &lt;em&gt;[Feed]&lt;/em&gt; comme paramètre de la fonction.&lt;/p&gt;
+&lt;p&gt;Le résultat est donc le suivant :&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/power-query-function/img/006-power-query-list-RSS-feed-step1-end.png&#34;
+	width=&#34;1082&#34;
+	height=&#34;330&#34;
+	srcset=&#34;https://blog.ddata.fr/p/power-query-function/img/006-power-query-list-RSS-feed-step1-end_hu0c65bb2591a96d8f7a2f56330bdcaae1_38367_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/power-query-function/img/006-power-query-list-RSS-feed-step1-end_hu0c65bb2591a96d8f7a2f56330bdcaae1_38367_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Résultat de l&amp;rsquo;appel de la fonction&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;327&#34;
+		data-flex-basis=&#34;786px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Vous pouvez constater que nous avons une table dans chaque cellule de la nouvelle colonne. C&amp;rsquo;est le résultat de la fonction.&lt;/li&gt;
+&lt;li&gt;Pour voir le contenu d&amp;rsquo;une table, cliquer dans la zone blanche de la cellule, pas sur le texte &lt;em&gt;table&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Vous voyez en bas le contenu de la table.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Si vous cliquez sur le texte &lt;em&gt;table&lt;/em&gt;, une nouvelle étape et automatiquement créer avec le contenu de la table et vous devrez supprimer manuellement cette étape pour continuer cet exemple.&lt;/p&gt;
+&lt;p&gt;Nous allons maintenant obtenir une table avec l&amp;rsquo;ensemble des valeurs.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/power-query-function/img/007-power-query-list-RSS-feed-step2.png&#34;
+	width=&#34;695&#34;
+	height=&#34;436&#34;
+	srcset=&#34;https://blog.ddata.fr/p/power-query-function/img/007-power-query-list-RSS-feed-step2_hu677a615a7f9151ea3d9e0af5a8baa333_31289_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/power-query-function/img/007-power-query-list-RSS-feed-step2_hu677a615a7f9151ea3d9e0af5a8baa333_31289_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Développer la table&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;159&#34;
+		data-flex-basis=&#34;382px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Appuyez sur le bouton développé à droite de l&amp;rsquo;entête de la colonne.&lt;/li&gt;
+&lt;li&gt;Sélectionner les champs que vous souhaitez récupérer.&lt;/li&gt;
+&lt;li&gt;Désélectionner &lt;em&gt;Utiliser le nom de la colonne d&amp;rsquo;origine comme préfixe&lt;/em&gt; car nous n’avons pas de risque de nom de colonne en double.&lt;/li&gt;
+&lt;li&gt;Appuyez sur &lt;em&gt;OK&lt;/em&gt; pour valider.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/power-query-function/img/008-power-query-list-RSS-feed-step2-end.png&#34;
+	width=&#34;1475&#34;
+	height=&#34;840&#34;
+	srcset=&#34;https://blog.ddata.fr/p/power-query-function/img/008-power-query-list-RSS-feed-step2-end_hu1849772e76bfd769622936ec223f93af_234742_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/power-query-function/img/008-power-query-list-RSS-feed-step2-end_hu1849772e76bfd769622936ec223f93af_234742_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Résultat final&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;175&#34;
+		data-flex-basis=&#34;421px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Vous avez maintenant une table avec l&amp;rsquo;ensemble des données en provenance des différents flux RSS, le tout appelé à l&amp;rsquo;aide d&amp;rsquo;une seul fonction Power Query.&lt;/p&gt;
+&lt;p&gt;Le code final brut Power Query est le suivant :&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kd&#34;&gt;let&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nx&#34;&gt;Source&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;Table&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;FromRows&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;Json&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;Document&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;Binary&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;Decompress&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;Binary&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;FromText&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;jc0xD8IgEIbhv0KYG9gdjQ4uOjiS5nIKpUQ9TI9K+PdiqyZOdf3y3nPGyPXg8BLIi73LLBvZp3TnldY5Z0XIqHx86IFZ20L69I6BaqzqKtvGyK0dz5hCpL8M96l/jN0NvROxE6l3YoNlSbl6CK8TiB3UE7BYvtaBJuWYpjdLUqQa89xCHWemfQI=&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;BinaryEncoding&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;Base64&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;Compression&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;Deflate&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)),&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;let&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;_t&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;((&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;type&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;nullable&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;text&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;meta&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;Serialized&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;Text&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;true&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;])&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;in&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;type&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;table&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;Nom&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;_t&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;Feed&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;_t&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]),&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;err&#34;&gt;#&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;Type modifié&amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;Table&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;TransformColumnTypes&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;Source&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,{{&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;Nom&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;type&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;text&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;},&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;Feed&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;type&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;text&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}}),&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;err&#34;&gt;#&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;Personnalisée ajoutée&amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;Table&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;AddColumn&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;#&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;Type modifié&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;Retour de la fonction&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;each&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;fctNasaFeed&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;([&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;Feed&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;])),&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;err&#34;&gt;#&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;Retour de la fonction développé&amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;Table&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;ExpandTableColumn&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;#&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;Personnalisée ajoutée&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;Retour de la fonction&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;title&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;link&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;description&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;enclosure&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;guid&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;pubDate&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;source&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;http://purl.org/dc/elements/1.1/&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;},&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;title&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;link&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;description&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;enclosure&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;guid&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;pubDate&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;source&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;http://purl.org/dc/elements/1.1/&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;})&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;in&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;err&#34;&gt;#&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;Retour de la fonction développé&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;aller-plus-loin-avec-les-fonctions&#34;&gt;Aller plus loin avec les fonctions&lt;/h2&gt;
+&lt;h3 id=&#34;table-utiliser-pour-appeler-la-fonction&#34;&gt;Table utiliser pour appeler la fonction&lt;/h3&gt;
+&lt;p&gt;Comme nous l&amp;rsquo;avons vu dans l&amp;rsquo;exemple ci-dessus, pour utiliser une fonction, il faut avoir une table sur laquelle l&amp;rsquo;appliquer. Classiquement cette table peut être :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;La liste des fichiers d&amp;rsquo;un dossier et ses sous-dossiers, locaux ou dans SharePoint.&lt;/li&gt;
+&lt;li&gt;La liste des onglets d&amp;rsquo;un classeur Excel, cette liste est disponible dans l&amp;rsquo;étape suivant l&amp;rsquo;ouverture du fichier Excel dans Power Query (le résultat de la fonction Power Query Excel.Workbook).&lt;/li&gt;
+&lt;li&gt;La liste des tables d&amp;rsquo;une base de données.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Bien entendu cette liste n&amp;rsquo;est pas exhaustive.&lt;/p&gt;
+&lt;h3 id=&#34;valeur-en-sortie-de-la-fonction&#34;&gt;Valeur en sortie de la fonction&lt;/h3&gt;
+&lt;p&gt;Dans notre exemple, la fonction a renvoyé une table. Bien entendu, une fonction peut renvoyer tous les types de données supportées en sortie d&amp;rsquo;une requête Power Query, comme  une chaine de caractère, une date ou une valeur numérique.&lt;/p&gt;
+&lt;p&gt;Merci de votre attention.&lt;/p&gt;</description>
+        </item>
+        <item>
         <title>Guide des mauvaises pratiques du service Power BI.</title>
         <link>https://blog.ddata.fr/p/power-bi-service-bad-practice/</link>
         <pubDate>Sun, 14 May 2023 00:00:00 +0000</pubDate>
