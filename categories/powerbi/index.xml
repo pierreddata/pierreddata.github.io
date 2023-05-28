@@ -6,7 +6,187 @@
         <description>Recent content in Power BI on Le D de Data</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>fr-fr</language>
-        <lastBuildDate>Sun, 21 May 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ddata.fr/categories/powerbi/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sun, 28 May 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ddata.fr/categories/powerbi/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Power Query au-delà des assistants.</title>
+        <link>https://blog.ddata.fr/p/power-query-advanced-m-part1/</link>
+        <pubDate>Sun, 28 May 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://blog.ddata.fr/p/power-query-advanced-m-part1/</guid>
+        <description>&lt;img src="https://blog.ddata.fr/p/power-query-advanced-m-part1/brian-wangenheim-VYOrErmJes4-unsplash.jpg" alt="Featured image of post Power Query au-delà des assistants." /&gt;&lt;p&gt;Allez au-delà des assistants dans Power Query et découvrez quelques usages avancés.&lt;/p&gt;
+&lt;h2 id=&#34;contexte&#34;&gt;Contexte&lt;/h2&gt;
+&lt;p&gt;Vous utilisez Power Query pour intégrer vos données, mais vous voulez aller plus loin avec ?&lt;br&gt;
+Je  vous propose dans cet article quelques techniques avancées pour booster votre productivité avec Power Query.&lt;/p&gt;
+&lt;h2 id=&#34;au-delà-des-assistants&#34;&gt;Au-delà des assistants&lt;/h2&gt;
+&lt;p&gt;La première étape du parcours sera d&amp;rsquo;aller au-delà des assistants. En effet, bien que ces derniers soient très utiles, ils ont des limites.&lt;/p&gt;
+&lt;h3 id=&#34;afficher-la-barre-de-formule&#34;&gt;Afficher la barre de formule&lt;/h3&gt;
+&lt;p&gt;Pour cela vous devrez prendre l&amp;rsquo;habitude de lire le code M générer par l&amp;rsquo;assistant à chaque étape, car cela vous permettra :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;De vérifier que le code est bien générique et adapté à la situation.&lt;/li&gt;
+&lt;li&gt;D&amp;rsquo;optimiser le code écrit par l&amp;rsquo;assistant.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Pour réussir à faire cela, il suffit d&amp;rsquo;activer la barre de formule dans l&amp;rsquo;éditeur Power Query.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/power-query-advanced-m-part1/img/001-power-query-formula-bar.png&#34;
+	width=&#34;992&#34;
+	height=&#34;176&#34;
+	srcset=&#34;https://blog.ddata.fr/p/power-query-advanced-m-part1/img/001-power-query-formula-bar_hu841725406066f26f3cb399029a850315_19601_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/power-query-advanced-m-part1/img/001-power-query-formula-bar_hu841725406066f26f3cb399029a850315_19601_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Activation de la barre de formule Power Query&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;563&#34;
+		data-flex-basis=&#34;1352px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Dans l&amp;rsquo;éditeur Power Query, allez dans le menu &lt;em&gt;Affichage&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Cochez &lt;em&gt;Barre de formule&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Vous pourrez voir et modifier le code de l&amp;rsquo;étape en cours de sélection dans la barre de formule.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;utiliser-la-documentation&#34;&gt;Utiliser la documentation&lt;/h3&gt;
+&lt;p&gt;Maintenant que vous avez accès rapidement au code M généré par les assistants, prenez l&amp;rsquo;habitude de jeter un coup d&amp;rsquo;œil sur la documentation des fonctions.&lt;br&gt;
+Vous retrouverez la documentation complète sur le site de Microsoft en &lt;a class=&#34;link&#34; href=&#34;https://learn.microsoft.com/fr-fr/powerquery-m/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;français&lt;/a&gt; ou en &lt;a class=&#34;link&#34; href=&#34;https://learn.microsoft.com/en-us/powerquery-m/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;anglais&lt;/a&gt;. Au vu de la qualité de certaines traductions, personnellement je privilégie la documentation en anglais.&lt;/p&gt;
+&lt;p&gt;Le nom des fonctions du langage M est toujours en 2 parties : Le nom de la famille de la fonction suivi du nom de la fonction, les 2 étant séparés par un point.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/power-query-advanced-m-part1/img/002-power-query-m-documentation.png&#34;
+	width=&#34;1702&#34;
+	height=&#34;830&#34;
+	srcset=&#34;https://blog.ddata.fr/p/power-query-advanced-m-part1/img/002-power-query-m-documentation_hu5e873b7a69dbe50b32d0454516ac7002_95265_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/power-query-advanced-m-part1/img/002-power-query-m-documentation_hu5e873b7a69dbe50b32d0454516ac7002_95265_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Structure de l&amp;rsquo;aide&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;205&#34;
+		data-flex-basis=&#34;492px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Allez dans &lt;em&gt;Fonctions&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Vous retrouverez la documentation de chaque fonction dans sa famille.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Quand vous êtes dans l&amp;rsquo;aide, profitez-en pour regarder le nom des autres fonctions de la même famille que celle qui vous intéresse, parfois on y trouve de l&amp;rsquo;inspiration ou on découvre de nouvelles choses.&lt;/p&gt;
+&lt;h3 id=&#34;insérer-du-code-power-query-manuellement&#34;&gt;Insérer du code Power Query manuellement&lt;/h3&gt;
+&lt;p&gt;Pour insérer une étape dans votre traitement dans laquelle vous pouvez écrire le code M librement, il vous suffit&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/power-query-advanced-m-part1/img/003-power-query-m-custom-column.png&#34;
+	width=&#34;1354&#34;
+	height=&#34;751&#34;
+	srcset=&#34;https://blog.ddata.fr/p/power-query-advanced-m-part1/img/003-power-query-m-custom-column_hudb5c7b98a295db23e0731ebf32234e52_61052_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/power-query-advanced-m-part1/img/003-power-query-m-custom-column_hudb5c7b98a295db23e0731ebf32234e52_61052_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Ajout de code M manuellement&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;180&#34;
+		data-flex-basis=&#34;432px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Dans l&amp;rsquo;éditeur Power Query, allez dans le menu &lt;em&gt;Ajouter une colonne&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Choisissez &lt;em&gt;Colonne personnalisée&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Entrez un nom pour votre nouvelle colonne.&lt;/li&gt;
+&lt;li&gt;Tapez votre code M.&lt;/li&gt;
+&lt;li&gt;Vous pouvez ajouter une des colonnes déjà existantes en double cliquant dessus.&lt;/li&gt;
+&lt;li&gt;Vérifiez que le code M est syntaxiquement correct.&lt;/li&gt;
+&lt;li&gt;Appuyez sur &lt;em&gt;OK&lt;/em&gt; pour terminer.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;🎁 Une petite astuce : quand vous avez une erreur de syntaxe en M, dans 99 % des cas c&amp;rsquo;est dû a une des 2 causes suivantes :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Une erreur de casse. Le code M est sensible à la casse, cela veut dire que le même texte écrit avec une minuscule au lieu d&amp;rsquo;une majuscule est un terme différent. Exemple &amp;ldquo;Coucou&amp;rdquo; et différent de &amp;ldquo;coucou&amp;rdquo; pour le langage M.&lt;/li&gt;
+&lt;li&gt;Une erreur entre les parenthèses &amp;ldquo;()&amp;rdquo;, accolades &amp;ldquo;{}&amp;rdquo; ou crochet &amp;ldquo;[]&amp;rdquo;. Elles sont soit mal positionnées, soit manquantes (souvent celle qui est fermante).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Si le problème ne vient pas d&amp;rsquo;un de ces 2 cas : bon courage.&lt;/p&gt;
+&lt;h3 id=&#34;exemples-dutilisation-des-fonctions-non-disponible-dans-les-assistants&#34;&gt;Exemples d&amp;rsquo;utilisation des fonctions non disponible dans les assistants&lt;/h3&gt;
+&lt;p&gt;Parmi les multiples fonctions M voici 2 exemples qui vous permettront de mieux comprendre l&amp;rsquo;intérêt de la démarche décrite ci-dessus.&lt;/p&gt;
+&lt;h4 id=&#34;textpadstart--textpadend&#34;&gt;Text.PadStart &amp;amp; Text.PadEnd&lt;/h4&gt;
+&lt;p&gt;Les fonctions M &lt;a class=&#34;link&#34; href=&#34;https://learn.microsoft.com/en-us/powerquery-m/text-padstart&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Text.PadStart&lt;/a&gt; et &lt;a class=&#34;link&#34; href=&#34;https://learn.microsoft.com/en-us/powerquery-m/text-padend&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Text.PadEnd&lt;/a&gt; ne sont pas disponibles au travers des assistants, mais sont d&amp;rsquo;une efficacité redoutable pour mettre en forme proprement nos données.&lt;br&gt;
+En effet elles permettent de créer des chaines de caractères de taille fixe en remplissant les caractères absents avec une valeur de votre choix.&lt;/p&gt;
+&lt;p&gt;Par exemple, pour votre dimension calendrier, vous souhaitez afficher les mois en texte sur 2 caractères, vous pouvez le faire simplement avec Text.PadStart.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/power-query-advanced-m-part1/img/004-power-query-m-custom-column-padstart.png&#34;
+	width=&#34;782&#34;
+	height=&#34;326&#34;
+	srcset=&#34;https://blog.ddata.fr/p/power-query-advanced-m-part1/img/004-power-query-m-custom-column-padstart_hudfc70dc50c09d922aaa5a1ce2468e7c5_17054_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/power-query-advanced-m-part1/img/004-power-query-m-custom-column-padstart_hudfc70dc50c09d922aaa5a1ce2468e7c5_17054_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Exemple Text.PadStart&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;239&#34;
+		data-flex-basis=&#34;575px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;La formule permet de transformer en une étape le contenu de la colonne &lt;em&gt;Column1&lt;/em&gt; en texte avec la fonction &lt;em&gt;Text.From&lt;/em&gt; puis de formater le résultat sur 2 caractères avec un zéro si on a qu&amp;rsquo;un caractère avec la fonction &lt;em&gt;Text.PadStart&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Valeur d&amp;rsquo;origine de la colonne &lt;em&gt;Column1&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;Valeur du résultat de la fonction.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Vous pouvez tester cela directement en copiant le code M ci-dessous dans une requête vide à l&amp;rsquo;aide de l&amp;rsquo;éditeur avancé.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kd&#34;&gt;let&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nx&#34;&gt;Source&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;1.&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;12&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;},&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;err&#34;&gt;#&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;Converti en table&amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;Table&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;FromList&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;Source&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;Splitter&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;SplitByNothing&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(),&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;null&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;null&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;ExtraValues&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;Error&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;err&#34;&gt;#&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;Personnalisée ajoutée&amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;Table&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;AddColumn&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;#&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;Converti en table&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;Mois&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;each&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;Text&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;PadStart&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;Text&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;From&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;([&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;Column1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]),&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;0&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;in&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;err&#34;&gt;#&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;Personnalisée ajoutée&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h4 id=&#34;textformat&#34;&gt;Text.Format&lt;/h4&gt;
+&lt;p&gt;Les fonctions M &lt;a class=&#34;link&#34; href=&#34;https://learn.microsoft.com/en-us/powerquery-m/text-format&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Text.Format&lt;/a&gt; vous permettent de créer des concaténations de chaines de caractères en gérant la culture à utiliser pour faire l&amp;rsquo;affichage.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/power-query-advanced-m-part1/img/005-power-query-m-custom-column-format.png&#34;
+	width=&#34;952&#34;
+	height=&#34;288&#34;
+	srcset=&#34;https://blog.ddata.fr/p/power-query-advanced-m-part1/img/005-power-query-m-custom-column-format_hu7d55f56f2ffc1055630bf6db9417fe92_27075_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/power-query-advanced-m-part1/img/005-power-query-m-custom-column-format_hu7d55f56f2ffc1055630bf6db9417fe92_27075_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Exemple Text.Format&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;330&#34;
+		data-flex-basis=&#34;793px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Vous pouvez tester cela directement en copiant le code M ci-dessous dans une requête vide à l&amp;rsquo;aide de l&amp;rsquo;éditeur avancé.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kd&#34;&gt;let&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nx&#34;&gt;Source&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;List&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;DateTimes&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;DateTime&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;LocalNow&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(),&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;10&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;#&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;duration&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)),&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;err&#34;&gt;#&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;Converti en table&amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;Table&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;FromList&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;Source&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;Splitter&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;SplitByNothing&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(),&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;null&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;null&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;ExtraValues&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;Error&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;err&#34;&gt;#&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;Personnalisée ajoutée&amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;Table&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;AddColumn&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;#&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;Converti en table&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;Message avec date US&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;each&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;Text&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;Format&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;Message du #{0}&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{[&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;Column1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]},&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;en-US&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;in&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;err&#34;&gt;#&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;Personnalisée ajoutée&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id=&#34;saisir-sans-le-point&#34;&gt;Saisir sans le point&lt;/h3&gt;
+&lt;p&gt;Une astuce qui va vous simplifier la saisie, quand vous saisissez un nom de fonction M dans l&amp;rsquo;éditeur, ne saisissez pas le point afin que l&amp;rsquo;aide à la saisie fonctionne de manière optimale.&lt;/p&gt;
+&lt;p&gt;Merci de votre attention.&lt;/p&gt;</description>
+        </item>
+        <item>
         <title>Power Query le pouvoir des fonctions.</title>
         <link>https://blog.ddata.fr/p/power-query-function/</link>
         <pubDate>Sun, 21 May 2023 00:00:00 +0000</pubDate>

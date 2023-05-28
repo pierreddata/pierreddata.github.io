@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="fr-fr" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Allez au-delà des assistants dans Power Query et découvrez quelques usages avancés.
+'>
+<title>Power Query au-delà des assistants.</title>
+
+<link rel='canonical' href='https://blog.ddata.fr/p/power-query-advanced-m-part1/'>
+
+<link rel="stylesheet" href="/scss/style.min.5be32ca3f6e1a997c75795c4359147cc6d4fbd34948c0acd51e31d237033978a.css"><meta property='og:title' content='Power Query au-delà des assistants.'>
+<meta property='og:description' content='Allez au-delà des assistants dans Power Query et découvrez quelques usages avancés.
+'>
+<meta property='og:url' content='https://blog.ddata.fr/p/power-query-advanced-m-part1/'>
+<meta property='og:site_name' content='Le D de Data'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Intermédiaire' /><meta property='article:tag' content='Auto formation' /><meta property='article:published_time' content='2023-05-28T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2023-05-28T00:00:00&#43;00:00'/><meta property='og:image' content='https://blog.ddata.fr/p/power-query-advanced-m-part1/brian-wangenheim-VYOrErmJes4-unsplash.jpg' />
+<meta name="twitter:title" content="Power Query au-delà des assistants.">
+<meta name="twitter:description" content="Allez au-delà des assistants dans Power Query et découvrez quelques usages avancés.
+"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://blog.ddata.fr/p/power-query-advanced-m-part1/brian-wangenheim-VYOrErmJes4-unsplash.jpg' />
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TY6XFEN6QV"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-TY6XFEN6QV', { 'anonymize_ip': false });
+}
+</script>
+<link rel="alternate"
+      type="application/rss+xml"
+      href="https://blog.ddata.fr/index.xml"
+      title="Le D de Data">
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "dark");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Afficher le menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/pierre_hua6bbc70dde858dd10e363a14d1f7729c_67951_300x0_resize_q75_box.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Le D de Data</a></h1>
+            <h2 class="site-description">Blog francophone autour de la data Microsoft</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/pierreddata'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://www.linkedin.com/in/pierre-dupont-0b532374/'
+                        target="_blank"
+                        title="LinkdIn"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-folders" width="44" height="44" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <rect x="4" y="4" width="16" height="16" rx="2" />
+  <line x1="8" y1="11" x2="8" y2="16" />
+  <line x1="8" y1="8" x2="8" y2="8.01" />
+  <line x1="12" y1="16" x2="12" y2="11" />
+  <path d="M16 16v-3a2 2 0 0 0 -4 0" />
+</svg>
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Accueil</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/a-propos-de-d-de-data/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>A Propos</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/series/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-folders" width="44" height="44" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 4h3l2 2h5a2 2 0 0 1 2 2v7a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-9a2 2 0 0 1 2 -2" />
+  <path d="M17 17v2a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-9a2 2 0 0 1 2 -2h2" />
+</svg>
+
+                
+                <span>Series</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/liens/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Liens</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Rechercher</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Mode sombre</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table des matières</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#contexte">Contexte</a></li>
+    <li><a href="#au-delà-des-assistants">Au-delà des assistants</a>
+      <ol>
+        <li><a href="#afficher-la-barre-de-formule">Afficher la barre de formule</a></li>
+        <li><a href="#utiliser-la-documentation">Utiliser la documentation</a></li>
+        <li><a href="#insérer-du-code-power-query-manuellement">Insérer du code Power Query manuellement</a></li>
+        <li><a href="#exemples-dutilisation-des-fonctions-non-disponible-dans-les-assistants">Exemples d&rsquo;utilisation des fonctions non disponible dans les assistants</a>
+          <ol>
+            <li><a href="#textpadstart--textpadend">Text.PadStart &amp; Text.PadEnd</a></li>
+            <li><a href="#textformat">Text.Format</a></li>
+          </ol>
+        </li>
+        <li><a href="#saisir-sans-le-point">Saisir sans le point</a></li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/power-query-advanced-m-part1/">
+                <img src="/p/power-query-advanced-m-part1/brian-wangenheim-VYOrErmJes4-unsplash_hu3d03a01dcc18bc5be0e67db3d8d209a6_1564048_800x0_resize_q75_box.jpg"
+                        srcset="/p/power-query-advanced-m-part1/brian-wangenheim-VYOrErmJes4-unsplash_hu3d03a01dcc18bc5be0e67db3d8d209a6_1564048_800x0_resize_q75_box.jpg 800w, /p/power-query-advanced-m-part1/brian-wangenheim-VYOrErmJes4-unsplash_hu3d03a01dcc18bc5be0e67db3d8d209a6_1564048_1600x0_resize_q75_box.jpg 1600w"
+                        width="800" 
+                        height="532" 
+                        loading="lazy"
+                        alt="Featured image of post Power Query au-delà des assistants." />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/powerbi/" style="background-color: #f2c811; color: #fff;">
+                Power BI
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/power-query-advanced-m-part1/">Power Query au-delà des assistants.</a>
+        </h2>
+
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published" datetime="2023-05-28T00:00:00Z">
+                    28 mai 2023
+                    
+                </time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    4 minutes de lecture
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+    
+    
+</div>
+</header>
+
+    <section class="article-content">
+    
+    
+    <p>Allez au-delà des assistants dans Power Query et découvrez quelques usages avancés.</p>
+<h2 id="contexte">Contexte</h2>
+<p>Vous utilisez Power Query pour intégrer vos données, mais vous voulez aller plus loin avec ?<br>
+Je  vous propose dans cet article quelques techniques avancées pour booster votre productivité avec Power Query.</p>
+<h2 id="au-delà-des-assistants">Au-delà des assistants</h2>
+<p>La première étape du parcours sera d&rsquo;aller au-delà des assistants. En effet, bien que ces derniers soient très utiles, ils ont des limites.</p>
+<h3 id="afficher-la-barre-de-formule">Afficher la barre de formule</h3>
+<p>Pour cela vous devrez prendre l&rsquo;habitude de lire le code M générer par l&rsquo;assistant à chaque étape, car cela vous permettra :</p>
+<ul>
+<li>De vérifier que le code est bien générique et adapté à la situation.</li>
+<li>D&rsquo;optimiser le code écrit par l&rsquo;assistant.</li>
+</ul>
+<p>Pour réussir à faire cela, il suffit d&rsquo;activer la barre de formule dans l&rsquo;éditeur Power Query.</p>
+<p><img src="/p/power-query-advanced-m-part1/img/001-power-query-formula-bar.png"
+	width="992"
+	height="176"
+	srcset="/p/power-query-advanced-m-part1/img/001-power-query-formula-bar_hu841725406066f26f3cb399029a850315_19601_480x0_resize_box_3.png 480w, /p/power-query-advanced-m-part1/img/001-power-query-formula-bar_hu841725406066f26f3cb399029a850315_19601_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Activation de la barre de formule Power Query"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="563"
+		data-flex-basis="1352px"
+	
+></p>
+<ol>
+<li>Dans l&rsquo;éditeur Power Query, allez dans le menu <em>Affichage</em>.</li>
+<li>Cochez <em>Barre de formule</em>.</li>
+<li>Vous pourrez voir et modifier le code de l&rsquo;étape en cours de sélection dans la barre de formule.</li>
+</ol>
+<h3 id="utiliser-la-documentation">Utiliser la documentation</h3>
+<p>Maintenant que vous avez accès rapidement au code M généré par les assistants, prenez l&rsquo;habitude de jeter un coup d&rsquo;œil sur la documentation des fonctions.<br>
+Vous retrouverez la documentation complète sur le site de Microsoft en <a class="link" href="https://learn.microsoft.com/fr-fr/powerquery-m/"  target="_blank" rel="noopener"
+    >français</a> ou en <a class="link" href="https://learn.microsoft.com/en-us/powerquery-m/"  target="_blank" rel="noopener"
+    >anglais</a>. Au vu de la qualité de certaines traductions, personnellement je privilégie la documentation en anglais.</p>
+<p>Le nom des fonctions du langage M est toujours en 2 parties : Le nom de la famille de la fonction suivi du nom de la fonction, les 2 étant séparés par un point.</p>
+<p><img src="/p/power-query-advanced-m-part1/img/002-power-query-m-documentation.png"
+	width="1702"
+	height="830"
+	srcset="/p/power-query-advanced-m-part1/img/002-power-query-m-documentation_hu5e873b7a69dbe50b32d0454516ac7002_95265_480x0_resize_box_3.png 480w, /p/power-query-advanced-m-part1/img/002-power-query-m-documentation_hu5e873b7a69dbe50b32d0454516ac7002_95265_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Structure de l&rsquo;aide"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="205"
+		data-flex-basis="492px"
+	
+></p>
+<ol>
+<li>Allez dans <em>Fonctions</em>.</li>
+<li>Vous retrouverez la documentation de chaque fonction dans sa famille.</li>
+</ol>
+<p>Quand vous êtes dans l&rsquo;aide, profitez-en pour regarder le nom des autres fonctions de la même famille que celle qui vous intéresse, parfois on y trouve de l&rsquo;inspiration ou on découvre de nouvelles choses.</p>
+<h3 id="insérer-du-code-power-query-manuellement">Insérer du code Power Query manuellement</h3>
+<p>Pour insérer une étape dans votre traitement dans laquelle vous pouvez écrire le code M librement, il vous suffit</p>
+<p><img src="/p/power-query-advanced-m-part1/img/003-power-query-m-custom-column.png"
+	width="1354"
+	height="751"
+	srcset="/p/power-query-advanced-m-part1/img/003-power-query-m-custom-column_hudb5c7b98a295db23e0731ebf32234e52_61052_480x0_resize_box_3.png 480w, /p/power-query-advanced-m-part1/img/003-power-query-m-custom-column_hudb5c7b98a295db23e0731ebf32234e52_61052_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Ajout de code M manuellement"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="180"
+		data-flex-basis="432px"
+	
+></p>
+<ol>
+<li>Dans l&rsquo;éditeur Power Query, allez dans le menu <em>Ajouter une colonne</em>.</li>
+<li>Choisissez <em>Colonne personnalisée</em>.</li>
+<li>Entrez un nom pour votre nouvelle colonne.</li>
+<li>Tapez votre code M.</li>
+<li>Vous pouvez ajouter une des colonnes déjà existantes en double cliquant dessus.</li>
+<li>Vérifiez que le code M est syntaxiquement correct.</li>
+<li>Appuyez sur <em>OK</em> pour terminer.</li>
+</ol>
+<p>🎁 Une petite astuce : quand vous avez une erreur de syntaxe en M, dans 99 % des cas c&rsquo;est dû a une des 2 causes suivantes :</p>
+<ul>
+<li>Une erreur de casse. Le code M est sensible à la casse, cela veut dire que le même texte écrit avec une minuscule au lieu d&rsquo;une majuscule est un terme différent. Exemple &ldquo;Coucou&rdquo; et différent de &ldquo;coucou&rdquo; pour le langage M.</li>
+<li>Une erreur entre les parenthèses &ldquo;()&rdquo;, accolades &ldquo;{}&rdquo; ou crochet &ldquo;[]&rdquo;. Elles sont soit mal positionnées, soit manquantes (souvent celle qui est fermante).</li>
+</ul>
+<p>Si le problème ne vient pas d&rsquo;un de ces 2 cas : bon courage.</p>
+<h3 id="exemples-dutilisation-des-fonctions-non-disponible-dans-les-assistants">Exemples d&rsquo;utilisation des fonctions non disponible dans les assistants</h3>
+<p>Parmi les multiples fonctions M voici 2 exemples qui vous permettront de mieux comprendre l&rsquo;intérêt de la démarche décrite ci-dessus.</p>
+<h4 id="textpadstart--textpadend">Text.PadStart &amp; Text.PadEnd</h4>
+<p>Les fonctions M <a class="link" href="https://learn.microsoft.com/en-us/powerquery-m/text-padstart"  target="_blank" rel="noopener"
+    >Text.PadStart</a> et <a class="link" href="https://learn.microsoft.com/en-us/powerquery-m/text-padend"  target="_blank" rel="noopener"
+    >Text.PadEnd</a> ne sont pas disponibles au travers des assistants, mais sont d&rsquo;une efficacité redoutable pour mettre en forme proprement nos données.<br>
+En effet elles permettent de créer des chaines de caractères de taille fixe en remplissant les caractères absents avec une valeur de votre choix.</p>
+<p>Par exemple, pour votre dimension calendrier, vous souhaitez afficher les mois en texte sur 2 caractères, vous pouvez le faire simplement avec Text.PadStart.</p>
+<p><img src="/p/power-query-advanced-m-part1/img/004-power-query-m-custom-column-padstart.png"
+	width="782"
+	height="326"
+	srcset="/p/power-query-advanced-m-part1/img/004-power-query-m-custom-column-padstart_hudfc70dc50c09d922aaa5a1ce2468e7c5_17054_480x0_resize_box_3.png 480w, /p/power-query-advanced-m-part1/img/004-power-query-m-custom-column-padstart_hudfc70dc50c09d922aaa5a1ce2468e7c5_17054_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Exemple Text.PadStart"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="239"
+		data-flex-basis="575px"
+	
+></p>
+<ol>
+<li>La formule permet de transformer en une étape le contenu de la colonne <em>Column1</em> en texte avec la fonction <em>Text.From</em> puis de formater le résultat sur 2 caractères avec un zéro si on a qu&rsquo;un caractère avec la fonction <em>Text.PadStart</em>.</li>
+<li>Valeur d&rsquo;origine de la colonne <em>Column1</em></li>
+<li>Valeur du résultat de la fonction.</li>
+</ol>
+<p>Vous pouvez tester cela directement en copiant le code M ci-dessous dans une requête vide à l&rsquo;aide de l&rsquo;éditeur avancé.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kd">let</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">Source</span> <span class="o">=</span> <span class="p">{</span><span class="mf">1.</span><span class="p">.</span><span class="mi">12</span><span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="err">#</span><span class="s2">&#34;Converti en table&#34;</span> <span class="o">=</span> <span class="nx">Table</span><span class="p">.</span><span class="nx">FromList</span><span class="p">(</span><span class="nx">Source</span><span class="p">,</span> <span class="nx">Splitter</span><span class="p">.</span><span class="nx">SplitByNothing</span><span class="p">(),</span> <span class="kc">null</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="nx">ExtraValues</span><span class="p">.</span><span class="nb">Error</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="err">#</span><span class="s2">&#34;Personnalisée ajoutée&#34;</span> <span class="o">=</span> <span class="nx">Table</span><span class="p">.</span><span class="nx">AddColumn</span><span class="p">(</span><span class="err">#</span><span class="s2">&#34;Converti en table&#34;</span><span class="p">,</span> <span class="s2">&#34;Mois&#34;</span><span class="p">,</span> <span class="nx">each</span> <span class="nx">Text</span><span class="p">.</span><span class="nx">PadStart</span><span class="p">(</span><span class="nx">Text</span><span class="p">.</span><span class="nx">From</span><span class="p">([</span><span class="nx">Column1</span><span class="p">]),</span><span class="mi">2</span><span class="p">,</span><span class="s2">&#34;0&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="k">in</span>
+</span></span><span class="line"><span class="cl">    <span class="err">#</span><span class="s2">&#34;Personnalisée ajoutée&#34;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="textformat">Text.Format</h4>
+<p>Les fonctions M <a class="link" href="https://learn.microsoft.com/en-us/powerquery-m/text-format"  target="_blank" rel="noopener"
+    >Text.Format</a> vous permettent de créer des concaténations de chaines de caractères en gérant la culture à utiliser pour faire l&rsquo;affichage.</p>
+<p><img src="/p/power-query-advanced-m-part1/img/005-power-query-m-custom-column-format.png"
+	width="952"
+	height="288"
+	srcset="/p/power-query-advanced-m-part1/img/005-power-query-m-custom-column-format_hu7d55f56f2ffc1055630bf6db9417fe92_27075_480x0_resize_box_3.png 480w, /p/power-query-advanced-m-part1/img/005-power-query-m-custom-column-format_hu7d55f56f2ffc1055630bf6db9417fe92_27075_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Exemple Text.Format"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="330"
+		data-flex-basis="793px"
+	
+></p>
+<p>Vous pouvez tester cela directement en copiant le code M ci-dessous dans une requête vide à l&rsquo;aide de l&rsquo;éditeur avancé.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kd">let</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">Source</span> <span class="o">=</span> <span class="nx">List</span><span class="p">.</span><span class="nx">DateTimes</span><span class="p">(</span><span class="nx">DateTime</span><span class="p">.</span><span class="nx">LocalNow</span><span class="p">(),</span><span class="mi">10</span><span class="p">,</span><span class="err">#</span><span class="nx">duration</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)),</span>
+</span></span><span class="line"><span class="cl">    <span class="err">#</span><span class="s2">&#34;Converti en table&#34;</span> <span class="o">=</span> <span class="nx">Table</span><span class="p">.</span><span class="nx">FromList</span><span class="p">(</span><span class="nx">Source</span><span class="p">,</span> <span class="nx">Splitter</span><span class="p">.</span><span class="nx">SplitByNothing</span><span class="p">(),</span> <span class="kc">null</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="nx">ExtraValues</span><span class="p">.</span><span class="nb">Error</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="err">#</span><span class="s2">&#34;Personnalisée ajoutée&#34;</span> <span class="o">=</span> <span class="nx">Table</span><span class="p">.</span><span class="nx">AddColumn</span><span class="p">(</span><span class="err">#</span><span class="s2">&#34;Converti en table&#34;</span><span class="p">,</span> <span class="s2">&#34;Message avec date US&#34;</span><span class="p">,</span> <span class="nx">each</span> <span class="nx">Text</span><span class="p">.</span><span class="nx">Format</span><span class="p">(</span><span class="s2">&#34;Message du #{0}&#34;</span><span class="p">,</span> <span class="p">{[</span><span class="nx">Column1</span><span class="p">]},</span> <span class="s2">&#34;en-US&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="k">in</span>
+</span></span><span class="line"><span class="cl">    <span class="err">#</span><span class="s2">&#34;Personnalisée ajoutée&#34;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="saisir-sans-le-point">Saisir sans le point</h3>
+<p>Une astuce qui va vous simplifier la saisie, quand vous saisissez un nom de fonction M dans l&rsquo;éditeur, ne saisissez pas le point afin que l&rsquo;aide à la saisie fonctionne de manière optimale.</p>
+<p>Merci de votre attention.</p>
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/interm%C3%A9diaire/">Intermédiaire</a>
+        
+            <a href="/tags/auto-formation/">Auto formation</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Contenus liés</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/power-query-function/">
+        
+        
+            <div class="article-image">
+                <img src="/p/power-query-function/_hu1bbec3486f773b072d538975f65a80c0_2311333_01c52f658bc9b87cb2a60fb00253234a.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Power Query le pouvoir des fonctions."
+                        data-key="power-query-function" 
+                        data-hash="md5-q4/9KUtBgqWybU7TYFkHGg==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Power Query le pouvoir des fonctions.</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/comprendre-les-licences-power-bi/">
+        
+        
+            <div class="article-image">
+                <img src="/p/comprendre-les-licences-power-bi/_hu9694657f3c697ac35f9080995597d89a_217872_34c60cea0abb30e97a116c23faead41a.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Comprendre les licences Power BI"
+                        data-key="comprendre-les-licences-power-bi" 
+                        data-hash="md5-Tqm03iJ7lbxz/5qcFYYkrg==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Comprendre les licences Power BI</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/tables-recommandees-powerbi/">
+        
+        
+            <div class="article-image">
+                <img src="/p/tables-recommandees-powerbi/_hucaac4cc3511e7b1acfab0972cfec5559_699224_cad85dcfe262173e6e61f48562f1686a.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Vos référentiels d&#39;entreprise directement dans Excel."
+                        data-key="tables-recommandees-powerbi" 
+                        data-hash="md5-zTxeLVq9XPFPYMxjyRSnCg==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Vos référentiels d&#39;entreprise directement dans Excel.</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/power-bi-gateway/">
+        
+        
+            <div class="article-image">
+                <img src="/p/power-bi-gateway/_hu81c52007d2e7fffec5d58774b441b07a_2250510_61cdb05e3cd283da80984a55f3e9ea9a.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Installer et configurer votre passerelle de données pour Power BI."
+                        data-key="power-bi-gateway" 
+                        data-hash="md5-TAa&#43;LHiuZbtti4Yj3Ng96Q==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Installer et configurer votre passerelle de données pour Power BI.</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/analyser-dans-excel/">
+        
+        
+            <div class="article-image">
+                <img src="/p/analyser-dans-excel/_hu8221600bfe6cac469e7179ce07dc706c_5513366_7fc22be89f43d5af161b8663ef07a4ef.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Analyser dans Excel, la rencontre d&#39;Excel et du service Power BI"
+                        data-key="analyser-dans-excel" 
+                        data-hash="md5-7zWz9UWLgrEIRn1qMkyXhw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Analyser dans Excel, la rencontre d&#39;Excel et du service Power BI</h2>
+        </div>
+    </a>
+</article>
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "ddata" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2022 - 
+        
+        2023 Le D de Data
+    </section>
+    
+    <section class="powerby">
+        Généré avec <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Thème <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.16.0">Stack</a></b> conçu par <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>
