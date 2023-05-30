@@ -32,14 +32,18 @@ Pour réaliser cela, nous devrons :&lt;/p&gt;
 &lt;li&gt;La restitution des données se fera dans un rapport Power BI.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Le schéma d&amp;rsquo;architecture est donc le suivant :
-&lt;img src=&#34;https://blog.ddata.fr/img/001-fabric-real-time-iot-poc.png&#34;
-	
-	
-	
+&lt;img src=&#34;https://blog.ddata.fr/p/fabric-poc-iot/img/001-fabric-real-time-iot-poc.png&#34;
+	width=&#34;801&#34;
+	height=&#34;333&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-poc-iot/img/001-fabric-real-time-iot-poc_hub9dc68994d48ec27adcbfa52a57e7e1f_24263_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-poc-iot/img/001-fabric-real-time-iot-poc_hub9dc68994d48ec27adcbfa52a57e7e1f_24263_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;Schéma d&amp;rsquo;architecture&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;240&#34;
+		data-flex-basis=&#34;577px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;h2 id=&#34;présentation-de-nos-capteurs&#34;&gt;Présentation de nos capteurs&lt;/h2&gt;
