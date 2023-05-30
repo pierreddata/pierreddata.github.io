@@ -1,0 +1,1436 @@
+<!DOCTYPE html>
+<html lang="fr-fr" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Dans cet article je vous propose de tester l&amp;rsquo;aventure Real-time Analytics de Microsoft Fabric.
+'>
+<title>Données en temps réel dans votre rapport Power BI avec Microsoft Fabric</title>
+
+<link rel='canonical' href='https://blog.ddata.fr/p/fabric-poc-iot/'>
+
+<link rel="stylesheet" href="/scss/style.min.5be32ca3f6e1a997c75795c4359147cc6d4fbd34948c0acd51e31d237033978a.css"><meta property='og:title' content='Données en temps réel dans votre rapport Power BI avec Microsoft Fabric'>
+<meta property='og:description' content='Dans cet article je vous propose de tester l&amp;rsquo;aventure Real-time Analytics de Microsoft Fabric.
+'>
+<meta property='og:url' content='https://blog.ddata.fr/p/fabric-poc-iot/'>
+<meta property='og:site_name' content='Le D de Data'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Intermédiaire' /><meta property='article:tag' content='Auto formation' /><meta property='article:published_time' content='2023-05-30T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2023-05-30T00:00:00&#43;00:00'/><meta property='og:image' content='https://blog.ddata.fr/p/fabric-poc-iot/jorge-ramirez-HpFcqb6gUwE-unsplash.jpg' />
+<meta name="twitter:title" content="Données en temps réel dans votre rapport Power BI avec Microsoft Fabric">
+<meta name="twitter:description" content="Dans cet article je vous propose de tester l&amp;rsquo;aventure Real-time Analytics de Microsoft Fabric.
+"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://blog.ddata.fr/p/fabric-poc-iot/jorge-ramirez-HpFcqb6gUwE-unsplash.jpg' />
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TY6XFEN6QV"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-TY6XFEN6QV', { 'anonymize_ip': false });
+}
+</script>
+<link rel="alternate"
+      type="application/rss+xml"
+      href="https://blog.ddata.fr/index.xml"
+      title="Le D de Data">
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "dark");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Afficher le menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/pierre_hua6bbc70dde858dd10e363a14d1f7729c_67951_300x0_resize_q75_box.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Le D de Data</a></h1>
+            <h2 class="site-description">Blog francophone autour de la data Microsoft</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/pierreddata'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://www.linkedin.com/in/pierre-dupont-0b532374/'
+                        target="_blank"
+                        title="LinkdIn"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-folders" width="44" height="44" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <rect x="4" y="4" width="16" height="16" rx="2" />
+  <line x1="8" y1="11" x2="8" y2="16" />
+  <line x1="8" y1="8" x2="8" y2="8.01" />
+  <line x1="12" y1="16" x2="12" y2="11" />
+  <path d="M16 16v-3a2 2 0 0 0 -4 0" />
+</svg>
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Accueil</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/a-propos-de-d-de-data/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>A Propos</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/series/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-folders" width="44" height="44" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 4h3l2 2h5a2 2 0 0 1 2 2v7a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-9a2 2 0 0 1 2 -2" />
+  <path d="M17 17v2a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-9a2 2 0 0 1 2 -2h2" />
+</svg>
+
+                
+                <span>Series</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/liens/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Liens</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Rechercher</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Mode sombre</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table des matières</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#contexte">Contexte</a></li>
+    <li><a href="#présentation-de-larchitecture">Présentation de l&rsquo;architecture</a></li>
+    <li><a href="#présentation-de-nos-capteurs">Présentation de nos capteurs</a></li>
+    <li><a href="#préparation-de-lenvironnement-fabric">Préparation de l&rsquo;environnement Fabric</a>
+      <ol>
+        <li><a href="#création-de-lespace-de-travail">Création de l&rsquo;espace de travail</a></li>
+        <li><a href="#création-de-la-base-kql">Création de la base KQL</a></li>
+      </ol>
+    </li>
+    <li><a href="#collecte-et-traitement-des-données">Collecte et traitement des données</a>
+      <ol>
+        <li><a href="#création-du-traitement">Création du traitement</a></li>
+        <li><a href="#script-de-simulation-de-capteur-émettant-vers-notre-traitement">Script de simulation de capteur émettant vers notre traitement</a></li>
+        <li><a href="#finalisation-du-traitement-des-données">Finalisation du traitement des données</a></li>
+      </ol>
+    </li>
+    <li><a href="#restitution-des-données">Restitution des données</a>
+      <ol>
+        <li><a href="#création-du-rapport-power-bi">Création du rapport Power BI</a></li>
+        <li><a href="#test-du-rapport-power-bipower-bi">Test du rapport Power BIPower BI</a></li>
+      </ol>
+    </li>
+    <li><a href="#conclusion">Conclusion</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/fabric-poc-iot/">
+                <img src="/p/fabric-poc-iot/jorge-ramirez-HpFcqb6gUwE-unsplash_hu3d03a01dcc18bc5be0e67db3d8d209a6_3315002_800x0_resize_q75_box.jpg"
+                        srcset="/p/fabric-poc-iot/jorge-ramirez-HpFcqb6gUwE-unsplash_hu3d03a01dcc18bc5be0e67db3d8d209a6_3315002_800x0_resize_q75_box.jpg 800w, /p/fabric-poc-iot/jorge-ramirez-HpFcqb6gUwE-unsplash_hu3d03a01dcc18bc5be0e67db3d8d209a6_3315002_1600x0_resize_q75_box.jpg 1600w"
+                        width="800" 
+                        height="533" 
+                        loading="lazy"
+                        alt="Featured image of post Données en temps réel dans votre rapport Power BI avec Microsoft Fabric" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/fabric/" style="background-color: #117865; color: #fff;">
+                Microsoft Fabric
+            </a>
+        
+            <a href="/categories/powerbi/" style="background-color: #f2c811; color: #fff;">
+                Power BI
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/fabric-poc-iot/">Données en temps réel dans votre rapport Power BI avec Microsoft Fabric</a>
+        </h2>
+
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published" datetime="2023-05-30T00:00:00Z">
+                    30 mai 2023
+                    
+                </time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    9 minutes de lecture
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+    
+    
+</div>
+</header>
+
+    <section class="article-content">
+    
+    
+    <p>Dans cet article je vous propose de tester l&rsquo;aventure Real-time Analytics de Microsoft Fabric.</p>
+<h2 id="contexte">Contexte</h2>
+<p>Microsoft Fabric propose différentes perspectives de gestion de la donnée. Nous allons ici nous concentrer sur la partie temps réel.<br>
+Pour cela je vous propose le scénario suivant, nous avons des capteurs qui émettent des données régulièrement, mais pas de manière régulière. Nous voulons pouvoir créer un rapport Power BI pour observer les données en temps réel.<br>
+Pour réaliser cela, nous devrons :</p>
+<ul>
+<li>Simuler l&rsquo;envoi des données des capteurs.</li>
+<li>Collecter les données.</li>
+<li>Traiter les données.</li>
+<li>Restituer les données dans Power BI.</li>
+</ul>
+<h2 id="présentation-de-larchitecture">Présentation de l&rsquo;architecture</h2>
+<p>Voici les différentes briques d&rsquo;architecture que nous allons utiliser :</p>
+<ul>
+<li>L&rsquo;envoi des données de nos capteurs sera simulé par un script PowerShell.</li>
+<li>La collecte des données se fera via un <em>Eventstream</em> de Microsoft Fabric.</li>
+<li>Le stockage des données sera réalisé&quot; dans une base de données KQL.</li>
+<li>La restitution des données se fera dans un rapport Power BI.</li>
+</ul>
+<p>Le schéma d&rsquo;architecture est donc le suivant :
+<img src="/img/001-fabric-real-time-iot-poc.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="Schéma d&rsquo;architecture"
+	
+	
+></p>
+<h2 id="présentation-de-nos-capteurs">Présentation de nos capteurs</h2>
+<p>Pour simuler les capteurs, nous allons utiliser un simple script PowerShell qui va créer aléatoirement les messages des capteurs.
+Le script de création des messages des capteurs est le suivant :</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># Nombre de message à envoyer</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$Messages</span> <span class="p">=</span> <span class="mf">100</span>
+</span></span><span class="line"><span class="cl"><span class="c"># Id des capteurs</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$HardwareID</span> <span class="p">=</span> <span class="s2">&#34;12345&#34;</span><span class="p">,</span> <span class="s2">&#34;23456&#34;</span><span class="p">,</span> <span class="s2">&#34;34567&#34;</span><span class="p">,</span><span class="s2">&#34;45678&#34;</span><span class="p">,</span><span class="s2">&#34;67890&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c"># Boucle d&#39;envoi des messages</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="p">(</span><span class="nv">$i</span> <span class="p">=</span> <span class="mf">0</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">-lt</span> <span class="nv">$Messages</span><span class="p">;</span> <span class="nv">$i</span><span class="p">++)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c"># Création du message à envoyer au format JSON</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">$IOTFakeMessage</span> <span class="p">=</span> <span class="vm">@</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">HardwareId</span> <span class="p">=</span> <span class="s2">&#34;ID-&#34;</span> <span class="p">+</span> <span class="nv">$HardwareID</span><span class="p">[(</span><span class="nb">Get-Random</span> <span class="n">-Minimum</span> <span class="mf">0</span> <span class="n">-Maximum</span> <span class="nv">$HardwareID</span><span class="p">.</span><span class="n">Count</span><span class="p">)]</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Date</span>       <span class="p">=</span> <span class="nb">Get-Date</span>
+</span></span><span class="line"><span class="cl">        <span class="n">CaptorInfo</span> <span class="p">=</span> <span class="vm">@</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Temp</span> <span class="p">=</span> <span class="nb">Get-Random</span> <span class="n">-Minimum</span> <span class="mf">20</span> <span class="n">-Maximum</span> <span class="mf">28</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Hum</span>  <span class="p">=</span> <span class="nb">Get-Random</span> <span class="n">-Minimum</span> <span class="mf">40</span> <span class="n">-Maximum</span> <span class="mf">60</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>  <span class="p">|</span> <span class="nb">ConvertTo-Json</span> <span class="n">-Depth</span> <span class="mf">99</span>
+</span></span><span class="line"><span class="cl">    <span class="c"># Envoi du message dans la fenêtre PowerShell</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">Write-Host</span> <span class="nv">$IOTFakeMessage</span>
+</span></span><span class="line"><span class="cl">    <span class="c"># Attente avant le prochain message</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">Start-Sleep</span> <span class="n">-Milliseconds</span> <span class="p">(</span><span class="nb">Get-Random</span> <span class="n">-Minimum</span> <span class="mf">200</span> <span class="n">-Maximum</span> <span class="mf">4000</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Pour que cela fonctionne, ouvrez une fenêtre PowerShell, copiez le script et appuyez sur entrée pour l&rsquo;exécuter.<br>
+J&rsquo;ai testé avec une version de PowerShell Core 7.<br>
+Dans cette version du script, les messages sont simplement affichés dans la fenêtre PowerShell.</p>
+<h2 id="préparation-de-lenvironnement-fabric">Préparation de l&rsquo;environnement Fabric</h2>
+<h3 id="création-de-lespace-de-travail">Création de l&rsquo;espace de travail</h3>
+<p>Nous allons créer un nouvel espace de travail pour cette démonstration, comme cela vous pourrez le supprimer à la fin pour libérer les ressources utilisées.</p>
+<p>Allez dans <em>Espace de travail</em> dans le panneau de gauche et sélectionnez <em>+ Nouvel espace de travail</em>.</p>
+<p><img src="/p/fabric-poc-iot/img/002-fabric-realtime-create-workspace.png"
+	width="575"
+	height="917"
+	srcset="/p/fabric-poc-iot/img/002-fabric-realtime-create-workspace_hu7f7c66defde3225e25328c55fc714f07_50223_480x0_resize_box_3.png 480w, /p/fabric-poc-iot/img/002-fabric-realtime-create-workspace_hu7f7c66defde3225e25328c55fc714f07_50223_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Création de l&rsquo;espace de travail"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="62"
+		data-flex-basis="150px"
+	
+></p>
+<ol>
+<li>Choisissez un nom pour votre espace de travail.</li>
+<li>Choisissez un modèle de licence supportant les objets Fabric.</li>
+<li>Appuyez sur <em>Appliquer</em> pour créer votre espace de travail.</li>
+</ol>
+<p>Une fois l&rsquo;espace de travail créer un rendez-vous dedans.</p>
+<p><img src="/p/fabric-poc-iot/img/003-fabric-realtime-select-realtime.png"
+	width="312"
+	height="255"
+	srcset="/p/fabric-poc-iot/img/003-fabric-realtime-select-realtime_hu0c77b520b0e5ed1f6335bf60fc5ed5dd_14282_480x0_resize_box_3.png 480w, /p/fabric-poc-iot/img/003-fabric-realtime-select-realtime_hu0c77b520b0e5ed1f6335bf60fc5ed5dd_14282_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Passer en mode Real-Time Analytics"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="122"
+		data-flex-basis="293px"
+	
+></p>
+<ol>
+<li>Dans le panneau de gauche cliquez sur l&rsquo;icône des expériences Fabric, tout en bas, c&rsquo;est Power BI si vous êtes entré par le portail Power BI.</li>
+<li>Sélectionnez l&rsquo;expérience Fabric Real-Time Analytics.</li>
+</ol>
+<p>Réouvrez l&rsquo;espace de travail si vous vous retrouvez sur l&rsquo;écran d&rsquo;accueil.</p>
+<h3 id="création-de-la-base-kql">Création de la base KQL</h3>
+<p>Nous allons maintenant procéder à la création de la base de données KQL</p>
+<p><img src="/p/fabric-poc-iot/img/004-fabric-realtime-create-KQL-database-01.png"
+	width="1197"
+	height="705"
+	srcset="/p/fabric-poc-iot/img/004-fabric-realtime-create-KQL-database-01_hub95f5989ae8c9ce0beb8519b52a3dacb_50727_480x0_resize_box_3.png 480w, /p/fabric-poc-iot/img/004-fabric-realtime-create-KQL-database-01_hub95f5989ae8c9ce0beb8519b52a3dacb_50727_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Création de la base KQL - étape 1"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="169"
+		data-flex-basis="407px"
+	
+></p>
+<ol>
+<li>Appuyez sur <em>Nouveau</em></li>
+<li>Sélectionnez <em>Base de données KQL</em>.</li>
+</ol>
+<p><img src="/p/fabric-poc-iot/img/005-fabric-realtime-create-KQL-database-02.png"
+	width="362"
+	height="225"
+	srcset="/p/fabric-poc-iot/img/005-fabric-realtime-create-KQL-database-02_huee0d3ef2d3e3b71b7ac75e4130fb18ee_10136_480x0_resize_box_3.png 480w, /p/fabric-poc-iot/img/005-fabric-realtime-create-KQL-database-02_huee0d3ef2d3e3b71b7ac75e4130fb18ee_10136_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Création de la base KQL - étape 2"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="160"
+		data-flex-basis="386px"
+	
+></p>
+<ol>
+<li>Donnez le nom <strong>DemoIOT</strong> à la base de données.</li>
+<li>Appuyez sur <em>Créer</em> pour créer la base.</li>
+</ol>
+<p>Le traitement de création peut prendre quelques secondes.</p>
+<h2 id="collecte-et-traitement-des-données">Collecte et traitement des données</h2>
+<h3 id="création-du-traitement">Création du traitement</h3>
+<p>Nous allons maintenant procéder à la création d&rsquo;un traitement d&rsquo;intégration eventstream.</p>
+<p><img src="/p/fabric-poc-iot/img/006-fabric-realtime-create-Eventstream-01.png"
+	width="1001"
+	height="560"
+	srcset="/p/fabric-poc-iot/img/006-fabric-realtime-create-Eventstream-01_hu58b5a96d8402dac39db4dfee5ec9ef49_38869_480x0_resize_box_3.png 480w, /p/fabric-poc-iot/img/006-fabric-realtime-create-Eventstream-01_hu58b5a96d8402dac39db4dfee5ec9ef49_38869_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Création du traitement Eventstream - étape 1"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="178"
+		data-flex-basis="429px"
+	
+></p>
+<ol>
+<li>Appuyez sur <em>Nouveau</em></li>
+<li>Sélectionnez <em>Eventstream</em>.</li>
+</ol>
+<p><img src="/p/fabric-poc-iot/img/007-fabric-realtime-create-Eventstream-02.png"
+	width="342"
+	height="222"
+	srcset="/p/fabric-poc-iot/img/007-fabric-realtime-create-Eventstream-02_hufc196742eddf64bd80117cd30678dc0c_8484_480x0_resize_box_3.png 480w, /p/fabric-poc-iot/img/007-fabric-realtime-create-Eventstream-02_hufc196742eddf64bd80117cd30678dc0c_8484_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Création du traitement Eventstream - étape 2"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="154"
+		data-flex-basis="369px"
+	
+></p>
+<ol>
+<li>Donnez le nom <strong>DemoIOT</strong> à l&rsquo;eventstream'.</li>
+<li>Appuyez sur <em>Créer</em> pour créer l&rsquo;eventstream'.</li>
+</ol>
+<p>La fenêtre d&rsquo;édition du traitement apparait, nous allons créer un point d&rsquo;écoute pour nos capteurs en créant une <em>Custom App</em> dans la source du traitement.<br>
+Le point d&rsquo;écoute est supporté par le service bus Azure.</p>
+<p><img src="/p/fabric-poc-iot/img/008-fabric-realtime-create-Eventstream-03.png"
+	width="1843"
+	height="925"
+	srcset="/p/fabric-poc-iot/img/008-fabric-realtime-create-Eventstream-03_hufa2ec95f29f1319a3476a857f7c81eeb_55892_480x0_resize_box_3.png 480w, /p/fabric-poc-iot/img/008-fabric-realtime-create-Eventstream-03_hufa2ec95f29f1319a3476a857f7c81eeb_55892_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Création du traitement Eventstream - étape 3"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="199"
+		data-flex-basis="478px"
+	
+></p>
+<ol>
+<li>Appuyez sur <em>New source</em>.</li>
+<li>Sélectionnez <em>Custom App</em>.</li>
+<li>Donnez le nom <strong>MesCapteurs</strong> à la custom app.</li>
+<li>Appuyez sur <em>Create</em> pour créer la custom app.</li>
+</ol>
+<p>Nous allons maintenant copier la chaine de connexion au point d&rsquo;écoute pour paramétrer nos capteurs.</p>
+<p><img src="/p/fabric-poc-iot/img/009-fabric-realtime-create-Eventstream-04.png"
+	width="1842"
+	height="914"
+	srcset="/p/fabric-poc-iot/img/009-fabric-realtime-create-Eventstream-04_hu1ade113bd9965dc047c90aa6dd7b4cd5_53222_480x0_resize_box_3.png 480w, /p/fabric-poc-iot/img/009-fabric-realtime-create-Eventstream-04_hu1ade113bd9965dc047c90aa6dd7b4cd5_53222_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Création du traitement Eventstream - étape 4"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="201"
+		data-flex-basis="483px"
+	
+></p>
+<ol>
+<li>Vérifiez que vous êtes sur les sources de données.</li>
+<li>Sélectionnez la source <strong>MesCapteurs</strong>.</li>
+<li>Appuyez sur l&rsquo;icône d&rsquo;œil sir la ligne <em>Connection string-primary key</em> pour afficher la chaine de connexion.</li>
+<li>Appuyez sur l&rsquo;icône de copie pour copier la chaine de connexion.</li>
+</ol>
+<h3 id="script-de-simulation-de-capteur-émettant-vers-notre-traitement">Script de simulation de capteur émettant vers notre traitement</h3>
+<p>Nous allons maintenant finaliser notre script simulant nos capteurs en ajoutant l&rsquo;écriture dans le Azure service bus servant de point d&quot;écoute.<br>
+Pour cela, remplacez la chaine de caractère <em>REMPLACER_PAR_VOTRE_CHAINE_DE_CONNEXION</em> par la chaine de connexion copiée à l&rsquo;étape précédente sur la ligne 2 du script ci-dessous.</p>
+<p>Le script PowerShell est inspiré de l&rsquo;article <a class="link" href="https://pipe.how/send-servicebusmessage/"  target="_blank" rel="noopener"
+    >Azure Service Bus with PowerShell</a>.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># Votre chaine de connexion</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$ConnectionString</span> <span class="p">=</span> <span class="s1">&#39;REMPLACER_PAR_VOTRE_CHAINE_DE_CONNEXION&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="c"># Nombre de message à envoyer</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$Messages</span> <span class="p">=</span> <span class="mf">100</span>
+</span></span><span class="line"><span class="cl"><span class="c"># Id des capteurs</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$HardwareID</span> <span class="p">=</span> <span class="s2">&#34;12345&#34;</span><span class="p">,</span> <span class="s2">&#34;23456&#34;</span><span class="p">,</span> <span class="s2">&#34;34567&#34;</span><span class="p">,</span><span class="s2">&#34;45678&#34;</span><span class="p">,</span><span class="s2">&#34;67890&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">$Pattern</span> <span class="p">=</span> <span class="s1">&#39;Endpoint=(.+);SharedAccessKeyName=(.+);SharedAccessKey=(.+);EntityPath=(.+)&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="p">([</span><span class="no">uri</span><span class="p">]</span><span class="nv">$Endpoint</span><span class="p">),</span><span class="nv">$PolicyName</span><span class="p">,</span><span class="nv">$Key</span><span class="p">,</span><span class="nv">$Queue</span> <span class="p">=</span> <span class="p">(</span><span class="nv">$ConnectionString</span> <span class="o">-replace</span> <span class="nv">$Pattern</span><span class="p">,</span><span class="s1">&#39;$1;$2;$3;$4&#39;</span><span class="p">)</span> <span class="n">-split</span> <span class="s1">&#39;;&#39;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c"># Depending on your environment you may need to load the assembly System.Web</span>
+</span></span><span class="line"><span class="cl"><span class="c"># $null = [Reflection.Assembly]::LoadWithPartialName(&#34;System.Web&#34;)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">$UrlEncodedEndpoint</span> <span class="p">=</span> <span class="p">[</span><span class="no">System.Web.HttpUtility</span><span class="p">]::</span><span class="n">UrlEncode</span><span class="p">(</span><span class="nv">$Endpoint</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$Expiry</span> <span class="p">=</span> <span class="p">[</span><span class="no">DateTimeOffset</span><span class="p">]::</span><span class="n">Now</span><span class="p">.</span><span class="py">ToUnixTimeSeconds</span><span class="p">()</span> <span class="p">+</span> <span class="mf">3600</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">$RawSignatureString</span> <span class="p">=</span> <span class="s2">&#34;</span><span class="nv">$UrlEncodedEndpoint</span><span class="se">`n</span><span class="nv">$Expiry</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">$HMAC</span> <span class="p">=</span> <span class="nb">New-Object</span> <span class="n">System</span><span class="p">.</span><span class="py">Security</span><span class="p">.</span><span class="py">Cryptography</span><span class="p">.</span><span class="py">HMACSHA256</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$HMAC</span><span class="p">.</span><span class="py">Key</span> <span class="p">=</span> <span class="p">[</span><span class="no">Text.Encoding</span><span class="p">]::</span><span class="n">ASCII</span><span class="p">.</span><span class="py">GetBytes</span><span class="p">(</span><span class="nv">$Key</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$HashBytes</span> <span class="p">=</span> <span class="nv">$HMAC</span><span class="p">.</span><span class="py">ComputeHash</span><span class="p">([</span><span class="no">Text.Encoding</span><span class="p">]::</span><span class="n">ASCII</span><span class="p">.</span><span class="py">GetBytes</span><span class="p">(</span><span class="nv">$RawSignatureString</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$SignatureString</span> <span class="p">=</span> <span class="p">[</span><span class="no">Convert</span><span class="p">]::</span><span class="n">ToBase64String</span><span class="p">(</span><span class="nv">$HashBytes</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$UrlEncodedSignatureString</span> <span class="p">=</span> <span class="p">[</span><span class="no">System.Web.HttpUtility</span><span class="p">]::</span><span class="n">UrlEncode</span><span class="p">(</span><span class="nv">$SignatureString</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">$SASToken</span> <span class="p">=</span> <span class="s2">&#34;SharedAccessSignature sig=</span><span class="nv">$UrlEncodedSignatureString</span><span class="s2">&amp;se=</span><span class="nv">$Expiry</span><span class="s2">&amp;skn=</span><span class="nv">$PolicyName</span><span class="s2">&amp;sr=</span><span class="nv">$UrlEncodedEndpoint</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c"># Boucle d&#39;envoi des messages</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="p">(</span><span class="nv">$i</span> <span class="p">=</span> <span class="mf">0</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">-lt</span> <span class="nv">$Messages</span><span class="p">;</span> <span class="nv">$i</span><span class="p">++)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c"># Création du message à envoyer au format JSON</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">$IOTFakeMessage</span> <span class="p">=</span> <span class="vm">@</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">HardwareId</span> <span class="p">=</span> <span class="s2">&#34;ID-&#34;</span> <span class="p">+</span> <span class="nv">$HardwareID</span><span class="p">[(</span><span class="nb">Get-Random</span> <span class="n">-Minimum</span> <span class="mf">0</span> <span class="n">-Maximum</span> <span class="nv">$HardwareID</span><span class="p">.</span><span class="n">Count</span><span class="p">)]</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Date</span>       <span class="p">=</span> <span class="nb">Get-Date</span>
+</span></span><span class="line"><span class="cl">        <span class="n">CaptorInfo</span> <span class="p">=</span> <span class="vm">@</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Temp</span> <span class="p">=</span> <span class="nb">Get-Random</span> <span class="n">-Minimum</span> <span class="mf">20</span> <span class="n">-Maximum</span> <span class="mf">28</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Hum</span>  <span class="p">=</span> <span class="nb">Get-Random</span> <span class="n">-Minimum</span> <span class="mf">40</span> <span class="n">-Maximum</span> <span class="mf">60</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>  <span class="p">|</span> <span class="nb">ConvertTo-Json</span> <span class="n">-Depth</span> <span class="mf">99</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c"># Préparation de la requête HTTP</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">$Params</span> <span class="p">=</span> <span class="vm">@</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Uri</span> <span class="p">=</span> <span class="s2">&#34;https://</span><span class="p">$(</span><span class="nv">$Endpoint</span><span class="p">.</span><span class="n">Host</span><span class="p">)</span><span class="s2">/</span><span class="nv">$Queue</span><span class="s2">/messages&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">ContentType</span> <span class="p">=</span> <span class="s1">&#39;application/json;charset=utf-8&#39;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Method</span> <span class="p">=</span> <span class="s1">&#39;Post&#39;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Body</span> <span class="p">=</span> <span class="nv">$IOTFakeMessage</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Headers</span> <span class="p">=</span> <span class="vm">@</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="s1">&#39;Authorization&#39;</span> <span class="p">=</span> <span class="nv">$SASToken</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c"># Envoi du message vers le service BUS</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">Invoke-RestMethod</span> <span class="nv">@Params</span>
+</span></span><span class="line"><span class="cl">    <span class="c"># Attente avant le prochain message</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">Start-Sleep</span> <span class="n">-Milliseconds</span> <span class="p">(</span><span class="nb">Get-Random</span> <span class="n">-Minimum</span> <span class="mf">200</span> <span class="n">-Maximum</span> <span class="mf">4000</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="finalisation-du-traitement-des-données">Finalisation du traitement des données</h3>
+<p>Nous allons maintenant finaliser le traitement de données des capteurs en indiquant une destination aux données reçues.</p>
+<p><img src="/p/fabric-poc-iot/img/010-fabric-realtime-create-Eventstream-05.png"
+	width="1846"
+	height="922"
+	srcset="/p/fabric-poc-iot/img/010-fabric-realtime-create-Eventstream-05_hu956da147415831cbce945eb74aaf5753_69306_480x0_resize_box_3.png 480w, /p/fabric-poc-iot/img/010-fabric-realtime-create-Eventstream-05_hu956da147415831cbce945eb74aaf5753_69306_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Création du traitement Eventstream - étape 5"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="200"
+		data-flex-basis="480px"
+	
+></p>
+<ol>
+<li>Appuyez sur <em>New destination</em>.</li>
+<li>Sélectionnez <em>KQL Database</em>.</li>
+<li>Donnez le nom <strong>StockageMesCapteurs</strong> dans <em>Destination name</em>.</li>
+<li>Sélectionnez l&rsquo;espace de travail.</li>
+<li>Sélectionnez la base de données KQL.</li>
+<li>Appuyez sur <em>Create and configure</em> pour continuer.</li>
+</ol>
+<p>On paramètre la table de destination dans la base KQL :
+<img src="/p/fabric-poc-iot/img/011-fabric-realtime-create-Eventstream-06.png"
+	width="1021"
+	height="589"
+	srcset="/p/fabric-poc-iot/img/011-fabric-realtime-create-Eventstream-06_huad65e1b70c085bad7ce622d61bea1934_20550_480x0_resize_box_3.png 480w, /p/fabric-poc-iot/img/011-fabric-realtime-create-Eventstream-06_huad65e1b70c085bad7ce622d61bea1934_20550_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Création du traitement Eventstream - étape 6"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="173"
+		data-flex-basis="416px"
+	
+></p>
+<ol>
+<li>Sélectionnez <em>Nouvelle table</em>.</li>
+<li>Donnez le nom <strong>MesCapteurs</strong> à la table.</li>
+<li>Appuyez sur <em>Suivant : Source</em> pour continuer.</li>
+</ol>
+<p>Lancez le script PowerShell paramétré avec votre chaine de connexion pour qu&rsquo;il commence à émettre des données.</p>
+<p><img src="/p/fabric-poc-iot/img/012-fabric-realtime-create-Eventstream-07.png"
+	width="1022"
+	height="587"
+	srcset="/p/fabric-poc-iot/img/012-fabric-realtime-create-Eventstream-07_hu757f31392f4cec9b20c4041084bd84d3_29764_480x0_resize_box_3.png 480w, /p/fabric-poc-iot/img/012-fabric-realtime-create-Eventstream-07_hu757f31392f4cec9b20c4041084bd84d3_29764_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Création du traitement Eventstream - étape 7"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="174"
+		data-flex-basis="417px"
+	
+></p>
+<ol>
+<li>Sur l&rsquo;écran <em>Source</em> laissez les paramètres par défaut et appuyez sur <em>Suivant : Schéma</em> pour continuer.</li>
+</ol>
+<p><img src="/p/fabric-poc-iot/img/013-fabric-realtime-create-Eventstream-08.png"
+	width="1021"
+	height="589"
+	srcset="/p/fabric-poc-iot/img/013-fabric-realtime-create-Eventstream-08_hu0b40ce0f00c66d417685bba7e08fe898_63185_480x0_resize_box_3.png 480w, /p/fabric-poc-iot/img/013-fabric-realtime-create-Eventstream-08_hu0b40ce0f00c66d417685bba7e08fe898_63185_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Création du traitement Eventstream - étape 8"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="173"
+		data-flex-basis="416px"
+	
+></p>
+<ol>
+<li>Choisissez le format de données JSON.</li>
+<li>Vous pouvez voir que des données arrivent de vos capteurs.</li>
+<li>Les données de la colonne <em>CaptorInfo</em> sont au format JSON, pour une analyse plus simple nous allons réaliser une transformation de données consistant à créer une colonne par valeur.</li>
+<li>Cliquez sur le symbole <strong>+</strong> pour ajouter une colonne.</li>
+</ol>
+<p><img src="/p/fabric-poc-iot/img/014-fabric-realtime-create-Eventstream-09.png"
+	width="570"
+	height="450"
+	srcset="/p/fabric-poc-iot/img/014-fabric-realtime-create-Eventstream-09_hu34ec791a88248399ccefc8c6da8319fc_25914_480x0_resize_box_3.png 480w, /p/fabric-poc-iot/img/014-fabric-realtime-create-Eventstream-09_hu34ec791a88248399ccefc8c6da8319fc_25914_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Création du traitement Eventstream - étape 9"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="126"
+		data-flex-basis="304px"
+	
+></p>
+<ol>
+<li>Saisissez <strong>Temp</strong> dans le nom de la colonne.</li>
+<li>Appuyez sur <em>Créer</em> pour saisir le chemin de la source de données.</li>
+<li>Choisir <em>Int</em> dans <em>Type de colonne</em>.</li>
+<li>Entrez <em>$.CaptorInfo.Temp</em> dans <em>Nouvelle source</em>. Le symbole $ représente la racine du document JSON, nous indiquons ensuite le nom des clés amenant à la valeur qui nous intéresse.</li>
+<li>Appuyez sur <em>OK</em> pour ajouter la colonne.</li>
+</ol>
+<p><img src="/p/fabric-poc-iot/img/015-fabric-realtime-create-Eventstream-10.png"
+	width="570"
+	height="450"
+	srcset="/p/fabric-poc-iot/img/015-fabric-realtime-create-Eventstream-10_huaeb5ac4e9d86dcf8157de414222f8922_17644_480x0_resize_box_3.png 480w, /p/fabric-poc-iot/img/015-fabric-realtime-create-Eventstream-10_huaeb5ac4e9d86dcf8157de414222f8922_17644_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Création du traitement Eventstream - étape 10"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="126"
+		data-flex-basis="304px"
+	
+></p>
+<ol>
+<li>Vous pouvez voir la valeur saisie pour la nouvelle colonie.</li>
+<li>Appuyez sur <em>Créer</em> pour ajouter la colonne.</li>
+</ol>
+<p><img src="/p/fabric-poc-iot/img/016-fabric-realtime-create-Eventstream-11.png"
+	width="568"
+	height="450"
+	srcset="/p/fabric-poc-iot/img/016-fabric-realtime-create-Eventstream-11_hu1550b77eb14abd8e3529dfb0e8bb9546_17218_480x0_resize_box_3.png 480w, /p/fabric-poc-iot/img/016-fabric-realtime-create-Eventstream-11_hu1550b77eb14abd8e3529dfb0e8bb9546_17218_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Création du traitement Eventstream - étape 11"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="126"
+		data-flex-basis="302px"
+	
+></p>
+<ol>
+<li>Répétez l&rsquo;opération pour la colonne Hum, entrez <em>$.CaptorInfo.Hum</em> dans <em>Nouvelle source</em>.</li>
+<li>Appuyez sur <em>Créer</em> pour ajouter la colonne.</li>
+</ol>
+<p><img src="/p/fabric-poc-iot/img/017-fabric-realtime-create-Eventstream-12.png"
+	width="1022"
+	height="589"
+	srcset="/p/fabric-poc-iot/img/017-fabric-realtime-create-Eventstream-12_huef4b62cebb97d42379a178efb493c235_61967_480x0_resize_box_3.png 480w, /p/fabric-poc-iot/img/017-fabric-realtime-create-Eventstream-12_huef4b62cebb97d42379a178efb493c235_61967_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Création du traitement Eventstream - étape 12"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="173"
+		data-flex-basis="416px"
+	
+></p>
+<ol>
+<li>Vous pouvez maintenant voir vos 2 nouvelles colonnes.</li>
+<li>Vous pouvez supprimer la colonne <em>CaptorInfo</em>. Appuyez sur le chevron vers le bas et sélectionnez <em>Delete column</em>.</li>
+<li>Appuyez sur <em>Suivant : Récapitulatif</em> pour continuer.</li>
+</ol>
+<p><img src="/p/fabric-poc-iot/img/018-fabric-realtime-create-Eventstream-13.png"
+	width="1022"
+	height="588"
+	srcset="/p/fabric-poc-iot/img/018-fabric-realtime-create-Eventstream-13_hu51e0d2a3051c60d214ce8425615c47aa_19370_480x0_resize_box_3.png 480w, /p/fabric-poc-iot/img/018-fabric-realtime-create-Eventstream-13_hu51e0d2a3051c60d214ce8425615c47aa_19370_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Création du traitement Eventstream - étape 13"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="173"
+		data-flex-basis="417px"
+	
+></p>
+<ol>
+<li>Vous avez fini de configurer la destination, appuyer sur <em>Fermer</em>.</li>
+</ol>
+<p>Votre traitement d&rsquo;intégration ressemble à cela :
+<img src="/p/fabric-poc-iot/img/019-fabric-realtime-create-Eventstream-end.png"
+	width="1403"
+	height="777"
+	srcset="/p/fabric-poc-iot/img/019-fabric-realtime-create-Eventstream-end_hud1df91f3cc8924adc862eed9e48309a4_40947_480x0_resize_box_3.png 480w, /p/fabric-poc-iot/img/019-fabric-realtime-create-Eventstream-end_hud1df91f3cc8924adc862eed9e48309a4_40947_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Création du traitement Eventstream - fin"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="180"
+		data-flex-basis="433px"
+	
+></p>
+<h2 id="restitution-des-données">Restitution des données</h2>
+<p>Pour la restitution des données, nous allons utiliser les assistants disponibles au niveau de la base de données KQL.</p>
+<p><img src="/p/fabric-poc-iot/img/020-fabric-realtime-kql-database-open.png"
+	width="1154"
+	height="364"
+	srcset="/p/fabric-poc-iot/img/020-fabric-realtime-kql-database-open_hude7f460bb4debeed4f04481ee974244b_24028_480x0_resize_box_3.png 480w, /p/fabric-poc-iot/img/020-fabric-realtime-kql-database-open_hude7f460bb4debeed4f04481ee974244b_24028_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Ouverture de la base de données KQL"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="317"
+		data-flex-basis="760px"
+	
+></p>
+<ol>
+<li>Rendez-vous dans votre espace de travail est cliqué sur la base de données KQL.</li>
+</ol>
+<h3 id="création-du-rapport-power-bi">Création du rapport Power BI</h3>
+<p><img src="/p/fabric-poc-iot/img/021-fabric-realtime-kql-database-create-report-part1.png"
+	width="1837"
+	height="898"
+	srcset="/p/fabric-poc-iot/img/021-fabric-realtime-kql-database-create-report-part1_hu937553757cf138e9c8f5aac226afe7b1_90025_480x0_resize_box_3.png 480w, /p/fabric-poc-iot/img/021-fabric-realtime-kql-database-create-report-part1_hu937553757cf138e9c8f5aac226afe7b1_90025_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Création du rapport Power BI - étape 1"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="204"
+		data-flex-basis="490px"
+	
+></p>
+<ol>
+<li>Vous pouvez voir la base de données KQL que l&rsquo;on a créée.</li>
+<li>Appuyez sur la table <strong>MesCapteurs</strong> pour la sélectionner.</li>
+<li>Appuyer sur les 3 points au niveau du nom de la table pour ouvrir le menu contextuel.</li>
+<li>Sélectionnez <em>Générer un rapport Power BI</em>.</li>
+</ol>
+<p>L&rsquo;extraction des données via une requête KQL est faite automatiquement par l&rsquo;assistant.
+Une fenêtre de création de rapport Power BI apparait. Le jeu de données associé à ce rapport correspond aux données de notre table.</p>
+<p><img src="/p/fabric-poc-iot/img/022-fabric-realtime-kql-database-create-report-part2.png"
+	width="1022"
+	height="701"
+	srcset="/p/fabric-poc-iot/img/022-fabric-realtime-kql-database-create-report-part2_hued8f9189b82aa39680edb890bfd95d24_87289_480x0_resize_box_3.png 480w, /p/fabric-poc-iot/img/022-fabric-realtime-kql-database-create-report-part2_hued8f9189b82aa39680edb890bfd95d24_87289_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Création du rapport Power BI - étape 2"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="145"
+		data-flex-basis="349px"
+	
+></p>
+<ol>
+<li>Ajouter un visuel <em>Graphique en courbe</em> dans votre rapport et positionnez-le pour recouvrir la zone de dessin.</li>
+<li>Dans <em>Données</em> vous retrouvez les champs de votre table extraits par une requête KQL.</li>
+<li>Positionez les champs sur le graphique :
+<ul>
+<li>Mettre <em>Date</em> dans <em>Axe X</em>.</li>
+<li>Mettre <em>Hum</em> et <em>Temp</em> dans <em>Axe Y</em>.</li>
+<li>Mettre <em>HardwareId</em> dans <em>Petits multiples</em>.</li>
+</ul>
+</li>
+<li>Votre graphe doit ressembler à cela.</li>
+<li>Si aucune donnée n&rsquo;est présente, relancer le script PowerShell et appuyer sur le bouton <em>Actualiser</em> du rapport.</li>
+</ol>
+<p><img src="/p/fabric-poc-iot/img/023-fabric-realtime-kql-database-create-report-part3.png"
+	width="1022"
+	height="702"
+	srcset="/p/fabric-poc-iot/img/023-fabric-realtime-kql-database-create-report-part3_hu41a37bf7a966c4490d984582e85b49c9_77431_480x0_resize_box_3.png 480w, /p/fabric-poc-iot/img/023-fabric-realtime-kql-database-create-report-part3_hu41a37bf7a966c4490d984582e85b49c9_77431_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Création du rapport Power BI - étape 3"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="145"
+		data-flex-basis="349px"
+	
+></p>
+<ol>
+<li>Cliquez dans la zone sous les pointillés pour accéder aux paramétrages de la page du rapport Power BI.</li>
+<li>Rendez-vous dans l&rsquo;onglet de mise en forme.</li>
+<li>Activez <em>Actualisation de la page</em> en basculant le bouton et cliquez sur le texte pour ouvrir le panneau de configuration.</li>
+<li>Paramétrez votre page pour une actualisation automatique toutes les 10 secondes.</li>
+</ol>
+<p>Dans le menu fichier, appuyez sur <em>Enregistrer</em>.</p>
+<p><img src="/p/fabric-poc-iot/img/024-fabric-realtime-kql-database-create-report-end.png"
+	width="1020"
+	height="702"
+	srcset="/p/fabric-poc-iot/img/024-fabric-realtime-kql-database-create-report-end_hud1e876a97b647aa9757b9f9afdc45b54_92916_480x0_resize_box_3.png 480w, /p/fabric-poc-iot/img/024-fabric-realtime-kql-database-create-report-end_hud1e876a97b647aa9757b9f9afdc45b54_92916_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Création du rapport Power BI - fin"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="145"
+		data-flex-basis="348px"
+	
+></p>
+<ol>
+<li>Donnez un nom à votre rapport.</li>
+<li>Sélectionnez l&rsquo;espace de travail.</li>
+<li>Appuyez sur <em>Continuer</em> pour publier le rapport.</li>
+</ol>
+<p>Vous pouvez maintenant fermer la fenêtre Power BI.</p>
+<h3 id="test-du-rapport-power-bipower-bi">Test du rapport Power BIPower BI</h3>
+<p>Retournez dans l&rsquo;espace de travail où vous avez sauvegardé le rapport Power BI et ouvrez-le.</p>
+<p><img src="/p/fabric-poc-iot/img/025-fabric-realtime-report-power-bi.png"
+	width="1848"
+	height="932"
+	srcset="/p/fabric-poc-iot/img/025-fabric-realtime-report-power-bi_hu47c06023f95bc60a17d8c50ca10dbd07_155884_480x0_resize_box_3.png 480w, /p/fabric-poc-iot/img/025-fabric-realtime-report-power-bi_hu47c06023f95bc60a17d8c50ca10dbd07_155884_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Rapport Power BI"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="198"
+		data-flex-basis="475px"
+	
+></p>
+<ol>
+<li>Vous pouvez voir ici vos données qui vont se rafraichir automatiquement si le script PowerShell s&rsquo;exécute.</li>
+<li>Vous pouvez ajouter un filtre sur les 10 dernières minutes de données pour ne pas voir les données des tests précédents.</li>
+<li>Si le rafraichissement ne se fait pas vous pouvez le forcer via le bouton <em>Actualiser</em>.</li>
+</ol>
+<p>Lors de mes expérimentations, le rafraichissement automatique du rapport Power BI était plutôt chaotique. Le rafraichissement par le bouton <em>Actualiser</em> rafraichissait bien les données donc c&rsquo;est la partie Power BI qui ne se comporte pas tout à fait comme attendu.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>Dans ce scénario je simule des capteurs d&rsquo;IOT, mais vous pouvez utiliser cette technique pour n&rsquo;importe quel type de données. Par exemple vous pouvez monitorer vos scripts PowerShell en envoyant directement des données à la base KQL.</p>
+<p>Merci de votre attention.</p>
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/interm%C3%A9diaire/">Intermédiaire</a>
+        
+            <a href="/tags/auto-formation/">Auto formation</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Contenus liés</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/power-query-advanced-m-part1/">
+        
+        
+            <div class="article-image">
+                <img src="/p/power-query-advanced-m-part1/_hu3d03a01dcc18bc5be0e67db3d8d209a6_1564048_3900e448ac4cabc985e10261804d2efc.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Power Query au-delà des assistants."
+                        data-key="power-query-advanced-m-part1" 
+                        data-hash="md5-oKKnMZm6l/XY9kXLKdQwQQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Power Query au-delà des assistants.</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/power-query-function/">
+        
+        
+            <div class="article-image">
+                <img src="/p/power-query-function/_hu1bbec3486f773b072d538975f65a80c0_2311333_01c52f658bc9b87cb2a60fb00253234a.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Power Query le pouvoir des fonctions."
+                        data-key="power-query-function" 
+                        data-hash="md5-q4/9KUtBgqWybU7TYFkHGg==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Power Query le pouvoir des fonctions.</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/comprendre-les-licences-power-bi/">
+        
+        
+            <div class="article-image">
+                <img src="/p/comprendre-les-licences-power-bi/_hu9694657f3c697ac35f9080995597d89a_217872_34c60cea0abb30e97a116c23faead41a.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Comprendre les licences Power BI"
+                        data-key="comprendre-les-licences-power-bi" 
+                        data-hash="md5-Tqm03iJ7lbxz/5qcFYYkrg==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Comprendre les licences Power BI</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/tables-recommandees-powerbi/">
+        
+        
+            <div class="article-image">
+                <img src="/p/tables-recommandees-powerbi/_hucaac4cc3511e7b1acfab0972cfec5559_699224_cad85dcfe262173e6e61f48562f1686a.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Vos référentiels d&#39;entreprise directement dans Excel."
+                        data-key="tables-recommandees-powerbi" 
+                        data-hash="md5-zTxeLVq9XPFPYMxjyRSnCg==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Vos référentiels d&#39;entreprise directement dans Excel.</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/power-bi-gateway/">
+        
+        
+            <div class="article-image">
+                <img src="/p/power-bi-gateway/_hu81c52007d2e7fffec5d58774b441b07a_2250510_61cdb05e3cd283da80984a55f3e9ea9a.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Installer et configurer votre passerelle de données pour Power BI."
+                        data-key="power-bi-gateway" 
+                        data-hash="md5-TAa&#43;LHiuZbtti4Yj3Ng96Q==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Installer et configurer votre passerelle de données pour Power BI.</h2>
+        </div>
+    </a>
+</article>
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "ddata" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2022 - 
+        
+        2023 Le D de Data
+    </section>
+    
+    <section class="powerby">
+        Généré avec <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Thème <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.16.0">Stack</a></b> conçu par <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

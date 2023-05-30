@@ -6,7 +6,706 @@
         <description>Recent content in Power BI on Le D de Data</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>fr-fr</language>
-        <lastBuildDate>Sun, 28 May 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ddata.fr/categories/powerbi/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Tue, 30 May 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ddata.fr/categories/powerbi/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Données en temps réel dans votre rapport Power BI avec Microsoft Fabric</title>
+        <link>https://blog.ddata.fr/p/fabric-poc-iot/</link>
+        <pubDate>Tue, 30 May 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://blog.ddata.fr/p/fabric-poc-iot/</guid>
+        <description>&lt;img src="https://blog.ddata.fr/p/fabric-poc-iot/jorge-ramirez-HpFcqb6gUwE-unsplash.jpg" alt="Featured image of post Données en temps réel dans votre rapport Power BI avec Microsoft Fabric" /&gt;&lt;p&gt;Dans cet article je vous propose de tester l&amp;rsquo;aventure Real-time Analytics de Microsoft Fabric.&lt;/p&gt;
+&lt;h2 id=&#34;contexte&#34;&gt;Contexte&lt;/h2&gt;
+&lt;p&gt;Microsoft Fabric propose différentes perspectives de gestion de la donnée. Nous allons ici nous concentrer sur la partie temps réel.&lt;br&gt;
+Pour cela je vous propose le scénario suivant, nous avons des capteurs qui émettent des données régulièrement, mais pas de manière régulière. Nous voulons pouvoir créer un rapport Power BI pour observer les données en temps réel.&lt;br&gt;
+Pour réaliser cela, nous devrons :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Simuler l&amp;rsquo;envoi des données des capteurs.&lt;/li&gt;
+&lt;li&gt;Collecter les données.&lt;/li&gt;
+&lt;li&gt;Traiter les données.&lt;/li&gt;
+&lt;li&gt;Restituer les données dans Power BI.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;présentation-de-larchitecture&#34;&gt;Présentation de l&amp;rsquo;architecture&lt;/h2&gt;
+&lt;p&gt;Voici les différentes briques d&amp;rsquo;architecture que nous allons utiliser :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;L&amp;rsquo;envoi des données de nos capteurs sera simulé par un script PowerShell.&lt;/li&gt;
+&lt;li&gt;La collecte des données se fera via un &lt;em&gt;Eventstream&lt;/em&gt; de Microsoft Fabric.&lt;/li&gt;
+&lt;li&gt;Le stockage des données sera réalisé&amp;quot; dans une base de données KQL.&lt;/li&gt;
+&lt;li&gt;La restitution des données se fera dans un rapport Power BI.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Le schéma d&amp;rsquo;architecture est donc le suivant :
+&lt;img src=&#34;https://blog.ddata.fr/img/001-fabric-real-time-iot-poc.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Schéma d&amp;rsquo;architecture&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;présentation-de-nos-capteurs&#34;&gt;Présentation de nos capteurs&lt;/h2&gt;
+&lt;p&gt;Pour simuler les capteurs, nous allons utiliser un simple script PowerShell qui va créer aléatoirement les messages des capteurs.
+Le script de création des messages des capteurs est le suivant :&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;21
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-powershell&#34; data-lang=&#34;powershell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c&#34;&gt;# Nombre de message à envoyer&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;$Messages&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;100&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c&#34;&gt;# Id des capteurs&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;$HardwareID&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;12345&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;23456&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;34567&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;45678&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;67890&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c&#34;&gt;# Boucle d&amp;#39;envoi des messages&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$i&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$i&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-lt&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$Messages&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$i&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;++)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;c&#34;&gt;# Création du message à envoyer au format JSON&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nv&#34;&gt;$IOTFakeMessage&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;vm&#34;&gt;@&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;HardwareId&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;ID-&amp;#34;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$HardwareID&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;Get-Random&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;-Minimum&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;0&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;-Maximum&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$HardwareID&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Count&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;Date&lt;/span&gt;       &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;Get-Date&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;CaptorInfo&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;vm&#34;&gt;@&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;n&#34;&gt;Temp&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;Get-Random&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;-Minimum&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;20&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;-Maximum&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;28&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;n&#34;&gt;Hum&lt;/span&gt;  &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;Get-Random&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;-Minimum&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;40&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;-Maximum&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;60&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;  &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;ConvertTo-Json&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;-Depth&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;99&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;c&#34;&gt;# Envoi du message dans la fenêtre PowerShell&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nb&#34;&gt;Write-Host&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$IOTFakeMessage&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;c&#34;&gt;# Attente avant le prochain message&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nb&#34;&gt;Start-Sleep&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;-Milliseconds&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;Get-Random&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;-Minimum&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;200&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;-Maximum&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;4000&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Pour que cela fonctionne, ouvrez une fenêtre PowerShell, copiez le script et appuyez sur entrée pour l&amp;rsquo;exécuter.&lt;br&gt;
+J&amp;rsquo;ai testé avec une version de PowerShell Core 7.&lt;br&gt;
+Dans cette version du script, les messages sont simplement affichés dans la fenêtre PowerShell.&lt;/p&gt;
+&lt;h2 id=&#34;préparation-de-lenvironnement-fabric&#34;&gt;Préparation de l&amp;rsquo;environnement Fabric&lt;/h2&gt;
+&lt;h3 id=&#34;création-de-lespace-de-travail&#34;&gt;Création de l&amp;rsquo;espace de travail&lt;/h3&gt;
+&lt;p&gt;Nous allons créer un nouvel espace de travail pour cette démonstration, comme cela vous pourrez le supprimer à la fin pour libérer les ressources utilisées.&lt;/p&gt;
+&lt;p&gt;Allez dans &lt;em&gt;Espace de travail&lt;/em&gt; dans le panneau de gauche et sélectionnez &lt;em&gt;+ Nouvel espace de travail&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-poc-iot/img/002-fabric-realtime-create-workspace.png&#34;
+	width=&#34;575&#34;
+	height=&#34;917&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-poc-iot/img/002-fabric-realtime-create-workspace_hu7f7c66defde3225e25328c55fc714f07_50223_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-poc-iot/img/002-fabric-realtime-create-workspace_hu7f7c66defde3225e25328c55fc714f07_50223_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Création de l&amp;rsquo;espace de travail&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;62&#34;
+		data-flex-basis=&#34;150px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Choisissez un nom pour votre espace de travail.&lt;/li&gt;
+&lt;li&gt;Choisissez un modèle de licence supportant les objets Fabric.&lt;/li&gt;
+&lt;li&gt;Appuyez sur &lt;em&gt;Appliquer&lt;/em&gt; pour créer votre espace de travail.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Une fois l&amp;rsquo;espace de travail créer un rendez-vous dedans.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-poc-iot/img/003-fabric-realtime-select-realtime.png&#34;
+	width=&#34;312&#34;
+	height=&#34;255&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-poc-iot/img/003-fabric-realtime-select-realtime_hu0c77b520b0e5ed1f6335bf60fc5ed5dd_14282_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-poc-iot/img/003-fabric-realtime-select-realtime_hu0c77b520b0e5ed1f6335bf60fc5ed5dd_14282_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Passer en mode Real-Time Analytics&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;122&#34;
+		data-flex-basis=&#34;293px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Dans le panneau de gauche cliquez sur l&amp;rsquo;icône des expériences Fabric, tout en bas, c&amp;rsquo;est Power BI si vous êtes entré par le portail Power BI.&lt;/li&gt;
+&lt;li&gt;Sélectionnez l&amp;rsquo;expérience Fabric Real-Time Analytics.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Réouvrez l&amp;rsquo;espace de travail si vous vous retrouvez sur l&amp;rsquo;écran d&amp;rsquo;accueil.&lt;/p&gt;
+&lt;h3 id=&#34;création-de-la-base-kql&#34;&gt;Création de la base KQL&lt;/h3&gt;
+&lt;p&gt;Nous allons maintenant procéder à la création de la base de données KQL&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-poc-iot/img/004-fabric-realtime-create-KQL-database-01.png&#34;
+	width=&#34;1197&#34;
+	height=&#34;705&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-poc-iot/img/004-fabric-realtime-create-KQL-database-01_hub95f5989ae8c9ce0beb8519b52a3dacb_50727_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-poc-iot/img/004-fabric-realtime-create-KQL-database-01_hub95f5989ae8c9ce0beb8519b52a3dacb_50727_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Création de la base KQL - étape 1&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;169&#34;
+		data-flex-basis=&#34;407px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Appuyez sur &lt;em&gt;Nouveau&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;Sélectionnez &lt;em&gt;Base de données KQL&lt;/em&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-poc-iot/img/005-fabric-realtime-create-KQL-database-02.png&#34;
+	width=&#34;362&#34;
+	height=&#34;225&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-poc-iot/img/005-fabric-realtime-create-KQL-database-02_huee0d3ef2d3e3b71b7ac75e4130fb18ee_10136_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-poc-iot/img/005-fabric-realtime-create-KQL-database-02_huee0d3ef2d3e3b71b7ac75e4130fb18ee_10136_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Création de la base KQL - étape 2&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;160&#34;
+		data-flex-basis=&#34;386px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Donnez le nom &lt;strong&gt;DemoIOT&lt;/strong&gt; à la base de données.&lt;/li&gt;
+&lt;li&gt;Appuyez sur &lt;em&gt;Créer&lt;/em&gt; pour créer la base.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Le traitement de création peut prendre quelques secondes.&lt;/p&gt;
+&lt;h2 id=&#34;collecte-et-traitement-des-données&#34;&gt;Collecte et traitement des données&lt;/h2&gt;
+&lt;h3 id=&#34;création-du-traitement&#34;&gt;Création du traitement&lt;/h3&gt;
+&lt;p&gt;Nous allons maintenant procéder à la création d&amp;rsquo;un traitement d&amp;rsquo;intégration eventstream.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-poc-iot/img/006-fabric-realtime-create-Eventstream-01.png&#34;
+	width=&#34;1001&#34;
+	height=&#34;560&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-poc-iot/img/006-fabric-realtime-create-Eventstream-01_hu58b5a96d8402dac39db4dfee5ec9ef49_38869_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-poc-iot/img/006-fabric-realtime-create-Eventstream-01_hu58b5a96d8402dac39db4dfee5ec9ef49_38869_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Création du traitement Eventstream - étape 1&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;178&#34;
+		data-flex-basis=&#34;429px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Appuyez sur &lt;em&gt;Nouveau&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;Sélectionnez &lt;em&gt;Eventstream&lt;/em&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-poc-iot/img/007-fabric-realtime-create-Eventstream-02.png&#34;
+	width=&#34;342&#34;
+	height=&#34;222&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-poc-iot/img/007-fabric-realtime-create-Eventstream-02_hufc196742eddf64bd80117cd30678dc0c_8484_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-poc-iot/img/007-fabric-realtime-create-Eventstream-02_hufc196742eddf64bd80117cd30678dc0c_8484_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Création du traitement Eventstream - étape 2&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;154&#34;
+		data-flex-basis=&#34;369px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Donnez le nom &lt;strong&gt;DemoIOT&lt;/strong&gt; à l&amp;rsquo;eventstream&#39;.&lt;/li&gt;
+&lt;li&gt;Appuyez sur &lt;em&gt;Créer&lt;/em&gt; pour créer l&amp;rsquo;eventstream&#39;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;La fenêtre d&amp;rsquo;édition du traitement apparait, nous allons créer un point d&amp;rsquo;écoute pour nos capteurs en créant une &lt;em&gt;Custom App&lt;/em&gt; dans la source du traitement.&lt;br&gt;
+Le point d&amp;rsquo;écoute est supporté par le service bus Azure.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-poc-iot/img/008-fabric-realtime-create-Eventstream-03.png&#34;
+	width=&#34;1843&#34;
+	height=&#34;925&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-poc-iot/img/008-fabric-realtime-create-Eventstream-03_hufa2ec95f29f1319a3476a857f7c81eeb_55892_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-poc-iot/img/008-fabric-realtime-create-Eventstream-03_hufa2ec95f29f1319a3476a857f7c81eeb_55892_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Création du traitement Eventstream - étape 3&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;199&#34;
+		data-flex-basis=&#34;478px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Appuyez sur &lt;em&gt;New source&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Sélectionnez &lt;em&gt;Custom App&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Donnez le nom &lt;strong&gt;MesCapteurs&lt;/strong&gt; à la custom app.&lt;/li&gt;
+&lt;li&gt;Appuyez sur &lt;em&gt;Create&lt;/em&gt; pour créer la custom app.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Nous allons maintenant copier la chaine de connexion au point d&amp;rsquo;écoute pour paramétrer nos capteurs.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-poc-iot/img/009-fabric-realtime-create-Eventstream-04.png&#34;
+	width=&#34;1842&#34;
+	height=&#34;914&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-poc-iot/img/009-fabric-realtime-create-Eventstream-04_hu1ade113bd9965dc047c90aa6dd7b4cd5_53222_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-poc-iot/img/009-fabric-realtime-create-Eventstream-04_hu1ade113bd9965dc047c90aa6dd7b4cd5_53222_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Création du traitement Eventstream - étape 4&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;201&#34;
+		data-flex-basis=&#34;483px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Vérifiez que vous êtes sur les sources de données.&lt;/li&gt;
+&lt;li&gt;Sélectionnez la source &lt;strong&gt;MesCapteurs&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;Appuyez sur l&amp;rsquo;icône d&amp;rsquo;œil sir la ligne &lt;em&gt;Connection string-primary key&lt;/em&gt; pour afficher la chaine de connexion.&lt;/li&gt;
+&lt;li&gt;Appuyez sur l&amp;rsquo;icône de copie pour copier la chaine de connexion.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;script-de-simulation-de-capteur-émettant-vers-notre-traitement&#34;&gt;Script de simulation de capteur émettant vers notre traitement&lt;/h3&gt;
+&lt;p&gt;Nous allons maintenant finaliser notre script simulant nos capteurs en ajoutant l&amp;rsquo;écriture dans le Azure service bus servant de point d&amp;quot;écoute.&lt;br&gt;
+Pour cela, remplacez la chaine de caractère &lt;em&gt;REMPLACER_PAR_VOTRE_CHAINE_DE_CONNEXION&lt;/em&gt; par la chaine de connexion copiée à l&amp;rsquo;étape précédente sur la ligne 2 du script ci-dessous.&lt;/p&gt;
+&lt;p&gt;Le script PowerShell est inspiré de l&amp;rsquo;article &lt;a class=&#34;link&#34; href=&#34;https://pipe.how/send-servicebusmessage/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Azure Service Bus with PowerShell&lt;/a&gt;.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;21
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;22
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;23
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;24
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;25
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;26
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;27
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;28
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;29
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;30
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;31
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;32
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;33
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;34
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;35
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;36
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;37
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;38
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;39
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;40
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;41
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;42
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;43
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;44
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;45
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;46
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;47
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;48
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;49
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;50
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;51
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;52
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;53
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;54
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-powershell&#34; data-lang=&#34;powershell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c&#34;&gt;# Votre chaine de connexion&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;$ConnectionString&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;REMPLACER_PAR_VOTRE_CHAINE_DE_CONNEXION&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c&#34;&gt;# Nombre de message à envoyer&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;$Messages&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;100&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c&#34;&gt;# Id des capteurs&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;$HardwareID&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;12345&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;23456&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;34567&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;45678&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;67890&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;$Pattern&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;Endpoint=(.+);SharedAccessKeyName=(.+);SharedAccessKey=(.+);EntityPath=(.+)&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;([&lt;/span&gt;&lt;span class=&#34;no&#34;&gt;uri&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$Endpoint&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$PolicyName&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$Key&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$Queue&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$ConnectionString&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-replace&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$Pattern&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;$1;$2;$3;$4&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;-split&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;;&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c&#34;&gt;# Depending on your environment you may need to load the assembly System.Web&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c&#34;&gt;# $null = [Reflection.Assembly]::LoadWithPartialName(&amp;#34;System.Web&amp;#34;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;$UrlEncodedEndpoint&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;no&#34;&gt;System.Web.HttpUtility&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;UrlEncode&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$Endpoint&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;$Expiry&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;no&#34;&gt;DateTimeOffset&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Now&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;py&#34;&gt;ToUnixTimeSeconds&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;3600&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;$RawSignatureString&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$UrlEncodedEndpoint&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;`n&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$Expiry&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;$HMAC&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;New-Object&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;System&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;py&#34;&gt;Security&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;py&#34;&gt;Cryptography&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;py&#34;&gt;HMACSHA256&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;$HMAC&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;py&#34;&gt;Key&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;no&#34;&gt;Text.Encoding&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ASCII&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;py&#34;&gt;GetBytes&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$Key&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;$HashBytes&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$HMAC&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;py&#34;&gt;ComputeHash&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;([&lt;/span&gt;&lt;span class=&#34;no&#34;&gt;Text.Encoding&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ASCII&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;py&#34;&gt;GetBytes&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$RawSignatureString&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;$SignatureString&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;no&#34;&gt;Convert&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ToBase64String&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$HashBytes&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;$UrlEncodedSignatureString&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;no&#34;&gt;System.Web.HttpUtility&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;UrlEncode&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$SignatureString&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;$SASToken&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;SharedAccessSignature sig=&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$UrlEncodedSignatureString&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;amp;se=&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$Expiry&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;amp;skn=&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$PolicyName&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;amp;sr=&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$UrlEncodedEndpoint&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c&#34;&gt;# Boucle d&amp;#39;envoi des messages&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$i&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$i&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-lt&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$Messages&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$i&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;++)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;c&#34;&gt;# Création du message à envoyer au format JSON&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nv&#34;&gt;$IOTFakeMessage&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;vm&#34;&gt;@&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;HardwareId&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;ID-&amp;#34;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$HardwareID&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;Get-Random&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;-Minimum&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;0&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;-Maximum&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$HardwareID&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Count&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;Date&lt;/span&gt;       &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;Get-Date&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;CaptorInfo&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;vm&#34;&gt;@&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;n&#34;&gt;Temp&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;Get-Random&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;-Minimum&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;20&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;-Maximum&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;28&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;n&#34;&gt;Hum&lt;/span&gt;  &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;Get-Random&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;-Minimum&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;40&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;-Maximum&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;60&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;  &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;ConvertTo-Json&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;-Depth&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;99&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;c&#34;&gt;# Préparation de la requête HTTP&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nv&#34;&gt;$Params&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;vm&#34;&gt;@&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;Uri&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;https://&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;$(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$Endpoint&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Host&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$Queue&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;/messages&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;ContentType&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;application/json;charset=utf-8&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;Method&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;Post&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;Body&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$IOTFakeMessage&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;Headers&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;vm&#34;&gt;@&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;s1&#34;&gt;&amp;#39;Authorization&amp;#39;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$SASToken&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;c&#34;&gt;# Envoi du message vers le service BUS&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nb&#34;&gt;Invoke-RestMethod&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;@Params&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;c&#34;&gt;# Attente avant le prochain message&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nb&#34;&gt;Start-Sleep&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;-Milliseconds&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;Get-Random&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;-Minimum&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;200&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;-Maximum&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;4000&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id=&#34;finalisation-du-traitement-des-données&#34;&gt;Finalisation du traitement des données&lt;/h3&gt;
+&lt;p&gt;Nous allons maintenant finaliser le traitement de données des capteurs en indiquant une destination aux données reçues.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-poc-iot/img/010-fabric-realtime-create-Eventstream-05.png&#34;
+	width=&#34;1846&#34;
+	height=&#34;922&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-poc-iot/img/010-fabric-realtime-create-Eventstream-05_hu956da147415831cbce945eb74aaf5753_69306_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-poc-iot/img/010-fabric-realtime-create-Eventstream-05_hu956da147415831cbce945eb74aaf5753_69306_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Création du traitement Eventstream - étape 5&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;200&#34;
+		data-flex-basis=&#34;480px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Appuyez sur &lt;em&gt;New destination&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Sélectionnez &lt;em&gt;KQL Database&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Donnez le nom &lt;strong&gt;StockageMesCapteurs&lt;/strong&gt; dans &lt;em&gt;Destination name&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Sélectionnez l&amp;rsquo;espace de travail.&lt;/li&gt;
+&lt;li&gt;Sélectionnez la base de données KQL.&lt;/li&gt;
+&lt;li&gt;Appuyez sur &lt;em&gt;Create and configure&lt;/em&gt; pour continuer.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;On paramètre la table de destination dans la base KQL :
+&lt;img src=&#34;https://blog.ddata.fr/p/fabric-poc-iot/img/011-fabric-realtime-create-Eventstream-06.png&#34;
+	width=&#34;1021&#34;
+	height=&#34;589&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-poc-iot/img/011-fabric-realtime-create-Eventstream-06_huad65e1b70c085bad7ce622d61bea1934_20550_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-poc-iot/img/011-fabric-realtime-create-Eventstream-06_huad65e1b70c085bad7ce622d61bea1934_20550_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Création du traitement Eventstream - étape 6&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;173&#34;
+		data-flex-basis=&#34;416px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Sélectionnez &lt;em&gt;Nouvelle table&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Donnez le nom &lt;strong&gt;MesCapteurs&lt;/strong&gt; à la table.&lt;/li&gt;
+&lt;li&gt;Appuyez sur &lt;em&gt;Suivant : Source&lt;/em&gt; pour continuer.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Lancez le script PowerShell paramétré avec votre chaine de connexion pour qu&amp;rsquo;il commence à émettre des données.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-poc-iot/img/012-fabric-realtime-create-Eventstream-07.png&#34;
+	width=&#34;1022&#34;
+	height=&#34;587&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-poc-iot/img/012-fabric-realtime-create-Eventstream-07_hu757f31392f4cec9b20c4041084bd84d3_29764_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-poc-iot/img/012-fabric-realtime-create-Eventstream-07_hu757f31392f4cec9b20c4041084bd84d3_29764_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Création du traitement Eventstream - étape 7&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;174&#34;
+		data-flex-basis=&#34;417px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Sur l&amp;rsquo;écran &lt;em&gt;Source&lt;/em&gt; laissez les paramètres par défaut et appuyez sur &lt;em&gt;Suivant : Schéma&lt;/em&gt; pour continuer.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-poc-iot/img/013-fabric-realtime-create-Eventstream-08.png&#34;
+	width=&#34;1021&#34;
+	height=&#34;589&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-poc-iot/img/013-fabric-realtime-create-Eventstream-08_hu0b40ce0f00c66d417685bba7e08fe898_63185_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-poc-iot/img/013-fabric-realtime-create-Eventstream-08_hu0b40ce0f00c66d417685bba7e08fe898_63185_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Création du traitement Eventstream - étape 8&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;173&#34;
+		data-flex-basis=&#34;416px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Choisissez le format de données JSON.&lt;/li&gt;
+&lt;li&gt;Vous pouvez voir que des données arrivent de vos capteurs.&lt;/li&gt;
+&lt;li&gt;Les données de la colonne &lt;em&gt;CaptorInfo&lt;/em&gt; sont au format JSON, pour une analyse plus simple nous allons réaliser une transformation de données consistant à créer une colonne par valeur.&lt;/li&gt;
+&lt;li&gt;Cliquez sur le symbole &lt;strong&gt;+&lt;/strong&gt; pour ajouter une colonne.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-poc-iot/img/014-fabric-realtime-create-Eventstream-09.png&#34;
+	width=&#34;570&#34;
+	height=&#34;450&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-poc-iot/img/014-fabric-realtime-create-Eventstream-09_hu34ec791a88248399ccefc8c6da8319fc_25914_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-poc-iot/img/014-fabric-realtime-create-Eventstream-09_hu34ec791a88248399ccefc8c6da8319fc_25914_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Création du traitement Eventstream - étape 9&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;126&#34;
+		data-flex-basis=&#34;304px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Saisissez &lt;strong&gt;Temp&lt;/strong&gt; dans le nom de la colonne.&lt;/li&gt;
+&lt;li&gt;Appuyez sur &lt;em&gt;Créer&lt;/em&gt; pour saisir le chemin de la source de données.&lt;/li&gt;
+&lt;li&gt;Choisir &lt;em&gt;Int&lt;/em&gt; dans &lt;em&gt;Type de colonne&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Entrez &lt;em&gt;$.CaptorInfo.Temp&lt;/em&gt; dans &lt;em&gt;Nouvelle source&lt;/em&gt;. Le symbole $ représente la racine du document JSON, nous indiquons ensuite le nom des clés amenant à la valeur qui nous intéresse.&lt;/li&gt;
+&lt;li&gt;Appuyez sur &lt;em&gt;OK&lt;/em&gt; pour ajouter la colonne.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-poc-iot/img/015-fabric-realtime-create-Eventstream-10.png&#34;
+	width=&#34;570&#34;
+	height=&#34;450&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-poc-iot/img/015-fabric-realtime-create-Eventstream-10_huaeb5ac4e9d86dcf8157de414222f8922_17644_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-poc-iot/img/015-fabric-realtime-create-Eventstream-10_huaeb5ac4e9d86dcf8157de414222f8922_17644_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Création du traitement Eventstream - étape 10&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;126&#34;
+		data-flex-basis=&#34;304px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Vous pouvez voir la valeur saisie pour la nouvelle colonie.&lt;/li&gt;
+&lt;li&gt;Appuyez sur &lt;em&gt;Créer&lt;/em&gt; pour ajouter la colonne.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-poc-iot/img/016-fabric-realtime-create-Eventstream-11.png&#34;
+	width=&#34;568&#34;
+	height=&#34;450&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-poc-iot/img/016-fabric-realtime-create-Eventstream-11_hu1550b77eb14abd8e3529dfb0e8bb9546_17218_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-poc-iot/img/016-fabric-realtime-create-Eventstream-11_hu1550b77eb14abd8e3529dfb0e8bb9546_17218_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Création du traitement Eventstream - étape 11&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;126&#34;
+		data-flex-basis=&#34;302px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Répétez l&amp;rsquo;opération pour la colonne Hum, entrez &lt;em&gt;$.CaptorInfo.Hum&lt;/em&gt; dans &lt;em&gt;Nouvelle source&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Appuyez sur &lt;em&gt;Créer&lt;/em&gt; pour ajouter la colonne.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-poc-iot/img/017-fabric-realtime-create-Eventstream-12.png&#34;
+	width=&#34;1022&#34;
+	height=&#34;589&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-poc-iot/img/017-fabric-realtime-create-Eventstream-12_huef4b62cebb97d42379a178efb493c235_61967_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-poc-iot/img/017-fabric-realtime-create-Eventstream-12_huef4b62cebb97d42379a178efb493c235_61967_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Création du traitement Eventstream - étape 12&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;173&#34;
+		data-flex-basis=&#34;416px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Vous pouvez maintenant voir vos 2 nouvelles colonnes.&lt;/li&gt;
+&lt;li&gt;Vous pouvez supprimer la colonne &lt;em&gt;CaptorInfo&lt;/em&gt;. Appuyez sur le chevron vers le bas et sélectionnez &lt;em&gt;Delete column&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Appuyez sur &lt;em&gt;Suivant : Récapitulatif&lt;/em&gt; pour continuer.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-poc-iot/img/018-fabric-realtime-create-Eventstream-13.png&#34;
+	width=&#34;1022&#34;
+	height=&#34;588&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-poc-iot/img/018-fabric-realtime-create-Eventstream-13_hu51e0d2a3051c60d214ce8425615c47aa_19370_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-poc-iot/img/018-fabric-realtime-create-Eventstream-13_hu51e0d2a3051c60d214ce8425615c47aa_19370_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Création du traitement Eventstream - étape 13&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;173&#34;
+		data-flex-basis=&#34;417px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Vous avez fini de configurer la destination, appuyer sur &lt;em&gt;Fermer&lt;/em&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Votre traitement d&amp;rsquo;intégration ressemble à cela :
+&lt;img src=&#34;https://blog.ddata.fr/p/fabric-poc-iot/img/019-fabric-realtime-create-Eventstream-end.png&#34;
+	width=&#34;1403&#34;
+	height=&#34;777&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-poc-iot/img/019-fabric-realtime-create-Eventstream-end_hud1df91f3cc8924adc862eed9e48309a4_40947_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-poc-iot/img/019-fabric-realtime-create-Eventstream-end_hud1df91f3cc8924adc862eed9e48309a4_40947_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Création du traitement Eventstream - fin&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;180&#34;
+		data-flex-basis=&#34;433px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;restitution-des-données&#34;&gt;Restitution des données&lt;/h2&gt;
+&lt;p&gt;Pour la restitution des données, nous allons utiliser les assistants disponibles au niveau de la base de données KQL.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-poc-iot/img/020-fabric-realtime-kql-database-open.png&#34;
+	width=&#34;1154&#34;
+	height=&#34;364&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-poc-iot/img/020-fabric-realtime-kql-database-open_hude7f460bb4debeed4f04481ee974244b_24028_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-poc-iot/img/020-fabric-realtime-kql-database-open_hude7f460bb4debeed4f04481ee974244b_24028_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Ouverture de la base de données KQL&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;317&#34;
+		data-flex-basis=&#34;760px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Rendez-vous dans votre espace de travail est cliqué sur la base de données KQL.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;création-du-rapport-power-bi&#34;&gt;Création du rapport Power BI&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-poc-iot/img/021-fabric-realtime-kql-database-create-report-part1.png&#34;
+	width=&#34;1837&#34;
+	height=&#34;898&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-poc-iot/img/021-fabric-realtime-kql-database-create-report-part1_hu937553757cf138e9c8f5aac226afe7b1_90025_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-poc-iot/img/021-fabric-realtime-kql-database-create-report-part1_hu937553757cf138e9c8f5aac226afe7b1_90025_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Création du rapport Power BI - étape 1&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;204&#34;
+		data-flex-basis=&#34;490px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Vous pouvez voir la base de données KQL que l&amp;rsquo;on a créée.&lt;/li&gt;
+&lt;li&gt;Appuyez sur la table &lt;strong&gt;MesCapteurs&lt;/strong&gt; pour la sélectionner.&lt;/li&gt;
+&lt;li&gt;Appuyer sur les 3 points au niveau du nom de la table pour ouvrir le menu contextuel.&lt;/li&gt;
+&lt;li&gt;Sélectionnez &lt;em&gt;Générer un rapport Power BI&lt;/em&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;L&amp;rsquo;extraction des données via une requête KQL est faite automatiquement par l&amp;rsquo;assistant.
+Une fenêtre de création de rapport Power BI apparait. Le jeu de données associé à ce rapport correspond aux données de notre table.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-poc-iot/img/022-fabric-realtime-kql-database-create-report-part2.png&#34;
+	width=&#34;1022&#34;
+	height=&#34;701&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-poc-iot/img/022-fabric-realtime-kql-database-create-report-part2_hued8f9189b82aa39680edb890bfd95d24_87289_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-poc-iot/img/022-fabric-realtime-kql-database-create-report-part2_hued8f9189b82aa39680edb890bfd95d24_87289_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Création du rapport Power BI - étape 2&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;145&#34;
+		data-flex-basis=&#34;349px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Ajouter un visuel &lt;em&gt;Graphique en courbe&lt;/em&gt; dans votre rapport et positionnez-le pour recouvrir la zone de dessin.&lt;/li&gt;
+&lt;li&gt;Dans &lt;em&gt;Données&lt;/em&gt; vous retrouvez les champs de votre table extraits par une requête KQL.&lt;/li&gt;
+&lt;li&gt;Positionez les champs sur le graphique :
+&lt;ul&gt;
+&lt;li&gt;Mettre &lt;em&gt;Date&lt;/em&gt; dans &lt;em&gt;Axe X&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Mettre &lt;em&gt;Hum&lt;/em&gt; et &lt;em&gt;Temp&lt;/em&gt; dans &lt;em&gt;Axe Y&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Mettre &lt;em&gt;HardwareId&lt;/em&gt; dans &lt;em&gt;Petits multiples&lt;/em&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Votre graphe doit ressembler à cela.&lt;/li&gt;
+&lt;li&gt;Si aucune donnée n&amp;rsquo;est présente, relancer le script PowerShell et appuyer sur le bouton &lt;em&gt;Actualiser&lt;/em&gt; du rapport.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-poc-iot/img/023-fabric-realtime-kql-database-create-report-part3.png&#34;
+	width=&#34;1022&#34;
+	height=&#34;702&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-poc-iot/img/023-fabric-realtime-kql-database-create-report-part3_hu41a37bf7a966c4490d984582e85b49c9_77431_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-poc-iot/img/023-fabric-realtime-kql-database-create-report-part3_hu41a37bf7a966c4490d984582e85b49c9_77431_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Création du rapport Power BI - étape 3&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;145&#34;
+		data-flex-basis=&#34;349px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Cliquez dans la zone sous les pointillés pour accéder aux paramétrages de la page du rapport Power BI.&lt;/li&gt;
+&lt;li&gt;Rendez-vous dans l&amp;rsquo;onglet de mise en forme.&lt;/li&gt;
+&lt;li&gt;Activez &lt;em&gt;Actualisation de la page&lt;/em&gt; en basculant le bouton et cliquez sur le texte pour ouvrir le panneau de configuration.&lt;/li&gt;
+&lt;li&gt;Paramétrez votre page pour une actualisation automatique toutes les 10 secondes.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Dans le menu fichier, appuyez sur &lt;em&gt;Enregistrer&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-poc-iot/img/024-fabric-realtime-kql-database-create-report-end.png&#34;
+	width=&#34;1020&#34;
+	height=&#34;702&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-poc-iot/img/024-fabric-realtime-kql-database-create-report-end_hud1e876a97b647aa9757b9f9afdc45b54_92916_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-poc-iot/img/024-fabric-realtime-kql-database-create-report-end_hud1e876a97b647aa9757b9f9afdc45b54_92916_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Création du rapport Power BI - fin&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;145&#34;
+		data-flex-basis=&#34;348px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Donnez un nom à votre rapport.&lt;/li&gt;
+&lt;li&gt;Sélectionnez l&amp;rsquo;espace de travail.&lt;/li&gt;
+&lt;li&gt;Appuyez sur &lt;em&gt;Continuer&lt;/em&gt; pour publier le rapport.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Vous pouvez maintenant fermer la fenêtre Power BI.&lt;/p&gt;
+&lt;h3 id=&#34;test-du-rapport-power-bipower-bi&#34;&gt;Test du rapport Power BIPower BI&lt;/h3&gt;
+&lt;p&gt;Retournez dans l&amp;rsquo;espace de travail où vous avez sauvegardé le rapport Power BI et ouvrez-le.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-poc-iot/img/025-fabric-realtime-report-power-bi.png&#34;
+	width=&#34;1848&#34;
+	height=&#34;932&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-poc-iot/img/025-fabric-realtime-report-power-bi_hu47c06023f95bc60a17d8c50ca10dbd07_155884_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-poc-iot/img/025-fabric-realtime-report-power-bi_hu47c06023f95bc60a17d8c50ca10dbd07_155884_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Rapport Power BI&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;198&#34;
+		data-flex-basis=&#34;475px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Vous pouvez voir ici vos données qui vont se rafraichir automatiquement si le script PowerShell s&amp;rsquo;exécute.&lt;/li&gt;
+&lt;li&gt;Vous pouvez ajouter un filtre sur les 10 dernières minutes de données pour ne pas voir les données des tests précédents.&lt;/li&gt;
+&lt;li&gt;Si le rafraichissement ne se fait pas vous pouvez le forcer via le bouton &lt;em&gt;Actualiser&lt;/em&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Lors de mes expérimentations, le rafraichissement automatique du rapport Power BI était plutôt chaotique. Le rafraichissement par le bouton &lt;em&gt;Actualiser&lt;/em&gt; rafraichissait bien les données donc c&amp;rsquo;est la partie Power BI qui ne se comporte pas tout à fait comme attendu.&lt;/p&gt;
+&lt;h2 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h2&gt;
+&lt;p&gt;Dans ce scénario je simule des capteurs d&amp;rsquo;IOT, mais vous pouvez utiliser cette technique pour n&amp;rsquo;importe quel type de données. Par exemple vous pouvez monitorer vos scripts PowerShell en envoyant directement des données à la base KQL.&lt;/p&gt;
+&lt;p&gt;Merci de votre attention.&lt;/p&gt;</description>
+        </item>
+        <item>
         <title>Power Query au-delà des assistants.</title>
         <link>https://blog.ddata.fr/p/power-query-advanced-m-part1/</link>
         <pubDate>Sun, 28 May 2023 00:00:00 +0000</pubDate>
