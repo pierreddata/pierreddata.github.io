@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="fr-fr" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Quelques conseils pour améliorer la maintenance de vos projets Power Query.
+'>
+<title>Power Query améliorer la maintenance.</title>
+
+<link rel='canonical' href='https://blog.ddata.fr/p/power-query-advanced-m-part2/'>
+
+<link rel="stylesheet" href="/scss/style.min.5be32ca3f6e1a997c75795c4359147cc6d4fbd34948c0acd51e31d237033978a.css"><meta property='og:title' content='Power Query améliorer la maintenance.'>
+<meta property='og:description' content='Quelques conseils pour améliorer la maintenance de vos projets Power Query.
+'>
+<meta property='og:url' content='https://blog.ddata.fr/p/power-query-advanced-m-part2/'>
+<meta property='og:site_name' content='Le D de Data'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Intermédiaire' /><meta property='article:tag' content='Auto formation' /><meta property='article:published_time' content='2023-06-07T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2023-06-07T00:00:00&#43;00:00'/><meta property='og:image' content='https://blog.ddata.fr/p/power-query-advanced-m-part2/luis-feliciano-9EH5AkClwZ0-unsplash.jpg' />
+<meta name="twitter:title" content="Power Query améliorer la maintenance.">
+<meta name="twitter:description" content="Quelques conseils pour améliorer la maintenance de vos projets Power Query.
+"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://blog.ddata.fr/p/power-query-advanced-m-part2/luis-feliciano-9EH5AkClwZ0-unsplash.jpg' />
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TY6XFEN6QV"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-TY6XFEN6QV', { 'anonymize_ip': false });
+}
+</script>
+<link rel="alternate"
+      type="application/rss+xml"
+      href="https://blog.ddata.fr/index.xml"
+      title="Le D de Data">
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "dark");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Afficher le menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/pierre_hua6bbc70dde858dd10e363a14d1f7729c_67951_300x0_resize_q75_box.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Le D de Data</a></h1>
+            <h2 class="site-description">Blog francophone autour de la data Microsoft</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/pierreddata'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://www.linkedin.com/in/pierre-dupont-0b532374/'
+                        target="_blank"
+                        title="LinkdIn"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-folders" width="44" height="44" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <rect x="4" y="4" width="16" height="16" rx="2" />
+  <line x1="8" y1="11" x2="8" y2="16" />
+  <line x1="8" y1="8" x2="8" y2="8.01" />
+  <line x1="12" y1="16" x2="12" y2="11" />
+  <path d="M16 16v-3a2 2 0 0 0 -4 0" />
+</svg>
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Accueil</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/a-propos-de-d-de-data/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>A Propos</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/series/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-folders" width="44" height="44" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 4h3l2 2h5a2 2 0 0 1 2 2v7a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-9a2 2 0 0 1 2 -2" />
+  <path d="M17 17v2a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-9a2 2 0 0 1 2 -2h2" />
+</svg>
+
+                
+                <span>Series</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/liens/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Liens</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Rechercher</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Mode sombre</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table des matières</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#contexte">Contexte</a></li>
+    <li><a href="#utiliser-des-émoticônes-dans-les-noms-requêtes--étapes--colonne">Utiliser des émoticônes dans les noms (requêtes / étapes / colonne)</a></li>
+    <li><a href="#utiliser-des-commentaires">Utiliser des commentaires</a></li>
+    <li><a href="#économiser-les-étapes-renommées-et-types">Économiser les étapes renommées et types</a></li>
+    <li><a href="#modifier-le-nom-par-défaut-défini-par-lassistant">Modifier le nom par défaut défini par l&rsquo;assistant</a></li>
+    <li><a href="#référencer-les-flux-de-données">Référencer les flux de données</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/power-query-advanced-m-part2/">
+                <img src="/p/power-query-advanced-m-part2/luis-feliciano-9EH5AkClwZ0-unsplash_hu3d03a01dcc18bc5be0e67db3d8d209a6_873198_800x0_resize_q75_box.jpg"
+                        srcset="/p/power-query-advanced-m-part2/luis-feliciano-9EH5AkClwZ0-unsplash_hu3d03a01dcc18bc5be0e67db3d8d209a6_873198_800x0_resize_q75_box.jpg 800w, /p/power-query-advanced-m-part2/luis-feliciano-9EH5AkClwZ0-unsplash_hu3d03a01dcc18bc5be0e67db3d8d209a6_873198_1600x0_resize_q75_box.jpg 1600w"
+                        width="800" 
+                        height="553" 
+                        loading="lazy"
+                        alt="Featured image of post Power Query améliorer la maintenance." />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/powerbi/" style="background-color: #f2c811; color: #fff;">
+                Power BI
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/power-query-advanced-m-part2/">Power Query améliorer la maintenance.</a>
+        </h2>
+
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published" datetime="2023-06-07T00:00:00Z">
+                    7 juin 2023
+                    
+                </time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    4 minutes de lecture
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+    
+    
+</div>
+</header>
+
+    <section class="article-content">
+    
+    
+    <p>Quelques conseils pour améliorer la maintenance de vos projets Power Query.</p>
+<h2 id="contexte">Contexte</h2>
+<p>Nous allons aborder dans cet article un point très important dans Power Query : la maintenance.<br>
+Avec un peu d&rsquo;expérience vous vous rendrez compte que pensais à la maintenabilité de ses requêtes Power Query est quelque chose de très important.</p>
+<p>Pensez à celui qui va passer après vous, c&rsquo;est probablement votre moi de dans 6 mois et il vous sera reconnaissant d&rsquo;avoir travaillé proprement.</p>
+<h2 id="utiliser-des-émoticônes-dans-les-noms-requêtes--étapes--colonne">Utiliser des émoticônes dans les noms (requêtes / étapes / colonne)</h2>
+<p>La première chose à faire est de bien nommer les différents objets que vous manipulez :</p>
+<ul>
+<li>Les requêtes étant les tables de votre modèle de données, elles doivent donc avoir un nom clairement compréhensible pour les métiers qui vont utiliser le modèle de données.
+Les noms des colonnes des tables doivent suivre cette même règle.</li>
+<li>En général, le nom des étapes n&rsquo;est pas clair. On retrouve souvent les noms par défaut. Prenez le temps de renommer vos étapes clairement. Vous pouvez même utiliser des émoticônes dans le nom des étapes.</li>
+</ul>
+<p><img src="/p/power-query-advanced-m-part2/img/Rename-Query-Step.jpg"
+	width="904"
+	height="600"
+	srcset="/p/power-query-advanced-m-part2/img/Rename-Query-Step_hu0f6a150ab5c51af4131b7397e0cdcfa7_78662_480x0_resize_q75_box.jpg 480w, /p/power-query-advanced-m-part2/img/Rename-Query-Step_hu0f6a150ab5c51af4131b7397e0cdcfa7_78662_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="Exemple d&rsquo;étape de requête avec émoticon"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="150"
+		data-flex-basis="361px"
+	
+>
+Cet exemple vient <a class="link" href="https://www.linkedin.com/posts/rickmaurinus_powerquery-bigorilla-powerbi-activity-7059075268270813184-u-qO?utm_source=share&amp;utm_medium=member_desktop"  target="_blank" rel="noopener"
+    >du post linkdn</a> de <a class="link" href="https://www.linkedin.com/in/rickmaurinus/"  target="_blank" rel="noopener"
+    >Rick de Groot</a>.</p>
+<p>💥 Sous Windows, pour ajouter simplement des émoticônes, utilisez le raccourci clavier avec la touche <em>windows + ;</em></p>
+<h2 id="utiliser-des-commentaires">Utiliser des commentaires</h2>
+<p>Ajouter des commentaires au-dessus d&rsquo;une étape dans l&rsquo;éditeur avancé pour le voir apparaitre</p>
+<p><img src="/p/power-query-advanced-m-part2/img/006-power-query-comment.png"
+	width="1519"
+	height="569"
+	srcset="/p/power-query-advanced-m-part2/img/006-power-query-comment_hu8bebb9b9a66e9d809f0867433e1128f5_78497_480x0_resize_box_3.png 480w, /p/power-query-advanced-m-part2/img/006-power-query-comment_hu8bebb9b9a66e9d809f0867433e1128f5_78497_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Utilisation des commentaires"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="266"
+		data-flex-basis="640px"
+	
+></p>
+<ol>
+<li>Dans l&rsquo;éditeur Power Query, allez dans le menu <em>Acceuil</em>.</li>
+<li>Ouvrez l&rsquo;éditeur avancé</li>
+<li>Vous pouvez saisir un commentaire sur une ligne en le précédent de //</li>
+<li>Ou un commentaire multiligne entre /* */</li>
+<li>Les commentaires apparaissent au niveau des étapes de la requête.</li>
+</ol>
+<h2 id="économiser-les-étapes-renommées-et-types">Économiser les étapes renommées et types</h2>
+<p>On voit souvent un grand nombre d&rsquo;étapes <em>Colonnes renommées</em> ou <em>Type modifié</em> dans une même requête. Cela se produit quand on agit de la sorte :</p>
+<ol>
+<li>Création d&rsquo;une étape <em>Colonnes renommées</em></li>
+<li>Ajout d&rsquo;autres étapes.</li>
+<li>On souhaite de nouveau renommer des colonnes, dans ce cas une nouvelle étape de type <em>Colonnes renommées</em> est créée pour Power Query.</li>
+</ol>
+<p>C&rsquo;est bien sûr la même chose pour <em>Type modifié</em>.</p>
+<p>Pour éviter cela, vous pouvez vous repositionner sur une étape <em>Colonnes renommées</em> ou <em>Type modifié</em> précédente et faire les modifications nécessaires. Power Query vous demande si vous souhaitez insérer une étape, répondez oui et Power Query réutilisera l&rsquo;étape en cours si elle est du même type que l&rsquo;action réalisée.</p>
+<p>Pour optimiser l&rsquo;usage des étapes <em>Colonnes renommées</em> ou <em>Type modifié</em>, positionnez les à la fin de vos requêtes, vous pouvez les déplacer simplement dans l&rsquo;interface via un glisser-déposer.</p>
+<h2 id="modifier-le-nom-par-défaut-défini-par-lassistant">Modifier le nom par défaut défini par l&rsquo;assistant</h2>
+<p>Lorsque vous ajoutez des colonnes à votre requête, Power Query, certains assistants, ne propose pas de choisir le nom de la nouvelle colonne. Par exemple, si j&rsquo;ajoute une colonne &ldquo;extraire les premiers caractères&rdquo;.</p>
+<p><img src="/p/power-query-advanced-m-part2/img/007-power-query-create-column-without-name.png"
+	width="1082"
+	height="322"
+	srcset="/p/power-query-advanced-m-part2/img/007-power-query-create-column-without-name_hu9a48b60353abdce4b8d8fb7e80c0fcf1_16570_480x0_resize_box_3.png 480w, /p/power-query-advanced-m-part2/img/007-power-query-create-column-without-name_hu9a48b60353abdce4b8d8fb7e80c0fcf1_16570_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Création d&rsquo;une colonne sans le choix de nom"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="336"
+		data-flex-basis="806px"
+	
+></p>
+<p>Le code Power Query généré est visible dans la barre de formule.</p>
+<p><img src="/p/power-query-advanced-m-part2/img/008-power-query-create-column-without-name-edit.png"
+	width="861"
+	height="139"
+	srcset="/p/power-query-advanced-m-part2/img/008-power-query-create-column-without-name-edit_hu1354e6b66fd775d874e9855ab7a5e7b8_12439_480x0_resize_box_3.png 480w, /p/power-query-advanced-m-part2/img/008-power-query-create-column-without-name-edit_hu1354e6b66fd775d874e9855ab7a5e7b8_12439_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Modification directe du nom de la colonne lors de sa création"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="619"
+		data-flex-basis="1486px"
+	
+></p>
+<ol>
+<li>Vous pouvez voir le nom donner par défaut par Power Query.</li>
+<li>Ce nom est modifiable dans l&rsquo;étape en éditant la formule.</li>
+</ol>
+<h2 id="référencer-les-flux-de-données">Référencer les flux de données</h2>
+<p>Lorsque vous utilisez des flux de données, votre requête Power Query ressemble à cela visuellement :</p>
+<p><img src="/p/power-query-advanced-m-part2/img/009-power-query-dataflow-import.png"
+	width="1086"
+	height="531"
+	srcset="/p/power-query-advanced-m-part2/img/009-power-query-dataflow-import_hu18443ff6971c80a62ac834386e1744ce_18193_480x0_resize_box_3.png 480w, /p/power-query-advanced-m-part2/img/009-power-query-dataflow-import_hu18443ff6971c80a62ac834386e1744ce_18193_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Appel d&rsquo;un flux de données"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="204"
+		data-flex-basis="490px"
+	
+></p>
+<p>Mais si on ouvre le code, nous avons ceci :</p>
+<p><img src="/p/power-query-advanced-m-part2/img/010-power-query-dataflow-advanced-editor.png"
+	width="1139"
+	height="595"
+	srcset="/p/power-query-advanced-m-part2/img/010-power-query-dataflow-advanced-editor_hu15a7339ee7a703f27c5f063eae8ecfe1_47995_480x0_resize_box_3.png 480w, /p/power-query-advanced-m-part2/img/010-power-query-dataflow-advanced-editor_hu15a7339ee7a703f27c5f063eae8ecfe1_47995_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Code de l&rsquo;appel d&rsquo;un flux de données"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="191"
+		data-flex-basis="459px"
+	
+></p>
+<ol>
+<li>Nous avons 5 étapes dans l&rsquo;éditeur avancé.</li>
+<li>Alors que l&rsquo;on ne voit que 2 étapes, dont l&rsquo;étape <em>Navigation</em> qui n&rsquo;existe pas dans l&rsquo;éditeur avancé.</li>
+</ol>
+<p>Cela est dû à un masquage automatique de certaines étapes sous la dénomination <em>Navigation</em>. C&rsquo;est les étapes qui permettent de naviguer dans le service de flux de données est de sélectionner votre flux de données.</p>
+<p>Si vous voulez voir toutes les étapes dans l&rsquo;interface, il suffit d&rsquo;ajouter une étape <strong>avant</strong> la première étape.</p>
+<p><img src="/p/power-query-advanced-m-part2/img/011-power-query-dataflow-advanced-editor-debug.png"
+	width="1247"
+	height="540"
+	srcset="/p/power-query-advanced-m-part2/img/011-power-query-dataflow-advanced-editor-debug_hufdb0a61967fd9c693dfe20d22a36f66d_49801_480x0_resize_box_3.png 480w, /p/power-query-advanced-m-part2/img/011-power-query-dataflow-advanced-editor-debug_hufdb0a61967fd9c693dfe20d22a36f66d_49801_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Affichage de toutes les étapes d&rsquo;un flux de données"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="230"
+		data-flex-basis="554px"
+	
+></p>
+<ol>
+<li>Ajout d&rsquo;une étape ne faisant rien.</li>
+<li>Maintenant on voit toutes les étapes de la requête.</li>
+</ol>
+<p>Comme vous pouvez le constater lorsque vous appelez un flux de données, Power Query utilise les guid (identifiant unique) de ce dernier pour l&rsquo;identifier de manière unique. C&rsquo;est bien, mais si vous envisagez d&rsquo;avoir des environnements distincts pour les tests et la production ou si vous supprimez et recréez votre flux de données, vous serez confronté au changement de la valeur de guid.<br>
+Pour éviter, ces problèmes, nous pouvons améliorer le code généré par l&rsquo;assistant, par ce code :</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kd">let</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">WorkspaceName</span> <span class="o">=</span> <span class="s2">&#34;INSERER LE NOM DE DE L&#39;ESPACE DE TRAVAIL DE VOTRE FLUX DE DONNEES&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">DataflowName</span> <span class="o">=</span> <span class="s2">&#34;INSERER LE NOM DE VOTRE FLUX DE DONNEES&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">EntityName</span> <span class="o">=</span> <span class="s2">&#34;INSERER LE NOM DE LA REQUETE DANS VOTRE FLUX DE DONNEES&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">Source</span> <span class="o">=</span> <span class="nx">PowerPlatform</span><span class="p">.</span><span class="nx">Dataflows</span><span class="p">(</span><span class="kc">null</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">Workspaces</span> <span class="o">=</span> <span class="nx">Source</span><span class="p">{[</span><span class="nx">Id</span><span class="o">=</span><span class="s2">&#34;Workspaces&#34;</span><span class="p">]}[</span><span class="nx">Data</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">Workspace</span> <span class="o">=</span> <span class="nx">Workspaces</span><span class="p">{[</span><span class="nx">workspaceName</span><span class="o">=</span><span class="nx">WorkspaceName</span><span class="p">]}[</span><span class="nx">Data</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">Dataflow</span> <span class="o">=</span> <span class="nx">Workspace</span><span class="p">{[</span><span class="nx">dataflowName</span><span class="o">=</span><span class="nx">DataflowName</span><span class="p">]}[</span><span class="nx">Data</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">Entity</span> <span class="o">=</span> <span class="nx">Dataflow</span><span class="p">{[</span><span class="nx">entity</span><span class="o">=</span><span class="nx">EntityName</span><span class="p">,</span><span class="nx">version</span><span class="o">=</span><span class="s2">&#34;&#34;</span><span class="p">]}[</span><span class="nx">Data</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="k">in</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">Entity</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>Modifier les lignes 2, 3 et 4 avec vos valeurs.</li>
+<li>Créez une nouvelle requête vide et dans l&rsquo;éditeur avancé remplacez le code par celui-ci dessus.</li>
+</ul>
+<p>On peut aussi utiliser des paramètres Power Query pour variabiliser le nom de l&rsquo;espace de travail et du flux de données et centraliser ce paramétrage pour toutes nos requêtes.</p>
+<p>⚠ Ce changement ne garantit plus l&rsquo;unicité du nom du flux de données, mais c&rsquo;est ce qui est recherché.</p>
+<p>Merci de votre attention.</p>
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/interm%C3%A9diaire/">Intermédiaire</a>
+        
+            <a href="/tags/auto-formation/">Auto formation</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Contenus liés</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/fabric-poc-iot/">
+        
+        
+            <div class="article-image">
+                <img src="/p/fabric-poc-iot/_hu3d03a01dcc18bc5be0e67db3d8d209a6_3315002_4c771f89f6ca9cc60be251a06c4c762b.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Données en temps réel dans votre rapport Power BI avec Microsoft Fabric"
+                        data-key="fabric-poc-iot" 
+                        data-hash="md5-vJKPy1E9umGa8OSN&#43;hupgw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Données en temps réel dans votre rapport Power BI avec Microsoft Fabric</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/power-query-advanced-m-part1/">
+        
+        
+            <div class="article-image">
+                <img src="/p/power-query-advanced-m-part1/_hu3d03a01dcc18bc5be0e67db3d8d209a6_1564048_3900e448ac4cabc985e10261804d2efc.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Power Query au-delà des assistants."
+                        data-key="power-query-advanced-m-part1" 
+                        data-hash="md5-oKKnMZm6l/XY9kXLKdQwQQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Power Query au-delà des assistants.</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/power-query-function/">
+        
+        
+            <div class="article-image">
+                <img src="/p/power-query-function/_hu1bbec3486f773b072d538975f65a80c0_2311333_01c52f658bc9b87cb2a60fb00253234a.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Power Query le pouvoir des fonctions."
+                        data-key="power-query-function" 
+                        data-hash="md5-q4/9KUtBgqWybU7TYFkHGg==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Power Query le pouvoir des fonctions.</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/comprendre-les-licences-power-bi/">
+        
+        
+            <div class="article-image">
+                <img src="/p/comprendre-les-licences-power-bi/_hu9694657f3c697ac35f9080995597d89a_217872_34c60cea0abb30e97a116c23faead41a.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Comprendre les licences Power BI"
+                        data-key="comprendre-les-licences-power-bi" 
+                        data-hash="md5-Tqm03iJ7lbxz/5qcFYYkrg==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Comprendre les licences Power BI</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/tables-recommandees-powerbi/">
+        
+        
+            <div class="article-image">
+                <img src="/p/tables-recommandees-powerbi/_hucaac4cc3511e7b1acfab0972cfec5559_699224_cad85dcfe262173e6e61f48562f1686a.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Vos référentiels d&#39;entreprise directement dans Excel."
+                        data-key="tables-recommandees-powerbi" 
+                        data-hash="md5-zTxeLVq9XPFPYMxjyRSnCg==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Vos référentiels d&#39;entreprise directement dans Excel.</h2>
+        </div>
+    </a>
+</article>
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "ddata" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2022 - 
+        
+        2023 Le D de Data
+    </section>
+    
+    <section class="powerby">
+        Généré avec <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Thème <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.16.0">Stack</a></b> conçu par <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

@@ -6,7 +6,204 @@
         <description>Recent content in Power BI on Le D de Data</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>fr-fr</language>
-        <lastBuildDate>Tue, 30 May 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ddata.fr/categories/powerbi/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Wed, 07 Jun 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ddata.fr/categories/powerbi/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Power Query améliorer la maintenance.</title>
+        <link>https://blog.ddata.fr/p/power-query-advanced-m-part2/</link>
+        <pubDate>Wed, 07 Jun 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://blog.ddata.fr/p/power-query-advanced-m-part2/</guid>
+        <description>&lt;img src="https://blog.ddata.fr/p/power-query-advanced-m-part2/luis-feliciano-9EH5AkClwZ0-unsplash.jpg" alt="Featured image of post Power Query améliorer la maintenance." /&gt;&lt;p&gt;Quelques conseils pour améliorer la maintenance de vos projets Power Query.&lt;/p&gt;
+&lt;h2 id=&#34;contexte&#34;&gt;Contexte&lt;/h2&gt;
+&lt;p&gt;Nous allons aborder dans cet article un point très important dans Power Query : la maintenance.&lt;br&gt;
+Avec un peu d&amp;rsquo;expérience vous vous rendrez compte que pensais à la maintenabilité de ses requêtes Power Query est quelque chose de très important.&lt;/p&gt;
+&lt;p&gt;Pensez à celui qui va passer après vous, c&amp;rsquo;est probablement votre moi de dans 6 mois et il vous sera reconnaissant d&amp;rsquo;avoir travaillé proprement.&lt;/p&gt;
+&lt;h2 id=&#34;utiliser-des-émoticônes-dans-les-noms-requêtes--étapes--colonne&#34;&gt;Utiliser des émoticônes dans les noms (requêtes / étapes / colonne)&lt;/h2&gt;
+&lt;p&gt;La première chose à faire est de bien nommer les différents objets que vous manipulez :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Les requêtes étant les tables de votre modèle de données, elles doivent donc avoir un nom clairement compréhensible pour les métiers qui vont utiliser le modèle de données.
+Les noms des colonnes des tables doivent suivre cette même règle.&lt;/li&gt;
+&lt;li&gt;En général, le nom des étapes n&amp;rsquo;est pas clair. On retrouve souvent les noms par défaut. Prenez le temps de renommer vos étapes clairement. Vous pouvez même utiliser des émoticônes dans le nom des étapes.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/power-query-advanced-m-part2/img/Rename-Query-Step.jpg&#34;
+	width=&#34;904&#34;
+	height=&#34;600&#34;
+	srcset=&#34;https://blog.ddata.fr/p/power-query-advanced-m-part2/img/Rename-Query-Step_hu0f6a150ab5c51af4131b7397e0cdcfa7_78662_480x0_resize_q75_box.jpg 480w, https://blog.ddata.fr/p/power-query-advanced-m-part2/img/Rename-Query-Step_hu0f6a150ab5c51af4131b7397e0cdcfa7_78662_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Exemple d&amp;rsquo;étape de requête avec émoticon&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;150&#34;
+		data-flex-basis=&#34;361px&#34;
+	
+&gt;
+Cet exemple vient &lt;a class=&#34;link&#34; href=&#34;https://www.linkedin.com/posts/rickmaurinus_powerquery-bigorilla-powerbi-activity-7059075268270813184-u-qO?utm_source=share&amp;amp;utm_medium=member_desktop&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;du post linkdn&lt;/a&gt; de &lt;a class=&#34;link&#34; href=&#34;https://www.linkedin.com/in/rickmaurinus/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Rick de Groot&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;💥 Sous Windows, pour ajouter simplement des émoticônes, utilisez le raccourci clavier avec la touche &lt;em&gt;windows + ;&lt;/em&gt;&lt;/p&gt;
+&lt;h2 id=&#34;utiliser-des-commentaires&#34;&gt;Utiliser des commentaires&lt;/h2&gt;
+&lt;p&gt;Ajouter des commentaires au-dessus d&amp;rsquo;une étape dans l&amp;rsquo;éditeur avancé pour le voir apparaitre&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/power-query-advanced-m-part2/img/006-power-query-comment.png&#34;
+	width=&#34;1519&#34;
+	height=&#34;569&#34;
+	srcset=&#34;https://blog.ddata.fr/p/power-query-advanced-m-part2/img/006-power-query-comment_hu8bebb9b9a66e9d809f0867433e1128f5_78497_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/power-query-advanced-m-part2/img/006-power-query-comment_hu8bebb9b9a66e9d809f0867433e1128f5_78497_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Utilisation des commentaires&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;266&#34;
+		data-flex-basis=&#34;640px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Dans l&amp;rsquo;éditeur Power Query, allez dans le menu &lt;em&gt;Acceuil&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Ouvrez l&amp;rsquo;éditeur avancé&lt;/li&gt;
+&lt;li&gt;Vous pouvez saisir un commentaire sur une ligne en le précédent de //&lt;/li&gt;
+&lt;li&gt;Ou un commentaire multiligne entre /* */&lt;/li&gt;
+&lt;li&gt;Les commentaires apparaissent au niveau des étapes de la requête.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;économiser-les-étapes-renommées-et-types&#34;&gt;Économiser les étapes renommées et types&lt;/h2&gt;
+&lt;p&gt;On voit souvent un grand nombre d&amp;rsquo;étapes &lt;em&gt;Colonnes renommées&lt;/em&gt; ou &lt;em&gt;Type modifié&lt;/em&gt; dans une même requête. Cela se produit quand on agit de la sorte :&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Création d&amp;rsquo;une étape &lt;em&gt;Colonnes renommées&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;Ajout d&amp;rsquo;autres étapes.&lt;/li&gt;
+&lt;li&gt;On souhaite de nouveau renommer des colonnes, dans ce cas une nouvelle étape de type &lt;em&gt;Colonnes renommées&lt;/em&gt; est créée pour Power Query.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;C&amp;rsquo;est bien sûr la même chose pour &lt;em&gt;Type modifié&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;Pour éviter cela, vous pouvez vous repositionner sur une étape &lt;em&gt;Colonnes renommées&lt;/em&gt; ou &lt;em&gt;Type modifié&lt;/em&gt; précédente et faire les modifications nécessaires. Power Query vous demande si vous souhaitez insérer une étape, répondez oui et Power Query réutilisera l&amp;rsquo;étape en cours si elle est du même type que l&amp;rsquo;action réalisée.&lt;/p&gt;
+&lt;p&gt;Pour optimiser l&amp;rsquo;usage des étapes &lt;em&gt;Colonnes renommées&lt;/em&gt; ou &lt;em&gt;Type modifié&lt;/em&gt;, positionnez les à la fin de vos requêtes, vous pouvez les déplacer simplement dans l&amp;rsquo;interface via un glisser-déposer.&lt;/p&gt;
+&lt;h2 id=&#34;modifier-le-nom-par-défaut-défini-par-lassistant&#34;&gt;Modifier le nom par défaut défini par l&amp;rsquo;assistant&lt;/h2&gt;
+&lt;p&gt;Lorsque vous ajoutez des colonnes à votre requête, Power Query, certains assistants, ne propose pas de choisir le nom de la nouvelle colonne. Par exemple, si j&amp;rsquo;ajoute une colonne &amp;ldquo;extraire les premiers caractères&amp;rdquo;.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/power-query-advanced-m-part2/img/007-power-query-create-column-without-name.png&#34;
+	width=&#34;1082&#34;
+	height=&#34;322&#34;
+	srcset=&#34;https://blog.ddata.fr/p/power-query-advanced-m-part2/img/007-power-query-create-column-without-name_hu9a48b60353abdce4b8d8fb7e80c0fcf1_16570_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/power-query-advanced-m-part2/img/007-power-query-create-column-without-name_hu9a48b60353abdce4b8d8fb7e80c0fcf1_16570_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Création d&amp;rsquo;une colonne sans le choix de nom&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;336&#34;
+		data-flex-basis=&#34;806px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Le code Power Query généré est visible dans la barre de formule.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/power-query-advanced-m-part2/img/008-power-query-create-column-without-name-edit.png&#34;
+	width=&#34;861&#34;
+	height=&#34;139&#34;
+	srcset=&#34;https://blog.ddata.fr/p/power-query-advanced-m-part2/img/008-power-query-create-column-without-name-edit_hu1354e6b66fd775d874e9855ab7a5e7b8_12439_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/power-query-advanced-m-part2/img/008-power-query-create-column-without-name-edit_hu1354e6b66fd775d874e9855ab7a5e7b8_12439_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Modification directe du nom de la colonne lors de sa création&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;619&#34;
+		data-flex-basis=&#34;1486px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Vous pouvez voir le nom donner par défaut par Power Query.&lt;/li&gt;
+&lt;li&gt;Ce nom est modifiable dans l&amp;rsquo;étape en éditant la formule.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;référencer-les-flux-de-données&#34;&gt;Référencer les flux de données&lt;/h2&gt;
+&lt;p&gt;Lorsque vous utilisez des flux de données, votre requête Power Query ressemble à cela visuellement :&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/power-query-advanced-m-part2/img/009-power-query-dataflow-import.png&#34;
+	width=&#34;1086&#34;
+	height=&#34;531&#34;
+	srcset=&#34;https://blog.ddata.fr/p/power-query-advanced-m-part2/img/009-power-query-dataflow-import_hu18443ff6971c80a62ac834386e1744ce_18193_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/power-query-advanced-m-part2/img/009-power-query-dataflow-import_hu18443ff6971c80a62ac834386e1744ce_18193_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Appel d&amp;rsquo;un flux de données&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;204&#34;
+		data-flex-basis=&#34;490px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Mais si on ouvre le code, nous avons ceci :&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/power-query-advanced-m-part2/img/010-power-query-dataflow-advanced-editor.png&#34;
+	width=&#34;1139&#34;
+	height=&#34;595&#34;
+	srcset=&#34;https://blog.ddata.fr/p/power-query-advanced-m-part2/img/010-power-query-dataflow-advanced-editor_hu15a7339ee7a703f27c5f063eae8ecfe1_47995_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/power-query-advanced-m-part2/img/010-power-query-dataflow-advanced-editor_hu15a7339ee7a703f27c5f063eae8ecfe1_47995_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Code de l&amp;rsquo;appel d&amp;rsquo;un flux de données&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;191&#34;
+		data-flex-basis=&#34;459px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Nous avons 5 étapes dans l&amp;rsquo;éditeur avancé.&lt;/li&gt;
+&lt;li&gt;Alors que l&amp;rsquo;on ne voit que 2 étapes, dont l&amp;rsquo;étape &lt;em&gt;Navigation&lt;/em&gt; qui n&amp;rsquo;existe pas dans l&amp;rsquo;éditeur avancé.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Cela est dû à un masquage automatique de certaines étapes sous la dénomination &lt;em&gt;Navigation&lt;/em&gt;. C&amp;rsquo;est les étapes qui permettent de naviguer dans le service de flux de données est de sélectionner votre flux de données.&lt;/p&gt;
+&lt;p&gt;Si vous voulez voir toutes les étapes dans l&amp;rsquo;interface, il suffit d&amp;rsquo;ajouter une étape &lt;strong&gt;avant&lt;/strong&gt; la première étape.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/power-query-advanced-m-part2/img/011-power-query-dataflow-advanced-editor-debug.png&#34;
+	width=&#34;1247&#34;
+	height=&#34;540&#34;
+	srcset=&#34;https://blog.ddata.fr/p/power-query-advanced-m-part2/img/011-power-query-dataflow-advanced-editor-debug_hufdb0a61967fd9c693dfe20d22a36f66d_49801_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/power-query-advanced-m-part2/img/011-power-query-dataflow-advanced-editor-debug_hufdb0a61967fd9c693dfe20d22a36f66d_49801_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Affichage de toutes les étapes d&amp;rsquo;un flux de données&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;230&#34;
+		data-flex-basis=&#34;554px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Ajout d&amp;rsquo;une étape ne faisant rien.&lt;/li&gt;
+&lt;li&gt;Maintenant on voit toutes les étapes de la requête.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Comme vous pouvez le constater lorsque vous appelez un flux de données, Power Query utilise les guid (identifiant unique) de ce dernier pour l&amp;rsquo;identifier de manière unique. C&amp;rsquo;est bien, mais si vous envisagez d&amp;rsquo;avoir des environnements distincts pour les tests et la production ou si vous supprimez et recréez votre flux de données, vous serez confronté au changement de la valeur de guid.&lt;br&gt;
+Pour éviter, ces problèmes, nous pouvons améliorer le code généré par l&amp;rsquo;assistant, par ce code :&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kd&#34;&gt;let&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nx&#34;&gt;WorkspaceName&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;INSERER LE NOM DE DE L&amp;#39;ESPACE DE TRAVAIL DE VOTRE FLUX DE DONNEES&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nx&#34;&gt;DataflowName&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;INSERER LE NOM DE VOTRE FLUX DE DONNEES&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nx&#34;&gt;EntityName&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;INSERER LE NOM DE LA REQUETE DANS VOTRE FLUX DE DONNEES&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nx&#34;&gt;Source&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;PowerPlatform&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;Dataflows&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kc&#34;&gt;null&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nx&#34;&gt;Workspaces&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;Source&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{[&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;Id&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;Workspaces&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]}[&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;Data&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;],&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nx&#34;&gt;Workspace&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;Workspaces&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{[&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;workspaceName&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;WorkspaceName&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]}[&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;Data&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;],&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nx&#34;&gt;Dataflow&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;Workspace&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{[&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;dataflowName&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;DataflowName&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]}[&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;Data&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;],&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nx&#34;&gt;Entity&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;Dataflow&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{[&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;entity&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;EntityName&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;version&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]}[&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;Data&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;in&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nx&#34;&gt;Entity&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;Modifier les lignes 2, 3 et 4 avec vos valeurs.&lt;/li&gt;
+&lt;li&gt;Créez une nouvelle requête vide et dans l&amp;rsquo;éditeur avancé remplacez le code par celui-ci dessus.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;On peut aussi utiliser des paramètres Power Query pour variabiliser le nom de l&amp;rsquo;espace de travail et du flux de données et centraliser ce paramétrage pour toutes nos requêtes.&lt;/p&gt;
+&lt;p&gt;⚠ Ce changement ne garantit plus l&amp;rsquo;unicité du nom du flux de données, mais c&amp;rsquo;est ce qui est recherché.&lt;/p&gt;
+&lt;p&gt;Merci de votre attention.&lt;/p&gt;</description>
+        </item>
+        <item>
         <title>Données en temps réel dans votre rapport Power BI avec Microsoft Fabric</title>
         <link>https://blog.ddata.fr/p/fabric-poc-iot/</link>
         <pubDate>Tue, 30 May 2023 00:00:00 +0000</pubDate>
