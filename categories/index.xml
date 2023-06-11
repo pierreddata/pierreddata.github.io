@@ -6,21 +6,21 @@
         <description>Recent content in Categories on Le D de Data</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>fr-fr</language>
-        <lastBuildDate>Wed, 07 Jun 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ddata.fr/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sun, 11 Jun 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ddata.fr/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Microsoft Fabric</title>
+        <link>https://blog.ddata.fr/categories/fabric/</link>
+        <pubDate>Sun, 11 Jun 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://blog.ddata.fr/categories/fabric/</guid>
+        <description>&lt;img src="https://blog.ddata.fr/categories/fabric/Fabric256.png" alt="Featured image of post Microsoft Fabric" /&gt;</description>
+        </item>
+        <item>
         <title>Power BI</title>
         <link>https://blog.ddata.fr/categories/powerbi/</link>
         <pubDate>Wed, 07 Jun 2023 00:00:00 +0000</pubDate>
         
         <guid>https://blog.ddata.fr/categories/powerbi/</guid>
         <description>&lt;img src="https://blog.ddata.fr/categories/powerbi/PowerBI250.png" alt="Featured image of post Power BI" /&gt;</description>
-        </item>
-        <item>
-        <title>Microsoft Fabric</title>
-        <link>https://blog.ddata.fr/categories/fabric/</link>
-        <pubDate>Tue, 30 May 2023 00:00:00 +0000</pubDate>
-        
-        <guid>https://blog.ddata.fr/categories/fabric/</guid>
-        <description>&lt;img src="https://blog.ddata.fr/categories/fabric/Fabric256.png" alt="Featured image of post Microsoft Fabric" /&gt;</description>
         </item>
         <item>
         <title>Excel</title>

@@ -6,7 +6,691 @@
         <description>Recent content in Auto formation on Le D de Data</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>fr-fr</language>
-        <lastBuildDate>Wed, 07 Jun 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ddata.fr/tags/auto-formation/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sun, 11 Jun 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ddata.fr/tags/auto-formation/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Votre premier pipeline d&#39;intégration de données avec Microsoft Fabric</title>
+        <link>https://blog.ddata.fr/p/fabric-first-pipeline/</link>
+        <pubDate>Sun, 11 Jun 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://blog.ddata.fr/p/fabric-first-pipeline/</guid>
+        <description>&lt;img src="https://blog.ddata.fr/p/fabric-first-pipeline/bruno-garcia-RDJEYavSQZM-unsplash.jpg" alt="Featured image of post Votre premier pipeline d&#39;intégration de données avec Microsoft Fabric" /&gt;&lt;p&gt;Dans cet article je vous propose de tester et de créer une première intégration de données avec un pipeline de Microsoft Fabric.&lt;/p&gt;
+&lt;h2 id=&#34;contexte&#34;&gt;Contexte&lt;/h2&gt;
+&lt;p&gt;Dans cet article je vous propose de suivre toutes les étapes de création d&amp;rsquo;un flux d&amp;rsquo;intégration de données.&lt;br&gt;
+Pour réaliser cette tâche, nous allons utiliser le pipeline de données. Un pipeline permet de facilement faire de la copie de données entre 2 points et d&amp;rsquo;ordonnancer toute sorte de tâches afin de créer des traitements de données robustes et cohérents.&lt;/p&gt;
+&lt;h2 id=&#34;architecture-médaillon&#34;&gt;Architecture médaillon&lt;/h2&gt;
+&lt;p&gt;Nous allons nous inspirez de l&amp;rsquo;architecture médaillon, pour simplifier nous allons avoir 3 zones dans lesquelles vont résider nos données :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;La zone bronze 🥉 : Elle contient les données brutes historiques, non traitées.&lt;/li&gt;
+&lt;li&gt;La zone silver 🥈 : Elle contient les données préparer, valider et prête à l&amp;rsquo;usage.&lt;/li&gt;
+&lt;li&gt;La zone gold   🥇 : Elle contient les données affinées et agrégées utilisables directement notamment par les outils analytiques.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Lors du passage d&amp;rsquo;une zone à une autre, les données de la zone précédente sont conservées en l&amp;rsquo;état. Nous avons donc plusieurs copies de la même donnée dans des états différents.&lt;/p&gt;
+&lt;h2 id=&#34;préparer-votre-environnement-de-travail&#34;&gt;Préparer votre environnement de travail&lt;/h2&gt;
+&lt;p&gt;Je vous propose de réaliser un exemple d&amp;rsquo;intégration de données externe, via une source de données de type OData public vers la couche bronze 🥉.&lt;/p&gt;
+&lt;p&gt;Nous allons maintenant préparer un environnement pour recevoir les données.&lt;/p&gt;
+&lt;h3 id=&#34;création-dun-espace-de-travail-gérant-les-objets-fabric&#34;&gt;Création d&amp;rsquo;un espace de travail gérant les objets Fabric&lt;/h3&gt;
+&lt;p&gt;Rendez-vous sur le &lt;a class=&#34;link&#34; href=&#34;https://app.powerbi.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;portail Power BI&lt;/a&gt;, Fabric doit être activé dans votre environnement, si ce n&amp;rsquo;est pas le cas, suivez ce tutoriel : &lt;a class=&#34;link&#34; href=&#34;https://learn.microsoft.com/fr-fr/fabric/get-started/fabric-trial&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Version d’évaluation de Microsoft Fabric&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Dans le menu de gauche, sélectionnez &lt;strong&gt;Espace de travail&lt;/strong&gt;, puis &lt;strong&gt;+ Nouvel espace de travail&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-first-pipeline/img/001-fabric-create-workspace.png&#34;
+	width=&#34;593&#34;
+	height=&#34;931&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-first-pipeline/img/001-fabric-create-workspace_hu71b5516cb760538d94e1db8efdcc85b4_53226_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-first-pipeline/img/001-fabric-create-workspace_hu71b5516cb760538d94e1db8efdcc85b4_53226_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Création de l&amp;rsquo;espace de travail&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;63&#34;
+		data-flex-basis=&#34;152px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Donnez un nom à votre espace de travail&lt;/li&gt;
+&lt;li&gt;Ouvrez les options avancées&lt;/li&gt;
+&lt;li&gt;Sélectionnez un type d&amp;rsquo;espace de travail compatible avec les objets Micrsoft Fabric.&lt;/li&gt;
+&lt;li&gt;Appuyez sur &lt;strong&gt;Appliquez&lt;/strong&gt; pour créer votre espace de travail.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;sélection-de-lexpérience-utilisateur&#34;&gt;Sélection de l&amp;rsquo;expérience utilisateur&lt;/h3&gt;
+&lt;p&gt;Afin de simplifier l&amp;rsquo;interface, Fabric est organisé autour de différentes expériences utilisateur afin de ne pas présenter l&amp;rsquo;ensemble des types objets disponible à tout le monde.
+Pour notre exemple nous pouvons utiliser l&amp;rsquo;expérience &lt;em&gt;Data Factory&lt;/em&gt; ou &lt;em&gt;Engineering données&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-first-pipeline/img/002-fabric-select-experience.png&#34;
+	width=&#34;324&#34;
+	height=&#34;314&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-first-pipeline/img/002-fabric-select-experience_hu1cf1fd563f84f5446b47d1f575567d02_17482_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-first-pipeline/img/002-fabric-select-experience_hu1cf1fd563f84f5446b47d1f575567d02_17482_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Modification de l&amp;rsquo;expérience utilisateur&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;103&#34;
+		data-flex-basis=&#34;247px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Appuyez sur l&amp;rsquo;icône en bas à gauche de votre écran, si vous êtes arrivé par le portail Power BI vous trouver l&amp;rsquo;icône Power BI, sinon vous trouverez l&amp;rsquo;icône de l&amp;rsquo;expérience utilisateur en cours.&lt;/li&gt;
+&lt;li&gt;Sélectionnez &lt;em&gt;Data Factory&lt;/em&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Après le changement d&amp;rsquo;expérience, vous devez vous repositionner dans votre espace de travail.&lt;/p&gt;
+&lt;h3 id=&#34;création-dun-datalakehouse&#34;&gt;Création d&amp;rsquo;un DatalakeHouse&lt;/h3&gt;
+&lt;p&gt;Nous allons maintenant créer un Lakehouse dédié à notre exemple.&lt;br&gt;
+Un lakehouse est une espace de stockage acceptant n&amp;rsquo;importe quel type de données. Il sert de zone de stockage générique des données de notre couche bronze.&lt;br&gt;
+Dans l&amp;rsquo;écosystème Fabric un lakehouse est un sous-ensemble de OneLake, l&amp;rsquo;espace de stockage unifié de votre entreprise.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-first-pipeline/img/003-fabric-create-lakehouse.png&#34;
+	width=&#34;327&#34;
+	height=&#34;555&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-first-pipeline/img/003-fabric-create-lakehouse_hu9b0e72fb71068a60d620729ed6086435_24883_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-first-pipeline/img/003-fabric-create-lakehouse_hu9b0e72fb71068a60d620729ed6086435_24883_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Création d&amp;rsquo;un lakehouse - étape 1&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;58&#34;
+		data-flex-basis=&#34;141px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Dans le menu de l&amp;rsquo;espace de travail, appuyez sur &lt;strong&gt;+ Nouveau&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;Sélectionnez &lt;strong&gt;Lakehouse&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-first-pipeline/img/004-fabric-create-lakehouse-step2.png&#34;
+	width=&#34;341&#34;
+	height=&#34;219&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-first-pipeline/img/004-fabric-create-lakehouse-step2_hub686b2b3240d024d6082bc87aba43c01_7971_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-first-pipeline/img/004-fabric-create-lakehouse-step2_hub686b2b3240d024d6082bc87aba43c01_7971_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Création d&amp;rsquo;un lakehouse - étape 2&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;155&#34;
+		data-flex-basis=&#34;373px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Saisissez le nom du lakehouse, ici &lt;em&gt;TripPin&lt;/em&gt; qui est le nom de la source de données.&lt;/li&gt;
+&lt;li&gt;Appuyez sur &lt;strong&gt;Créer&lt;/strong&gt; pour créer le lakehouse.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;L&amp;rsquo;écran qui s&amp;rsquo;affiche est l&amp;rsquo;explorateur de lakehouse.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-first-pipeline/img/005-fabric-lakehouse-explorer.png&#34;
+	width=&#34;1163&#34;
+	height=&#34;672&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-first-pipeline/img/005-fabric-lakehouse-explorer_hu4cbf0695498a80ae7e90c49cfbefb1d5_41309_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-first-pipeline/img/005-fabric-lakehouse-explorer_hu4cbf0695498a80ae7e90c49cfbefb1d5_41309_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Explorateur du lakehouse&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;173&#34;
+		data-flex-basis=&#34;415px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Dans l&amp;rsquo;explorateur de lakehouse, vous pouvez naviguer dans les dossiers.&lt;/li&gt;
+&lt;li&gt;La section &lt;em&gt;Files&lt;/em&gt; permet d&amp;rsquo;avoir la vision des fichiers bruts stockés dans le lakehouse, on parle de données non managées.&lt;/li&gt;
+&lt;li&gt;La section &lt;em&gt;Tables&lt;/em&gt; permet d&amp;rsquo;avoir la vision base de données des fichiers dans le lakehouse et de pouvoir les requêter avec le langage SQL, on parle de données managées.&lt;/li&gt;
+&lt;li&gt;Vous pouvez passer de la vue lakehouse à la vue point de terminaison SQL ici.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Pour chaque lakehouse, un point de terminaison SQL est automatiquement créé, ce dernier permet de créer des requêtes de SQL de type SELECT uniquement sur vos fichiers de données. Vous pouvez aussi faire de jointure SQL entre 2 tables ou plus présente dans le lakehouse.&lt;/p&gt;
+&lt;p&gt;Retournez au niveau de l&amp;rsquo;espace de travail.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-first-pipeline/img/006-fabric-lakehouse-workspace.png&#34;
+	width=&#34;969&#34;
+	height=&#34;362&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-first-pipeline/img/006-fabric-lakehouse-workspace_hua4593b7da6f607241f77bcf766298c96_21658_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-first-pipeline/img/006-fabric-lakehouse-workspace_hua4593b7da6f607241f77bcf766298c96_21658_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Espace de travail après la création du lakehouse&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;267&#34;
+		data-flex-basis=&#34;642px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Vous pouvez constater que 2 objets on était automatiquement créer avec votre lakehouse
+&lt;ul&gt;
+&lt;li&gt;Le point de terminaison SQL comme vue ci-dessus.&lt;/li&gt;
+&lt;li&gt;Un jeu de données par défaut pour Power BI. Ce jeu de données est managé par Fabric.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;créer-un-pipeline&#34;&gt;Créer un pipeline&lt;/h2&gt;
+&lt;p&gt;Maintenant que notre environnement de travail est prêt, nous allons pouvoir créer notre traitement d&amp;rsquo;intégration de données, pour cela nous allons choisir un pipeline de données.&lt;/p&gt;
+&lt;p&gt;Les pipelines de données présents dans Microsoft Fabric, sont une évolution des pipelines que l&amp;rsquo;on trouve dans les services Azure Data factory et Azure Synapse Analytics.&lt;br&gt;
+En termes d&amp;rsquo;interface utilisateur et de possibilité, ils sont très proches de ces derniers, mais ils ont subi une très forte simplification. Par exemple, la notion de service lié et de jeu de données n&amp;rsquo;existe plus dans Fabric elle est remplacée par les connexions. On constate aussi que seules les principales activités de pipeline reste présentent dans Fabric.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-first-pipeline/img/007-fabric-create-pipeline.png&#34;
+	width=&#34;319&#34;
+	height=&#34;554&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-first-pipeline/img/007-fabric-create-pipeline_huc8baada0d2a73264eb148cf8e4267cc1_24849_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-first-pipeline/img/007-fabric-create-pipeline_huc8baada0d2a73264eb148cf8e4267cc1_24849_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Création d&amp;rsquo;un pipeline - étape 1&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;57&#34;
+		data-flex-basis=&#34;138px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Dans le menu de l&amp;rsquo;espace de travail, appuyez sur &lt;strong&gt;+ Nouveau&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;Sélectionnez &lt;strong&gt;Pipeline de données&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-first-pipeline/img/008-fabric-create-pipeline-step2.png&#34;
+	width=&#34;342&#34;
+	height=&#34;270&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-first-pipeline/img/008-fabric-create-pipeline-step2_hu1e38cb79d1c9b1ff26febe8941ed803c_8719_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-first-pipeline/img/008-fabric-create-pipeline-step2_hu1e38cb79d1c9b1ff26febe8941ed803c_8719_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Création d&amp;rsquo;un pipeline - étape 2&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;126&#34;
+		data-flex-basis=&#34;304px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Saisissez le nom du pipeline, ici &lt;em&gt;Source_To_Bronze_TripPin&lt;/em&gt; qui est le nom de la source de données.&lt;/li&gt;
+&lt;li&gt;Appuyez sur &lt;strong&gt;Créer&lt;/strong&gt; pour créer le pipeline.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-first-pipeline/img/009-fabric-pipeline-workspace.png&#34;
+	width=&#34;1306&#34;
+	height=&#34;673&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-first-pipeline/img/009-fabric-pipeline-workspace_hua074369756405dd02f9788db512fd792_37431_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-first-pipeline/img/009-fabric-pipeline-workspace_hua074369756405dd02f9788db512fd792_37431_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Espace de création du pipeline&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;194&#34;
+		data-flex-basis=&#34;465px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;On retrouve principalement la zone d&amp;rsquo;édition des activités du pipeline&lt;/li&gt;
+&lt;li&gt;Dans le menu &lt;em&gt;Home&lt;/em&gt; nous avons les icônes de sauvegarde de notre travail.&lt;/li&gt;
+&lt;li&gt;On retrouve les principales fonctions du menu &lt;em&gt;Run&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Ainsi que les principales activités.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Un pipeline se compose :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;D&amp;rsquo;activités qui correspondent à des briques permettant de réaliser des actions.&lt;/li&gt;
+&lt;li&gt;De connexions permettent de communiquer avec un service de données.&lt;/li&gt;
+&lt;li&gt;D&amp;rsquo;une planification pour automatiser l&amp;rsquo;exécution du pipeline.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;les-connexions&#34;&gt;Les connexions&lt;/h3&gt;
+&lt;p&gt;Les connexions permettent de communiquer avec un service de données.&lt;br&gt;
+Elles peuvent être créées directement depuis le pipeline, depuis le &lt;a class=&#34;link&#34; href=&#34;https://admin.powerplatform.microsoft.com/ext/DataGateways&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;portail de gestion des passerelles et connexions&lt;/a&gt; ou depuis votre espace de travail en ouvrant le menu de la roue crantée en haut à droite puis en sélectionnant &lt;em&gt;Gérer des connexions et des passerelles&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;Pour le moment Fabric ne gère que les connexions vers des services Internet, prochainement un accès a vos données d&amp;rsquo;entreprise sera surement possible via la passerelle Power BI ou un processus équivalent.&lt;/p&gt;
+&lt;h3 id=&#34;les-activités&#34;&gt;Les activités&lt;/h3&gt;
+&lt;p&gt;Les activités sont des composants génériques qui utilisent les connexions pour réaliser des actions standard dessus. Toutes les activités ne peuvent pas utiliser tous les types de connexion.&lt;/p&gt;
+&lt;p&gt;Les principales activités sont :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Copy data : permets de réaliser une copie de données entre une source et une destination.&lt;/li&gt;
+&lt;li&gt;Dataflow : permets d&amp;rsquo;exécuter un dataflow.&lt;/li&gt;
+&lt;li&gt;Notebook : permets d&amp;rsquo;exécuter un notebook.&lt;/li&gt;
+&lt;li&gt;Loockup : permets d&amp;rsquo;interroger les données d&amp;rsquo;une connexion.&lt;/li&gt;
+&lt;li&gt;Invoke pipeline : permets d&amp;rsquo;exécuter un autre pipeline.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Vous retrouverez aussi des activités vous permettant de gérer l&amp;rsquo;exécution de votre pipeline avec notamment des variables ou des boucles.&lt;/p&gt;
+&lt;h2 id=&#34;copier-une-table-de-données-dans-notre-lakehouse&#34;&gt;Copier une table de données dans notre lakehouse&lt;/h2&gt;
+&lt;p&gt;Nous allons maintenant procéder à la création de notre premier pipeline. Le but de ce pipeline va être de copier les données d&amp;rsquo;une source OData vers notre lakehouse.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-first-pipeline/img/010-fabric-pipeline-workspace-add-copy.png&#34;
+	width=&#34;1305&#34;
+	height=&#34;673&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-first-pipeline/img/010-fabric-pipeline-workspace-add-copy_hu69ca691dcb10403ab2251f78394207e6_45797_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-first-pipeline/img/010-fabric-pipeline-workspace-add-copy_hu69ca691dcb10403ab2251f78394207e6_45797_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Ajout d&amp;rsquo;une activité de copie&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;193&#34;
+		data-flex-basis=&#34;465px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Dans le menu &lt;em&gt;Home&lt;/em&gt; du pipeline.&lt;/li&gt;
+&lt;li&gt;Sélectionnez &lt;strong&gt;Copy data&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;Cliquez sur &lt;strong&gt;Add to canvas&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;L&amp;rsquo;activité de copie apparait dans la zone d&amp;rsquo;édition du pipeline.&lt;/li&gt;
+&lt;li&gt;Lorsque l&amp;rsquo;activité de copie est sélectionnée, vous pouvez accéder à ces propriétés.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-first-pipeline/img/011-fabric-pipeline-workspace-add-copy-step2.png&#34;
+	width=&#34;739&#34;
+	height=&#34;150&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-first-pipeline/img/011-fabric-pipeline-workspace-add-copy-step2_hude9737163a902aea54cd48e3193e2c60_12270_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-first-pipeline/img/011-fabric-pipeline-workspace-add-copy-step2_hude9737163a902aea54cd48e3193e2c60_12270_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Création de la connexion source - étape 1&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;492&#34;
+		data-flex-basis=&#34;1182px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Dans les propriétés de l&amp;rsquo;activité de copie, sélectionnez &lt;strong&gt;Source&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;Appuyez sur &lt;strong&gt;+ Nouveau&lt;/strong&gt; pour créer une nouvelle connexion.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-first-pipeline/img/012-fabric-pipeline-workspace-add-copy-step3.png&#34;
+	width=&#34;1106&#34;
+	height=&#34;585&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-first-pipeline/img/012-fabric-pipeline-workspace-add-copy-step3_hu132b64a90f8a84f47b2d789312d9ad64_63783_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-first-pipeline/img/012-fabric-pipeline-workspace-add-copy-step3_hu132b64a90f8a84f47b2d789312d9ad64_63783_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Création de la connexion source - étape 2&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;189&#34;
+		data-flex-basis=&#34;453px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Sélectionnez le connecteur OData.&lt;/li&gt;
+&lt;li&gt;Appuyez sur &lt;strong&gt;Continuer&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-first-pipeline/img/013-fabric-pipeline-workspace-add-copy-step4.png&#34;
+	width=&#34;1106&#34;
+	height=&#34;585&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-first-pipeline/img/013-fabric-pipeline-workspace-add-copy-step4_hu427614f07a8a48241f9891a8634456b0_29651_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-first-pipeline/img/013-fabric-pipeline-workspace-add-copy-step4_hu427614f07a8a48241f9891a8634456b0_29651_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Création de la connexion source - étape 3&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;189&#34;
+		data-flex-basis=&#34;453px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Dans &lt;em&gt;URL&lt;/em&gt; entrez l&amp;rsquo;adresse &lt;em&gt;&lt;a class=&#34;link&#34; href=&#34;https://services.odata.org/TripPinRESTierService&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://services.odata.org/TripPinRESTierService&lt;/a&gt;&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Dans &lt;em&gt;Nom de la connexion&lt;/em&gt; entrez &lt;em&gt;TripPinRESTierService&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Appuyez sur &lt;strong&gt;Créer&lt;/strong&gt; pour créer la nouvelle connexion.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-first-pipeline/img/014-fabric-pipeline-workspace-add-copy-step5.png&#34;
+	width=&#34;937&#34;
+	height=&#34;277&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-first-pipeline/img/014-fabric-pipeline-workspace-add-copy-step5_hu4bc26ec7c307e1671e1104e46839a475_22033_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-first-pipeline/img/014-fabric-pipeline-workspace-add-copy-step5_hu4bc26ec7c307e1671e1104e46839a475_22033_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Création de la connexion source - étape 4&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;338&#34;
+		data-flex-basis=&#34;811px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Dans &lt;em&gt;Chemin d&amp;rsquo;accès&lt;/em&gt; sélectionnez &lt;em&gt;People&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Appuyez sur Aperçu des données pour tester si vous accédez aux données.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-first-pipeline/img/015-fabric-pipeline-workspace-add-copy-step6.png&#34;
+	width=&#34;766&#34;
+	height=&#34;425&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-first-pipeline/img/015-fabric-pipeline-workspace-add-copy-step6_hu0296a04a7230d88c18d155c52b9c428e_20535_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-first-pipeline/img/015-fabric-pipeline-workspace-add-copy-step6_hu0296a04a7230d88c18d155c52b9c428e_20535_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Aperçu des données sources&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;180&#34;
+		data-flex-basis=&#34;432px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Vous devez voir les données sources comme dans l&amp;rsquo;écran ci-dessus.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-first-pipeline/img/016-fabric-pipeline-workspace-add-copy-step7.png&#34;
+	width=&#34;1241&#34;
+	height=&#34;617&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-first-pipeline/img/016-fabric-pipeline-workspace-add-copy-step7_hu92ca1f81d14579cea464c27f51d9ad3c_46009_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-first-pipeline/img/016-fabric-pipeline-workspace-add-copy-step7_hu92ca1f81d14579cea464c27f51d9ad3c_46009_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Création de la destination&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;201&#34;
+		data-flex-basis=&#34;482px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Fermez la fenêtre d&amp;rsquo;aperçu et rendez-vous sur l&amp;rsquo;onglet &lt;em&gt;Destination&lt;/em&gt; de l&amp;rsquo;activité de copie de données.&lt;/li&gt;
+&lt;li&gt;Sélectionnez le lakehouse &lt;em&gt;TripPin&lt;/em&gt; que l&amp;rsquo;on a créé précédemment.&lt;/li&gt;
+&lt;li&gt;Cochez &lt;em&gt;Modifier&lt;/em&gt; pour pouvoir saisir librement le nom de la table.&lt;/li&gt;
+&lt;li&gt;Rentrez &lt;em&gt;People&lt;/em&gt; pour le nom de la table.&lt;/li&gt;
+&lt;li&gt;Enregistrez votre pipeline.&lt;/li&gt;
+&lt;li&gt;Lancez une première exécution de votre pipeline.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-first-pipeline/img/017-fabric-pipeline-workspace-add-copy-step8.png&#34;
+	width=&#34;1301&#34;
+	height=&#34;263&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-first-pipeline/img/017-fabric-pipeline-workspace-add-copy-step8_hufd510970e86a5653a22b15a3e193e4c6_20772_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-first-pipeline/img/017-fabric-pipeline-workspace-add-copy-step8_hufd510970e86a5653a22b15a3e193e4c6_20772_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Informations d&amp;rsquo;exécution du pipeline&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;494&#34;
+		data-flex-basis=&#34;1187px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Vous pouvez voir les informations d&amp;rsquo;exécution du pipeline, la coche verte ✅ nous indique un succès.&lt;/p&gt;
+&lt;h2 id=&#34;explorer-le-résultat-de-lexécution-du-pipeline&#34;&gt;Explorer le résultat de l&amp;rsquo;exécution du pipeline&lt;/h2&gt;
+&lt;p&gt;Rendez-vous dans le lakahouse depuis l&amp;rsquo;espace de travail.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-first-pipeline/img/018-fabric-pipeline-workspace-add-copy-result.png&#34;
+	width=&#34;1293&#34;
+	height=&#34;630&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-first-pipeline/img/018-fabric-pipeline-workspace-add-copy-result_huc8a0847ee586108fd5e8f4c0f851545a_38654_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-first-pipeline/img/018-fabric-pipeline-workspace-add-copy-result_huc8a0847ee586108fd5e8f4c0f851545a_38654_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Résultat de l&amp;rsquo;exécution du pipeline&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;205&#34;
+		data-flex-basis=&#34;492px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Dans la partie &lt;em&gt;Explorateur&lt;/em&gt;, vous pouvez voir votre table &lt;em&gt;People&lt;/em&gt;. Cliquez dessus.&lt;/li&gt;
+&lt;li&gt;Vous pouvez voir ici un aperçu du contenu de votre table.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Notre pipeline a envoyé une requête OData sur la source de données et à copier le résultat dans notre lakehouse sous la forme de fichier delta lake. C&amp;rsquo;est dernier ont automatiquement était mis à votre disposition de manière managée sous la forme d&amp;rsquo;une table pouvant être requêtée en SQL.&lt;/p&gt;
+&lt;h2 id=&#34;copier-plusieurs-tables-de-données-dans-notre-lakehouse&#34;&gt;Copier plusieurs tables de données dans notre lakehouse&lt;/h2&gt;
+&lt;p&gt;Sur la source de notre activité de copie, on peut constater que plusieurs chemins d&amp;rsquo;accès diffèrent son possible. Nous allons modifier notre pipeline afin de copier tous les chemins dans un seul pipeline.&lt;/p&gt;
+&lt;p&gt;Allez dans votre espace de travail et ouvrez le pipeline créé précédemment.
+L&amp;rsquo;objectif est maintenant de réaliser une boucle permettant de copier l&amp;rsquo;ensemble des chemins d&amp;rsquo;accès possible de notre source de données, chaque chemin devant être stocké dans une table distincte.&lt;br&gt;
+Pour cela nous allons procéder en 2 étapes :&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Obtenir la liste des chemins disponible.&lt;/li&gt;
+&lt;li&gt;Pour chaque élément de cette liste, utiliser une même activité de copie que l&amp;rsquo;on va variabiliser.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Nous allons maintenant ajouter une activité de type &lt;em&gt;Lookup&lt;/em&gt; à notre pipeline.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-first-pipeline/img/019-fabric-pipeline-generic-copy-step1.png&#34;
+	width=&#34;1306&#34;
+	height=&#34;634&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-first-pipeline/img/019-fabric-pipeline-generic-copy-step1_hu62263c4c95fc5e29c1caf01c836d0381_40352_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-first-pipeline/img/019-fabric-pipeline-generic-copy-step1_hu62263c4c95fc5e29c1caf01c836d0381_40352_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Ajout d&amp;rsquo;une activité Lookup&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;205&#34;
+		data-flex-basis=&#34;494px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Appuyer sur &lt;em&gt;Lookup&lt;/em&gt; pour ajouter l&amp;rsquo;activité au pipeline.&lt;/li&gt;
+&lt;li&gt;Sélectionnez l&amp;rsquo;activité pour accéder à ces propriétés.&lt;/li&gt;
+&lt;li&gt;Renommez l&amp;rsquo;activité en &lt;em&gt;Liste des chemins TripPin&lt;/em&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Pour obtenir la liste des chemins, nous allons interroger le service en mode HTTP (Requête Web).&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-first-pipeline/img/020-fabric-pipeline-generic-copy-step2.png&#34;
+	width=&#34;718&#34;
+	height=&#34;193&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-first-pipeline/img/020-fabric-pipeline-generic-copy-step2_hu916ed41b7d1a837f8c1e09f2dfbf822d_12952_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-first-pipeline/img/020-fabric-pipeline-generic-copy-step2_hu916ed41b7d1a837f8c1e09f2dfbf822d_12952_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Paramétrage de l&amp;rsquo;activité Liste des chemins TripPin&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;372&#34;
+		data-flex-basis=&#34;892px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Dans les propriétés de l&amp;rsquo;activité &lt;em&gt;Liste des chemins TripPin&lt;/em&gt;, sélectionnez &lt;strong&gt;Source&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;Appuyez sur &lt;strong&gt;+ Nouveau&lt;/strong&gt; pour créer une nouvelle connexion.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-first-pipeline/img/021-fabric-pipeline-generic-copy-step3.png&#34;
+	width=&#34;1104&#34;
+	height=&#34;582&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-first-pipeline/img/021-fabric-pipeline-generic-copy-step3_hub6e86dc904f42b208706f074635f2ba0_63465_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-first-pipeline/img/021-fabric-pipeline-generic-copy-step3_hub6e86dc904f42b208706f074635f2ba0_63465_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Création de la connexion - étape 1&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;189&#34;
+		data-flex-basis=&#34;455px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Sélectionnez le connecteur HTTP.&lt;/li&gt;
+&lt;li&gt;Appuyez sur &lt;strong&gt;Continuer&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-first-pipeline/img/022-fabric-pipeline-generic-copy-step4.png&#34;
+	width=&#34;1106&#34;
+	height=&#34;582&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-first-pipeline/img/022-fabric-pipeline-generic-copy-step4_huf9c29b5c1e2da43e320649fe179c68c0_30213_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-first-pipeline/img/022-fabric-pipeline-generic-copy-step4_huf9c29b5c1e2da43e320649fe179c68c0_30213_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Création de la connexion - étape 2&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;190&#34;
+		data-flex-basis=&#34;456px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Dans &lt;em&gt;URL&lt;/em&gt; entrez l&amp;rsquo;adresse &lt;em&gt;&lt;a class=&#34;link&#34; href=&#34;https://services.odata.org/TripPinRESTierService&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://services.odata.org/TripPinRESTierService&lt;/a&gt;&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Dans &lt;em&gt;Nom de la connexion&lt;/em&gt; entrez &lt;em&gt;TripPinRESTierService HTTP&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Ne rien saisir dans &lt;em&gt;Type d&amp;rsquo;authentification&lt;/em&gt;, on reste en mode anonyme.&lt;/li&gt;
+&lt;li&gt;Appuyez sur &lt;strong&gt;Créer&lt;/strong&gt; pour créer la nouvelle connexion.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-first-pipeline/img/023-fabric-pipeline-generic-copy-step5.png&#34;
+	width=&#34;1685&#34;
+	height=&#34;751&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-first-pipeline/img/023-fabric-pipeline-generic-copy-step5_hue2ff079a1ff28b929487d3dca9b84888_60786_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-first-pipeline/img/023-fabric-pipeline-generic-copy-step5_hue2ff079a1ff28b929487d3dca9b84888_60786_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Création de la connexion - étape 3&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;224&#34;
+		data-flex-basis=&#34;538px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Passez le format de fichier reçu en &lt;em&gt;JSON&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Cliquez sur &lt;em&gt;Aperçu des données&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Vous pouvez voir le résultat de l&amp;rsquo;appel de la requête HTTP. Vous pouvez constater que la liste des chemins est dans la clé &lt;em&gt;value&lt;/em&gt; du document JSON sous forme de tableau, car dans un bloc entre crochets &amp;ldquo;[]&amp;rdquo;. Vous pouvez aussi voir que la valeur que l&amp;rsquo;on souhaite utiliser est &lt;em&gt;url&lt;/em&gt;, elle permettra de variabiliser les appels. Fermez l&amp;rsquo;aperçu.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Pour traiter les éléments de la liste, nous allons ajouter une activité de type ForEach. Cette activité permet de faire une boucle pour chaque élément de la liste.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-first-pipeline/img/024-fabric-pipeline-generic-copy-step6.png&#34;
+	width=&#34;1765&#34;
+	height=&#34;681&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-first-pipeline/img/024-fabric-pipeline-generic-copy-step6_hu78a7b7ed1f4e8702dc78e9b05e01f376_47560_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-first-pipeline/img/024-fabric-pipeline-generic-copy-step6_hu78a7b7ed1f4e8702dc78e9b05e01f376_47560_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Ajout d&amp;rsquo;une activité ForEach&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;259&#34;
+		data-flex-basis=&#34;622px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Rendez-vous dans le menu &lt;em&gt;Activities&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Appuyer sur &lt;em&gt;ForEach&lt;/em&gt; pour ajouter l&amp;rsquo;activité au pipeline.&lt;/li&gt;
+&lt;li&gt;Sélectionnez l&amp;rsquo;activité pour accéder à ces propriétés.&lt;/li&gt;
+&lt;li&gt;Renommez l&amp;rsquo;activité en &lt;em&gt;Pour chaque chemin&lt;/em&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-first-pipeline/img/025-fabric-pipeline-generic-copy-step7.png&#34;
+	width=&#34;1836&#34;
+	height=&#34;924&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-first-pipeline/img/025-fabric-pipeline-generic-copy-step7_hu8ee03a5b27d4b692fdd68b2c1c5207ba_92097_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-first-pipeline/img/025-fabric-pipeline-generic-copy-step7_hu8ee03a5b27d4b692fdd68b2c1c5207ba_92097_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Paramétrage de l&amp;rsquo;activité ForEach - étape 1&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;198&#34;
+		data-flex-basis=&#34;476px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Sélectionnez la coche verte sur l&amp;rsquo;activité &lt;em&gt;Liste des chemins TripPin&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Faite un glisser-déposer sur l&amp;rsquo;activité &lt;em&gt;Pour chaque chemin&lt;/em&gt;. Vous avez créé un lien de dépendance entre les 2 activités. &lt;em&gt;Pour chaque chemin&lt;/em&gt; s&amp;rsquo;exécutera après l&amp;rsquo;exécution réussie de &lt;em&gt;Liste des chemins TripPin&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Sélectionnez l&amp;rsquo;activité pour accéder à ces propriétés.&lt;/li&gt;
+&lt;li&gt;Allez dans l&amp;rsquo;ongle &lt;em&gt;Paramètres&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;La propriété éléments doit contenir la liste des éléments à parcourir pour la boucle ForEach. Appuyez sur le lien &lt;em&gt;Ajouter du contenu dynamique&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;La fenêtre &lt;em&gt;Générateur d’expressions de pipeline&lt;/em&gt; apparait. Cette fenêtre permet de variabiliser des propriétés via un ensemble de fonctions standard et les éléments spécifiques au pipeline. On ne peut référencer toutes les activités parentes à l&amp;rsquo;activité courante. Le lien de parenté a été réalisé à l&amp;rsquo;étape 2.&lt;/li&gt;
+&lt;li&gt;Cliquez sur &lt;em&gt;Liste des chemins TripPin first row&lt;/em&gt;, et le texte &lt;em&gt;@activity(&amp;lsquo;Liste des chemins TripPin&amp;rsquo;).output.firstRow&lt;/em&gt; apparait dans la zone d&amp;rsquo;édition.&lt;/li&gt;
+&lt;li&gt;Dans cette zone d&amp;rsquo;édition, vous pouvez saisir l&amp;rsquo;expression dynamique.&lt;/li&gt;
+&lt;li&gt;Rappelez-vous dans le JSON renvoyé par l&amp;rsquo;activité &lt;em&gt;Liste des chemins TripPin&lt;/em&gt; la liste des chemins ce trouve dans la propriété value. Nous allons donc rajouter &lt;em&gt;.value&lt;/em&gt; à l&amp;rsquo;expression afin d&amp;rsquo;indiquer où se trouve notre liste. Vous devez donc avoir &lt;em&gt;@activity(&amp;lsquo;Liste des chemins TripPin&amp;rsquo;).output.firstRow.value&lt;/em&gt; comme valeur.&lt;/li&gt;
+&lt;li&gt;Appuyez sur &lt;em&gt;OK&lt;/em&gt; pour fermer.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-first-pipeline/img/026-fabric-pipeline-generic-copy-step8.png&#34;
+	width=&#34;902&#34;
+	height=&#34;472&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-first-pipeline/img/026-fabric-pipeline-generic-copy-step8_hu420ffbf2689f595d1ecd3988d294b13f_30065_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-first-pipeline/img/026-fabric-pipeline-generic-copy-step8_hu420ffbf2689f595d1ecd3988d294b13f_30065_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Paramétrage de l&amp;rsquo;activité ForEach - étape 2&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;191&#34;
+		data-flex-basis=&#34;458px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;La propriété &lt;em&gt;Eléments&lt;/em&gt; de l&amp;rsquo;activité &lt;em&gt;Pour chaque chemin&lt;/em&gt; à maintenant un fond vert pour vous indiquer qu&amp;rsquo;il s&amp;rsquo;agit d&amp;rsquo;une expression.&lt;/li&gt;
+&lt;li&gt;Nous allons maintenant déplacer l&amp;rsquo;activité de copie dans la boucle. Faites un clic droit sur l&amp;rsquo;activité de copie et choisissez &lt;em&gt;Couper&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Sur l&amp;rsquo;activité &lt;em&gt;Pour chaque chemin&lt;/em&gt; sélectionnez l&amp;rsquo;icône en forme de crayon pour accéder à la zone d&amp;rsquo;édition intérieure de l&amp;rsquo;activité.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-first-pipeline/img/027-fabric-pipeline-generic-copy-step9.png&#34;
+	width=&#34;730&#34;
+	height=&#34;589&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-first-pipeline/img/027-fabric-pipeline-generic-copy-step9_hu2b2e2994bb73442d96cbe81259a6ebe3_27370_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-first-pipeline/img/027-fabric-pipeline-generic-copy-step9_hu2b2e2994bb73442d96cbe81259a6ebe3_27370_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Paramétrage de l&amp;rsquo;activité ForEach - étape 3&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;123&#34;
+		data-flex-basis=&#34;297px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Vous pouvez à tout moment voir où vous êtes. Quand vous voudrez retourner dans la zone de dessin principale vous pourrez clique sur le lien pour y accéder.&lt;/li&gt;
+&lt;li&gt;Faite un clic droit dans un endroit vide de la zone de dessin et choisissez &lt;em&gt;Coller&lt;/em&gt;. Votre activité de copie apparait.&lt;/li&gt;
+&lt;li&gt;Sélectionnez l&amp;rsquo;activité pour accéder à ces propriétés.&lt;/li&gt;
+&lt;li&gt;Renommez l&amp;rsquo;activité en &lt;em&gt;Copie du chemin&lt;/em&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-first-pipeline/img/028-fabric-pipeline-generic-copy-step10.png&#34;
+	width=&#34;1294&#34;
+	height=&#34;668&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-first-pipeline/img/028-fabric-pipeline-generic-copy-step10_hu9b6b6324dcaae1cc09ada31423f65c2c_70333_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-first-pipeline/img/028-fabric-pipeline-generic-copy-step10_hu9b6b6324dcaae1cc09ada31423f65c2c_70333_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Paramétrage de l&amp;rsquo;activité ForEach - étape 4&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;193&#34;
+		data-flex-basis=&#34;464px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Sélectionnez l&amp;rsquo;activité pour accéder à ces propriétés.&lt;/li&gt;
+&lt;li&gt;Allez dans l&amp;rsquo;ongle &lt;em&gt;Source&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Cochez &lt;em&gt;Modifier&lt;/em&gt; pour pouvoir saisir librement le chemin.&lt;/li&gt;
+&lt;li&gt;Appuyez sur le lien &lt;em&gt;Ajouter du contenu dynamique&lt;/em&gt;. S’il n&amp;rsquo;apparait pas positionné, cliquez dans la zone de saisie du chemin d&amp;rsquo;accès.&lt;/li&gt;
+&lt;li&gt;Cliquez sur &lt;em&gt;Sur chaque chemin&lt;/em&gt;. Le texte &lt;em&gt;item()&lt;/em&gt; apparait dans la zone d&amp;rsquo;édition. Cette valeur est la référence de l&amp;rsquo;élément en cours dans la lecture de la liste.&lt;/li&gt;
+&lt;li&gt;Quand on a regardé l&amp;rsquo;aperçu, la propriété des éléments de la liste que l&amp;rsquo;on s=ouhaité lire était &lt;em&gt;url&lt;/em&gt;. Nous allons donc l&amp;rsquo;indiquer, le texte complet de l&amp;rsquo;expression est &lt;em&gt;@item().url&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Appuyez sur &lt;em&gt;OK&lt;/em&gt; pour fermer.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Nous allons maintenant variabiliser la destination.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-first-pipeline/img/029-fabric-pipeline-generic-copy-step11.png&#34;
+	width=&#34;1292&#34;
+	height=&#34;669&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-first-pipeline/img/029-fabric-pipeline-generic-copy-step11_hueb71bd920308e187d6e7a545f6117487_66777_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-first-pipeline/img/029-fabric-pipeline-generic-copy-step11_hueb71bd920308e187d6e7a545f6117487_66777_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Paramétrage de l&amp;rsquo;activité ForEach - étape 5&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;193&#34;
+		data-flex-basis=&#34;463px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Allez dans l&amp;rsquo;ongle &lt;em&gt;Destination&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Cochez &lt;em&gt;Modifier&lt;/em&gt; pour pouvoir saisir librement le nom de la table.&lt;/li&gt;
+&lt;li&gt;Appuyez sur le lien &lt;em&gt;Ajouter du contenu dynamique&lt;/em&gt;. S’il n&amp;rsquo;apparait pas positionné, cliquez dans la zone de saisie du nom de la table.&lt;/li&gt;
+&lt;li&gt;Cliquez sur &lt;em&gt;Sur chaque chemin&lt;/em&gt;. Le texte &lt;em&gt;item()&lt;/em&gt; apparait dans la zone d&amp;rsquo;édition. Cette valeur est la référence de l&amp;rsquo;élément en cours dans la lecture de la liste.&lt;/li&gt;
+&lt;li&gt;Quand on a regardé l&amp;rsquo;aperçu, la propriété des éléments de la liste que l&amp;rsquo;on s=ouhaité lire était &lt;em&gt;url&lt;/em&gt;. Nous allons donc l&amp;rsquo;indiquer, le texte complet de l&amp;rsquo;expression est &lt;em&gt;@item().url&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Appuyez sur &lt;em&gt;OK&lt;/em&gt; pour fermer.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Nous allons maintenant sauvegarder et exécuter le pipeline, aller dans le menu &lt;em&gt;Home&lt;/em&gt; et appuyer sur l&amp;rsquo;icône de sauvegarde puis d&amp;rsquo;exécution du pipeline.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-first-pipeline/img/030-fabric-pipeline-generic-run.png&#34;
+	width=&#34;1536&#34;
+	height=&#34;827&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-first-pipeline/img/030-fabric-pipeline-generic-run_hudd2d819684416f98b41beba7095ff332_63188_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-first-pipeline/img/030-fabric-pipeline-generic-run_hudd2d819684416f98b41beba7095ff332_63188_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Résultat de l&amp;rsquo;exécution&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;185&#34;
+		data-flex-basis=&#34;445px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Ouvrez le chevron pour voir le détail de l&amp;rsquo;exécution de la boucle&lt;/li&gt;
+&lt;li&gt;Vous pouvez constater qu&amp;rsquo;il y a eu plusieurs exécutions différentes de l&amp;rsquo;activité de copie.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Rendez-vous dans le lakahouse depuis l&amp;rsquo;espace de travail.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-first-pipeline/img/031-fabric-pipeline-lakehouse.png&#34;
+	width=&#34;1851&#34;
+	height=&#34;436&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-first-pipeline/img/031-fabric-pipeline-lakehouse_hub43c40263cb0bf701128a36af1cefc0c_30292_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-first-pipeline/img/031-fabric-pipeline-lakehouse_hub43c40263cb0bf701128a36af1cefc0c_30292_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Résultat de l&amp;rsquo;exécution du pipeline générique&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;424&#34;
+		data-flex-basis=&#34;1018px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Dans la partie &lt;em&gt;Explorateur&lt;/em&gt;, vous pouvez voir que toutes les tables on était créées.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Bravo vous avez créer votre premier pipeline.&lt;br&gt;
+L&amp;rsquo;exemple présenter permet seulement d&amp;rsquo;effleurer les possibilités des pipelines. Comme vous devez le présentir, cet outil offre un grand nombre de possibilités pour le traitement de vos données.&lt;/p&gt;
+&lt;p&gt;Merci de votre attention.&lt;/p&gt;</description>
+        </item>
+        <item>
         <title>Power Query améliorer la maintenance.</title>
         <link>https://blog.ddata.fr/p/power-query-advanced-m-part2/</link>
         <pubDate>Wed, 07 Jun 2023 00:00:00 +0000</pubDate>

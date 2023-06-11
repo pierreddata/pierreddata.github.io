@@ -1,0 +1,1412 @@
+<!DOCTYPE html>
+<html lang="fr-fr" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Dans cet article je vous propose de tester et de créer une première intégration de données avec un pipeline de Microsoft Fabric.
+'>
+<title>Votre premier pipeline d&#39;intégration de données avec Microsoft Fabric</title>
+
+<link rel='canonical' href='https://blog.ddata.fr/p/fabric-first-pipeline/'>
+
+<link rel="stylesheet" href="/scss/style.min.5be32ca3f6e1a997c75795c4359147cc6d4fbd34948c0acd51e31d237033978a.css"><meta property='og:title' content='Votre premier pipeline d&#39;intégration de données avec Microsoft Fabric'>
+<meta property='og:description' content='Dans cet article je vous propose de tester et de créer une première intégration de données avec un pipeline de Microsoft Fabric.
+'>
+<meta property='og:url' content='https://blog.ddata.fr/p/fabric-first-pipeline/'>
+<meta property='og:site_name' content='Le D de Data'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Intermédiaire' /><meta property='article:tag' content='Auto formation' /><meta property='article:published_time' content='2023-06-11T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2023-06-11T00:00:00&#43;00:00'/><meta property='og:image' content='https://blog.ddata.fr/p/fabric-first-pipeline/bruno-garcia-RDJEYavSQZM-unsplash.jpg' />
+<meta name="twitter:title" content="Votre premier pipeline d&#39;intégration de données avec Microsoft Fabric">
+<meta name="twitter:description" content="Dans cet article je vous propose de tester et de créer une première intégration de données avec un pipeline de Microsoft Fabric.
+"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://blog.ddata.fr/p/fabric-first-pipeline/bruno-garcia-RDJEYavSQZM-unsplash.jpg' />
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TY6XFEN6QV"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-TY6XFEN6QV', { 'anonymize_ip': false });
+}
+</script>
+<link rel="alternate"
+      type="application/rss+xml"
+      href="https://blog.ddata.fr/index.xml"
+      title="Le D de Data">
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "dark");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Afficher le menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/pierre_hua6bbc70dde858dd10e363a14d1f7729c_67951_300x0_resize_q75_box.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Le D de Data</a></h1>
+            <h2 class="site-description">Blog francophone autour de la data Microsoft</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/pierreddata'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://www.linkedin.com/in/pierre-dupont-0b532374/'
+                        target="_blank"
+                        title="LinkdIn"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-folders" width="44" height="44" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <rect x="4" y="4" width="16" height="16" rx="2" />
+  <line x1="8" y1="11" x2="8" y2="16" />
+  <line x1="8" y1="8" x2="8" y2="8.01" />
+  <line x1="12" y1="16" x2="12" y2="11" />
+  <path d="M16 16v-3a2 2 0 0 0 -4 0" />
+</svg>
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Accueil</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/a-propos-de-d-de-data/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>A Propos</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/series/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-folders" width="44" height="44" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 4h3l2 2h5a2 2 0 0 1 2 2v7a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-9a2 2 0 0 1 2 -2" />
+  <path d="M17 17v2a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-9a2 2 0 0 1 2 -2h2" />
+</svg>
+
+                
+                <span>Series</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/liens/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Liens</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Rechercher</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Mode sombre</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table des matières</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#contexte">Contexte</a></li>
+    <li><a href="#architecture-médaillon">Architecture médaillon</a></li>
+    <li><a href="#préparer-votre-environnement-de-travail">Préparer votre environnement de travail</a>
+      <ol>
+        <li><a href="#création-dun-espace-de-travail-gérant-les-objets-fabric">Création d&rsquo;un espace de travail gérant les objets Fabric</a></li>
+        <li><a href="#sélection-de-lexpérience-utilisateur">Sélection de l&rsquo;expérience utilisateur</a></li>
+        <li><a href="#création-dun-datalakehouse">Création d&rsquo;un DatalakeHouse</a></li>
+      </ol>
+    </li>
+    <li><a href="#créer-un-pipeline">Créer un pipeline</a>
+      <ol>
+        <li><a href="#les-connexions">Les connexions</a></li>
+        <li><a href="#les-activités">Les activités</a></li>
+      </ol>
+    </li>
+    <li><a href="#copier-une-table-de-données-dans-notre-lakehouse">Copier une table de données dans notre lakehouse</a></li>
+    <li><a href="#explorer-le-résultat-de-lexécution-du-pipeline">Explorer le résultat de l&rsquo;exécution du pipeline</a></li>
+    <li><a href="#copier-plusieurs-tables-de-données-dans-notre-lakehouse">Copier plusieurs tables de données dans notre lakehouse</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/fabric-first-pipeline/">
+                <img src="/p/fabric-first-pipeline/bruno-garcia-RDJEYavSQZM-unsplash_hu3d03a01dcc18bc5be0e67db3d8d209a6_2557256_800x0_resize_q75_box.jpg"
+                        srcset="/p/fabric-first-pipeline/bruno-garcia-RDJEYavSQZM-unsplash_hu3d03a01dcc18bc5be0e67db3d8d209a6_2557256_800x0_resize_q75_box.jpg 800w, /p/fabric-first-pipeline/bruno-garcia-RDJEYavSQZM-unsplash_hu3d03a01dcc18bc5be0e67db3d8d209a6_2557256_1600x0_resize_q75_box.jpg 1600w"
+                        width="800" 
+                        height="533" 
+                        loading="lazy"
+                        alt="Featured image of post Votre premier pipeline d&#39;intégration de données avec Microsoft Fabric" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/fabric/" style="background-color: #117865; color: #fff;">
+                Microsoft Fabric
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/fabric-first-pipeline/">Votre premier pipeline d&#39;intégration de données avec Microsoft Fabric</a>
+        </h2>
+
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published" datetime="2023-06-11T00:00:00Z">
+                    11 juin 2023
+                    
+                </time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    12 minutes de lecture
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+    
+    
+</div>
+</header>
+
+    <section class="article-content">
+    
+    
+    <p>Dans cet article je vous propose de tester et de créer une première intégration de données avec un pipeline de Microsoft Fabric.</p>
+<h2 id="contexte">Contexte</h2>
+<p>Dans cet article je vous propose de suivre toutes les étapes de création d&rsquo;un flux d&rsquo;intégration de données.<br>
+Pour réaliser cette tâche, nous allons utiliser le pipeline de données. Un pipeline permet de facilement faire de la copie de données entre 2 points et d&rsquo;ordonnancer toute sorte de tâches afin de créer des traitements de données robustes et cohérents.</p>
+<h2 id="architecture-médaillon">Architecture médaillon</h2>
+<p>Nous allons nous inspirez de l&rsquo;architecture médaillon, pour simplifier nous allons avoir 3 zones dans lesquelles vont résider nos données :</p>
+<ul>
+<li>La zone bronze 🥉 : Elle contient les données brutes historiques, non traitées.</li>
+<li>La zone silver 🥈 : Elle contient les données préparer, valider et prête à l&rsquo;usage.</li>
+<li>La zone gold   🥇 : Elle contient les données affinées et agrégées utilisables directement notamment par les outils analytiques.</li>
+</ul>
+<p>Lors du passage d&rsquo;une zone à une autre, les données de la zone précédente sont conservées en l&rsquo;état. Nous avons donc plusieurs copies de la même donnée dans des états différents.</p>
+<h2 id="préparer-votre-environnement-de-travail">Préparer votre environnement de travail</h2>
+<p>Je vous propose de réaliser un exemple d&rsquo;intégration de données externe, via une source de données de type OData public vers la couche bronze 🥉.</p>
+<p>Nous allons maintenant préparer un environnement pour recevoir les données.</p>
+<h3 id="création-dun-espace-de-travail-gérant-les-objets-fabric">Création d&rsquo;un espace de travail gérant les objets Fabric</h3>
+<p>Rendez-vous sur le <a class="link" href="https://app.powerbi.com/"  target="_blank" rel="noopener"
+    >portail Power BI</a>, Fabric doit être activé dans votre environnement, si ce n&rsquo;est pas le cas, suivez ce tutoriel : <a class="link" href="https://learn.microsoft.com/fr-fr/fabric/get-started/fabric-trial"  target="_blank" rel="noopener"
+    >Version d’évaluation de Microsoft Fabric</a>.</p>
+<p>Dans le menu de gauche, sélectionnez <strong>Espace de travail</strong>, puis <strong>+ Nouvel espace de travail</strong>.</p>
+<p><img src="/p/fabric-first-pipeline/img/001-fabric-create-workspace.png"
+	width="593"
+	height="931"
+	srcset="/p/fabric-first-pipeline/img/001-fabric-create-workspace_hu71b5516cb760538d94e1db8efdcc85b4_53226_480x0_resize_box_3.png 480w, /p/fabric-first-pipeline/img/001-fabric-create-workspace_hu71b5516cb760538d94e1db8efdcc85b4_53226_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Création de l&rsquo;espace de travail"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="63"
+		data-flex-basis="152px"
+	
+></p>
+<ol>
+<li>Donnez un nom à votre espace de travail</li>
+<li>Ouvrez les options avancées</li>
+<li>Sélectionnez un type d&rsquo;espace de travail compatible avec les objets Micrsoft Fabric.</li>
+<li>Appuyez sur <strong>Appliquez</strong> pour créer votre espace de travail.</li>
+</ol>
+<h3 id="sélection-de-lexpérience-utilisateur">Sélection de l&rsquo;expérience utilisateur</h3>
+<p>Afin de simplifier l&rsquo;interface, Fabric est organisé autour de différentes expériences utilisateur afin de ne pas présenter l&rsquo;ensemble des types objets disponible à tout le monde.
+Pour notre exemple nous pouvons utiliser l&rsquo;expérience <em>Data Factory</em> ou <em>Engineering données</em>.</p>
+<p><img src="/p/fabric-first-pipeline/img/002-fabric-select-experience.png"
+	width="324"
+	height="314"
+	srcset="/p/fabric-first-pipeline/img/002-fabric-select-experience_hu1cf1fd563f84f5446b47d1f575567d02_17482_480x0_resize_box_3.png 480w, /p/fabric-first-pipeline/img/002-fabric-select-experience_hu1cf1fd563f84f5446b47d1f575567d02_17482_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Modification de l&rsquo;expérience utilisateur"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="103"
+		data-flex-basis="247px"
+	
+></p>
+<ol>
+<li>Appuyez sur l&rsquo;icône en bas à gauche de votre écran, si vous êtes arrivé par le portail Power BI vous trouver l&rsquo;icône Power BI, sinon vous trouverez l&rsquo;icône de l&rsquo;expérience utilisateur en cours.</li>
+<li>Sélectionnez <em>Data Factory</em></li>
+</ol>
+<p>Après le changement d&rsquo;expérience, vous devez vous repositionner dans votre espace de travail.</p>
+<h3 id="création-dun-datalakehouse">Création d&rsquo;un DatalakeHouse</h3>
+<p>Nous allons maintenant créer un Lakehouse dédié à notre exemple.<br>
+Un lakehouse est une espace de stockage acceptant n&rsquo;importe quel type de données. Il sert de zone de stockage générique des données de notre couche bronze.<br>
+Dans l&rsquo;écosystème Fabric un lakehouse est un sous-ensemble de OneLake, l&rsquo;espace de stockage unifié de votre entreprise.</p>
+<p><img src="/p/fabric-first-pipeline/img/003-fabric-create-lakehouse.png"
+	width="327"
+	height="555"
+	srcset="/p/fabric-first-pipeline/img/003-fabric-create-lakehouse_hu9b0e72fb71068a60d620729ed6086435_24883_480x0_resize_box_3.png 480w, /p/fabric-first-pipeline/img/003-fabric-create-lakehouse_hu9b0e72fb71068a60d620729ed6086435_24883_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Création d&rsquo;un lakehouse - étape 1"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="58"
+		data-flex-basis="141px"
+	
+></p>
+<ol>
+<li>Dans le menu de l&rsquo;espace de travail, appuyez sur <strong>+ Nouveau</strong>.</li>
+<li>Sélectionnez <strong>Lakehouse</strong>.</li>
+</ol>
+<p><img src="/p/fabric-first-pipeline/img/004-fabric-create-lakehouse-step2.png"
+	width="341"
+	height="219"
+	srcset="/p/fabric-first-pipeline/img/004-fabric-create-lakehouse-step2_hub686b2b3240d024d6082bc87aba43c01_7971_480x0_resize_box_3.png 480w, /p/fabric-first-pipeline/img/004-fabric-create-lakehouse-step2_hub686b2b3240d024d6082bc87aba43c01_7971_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Création d&rsquo;un lakehouse - étape 2"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="155"
+		data-flex-basis="373px"
+	
+></p>
+<ol>
+<li>Saisissez le nom du lakehouse, ici <em>TripPin</em> qui est le nom de la source de données.</li>
+<li>Appuyez sur <strong>Créer</strong> pour créer le lakehouse.</li>
+</ol>
+<p>L&rsquo;écran qui s&rsquo;affiche est l&rsquo;explorateur de lakehouse.</p>
+<p><img src="/p/fabric-first-pipeline/img/005-fabric-lakehouse-explorer.png"
+	width="1163"
+	height="672"
+	srcset="/p/fabric-first-pipeline/img/005-fabric-lakehouse-explorer_hu4cbf0695498a80ae7e90c49cfbefb1d5_41309_480x0_resize_box_3.png 480w, /p/fabric-first-pipeline/img/005-fabric-lakehouse-explorer_hu4cbf0695498a80ae7e90c49cfbefb1d5_41309_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Explorateur du lakehouse"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="173"
+		data-flex-basis="415px"
+	
+></p>
+<ol>
+<li>Dans l&rsquo;explorateur de lakehouse, vous pouvez naviguer dans les dossiers.</li>
+<li>La section <em>Files</em> permet d&rsquo;avoir la vision des fichiers bruts stockés dans le lakehouse, on parle de données non managées.</li>
+<li>La section <em>Tables</em> permet d&rsquo;avoir la vision base de données des fichiers dans le lakehouse et de pouvoir les requêter avec le langage SQL, on parle de données managées.</li>
+<li>Vous pouvez passer de la vue lakehouse à la vue point de terminaison SQL ici.</li>
+</ol>
+<p>Pour chaque lakehouse, un point de terminaison SQL est automatiquement créé, ce dernier permet de créer des requêtes de SQL de type SELECT uniquement sur vos fichiers de données. Vous pouvez aussi faire de jointure SQL entre 2 tables ou plus présente dans le lakehouse.</p>
+<p>Retournez au niveau de l&rsquo;espace de travail.</p>
+<p><img src="/p/fabric-first-pipeline/img/006-fabric-lakehouse-workspace.png"
+	width="969"
+	height="362"
+	srcset="/p/fabric-first-pipeline/img/006-fabric-lakehouse-workspace_hua4593b7da6f607241f77bcf766298c96_21658_480x0_resize_box_3.png 480w, /p/fabric-first-pipeline/img/006-fabric-lakehouse-workspace_hua4593b7da6f607241f77bcf766298c96_21658_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Espace de travail après la création du lakehouse"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="267"
+		data-flex-basis="642px"
+	
+></p>
+<ol>
+<li>Vous pouvez constater que 2 objets on était automatiquement créer avec votre lakehouse
+<ul>
+<li>Le point de terminaison SQL comme vue ci-dessus.</li>
+<li>Un jeu de données par défaut pour Power BI. Ce jeu de données est managé par Fabric.</li>
+</ul>
+</li>
+</ol>
+<h2 id="créer-un-pipeline">Créer un pipeline</h2>
+<p>Maintenant que notre environnement de travail est prêt, nous allons pouvoir créer notre traitement d&rsquo;intégration de données, pour cela nous allons choisir un pipeline de données.</p>
+<p>Les pipelines de données présents dans Microsoft Fabric, sont une évolution des pipelines que l&rsquo;on trouve dans les services Azure Data factory et Azure Synapse Analytics.<br>
+En termes d&rsquo;interface utilisateur et de possibilité, ils sont très proches de ces derniers, mais ils ont subi une très forte simplification. Par exemple, la notion de service lié et de jeu de données n&rsquo;existe plus dans Fabric elle est remplacée par les connexions. On constate aussi que seules les principales activités de pipeline reste présentent dans Fabric.</p>
+<p><img src="/p/fabric-first-pipeline/img/007-fabric-create-pipeline.png"
+	width="319"
+	height="554"
+	srcset="/p/fabric-first-pipeline/img/007-fabric-create-pipeline_huc8baada0d2a73264eb148cf8e4267cc1_24849_480x0_resize_box_3.png 480w, /p/fabric-first-pipeline/img/007-fabric-create-pipeline_huc8baada0d2a73264eb148cf8e4267cc1_24849_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Création d&rsquo;un pipeline - étape 1"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="57"
+		data-flex-basis="138px"
+	
+></p>
+<ol>
+<li>Dans le menu de l&rsquo;espace de travail, appuyez sur <strong>+ Nouveau</strong>.</li>
+<li>Sélectionnez <strong>Pipeline de données</strong>.</li>
+</ol>
+<p><img src="/p/fabric-first-pipeline/img/008-fabric-create-pipeline-step2.png"
+	width="342"
+	height="270"
+	srcset="/p/fabric-first-pipeline/img/008-fabric-create-pipeline-step2_hu1e38cb79d1c9b1ff26febe8941ed803c_8719_480x0_resize_box_3.png 480w, /p/fabric-first-pipeline/img/008-fabric-create-pipeline-step2_hu1e38cb79d1c9b1ff26febe8941ed803c_8719_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Création d&rsquo;un pipeline - étape 2"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="126"
+		data-flex-basis="304px"
+	
+></p>
+<ol>
+<li>Saisissez le nom du pipeline, ici <em>Source_To_Bronze_TripPin</em> qui est le nom de la source de données.</li>
+<li>Appuyez sur <strong>Créer</strong> pour créer le pipeline.</li>
+</ol>
+<p><img src="/p/fabric-first-pipeline/img/009-fabric-pipeline-workspace.png"
+	width="1306"
+	height="673"
+	srcset="/p/fabric-first-pipeline/img/009-fabric-pipeline-workspace_hua074369756405dd02f9788db512fd792_37431_480x0_resize_box_3.png 480w, /p/fabric-first-pipeline/img/009-fabric-pipeline-workspace_hua074369756405dd02f9788db512fd792_37431_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Espace de création du pipeline"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="194"
+		data-flex-basis="465px"
+	
+></p>
+<ol>
+<li>On retrouve principalement la zone d&rsquo;édition des activités du pipeline</li>
+<li>Dans le menu <em>Home</em> nous avons les icônes de sauvegarde de notre travail.</li>
+<li>On retrouve les principales fonctions du menu <em>Run</em>.</li>
+<li>Ainsi que les principales activités.</li>
+</ol>
+<p>Un pipeline se compose :</p>
+<ul>
+<li>D&rsquo;activités qui correspondent à des briques permettant de réaliser des actions.</li>
+<li>De connexions permettent de communiquer avec un service de données.</li>
+<li>D&rsquo;une planification pour automatiser l&rsquo;exécution du pipeline.</li>
+</ul>
+<h3 id="les-connexions">Les connexions</h3>
+<p>Les connexions permettent de communiquer avec un service de données.<br>
+Elles peuvent être créées directement depuis le pipeline, depuis le <a class="link" href="https://admin.powerplatform.microsoft.com/ext/DataGateways"  target="_blank" rel="noopener"
+    >portail de gestion des passerelles et connexions</a> ou depuis votre espace de travail en ouvrant le menu de la roue crantée en haut à droite puis en sélectionnant <em>Gérer des connexions et des passerelles</em>.</p>
+<p>Pour le moment Fabric ne gère que les connexions vers des services Internet, prochainement un accès a vos données d&rsquo;entreprise sera surement possible via la passerelle Power BI ou un processus équivalent.</p>
+<h3 id="les-activités">Les activités</h3>
+<p>Les activités sont des composants génériques qui utilisent les connexions pour réaliser des actions standard dessus. Toutes les activités ne peuvent pas utiliser tous les types de connexion.</p>
+<p>Les principales activités sont :</p>
+<ul>
+<li>Copy data : permets de réaliser une copie de données entre une source et une destination.</li>
+<li>Dataflow : permets d&rsquo;exécuter un dataflow.</li>
+<li>Notebook : permets d&rsquo;exécuter un notebook.</li>
+<li>Loockup : permets d&rsquo;interroger les données d&rsquo;une connexion.</li>
+<li>Invoke pipeline : permets d&rsquo;exécuter un autre pipeline.</li>
+</ul>
+<p>Vous retrouverez aussi des activités vous permettant de gérer l&rsquo;exécution de votre pipeline avec notamment des variables ou des boucles.</p>
+<h2 id="copier-une-table-de-données-dans-notre-lakehouse">Copier une table de données dans notre lakehouse</h2>
+<p>Nous allons maintenant procéder à la création de notre premier pipeline. Le but de ce pipeline va être de copier les données d&rsquo;une source OData vers notre lakehouse.</p>
+<p><img src="/p/fabric-first-pipeline/img/010-fabric-pipeline-workspace-add-copy.png"
+	width="1305"
+	height="673"
+	srcset="/p/fabric-first-pipeline/img/010-fabric-pipeline-workspace-add-copy_hu69ca691dcb10403ab2251f78394207e6_45797_480x0_resize_box_3.png 480w, /p/fabric-first-pipeline/img/010-fabric-pipeline-workspace-add-copy_hu69ca691dcb10403ab2251f78394207e6_45797_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Ajout d&rsquo;une activité de copie"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="193"
+		data-flex-basis="465px"
+	
+></p>
+<ol>
+<li>Dans le menu <em>Home</em> du pipeline.</li>
+<li>Sélectionnez <strong>Copy data</strong>.</li>
+<li>Cliquez sur <strong>Add to canvas</strong>.</li>
+<li>L&rsquo;activité de copie apparait dans la zone d&rsquo;édition du pipeline.</li>
+<li>Lorsque l&rsquo;activité de copie est sélectionnée, vous pouvez accéder à ces propriétés.</li>
+</ol>
+<p><img src="/p/fabric-first-pipeline/img/011-fabric-pipeline-workspace-add-copy-step2.png"
+	width="739"
+	height="150"
+	srcset="/p/fabric-first-pipeline/img/011-fabric-pipeline-workspace-add-copy-step2_hude9737163a902aea54cd48e3193e2c60_12270_480x0_resize_box_3.png 480w, /p/fabric-first-pipeline/img/011-fabric-pipeline-workspace-add-copy-step2_hude9737163a902aea54cd48e3193e2c60_12270_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Création de la connexion source - étape 1"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="492"
+		data-flex-basis="1182px"
+	
+></p>
+<ol>
+<li>Dans les propriétés de l&rsquo;activité de copie, sélectionnez <strong>Source</strong>.</li>
+<li>Appuyez sur <strong>+ Nouveau</strong> pour créer une nouvelle connexion.</li>
+</ol>
+<p><img src="/p/fabric-first-pipeline/img/012-fabric-pipeline-workspace-add-copy-step3.png"
+	width="1106"
+	height="585"
+	srcset="/p/fabric-first-pipeline/img/012-fabric-pipeline-workspace-add-copy-step3_hu132b64a90f8a84f47b2d789312d9ad64_63783_480x0_resize_box_3.png 480w, /p/fabric-first-pipeline/img/012-fabric-pipeline-workspace-add-copy-step3_hu132b64a90f8a84f47b2d789312d9ad64_63783_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Création de la connexion source - étape 2"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="189"
+		data-flex-basis="453px"
+	
+></p>
+<ol>
+<li>Sélectionnez le connecteur OData.</li>
+<li>Appuyez sur <strong>Continuer</strong>.</li>
+</ol>
+<p><img src="/p/fabric-first-pipeline/img/013-fabric-pipeline-workspace-add-copy-step4.png"
+	width="1106"
+	height="585"
+	srcset="/p/fabric-first-pipeline/img/013-fabric-pipeline-workspace-add-copy-step4_hu427614f07a8a48241f9891a8634456b0_29651_480x0_resize_box_3.png 480w, /p/fabric-first-pipeline/img/013-fabric-pipeline-workspace-add-copy-step4_hu427614f07a8a48241f9891a8634456b0_29651_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Création de la connexion source - étape 3"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="189"
+		data-flex-basis="453px"
+	
+></p>
+<ol>
+<li>Dans <em>URL</em> entrez l&rsquo;adresse <em><a class="link" href="https://services.odata.org/TripPinRESTierService"  target="_blank" rel="noopener"
+    >https://services.odata.org/TripPinRESTierService</a></em>.</li>
+<li>Dans <em>Nom de la connexion</em> entrez <em>TripPinRESTierService</em>.</li>
+<li>Appuyez sur <strong>Créer</strong> pour créer la nouvelle connexion.</li>
+</ol>
+<p><img src="/p/fabric-first-pipeline/img/014-fabric-pipeline-workspace-add-copy-step5.png"
+	width="937"
+	height="277"
+	srcset="/p/fabric-first-pipeline/img/014-fabric-pipeline-workspace-add-copy-step5_hu4bc26ec7c307e1671e1104e46839a475_22033_480x0_resize_box_3.png 480w, /p/fabric-first-pipeline/img/014-fabric-pipeline-workspace-add-copy-step5_hu4bc26ec7c307e1671e1104e46839a475_22033_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Création de la connexion source - étape 4"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="338"
+		data-flex-basis="811px"
+	
+></p>
+<ol>
+<li>Dans <em>Chemin d&rsquo;accès</em> sélectionnez <em>People</em>.</li>
+<li>Appuyez sur Aperçu des données pour tester si vous accédez aux données.</li>
+</ol>
+<p><img src="/p/fabric-first-pipeline/img/015-fabric-pipeline-workspace-add-copy-step6.png"
+	width="766"
+	height="425"
+	srcset="/p/fabric-first-pipeline/img/015-fabric-pipeline-workspace-add-copy-step6_hu0296a04a7230d88c18d155c52b9c428e_20535_480x0_resize_box_3.png 480w, /p/fabric-first-pipeline/img/015-fabric-pipeline-workspace-add-copy-step6_hu0296a04a7230d88c18d155c52b9c428e_20535_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Aperçu des données sources"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="180"
+		data-flex-basis="432px"
+	
+></p>
+<p>Vous devez voir les données sources comme dans l&rsquo;écran ci-dessus.</p>
+<p><img src="/p/fabric-first-pipeline/img/016-fabric-pipeline-workspace-add-copy-step7.png"
+	width="1241"
+	height="617"
+	srcset="/p/fabric-first-pipeline/img/016-fabric-pipeline-workspace-add-copy-step7_hu92ca1f81d14579cea464c27f51d9ad3c_46009_480x0_resize_box_3.png 480w, /p/fabric-first-pipeline/img/016-fabric-pipeline-workspace-add-copy-step7_hu92ca1f81d14579cea464c27f51d9ad3c_46009_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Création de la destination"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="201"
+		data-flex-basis="482px"
+	
+></p>
+<ol>
+<li>Fermez la fenêtre d&rsquo;aperçu et rendez-vous sur l&rsquo;onglet <em>Destination</em> de l&rsquo;activité de copie de données.</li>
+<li>Sélectionnez le lakehouse <em>TripPin</em> que l&rsquo;on a créé précédemment.</li>
+<li>Cochez <em>Modifier</em> pour pouvoir saisir librement le nom de la table.</li>
+<li>Rentrez <em>People</em> pour le nom de la table.</li>
+<li>Enregistrez votre pipeline.</li>
+<li>Lancez une première exécution de votre pipeline.</li>
+</ol>
+<p><img src="/p/fabric-first-pipeline/img/017-fabric-pipeline-workspace-add-copy-step8.png"
+	width="1301"
+	height="263"
+	srcset="/p/fabric-first-pipeline/img/017-fabric-pipeline-workspace-add-copy-step8_hufd510970e86a5653a22b15a3e193e4c6_20772_480x0_resize_box_3.png 480w, /p/fabric-first-pipeline/img/017-fabric-pipeline-workspace-add-copy-step8_hufd510970e86a5653a22b15a3e193e4c6_20772_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Informations d&rsquo;exécution du pipeline"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="494"
+		data-flex-basis="1187px"
+	
+></p>
+<p>Vous pouvez voir les informations d&rsquo;exécution du pipeline, la coche verte ✅ nous indique un succès.</p>
+<h2 id="explorer-le-résultat-de-lexécution-du-pipeline">Explorer le résultat de l&rsquo;exécution du pipeline</h2>
+<p>Rendez-vous dans le lakahouse depuis l&rsquo;espace de travail.</p>
+<p><img src="/p/fabric-first-pipeline/img/018-fabric-pipeline-workspace-add-copy-result.png"
+	width="1293"
+	height="630"
+	srcset="/p/fabric-first-pipeline/img/018-fabric-pipeline-workspace-add-copy-result_huc8a0847ee586108fd5e8f4c0f851545a_38654_480x0_resize_box_3.png 480w, /p/fabric-first-pipeline/img/018-fabric-pipeline-workspace-add-copy-result_huc8a0847ee586108fd5e8f4c0f851545a_38654_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Résultat de l&rsquo;exécution du pipeline"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="205"
+		data-flex-basis="492px"
+	
+></p>
+<ol>
+<li>Dans la partie <em>Explorateur</em>, vous pouvez voir votre table <em>People</em>. Cliquez dessus.</li>
+<li>Vous pouvez voir ici un aperçu du contenu de votre table.</li>
+</ol>
+<p>Notre pipeline a envoyé une requête OData sur la source de données et à copier le résultat dans notre lakehouse sous la forme de fichier delta lake. C&rsquo;est dernier ont automatiquement était mis à votre disposition de manière managée sous la forme d&rsquo;une table pouvant être requêtée en SQL.</p>
+<h2 id="copier-plusieurs-tables-de-données-dans-notre-lakehouse">Copier plusieurs tables de données dans notre lakehouse</h2>
+<p>Sur la source de notre activité de copie, on peut constater que plusieurs chemins d&rsquo;accès diffèrent son possible. Nous allons modifier notre pipeline afin de copier tous les chemins dans un seul pipeline.</p>
+<p>Allez dans votre espace de travail et ouvrez le pipeline créé précédemment.
+L&rsquo;objectif est maintenant de réaliser une boucle permettant de copier l&rsquo;ensemble des chemins d&rsquo;accès possible de notre source de données, chaque chemin devant être stocké dans une table distincte.<br>
+Pour cela nous allons procéder en 2 étapes :</p>
+<ol>
+<li>Obtenir la liste des chemins disponible.</li>
+<li>Pour chaque élément de cette liste, utiliser une même activité de copie que l&rsquo;on va variabiliser.</li>
+</ol>
+<p>Nous allons maintenant ajouter une activité de type <em>Lookup</em> à notre pipeline.</p>
+<p><img src="/p/fabric-first-pipeline/img/019-fabric-pipeline-generic-copy-step1.png"
+	width="1306"
+	height="634"
+	srcset="/p/fabric-first-pipeline/img/019-fabric-pipeline-generic-copy-step1_hu62263c4c95fc5e29c1caf01c836d0381_40352_480x0_resize_box_3.png 480w, /p/fabric-first-pipeline/img/019-fabric-pipeline-generic-copy-step1_hu62263c4c95fc5e29c1caf01c836d0381_40352_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Ajout d&rsquo;une activité Lookup"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="205"
+		data-flex-basis="494px"
+	
+></p>
+<ol>
+<li>Appuyer sur <em>Lookup</em> pour ajouter l&rsquo;activité au pipeline.</li>
+<li>Sélectionnez l&rsquo;activité pour accéder à ces propriétés.</li>
+<li>Renommez l&rsquo;activité en <em>Liste des chemins TripPin</em>.</li>
+</ol>
+<p>Pour obtenir la liste des chemins, nous allons interroger le service en mode HTTP (Requête Web).</p>
+<p><img src="/p/fabric-first-pipeline/img/020-fabric-pipeline-generic-copy-step2.png"
+	width="718"
+	height="193"
+	srcset="/p/fabric-first-pipeline/img/020-fabric-pipeline-generic-copy-step2_hu916ed41b7d1a837f8c1e09f2dfbf822d_12952_480x0_resize_box_3.png 480w, /p/fabric-first-pipeline/img/020-fabric-pipeline-generic-copy-step2_hu916ed41b7d1a837f8c1e09f2dfbf822d_12952_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Paramétrage de l&rsquo;activité Liste des chemins TripPin"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="372"
+		data-flex-basis="892px"
+	
+></p>
+<ol>
+<li>Dans les propriétés de l&rsquo;activité <em>Liste des chemins TripPin</em>, sélectionnez <strong>Source</strong>.</li>
+<li>Appuyez sur <strong>+ Nouveau</strong> pour créer une nouvelle connexion.</li>
+</ol>
+<p><img src="/p/fabric-first-pipeline/img/021-fabric-pipeline-generic-copy-step3.png"
+	width="1104"
+	height="582"
+	srcset="/p/fabric-first-pipeline/img/021-fabric-pipeline-generic-copy-step3_hub6e86dc904f42b208706f074635f2ba0_63465_480x0_resize_box_3.png 480w, /p/fabric-first-pipeline/img/021-fabric-pipeline-generic-copy-step3_hub6e86dc904f42b208706f074635f2ba0_63465_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Création de la connexion - étape 1"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="189"
+		data-flex-basis="455px"
+	
+></p>
+<ol>
+<li>Sélectionnez le connecteur HTTP.</li>
+<li>Appuyez sur <strong>Continuer</strong>.</li>
+</ol>
+<p><img src="/p/fabric-first-pipeline/img/022-fabric-pipeline-generic-copy-step4.png"
+	width="1106"
+	height="582"
+	srcset="/p/fabric-first-pipeline/img/022-fabric-pipeline-generic-copy-step4_huf9c29b5c1e2da43e320649fe179c68c0_30213_480x0_resize_box_3.png 480w, /p/fabric-first-pipeline/img/022-fabric-pipeline-generic-copy-step4_huf9c29b5c1e2da43e320649fe179c68c0_30213_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Création de la connexion - étape 2"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="190"
+		data-flex-basis="456px"
+	
+></p>
+<ol>
+<li>Dans <em>URL</em> entrez l&rsquo;adresse <em><a class="link" href="https://services.odata.org/TripPinRESTierService"  target="_blank" rel="noopener"
+    >https://services.odata.org/TripPinRESTierService</a></em>.</li>
+<li>Dans <em>Nom de la connexion</em> entrez <em>TripPinRESTierService HTTP</em>.</li>
+<li>Ne rien saisir dans <em>Type d&rsquo;authentification</em>, on reste en mode anonyme.</li>
+<li>Appuyez sur <strong>Créer</strong> pour créer la nouvelle connexion.</li>
+</ol>
+<p><img src="/p/fabric-first-pipeline/img/023-fabric-pipeline-generic-copy-step5.png"
+	width="1685"
+	height="751"
+	srcset="/p/fabric-first-pipeline/img/023-fabric-pipeline-generic-copy-step5_hue2ff079a1ff28b929487d3dca9b84888_60786_480x0_resize_box_3.png 480w, /p/fabric-first-pipeline/img/023-fabric-pipeline-generic-copy-step5_hue2ff079a1ff28b929487d3dca9b84888_60786_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Création de la connexion - étape 3"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="224"
+		data-flex-basis="538px"
+	
+></p>
+<ol>
+<li>Passez le format de fichier reçu en <em>JSON</em>.</li>
+<li>Cliquez sur <em>Aperçu des données</em>.</li>
+<li>Vous pouvez voir le résultat de l&rsquo;appel de la requête HTTP. Vous pouvez constater que la liste des chemins est dans la clé <em>value</em> du document JSON sous forme de tableau, car dans un bloc entre crochets &ldquo;[]&rdquo;. Vous pouvez aussi voir que la valeur que l&rsquo;on souhaite utiliser est <em>url</em>, elle permettra de variabiliser les appels. Fermez l&rsquo;aperçu.</li>
+</ol>
+<p>Pour traiter les éléments de la liste, nous allons ajouter une activité de type ForEach. Cette activité permet de faire une boucle pour chaque élément de la liste.</p>
+<p><img src="/p/fabric-first-pipeline/img/024-fabric-pipeline-generic-copy-step6.png"
+	width="1765"
+	height="681"
+	srcset="/p/fabric-first-pipeline/img/024-fabric-pipeline-generic-copy-step6_hu78a7b7ed1f4e8702dc78e9b05e01f376_47560_480x0_resize_box_3.png 480w, /p/fabric-first-pipeline/img/024-fabric-pipeline-generic-copy-step6_hu78a7b7ed1f4e8702dc78e9b05e01f376_47560_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Ajout d&rsquo;une activité ForEach"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="259"
+		data-flex-basis="622px"
+	
+></p>
+<ol>
+<li>Rendez-vous dans le menu <em>Activities</em>.</li>
+<li>Appuyer sur <em>ForEach</em> pour ajouter l&rsquo;activité au pipeline.</li>
+<li>Sélectionnez l&rsquo;activité pour accéder à ces propriétés.</li>
+<li>Renommez l&rsquo;activité en <em>Pour chaque chemin</em>.</li>
+</ol>
+<p><img src="/p/fabric-first-pipeline/img/025-fabric-pipeline-generic-copy-step7.png"
+	width="1836"
+	height="924"
+	srcset="/p/fabric-first-pipeline/img/025-fabric-pipeline-generic-copy-step7_hu8ee03a5b27d4b692fdd68b2c1c5207ba_92097_480x0_resize_box_3.png 480w, /p/fabric-first-pipeline/img/025-fabric-pipeline-generic-copy-step7_hu8ee03a5b27d4b692fdd68b2c1c5207ba_92097_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Paramétrage de l&rsquo;activité ForEach - étape 1"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="198"
+		data-flex-basis="476px"
+	
+></p>
+<ol>
+<li>Sélectionnez la coche verte sur l&rsquo;activité <em>Liste des chemins TripPin</em>.</li>
+<li>Faite un glisser-déposer sur l&rsquo;activité <em>Pour chaque chemin</em>. Vous avez créé un lien de dépendance entre les 2 activités. <em>Pour chaque chemin</em> s&rsquo;exécutera après l&rsquo;exécution réussie de <em>Liste des chemins TripPin</em>.</li>
+<li>Sélectionnez l&rsquo;activité pour accéder à ces propriétés.</li>
+<li>Allez dans l&rsquo;ongle <em>Paramètres</em>.</li>
+<li>La propriété éléments doit contenir la liste des éléments à parcourir pour la boucle ForEach. Appuyez sur le lien <em>Ajouter du contenu dynamique</em>.</li>
+<li>La fenêtre <em>Générateur d’expressions de pipeline</em> apparait. Cette fenêtre permet de variabiliser des propriétés via un ensemble de fonctions standard et les éléments spécifiques au pipeline. On ne peut référencer toutes les activités parentes à l&rsquo;activité courante. Le lien de parenté a été réalisé à l&rsquo;étape 2.</li>
+<li>Cliquez sur <em>Liste des chemins TripPin first row</em>, et le texte <em>@activity(&lsquo;Liste des chemins TripPin&rsquo;).output.firstRow</em> apparait dans la zone d&rsquo;édition.</li>
+<li>Dans cette zone d&rsquo;édition, vous pouvez saisir l&rsquo;expression dynamique.</li>
+<li>Rappelez-vous dans le JSON renvoyé par l&rsquo;activité <em>Liste des chemins TripPin</em> la liste des chemins ce trouve dans la propriété value. Nous allons donc rajouter <em>.value</em> à l&rsquo;expression afin d&rsquo;indiquer où se trouve notre liste. Vous devez donc avoir <em>@activity(&lsquo;Liste des chemins TripPin&rsquo;).output.firstRow.value</em> comme valeur.</li>
+<li>Appuyez sur <em>OK</em> pour fermer.</li>
+</ol>
+<p><img src="/p/fabric-first-pipeline/img/026-fabric-pipeline-generic-copy-step8.png"
+	width="902"
+	height="472"
+	srcset="/p/fabric-first-pipeline/img/026-fabric-pipeline-generic-copy-step8_hu420ffbf2689f595d1ecd3988d294b13f_30065_480x0_resize_box_3.png 480w, /p/fabric-first-pipeline/img/026-fabric-pipeline-generic-copy-step8_hu420ffbf2689f595d1ecd3988d294b13f_30065_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Paramétrage de l&rsquo;activité ForEach - étape 2"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="191"
+		data-flex-basis="458px"
+	
+></p>
+<ol>
+<li>La propriété <em>Eléments</em> de l&rsquo;activité <em>Pour chaque chemin</em> à maintenant un fond vert pour vous indiquer qu&rsquo;il s&rsquo;agit d&rsquo;une expression.</li>
+<li>Nous allons maintenant déplacer l&rsquo;activité de copie dans la boucle. Faites un clic droit sur l&rsquo;activité de copie et choisissez <em>Couper</em>.</li>
+<li>Sur l&rsquo;activité <em>Pour chaque chemin</em> sélectionnez l&rsquo;icône en forme de crayon pour accéder à la zone d&rsquo;édition intérieure de l&rsquo;activité.</li>
+</ol>
+<p><img src="/p/fabric-first-pipeline/img/027-fabric-pipeline-generic-copy-step9.png"
+	width="730"
+	height="589"
+	srcset="/p/fabric-first-pipeline/img/027-fabric-pipeline-generic-copy-step9_hu2b2e2994bb73442d96cbe81259a6ebe3_27370_480x0_resize_box_3.png 480w, /p/fabric-first-pipeline/img/027-fabric-pipeline-generic-copy-step9_hu2b2e2994bb73442d96cbe81259a6ebe3_27370_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Paramétrage de l&rsquo;activité ForEach - étape 3"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="123"
+		data-flex-basis="297px"
+	
+></p>
+<ol>
+<li>Vous pouvez à tout moment voir où vous êtes. Quand vous voudrez retourner dans la zone de dessin principale vous pourrez clique sur le lien pour y accéder.</li>
+<li>Faite un clic droit dans un endroit vide de la zone de dessin et choisissez <em>Coller</em>. Votre activité de copie apparait.</li>
+<li>Sélectionnez l&rsquo;activité pour accéder à ces propriétés.</li>
+<li>Renommez l&rsquo;activité en <em>Copie du chemin</em>.</li>
+</ol>
+<p><img src="/p/fabric-first-pipeline/img/028-fabric-pipeline-generic-copy-step10.png"
+	width="1294"
+	height="668"
+	srcset="/p/fabric-first-pipeline/img/028-fabric-pipeline-generic-copy-step10_hu9b6b6324dcaae1cc09ada31423f65c2c_70333_480x0_resize_box_3.png 480w, /p/fabric-first-pipeline/img/028-fabric-pipeline-generic-copy-step10_hu9b6b6324dcaae1cc09ada31423f65c2c_70333_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Paramétrage de l&rsquo;activité ForEach - étape 4"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="193"
+		data-flex-basis="464px"
+	
+></p>
+<ol>
+<li>Sélectionnez l&rsquo;activité pour accéder à ces propriétés.</li>
+<li>Allez dans l&rsquo;ongle <em>Source</em>.</li>
+<li>Cochez <em>Modifier</em> pour pouvoir saisir librement le chemin.</li>
+<li>Appuyez sur le lien <em>Ajouter du contenu dynamique</em>. S’il n&rsquo;apparait pas positionné, cliquez dans la zone de saisie du chemin d&rsquo;accès.</li>
+<li>Cliquez sur <em>Sur chaque chemin</em>. Le texte <em>item()</em> apparait dans la zone d&rsquo;édition. Cette valeur est la référence de l&rsquo;élément en cours dans la lecture de la liste.</li>
+<li>Quand on a regardé l&rsquo;aperçu, la propriété des éléments de la liste que l&rsquo;on s=ouhaité lire était <em>url</em>. Nous allons donc l&rsquo;indiquer, le texte complet de l&rsquo;expression est <em>@item().url</em>.</li>
+<li>Appuyez sur <em>OK</em> pour fermer.</li>
+</ol>
+<p>Nous allons maintenant variabiliser la destination.</p>
+<p><img src="/p/fabric-first-pipeline/img/029-fabric-pipeline-generic-copy-step11.png"
+	width="1292"
+	height="669"
+	srcset="/p/fabric-first-pipeline/img/029-fabric-pipeline-generic-copy-step11_hueb71bd920308e187d6e7a545f6117487_66777_480x0_resize_box_3.png 480w, /p/fabric-first-pipeline/img/029-fabric-pipeline-generic-copy-step11_hueb71bd920308e187d6e7a545f6117487_66777_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Paramétrage de l&rsquo;activité ForEach - étape 5"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="193"
+		data-flex-basis="463px"
+	
+></p>
+<ol>
+<li>Allez dans l&rsquo;ongle <em>Destination</em>.</li>
+<li>Cochez <em>Modifier</em> pour pouvoir saisir librement le nom de la table.</li>
+<li>Appuyez sur le lien <em>Ajouter du contenu dynamique</em>. S’il n&rsquo;apparait pas positionné, cliquez dans la zone de saisie du nom de la table.</li>
+<li>Cliquez sur <em>Sur chaque chemin</em>. Le texte <em>item()</em> apparait dans la zone d&rsquo;édition. Cette valeur est la référence de l&rsquo;élément en cours dans la lecture de la liste.</li>
+<li>Quand on a regardé l&rsquo;aperçu, la propriété des éléments de la liste que l&rsquo;on s=ouhaité lire était <em>url</em>. Nous allons donc l&rsquo;indiquer, le texte complet de l&rsquo;expression est <em>@item().url</em>.</li>
+<li>Appuyez sur <em>OK</em> pour fermer.</li>
+</ol>
+<p>Nous allons maintenant sauvegarder et exécuter le pipeline, aller dans le menu <em>Home</em> et appuyer sur l&rsquo;icône de sauvegarde puis d&rsquo;exécution du pipeline.</p>
+<p><img src="/p/fabric-first-pipeline/img/030-fabric-pipeline-generic-run.png"
+	width="1536"
+	height="827"
+	srcset="/p/fabric-first-pipeline/img/030-fabric-pipeline-generic-run_hudd2d819684416f98b41beba7095ff332_63188_480x0_resize_box_3.png 480w, /p/fabric-first-pipeline/img/030-fabric-pipeline-generic-run_hudd2d819684416f98b41beba7095ff332_63188_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Résultat de l&rsquo;exécution"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="185"
+		data-flex-basis="445px"
+	
+></p>
+<ol>
+<li>Ouvrez le chevron pour voir le détail de l&rsquo;exécution de la boucle</li>
+<li>Vous pouvez constater qu&rsquo;il y a eu plusieurs exécutions différentes de l&rsquo;activité de copie.</li>
+</ol>
+<p>Rendez-vous dans le lakahouse depuis l&rsquo;espace de travail.</p>
+<p><img src="/p/fabric-first-pipeline/img/031-fabric-pipeline-lakehouse.png"
+	width="1851"
+	height="436"
+	srcset="/p/fabric-first-pipeline/img/031-fabric-pipeline-lakehouse_hub43c40263cb0bf701128a36af1cefc0c_30292_480x0_resize_box_3.png 480w, /p/fabric-first-pipeline/img/031-fabric-pipeline-lakehouse_hub43c40263cb0bf701128a36af1cefc0c_30292_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Résultat de l&rsquo;exécution du pipeline générique"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="424"
+		data-flex-basis="1018px"
+	
+></p>
+<ol>
+<li>Dans la partie <em>Explorateur</em>, vous pouvez voir que toutes les tables on était créées.</li>
+</ol>
+<p>Bravo vous avez créer votre premier pipeline.<br>
+L&rsquo;exemple présenter permet seulement d&rsquo;effleurer les possibilités des pipelines. Comme vous devez le présentir, cet outil offre un grand nombre de possibilités pour le traitement de vos données.</p>
+<p>Merci de votre attention.</p>
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/interm%C3%A9diaire/">Intermédiaire</a>
+        
+            <a href="/tags/auto-formation/">Auto formation</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Contenus liés</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/fabric-poc-iot/">
+        
+        
+            <div class="article-image">
+                <img src="/p/fabric-poc-iot/_hu3d03a01dcc18bc5be0e67db3d8d209a6_3315002_4c771f89f6ca9cc60be251a06c4c762b.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Données en temps réel dans votre rapport Power BI avec Microsoft Fabric"
+                        data-key="fabric-poc-iot" 
+                        data-hash="md5-vJKPy1E9umGa8OSN&#43;hupgw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Données en temps réel dans votre rapport Power BI avec Microsoft Fabric</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/power-query-advanced-m-part2/">
+        
+        
+            <div class="article-image">
+                <img src="/p/power-query-advanced-m-part2/_hu3d03a01dcc18bc5be0e67db3d8d209a6_873198_ab48ba05a2eda675fc946b84723dfcd0.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Power Query améliorer la maintenance."
+                        data-key="power-query-advanced-m-part2" 
+                        data-hash="md5-3kNBZ1BPLRsCtXMBsyGdZA==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Power Query améliorer la maintenance.</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/power-query-advanced-m-part1/">
+        
+        
+            <div class="article-image">
+                <img src="/p/power-query-advanced-m-part1/_hu3d03a01dcc18bc5be0e67db3d8d209a6_1564048_3900e448ac4cabc985e10261804d2efc.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Power Query au-delà des assistants."
+                        data-key="power-query-advanced-m-part1" 
+                        data-hash="md5-oKKnMZm6l/XY9kXLKdQwQQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Power Query au-delà des assistants.</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/power-query-function/">
+        
+        
+            <div class="article-image">
+                <img src="/p/power-query-function/_hu1bbec3486f773b072d538975f65a80c0_2311333_01c52f658bc9b87cb2a60fb00253234a.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Power Query le pouvoir des fonctions."
+                        data-key="power-query-function" 
+                        data-hash="md5-q4/9KUtBgqWybU7TYFkHGg==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Power Query le pouvoir des fonctions.</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/comprendre-les-licences-power-bi/">
+        
+        
+            <div class="article-image">
+                <img src="/p/comprendre-les-licences-power-bi/_hu9694657f3c697ac35f9080995597d89a_217872_34c60cea0abb30e97a116c23faead41a.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Comprendre les licences Power BI"
+                        data-key="comprendre-les-licences-power-bi" 
+                        data-hash="md5-Tqm03iJ7lbxz/5qcFYYkrg==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Comprendre les licences Power BI</h2>
+        </div>
+    </a>
+</article>
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "ddata" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2022 - 
+        
+        2023 Le D de Data
+    </section>
+    
+    <section class="powerby">
+        Généré avec <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Thème <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.16.0">Stack</a></b> conçu par <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>
