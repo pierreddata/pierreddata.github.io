@@ -6,7 +6,362 @@
         <description>Recent content in Auto formation on Le D de Data</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>fr-fr</language>
-        <lastBuildDate>Sun, 11 Jun 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ddata.fr/tags/auto-formation/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sun, 18 Jun 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ddata.fr/tags/auto-formation/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Préparation de données avec Microsoft Fabric, le match !</title>
+        <link>https://blog.ddata.fr/p/fabric-the-match-preparation/</link>
+        <pubDate>Sun, 18 Jun 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://blog.ddata.fr/p/fabric-the-match-preparation/</guid>
+        <description>&lt;img src="https://blog.ddata.fr/p/fabric-the-match-preparation/tangerine-newt-ep09aQX8LUs-unsplash.jpg" alt="Featured image of post Préparation de données avec Microsoft Fabric, le match !" /&gt;&lt;p&gt;Vous voulez traiter vos données dans Microsoft Fabric, mais vous êtes perdu ?&lt;br&gt;
+Pour vous faire votre avis, je vous propose un match entre les différents outils pour réaliser un même traitement de données simple.&lt;/p&gt;
+&lt;h2 id=&#34;contexte&#34;&gt;Contexte&lt;/h2&gt;
+&lt;p&gt;Dans mes 2 premiers articles sur Microsoft Fabric, je vous ai présenté :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://blog.ddata.fr/p/fabric-poc-iot/&#34; &gt;L&amp;rsquo;intégration de données en mode temps réel et le KQL&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://blog.ddata.fr/p/fabric-first-pipeline/&#34; &gt;L&amp;rsquo;intégration de données en mode batch et les pipelines de données&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Maintenant que vos données sont dans votre zone bronze 🥉, il est temps de les raffiner pour les faire passer dans la zone silver 🥈.&lt;/p&gt;
+&lt;p&gt;Mais quels outils utilisés ? Je me propose de faire un match entre 3 possibilités disponibles dans Microsoft Fabric :&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Les flux de données (Power Query Online).&lt;/li&gt;
+&lt;li&gt;Le SQL.&lt;/li&gt;
+&lt;li&gt;Les blocs-notes (Python).&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;le-match-&#34;&gt;Le match !&lt;/h2&gt;
+&lt;p&gt;Afin de comparer ces 3 solutions, je vous propose de la faire sur un exemple simple avec un résultat attendu identique pour les 3 possibilités.&lt;br&gt;
+Le but n&amp;rsquo;est pas de vous former, mais plutôt de vous montrer la logique et le travail n&amp;quot;céssaire à fournir pour chacune des options.&lt;/p&gt;
+&lt;p&gt;Pour ce match chaque solution devra réaliser les tâches suivantes :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Tâches préparatoires à une transformation de données
+&lt;ul&gt;
+&lt;li&gt;Charger les données depuis la zone bronze&lt;/li&gt;
+&lt;li&gt;Obtenir un échantillonnage des données&lt;/li&gt;
+&lt;li&gt;Voir les métadonnées du jeu de données&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Réaliser les transformations
+&lt;ul&gt;
+&lt;li&gt;Sélectionner certaines colonnes&lt;/li&gt;
+&lt;li&gt;Filtrer les lignes à conserver&lt;/li&gt;
+&lt;li&gt;Modifier le nom des colonnes&lt;/li&gt;
+&lt;li&gt;Modifier le type de données des colonnes&lt;/li&gt;
+&lt;li&gt;Gestion des valeurs absentes&lt;/li&gt;
+&lt;li&gt;Enlever les doublons&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Sauvegarder le résultat dans la zone silver&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;la-préparation-du-match&#34;&gt;La préparation du match&lt;/h2&gt;
+&lt;p&gt;Avant tout bon match, une préparation est nécessaire. Nous allons maintenant préparer un terrain de jeu commun à nos 3 solutions.&lt;/p&gt;
+&lt;h3 id=&#34;création-de-la-zone-bronze-&#34;&gt;Création de la zone bronze 🥉&lt;/h3&gt;
+&lt;p&gt;Rendez-vous sur le &lt;a class=&#34;link&#34; href=&#34;https://app.powerbi.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;portail Power BI&lt;/a&gt;, Fabric doit être activé dans votre environnement, si ce n&amp;rsquo;est pas le cas, suivez ce tutoriel : &lt;a class=&#34;link&#34; href=&#34;https://learn.microsoft.com/fr-fr/fabric/get-started/fabric-trial&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Version d’évaluation de Microsoft Fabric&lt;/a&gt;.&lt;/p&gt;
+&lt;h4 id=&#34;création-de-lespace-de-travail&#34;&gt;Création de l&amp;rsquo;espace de travail&lt;/h4&gt;
+&lt;p&gt;Dans le menu de gauche, sélectionnez &lt;strong&gt;Espace de travail&lt;/strong&gt;, puis &lt;strong&gt;+ Nouvel espace de travail&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-the-match-preparation/img/001-fabric-create-workspace.png&#34;
+	width=&#34;593&#34;
+	height=&#34;931&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-the-match-preparation/img/001-fabric-create-workspace_huecdbe1893f410f528cf2ffd3d48c9989_53729_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-the-match-preparation/img/001-fabric-create-workspace_huecdbe1893f410f528cf2ffd3d48c9989_53729_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Création de l&amp;rsquo;espace de travail&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;63&#34;
+		data-flex-basis=&#34;152px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Nommez votre espace de travail &lt;em&gt;Fabric - Le match [Bronze]&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Ouvrez les options avancées&lt;/li&gt;
+&lt;li&gt;Sélectionnez un type d&amp;rsquo;espace de travail compatible avec les objets Micrsoft Fabric.&lt;/li&gt;
+&lt;li&gt;Appuyez sur &lt;strong&gt;Appliquez&lt;/strong&gt; pour créer votre espace de travail.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id=&#34;sélection-de-lexpérience-utilisateur&#34;&gt;Sélection de l&amp;rsquo;expérience utilisateur&lt;/h4&gt;
+&lt;p&gt;Afin de simplifier l&amp;rsquo;interface, Fabric est organisé autour de différentes expériences utilisateur afin de ne pas présenter l&amp;rsquo;ensemble des types objets disponible à tout le monde.
+Pour notre exemple nous pouvons utiliser l&amp;rsquo;expérience &lt;em&gt;Data Factory&lt;/em&gt; ou &lt;em&gt;Engineering données&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-the-match-preparation/img/002-fabric-select-experience.png&#34;
+	width=&#34;324&#34;
+	height=&#34;314&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-the-match-preparation/img/002-fabric-select-experience_hu1cf1fd563f84f5446b47d1f575567d02_17482_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-the-match-preparation/img/002-fabric-select-experience_hu1cf1fd563f84f5446b47d1f575567d02_17482_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Modification de l&amp;rsquo;expérience utilisateur&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;103&#34;
+		data-flex-basis=&#34;247px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Appuyez sur l&amp;rsquo;icône en bas à gauche de votre écran, si vous êtes arrivé par le portail Power BI vous trouver l&amp;rsquo;icône Power BI, sinon vous trouverez l&amp;rsquo;icône de l&amp;rsquo;expérience utilisateur en cours.&lt;/li&gt;
+&lt;li&gt;Sélectionnez &lt;em&gt;Data Factory&lt;/em&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Après le changement d&amp;rsquo;expérience, vous devez vous repositionner dans votre espace de travail.&lt;/p&gt;
+&lt;h4 id=&#34;création-dun-lakehouse&#34;&gt;Création d&amp;rsquo;un lakeHouse&lt;/h4&gt;
+&lt;p&gt;Nous allons maintenant créer un lakehouse dédié à notre exemple.&lt;br&gt;
+Un lakehouse est une espace de stockage acceptant n&amp;rsquo;importe quel type de données. Il sert de zone de stockage générique des données de notre couche bronze.&lt;br&gt;
+Dans l&amp;rsquo;écosystème Fabric un lakehouse est un sous-ensemble de OneLake, l&amp;rsquo;espace de stockage unifié de votre entreprise.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-the-match-preparation/img/003-fabric-create-lakehouse.png&#34;
+	width=&#34;329&#34;
+	height=&#34;554&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-the-match-preparation/img/003-fabric-create-lakehouse_hu4bf4d71114aaef3a1a2b8d72bb449e9d_24919_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-the-match-preparation/img/003-fabric-create-lakehouse_hu4bf4d71114aaef3a1a2b8d72bb449e9d_24919_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Création d&amp;rsquo;un lakehouse - étape 1&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;59&#34;
+		data-flex-basis=&#34;142px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Dans le menu de l&amp;rsquo;espace de travail, appuyez sur &lt;strong&gt;+ Nouveau&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;Sélectionnez &lt;strong&gt;Lakehouse&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-the-match-preparation/img/004-fabric-create-lakehouse-step2.png&#34;
+	width=&#34;341&#34;
+	height=&#34;219&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-the-match-preparation/img/004-fabric-create-lakehouse-step2_hu47210a00181e15a0b4961c53905246e6_8088_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-the-match-preparation/img/004-fabric-create-lakehouse-step2_hu47210a00181e15a0b4961c53905246e6_8088_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Création d&amp;rsquo;un lakehouse - étape 2&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;155&#34;
+		data-flex-basis=&#34;373px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Saisissez le nom du lakehouse, ici &lt;em&gt;LeMatch&lt;/em&gt; qui est le nom de la source de données.&lt;/li&gt;
+&lt;li&gt;Appuyez sur &lt;strong&gt;Créer&lt;/strong&gt; pour créer le lakehouse.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;L&amp;rsquo;écran qui s&amp;rsquo;affiche est l&amp;rsquo;explorateur de lakehouse.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-the-match-preparation/img/005-fabric-lakehouse-explorer.png&#34;
+	width=&#34;1163&#34;
+	height=&#34;672&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-the-match-preparation/img/005-fabric-lakehouse-explorer_hu4cbf0695498a80ae7e90c49cfbefb1d5_41309_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-the-match-preparation/img/005-fabric-lakehouse-explorer_hu4cbf0695498a80ae7e90c49cfbefb1d5_41309_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Explorateur du lakehouse&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;173&#34;
+		data-flex-basis=&#34;415px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Dans l&amp;rsquo;explorateur de lakehouse, vous pouvez naviguer dans les dossiers.&lt;/li&gt;
+&lt;li&gt;La section &lt;em&gt;Files&lt;/em&gt; permet d&amp;rsquo;avoir la vision des fichiers bruts stockés dans le lakehouse, on parle de données non managées.&lt;/li&gt;
+&lt;li&gt;La section &lt;em&gt;Tables&lt;/em&gt; permet d&amp;rsquo;avoir la vision base de données des fichiers dans le lakehouse et de pouvoir les requêter avec le langage SQL, on parle de données managées.&lt;/li&gt;
+&lt;li&gt;Vous pouvez passer de la vue lakehouse à la vue point de terminaison SQL ici.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Restez dans l&amp;rsquo;explorateur de lakehouse.&lt;/p&gt;
+&lt;h4 id=&#34;chargement-du-fichier-servant-pour-le-match-dans-la-zone-bronze&#34;&gt;Chargement du fichier servant pour le match dans la zone bronze&lt;/h4&gt;
+&lt;p&gt;Nous allons commencer par charger le fichier sur votre poste de travail. Faite un clic droit sur &lt;a class=&#34;link&#34; href=&#34;https://raw.githubusercontent.com/mledoze/countries/master/dist/countries.csv&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;le lien du fichier&lt;/a&gt; et choisissez &lt;em&gt;Enregistrer sous&lt;/em&gt; pour le sauvegarder en local.&lt;/p&gt;
+&lt;p&gt;Nous allons créer un dossier pour contenir notre fichier.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-the-match-preparation/img/006-fabric-lakehouse-create-folder-step1.png&#34;
+	width=&#34;423&#34;
+	height=&#34;340&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-the-match-preparation/img/006-fabric-lakehouse-create-folder-step1_huf9f6525e7aef72eb95b91ce3cb202048_11911_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-the-match-preparation/img/006-fabric-lakehouse-create-folder-step1_huf9f6525e7aef72eb95b91ce3cb202048_11911_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Création d&amp;rsquo;un dossier dans le lakehouse - étape 1&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;124&#34;
+		data-flex-basis=&#34;298px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Dans l&amp;rsquo;explorateur de lakehouse appuyez sur les 3 points face au dossier &lt;em&gt;Files&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Sélectionnez &lt;em&gt;Nouveau sous-dossier&lt;/em&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-the-match-preparation/img/007-fabric-lakehouse-create-folder-step2.png&#34;
+	width=&#34;340&#34;
+	height=&#34;218&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-the-match-preparation/img/007-fabric-lakehouse-create-folder-step2_hu40b48d20cc20b4984b0c1b4103346afe_9102_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-the-match-preparation/img/007-fabric-lakehouse-create-folder-step2_hu40b48d20cc20b4984b0c1b4103346afe_9102_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Création d&amp;rsquo;un dossier dans le lakehouse - étape 2&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;155&#34;
+		data-flex-basis=&#34;374px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Saisissez le nom du dossier, ici &lt;em&gt;Bronze_Le_Match&lt;/em&gt;. ⚠ Le nom ne dois pas comporter d&amp;rsquo;espace ou de caractères spéciaux hors le &lt;em&gt;_&lt;/em&gt; pour la suite de la démonstration.&lt;/li&gt;
+&lt;li&gt;Appuyez sur &lt;strong&gt;Créer&lt;/strong&gt; pour créer le dossier.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-the-match-preparation/img/008-fabric-lakehouse-upload-file-step1.png&#34;
+	width=&#34;609&#34;
+	height=&#34;460&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-the-match-preparation/img/008-fabric-lakehouse-upload-file-step1_hu893b02b87404b39a9508af8d8bf378ff_19719_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-the-match-preparation/img/008-fabric-lakehouse-upload-file-step1_hu893b02b87404b39a9508af8d8bf378ff_19719_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Chargement d&amp;rsquo;un fichier dans le lakehouse - étape 1&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;132&#34;
+		data-flex-basis=&#34;317px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Dans l&amp;rsquo;explorateur de lakehouse appuyez sur les 3 points face au dossier &lt;em&gt;[Bronze] Le match&lt;/em&gt; dans le dossier &lt;em&gt;Files&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Ouvrez le sous-menu &lt;em&gt;Charger&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Sélectionnez &lt;em&gt;Charger des fichiers&lt;/em&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-the-match-preparation/img/009-fabric-lakehouse-upload-file-step2.png&#34;
+	width=&#34;422&#34;
+	height=&#34;322&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-the-match-preparation/img/009-fabric-lakehouse-upload-file-step2_hu99659e330ee85cfcef404309724d0443_15823_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-the-match-preparation/img/009-fabric-lakehouse-upload-file-step2_hu99659e330ee85cfcef404309724d0443_15823_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Chargement d&amp;rsquo;un fichier dans le lakehouse - étape 2&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;131&#34;
+		data-flex-basis=&#34;314px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Appuyez sur l&amp;rsquo;icône du dossier pour parcourir vos données locales et sélectionnez le fichier &lt;em&gt;countries.csv&lt;/em&gt; sauvegardé.&lt;/li&gt;
+&lt;li&gt;Appuyez sur &lt;em&gt;Charger&lt;/em&gt; pour charger manuellement le fichier dans le lakehouse.&lt;/li&gt;
+&lt;li&gt;Une fois l&amp;rsquo;opération terminée vous en êtes informé.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Vous avez maintenant votre fichier dans la zone bronze.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-the-match-preparation/img/010-fabric-lakehouse-file.png&#34;
+	width=&#34;1490&#34;
+	height=&#34;184&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-the-match-preparation/img/010-fabric-lakehouse-file_hu075e66b6cc3a5bb36191352871a65d04_12167_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-the-match-preparation/img/010-fabric-lakehouse-file_hu075e66b6cc3a5bb36191352871a65d04_12167_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Fichier dans le lakehouse&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;809&#34;
+		data-flex-basis=&#34;1943px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;création-de-la-zone-silver-&#34;&gt;Création de la zone silver 🥈&lt;/h3&gt;
+&lt;p&gt;Nous allons maintenant créer une zone silver pour accueillir les traitements et le données résultante de ces derniers.&lt;/p&gt;
+&lt;p&gt;Pour cela nous allons créer un espace de travail et un lakehouse en reprenant les étapes précédentes.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Nom de l&amp;rsquo;espace de travail : &lt;em&gt;Fabric - Le match [Silver]&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;Nom du lakehouse : &lt;em&gt;LeMatch&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;création-dun-raccourci-vers-la-zone-bronze&#34;&gt;Création d&amp;rsquo;un raccourci vers la zone bronze.&lt;/h4&gt;
+&lt;p&gt;Afin que les traitements de la zone silver puissent utiliser les données de la zone bronze sans réaliser de copie, nous allons créer un raccourci du dossier contenant les données dans la zone silver.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-the-match-preparation/img/011-fabric-lakehouse-create-shortcut.png&#34;
+	width=&#34;433&#34;
+	height=&#34;355&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-the-match-preparation/img/011-fabric-lakehouse-create-shortcut_hua8b3c39364b212cc0979cc7cbfa8bd15_12463_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-the-match-preparation/img/011-fabric-lakehouse-create-shortcut_hua8b3c39364b212cc0979cc7cbfa8bd15_12463_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Création d&amp;rsquo;un raccourci dans le lakehouse - étape 1&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;121&#34;
+		data-flex-basis=&#34;292px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Dans l&amp;rsquo;explorateur de lakehouse appuyez sur les 3 points face au dossier &lt;em&gt;Files&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Sélectionnez &lt;em&gt;Nouveau raccourci&lt;/em&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-the-match-preparation/img/012-fabric-lakehouse-create-shortcut-step2.png&#34;
+	width=&#34;1267&#34;
+	height=&#34;524&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-the-match-preparation/img/012-fabric-lakehouse-create-shortcut-step2_hu517ee041522a16dddd34053ada3d88b8_32771_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-the-match-preparation/img/012-fabric-lakehouse-create-shortcut-step2_hu517ee041522a16dddd34053ada3d88b8_32771_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Création d&amp;rsquo;un raccourci dans le lakehouse - étape 2&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;241&#34;
+		data-flex-basis=&#34;580px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Sélectionnez &lt;em&gt;Microsoft OneLake&lt;/em&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-the-match-preparation/img/013-fabric-lakehouse-create-shortcut-step3.png&#34;
+	width=&#34;1276&#34;
+	height=&#34;720&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-the-match-preparation/img/013-fabric-lakehouse-create-shortcut-step3_hu698f343dc380f8f8c3cf5d6fe3f76bd5_61934_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-the-match-preparation/img/013-fabric-lakehouse-create-shortcut-step3_hu698f343dc380f8f8c3cf5d6fe3f76bd5_61934_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Création d&amp;rsquo;un raccourci dans le lakehouse - étape 3&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;177&#34;
+		data-flex-basis=&#34;425px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Sélectionnez le lakehouse de la zone bronze.&lt;/li&gt;
+&lt;li&gt;Appuyez sur &lt;em&gt;Suivant&lt;/em&gt; pour continuer.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-the-match-preparation/img/014-fabric-lakehouse-create-shortcut-step4.png&#34;
+	width=&#34;1269&#34;
+	height=&#34;707&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-the-match-preparation/img/014-fabric-lakehouse-create-shortcut-step4_hu112367f7085b4ed30930f8ae938a6bf0_40475_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-the-match-preparation/img/014-fabric-lakehouse-create-shortcut-step4_hu112367f7085b4ed30930f8ae938a6bf0_40475_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Création d&amp;rsquo;un raccourci dans le lakehouse - étape 4&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;179&#34;
+		data-flex-basis=&#34;430px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Ouvrez le dossier &lt;em&gt;Files&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Sélectionnez le dossier &lt;em&gt;Bronze_Le_Match&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Appuyez sur &lt;em&gt;Créer&lt;/em&gt; pour créer le raccourci.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Vous avez maintenant votre raccourci dans la zone silver.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-the-match-preparation/img/015-fabric-lakehouse-shortcut.png&#34;
+	width=&#34;1490&#34;
+	height=&#34;186&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-the-match-preparation/img/015-fabric-lakehouse-shortcut_hue12a8a6aac8b7f90643b6100147a761c_11643_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-the-match-preparation/img/015-fabric-lakehouse-shortcut_hue12a8a6aac8b7f90643b6100147a761c_11643_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Raccourci dans le lakehouse&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;801&#34;
+		data-flex-basis=&#34;1922px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;le-terrain-de-jeu-est-prêt--cest-parti&#34;&gt;Le terrain de jeu est prêt,  c&amp;rsquo;est parti&lt;/h3&gt;
+&lt;p&gt;Vous retrouverez ici les liens vers chaque partie du match :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Les flux de données (Power Query Online) : disponible demain&lt;/li&gt;
+&lt;li&gt;Le SQL : disponible dans 2 jours&lt;/li&gt;
+&lt;li&gt;Les blocs-notes (Python) : disponible dans 3 jours&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Merci de votre attention.&lt;/p&gt;</description>
+        </item>
+        <item>
         <title>Votre premier pipeline d&#39;intégration de données avec Microsoft Fabric</title>
         <link>https://blog.ddata.fr/p/fabric-first-pipeline/</link>
         <pubDate>Sun, 11 Jun 2023 00:00:00 +0000</pubDate>
