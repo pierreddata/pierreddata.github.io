@@ -1,0 +1,1213 @@
+<!DOCTYPE html>
+<html lang="fr-fr" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='On commence le match avec le flux de données.
+'>
+<title>Préparation de données avec Microsoft Fabric, les flux de données</title>
+
+<link rel='canonical' href='https://blog.ddata.fr/p/fabric-the-match-dataflow/'>
+
+<link rel="stylesheet" href="/scss/style.min.5be32ca3f6e1a997c75795c4359147cc6d4fbd34948c0acd51e31d237033978a.css"><meta property='og:title' content='Préparation de données avec Microsoft Fabric, les flux de données'>
+<meta property='og:description' content='On commence le match avec le flux de données.
+'>
+<meta property='og:url' content='https://blog.ddata.fr/p/fabric-the-match-dataflow/'>
+<meta property='og:site_name' content='Le D de Data'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Intermédiaire' /><meta property='article:tag' content='Auto formation' /><meta property='article:published_time' content='2023-06-19T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2023-06-19T00:00:00&#43;00:00'/><meta property='og:image' content='https://blog.ddata.fr/p/fabric-the-match-dataflow/tangerine-newt-w9QdAC1f8-0-unsplash.jpg' />
+<meta name="twitter:title" content="Préparation de données avec Microsoft Fabric, les flux de données">
+<meta name="twitter:description" content="On commence le match avec le flux de données.
+"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://blog.ddata.fr/p/fabric-the-match-dataflow/tangerine-newt-w9QdAC1f8-0-unsplash.jpg' />
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TY6XFEN6QV"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-TY6XFEN6QV', { 'anonymize_ip': false });
+}
+</script>
+<link rel="alternate"
+      type="application/rss+xml"
+      href="https://blog.ddata.fr/index.xml"
+      title="Le D de Data">
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "dark");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Afficher le menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/pierre_hua6bbc70dde858dd10e363a14d1f7729c_67951_300x0_resize_q75_box.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Le D de Data</a></h1>
+            <h2 class="site-description">Blog francophone autour de la data Microsoft</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/pierreddata'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://www.linkedin.com/in/pierre-dupont-0b532374/'
+                        target="_blank"
+                        title="LinkdIn"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-folders" width="44" height="44" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <rect x="4" y="4" width="16" height="16" rx="2" />
+  <line x1="8" y1="11" x2="8" y2="16" />
+  <line x1="8" y1="8" x2="8" y2="8.01" />
+  <line x1="12" y1="16" x2="12" y2="11" />
+  <path d="M16 16v-3a2 2 0 0 0 -4 0" />
+</svg>
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Accueil</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/a-propos-de-d-de-data/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>A Propos</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/series/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-folders" width="44" height="44" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 4h3l2 2h5a2 2 0 0 1 2 2v7a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-9a2 2 0 0 1 2 -2" />
+  <path d="M17 17v2a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-9a2 2 0 0 1 2 -2h2" />
+</svg>
+
+                
+                <span>Series</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/liens/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Liens</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Rechercher</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Mode sombre</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table des matières</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#contexte">Contexte</a></li>
+    <li><a href="#création-de-notre-flux-de-données">Création de notre flux de données</a></li>
+    <li><a href="#tâches-préparatoires-à-une-transformation-de-données">Tâches préparatoires à une transformation de données</a>
+      <ol>
+        <li><a href="#charger-les-données">Charger les données</a></li>
+        <li><a href="#obtenir-un-échantillonnage-des-données">Obtenir un échantillonnage des données</a></li>
+        <li><a href="#voir-les-métadonnées-du-jeu-de-données">Voir les métadonnées du jeu de données</a></li>
+      </ol>
+    </li>
+    <li><a href="#réaliser-les-transformations">Réaliser les transformations</a>
+      <ol>
+        <li><a href="#sélectionner-certaines-colonnes">Sélectionner certaines colonnes</a></li>
+        <li><a href="#filtrer-les-lignes-à-conserver">Filtrer les lignes à conserver</a></li>
+        <li><a href="#modifier-le-nom-des-colonnes">Modifier le nom des colonnes</a></li>
+        <li><a href="#modifier-le-type-de-données-des-colonnes">Modifier le type de données des colonnes</a></li>
+        <li><a href="#gestion-des-valeurs-absentes">Gestion des valeurs absentes</a></li>
+        <li><a href="#enlever-les-doublons">Enlever les doublons</a></li>
+      </ol>
+    </li>
+    <li><a href="#sauvegarder-le-résultat-dans-la-couche-silver">Sauvegarder le résultat dans la couche Silver</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/fabric-the-match-dataflow/">
+                <img src="/p/fabric-the-match-dataflow/tangerine-newt-w9QdAC1f8-0-unsplash_hu3d03a01dcc18bc5be0e67db3d8d209a6_2607520_800x0_resize_q75_box.jpg"
+                        srcset="/p/fabric-the-match-dataflow/tangerine-newt-w9QdAC1f8-0-unsplash_hu3d03a01dcc18bc5be0e67db3d8d209a6_2607520_800x0_resize_q75_box.jpg 800w, /p/fabric-the-match-dataflow/tangerine-newt-w9QdAC1f8-0-unsplash_hu3d03a01dcc18bc5be0e67db3d8d209a6_2607520_1600x0_resize_q75_box.jpg 1600w"
+                        width="800" 
+                        height="1000" 
+                        loading="lazy"
+                        alt="Featured image of post Préparation de données avec Microsoft Fabric, les flux de données" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/fabric/" style="background-color: #117865; color: #fff;">
+                Microsoft Fabric
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/fabric-the-match-dataflow/">Préparation de données avec Microsoft Fabric, les flux de données</a>
+        </h2>
+
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published" datetime="2023-06-19T00:00:00Z">
+                    19 juin 2023
+                    
+                </time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    5 minutes de lecture
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+    
+    
+</div>
+</header>
+
+    <section class="article-content">
+    
+    
+    <p>On commence le match avec le flux de données.</p>
+<h2 id="contexte">Contexte</h2>
+<p>Afin de découvrir les différents types de traitement proposé par Microsoft Fabric, je vous ai proposé un match entre 3 différentes possibilités : <a class="link" href="https://blog.ddata.fr/p/fabric-the-match-preparation/" >Préparation de données avec Microsoft Fabric, le match !</a>.</p>
+<p>Je me propose ici de réaliser les transformations avec un flux de données.</p>
+<p>Pour rappel, un flux de données est simplement du Power Query Online. On retrouve la même interface Power Query que dans Power BI mais les traitements sont exécutés dans le service Microsoft Fabric.<br>
+Les flux de de données que l&rsquo;on va utiliser sont les nouveaux flux de données disponibles dans Microsoft Fabric : Flus de données Gen2. La principale différence avec les flux de données classique est que vous pouvez choisir dans quelle destination Power Query écrit le résultat.</p>
+<h2 id="création-de-notre-flux-de-données">Création de notre flux de données</h2>
+<p>Rendez-vous dans l&rsquo;espace de travail <em>Fabric - Le match [Silver]</em> créer dans l&rsquo;article de préparation du match. Et passer sur l&rsquo;expérience utilisateur <em>Data Factory</em>.</p>
+<p><img src="/p/fabric-the-match-dataflow/img/001-fabric-create-dataflow.png"
+	width="318"
+	height="553"
+	srcset="/p/fabric-the-match-dataflow/img/001-fabric-create-dataflow_hu8161fd1ef16cbaeff8b0672921247073_24875_480x0_resize_box_3.png 480w, /p/fabric-the-match-dataflow/img/001-fabric-create-dataflow_hu8161fd1ef16cbaeff8b0672921247073_24875_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Création d&rsquo;un flux de données"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="57"
+		data-flex-basis="138px"
+	
+></p>
+<ol>
+<li>Dans le menu de l&rsquo;espace de travail, appuyez sur <strong>+ Nouveau</strong>.</li>
+<li>Sélectionnez <strong>Flux de données Gen2</strong>.</li>
+</ol>
+<p>L&rsquo;éditeur Power Query Online s&rsquo;ouvre.</p>
+<p><img src="/p/fabric-the-match-dataflow/img/002-fabric-dataflow-power-query-editor.png"
+	width="1501"
+	height="693"
+	srcset="/p/fabric-the-match-dataflow/img/002-fabric-dataflow-power-query-editor_hu3aa5028d095ea7696a6806b829d214bf_48951_480x0_resize_box_3.png 480w, /p/fabric-the-match-dataflow/img/002-fabric-dataflow-power-query-editor_hu3aa5028d095ea7696a6806b829d214bf_48951_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Editeur Power Query Online"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="216"
+		data-flex-basis="519px"
+	
+></p>
+<p>La création d&rsquo;un flux de données provoque la création automatique de :</p>
+<ul>
+<li>Un lakehouse et son point de terminaison SQL.</li>
+<li>Un jeu de données par défaut.</li>
+</ul>
+<h2 id="tâches-préparatoires-à-une-transformation-de-données">Tâches préparatoires à une transformation de données</h2>
+<h3 id="charger-les-données">Charger les données</h3>
+<p>Pour charger les données, nous retrouvons la procédure classique de Power Query :</p>
+<p><img src="/p/fabric-the-match-dataflow/img/003-fabric-dataflow-load-data-step1.png"
+	width="640"
+	height="164"
+	srcset="/p/fabric-the-match-dataflow/img/003-fabric-dataflow-load-data-step1_hu9d10b8755a31e3f57be0da6252724298_15586_480x0_resize_box_3.png 480w, /p/fabric-the-match-dataflow/img/003-fabric-dataflow-load-data-step1_hu9d10b8755a31e3f57be0da6252724298_15586_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Chargement des données - étape 1"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="390"
+		data-flex-basis="936px"
+	
+></p>
+<ol>
+<li>Allez dans le menu <strong>Accueil</strong>.</li>
+<li>Appuyez sur l&rsquo;icône <strong>Obtenir les données</strong>.</li>
+</ol>
+<p><img src="/p/fabric-the-match-dataflow/img/004-fabric-dataflow-load-data-step2.png"
+	width="1663"
+	height="790"
+	srcset="/p/fabric-the-match-dataflow/img/004-fabric-dataflow-load-data-step2_hu531c9abe2cb38963618d683ed386051a_166271_480x0_resize_box_3.png 480w, /p/fabric-the-match-dataflow/img/004-fabric-dataflow-load-data-step2_hu531c9abe2cb38963618d683ed386051a_166271_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Chargement des données - étape 2"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="210"
+		data-flex-basis="505px"
+	
+></p>
+<ol>
+<li>Sélectionnez <strong>Lakehouse</strong>.</li>
+</ol>
+<p><img src="/p/fabric-the-match-dataflow/img/005-fabric-dataflow-load-data-step3.png"
+	width="1651"
+	height="790"
+	srcset="/p/fabric-the-match-dataflow/img/005-fabric-dataflow-load-data-step3_huc0660fd7345d8ef583adb60457309d89_26995_480x0_resize_box_3.png 480w, /p/fabric-the-match-dataflow/img/005-fabric-dataflow-load-data-step3_huc0660fd7345d8ef583adb60457309d89_26995_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Chargement des données - étape 3"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="208"
+		data-flex-basis="501px"
+	
+></p>
+<ol>
+<li>Les éléments s&rsquo;autoconfigurent, vous avez juste à appuyer sur <strong>Suivant</strong>.</li>
+</ol>
+<p><img src="/p/fabric-the-match-dataflow/img/006-fabric-dataflow-load-data-step4.png"
+	width="1652"
+	height="784"
+	srcset="/p/fabric-the-match-dataflow/img/006-fabric-dataflow-load-data-step4_huc055b9fc2294b4b2a0c9600b34c114ec_42268_480x0_resize_box_3.png 480w, /p/fabric-the-match-dataflow/img/006-fabric-dataflow-load-data-step4_huc055b9fc2294b4b2a0c9600b34c114ec_42268_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Chargement des données - étape 4"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="210"
+		data-flex-basis="505px"
+	
+></p>
+<ol>
+<li>Ouvrez votre espace de travail, ici <em>Fabric - Le match [Silver]</em>.</li>
+<li>Ouvrez votre lakehouse, ici <em>LeMatch</em>.</li>
+<li>Ouvrez <em>Fichiers</em>.</li>
+<li>Ouvrez le raccourci <em>Bronze_Le_Match</em>.</li>
+<li>Sélectionnez le fichier <em>countries.csv</em>.</li>
+<li>Appuyez sur <em>Créer</em> pour créer une requête dans Power Query qui ce connecte au fichier.</li>
+</ol>
+<h3 id="obtenir-un-échantillonnage-des-données">Obtenir un échantillonnage des données</h3>
+<p>Après la création de la requête, Power Query vous affiche automatiquement un échantillon de vos données limité aux 100 premières lignes.</p>
+<p><img src="/p/fabric-the-match-dataflow/img/007-fabric-dataflow-load-data-end.png"
+	width="1851"
+	height="884"
+	srcset="/p/fabric-the-match-dataflow/img/007-fabric-dataflow-load-data-end_hu50f042de116be3e89a2b48aa5749d804_160388_480x0_resize_box_3.png 480w, /p/fabric-the-match-dataflow/img/007-fabric-dataflow-load-data-end_hu50f042de116be3e89a2b48aa5749d804_160388_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Affichage d&rsquo;un échantillon de données"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="209"
+		data-flex-basis="502px"
+	
+></p>
+<h3 id="voir-les-métadonnées-du-jeu-de-données">Voir les métadonnées du jeu de données</h3>
+<p>Dans notre cas la première ligne contient le nom des colonnes, nous allons donc utiliser la fonction <em>Utiliser la première ligne pour les en-têtes</em> afin d&rsquo;avoir les bons noms de colonne, et nous allons laisser Power Query détecter le type de données des colonnes.</p>
+<p><img src="/p/fabric-the-match-dataflow/img/008-fabric-dataflow-metadata.png"
+	width="1844"
+	height="560"
+	srcset="/p/fabric-the-match-dataflow/img/008-fabric-dataflow-metadata_hu9594f1b073866e8fc699e4c2f0bb09e8_117407_480x0_resize_box_3.png 480w, /p/fabric-the-match-dataflow/img/008-fabric-dataflow-metadata_hu9594f1b073866e8fc699e4c2f0bb09e8_117407_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Affichage des métadonnées"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="329"
+		data-flex-basis="790px"
+	
+></p>
+<ol>
+<li>Allez dans le menu <strong>Accueil</strong>.</li>
+<li>Appuyez sur l&rsquo;icône <strong>Utiliser la première ligne pour les en-têtes</strong>.</li>
+<li>2 étapes sont automatiquement créées, la seconde et le résultat de l&rsquo;autodetection des types de données de la colonne par Power Query. Cette étape peut être modifiée si le résultat ne vous convient pas.</li>
+<li>Les métadonnées sont lisibles directement sur les en-t^tes de colonnes. L&rsquo;icône correspond aux types de données.</li>
+</ol>
+<p>❗ Pour les sources de données exposant les métadonnées, comme les bases de données ou les fichiers Parquet, ces dernières sont automatiquement lu depuis la source.</p>
+<h2 id="réaliser-les-transformations">Réaliser les transformations</h2>
+<h3 id="sélectionner-certaines-colonnes">Sélectionner certaines colonnes</h3>
+<p>Pour ne sélectionner que les 3 colonnes <em>name</em>, <em>currencies</em> et <em>capital</em>, on procède ainsi :</p>
+<p><img src="/p/fabric-the-match-dataflow/img/009-fabric-dataflow-select-column.png"
+	width="1400"
+	height="758"
+	srcset="/p/fabric-the-match-dataflow/img/009-fabric-dataflow-select-column_hu958518c53dbadc2ce66b0f9002abd820_127512_480x0_resize_box_3.png 480w, /p/fabric-the-match-dataflow/img/009-fabric-dataflow-select-column_hu958518c53dbadc2ce66b0f9002abd820_127512_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Sélection des colonnes"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="184"
+		data-flex-basis="443px"
+	
+></p>
+<ol>
+<li>Allez dans le menu <strong>Accueil</strong>.</li>
+<li>Appuyez sur l&rsquo;icône <strong>Choisir des colonnes</strong>.</li>
+<li>Sélectionnez les colonnes.</li>
+<li>Appuyez sur <strong>OK</strong>.</li>
+</ol>
+<p>Voici le résultat :</p>
+<p><img src="/p/fabric-the-match-dataflow/img/010-fabric-dataflow-select-column-result.png"
+	width="1647"
+	height="730"
+	srcset="/p/fabric-the-match-dataflow/img/010-fabric-dataflow-select-column-result_hucfd5409c4d242690f0f43f468a2638f7_123096_480x0_resize_box_3.png 480w, /p/fabric-the-match-dataflow/img/010-fabric-dataflow-select-column-result_hucfd5409c4d242690f0f43f468a2638f7_123096_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Résultat de la sélection des colonnes"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="225"
+		data-flex-basis="541px"
+	
+></p>
+<p>Supprimer l&rsquo;étape nouvellement créée avant de passer à la suite.</p>
+<h3 id="filtrer-les-lignes-à-conserver">Filtrer les lignes à conserver</h3>
+<p>Pour ne sélectionner que les lignes ayant pour valeur <em>EUR</em> dans la colonne <em>currencies</em>, on procède ainsi :</p>
+<p><img src="/p/fabric-the-match-dataflow/img/011-fabric-dataflow-filter-column.png"
+	width="1458"
+	height="675"
+	srcset="/p/fabric-the-match-dataflow/img/011-fabric-dataflow-filter-column_huce19d496eebfcf544b3794752f2e8db0_77334_480x0_resize_box_3.png 480w, /p/fabric-the-match-dataflow/img/011-fabric-dataflow-filter-column_huce19d496eebfcf544b3794752f2e8db0_77334_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Filtrer une colonne"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="216"
+		data-flex-basis="518px"
+	
+></p>
+<ol>
+<li>Appuyez sur le bouton au niveau de la colonne à filtrer.</li>
+<li>Définissez votre filtre.</li>
+<li>Appuyez sur <em>OK</em>.</li>
+</ol>
+<h3 id="modifier-le-nom-des-colonnes">Modifier le nom des colonnes</h3>
+<p>Pour renommer les 3 colonnes <em>name</em>, <em>currencies</em> et <em>capital</em>, en <em>nom</em>, <em>devise</em> et <em>capitale</em>, on procède ainsi :</p>
+<p><img src="/p/fabric-the-match-dataflow/img/012-fabric-dataflow-rename-column.png"
+	width="1455"
+	height="673"
+	srcset="/p/fabric-the-match-dataflow/img/012-fabric-dataflow-rename-column_hucefc34d1bb9044b9a698eafe3ffd38c2_110505_480x0_resize_box_3.png 480w, /p/fabric-the-match-dataflow/img/012-fabric-dataflow-rename-column_hucefc34d1bb9044b9a698eafe3ffd38c2_110505_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Renommer une colonne"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="216"
+		data-flex-basis="518px"
+	
+></p>
+<ol>
+<li>Faite un clic droit sur l&rsquo;en-tête de la colonne à renommée.</li>
+<li>Choisissez <strong>Renommer&hellip;</strong> dans le menu, vous pourrez ensuite renommer la colonne.</li>
+</ol>
+<p>Vous pouvez aussi double-cliquer sur le nom de la colonne ou la sélectionner et appuyer sur la touche <strong>F2</strong>.</p>
+<h3 id="modifier-le-type-de-données-des-colonnes">Modifier le type de données des colonnes</h3>
+<p>Pour convertir la colonne <em>area</em> qui est de type nombre décimal en nombre entier, on procède ainsi :</p>
+<p><img src="/p/fabric-the-match-dataflow/img/013-fabric-dataflow-change-type-column.png"
+	width="1656"
+	height="830"
+	srcset="/p/fabric-the-match-dataflow/img/013-fabric-dataflow-change-type-column_hua8ee8fc07858e24d4a93fca80ee03346_123347_480x0_resize_box_3.png 480w, /p/fabric-the-match-dataflow/img/013-fabric-dataflow-change-type-column_hua8ee8fc07858e24d4a93fca80ee03346_123347_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Modifier le type d&rsquo;une colonne"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="199"
+		data-flex-basis="478px"
+	
+></p>
+<ol>
+<li>Faite un clic sur l&rsquo;icône représentant le type de données dans l&rsquo;en-tête de la colonne.</li>
+<li>Choisissez le nouveau type.</li>
+<li>Vous pouvez aussi passer par le menu <em>Accueil</em></li>
+<li>Et choisir l&rsquo;item <strong>Type de données</strong>.</li>
+</ol>
+<h3 id="gestion-des-valeurs-absentes">Gestion des valeurs absentes</h3>
+<p>Pour remplacer les valeurs vides par la valeur -1 de la colonne <em>landlocked</em>, on procède ainsi :</p>
+<p><img src="/p/fabric-the-match-dataflow/img/014-fabric-dataflow-replace-null.png"
+	width="1853"
+	height="888"
+	srcset="/p/fabric-the-match-dataflow/img/014-fabric-dataflow-replace-null_hu380575adc089976520fab3e985318e31_201951_480x0_resize_box_3.png 480w, /p/fabric-the-match-dataflow/img/014-fabric-dataflow-replace-null_hu380575adc089976520fab3e985318e31_201951_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Remplacer les valeurs vides"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="208"
+		data-flex-basis="500px"
+	
+></p>
+<ol>
+<li>Sélectionnez la colonne <em>landlocked</em>.</li>
+<li>Allez dans le menu <strong>Transformer</strong>.</li>
+<li>Sélectionnez <strong>Remplacer les valeurs</strong>.</li>
+<li>Recherchez la valeur <em>null</em>.</li>
+<li>Remplacer là par la valeur <em>-1</em>.</li>
+<li>Appuyez sur <strong>OK</strong>.</li>
+</ol>
+<p><img src="/p/fabric-the-match-dataflow/img/015-fabric-dataflow-replace-null-result.png"
+	width="1457"
+	height="672"
+	srcset="/p/fabric-the-match-dataflow/img/015-fabric-dataflow-replace-null-result_hube47f41f532e7d327d4d200fe1c00746_116940_480x0_resize_box_3.png 480w, /p/fabric-the-match-dataflow/img/015-fabric-dataflow-replace-null-result_hube47f41f532e7d327d4d200fe1c00746_116940_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Résultat du remplacement des valeurs vides"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="216"
+		data-flex-basis="520px"
+	
+></p>
+<h3 id="enlever-les-doublons">Enlever les doublons</h3>
+<p>Pour obtenir la liste des devises dédoublonnée, on procède ainsi :</p>
+<p>On commence par ne conserver que la liste des devises.</p>
+<p><img src="/p/fabric-the-match-dataflow/img/016-fabric-dataflow-doublon-step1.png"
+	width="1450"
+	height="672"
+	srcset="/p/fabric-the-match-dataflow/img/016-fabric-dataflow-doublon-step1_hu95051a0b0ab42049e7233bbb5db91adf_82654_480x0_resize_box_3.png 480w, /p/fabric-the-match-dataflow/img/016-fabric-dataflow-doublon-step1_hu95051a0b0ab42049e7233bbb5db91adf_82654_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Obtenir la liste des devises"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="215"
+		data-flex-basis="517px"
+	
+></p>
+<ol>
+<li>Faite un clic droit sur l&rsquo;en-tête de la colonne <em>currencies</em>.</li>
+<li>Choisissez <strong>Supprimer les autres colonnes</strong> dans le menu.</li>
+</ol>
+<p><img src="/p/fabric-the-match-dataflow/img/017-fabric-dataflow-doublon-step2.png"
+	width="1856"
+	height="889"
+	srcset="/p/fabric-the-match-dataflow/img/017-fabric-dataflow-doublon-step2_hu23a0c6de9b497fdc23964a58fbb7fd13_102889_480x0_resize_box_3.png 480w, /p/fabric-the-match-dataflow/img/017-fabric-dataflow-doublon-step2_hu23a0c6de9b497fdc23964a58fbb7fd13_102889_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Supprimer les doublons"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="208"
+		data-flex-basis="501px"
+	
+></p>
+<ol>
+<li>Allez dans le menu <strong>Accueil</strong>.</li>
+<li>Appuyez sur le texte <strong>Supprimer les lignes</strong>.</li>
+<li>Sélectionnez <strong>Supprimer les doublons</strong>.</li>
+</ol>
+<p>On obtient le résultat suivant :</p>
+<p><img src="/p/fabric-the-match-dataflow/img/018-fabric-dataflow-doublon-result.png"
+	width="575"
+	height="703"
+	srcset="/p/fabric-the-match-dataflow/img/018-fabric-dataflow-doublon-result_hu22564f857d86a460bcc790f6859245e3_18173_480x0_resize_box_3.png 480w, /p/fabric-the-match-dataflow/img/018-fabric-dataflow-doublon-result_hu22564f857d86a460bcc790f6859245e3_18173_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Résultat de la suppression des doublons"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="81"
+		data-flex-basis="196px"
+	
+></p>
+<h2 id="sauvegarder-le-résultat-dans-la-couche-silver">Sauvegarder le résultat dans la couche Silver</h2>
+<p>Le résultat que l&rsquo;on souhaite conserver dans la couche silver est le résultat de ka section <em>Filtrer les lignes à conserver</em> ci-dessus.</p>
+<p>Pour enregistrer le résultat de la requête Power query dans le lakehouse, on procède ainsi :</p>
+<p><img src="/p/fabric-the-match-dataflow/img/019-fabric-dataflow-save-result.png"
+	width="1858"
+	height="888"
+	srcset="/p/fabric-the-match-dataflow/img/019-fabric-dataflow-save-result_hue070adfb25913c185a4005531a2dc6db_206431_480x0_resize_box_3.png 480w, /p/fabric-the-match-dataflow/img/019-fabric-dataflow-save-result_hue070adfb25913c185a4005531a2dc6db_206431_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Sélection de la destination - étape 1"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="209"
+		data-flex-basis="502px"
+	
+></p>
+<ol>
+<li>En bas droite de l&rsquo;éditeur Power Query, appuyez sur le <strong>+</strong> au niveau de <em>Destination des données</em>.</li>
+<li>Choisir <strong>Lakehouse</strong> dans la liste.</li>
+</ol>
+<p><img src="/p/fabric-the-match-dataflow/img/020-fabric-dataflow-save-result-step2.png"
+	width="1658"
+	height="784"
+	srcset="/p/fabric-the-match-dataflow/img/020-fabric-dataflow-save-result-step2_hu55bd92012d6edca18de948793d74d2a2_27386_480x0_resize_box_3.png 480w, /p/fabric-the-match-dataflow/img/020-fabric-dataflow-save-result-step2_hu55bd92012d6edca18de948793d74d2a2_27386_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Sélection de la destination - étape 2"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="211"
+		data-flex-basis="507px"
+	
+></p>
+<ol>
+<li>Les éléments s&rsquo;autoconfigurent, vous avez juste à appuyer sur <strong>Suivant</strong>.</li>
+</ol>
+<p>La sauvegarde se fait obligatoirement dans une table. Por rappel les tables du lakehouse sont des fichiers managés par le système au format delta lake, vous pouvez les utiliser dans des requêtes SQL via le point de terminaisonSQL  associé au lakehouse.</p>
+<p><img src="/p/fabric-the-match-dataflow/img/021-fabric-dataflow-save-result-step3.png"
+	width="1654"
+	height="778"
+	srcset="/p/fabric-the-match-dataflow/img/021-fabric-dataflow-save-result-step3_hu144896ddfbd7635bb94c074ea04132c6_40329_480x0_resize_box_3.png 480w, /p/fabric-the-match-dataflow/img/021-fabric-dataflow-save-result-step3_hu144896ddfbd7635bb94c074ea04132c6_40329_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Sélection de la destination - étape 3"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="212"
+		data-flex-basis="510px"
+	
+></p>
+<ol>
+<li>Sélectionnez <strong>Nouvelle table</strong></li>
+<li>Ouvrez votre espace de travail, ici <em>Fabric - Le match [Silver]</em>.</li>
+<li>Ouvrez votre lakehouse, ici <em>LeMatch</em>.</li>
+<li>Entrez le nom de votre table ici <em>LeMatchDataflow</em>.</li>
+<li>Appuyez sur <strong>Suivant</strong>.</li>
+</ol>
+<p>Vous pouvez ensuite choisir les paramètres de mise à jour de la table et le mapping des colonnes. On laisse tout par défaut.</p>
+<p><img src="/p/fabric-the-match-dataflow/img/022-fabric-dataflow-save-result-step4.png"
+	width="1649"
+	height="773"
+	srcset="/p/fabric-the-match-dataflow/img/022-fabric-dataflow-save-result-step4_huc77566e0747971ed01ee0ae07058056a_39236_480x0_resize_box_3.png 480w, /p/fabric-the-match-dataflow/img/022-fabric-dataflow-save-result-step4_huc77566e0747971ed01ee0ae07058056a_39236_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Sélection de la destination - étape 4"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="213"
+		data-flex-basis="511px"
+	
+></p>
+<ol>
+<li>Appuyez sur <strong>Enregistrer les paramètres</strong>.</li>
+</ol>
+<p><img src="/p/fabric-the-match-dataflow/img/023-fabric-dataflow-save-result-end.png"
+	width="1849"
+	height="930"
+	srcset="/p/fabric-the-match-dataflow/img/023-fabric-dataflow-save-result-end_huaf5ba4f8b4f0d1aed3da4493d252ffc5_204271_480x0_resize_box_3.png 480w, /p/fabric-the-match-dataflow/img/023-fabric-dataflow-save-result-end_huaf5ba4f8b4f0d1aed3da4493d252ffc5_204271_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Sélection de la destination - fin"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="198"
+		data-flex-basis="477px"
+	
+></p>
+<ol>
+<li>Vos paramètres peuvent être édités ici via la roue crantée.</li>
+<li>Appuyez sur <strong>Publier</strong> pour publier votre flux de données et l&rsquo;exécuter.</li>
+</ol>
+<p>Suite à sa publication, votre flux de données s&rsquo;actualise automatiquement, vous pouvez l&rsquo;actualiser manuellement dans l&rsquo;espace de travail.</p>
+<p>Nous allons maintenant vérifier le résultat, pour cale rendez-vous dans le lakehouse de l&rsquo;espace de travail <em>Fabric - Le match [Silver]</em>.</p>
+<p><img src="/p/fabric-the-match-dataflow/img/024-fabric-dataflow-result.png"
+	width="262"
+	height="230"
+	srcset="/p/fabric-the-match-dataflow/img/024-fabric-dataflow-result_hu56ae070a28ef4dbed626662666b388ac_8127_480x0_resize_box_3.png 480w, /p/fabric-the-match-dataflow/img/024-fabric-dataflow-result_hu56ae070a28ef4dbed626662666b388ac_8127_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Nouvelle table présente dans le lakehouse"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="113"
+		data-flex-basis="273px"
+	
+></p>
+<ol>
+<li>Dans l&rsquo;explorateur du lakehouse ouvrez <em>Tables</em></li>
+<li>Votre nouvelle table est bien créée.</li>
+</ol>
+<p>Pour enregistrer le résultat dans un fichier du lakehouse, on procède ainsi :</p>
+<p>Merci de votre attention.</p>
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/interm%C3%A9diaire/">Intermédiaire</a>
+        
+            <a href="/tags/auto-formation/">Auto formation</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Contenus liés</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/fabric-the-match-preparation/">
+        
+        
+            <div class="article-image">
+                <img src="/p/fabric-the-match-preparation/_hu3d03a01dcc18bc5be0e67db3d8d209a6_961791_8fc0346850a744476c4383dc578a6d00.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Préparation de données avec Microsoft Fabric, le match !"
+                        data-key="fabric-the-match-preparation" 
+                        data-hash="md5-AgIBXuqe9KtVUZiNc6EjPA==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Préparation de données avec Microsoft Fabric, le match !</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/fabric-first-pipeline/">
+        
+        
+            <div class="article-image">
+                <img src="/p/fabric-first-pipeline/_hu3d03a01dcc18bc5be0e67db3d8d209a6_2557256_b7b45004d6c17d6913983762d3b440f7.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Votre premier pipeline d&#39;intégration de données avec Microsoft Fabric"
+                        data-key="fabric-first-pipeline" 
+                        data-hash="md5-ePW8oK7jTMuVy7&#43;HIrvXbQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Votre premier pipeline d&#39;intégration de données avec Microsoft Fabric</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/fabric-poc-iot/">
+        
+        
+            <div class="article-image">
+                <img src="/p/fabric-poc-iot/_hu3d03a01dcc18bc5be0e67db3d8d209a6_3315002_4c771f89f6ca9cc60be251a06c4c762b.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Données en temps réel dans votre rapport Power BI avec Microsoft Fabric"
+                        data-key="fabric-poc-iot" 
+                        data-hash="md5-vJKPy1E9umGa8OSN&#43;hupgw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Données en temps réel dans votre rapport Power BI avec Microsoft Fabric</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/power-query-advanced-m-part2/">
+        
+        
+            <div class="article-image">
+                <img src="/p/power-query-advanced-m-part2/_hu3d03a01dcc18bc5be0e67db3d8d209a6_873198_ab48ba05a2eda675fc946b84723dfcd0.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Power Query améliorer la maintenance."
+                        data-key="power-query-advanced-m-part2" 
+                        data-hash="md5-3kNBZ1BPLRsCtXMBsyGdZA==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Power Query améliorer la maintenance.</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/power-query-advanced-m-part1/">
+        
+        
+            <div class="article-image">
+                <img src="/p/power-query-advanced-m-part1/_hu3d03a01dcc18bc5be0e67db3d8d209a6_1564048_3900e448ac4cabc985e10261804d2efc.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Power Query au-delà des assistants."
+                        data-key="power-query-advanced-m-part1" 
+                        data-hash="md5-oKKnMZm6l/XY9kXLKdQwQQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Power Query au-delà des assistants.</h2>
+        </div>
+    </a>
+</article>
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "ddata" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2022 - 
+        
+        2023 Le D de Data
+    </section>
+    
+    <section class="powerby">
+        Généré avec <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Thème <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.16.0">Stack</a></b> conçu par <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

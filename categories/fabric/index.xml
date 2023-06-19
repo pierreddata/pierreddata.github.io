@@ -6,7 +6,490 @@
         <description>Recent content in Microsoft Fabric on Le D de Data</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>fr-fr</language>
-        <lastBuildDate>Sun, 18 Jun 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ddata.fr/categories/fabric/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Mon, 19 Jun 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ddata.fr/categories/fabric/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Préparation de données avec Microsoft Fabric, les flux de données</title>
+        <link>https://blog.ddata.fr/p/fabric-the-match-dataflow/</link>
+        <pubDate>Mon, 19 Jun 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://blog.ddata.fr/p/fabric-the-match-dataflow/</guid>
+        <description>&lt;img src="https://blog.ddata.fr/p/fabric-the-match-dataflow/tangerine-newt-w9QdAC1f8-0-unsplash.jpg" alt="Featured image of post Préparation de données avec Microsoft Fabric, les flux de données" /&gt;&lt;p&gt;On commence le match avec le flux de données.&lt;/p&gt;
+&lt;h2 id=&#34;contexte&#34;&gt;Contexte&lt;/h2&gt;
+&lt;p&gt;Afin de découvrir les différents types de traitement proposé par Microsoft Fabric, je vous ai proposé un match entre 3 différentes possibilités : &lt;a class=&#34;link&#34; href=&#34;https://blog.ddata.fr/p/fabric-the-match-preparation/&#34; &gt;Préparation de données avec Microsoft Fabric, le match !&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Je me propose ici de réaliser les transformations avec un flux de données.&lt;/p&gt;
+&lt;p&gt;Pour rappel, un flux de données est simplement du Power Query Online. On retrouve la même interface Power Query que dans Power BI mais les traitements sont exécutés dans le service Microsoft Fabric.&lt;br&gt;
+Les flux de de données que l&amp;rsquo;on va utiliser sont les nouveaux flux de données disponibles dans Microsoft Fabric : Flus de données Gen2. La principale différence avec les flux de données classique est que vous pouvez choisir dans quelle destination Power Query écrit le résultat.&lt;/p&gt;
+&lt;h2 id=&#34;création-de-notre-flux-de-données&#34;&gt;Création de notre flux de données&lt;/h2&gt;
+&lt;p&gt;Rendez-vous dans l&amp;rsquo;espace de travail &lt;em&gt;Fabric - Le match [Silver]&lt;/em&gt; créer dans l&amp;rsquo;article de préparation du match. Et passer sur l&amp;rsquo;expérience utilisateur &lt;em&gt;Data Factory&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-the-match-dataflow/img/001-fabric-create-dataflow.png&#34;
+	width=&#34;318&#34;
+	height=&#34;553&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-the-match-dataflow/img/001-fabric-create-dataflow_hu8161fd1ef16cbaeff8b0672921247073_24875_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-the-match-dataflow/img/001-fabric-create-dataflow_hu8161fd1ef16cbaeff8b0672921247073_24875_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Création d&amp;rsquo;un flux de données&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;57&#34;
+		data-flex-basis=&#34;138px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Dans le menu de l&amp;rsquo;espace de travail, appuyez sur &lt;strong&gt;+ Nouveau&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;Sélectionnez &lt;strong&gt;Flux de données Gen2&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;L&amp;rsquo;éditeur Power Query Online s&amp;rsquo;ouvre.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-the-match-dataflow/img/002-fabric-dataflow-power-query-editor.png&#34;
+	width=&#34;1501&#34;
+	height=&#34;693&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-the-match-dataflow/img/002-fabric-dataflow-power-query-editor_hu3aa5028d095ea7696a6806b829d214bf_48951_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-the-match-dataflow/img/002-fabric-dataflow-power-query-editor_hu3aa5028d095ea7696a6806b829d214bf_48951_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Editeur Power Query Online&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;216&#34;
+		data-flex-basis=&#34;519px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;La création d&amp;rsquo;un flux de données provoque la création automatique de :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Un lakehouse et son point de terminaison SQL.&lt;/li&gt;
+&lt;li&gt;Un jeu de données par défaut.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;tâches-préparatoires-à-une-transformation-de-données&#34;&gt;Tâches préparatoires à une transformation de données&lt;/h2&gt;
+&lt;h3 id=&#34;charger-les-données&#34;&gt;Charger les données&lt;/h3&gt;
+&lt;p&gt;Pour charger les données, nous retrouvons la procédure classique de Power Query :&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-the-match-dataflow/img/003-fabric-dataflow-load-data-step1.png&#34;
+	width=&#34;640&#34;
+	height=&#34;164&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-the-match-dataflow/img/003-fabric-dataflow-load-data-step1_hu9d10b8755a31e3f57be0da6252724298_15586_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-the-match-dataflow/img/003-fabric-dataflow-load-data-step1_hu9d10b8755a31e3f57be0da6252724298_15586_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Chargement des données - étape 1&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;390&#34;
+		data-flex-basis=&#34;936px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Allez dans le menu &lt;strong&gt;Accueil&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;Appuyez sur l&amp;rsquo;icône &lt;strong&gt;Obtenir les données&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-the-match-dataflow/img/004-fabric-dataflow-load-data-step2.png&#34;
+	width=&#34;1663&#34;
+	height=&#34;790&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-the-match-dataflow/img/004-fabric-dataflow-load-data-step2_hu531c9abe2cb38963618d683ed386051a_166271_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-the-match-dataflow/img/004-fabric-dataflow-load-data-step2_hu531c9abe2cb38963618d683ed386051a_166271_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Chargement des données - étape 2&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;210&#34;
+		data-flex-basis=&#34;505px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Sélectionnez &lt;strong&gt;Lakehouse&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-the-match-dataflow/img/005-fabric-dataflow-load-data-step3.png&#34;
+	width=&#34;1651&#34;
+	height=&#34;790&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-the-match-dataflow/img/005-fabric-dataflow-load-data-step3_huc0660fd7345d8ef583adb60457309d89_26995_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-the-match-dataflow/img/005-fabric-dataflow-load-data-step3_huc0660fd7345d8ef583adb60457309d89_26995_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Chargement des données - étape 3&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;208&#34;
+		data-flex-basis=&#34;501px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Les éléments s&amp;rsquo;autoconfigurent, vous avez juste à appuyer sur &lt;strong&gt;Suivant&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-the-match-dataflow/img/006-fabric-dataflow-load-data-step4.png&#34;
+	width=&#34;1652&#34;
+	height=&#34;784&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-the-match-dataflow/img/006-fabric-dataflow-load-data-step4_huc055b9fc2294b4b2a0c9600b34c114ec_42268_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-the-match-dataflow/img/006-fabric-dataflow-load-data-step4_huc055b9fc2294b4b2a0c9600b34c114ec_42268_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Chargement des données - étape 4&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;210&#34;
+		data-flex-basis=&#34;505px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Ouvrez votre espace de travail, ici &lt;em&gt;Fabric - Le match [Silver]&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Ouvrez votre lakehouse, ici &lt;em&gt;LeMatch&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Ouvrez &lt;em&gt;Fichiers&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Ouvrez le raccourci &lt;em&gt;Bronze_Le_Match&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Sélectionnez le fichier &lt;em&gt;countries.csv&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Appuyez sur &lt;em&gt;Créer&lt;/em&gt; pour créer une requête dans Power Query qui ce connecte au fichier.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;obtenir-un-échantillonnage-des-données&#34;&gt;Obtenir un échantillonnage des données&lt;/h3&gt;
+&lt;p&gt;Après la création de la requête, Power Query vous affiche automatiquement un échantillon de vos données limité aux 100 premières lignes.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-the-match-dataflow/img/007-fabric-dataflow-load-data-end.png&#34;
+	width=&#34;1851&#34;
+	height=&#34;884&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-the-match-dataflow/img/007-fabric-dataflow-load-data-end_hu50f042de116be3e89a2b48aa5749d804_160388_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-the-match-dataflow/img/007-fabric-dataflow-load-data-end_hu50f042de116be3e89a2b48aa5749d804_160388_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Affichage d&amp;rsquo;un échantillon de données&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;209&#34;
+		data-flex-basis=&#34;502px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;voir-les-métadonnées-du-jeu-de-données&#34;&gt;Voir les métadonnées du jeu de données&lt;/h3&gt;
+&lt;p&gt;Dans notre cas la première ligne contient le nom des colonnes, nous allons donc utiliser la fonction &lt;em&gt;Utiliser la première ligne pour les en-têtes&lt;/em&gt; afin d&amp;rsquo;avoir les bons noms de colonne, et nous allons laisser Power Query détecter le type de données des colonnes.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-the-match-dataflow/img/008-fabric-dataflow-metadata.png&#34;
+	width=&#34;1844&#34;
+	height=&#34;560&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-the-match-dataflow/img/008-fabric-dataflow-metadata_hu9594f1b073866e8fc699e4c2f0bb09e8_117407_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-the-match-dataflow/img/008-fabric-dataflow-metadata_hu9594f1b073866e8fc699e4c2f0bb09e8_117407_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Affichage des métadonnées&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;329&#34;
+		data-flex-basis=&#34;790px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Allez dans le menu &lt;strong&gt;Accueil&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;Appuyez sur l&amp;rsquo;icône &lt;strong&gt;Utiliser la première ligne pour les en-têtes&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;2 étapes sont automatiquement créées, la seconde et le résultat de l&amp;rsquo;autodetection des types de données de la colonne par Power Query. Cette étape peut être modifiée si le résultat ne vous convient pas.&lt;/li&gt;
+&lt;li&gt;Les métadonnées sont lisibles directement sur les en-t^tes de colonnes. L&amp;rsquo;icône correspond aux types de données.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;❗ Pour les sources de données exposant les métadonnées, comme les bases de données ou les fichiers Parquet, ces dernières sont automatiquement lu depuis la source.&lt;/p&gt;
+&lt;h2 id=&#34;réaliser-les-transformations&#34;&gt;Réaliser les transformations&lt;/h2&gt;
+&lt;h3 id=&#34;sélectionner-certaines-colonnes&#34;&gt;Sélectionner certaines colonnes&lt;/h3&gt;
+&lt;p&gt;Pour ne sélectionner que les 3 colonnes &lt;em&gt;name&lt;/em&gt;, &lt;em&gt;currencies&lt;/em&gt; et &lt;em&gt;capital&lt;/em&gt;, on procède ainsi :&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-the-match-dataflow/img/009-fabric-dataflow-select-column.png&#34;
+	width=&#34;1400&#34;
+	height=&#34;758&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-the-match-dataflow/img/009-fabric-dataflow-select-column_hu958518c53dbadc2ce66b0f9002abd820_127512_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-the-match-dataflow/img/009-fabric-dataflow-select-column_hu958518c53dbadc2ce66b0f9002abd820_127512_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Sélection des colonnes&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;184&#34;
+		data-flex-basis=&#34;443px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Allez dans le menu &lt;strong&gt;Accueil&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;Appuyez sur l&amp;rsquo;icône &lt;strong&gt;Choisir des colonnes&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;Sélectionnez les colonnes.&lt;/li&gt;
+&lt;li&gt;Appuyez sur &lt;strong&gt;OK&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Voici le résultat :&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-the-match-dataflow/img/010-fabric-dataflow-select-column-result.png&#34;
+	width=&#34;1647&#34;
+	height=&#34;730&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-the-match-dataflow/img/010-fabric-dataflow-select-column-result_hucfd5409c4d242690f0f43f468a2638f7_123096_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-the-match-dataflow/img/010-fabric-dataflow-select-column-result_hucfd5409c4d242690f0f43f468a2638f7_123096_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Résultat de la sélection des colonnes&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;225&#34;
+		data-flex-basis=&#34;541px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Supprimer l&amp;rsquo;étape nouvellement créée avant de passer à la suite.&lt;/p&gt;
+&lt;h3 id=&#34;filtrer-les-lignes-à-conserver&#34;&gt;Filtrer les lignes à conserver&lt;/h3&gt;
+&lt;p&gt;Pour ne sélectionner que les lignes ayant pour valeur &lt;em&gt;EUR&lt;/em&gt; dans la colonne &lt;em&gt;currencies&lt;/em&gt;, on procède ainsi :&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-the-match-dataflow/img/011-fabric-dataflow-filter-column.png&#34;
+	width=&#34;1458&#34;
+	height=&#34;675&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-the-match-dataflow/img/011-fabric-dataflow-filter-column_huce19d496eebfcf544b3794752f2e8db0_77334_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-the-match-dataflow/img/011-fabric-dataflow-filter-column_huce19d496eebfcf544b3794752f2e8db0_77334_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Filtrer une colonne&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;216&#34;
+		data-flex-basis=&#34;518px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Appuyez sur le bouton au niveau de la colonne à filtrer.&lt;/li&gt;
+&lt;li&gt;Définissez votre filtre.&lt;/li&gt;
+&lt;li&gt;Appuyez sur &lt;em&gt;OK&lt;/em&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;modifier-le-nom-des-colonnes&#34;&gt;Modifier le nom des colonnes&lt;/h3&gt;
+&lt;p&gt;Pour renommer les 3 colonnes &lt;em&gt;name&lt;/em&gt;, &lt;em&gt;currencies&lt;/em&gt; et &lt;em&gt;capital&lt;/em&gt;, en &lt;em&gt;nom&lt;/em&gt;, &lt;em&gt;devise&lt;/em&gt; et &lt;em&gt;capitale&lt;/em&gt;, on procède ainsi :&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-the-match-dataflow/img/012-fabric-dataflow-rename-column.png&#34;
+	width=&#34;1455&#34;
+	height=&#34;673&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-the-match-dataflow/img/012-fabric-dataflow-rename-column_hucefc34d1bb9044b9a698eafe3ffd38c2_110505_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-the-match-dataflow/img/012-fabric-dataflow-rename-column_hucefc34d1bb9044b9a698eafe3ffd38c2_110505_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Renommer une colonne&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;216&#34;
+		data-flex-basis=&#34;518px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Faite un clic droit sur l&amp;rsquo;en-tête de la colonne à renommée.&lt;/li&gt;
+&lt;li&gt;Choisissez &lt;strong&gt;Renommer&amp;hellip;&lt;/strong&gt; dans le menu, vous pourrez ensuite renommer la colonne.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Vous pouvez aussi double-cliquer sur le nom de la colonne ou la sélectionner et appuyer sur la touche &lt;strong&gt;F2&lt;/strong&gt;.&lt;/p&gt;
+&lt;h3 id=&#34;modifier-le-type-de-données-des-colonnes&#34;&gt;Modifier le type de données des colonnes&lt;/h3&gt;
+&lt;p&gt;Pour convertir la colonne &lt;em&gt;area&lt;/em&gt; qui est de type nombre décimal en nombre entier, on procède ainsi :&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-the-match-dataflow/img/013-fabric-dataflow-change-type-column.png&#34;
+	width=&#34;1656&#34;
+	height=&#34;830&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-the-match-dataflow/img/013-fabric-dataflow-change-type-column_hua8ee8fc07858e24d4a93fca80ee03346_123347_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-the-match-dataflow/img/013-fabric-dataflow-change-type-column_hua8ee8fc07858e24d4a93fca80ee03346_123347_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Modifier le type d&amp;rsquo;une colonne&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;199&#34;
+		data-flex-basis=&#34;478px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Faite un clic sur l&amp;rsquo;icône représentant le type de données dans l&amp;rsquo;en-tête de la colonne.&lt;/li&gt;
+&lt;li&gt;Choisissez le nouveau type.&lt;/li&gt;
+&lt;li&gt;Vous pouvez aussi passer par le menu &lt;em&gt;Accueil&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;Et choisir l&amp;rsquo;item &lt;strong&gt;Type de données&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;gestion-des-valeurs-absentes&#34;&gt;Gestion des valeurs absentes&lt;/h3&gt;
+&lt;p&gt;Pour remplacer les valeurs vides par la valeur -1 de la colonne &lt;em&gt;landlocked&lt;/em&gt;, on procède ainsi :&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-the-match-dataflow/img/014-fabric-dataflow-replace-null.png&#34;
+	width=&#34;1853&#34;
+	height=&#34;888&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-the-match-dataflow/img/014-fabric-dataflow-replace-null_hu380575adc089976520fab3e985318e31_201951_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-the-match-dataflow/img/014-fabric-dataflow-replace-null_hu380575adc089976520fab3e985318e31_201951_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Remplacer les valeurs vides&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;208&#34;
+		data-flex-basis=&#34;500px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Sélectionnez la colonne &lt;em&gt;landlocked&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Allez dans le menu &lt;strong&gt;Transformer&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;Sélectionnez &lt;strong&gt;Remplacer les valeurs&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;Recherchez la valeur &lt;em&gt;null&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Remplacer là par la valeur &lt;em&gt;-1&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Appuyez sur &lt;strong&gt;OK&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-the-match-dataflow/img/015-fabric-dataflow-replace-null-result.png&#34;
+	width=&#34;1457&#34;
+	height=&#34;672&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-the-match-dataflow/img/015-fabric-dataflow-replace-null-result_hube47f41f532e7d327d4d200fe1c00746_116940_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-the-match-dataflow/img/015-fabric-dataflow-replace-null-result_hube47f41f532e7d327d4d200fe1c00746_116940_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Résultat du remplacement des valeurs vides&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;216&#34;
+		data-flex-basis=&#34;520px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;enlever-les-doublons&#34;&gt;Enlever les doublons&lt;/h3&gt;
+&lt;p&gt;Pour obtenir la liste des devises dédoublonnée, on procède ainsi :&lt;/p&gt;
+&lt;p&gt;On commence par ne conserver que la liste des devises.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-the-match-dataflow/img/016-fabric-dataflow-doublon-step1.png&#34;
+	width=&#34;1450&#34;
+	height=&#34;672&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-the-match-dataflow/img/016-fabric-dataflow-doublon-step1_hu95051a0b0ab42049e7233bbb5db91adf_82654_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-the-match-dataflow/img/016-fabric-dataflow-doublon-step1_hu95051a0b0ab42049e7233bbb5db91adf_82654_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Obtenir la liste des devises&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;215&#34;
+		data-flex-basis=&#34;517px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Faite un clic droit sur l&amp;rsquo;en-tête de la colonne &lt;em&gt;currencies&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Choisissez &lt;strong&gt;Supprimer les autres colonnes&lt;/strong&gt; dans le menu.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-the-match-dataflow/img/017-fabric-dataflow-doublon-step2.png&#34;
+	width=&#34;1856&#34;
+	height=&#34;889&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-the-match-dataflow/img/017-fabric-dataflow-doublon-step2_hu23a0c6de9b497fdc23964a58fbb7fd13_102889_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-the-match-dataflow/img/017-fabric-dataflow-doublon-step2_hu23a0c6de9b497fdc23964a58fbb7fd13_102889_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Supprimer les doublons&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;208&#34;
+		data-flex-basis=&#34;501px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Allez dans le menu &lt;strong&gt;Accueil&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;Appuyez sur le texte &lt;strong&gt;Supprimer les lignes&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;Sélectionnez &lt;strong&gt;Supprimer les doublons&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;On obtient le résultat suivant :&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-the-match-dataflow/img/018-fabric-dataflow-doublon-result.png&#34;
+	width=&#34;575&#34;
+	height=&#34;703&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-the-match-dataflow/img/018-fabric-dataflow-doublon-result_hu22564f857d86a460bcc790f6859245e3_18173_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-the-match-dataflow/img/018-fabric-dataflow-doublon-result_hu22564f857d86a460bcc790f6859245e3_18173_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Résultat de la suppression des doublons&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;81&#34;
+		data-flex-basis=&#34;196px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;sauvegarder-le-résultat-dans-la-couche-silver&#34;&gt;Sauvegarder le résultat dans la couche Silver&lt;/h2&gt;
+&lt;p&gt;Le résultat que l&amp;rsquo;on souhaite conserver dans la couche silver est le résultat de ka section &lt;em&gt;Filtrer les lignes à conserver&lt;/em&gt; ci-dessus.&lt;/p&gt;
+&lt;p&gt;Pour enregistrer le résultat de la requête Power query dans le lakehouse, on procède ainsi :&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-the-match-dataflow/img/019-fabric-dataflow-save-result.png&#34;
+	width=&#34;1858&#34;
+	height=&#34;888&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-the-match-dataflow/img/019-fabric-dataflow-save-result_hue070adfb25913c185a4005531a2dc6db_206431_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-the-match-dataflow/img/019-fabric-dataflow-save-result_hue070adfb25913c185a4005531a2dc6db_206431_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Sélection de la destination - étape 1&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;209&#34;
+		data-flex-basis=&#34;502px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;En bas droite de l&amp;rsquo;éditeur Power Query, appuyez sur le &lt;strong&gt;+&lt;/strong&gt; au niveau de &lt;em&gt;Destination des données&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Choisir &lt;strong&gt;Lakehouse&lt;/strong&gt; dans la liste.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-the-match-dataflow/img/020-fabric-dataflow-save-result-step2.png&#34;
+	width=&#34;1658&#34;
+	height=&#34;784&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-the-match-dataflow/img/020-fabric-dataflow-save-result-step2_hu55bd92012d6edca18de948793d74d2a2_27386_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-the-match-dataflow/img/020-fabric-dataflow-save-result-step2_hu55bd92012d6edca18de948793d74d2a2_27386_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Sélection de la destination - étape 2&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;211&#34;
+		data-flex-basis=&#34;507px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Les éléments s&amp;rsquo;autoconfigurent, vous avez juste à appuyer sur &lt;strong&gt;Suivant&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;La sauvegarde se fait obligatoirement dans une table. Por rappel les tables du lakehouse sont des fichiers managés par le système au format delta lake, vous pouvez les utiliser dans des requêtes SQL via le point de terminaisonSQL  associé au lakehouse.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-the-match-dataflow/img/021-fabric-dataflow-save-result-step3.png&#34;
+	width=&#34;1654&#34;
+	height=&#34;778&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-the-match-dataflow/img/021-fabric-dataflow-save-result-step3_hu144896ddfbd7635bb94c074ea04132c6_40329_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-the-match-dataflow/img/021-fabric-dataflow-save-result-step3_hu144896ddfbd7635bb94c074ea04132c6_40329_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Sélection de la destination - étape 3&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;212&#34;
+		data-flex-basis=&#34;510px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Sélectionnez &lt;strong&gt;Nouvelle table&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;Ouvrez votre espace de travail, ici &lt;em&gt;Fabric - Le match [Silver]&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Ouvrez votre lakehouse, ici &lt;em&gt;LeMatch&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Entrez le nom de votre table ici &lt;em&gt;LeMatchDataflow&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Appuyez sur &lt;strong&gt;Suivant&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Vous pouvez ensuite choisir les paramètres de mise à jour de la table et le mapping des colonnes. On laisse tout par défaut.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-the-match-dataflow/img/022-fabric-dataflow-save-result-step4.png&#34;
+	width=&#34;1649&#34;
+	height=&#34;773&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-the-match-dataflow/img/022-fabric-dataflow-save-result-step4_huc77566e0747971ed01ee0ae07058056a_39236_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-the-match-dataflow/img/022-fabric-dataflow-save-result-step4_huc77566e0747971ed01ee0ae07058056a_39236_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Sélection de la destination - étape 4&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;213&#34;
+		data-flex-basis=&#34;511px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Appuyez sur &lt;strong&gt;Enregistrer les paramètres&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-the-match-dataflow/img/023-fabric-dataflow-save-result-end.png&#34;
+	width=&#34;1849&#34;
+	height=&#34;930&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-the-match-dataflow/img/023-fabric-dataflow-save-result-end_huaf5ba4f8b4f0d1aed3da4493d252ffc5_204271_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-the-match-dataflow/img/023-fabric-dataflow-save-result-end_huaf5ba4f8b4f0d1aed3da4493d252ffc5_204271_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Sélection de la destination - fin&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;198&#34;
+		data-flex-basis=&#34;477px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Vos paramètres peuvent être édités ici via la roue crantée.&lt;/li&gt;
+&lt;li&gt;Appuyez sur &lt;strong&gt;Publier&lt;/strong&gt; pour publier votre flux de données et l&amp;rsquo;exécuter.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Suite à sa publication, votre flux de données s&amp;rsquo;actualise automatiquement, vous pouvez l&amp;rsquo;actualiser manuellement dans l&amp;rsquo;espace de travail.&lt;/p&gt;
+&lt;p&gt;Nous allons maintenant vérifier le résultat, pour cale rendez-vous dans le lakehouse de l&amp;rsquo;espace de travail &lt;em&gt;Fabric - Le match [Silver]&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-the-match-dataflow/img/024-fabric-dataflow-result.png&#34;
+	width=&#34;262&#34;
+	height=&#34;230&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-the-match-dataflow/img/024-fabric-dataflow-result_hu56ae070a28ef4dbed626662666b388ac_8127_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-the-match-dataflow/img/024-fabric-dataflow-result_hu56ae070a28ef4dbed626662666b388ac_8127_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Nouvelle table présente dans le lakehouse&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;113&#34;
+		data-flex-basis=&#34;273px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Dans l&amp;rsquo;explorateur du lakehouse ouvrez &lt;em&gt;Tables&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;Votre nouvelle table est bien créée.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Pour enregistrer le résultat dans un fichier du lakehouse, on procède ainsi :&lt;/p&gt;
+&lt;p&gt;Merci de votre attention.&lt;/p&gt;</description>
+        </item>
+        <item>
         <title>Préparation de données avec Microsoft Fabric, le match !</title>
         <link>https://blog.ddata.fr/p/fabric-the-match-preparation/</link>
         <pubDate>Sun, 18 Jun 2023 00:00:00 +0000</pubDate>
@@ -355,9 +838,9 @@ Dans l&amp;rsquo;écosystème Fabric un lakehouse est un sous-ensemble de OneLak
 &lt;h3 id=&#34;le-terrain-de-jeu-est-prêt--cest-parti&#34;&gt;Le terrain de jeu est prêt,  c&amp;rsquo;est parti&lt;/h3&gt;
 &lt;p&gt;Vous retrouverez ici les liens vers chaque partie du match :&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;Les flux de données (Power Query Online) : disponible demain&lt;/li&gt;
-&lt;li&gt;Le SQL : disponible dans 2 jours&lt;/li&gt;
-&lt;li&gt;Les blocs-notes (Python) : disponible dans 3 jours&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://blog.ddata.fr/p/fabric-the-match-dataflow/&#34; &gt;Les flux de données (Power Query Online)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Le SQL : disponible demain&lt;/li&gt;
+&lt;li&gt;Les blocs-notes (Python) : disponible dans 2 jours&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Merci de votre attention.&lt;/p&gt;</description>
         </item>
