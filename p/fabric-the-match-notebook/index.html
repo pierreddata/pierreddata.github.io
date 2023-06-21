@@ -1,0 +1,1105 @@
+<!DOCTYPE html>
+<html lang="fr-fr" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='On termine le match avec les blocs-notes.
+'>
+<title>Préparation de données avec Microsoft Fabric, les blocs-notes</title>
+
+<link rel='canonical' href='https://blog.ddata.fr/p/fabric-the-match-notebook/'>
+
+<link rel="stylesheet" href="/scss/style.min.5be32ca3f6e1a997c75795c4359147cc6d4fbd34948c0acd51e31d237033978a.css"><meta property='og:title' content='Préparation de données avec Microsoft Fabric, les blocs-notes'>
+<meta property='og:description' content='On termine le match avec les blocs-notes.
+'>
+<meta property='og:url' content='https://blog.ddata.fr/p/fabric-the-match-notebook/'>
+<meta property='og:site_name' content='Le D de Data'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Intermédiaire' /><meta property='article:tag' content='Auto formation' /><meta property='article:published_time' content='2023-06-21T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2023-06-21T00:00:00&#43;00:00'/><meta property='og:image' content='https://blog.ddata.fr/p/fabric-the-match-notebook/tangerine-newt-M8-uyRHdsHc-unsplash.jpg' />
+<meta name="twitter:title" content="Préparation de données avec Microsoft Fabric, les blocs-notes">
+<meta name="twitter:description" content="On termine le match avec les blocs-notes.
+"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://blog.ddata.fr/p/fabric-the-match-notebook/tangerine-newt-M8-uyRHdsHc-unsplash.jpg' />
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TY6XFEN6QV"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-TY6XFEN6QV', { 'anonymize_ip': false });
+}
+</script>
+<link rel="alternate"
+      type="application/rss+xml"
+      href="https://blog.ddata.fr/index.xml"
+      title="Le D de Data">
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "dark");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Afficher le menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/pierre_hua6bbc70dde858dd10e363a14d1f7729c_67951_300x0_resize_q75_box.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Le D de Data</a></h1>
+            <h2 class="site-description">Blog francophone autour de la data Microsoft</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/pierreddata'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://www.linkedin.com/in/pierre-dupont-0b532374/'
+                        target="_blank"
+                        title="LinkdIn"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-folders" width="44" height="44" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <rect x="4" y="4" width="16" height="16" rx="2" />
+  <line x1="8" y1="11" x2="8" y2="16" />
+  <line x1="8" y1="8" x2="8" y2="8.01" />
+  <line x1="12" y1="16" x2="12" y2="11" />
+  <path d="M16 16v-3a2 2 0 0 0 -4 0" />
+</svg>
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Accueil</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/a-propos-de-d-de-data/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>A Propos</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/series/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-folders" width="44" height="44" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 4h3l2 2h5a2 2 0 0 1 2 2v7a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-9a2 2 0 0 1 2 -2" />
+  <path d="M17 17v2a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-9a2 2 0 0 1 2 -2h2" />
+</svg>
+
+                
+                <span>Series</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/liens/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Liens</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Rechercher</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Mode sombre</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table des matières</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#contexte">Contexte</a></li>
+    <li><a href="#création-de-notre-bloc-notes">Création de notre bloc-notes</a></li>
+    <li><a href="#tâches-préparatoires-à-une-transformation-de-données">Tâches préparatoires à une transformation de données</a>
+      <ol>
+        <li><a href="#charger-les-données">Charger les données</a></li>
+        <li><a href="#obtenir-un-échantillonnage-des-données">Obtenir un échantillonnage des données</a></li>
+        <li><a href="#voir-les-métadonnées-du-jeu-de-données">Voir les métadonnées du jeu de données</a></li>
+      </ol>
+    </li>
+    <li><a href="#réaliser-les-transformations">Réaliser les transformations</a>
+      <ol>
+        <li><a href="#sélectionner-certaines-colonnes">Sélectionner certaines colonnes</a></li>
+        <li><a href="#filtrer-les-lignes-à-conserver">Filtrer les lignes à conserver</a></li>
+        <li><a href="#modifier-le-nom-des-colonnes">Modifier le nom des colonnes</a></li>
+        <li><a href="#modifier-le-type-de-données-des-colonnes">Modifier le type de données des colonnes</a></li>
+        <li><a href="#gestion-des-valeurs-absentes">Gestion des valeurs absentes</a></li>
+        <li><a href="#enlever-les-doublons">Enlever les doublons</a></li>
+      </ol>
+    </li>
+    <li><a href="#sauvegarder-le-résultat-dans-la-couche-silver">Sauvegarder le résultat dans la couche Silver</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/fabric-the-match-notebook/">
+                <img src="/p/fabric-the-match-notebook/tangerine-newt-M8-uyRHdsHc-unsplash_hu3d03a01dcc18bc5be0e67db3d8d209a6_1320955_800x0_resize_q75_box.jpg"
+                        srcset="/p/fabric-the-match-notebook/tangerine-newt-M8-uyRHdsHc-unsplash_hu3d03a01dcc18bc5be0e67db3d8d209a6_1320955_800x0_resize_q75_box.jpg 800w, /p/fabric-the-match-notebook/tangerine-newt-M8-uyRHdsHc-unsplash_hu3d03a01dcc18bc5be0e67db3d8d209a6_1320955_1600x0_resize_q75_box.jpg 1600w"
+                        width="800" 
+                        height="800" 
+                        loading="lazy"
+                        alt="Featured image of post Préparation de données avec Microsoft Fabric, les blocs-notes" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/fabric/" style="background-color: #117865; color: #fff;">
+                Microsoft Fabric
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/fabric-the-match-notebook/">Préparation de données avec Microsoft Fabric, les blocs-notes</a>
+        </h2>
+
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published" datetime="2023-06-21T00:00:00Z">
+                    21 juin 2023
+                    
+                </time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    4 minutes de lecture
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+    
+    
+</div>
+</header>
+
+    <section class="article-content">
+    
+    
+    <p>On termine le match avec les blocs-notes.</p>
+<h2 id="contexte">Contexte</h2>
+<p>Afin de découvrir les différents types de traitement proposé par Microsoft Fabric, je vous ai proposé un match entre 3 différentes possibilités : <a class="link" href="https://blog.ddata.fr/p/fabric-the-match-preparation/" >Préparation de données avec Microsoft Fabric, le match !</a>.</p>
+<p>Je me propose ici de réaliser les transformations avec un bloc-notes.</p>
+<p>Pour rappel, les blocs-notes permettent d&rsquo;écrire des séquences de code alterné avec des séquences de texte au format <a class="link" href="https://programminghistorian.org/fr/lecons/debuter-avec-markdown"  target="_blank" rel="noopener"
+    >markdown</a>.<br>
+Le code est exécuté par un moteur Spark, mais dans l&rsquo;écosystème de Fabric vous n&rsquo;y avez pas accès.<br>
+Les langages supportés sont :</p>
+<ul>
+<li>Python</li>
+<li>Spark SQL</li>
+<li>Scala</li>
+<li>R</li>
+</ul>
+<p>Pour ce match, j&rsquo;ai choisi d&rsquo;utiliser le langage Python avec la bibliothèque Pandas 🐼.</p>
+<h2 id="création-de-notre-bloc-notes">Création de notre bloc-notes</h2>
+<p>Rendez-vous dans l&rsquo;espace de travail <em>Fabric - Le match [Silver]</em> créer dans l&rsquo;article de préparation du match.<br>
+Ouvrez le lakehouse <em>LeMatch</em>.</p>
+<p><img src="/p/fabric-the-match-notebook/img/001-fabric-create-notebook.png"
+	width="1516"
+	height="317"
+	srcset="/p/fabric-the-match-notebook/img/001-fabric-create-notebook_hu8f3b3554458ba45227db511257304a03_28222_480x0_resize_box_3.png 480w, /p/fabric-the-match-notebook/img/001-fabric-create-notebook_hu8f3b3554458ba45227db511257304a03_28222_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Création d&rsquo;un bloc-notes"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="478"
+		data-flex-basis="1147px"
+	
+></p>
+<ol>
+<li>Dans le menu sélectionnez <strong>Ouvrir le notebook</strong>.</li>
+<li>Sélectionnez <strong>Nouveau notebook</strong>.</li>
+</ol>
+<p>Le bloc-notes s&rsquo;ouvre :</p>
+<p><img src="/p/fabric-the-match-notebook/img/002-fabric-notebook.png"
+	width="1843"
+	height="931"
+	srcset="/p/fabric-the-match-notebook/img/002-fabric-notebook_huc740b587c136dd3f4e0fa174fe121fb5_37199_480x0_resize_box_3.png 480w, /p/fabric-the-match-notebook/img/002-fabric-notebook_huc740b587c136dd3f4e0fa174fe121fb5_37199_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Le bloc-notes"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="197"
+		data-flex-basis="475px"
+	
+></p>
+<h2 id="tâches-préparatoires-à-une-transformation-de-données">Tâches préparatoires à une transformation de données</h2>
+<h3 id="charger-les-données">Charger les données</h3>
+<p>Pour charger les données, on va utiliser un assistant pour écrire le premier bloc de code.</p>
+<p><img src="/p/fabric-the-match-notebook/img/003-fabric-notebook-load-data.png"
+	width="1015"
+	height="249"
+	srcset="/p/fabric-the-match-notebook/img/003-fabric-notebook-load-data_hudbb5e30662013ea047125921db5b3771_26901_480x0_resize_box_3.png 480w, /p/fabric-the-match-notebook/img/003-fabric-notebook-load-data_hudbb5e30662013ea047125921db5b3771_26901_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Chargement de données - étape 1"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="407"
+		data-flex-basis="978px"
+	
+></p>
+<ol>
+<li>Ouvrez le dossier <strong>Files</strong>.</li>
+<li>Sélectionnez le raccourci <strong>Bronze_Le_Match</strong>.</li>
+<li>Sur le fichier <em>countries.csv</em> appuyez sur les 3 points.</li>
+<li>Sélectionnez <strong>Charger des données</strong>.</li>
+<li>Sélectionnez <strong>Pandas</strong>.</li>
+</ol>
+<p>Le code suivant est ajouté dans le bloc-notes :</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># Load data into pandas DataFrame from &#34;/lakehouse/default/&#34; + &#34;Files/Bronze_Le_Match/countries.csv&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&#34;/lakehouse/default/&#34;</span> <span class="o">+</span> <span class="s2">&#34;Files/Bronze_Le_Match/countries.csv&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">display</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Explication rapide du code :</p>
+<ol>
+<li>On demande à importer la librairie <em>pandas</em> pour pouvoir l&rsquo;utiliser.</li>
+<li>On a un commentaire</li>
+<li>On charge dans la variable <em>df</em> le contenu du fichier csv.</li>
+<li>On affiche le contenu de la variable <em>df</em>.</li>
+</ol>
+<p><img src="/p/fabric-the-match-notebook/img/004-fabric-notebook-load-data-run.png"
+	width="1822"
+	height="894"
+	srcset="/p/fabric-the-match-notebook/img/004-fabric-notebook-load-data-run_hu0c4f649fc25a8ec24e9138815933f56c_86728_480x0_resize_box_3.png 480w, /p/fabric-the-match-notebook/img/004-fabric-notebook-load-data-run_hu0c4f649fc25a8ec24e9138815933f56c_86728_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Chargement de données - étape 2"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="203"
+		data-flex-basis="489px"
+	
+></p>
+<ol>
+<li>Pour exécuter le code, appuyez sur l&rsquo;icône <em>Run cell</em>.</li>
+<li>Vous pouvez voir le résultat directement dans le bloc-notes.</li>
+</ol>
+<p>La variable <em>df</em> est utilisable dans les cellules suivantes du notebook.</p>
+<p>Si vous avez un message d&rsquo;erreur vous disant que <em>df</em> n&rsquo;est pas défini, le serveur a probablement réinitialisé votre session. Il suffit de relancer le code de chargement de données pour continuer.</p>
+<h3 id="obtenir-un-échantillonnage-des-données">Obtenir un échantillonnage des données</h3>
+<p>Pour ne voir que les 10 premières lignes du jeu de données, on utilise le code suivant :</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="/p/fabric-the-match-notebook/img/005-fabric-notebook-load-head.png"
+	width="1305"
+	height="657"
+	srcset="/p/fabric-the-match-notebook/img/005-fabric-notebook-load-head_hu23cae1e7261862f055d2ce757fe493a7_70403_480x0_resize_box_3.png 480w, /p/fabric-the-match-notebook/img/005-fabric-notebook-load-head_hu23cae1e7261862f055d2ce757fe493a7_70403_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Lire un échantillonnage des données"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="198"
+		data-flex-basis="476px"
+	
+></p>
+<ol>
+<li>Appuyez sur <em>+ Code</em> pour ajouter une nouvelle cellule dans le bloc-notes.</li>
+<li>Saisir le code.</li>
+<li>Exécuter le code, appuyez sur l&rsquo;icône <em>Run cell</em>.</li>
+<li>Vous pouvez voir le résultat directement dans le bloc-notes.</li>
+</ol>
+<p>Pour la suite je ne vous montrerais que le résultat du code, la procédure d&rsquo;ajout et d&rsquo;exécution étant toujours la même.</p>
+<h3 id="voir-les-métadonnées-du-jeu-de-données">Voir les métadonnées du jeu de données</h3>
+<p>Pour voir les métadonnées, on utilise le code suivant :</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="/p/fabric-the-match-notebook/img/006-fabric-notebook-info.png"
+	width="573"
+	height="622"
+	srcset="/p/fabric-the-match-notebook/img/006-fabric-notebook-info_huc0551b55a494c3a4ef01f73eb35c7f00_35614_480x0_resize_box_3.png 480w, /p/fabric-the-match-notebook/img/006-fabric-notebook-info_huc0551b55a494c3a4ef01f73eb35c7f00_35614_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Lire les métadonnées"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="92"
+		data-flex-basis="221px"
+	
+></p>
+<h2 id="réaliser-les-transformations">Réaliser les transformations</h2>
+<h3 id="sélectionner-certaines-colonnes">Sélectionner certaines colonnes</h3>
+<p>Pour ne sélectionner que les 3 colonnes <em>name</em>, <em>currencies</em> et <em>capital</em>, on utilise le code suivant :</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">df</span><span class="p">[[</span><span class="s2">&#34;name&#34;</span><span class="p">,</span><span class="s2">&#34;currencies&#34;</span><span class="p">,</span><span class="s2">&#34;capital&#34;</span><span class="p">]]</span> 
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="/p/fabric-the-match-notebook/img/007-fabric-notebook-select-column.png"
+	width="883"
+	height="525"
+	srcset="/p/fabric-the-match-notebook/img/007-fabric-notebook-select-column_hu22dd9b7ca1e9c1baeece1a8133c6ab37_30041_480x0_resize_box_3.png 480w, /p/fabric-the-match-notebook/img/007-fabric-notebook-select-column_hu22dd9b7ca1e9c1baeece1a8133c6ab37_30041_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Sélection de colonnes"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="168"
+		data-flex-basis="403px"
+	
+></p>
+<p>Le jeu de données <em>df</em> est modifié, recharger le avec la commande de chargement de données pour la suite des exemples.</p>
+<h3 id="filtrer-les-lignes-à-conserver">Filtrer les lignes à conserver</h3>
+<p>Pour ne sélectionner que les lignes ayant pour valeur <em>EUR</em> dans la colonne <em>currencies</em>, on utilise le code suivant :</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&#34;currencies&#34;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&#34;EUR&#34;</span> <span class="p">]</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="/p/fabric-the-match-notebook/img/008-fabric-notebook-filter-row.png"
+	width="1289"
+	height="739"
+	srcset="/p/fabric-the-match-notebook/img/008-fabric-notebook-filter-row_hu3712ae3ea1348aaf99a27ab5b0bd33cd_68828_480x0_resize_box_3.png 480w, /p/fabric-the-match-notebook/img/008-fabric-notebook-filter-row_hu3712ae3ea1348aaf99a27ab5b0bd33cd_68828_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Code filtrant les lignes"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="174"
+		data-flex-basis="418px"
+	
+></p>
+<h3 id="modifier-le-nom-des-colonnes">Modifier le nom des colonnes</h3>
+<p>Pour renommer que les 3 colonnes <em>name</em>, <em>currencies</em> et <em>capital</em>, en <em>nom</em>, <em>devise</em> et <em>capitale</em>, on utilise le code suivant :</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">new_names</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span><span class="s1">&#39;Nom&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s1">&#39;currencies&#39;</span><span class="p">:</span><span class="s1">&#39;devise&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s1">&#39;capital&#39;</span><span class="p">:</span><span class="s1">&#39;capitale&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="n">df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span> <span class="o">=</span><span class="n">new_names</span><span class="p">,</span> <span class="n">inplace</span> <span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># voir le résultat</span>
+</span></span><span class="line"><span class="cl"><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="/p/fabric-the-match-notebook/img/009-fabric-notebook-rename-column.png"
+	width="1298"
+	height="566"
+	srcset="/p/fabric-the-match-notebook/img/009-fabric-notebook-rename-column_hu616d58ca70d98b5e05fd096d7958ad44_44924_480x0_resize_box_3.png 480w, /p/fabric-the-match-notebook/img/009-fabric-notebook-rename-column_hu616d58ca70d98b5e05fd096d7958ad44_44924_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Code renommant les colonnes"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="229"
+		data-flex-basis="550px"
+	
+></p>
+<h3 id="modifier-le-type-de-données-des-colonnes">Modifier le type de données des colonnes</h3>
+<p>Pour convertir la colonne <em>area</em> qui est de type nombre décimal en nombre entier,  on utilise le code suivant :</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">df</span><span class="o">.</span><span class="n">astype</span><span class="p">({</span><span class="s1">&#39;area&#39;</span><span class="p">:</span><span class="s1">&#39;int&#39;</span><span class="p">})</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="/p/fabric-the-match-notebook/img/010-fabric-notebook-change-type-column.png"
+	width="1298"
+	height="685"
+	srcset="/p/fabric-the-match-notebook/img/010-fabric-notebook-change-type-column_hu14e8ce7fbe378f016d6a757eb266e5d2_51775_480x0_resize_box_3.png 480w, /p/fabric-the-match-notebook/img/010-fabric-notebook-change-type-column_hu14e8ce7fbe378f016d6a757eb266e5d2_51775_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Code modifiant le type de la colonne area"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="189"
+		data-flex-basis="454px"
+	
+></p>
+<h3 id="gestion-des-valeurs-absentes">Gestion des valeurs absentes</h3>
+<p>Pour remplacer les valeurs vides par la valeur -1 de la colonne <em>landlocked</em>, on utilise le code suivant :</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">df</span><span class="p">[</span><span class="s1">&#39;landlocked&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="/p/fabric-the-match-notebook/img/011-fabric-notebook-fillna-column.png"
+	width="1283"
+	height="469"
+	srcset="/p/fabric-the-match-notebook/img/011-fabric-notebook-fillna-column_huc4c17b179460d2f1c07627d5051db1eb_34496_480x0_resize_box_3.png 480w, /p/fabric-the-match-notebook/img/011-fabric-notebook-fillna-column_huc4c17b179460d2f1c07627d5051db1eb_34496_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Code remplaçant les valeurs vides d&rsquo;une colonne"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="273"
+		data-flex-basis="656px"
+	
+></p>
+<h3 id="enlever-les-doublons">Enlever les doublons</h3>
+<p>Pour obtenir la liste des devises dédoublonnée, on utilise le code suivant :</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">df2</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s2">&#34;currencies&#34;</span><span class="p">]]</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s2">&#34;currencies&#34;</span><span class="p">],</span> <span class="n">keep</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">display</span><span class="p">(</span><span class="n">df2</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="/p/fabric-the-match-notebook/img/012-fabric-notebook-dropduplicate.png"
+	width="1286"
+	height="725"
+	srcset="/p/fabric-the-match-notebook/img/012-fabric-notebook-dropduplicate_hue72c96e3ce91c46494253b68aa0e2549_35820_480x0_resize_box_3.png 480w, /p/fabric-the-match-notebook/img/012-fabric-notebook-dropduplicate_hue72c96e3ce91c46494253b68aa0e2549_35820_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Code regroupant les valeurs uniques d&rsquo;une colonne"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="177"
+		data-flex-basis="425px"
+	
+></p>
+<h2 id="sauvegarder-le-résultat-dans-la-couche-silver">Sauvegarder le résultat dans la couche Silver</h2>
+<p>Le résultat que l&rsquo;on souhaite conserver dans la couche silver est le résultat de la variable <em>df2</em> vers un fichier parquet, tel que le montre le code suivant :</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">df2</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&#34;currencies&#34;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&#34;EUR&#34;</span> <span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="n">df2</span><span class="o">.</span><span class="n">to_parquet</span><span class="p">(</span><span class="s2">&#34;/lakehouse/default/&#34;</span> <span class="o">+</span> <span class="s2">&#34;Files/MatchNotebook.parquet&#34;</span><span class="p">)</span> 
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="/p/fabric-the-match-notebook/img/013-fabric-notebook-save-data.png"
+	width="1271"
+	height="801"
+	srcset="/p/fabric-the-match-notebook/img/013-fabric-notebook-save-data_hu4c4c04430ef826b3b9f8586d16192f5c_67927_480x0_resize_box_3.png 480w, /p/fabric-the-match-notebook/img/013-fabric-notebook-save-data_hu4c4c04430ef826b3b9f8586d16192f5c_67927_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Sauvegarde et lecture du résultat"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="158"
+		data-flex-basis="380px"
+	
+></p>
+<ol>
+<li>Exécutez le code ci-dessus pour sauvegarder les données sélectionnées dans un fichier parquet.</li>
+<li>Depuis l&rsquo;explorateur de lakehouse, localiser votre fichier (pensez à rafraichir si il n&rsquo;apparait pas) et générer le code pour le lire (comme pour le csv au début).</li>
+<li>Vous pouvez voir le résultat dans la couche silver.</li>
+</ol>
+<p>Merci de votre attention.</p>
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/interm%C3%A9diaire/">Intermédiaire</a>
+        
+            <a href="/tags/auto-formation/">Auto formation</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Contenus liés</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/fabric-the-match-sql/">
+        
+        
+            <div class="article-image">
+                <img src="/p/fabric-the-match-sql/_hu3d03a01dcc18bc5be0e67db3d8d209a6_3268696_6eb6cf868cb3ff421ec48f9d41083a69.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Préparation de données avec Microsoft Fabric, le SQL"
+                        data-key="fabric-the-match-sql" 
+                        data-hash="md5-91s2rteMwbLk91yEWWf/UQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Préparation de données avec Microsoft Fabric, le SQL</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/fabric-the-match-dataflow/">
+        
+        
+            <div class="article-image">
+                <img src="/p/fabric-the-match-dataflow/_hu3d03a01dcc18bc5be0e67db3d8d209a6_2607520_07b48fe72d1ce193f4999bb3694f2895.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Préparation de données avec Microsoft Fabric, les flux de données"
+                        data-key="fabric-the-match-dataflow" 
+                        data-hash="md5-/OUNanLjwpEM0ur0SgZXRQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Préparation de données avec Microsoft Fabric, les flux de données</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/fabric-the-match-preparation/">
+        
+        
+            <div class="article-image">
+                <img src="/p/fabric-the-match-preparation/_hu3d03a01dcc18bc5be0e67db3d8d209a6_961791_8fc0346850a744476c4383dc578a6d00.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Préparation de données avec Microsoft Fabric, le match !"
+                        data-key="fabric-the-match-preparation" 
+                        data-hash="md5-AgIBXuqe9KtVUZiNc6EjPA==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Préparation de données avec Microsoft Fabric, le match !</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/fabric-first-pipeline/">
+        
+        
+            <div class="article-image">
+                <img src="/p/fabric-first-pipeline/_hu3d03a01dcc18bc5be0e67db3d8d209a6_2557256_b7b45004d6c17d6913983762d3b440f7.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Votre premier pipeline d&#39;intégration de données avec Microsoft Fabric"
+                        data-key="fabric-first-pipeline" 
+                        data-hash="md5-ePW8oK7jTMuVy7&#43;HIrvXbQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Votre premier pipeline d&#39;intégration de données avec Microsoft Fabric</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/fabric-poc-iot/">
+        
+        
+            <div class="article-image">
+                <img src="/p/fabric-poc-iot/_hu3d03a01dcc18bc5be0e67db3d8d209a6_3315002_4c771f89f6ca9cc60be251a06c4c762b.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Données en temps réel dans votre rapport Power BI avec Microsoft Fabric"
+                        data-key="fabric-poc-iot" 
+                        data-hash="md5-vJKPy1E9umGa8OSN&#43;hupgw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Données en temps réel dans votre rapport Power BI avec Microsoft Fabric</h2>
+        </div>
+    </a>
+</article>
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "ddata" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2022 - 
+        
+        2023 Le D de Data
+    </section>
+    
+    <section class="powerby">
+        Généré avec <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Thème <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.16.0">Stack</a></b> conçu par <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

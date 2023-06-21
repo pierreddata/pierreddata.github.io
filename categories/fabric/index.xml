@@ -6,7 +6,382 @@
         <description>Recent content in Microsoft Fabric on Le D de Data</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>fr-fr</language>
-        <lastBuildDate>Tue, 20 Jun 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ddata.fr/categories/fabric/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Wed, 21 Jun 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ddata.fr/categories/fabric/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Préparation de données avec Microsoft Fabric, les blocs-notes</title>
+        <link>https://blog.ddata.fr/p/fabric-the-match-notebook/</link>
+        <pubDate>Wed, 21 Jun 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://blog.ddata.fr/p/fabric-the-match-notebook/</guid>
+        <description>&lt;img src="https://blog.ddata.fr/p/fabric-the-match-notebook/tangerine-newt-M8-uyRHdsHc-unsplash.jpg" alt="Featured image of post Préparation de données avec Microsoft Fabric, les blocs-notes" /&gt;&lt;p&gt;On termine le match avec les blocs-notes.&lt;/p&gt;
+&lt;h2 id=&#34;contexte&#34;&gt;Contexte&lt;/h2&gt;
+&lt;p&gt;Afin de découvrir les différents types de traitement proposé par Microsoft Fabric, je vous ai proposé un match entre 3 différentes possibilités : &lt;a class=&#34;link&#34; href=&#34;https://blog.ddata.fr/p/fabric-the-match-preparation/&#34; &gt;Préparation de données avec Microsoft Fabric, le match !&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Je me propose ici de réaliser les transformations avec un bloc-notes.&lt;/p&gt;
+&lt;p&gt;Pour rappel, les blocs-notes permettent d&amp;rsquo;écrire des séquences de code alterné avec des séquences de texte au format &lt;a class=&#34;link&#34; href=&#34;https://programminghistorian.org/fr/lecons/debuter-avec-markdown&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;markdown&lt;/a&gt;.&lt;br&gt;
+Le code est exécuté par un moteur Spark, mais dans l&amp;rsquo;écosystème de Fabric vous n&amp;rsquo;y avez pas accès.&lt;br&gt;
+Les langages supportés sont :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Python&lt;/li&gt;
+&lt;li&gt;Spark SQL&lt;/li&gt;
+&lt;li&gt;Scala&lt;/li&gt;
+&lt;li&gt;R&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Pour ce match, j&amp;rsquo;ai choisi d&amp;rsquo;utiliser le langage Python avec la bibliothèque Pandas 🐼.&lt;/p&gt;
+&lt;h2 id=&#34;création-de-notre-bloc-notes&#34;&gt;Création de notre bloc-notes&lt;/h2&gt;
+&lt;p&gt;Rendez-vous dans l&amp;rsquo;espace de travail &lt;em&gt;Fabric - Le match [Silver]&lt;/em&gt; créer dans l&amp;rsquo;article de préparation du match.&lt;br&gt;
+Ouvrez le lakehouse &lt;em&gt;LeMatch&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-the-match-notebook/img/001-fabric-create-notebook.png&#34;
+	width=&#34;1516&#34;
+	height=&#34;317&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-the-match-notebook/img/001-fabric-create-notebook_hu8f3b3554458ba45227db511257304a03_28222_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-the-match-notebook/img/001-fabric-create-notebook_hu8f3b3554458ba45227db511257304a03_28222_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Création d&amp;rsquo;un bloc-notes&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;478&#34;
+		data-flex-basis=&#34;1147px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Dans le menu sélectionnez &lt;strong&gt;Ouvrir le notebook&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;Sélectionnez &lt;strong&gt;Nouveau notebook&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Le bloc-notes s&amp;rsquo;ouvre :&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-the-match-notebook/img/002-fabric-notebook.png&#34;
+	width=&#34;1843&#34;
+	height=&#34;931&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-the-match-notebook/img/002-fabric-notebook_huc740b587c136dd3f4e0fa174fe121fb5_37199_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-the-match-notebook/img/002-fabric-notebook_huc740b587c136dd3f4e0fa174fe121fb5_37199_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Le bloc-notes&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;197&#34;
+		data-flex-basis=&#34;475px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;tâches-préparatoires-à-une-transformation-de-données&#34;&gt;Tâches préparatoires à une transformation de données&lt;/h2&gt;
+&lt;h3 id=&#34;charger-les-données&#34;&gt;Charger les données&lt;/h3&gt;
+&lt;p&gt;Pour charger les données, on va utiliser un assistant pour écrire le premier bloc de code.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-the-match-notebook/img/003-fabric-notebook-load-data.png&#34;
+	width=&#34;1015&#34;
+	height=&#34;249&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-the-match-notebook/img/003-fabric-notebook-load-data_hudbb5e30662013ea047125921db5b3771_26901_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-the-match-notebook/img/003-fabric-notebook-load-data_hudbb5e30662013ea047125921db5b3771_26901_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Chargement de données - étape 1&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;407&#34;
+		data-flex-basis=&#34;978px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Ouvrez le dossier &lt;strong&gt;Files&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;Sélectionnez le raccourci &lt;strong&gt;Bronze_Le_Match&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;Sur le fichier &lt;em&gt;countries.csv&lt;/em&gt; appuyez sur les 3 points.&lt;/li&gt;
+&lt;li&gt;Sélectionnez &lt;strong&gt;Charger des données&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;Sélectionnez &lt;strong&gt;Pandas&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Le code suivant est ajouté dans le bloc-notes :&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;pandas&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;as&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;pd&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# Load data into pandas DataFrame from &amp;#34;/lakehouse/default/&amp;#34; + &amp;#34;Files/Bronze_Le_Match/countries.csv&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;df&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pd&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;read_csv&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;/lakehouse/default/&amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;Files/Bronze_Le_Match/countries.csv&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;display&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;df&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Explication rapide du code :&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;On demande à importer la librairie &lt;em&gt;pandas&lt;/em&gt; pour pouvoir l&amp;rsquo;utiliser.&lt;/li&gt;
+&lt;li&gt;On a un commentaire&lt;/li&gt;
+&lt;li&gt;On charge dans la variable &lt;em&gt;df&lt;/em&gt; le contenu du fichier csv.&lt;/li&gt;
+&lt;li&gt;On affiche le contenu de la variable &lt;em&gt;df&lt;/em&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-the-match-notebook/img/004-fabric-notebook-load-data-run.png&#34;
+	width=&#34;1822&#34;
+	height=&#34;894&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-the-match-notebook/img/004-fabric-notebook-load-data-run_hu0c4f649fc25a8ec24e9138815933f56c_86728_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-the-match-notebook/img/004-fabric-notebook-load-data-run_hu0c4f649fc25a8ec24e9138815933f56c_86728_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Chargement de données - étape 2&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;203&#34;
+		data-flex-basis=&#34;489px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Pour exécuter le code, appuyez sur l&amp;rsquo;icône &lt;em&gt;Run cell&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Vous pouvez voir le résultat directement dans le bloc-notes.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;La variable &lt;em&gt;df&lt;/em&gt; est utilisable dans les cellules suivantes du notebook.&lt;/p&gt;
+&lt;p&gt;Si vous avez un message d&amp;rsquo;erreur vous disant que &lt;em&gt;df&lt;/em&gt; n&amp;rsquo;est pas défini, le serveur a probablement réinitialisé votre session. Il suffit de relancer le code de chargement de données pour continuer.&lt;/p&gt;
+&lt;h3 id=&#34;obtenir-un-échantillonnage-des-données&#34;&gt;Obtenir un échantillonnage des données&lt;/h3&gt;
+&lt;p&gt;Pour ne voir que les 10 premières lignes du jeu de données, on utilise le code suivant :&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;df&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;head&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;10&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-the-match-notebook/img/005-fabric-notebook-load-head.png&#34;
+	width=&#34;1305&#34;
+	height=&#34;657&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-the-match-notebook/img/005-fabric-notebook-load-head_hu23cae1e7261862f055d2ce757fe493a7_70403_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-the-match-notebook/img/005-fabric-notebook-load-head_hu23cae1e7261862f055d2ce757fe493a7_70403_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Lire un échantillonnage des données&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;198&#34;
+		data-flex-basis=&#34;476px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Appuyez sur &lt;em&gt;+ Code&lt;/em&gt; pour ajouter une nouvelle cellule dans le bloc-notes.&lt;/li&gt;
+&lt;li&gt;Saisir le code.&lt;/li&gt;
+&lt;li&gt;Exécuter le code, appuyez sur l&amp;rsquo;icône &lt;em&gt;Run cell&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Vous pouvez voir le résultat directement dans le bloc-notes.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Pour la suite je ne vous montrerais que le résultat du code, la procédure d&amp;rsquo;ajout et d&amp;rsquo;exécution étant toujours la même.&lt;/p&gt;
+&lt;h3 id=&#34;voir-les-métadonnées-du-jeu-de-données&#34;&gt;Voir les métadonnées du jeu de données&lt;/h3&gt;
+&lt;p&gt;Pour voir les métadonnées, on utilise le code suivant :&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;df&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;info&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-the-match-notebook/img/006-fabric-notebook-info.png&#34;
+	width=&#34;573&#34;
+	height=&#34;622&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-the-match-notebook/img/006-fabric-notebook-info_huc0551b55a494c3a4ef01f73eb35c7f00_35614_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-the-match-notebook/img/006-fabric-notebook-info_huc0551b55a494c3a4ef01f73eb35c7f00_35614_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Lire les métadonnées&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;92&#34;
+		data-flex-basis=&#34;221px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;réaliser-les-transformations&#34;&gt;Réaliser les transformations&lt;/h2&gt;
+&lt;h3 id=&#34;sélectionner-certaines-colonnes&#34;&gt;Sélectionner certaines colonnes&lt;/h3&gt;
+&lt;p&gt;Pour ne sélectionner que les 3 colonnes &lt;em&gt;name&lt;/em&gt;, &lt;em&gt;currencies&lt;/em&gt; et &lt;em&gt;capital&lt;/em&gt;, on utilise le code suivant :&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;df&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[[&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;name&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;currencies&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;capital&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]]&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-the-match-notebook/img/007-fabric-notebook-select-column.png&#34;
+	width=&#34;883&#34;
+	height=&#34;525&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-the-match-notebook/img/007-fabric-notebook-select-column_hu22dd9b7ca1e9c1baeece1a8133c6ab37_30041_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-the-match-notebook/img/007-fabric-notebook-select-column_hu22dd9b7ca1e9c1baeece1a8133c6ab37_30041_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Sélection de colonnes&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;168&#34;
+		data-flex-basis=&#34;403px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Le jeu de données &lt;em&gt;df&lt;/em&gt; est modifié, recharger le avec la commande de chargement de données pour la suite des exemples.&lt;/p&gt;
+&lt;h3 id=&#34;filtrer-les-lignes-à-conserver&#34;&gt;Filtrer les lignes à conserver&lt;/h3&gt;
+&lt;p&gt;Pour ne sélectionner que les lignes ayant pour valeur &lt;em&gt;EUR&lt;/em&gt; dans la colonne &lt;em&gt;currencies&lt;/em&gt;, on utilise le code suivant :&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;df&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;loc&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;df&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;currencies&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;EUR&amp;#34;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-the-match-notebook/img/008-fabric-notebook-filter-row.png&#34;
+	width=&#34;1289&#34;
+	height=&#34;739&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-the-match-notebook/img/008-fabric-notebook-filter-row_hu3712ae3ea1348aaf99a27ab5b0bd33cd_68828_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-the-match-notebook/img/008-fabric-notebook-filter-row_hu3712ae3ea1348aaf99a27ab5b0bd33cd_68828_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Code filtrant les lignes&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;174&#34;
+		data-flex-basis=&#34;418px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;modifier-le-nom-des-colonnes&#34;&gt;Modifier le nom des colonnes&lt;/h3&gt;
+&lt;p&gt;Pour renommer que les 3 colonnes &lt;em&gt;name&lt;/em&gt;, &lt;em&gt;currencies&lt;/em&gt; et &lt;em&gt;capital&lt;/em&gt;, en &lt;em&gt;nom&lt;/em&gt;, &lt;em&gt;devise&lt;/em&gt; et &lt;em&gt;capitale&lt;/em&gt;, on utilise le code suivant :&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;new_names&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;name&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;Nom&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;s1&#34;&gt;&amp;#39;currencies&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;devise&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;s1&#34;&gt;&amp;#39;capital&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;capitale&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;df&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;rename&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;columns&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;new_names&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;inplace&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;kc&#34;&gt;True&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# voir le résultat&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;df&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;head&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-the-match-notebook/img/009-fabric-notebook-rename-column.png&#34;
+	width=&#34;1298&#34;
+	height=&#34;566&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-the-match-notebook/img/009-fabric-notebook-rename-column_hu616d58ca70d98b5e05fd096d7958ad44_44924_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-the-match-notebook/img/009-fabric-notebook-rename-column_hu616d58ca70d98b5e05fd096d7958ad44_44924_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Code renommant les colonnes&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;229&#34;
+		data-flex-basis=&#34;550px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;modifier-le-type-de-données-des-colonnes&#34;&gt;Modifier le type de données des colonnes&lt;/h3&gt;
+&lt;p&gt;Pour convertir la colonne &lt;em&gt;area&lt;/em&gt; qui est de type nombre décimal en nombre entier,  on utilise le code suivant :&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;df&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;astype&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;({&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;area&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;int&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;})&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-the-match-notebook/img/010-fabric-notebook-change-type-column.png&#34;
+	width=&#34;1298&#34;
+	height=&#34;685&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-the-match-notebook/img/010-fabric-notebook-change-type-column_hu14e8ce7fbe378f016d6a757eb266e5d2_51775_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-the-match-notebook/img/010-fabric-notebook-change-type-column_hu14e8ce7fbe378f016d6a757eb266e5d2_51775_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Code modifiant le type de la colonne area&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;189&#34;
+		data-flex-basis=&#34;454px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;gestion-des-valeurs-absentes&#34;&gt;Gestion des valeurs absentes&lt;/h3&gt;
+&lt;p&gt;Pour remplacer les valeurs vides par la valeur -1 de la colonne &lt;em&gt;landlocked&lt;/em&gt;, on utilise le code suivant :&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;df&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;landlocked&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;fillna&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;inplace&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;kc&#34;&gt;True&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;df&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;head&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-the-match-notebook/img/011-fabric-notebook-fillna-column.png&#34;
+	width=&#34;1283&#34;
+	height=&#34;469&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-the-match-notebook/img/011-fabric-notebook-fillna-column_huc4c17b179460d2f1c07627d5051db1eb_34496_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-the-match-notebook/img/011-fabric-notebook-fillna-column_huc4c17b179460d2f1c07627d5051db1eb_34496_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Code remplaçant les valeurs vides d&amp;rsquo;une colonne&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;273&#34;
+		data-flex-basis=&#34;656px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;enlever-les-doublons&#34;&gt;Enlever les doublons&lt;/h3&gt;
+&lt;p&gt;Pour obtenir la liste des devises dédoublonnée, on utilise le code suivant :&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;df2&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;df&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[[&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;currencies&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]]&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;drop_duplicates&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;subset&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;currencies&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;],&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;keep&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;kc&#34;&gt;False&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;display&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;df2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-the-match-notebook/img/012-fabric-notebook-dropduplicate.png&#34;
+	width=&#34;1286&#34;
+	height=&#34;725&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-the-match-notebook/img/012-fabric-notebook-dropduplicate_hue72c96e3ce91c46494253b68aa0e2549_35820_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-the-match-notebook/img/012-fabric-notebook-dropduplicate_hue72c96e3ce91c46494253b68aa0e2549_35820_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Code regroupant les valeurs uniques d&amp;rsquo;une colonne&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;177&#34;
+		data-flex-basis=&#34;425px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;sauvegarder-le-résultat-dans-la-couche-silver&#34;&gt;Sauvegarder le résultat dans la couche Silver&lt;/h2&gt;
+&lt;p&gt;Le résultat que l&amp;rsquo;on souhaite conserver dans la couche silver est le résultat de la variable &lt;em&gt;df2&lt;/em&gt; vers un fichier parquet, tel que le montre le code suivant :&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;df2&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;df&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;loc&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;df&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;currencies&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;EUR&amp;#34;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;df2&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;to_parquet&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;/lakehouse/default/&amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;Files/MatchNotebook.parquet&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-the-match-notebook/img/013-fabric-notebook-save-data.png&#34;
+	width=&#34;1271&#34;
+	height=&#34;801&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-the-match-notebook/img/013-fabric-notebook-save-data_hu4c4c04430ef826b3b9f8586d16192f5c_67927_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-the-match-notebook/img/013-fabric-notebook-save-data_hu4c4c04430ef826b3b9f8586d16192f5c_67927_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Sauvegarde et lecture du résultat&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;158&#34;
+		data-flex-basis=&#34;380px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Exécutez le code ci-dessus pour sauvegarder les données sélectionnées dans un fichier parquet.&lt;/li&gt;
+&lt;li&gt;Depuis l&amp;rsquo;explorateur de lakehouse, localiser votre fichier (pensez à rafraichir si il n&amp;rsquo;apparait pas) et générer le code pour le lire (comme pour le csv au début).&lt;/li&gt;
+&lt;li&gt;Vous pouvez voir le résultat dans la couche silver.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Merci de votre attention.&lt;/p&gt;</description>
+        </item>
+        <item>
         <title>Préparation de données avec Microsoft Fabric, le SQL</title>
         <link>https://blog.ddata.fr/p/fabric-the-match-sql/</link>
         <pubDate>Tue, 20 Jun 2023 00:00:00 +0000</pubDate>
@@ -1343,9 +1718,9 @@ Dans l&amp;rsquo;écosystème Fabric un lakehouse est un sous-ensemble de OneLak
 &lt;h3 id=&#34;le-terrain-de-jeu-est-prêt--cest-parti&#34;&gt;Le terrain de jeu est prêt,  c&amp;rsquo;est parti&lt;/h3&gt;
 &lt;p&gt;Vous retrouverez ici les liens vers chaque partie du match :&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://blog.ddata.fr/p/fabric-the-match-dataflow/&#34; &gt;Les flux de données (Power Query Online)&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://blog.ddata.fr/p/fabric-the-match-sql/&#34; &gt;Le SQL&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Les blocs-notes (Python) : disponible demain&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://blog.ddata.fr/p/fabric-the-match-dataflow/&#34; &gt;Les flux de données (Power Query Online)&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://blog.ddata.fr/p/fabric-the-match-sql/&#34; &gt;Le SQL&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://blog.ddata.fr/p/fabric-the-match-notebook/&#34; &gt;Les blocs-notes (Python)&lt;/a&gt;.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Merci de votre attention.&lt;/p&gt;</description>
         </item>
