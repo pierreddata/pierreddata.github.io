@@ -6,7 +6,84 @@
         <description>Recent content in Intermédiaire on Le D de Data</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>fr-fr</language>
-        <lastBuildDate>Wed, 21 Jun 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ddata.fr/tags/interm%C3%A9diaire/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Thu, 22 Jun 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ddata.fr/tags/interm%C3%A9diaire/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Préparation de données avec Microsoft Fabric, les résultats</title>
+        <link>https://blog.ddata.fr/p/fabric-the-match-result/</link>
+        <pubDate>Thu, 22 Jun 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://blog.ddata.fr/p/fabric-the-match-result/</guid>
+        <description>&lt;img src="https://blog.ddata.fr/p/fabric-the-match-result/tangerine-newt-Ob5GikE2raU-unsplash.jpg" alt="Featured image of post Préparation de données avec Microsoft Fabric, les résultats" /&gt;&lt;p&gt;Le match est terminé qu’elles sont les résultats ?&lt;/p&gt;
+&lt;h2 id=&#34;contexte&#34;&gt;Contexte&lt;/h2&gt;
+&lt;p&gt;Je vous ai présenté 3 des outils de préparation de données disponible dans Microsoft Fabric.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://blog.ddata.fr/p/fabric-the-match-dataflow/&#34; &gt;Les flux de données&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://blog.ddata.fr/p/fabric-the-match-sql/&#34; &gt;Le SQL&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://blog.ddata.fr/p/fabric-the-match-notebook/&#34; &gt;Les blocs-notes&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Après ce match où chacun vous a montré ces capacités, c&amp;rsquo;est l&amp;rsquo;heure du verdict !&lt;/p&gt;
+&lt;h3 id=&#34;flux-de-données&#34;&gt;Flux de données&lt;/h3&gt;
+&lt;p&gt;C&amp;rsquo;est l&amp;rsquo;outil No code par excellence, parfait pour des utilisateurs non techniques.&lt;br&gt;
+Si vos utilisateurs ont une expérience avec Power BI, ils retrouveront leurs habitudes.&lt;br&gt;
+Cet outil est parfait pour les usages classiques, mais ne répondras probablement pas du tout ou difficilement à des usages avancés comme :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Partitionnement intelligent des nos donnés.&lt;/li&gt;
+&lt;li&gt;Historisation des données.&lt;/li&gt;
+&lt;li&gt;Gestion des dimensions à variation lente.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Ma vision de l&amp;rsquo;outil :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Il couvre 70 à 80 % des traitements à réaliser.&lt;/li&gt;
+&lt;li&gt;Il ne gère pas ou mal les formats non structurés.&lt;/li&gt;
+&lt;li&gt;Il peut être pris en main par tous les publics avec un minimum d&amp;rsquo;expérience data.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;sql&#34;&gt;SQL&lt;/h3&gt;
+&lt;p&gt;C&amp;rsquo;est un grand-père de la data, le SQL a fait ses preuves et il est parfait quand on travaille avec de la donnée structurée.&lt;br&gt;
+Si vous avez des projets data existant, vous y trouverez certainement des requêtes SQL pouvant être réutilisées avec un minimum d&amp;rsquo;adaptation. Vous allez pouvoir recycler vos vieux projets dans Fabric.&lt;/p&gt;
+&lt;p&gt;Ma vision de l&amp;rsquo;outil :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Il couvre 80 à 90 % des traitements à réaliser.&lt;/li&gt;
+&lt;li&gt;Il ne gère pas ou mal les formats non structurés.&lt;/li&gt;
+&lt;li&gt;Il peut être pris en main par toutes personnes avec une expérience SQL.&lt;/li&gt;
+&lt;li&gt;Pratique pour migrer des traitements existants basés sur le SQL.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;spark-python&#34;&gt;Spark Python&lt;/h3&gt;
+&lt;p&gt;C&amp;rsquo;est un des outils phares de l&amp;rsquo;écosystème daté moderne.&lt;br&gt;
+Grâce à de nombreuses librairies Python, mais aussi avec la possibilité de passer sur d&amp;rsquo;autre langage comme R, cet outil est un vrai couteau suisse.&lt;br&gt;
+La communauté et la documentation sont aussi très riches? Si vous utilisez par exemple Pandas, vous trouverez des milliers d&amp;rsquo;exemples d&amp;rsquo;utilisation afin d&amp;rsquo;avancer plus rapidement.&lt;/p&gt;
+&lt;p&gt;Ma vision de l&amp;rsquo;outil :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Il couvre 100 % des traitements à réaliser.&lt;/li&gt;
+&lt;li&gt;Il gère les formats non structurés.&lt;/li&gt;
+&lt;li&gt;Plus difficile à prendre en main, il nécessite un profil maitrisant les concepts data et la programmation.&lt;/li&gt;
+&lt;li&gt;Cette option rassure les DSI car les traitements réalisés sont moins dépendants de la plateforme que les autres solutions.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;lequel-choisir-&#34;&gt;Lequel choisir ?&lt;/h2&gt;
+&lt;p&gt;À cette question je répondrais simplement : pourquoi choisir ?&lt;br&gt;
+Tous les membres de votre entreprise qui font de la data ont le même profil ?&lt;br&gt;
+Probablement pas, où alors vous êtes la seule personne à faire de la data dans votre entreprise 😨.&lt;/p&gt;
+&lt;p&gt;Donc pourquoi choisir ?&lt;br&gt;
+Avec Fabric vous avez un outil qui vous permet d&amp;rsquo;utiliser le résultat des traitements d&amp;rsquo;une autre personne facilement grâce à OneLake, le datalake unifié sous vos lakehouse et warehouse.
+Par exemple, un utilisateur métier peut alimenter un lakehouse avec un dataflow et un data scientist peut consommé cette donnée dans un traitement en Python.&lt;/p&gt;
+&lt;p&gt;Par contre il y a un revers à la médaille, cette grande liberté au sein de l&amp;rsquo;outil va demander de mettre en place une gouvernance rigoureuse afin de ne pas transformer votre environnement&lt;/p&gt;
+&lt;h2 id=&#34;culture-data&#34;&gt;Culture Data&lt;/h2&gt;
+&lt;p&gt;En résumé, Microsoft Fabric n&amp;rsquo;est qu&amp;rsquo;un outil et ne vous affranchira la mise en place dans votre entreprise d&amp;rsquo;une culture data forte. Pour cela vous devrez fédérer une communauté interne autour de la data et mettre en place un ensemble d&amp;rsquo;outils, avec notamment :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Une bonne gouvernance
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://learn.microsoft.com/fr-fr/fabric/governance/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Documentation sur la gouvernance Microsoft Fabric&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://learn.microsoft.com/fr-fr/power-bi/guidance/powerbi-adoption-roadmap-governance&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Feuille de route sur l’adoption de Power BI : gouvernance&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Une culture data avec &lt;a class=&#34;link&#34; href=&#34;https://ssbipolar.com/building-a-data-culture/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;l&amp;rsquo;excellente série de Matthew Roche (US)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;La mise en place d&amp;rsquo;un centre d&amp;rsquo;excellence : &lt;a class=&#34;link&#34; href=&#34;https://learn.microsoft.com/fr-fr/power-bi/guidance/powerbi-adoption-roadmap-center-of-excellence&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Feuille de route sur l’adoption de Power BI : Centre d’excellence&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Merci de votre attention.&lt;/p&gt;</description>
+        </item>
+        <item>
         <title>Préparation de données avec Microsoft Fabric, les blocs-notes</title>
         <link>https://blog.ddata.fr/p/fabric-the-match-notebook/</link>
         <pubDate>Wed, 21 Jun 2023 00:00:00 +0000</pubDate>
