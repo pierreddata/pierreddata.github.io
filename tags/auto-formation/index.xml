@@ -6,7 +6,79 @@
         <description>Recent content in Auto formation on Le D de Data</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>fr-fr</language>
-        <lastBuildDate>Thu, 22 Jun 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ddata.fr/tags/auto-formation/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Mon, 26 Jun 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ddata.fr/tags/auto-formation/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Query folding, optimiser vos requêtes Power Query</title>
+        <link>https://blog.ddata.fr/p/power-query-query-folding/</link>
+        <pubDate>Mon, 26 Jun 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://blog.ddata.fr/p/power-query-query-folding/</guid>
+        <description>&lt;img src="https://blog.ddata.fr/p/power-query-query-folding/jason-leung-wHddViTmSvA-unsplash.jpg" alt="Featured image of post Query folding, optimiser vos requêtes Power Query" /&gt;&lt;p&gt;Comprenez le Query Folding et optimise vos requêtes Power Query.&lt;/p&gt;
+&lt;h2 id=&#34;contexte&#34;&gt;Contexte&lt;/h2&gt;
+&lt;p&gt;Le query folding est un sujet trop souvent méconnu quand on débute Power Query. Ne vous inquiéter pas c&amp;rsquo;est relativement simple à comprendre et très utile à connaitre.&lt;br&gt;
+Sa traduction dans la documentation officielle sous le nom de &lt;em&gt;pliage de requête&lt;/em&gt; est particulièrement incompréhensible.&lt;/p&gt;
+&lt;h2 id=&#34;êtes-vous-concerné-&#34;&gt;Êtes-vous concerné ?&lt;/h2&gt;
+&lt;p&gt;Le point important avec le query folding, c&amp;rsquo;est qu&amp;rsquo;il ne concerne pas toutes les sources de données. Vous êtes concerné lorsque vos sources sont des bases de données, pour les autres sources vous n&amp;rsquo;aurez probablement pas à vous inquiéter du Query Folding.&lt;/p&gt;
+&lt;h2 id=&#34;cest-quoi-le-query-folding-&#34;&gt;C&amp;rsquo;est quoi le Query Folding ?&lt;/h2&gt;
+&lt;p&gt;Lorsque vous réalisez une requête Power Query cette dernière va lire la source de données puis faire les transformations demandées.&lt;br&gt;
+Le Query Folding est l&amp;rsquo;action d&amp;rsquo;envoyer certaines transformations directement à la source de données afin que ces transformations soient faites par la source de données.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/power-query-query-folding/img/001-power-query-query-folding.png&#34;
+	width=&#34;913&#34;
+	height=&#34;574&#34;
+	srcset=&#34;https://blog.ddata.fr/p/power-query-query-folding/img/001-power-query-query-folding_hu46161a9aa9d51374a6285aec14d4da8a_34914_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/power-query-query-folding/img/001-power-query-query-folding_hu46161a9aa9d51374a6285aec14d4da8a_34914_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Requête Power Query avec et sans Query Folding&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;159&#34;
+		data-flex-basis=&#34;381px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;pourquoi-y-faire-attention-&#34;&gt;Pourquoi y faire attention ?&lt;/h2&gt;
+&lt;p&gt;Performance est la réponse à la question. En effet, si la source de données s&amp;rsquo;occupe de réaliser certaines transformations, elle sera en général plus performante, car si c&amp;rsquo;est une baser de données, c&amp;rsquo;est sa raison d&amp;rsquo;être d&amp;rsquo;exécuter des requêtes.&lt;br&gt;
+De plus les données transformées sont en général moins volumineuses que les données brutes, le transfert entre la base et power query sera donc plus rapide s’il y a moins de volume.&lt;/p&gt;
+&lt;h2 id=&#34;quand-sarrête-le-query-folding-&#34;&gt;Quand s&amp;rsquo;arrête le Query Folding ?&lt;/h2&gt;
+&lt;p&gt;À partir du moment où une étape de votre requête n&amp;rsquo;est pas supportée par le query folding, celui s&amp;rsquo;arrête et les étapes suivantes seront traité pat Power Query.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/power-query-query-folding/img/002-power-query-query-folding-show.png&#34;
+	width=&#34;264&#34;
+	height=&#34;544&#34;
+	srcset=&#34;https://blog.ddata.fr/p/power-query-query-folding/img/002-power-query-query-folding-show_hu447ee1d644a26faef2fc7d1aa4ffea91_14853_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/power-query-query-folding/img/002-power-query-query-folding-show_hu447ee1d644a26faef2fc7d1aa4ffea91_14853_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Requête Power Query avec et sans Query Folding&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;48&#34;
+		data-flex-basis=&#34;116px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Pour voir si une étape supporte encore le query folding, faite un clic droit dessus, si l&amp;rsquo;élément de menu &lt;em&gt;Afficher la requête native&lt;/em&gt; n&amp;rsquo;est pas grisé, cela signifie que la requête gère le query folding jusqu&amp;rsquo;a cette étape.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;quel-type-détape-gère-le-query-folding-&#34;&gt;Quel type d&amp;rsquo;étape gère le Query Folding ?&lt;/h2&gt;
+&lt;p&gt;Les étapes suivantes normalement gèrent le Query Folding&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Suppression de colonnes&lt;/li&gt;
+&lt;li&gt;Renommage de colonnes&lt;/li&gt;
+&lt;li&gt;Filtrage de lignes, avec des valeurs statiques ou des paramètres Power Query&lt;/li&gt;
+&lt;li&gt;Regroupement et totalisation&lt;/li&gt;
+&lt;li&gt;Fusion non approximative de requêtes de la même source supportant le Query Folding&lt;/li&gt;
+&lt;li&gt;Ajout de requêtes de la même source supportant le Query Folding&lt;/li&gt;
+&lt;li&gt;Transformation simple de colonne
+&lt;ul&gt;
+&lt;li&gt;Fusion de colonne&lt;/li&gt;
+&lt;li&gt;Changement de type&lt;/li&gt;
+&lt;li&gt;Colonne conditionnelle&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;optimiser-vos-requêtes&#34;&gt;Optimiser vos requêtes&lt;/h2&gt;
+&lt;p&gt;Maintenant que vous comprenez le Query Folding, vous pouvez optimiser vos requêtes qui gère le query folding en réalisant en premier dans la requête les étapes qui supporte le Query Folding puis les autres après.&lt;/p&gt;
+&lt;p&gt;Merci de votre attention.&lt;/p&gt;</description>
+        </item>
+        <item>
         <title>Préparation de données avec Microsoft Fabric, les résultats</title>
         <link>https://blog.ddata.fr/p/fabric-the-match-result/</link>
         <pubDate>Thu, 22 Jun 2023 00:00:00 +0000</pubDate>
@@ -64,7 +136,7 @@ Probablement pas, où alors vous êtes la seule personne à faire de la data dan
 &lt;p&gt;Donc pourquoi choisir ?&lt;br&gt;
 Avec Fabric vous avez un outil qui vous permet d&amp;rsquo;utiliser le résultat des traitements d&amp;rsquo;une autre personne facilement grâce à OneLake, le datalake unifié sous vos lakehouse et warehouse.
 Par exemple, un utilisateur métier peut alimenter un lakehouse avec un dataflow et un data scientist peut consommé cette donnée dans un traitement en Python.&lt;/p&gt;
-&lt;p&gt;Par contre il y a un revers à la médaille, cette grande liberté au sein de l&amp;rsquo;outil va demander de mettre en place une gouvernance rigoureuse afin de ne pas transformer votre environnement&lt;/p&gt;
+&lt;p&gt;Par contre il y a un revers à la médaille, cette grande liberté au sein de l&amp;rsquo;outil va demander de mettre en place une gouvernance rigoureuse afin de ne pas transformer votre environnement.&lt;/p&gt;
 &lt;h2 id=&#34;culture-data&#34;&gt;Culture Data&lt;/h2&gt;
 &lt;p&gt;En résumé, Microsoft Fabric n&amp;rsquo;est qu&amp;rsquo;un outil et ne vous affranchira la mise en place dans votre entreprise d&amp;rsquo;une culture data forte. Pour cela vous devrez fédérer une communauté interne autour de la data et mettre en place un ensemble d&amp;rsquo;outils, avec notamment :&lt;/p&gt;
 &lt;ul&gt;

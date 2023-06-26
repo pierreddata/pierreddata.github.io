@@ -64,7 +64,7 @@ Probablement pas, où alors vous êtes la seule personne à faire de la data dan
 &lt;p&gt;Donc pourquoi choisir ?&lt;br&gt;
 Avec Fabric vous avez un outil qui vous permet d&amp;rsquo;utiliser le résultat des traitements d&amp;rsquo;une autre personne facilement grâce à OneLake, le datalake unifié sous vos lakehouse et warehouse.
 Par exemple, un utilisateur métier peut alimenter un lakehouse avec un dataflow et un data scientist peut consommé cette donnée dans un traitement en Python.&lt;/p&gt;
-&lt;p&gt;Par contre il y a un revers à la médaille, cette grande liberté au sein de l&amp;rsquo;outil va demander de mettre en place une gouvernance rigoureuse afin de ne pas transformer votre environnement&lt;/p&gt;
+&lt;p&gt;Par contre il y a un revers à la médaille, cette grande liberté au sein de l&amp;rsquo;outil va demander de mettre en place une gouvernance rigoureuse afin de ne pas transformer votre environnement.&lt;/p&gt;
 &lt;h2 id=&#34;culture-data&#34;&gt;Culture Data&lt;/h2&gt;
 &lt;p&gt;En résumé, Microsoft Fabric n&amp;rsquo;est qu&amp;rsquo;un outil et ne vous affranchira la mise en place dans votre entreprise d&amp;rsquo;une culture data forte. Pour cela vous devrez fédérer une communauté interne autour de la data et mettre en place un ensemble d&amp;rsquo;outils, avec notamment :&lt;/p&gt;
 &lt;ul&gt;
