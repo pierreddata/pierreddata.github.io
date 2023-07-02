@@ -1,0 +1,1318 @@
+<!DOCTYPE html>
+<html lang="fr-fr" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Microsoft Fabric Data Activator va vous permettre de créer des alertes à partir de vos données Power BI.
+'>
+<meta name="keywords" content="Formation, Microsoft Fabric, Fabric, Data, Power BI, PowerBI, Data Activator"><title>Microsoft Fabric Data Activator, alertes avancées dans Power BI</title>
+
+<link rel='canonical' href='https://blog.ddata.fr/p/fabric-data-activator-power-bi/'>
+
+<link rel="stylesheet" href="/scss/style.min.5be32ca3f6e1a997c75795c4359147cc6d4fbd34948c0acd51e31d237033978a.css"><meta property='og:title' content='Microsoft Fabric Data Activator, alertes avancées dans Power BI'>
+<meta property='og:description' content='Microsoft Fabric Data Activator va vous permettre de créer des alertes à partir de vos données Power BI.
+'>
+<meta property='og:url' content='https://blog.ddata.fr/p/fabric-data-activator-power-bi/'>
+<meta property='og:site_name' content='Le D de Data'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Intermédiaire' /><meta property='article:tag' content='Auto formation' /><meta property='article:published_time' content='2023-07-02T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2023-07-02T00:00:00&#43;00:00'/><meta property='og:image' content='https://blog.ddata.fr/p/fabric-data-activator-power-bi/brandon-morgan-3qucB7U2l7I-unsplash.jpg' />
+<meta name="twitter:title" content="Microsoft Fabric Data Activator, alertes avancées dans Power BI">
+<meta name="twitter:description" content="Microsoft Fabric Data Activator va vous permettre de créer des alertes à partir de vos données Power BI.
+"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://blog.ddata.fr/p/fabric-data-activator-power-bi/brandon-morgan-3qucB7U2l7I-unsplash.jpg' />
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TY6XFEN6QV"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-TY6XFEN6QV', { 'anonymize_ip': false });
+}
+</script>
+<link rel="alternate"
+      type="application/rss+xml"
+      href="https://blog.ddata.fr/index.xml"
+      title="Le D de Data">
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "dark");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Afficher le menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/pierre_hua6bbc70dde858dd10e363a14d1f7729c_67951_300x0_resize_q75_box.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Le D de Data</a></h1>
+            <h2 class="site-description">Blog francophone autour de la data Microsoft</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/pierreddata'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://www.linkedin.com/in/pierre-dupont-0b532374/'
+                        target="_blank"
+                        title="LinkdIn"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-folders" width="44" height="44" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <rect x="4" y="4" width="16" height="16" rx="2" />
+  <line x1="8" y1="11" x2="8" y2="16" />
+  <line x1="8" y1="8" x2="8" y2="8.01" />
+  <line x1="12" y1="16" x2="12" y2="11" />
+  <path d="M16 16v-3a2 2 0 0 0 -4 0" />
+</svg>
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Accueil</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/a-propos-de-d-de-data/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>A Propos</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/series/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-folders" width="44" height="44" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 4h3l2 2h5a2 2 0 0 1 2 2v7a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-9a2 2 0 0 1 2 -2" />
+  <path d="M17 17v2a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-9a2 2 0 0 1 2 -2h2" />
+</svg>
+
+                
+                <span>Series</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/liens/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Liens</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Rechercher</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Mode sombre</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table des matières</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#contexte">Contexte</a></li>
+    <li><a href="#préparation-de-lenvironnement">Préparation de l&rsquo;environnement</a>
+      <ol>
+        <li>
+          <ol>
+            <li><a href="#création-de-lespace-de-travail">Création de l&rsquo;espace de travail</a></li>
+            <li><a href="#sélection-de-lexpérience-utilisateur">Sélection de l&rsquo;expérience utilisateur</a></li>
+            <li><a href="#création-dun-lakehouse">Création d&rsquo;un lakeHouse</a></li>
+            <li><a href="#création-dun-rapport-power-bi">Création d&rsquo;un rapport Power BI</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li><a href="#réflexe">Réflexe</a>
+      <ol>
+        <li><a href="#création">Création</a></li>
+        <li><a href="#principe-de-fonctionnement">Principe de fonctionnement</a></li>
+        <li><a href="#présentation-des-données-capturées">Présentation des données capturées</a></li>
+        <li><a href="#personnaliser-votre-alerte">Personnaliser votre alerte</a></li>
+      </ol>
+    </li>
+    <li><a href="#retour-dexpérience">Retour d&rsquo;expérience</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/fabric-data-activator-power-bi/">
+                <img src="/p/fabric-data-activator-power-bi/brandon-morgan-3qucB7U2l7I-unsplash_hu3d03a01dcc18bc5be0e67db3d8d209a6_384387_800x0_resize_q75_box.jpg"
+                        srcset="/p/fabric-data-activator-power-bi/brandon-morgan-3qucB7U2l7I-unsplash_hu3d03a01dcc18bc5be0e67db3d8d209a6_384387_800x0_resize_q75_box.jpg 800w, /p/fabric-data-activator-power-bi/brandon-morgan-3qucB7U2l7I-unsplash_hu3d03a01dcc18bc5be0e67db3d8d209a6_384387_1600x0_resize_q75_box.jpg 1600w"
+                        width="800" 
+                        height="1208" 
+                        loading="lazy"
+                        alt="Featured image of post Microsoft Fabric Data Activator, alertes avancées dans Power BI" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/fabric/" style="background-color: #117865; color: #fff;">
+                Microsoft Fabric
+            </a>
+        
+            <a href="/categories/powerbi/" style="background-color: #f2c811; color: #fff;">
+                Power BI
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/fabric-data-activator-power-bi/">Microsoft Fabric Data Activator, alertes avancées dans Power BI</a>
+        </h2>
+
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published" datetime="2023-07-02T00:00:00Z">
+                    2 juillet 2023
+                    
+                </time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    8 minutes de lecture
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+    
+    
+</div>
+</header>
+
+    <section class="article-content">
+    
+    
+    <p>Microsoft Fabric Data Activator va vous permettre de créer des alertes à partir de vos données Power BI.</p>
+<p>Ce modèle offre plus de possibilités que le système d&rsquo;alerte actuel via un tableau de bord décrit dans mon article <a class="link" href="https://blog.ddata.fr/p/power-bi-create-data-alert/" >Power BI : Créer une alerte sur vos données</a>.</p>
+<h2 id="contexte">Contexte</h2>
+<p>Data Activator est un composant de Microsoft Fabric qui permet de créer des alertes sur vos données.</p>
+<p>Dans cet article, je vais supposer que vous avez déjà pris en main Microsoft Fabric et lu les précédents articles que j&rsquo;ai écrits sur ce sujet. Je ne reviendrais donc pas sur les concepts déjà vus.</p>
+<p>Data Activator est disponible uniquement en private preview au moment où j&rsquo;écris cet article. Vous pouvez demander à activer cette fonctionnalité en allant sur ce lien <a class="link" href="https://aka.ms/dataActivatorPreview"  target="_blank" rel="noopener"
+    >https://aka.ms/dataActivatorPreview</a>.</p>
+<h2 id="préparation-de-lenvironnement">Préparation de l&rsquo;environnement</h2>
+<h4 id="création-de-lespace-de-travail">Création de l&rsquo;espace de travail</h4>
+<p>Dans le menu de gauche, sélectionnez <strong>Espace de travail</strong>, puis <strong>+ Nouvel espace de travail</strong>.</p>
+<p><img src="/p/fabric-data-activator-power-bi/img/001-fabric-create-workspace.png"
+	width="591"
+	height="925"
+	srcset="/p/fabric-data-activator-power-bi/img/001-fabric-create-workspace_huda909a1dbefeb5305371bb11e2339dcf_53025_480x0_resize_box_3.png 480w, /p/fabric-data-activator-power-bi/img/001-fabric-create-workspace_huda909a1dbefeb5305371bb11e2339dcf_53025_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Création de l&rsquo;espace de travail"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="63"
+		data-flex-basis="153px"
+	
+></p>
+<ol>
+<li>Nommez votre espace de travail <em>Data Activator</em>.</li>
+<li>Ouvrez les options avancées</li>
+<li>Sélectionnez un type d&rsquo;espace de travail compatible avec les objets Micrsoft Fabric.</li>
+<li>Appuyez sur <strong>Appliquez</strong> pour créer votre espace de travail.</li>
+</ol>
+<h4 id="sélection-de-lexpérience-utilisateur">Sélection de l&rsquo;expérience utilisateur</h4>
+<p>Afin de simplifier l&rsquo;interface, Fabric est organisé autour de différentes expériences utilisateur afin de ne pas présenter l&rsquo;ensemble des types objets disponible à tout le monde.
+Pour notre exemple nous pouvons utiliser l&rsquo;expérience <em>Data Activator</em>.</p>
+<p><img src="/p/fabric-data-activator-power-bi/img/002-fabric-select-experience.png"
+	width="319"
+	height="299"
+	srcset="/p/fabric-data-activator-power-bi/img/002-fabric-select-experience_hu6ede9bac94363e653d600507a411fbd3_16109_480x0_resize_box_3.png 480w, /p/fabric-data-activator-power-bi/img/002-fabric-select-experience_hu6ede9bac94363e653d600507a411fbd3_16109_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Modification de l&rsquo;expérience utilisateur"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="106"
+		data-flex-basis="256px"
+	
+></p>
+<ol>
+<li>Appuyez sur l&rsquo;icône en bas à gauche de votre écran, si vous êtes arrivé par le portail Power BI vous trouver l&rsquo;icône Power BI, sinon vous trouverez l&rsquo;icône de l&rsquo;expérience utilisateur en cours.</li>
+<li>Sélectionnez <em>Data Activator</em></li>
+</ol>
+<p>Après le changement d&rsquo;expérience, vous devez vous repositionner dans votre espace de travail.</p>
+<h4 id="création-dun-lakehouse">Création d&rsquo;un lakeHouse</h4>
+<p>Nous allons maintenant créer un lakehouse dédié à notre exemple.<br>
+Un lakehouse est une espace de stockage acceptant n&rsquo;importe quel type de données. Il sert de zone de stockage générique des données de notre couche bronze.<br>
+Dans l&rsquo;écosystème Fabric un lakehouse est un sous-ensemble de OneLake, l&rsquo;espace de stockage unifié de votre entreprise.</p>
+<p><img src="/p/fabric-data-activator-power-bi/img/003-fabric-create-lakehouse.png"
+	width="308"
+	height="582"
+	srcset="/p/fabric-data-activator-power-bi/img/003-fabric-create-lakehouse_hu6ff543d72f196539cb363f509e6524bc_24676_480x0_resize_box_3.png 480w, /p/fabric-data-activator-power-bi/img/003-fabric-create-lakehouse_hu6ff543d72f196539cb363f509e6524bc_24676_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Création d&rsquo;un lakehouse - étape 1"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="52"
+		data-flex-basis="127px"
+	
+></p>
+<ol>
+<li>Dans le menu de l&rsquo;espace de travail, appuyez sur <strong>+ Nouveau</strong>.</li>
+<li>Sélectionnez <strong>Lakehouse</strong>.</li>
+</ol>
+<p><img src="/p/fabric-data-activator-power-bi/img/004-fabric-create-lakehouse-step2.png"
+	width="342"
+	height="218"
+	srcset="/p/fabric-data-activator-power-bi/img/004-fabric-create-lakehouse-step2_hu4b345e8e4139142d748b31d9e08ece73_8579_480x0_resize_box_3.png 480w, /p/fabric-data-activator-power-bi/img/004-fabric-create-lakehouse-step2_hu4b345e8e4139142d748b31d9e08ece73_8579_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Création d&rsquo;un lakehouse - étape 2"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="156"
+		data-flex-basis="376px"
+	
+></p>
+<ol>
+<li>Saisissez le nom du lakehouse, ici <em>DemoDataActivator</em> qui est le nom de la source de données.</li>
+<li>Appuyez sur <strong>Créer</strong> pour créer le lakehouse.</li>
+</ol>
+<p>L&rsquo;écran qui s&rsquo;affiche est l&rsquo;explorateur de lakehouse, nous allons créer une vue dans le point de terminaison SQL associé au lakehouse.</p>
+<p><img src="/p/fabric-data-activator-power-bi/img/005-fabric-create-lakehouse-view-step1.png"
+	width="1852"
+	height="928"
+	srcset="/p/fabric-data-activator-power-bi/img/005-fabric-create-lakehouse-view-step1_hu1540fa0c73153cab478195bbd1dd9de7_43996_480x0_resize_box_3.png 480w, /p/fabric-data-activator-power-bi/img/005-fabric-create-lakehouse-view-step1_hu1540fa0c73153cab478195bbd1dd9de7_43996_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Création d&rsquo;une vue dans le point de terminaison - étape 1"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="199"
+		data-flex-basis="478px"
+	
+></p>
+<ol>
+<li>Rendez-vous dans la liste déroulante en haut à droite pour basculer en mode point de terminaison SQL.</li>
+<li>Ouvrez <strong>Schemas</strong>.</li>
+<li>Ouvrez <strong>dbo</strong>.</li>
+<li>Au niveau de <em>Views</em> sélectionnez les 3 points.</li>
+<li>Appuyez sur <strong>Nouvelle vue</strong>.</li>
+</ol>
+<p>Nous allons ajouter une vue SQL dont le résultat évolue toutes les secondes afin de simuler des données qui se rafraichissent.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">CREATE</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="k">ALTER</span><span class="w"> </span><span class="k">VIEW</span><span class="w"> </span><span class="p">[</span><span class="n">dbo</span><span class="p">].[</span><span class="n">DemoDataActivator</span><span class="p">]</span><span class="w"> </span><span class="k">AS</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">SELECT</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">A</span><span class="p">.</span><span class="n">Couleur</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">,</span><span class="k">CONVERT</span><span class="p">(</span><span class="nb">INT</span><span class="p">,(</span><span class="k">CONVERT</span><span class="p">(</span><span class="nb">INT</span><span class="p">,</span><span class="w"> </span><span class="n">FORMAT</span><span class="p">(</span><span class="n">GETDATE</span><span class="p">(),</span><span class="s1">&#39;HHmmss&#39;</span><span class="p">))</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">A</span><span class="p">.</span><span class="n">Coef</span><span class="p">))</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">Valeur</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">FROM</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">SELECT</span><span class="w"> </span><span class="s1">&#39;Rouge&#39;</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">Couleur</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">.</span><span class="mi">5</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">Coef</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">UNION</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">SELECT</span><span class="w"> </span><span class="s1">&#39;Vert&#39;</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">Couleur</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">.</span><span class="mi">5</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">Coef</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">UNION</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">SELECT</span><span class="w"> </span><span class="s1">&#39;Bleu&#39;</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">Couleur</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">Coef</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">UNION</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">SELECT</span><span class="w"> </span><span class="s1">&#39;Noir&#39;</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">Couleur</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">.</span><span class="mi">7</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">Coef</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">)</span><span class="w"> </span><span class="n">A</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">GO</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="/p/fabric-data-activator-power-bi/img/006-fabric-create-lakehouse-view-step2.png"
+	width="1852"
+	height="928"
+	srcset="/p/fabric-data-activator-power-bi/img/006-fabric-create-lakehouse-view-step2_huab695c6356ad8035803dfc285e4f4d89_70672_480x0_resize_box_3.png 480w, /p/fabric-data-activator-power-bi/img/006-fabric-create-lakehouse-view-step2_huab695c6356ad8035803dfc285e4f4d89_70672_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Création d&rsquo;une vue dans le point de terminaison - étape 2"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="199"
+		data-flex-basis="478px"
+	
+></p>
+<ol>
+<li>Dans la fenêtre de la vue, remplacer le code par défaut par le code de la vue disponible ci-dessus.</li>
+<li>Appuyez sur <strong>Run</strong> pour créer la vue dans le point de terminaison SQL.</li>
+<li>Vous pouvez voir que c&rsquo;est un succès.</li>
+</ol>
+<h4 id="création-dun-rapport-power-bi">Création d&rsquo;un rapport Power BI</h4>
+<p>Nous allons maintenant réaliser dans Power BI desktop, un rapport basé sur la vue créer dans le lakehouse.<br>
+Ouvrez Power BI Desktop. Je réalise mon rapport avec la version de juin 2023.</p>
+<p><img src="/p/fabric-data-activator-power-bi/img/007-power-bi-create-on-lakehouse-view-step1.png"
+	width="667"
+	height="290"
+	srcset="/p/fabric-data-activator-power-bi/img/007-power-bi-create-on-lakehouse-view-step1_hu682ac06b725667e0ec9ce012b778b15e_25809_480x0_resize_box_3.png 480w, /p/fabric-data-activator-power-bi/img/007-power-bi-create-on-lakehouse-view-step1_hu682ac06b725667e0ec9ce012b778b15e_25809_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Création du rapport Power BI - étape 1"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="230"
+		data-flex-basis="552px"
+	
+></p>
+<ol>
+<li>Dans le menu <strong>Accueil</strong>.</li>
+<li>Sélectionnez <strong>Hub de données OneLake</strong>.</li>
+<li>Appuyez sur <strong>Lakehouses</strong>.</li>
+</ol>
+<p><img src="/p/fabric-data-activator-power-bi/img/008-power-bi-create-on-lakehouse-view-step2.png"
+	width="1280"
+	height="818"
+	srcset="/p/fabric-data-activator-power-bi/img/008-power-bi-create-on-lakehouse-view-step2_hu6d95d669cc583c8f621c8877219ec0b1_56158_480x0_resize_box_3.png 480w, /p/fabric-data-activator-power-bi/img/008-power-bi-create-on-lakehouse-view-step2_hu6d95d669cc583c8f621c8877219ec0b1_56158_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Création du rapport Power BI - étape 2"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="156"
+		data-flex-basis="375px"
+	
+></p>
+<ol>
+<li>Sélectionnez le lakehouse <em>DemoDataActivator</em>.</li>
+<li>Appuyez sur le bouton avec le chevron vers le bas.</li>
+<li>Choisissez <strong>Se connecter au point de terminaison SQL</strong>.</li>
+</ol>
+<p><img src="/p/fabric-data-activator-power-bi/img/009-power-bi-create-on-lakehouse-view-step3.png"
+	width="880"
+	height="700"
+	srcset="/p/fabric-data-activator-power-bi/img/009-power-bi-create-on-lakehouse-view-step3_hudea4a127c0031bf20dfa27a5e442e1d4_25596_480x0_resize_box_3.png 480w, /p/fabric-data-activator-power-bi/img/009-power-bi-create-on-lakehouse-view-step3_hudea4a127c0031bf20dfa27a5e442e1d4_25596_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Création du rapport Power BI - étape 3"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="125"
+		data-flex-basis="301px"
+	
+></p>
+<ol>
+<li>Sélectionner la vue <em>DemoDataActivator</em>.</li>
+<li>Vous pouvez voir un aperçu des données.</li>
+<li>Appuyez sur <em>Charger</em>.</li>
+</ol>
+<p><img src="/p/fabric-data-activator-power-bi/img/010-power-bi-create-on-lakehouse-view-step4.png"
+	width="500"
+	height="299"
+	srcset="/p/fabric-data-activator-power-bi/img/010-power-bi-create-on-lakehouse-view-step4_hu9eb44468124a4dd8096e627c7155acc5_16291_480x0_resize_box_3.png 480w, /p/fabric-data-activator-power-bi/img/010-power-bi-create-on-lakehouse-view-step4_hu9eb44468124a4dd8096e627c7155acc5_16291_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Création du rapport Power BI - étape 4"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="167"
+		data-flex-basis="401px"
+	
+></p>
+<ol>
+<li>Sélectionnez <em>DirectQuery</em>.</li>
+<li>Appuyez sur <strong>OK</strong>.</li>
+</ol>
+<p><img src="/p/fabric-data-activator-power-bi/img/011-power-bi-create-on-lakehouse-view-step5.png"
+	width="1424"
+	height="877"
+	srcset="/p/fabric-data-activator-power-bi/img/011-power-bi-create-on-lakehouse-view-step5_hub3a8f72281d9e096a97e3a63911ec2e1_105043_480x0_resize_box_3.png 480w, /p/fabric-data-activator-power-bi/img/011-power-bi-create-on-lakehouse-view-step5_hub3a8f72281d9e096a97e3a63911ec2e1_105043_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Création du rapport Power BI - étape 5"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="162"
+		data-flex-basis="389px"
+	
+></p>
+<ol>
+<li>Ajoutez un visuel <em>Graphiques à barres groupées</em>.</li>
+<li>Ajoutez le champ <em>Couleur</em>, puis le champ <em>Valeur</em>.</li>
+<li>Faite de la mise en forme si vous voulez.</li>
+<li>Enregistrez le rapport en <em>DemoDataActivatorDesktopDQOnSQLLakehouse</em>.</li>
+<li>Publiez le rapport dans l&rsquo;espace de travail <em>Data Activator</em>.</li>
+</ol>
+<p>Rendez-vous dans l&rsquo;espace de travail <em>Data Activator</em>.</p>
+<p><img src="/p/fabric-data-activator-power-bi/img/012-fabric-dataset-parameter-step1.png"
+	width="1057"
+	height="568"
+	srcset="/p/fabric-data-activator-power-bi/img/012-fabric-dataset-parameter-step1_hu01dbe6e438bc820190343421ef381feb_50965_480x0_resize_box_3.png 480w, /p/fabric-data-activator-power-bi/img/012-fabric-dataset-parameter-step1_hu01dbe6e438bc820190343421ef381feb_50965_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Paramétrage du jeu de données Power BI - étape 1"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="186"
+		data-flex-basis="446px"
+	
+></p>
+<ol>
+<li>Pointez la souris sur le jeu de données <em>DemoDataActivatorDesktopDQOnSQLLakehouse</em> et appuyez sur les 3 points.</li>
+<li>Sélection <strong>Paramètres</strong> dans le menu.</li>
+</ol>
+<p><img src="/p/fabric-data-activator-power-bi/img/013-fabric-dataset-parameter-step2.png"
+	width="1301"
+	height="158"
+	srcset="/p/fabric-data-activator-power-bi/img/013-fabric-dataset-parameter-step2_hu31cb5446e3c191910fadb157f7e68390_18069_480x0_resize_box_3.png 480w, /p/fabric-data-activator-power-bi/img/013-fabric-dataset-parameter-step2_hu31cb5446e3c191910fadb157f7e68390_18069_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Paramétrage du jeu de données Power BI - étape 2"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="823"
+		data-flex-basis="1976px"
+	
+></p>
+<ol>
+<li>Rendez-vous dans la section <em>Informations d&rsquo;identification de la source de données</em>.</li>
+<li>Appuyez sur <em>Modifier les informations d&rsquo;identification</em> pour mettre à jour l&rsquo;authentification du jeu de données sur le point de terminaison SQL.</li>
+</ol>
+<p><img src="/p/fabric-data-activator-power-bi/img/014-fabric-dataset-parameter-step3.png"
+	width="460"
+	height="513"
+	srcset="/p/fabric-data-activator-power-bi/img/014-fabric-dataset-parameter-step3_huf2658f57790780050c59c154a3afa04f_21712_480x0_resize_box_3.png 480w, /p/fabric-data-activator-power-bi/img/014-fabric-dataset-parameter-step3_huf2658f57790780050c59c154a3afa04f_21712_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Paramétrage du jeu de données Power BI - étape 3"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="89"
+		data-flex-basis="215px"
+	
+></p>
+<ol>
+<li>Sélectionnez <em>OAuth2</em> dans <em>Méthode d&rsquo;authentification</em>.</li>
+<li>Appuyez sur <em>Se connecter</em>.</li>
+</ol>
+<p><img src="/p/fabric-data-activator-power-bi/img/015-fabric-dataset-parameter-step4.png"
+	width="851"
+	height="492"
+	srcset="/p/fabric-data-activator-power-bi/img/015-fabric-dataset-parameter-step4_hu44bbd59492111bcc5f68f486a81d2f70_42240_480x0_resize_box_3.png 480w, /p/fabric-data-activator-power-bi/img/015-fabric-dataset-parameter-step4_hu44bbd59492111bcc5f68f486a81d2f70_42240_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Paramétrage du jeu de données Power BI - étape 4"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="172"
+		data-flex-basis="415px"
+	
+></p>
+<ol>
+<li>Rendez-vous dans la section <em>Actualisation planifiée et optimisation des performances</em>.</li>
+<li>Sélectionnez <strong>15 minutes</strong> dans <em>Fréquence d&rsquo;actualisation</em>.</li>
+<li>Appuyez sur <strong>Appliquer</strong>.</li>
+</ol>
+<p>Le terrain de jeu est maintenant fonctionnel, nous allons pouvoir créer une alerte dans Data Activator.</p>
+<h2 id="réflexe">Réflexe</h2>
+<p>Data Activator, se présente comme un nouveau type d&rsquo;objet nommé <em>Réflexe</em> dans l&rsquo;espace de travail.<br>
+C&rsquo;est ce réflexe qui reçoit les informations et génère les alertes.</p>
+<h3 id="création">Création</h3>
+<p>Nous allons maintenant créer un déclencheur. Lors de la création d&rsquo;un déclencheur, on va choisir entre la création d&rsquo;un réflexe et la réutilisation d&rsquo;un réflexe existant.</p>
+<p>Pour créer le réflexe, ouvrez le rapport publié dans le service.</p>
+<p><img src="/p/fabric-data-activator-power-bi/img/016-power-bi-create-trigger-step1.png"
+	width="1484"
+	height="763"
+	srcset="/p/fabric-data-activator-power-bi/img/016-power-bi-create-trigger-step1_hu5ac7a1c6a92989e58518305215af85fe_37125_480x0_resize_box_3.png 480w, /p/fabric-data-activator-power-bi/img/016-power-bi-create-trigger-step1_hu5ac7a1c6a92989e58518305215af85fe_37125_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Création d&rsquo;un déclencheur avec Power BI - étape 1"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="194"
+		data-flex-basis="466px"
+	
+></p>
+<ol>
+<li>Pointez votre souris sur le visuel pour faire apparaitre le menu contextuel, appuyez sur les 3 points.</li>
+<li>Sélectionnez <em>Action de déclencheur</em>.</li>
+</ol>
+<p><img src="/p/fabric-data-activator-power-bi/img/017-power-bi-create-trigger-step2.png"
+	width="303"
+	height="871"
+	srcset="/p/fabric-data-activator-power-bi/img/017-power-bi-create-trigger-step2_hu9430f75c12b45558039b9c4e24be23d4_38190_480x0_resize_box_3.png 480w, /p/fabric-data-activator-power-bi/img/017-power-bi-create-trigger-step2_hu9430f75c12b45558039b9c4e24be23d4_38190_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Création d&rsquo;un déclencheur avec Power BI - étape 2"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="34"
+		data-flex-basis="83px"
+	
+></p>
+<ol>
+<li>Sélectionnez la mesure à surveiller, si plusieurs mesures sont présentes dans le visuel elles apparaissent dans la liste déroulante.</li>
+<li>Sélectionnez l&rsquo;axe de ventilation de la mesure à prendre en compte.</li>
+<li>Sélectionnez la fréquence de capture de l&rsquo;information.</li>
+<li>Définissez un critère d&rsquo;alerte</li>
+<li>Donnez l&rsquo;espace de travail où sera stocké le réflexe.</li>
+<li>Donnez le nom du réflexe.</li>
+<li>Appuyez sur <strong>Continuer</strong>.</li>
+</ol>
+<p>Un message apparait pour vous confirmer la création de votre réflexe.</p>
+<p><img src="/p/fabric-data-activator-power-bi/img/018-power-bi-create-trigger-step3.png"
+	width="378"
+	height="147"
+	srcset="/p/fabric-data-activator-power-bi/img/018-power-bi-create-trigger-step3_hua2e76d19db7c1f08920b5107edafa057_9440_480x0_resize_box_3.png 480w, /p/fabric-data-activator-power-bi/img/018-power-bi-create-trigger-step3_hua2e76d19db7c1f08920b5107edafa057_9440_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Création d&rsquo;un déclencheur avec Power BI - étape 3"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="257"
+		data-flex-basis="617px"
+	
+></p>
+<ol>
+<li>Appuyez sur le lien pour ouvrir le réflexe créé.</li>
+</ol>
+<p>Vous pouvez aussi accéder au réflexe en cliquant sur l&rsquo;objet créer dans l&rsquo;espace de travail :</p>
+<p><img src="/p/fabric-data-activator-power-bi/img/019-power-bi-reflexe.png"
+	width="534"
+	height="51"
+	srcset="/p/fabric-data-activator-power-bi/img/019-power-bi-reflexe_hu1adf801be72f6c3df4f69887e11e36e8_1675_480x0_resize_box_3.png 480w, /p/fabric-data-activator-power-bi/img/019-power-bi-reflexe_hu1adf801be72f6c3df4f69887e11e36e8_1675_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Réflexe dans l&rsquo;espace de travail"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="1047"
+		data-flex-basis="2512px"
+	
+></p>
+<h3 id="principe-de-fonctionnement">Principe de fonctionnement</h3>
+<p>⚠ La description du fonctionnement présenté ici et celui de la private preview de juin 2023. Cela a pu évoluer depuis.</p>
+<p><img src="/p/fabric-data-activator-power-bi/img/020-power-bi-reflexe-description.png"
+	width="997"
+	height="544"
+	srcset="/p/fabric-data-activator-power-bi/img/020-power-bi-reflexe-description_hu8b0176cac67abde47f60dcd1de8f05b5_33759_480x0_resize_box_3.png 480w, /p/fabric-data-activator-power-bi/img/020-power-bi-reflexe-description_hu8b0176cac67abde47f60dcd1de8f05b5_33759_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Schéma de fonctionnement de réflexe avec Power BI"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="183"
+		data-flex-basis="439px"
+	
+></p>
+<p>Un réflexe se compose de 2 éléments :</p>
+<ul>
+<li>Un premier qui capture l&rsquo;état de vos données à la fréquence définie lors de la création. Plusieurs processus de capture peuvent être définis au sein d&rsquo;un même réflexe.</li>
+<li>Un outil pour analyser les données et déclencher une action en fonction du résultat de l&rsquo;analyse. Plusieurs déclencheurs peuvent exister au sein d&rsquo;un même réflexe.</li>
+</ul>
+<p>Les données de votre jeu de données capturer par réflexe deviennent automatiquement une série temporelle, et l&rsquo;analyse que vous allez en faire sera contrainte par ce modèle de série temporelle.</p>
+<p>Pour rappel une série temporelle est une valeur qui évolue dans le temps. Par exemple dans notre requête nous aurons :</p>
+<ul>
+<li>Valeur pour <em>bleu</em> capturer le 01/07/2023 à 15:00:15 = 130010</li>
+<li>Valeur pour <em>bleu</em> capturer le 01/07/2023 à 15:15:15 = 131510</li>
+<li>&hellip;..</li>
+<li>Valeur pour <em>bleu</em> capturer le 01/07/2023 à 18:45:15 = 164510</li>
+</ul>
+<p>Pour rappel la requête renvoie un format heures minutes secondes pour la valeur Bleu. L&rsquo;heure du serveur est toujours en temps universel (UTC+0) donc avec 2 heures de moins que l&rsquo;heure de Paris en juillet.</p>
+<p>Lorsque l&rsquo;on ouvre un réflexe, on arrive sur un écran avec 2 onglets :</p>
+<ul>
+<li>Data : Permets de voir arriver les données capturées en temps réel.</li>
+<li>Design : Permets de définir les règles qui déclencheront des actions en fonction des données.</li>
+</ul>
+<h3 id="présentation-des-données-capturées">Présentation des données capturées</h3>
+<p><img src="/p/fabric-data-activator-power-bi/img/021-reflexe-data.png"
+	width="1857"
+	height="929"
+	srcset="/p/fabric-data-activator-power-bi/img/021-reflexe-data_hu756344e262c8ac02e6f45db4abd11c98_242007_480x0_resize_box_3.png 480w, /p/fabric-data-activator-power-bi/img/021-reflexe-data_hu756344e262c8ac02e6f45db4abd11c98_242007_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Visualisation des données capturées"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="199"
+		data-flex-basis="479px"
+	
+></p>
+<ol>
+<li>Panneau avec la liste des captures de données d&rsquo;un réflexe.</li>
+<li>Permets de renommer une capture de données.</li>
+<li>Permets de filtrer la capture de données.</li>
+<li>Permets d&rsquo;avoir des informations détaillées sur la capture de données.</li>
+<li>Permets de voir arriver les données capturées, la couleur verte permet d&rsquo;identifier les données qui viennent d&rsquo;arriver.</li>
+<li>On retrouve les valeurs en provenance de notre Power BI.</li>
+<li>Permets de passer de l&rsquo;écran <em>Data</em> à l&rsquo;écran <em>Design</em>.</li>
+</ol>
+<h3 id="personnaliser-votre-alerte">Personnaliser votre alerte</h3>
+<p><img src="/p/fabric-data-activator-power-bi/img/022-reflexe-design-step1.png"
+	width="1855"
+	height="929"
+	srcset="/p/fabric-data-activator-power-bi/img/022-reflexe-design-step1_hua0ebb4bf090551d23e546d6216debaaf_74850_480x0_resize_box_3.png 480w, /p/fabric-data-activator-power-bi/img/022-reflexe-design-step1_hua0ebb4bf090551d23e546d6216debaaf_74850_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Visualisation des déclencheurs - Events"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="199"
+		data-flex-basis="479px"
+	
+></p>
+<ol>
+<li>Rendez-vous sur l&rsquo;écran <em>Design</em>.</li>
+<li>Par défaut on arrive sur le déclencheur créer par défaut.</li>
+<li>Vous pouvez voir la série temporelle associée.</li>
+<li>Vous pouvez sélectionner les identifiants à surveiller, dans notre cas Bleu, Noir, Rouge et Vert.</li>
+<li>Vous pouvez sélectionner la fenêtre de temps à afficher.</li>
+<li>Vous pouvez mettre en pause le rafraichissement de la série temporelle.</li>
+<li>Vous pouvez accéder à l&rsquo;écran de détail.</li>
+</ol>
+<p><img src="/p/fabric-data-activator-power-bi/img/023-reflexe-design-step2.png"
+	width="1845"
+	height="923"
+	srcset="/p/fabric-data-activator-power-bi/img/023-reflexe-design-step2_hu1f90ac3fe570d4c9f515451fdbec4df0_77995_480x0_resize_box_3.png 480w, /p/fabric-data-activator-power-bi/img/023-reflexe-design-step2_hu1f90ac3fe570d4c9f515451fdbec4df0_77995_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Visualisation des déclencheurs - Trigger - étape 1"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="199"
+		data-flex-basis="479px"
+	
+></p>
+<ol>
+<li>Sélectionnez votre déclencheur. Il a été créé automatiquement via le rapport.</li>
+<li>Vous pouvez voir les points de collecte des données.</li>
+<li>On choisit de traiter les informations du champ <em>Somme_de_Valeur</em>, elle s&rsquo;affiche dans un graphe. Vous pouvez constater que l&rsquo;on a une mise à jour des données une fois toutes les 15 minutes, ce qui correspond au rafraichissement du jeu de données et non à la lecture des données de la vue comme on aurait pu s&rsquo;y attendre.</li>
+</ol>
+<p><img src="/p/fabric-data-activator-power-bi/img/024-reflexe-design-step3.png"
+	width="1847"
+	height="923"
+	srcset="/p/fabric-data-activator-power-bi/img/024-reflexe-design-step3_hu2998e1284f45aa2e456773561f277d41_65939_480x0_resize_box_3.png 480w, /p/fabric-data-activator-power-bi/img/024-reflexe-design-step3_hu2998e1284f45aa2e456773561f277d41_65939_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Visualisation des déclencheurs - Trigger - étape 2"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="200"
+		data-flex-basis="480px"
+	
+></p>
+<ol start="4">
+<li>On défini un critère pour filtrer la série de l&rsquo;étape précédente, avec comme critère devient plus grand que 170 000.</li>
+<li>Une seule occurrence est trouvée elle apparait dans le nouveau graphe.</li>
+</ol>
+<p><img src="/p/fabric-data-activator-power-bi/img/025-reflexe-design-step4.png"
+	width="1857"
+	height="929"
+	srcset="/p/fabric-data-activator-power-bi/img/025-reflexe-design-step4_hud996896c973e906952f929099baa801f_67629_480x0_resize_box_3.png 480w, /p/fabric-data-activator-power-bi/img/025-reflexe-design-step4_hud996896c973e906952f929099baa801f_67629_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Visualisation des déclencheurs - Trigger - étape 3"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="199"
+		data-flex-basis="479px"
+	
+></p>
+<ol start="6">
+<li>On définit les informations à envoyer par mail quand un évènement est détecté dans l&rsquo;étape précédente.</li>
+<li>On peut démarrer ou tester le déclencheur.</li>
+</ol>
+<p>Ici se termine un premier tour d&rsquo;horizon de Data Activator.</p>
+<h2 id="retour-dexpérience">Retour d&rsquo;expérience</h2>
+<p>Lors de mes tests, j&rsquo;ai pu constater le comportement suivant en fonction du mode de connexion du jeu de données et de la configuration de rafraichissement :</p>
+<ul>
+<li>Direct query : Refresh de data activator est égale à la fréquence de refresh du dataset, pas de refresh sur le jeu de données par défaut du lakehouse.</li>
+<li>Import : : Refresh de data activator est égale à la fréquence de refresh du dataset.</li>
+<li>Direct Lake sur jeu de données par défaut : Pas de refresh sur le jeu de données par défaut du lakehouse.</li>
+</ul>
+<p>Merci de votre attention.</p>
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/interm%C3%A9diaire/">Intermédiaire</a>
+        
+            <a href="/tags/auto-formation/">Auto formation</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Contenus liés</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/fabric-poc-iot/">
+        
+        
+            <div class="article-image">
+                <img src="/p/fabric-poc-iot/_hu3d03a01dcc18bc5be0e67db3d8d209a6_3315002_4c771f89f6ca9cc60be251a06c4c762b.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Données en temps réel dans votre rapport Power BI avec Microsoft Fabric"
+                        data-key="fabric-poc-iot" 
+                        data-hash="md5-vJKPy1E9umGa8OSN&#43;hupgw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Données en temps réel dans votre rapport Power BI avec Microsoft Fabric</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/power-query-query-folding/">
+        
+        
+            <div class="article-image">
+                <img src="/p/power-query-query-folding/_hu71f8ecb5fe253ecb731b7a50aebe9db7_2962660_2dee3e0ed23eda42528a6e3ccd583688.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Query folding, optimiser vos requêtes Power Query."
+                        data-key="power-query-query-folding" 
+                        data-hash="md5-bM2bc5qNAji5uyQBQ6pBEQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Query folding, optimiser vos requêtes Power Query.</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/fabric-the-match-result/">
+        
+        
+            <div class="article-image">
+                <img src="/p/fabric-the-match-result/_hu3d03a01dcc18bc5be0e67db3d8d209a6_2681829_0245678618a12c641ec659c994145bd8.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Préparation de données avec Microsoft Fabric, les résultats"
+                        data-key="fabric-the-match-result" 
+                        data-hash="md5-&#43;BNXvrNwlWBCP4vC47HGuQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Préparation de données avec Microsoft Fabric, les résultats</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/fabric-the-match-notebook/">
+        
+        
+            <div class="article-image">
+                <img src="/p/fabric-the-match-notebook/_hu3d03a01dcc18bc5be0e67db3d8d209a6_1320955_4bdd8aa2c1b3f94c7a2285cfd22d6a15.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Préparation de données avec Microsoft Fabric, les blocs-notes"
+                        data-key="fabric-the-match-notebook" 
+                        data-hash="md5-t0oYCnGDIcGQX&#43;CQ6yLX2Q==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Préparation de données avec Microsoft Fabric, les blocs-notes</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/fabric-the-match-sql/">
+        
+        
+            <div class="article-image">
+                <img src="/p/fabric-the-match-sql/_hu3d03a01dcc18bc5be0e67db3d8d209a6_3268696_6eb6cf868cb3ff421ec48f9d41083a69.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Préparation de données avec Microsoft Fabric, le SQL"
+                        data-key="fabric-the-match-sql" 
+                        data-hash="md5-91s2rteMwbLk91yEWWf/UQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Préparation de données avec Microsoft Fabric, le SQL</h2>
+        </div>
+    </a>
+</article>
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "ddata" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2022 - 
+        
+        2023 Le D de Data
+    </section>
+    
+    <section class="powerby">
+        Généré avec <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Thème <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.16.0">Stack</a></b> conçu par <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

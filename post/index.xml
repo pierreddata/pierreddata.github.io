@@ -6,7 +6,589 @@
         <description>Recent content in Posts on Le D de Data</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>fr-fr</language>
-        <lastBuildDate>Mon, 26 Jun 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ddata.fr/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sun, 02 Jul 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ddata.fr/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Microsoft Fabric Data Activator, alertes avancées dans Power BI</title>
+        <link>https://blog.ddata.fr/p/fabric-data-activator-power-bi/</link>
+        <pubDate>Sun, 02 Jul 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://blog.ddata.fr/p/fabric-data-activator-power-bi/</guid>
+        <description>&lt;img src="https://blog.ddata.fr/p/fabric-data-activator-power-bi/brandon-morgan-3qucB7U2l7I-unsplash.jpg" alt="Featured image of post Microsoft Fabric Data Activator, alertes avancées dans Power BI" /&gt;&lt;p&gt;Microsoft Fabric Data Activator va vous permettre de créer des alertes à partir de vos données Power BI.&lt;/p&gt;
+&lt;p&gt;Ce modèle offre plus de possibilités que le système d&amp;rsquo;alerte actuel via un tableau de bord décrit dans mon article &lt;a class=&#34;link&#34; href=&#34;https://blog.ddata.fr/p/power-bi-create-data-alert/&#34; &gt;Power BI : Créer une alerte sur vos données&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;contexte&#34;&gt;Contexte&lt;/h2&gt;
+&lt;p&gt;Data Activator est un composant de Microsoft Fabric qui permet de créer des alertes sur vos données.&lt;/p&gt;
+&lt;p&gt;Dans cet article, je vais supposer que vous avez déjà pris en main Microsoft Fabric et lu les précédents articles que j&amp;rsquo;ai écrits sur ce sujet. Je ne reviendrais donc pas sur les concepts déjà vus.&lt;/p&gt;
+&lt;p&gt;Data Activator est disponible uniquement en private preview au moment où j&amp;rsquo;écris cet article. Vous pouvez demander à activer cette fonctionnalité en allant sur ce lien &lt;a class=&#34;link&#34; href=&#34;https://aka.ms/dataActivatorPreview&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://aka.ms/dataActivatorPreview&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;préparation-de-lenvironnement&#34;&gt;Préparation de l&amp;rsquo;environnement&lt;/h2&gt;
+&lt;h4 id=&#34;création-de-lespace-de-travail&#34;&gt;Création de l&amp;rsquo;espace de travail&lt;/h4&gt;
+&lt;p&gt;Dans le menu de gauche, sélectionnez &lt;strong&gt;Espace de travail&lt;/strong&gt;, puis &lt;strong&gt;+ Nouvel espace de travail&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-data-activator-power-bi/img/001-fabric-create-workspace.png&#34;
+	width=&#34;591&#34;
+	height=&#34;925&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-data-activator-power-bi/img/001-fabric-create-workspace_huda909a1dbefeb5305371bb11e2339dcf_53025_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-data-activator-power-bi/img/001-fabric-create-workspace_huda909a1dbefeb5305371bb11e2339dcf_53025_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Création de l&amp;rsquo;espace de travail&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;63&#34;
+		data-flex-basis=&#34;153px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Nommez votre espace de travail &lt;em&gt;Data Activator&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Ouvrez les options avancées&lt;/li&gt;
+&lt;li&gt;Sélectionnez un type d&amp;rsquo;espace de travail compatible avec les objets Micrsoft Fabric.&lt;/li&gt;
+&lt;li&gt;Appuyez sur &lt;strong&gt;Appliquez&lt;/strong&gt; pour créer votre espace de travail.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id=&#34;sélection-de-lexpérience-utilisateur&#34;&gt;Sélection de l&amp;rsquo;expérience utilisateur&lt;/h4&gt;
+&lt;p&gt;Afin de simplifier l&amp;rsquo;interface, Fabric est organisé autour de différentes expériences utilisateur afin de ne pas présenter l&amp;rsquo;ensemble des types objets disponible à tout le monde.
+Pour notre exemple nous pouvons utiliser l&amp;rsquo;expérience &lt;em&gt;Data Activator&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-data-activator-power-bi/img/002-fabric-select-experience.png&#34;
+	width=&#34;319&#34;
+	height=&#34;299&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-data-activator-power-bi/img/002-fabric-select-experience_hu6ede9bac94363e653d600507a411fbd3_16109_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-data-activator-power-bi/img/002-fabric-select-experience_hu6ede9bac94363e653d600507a411fbd3_16109_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Modification de l&amp;rsquo;expérience utilisateur&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;106&#34;
+		data-flex-basis=&#34;256px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Appuyez sur l&amp;rsquo;icône en bas à gauche de votre écran, si vous êtes arrivé par le portail Power BI vous trouver l&amp;rsquo;icône Power BI, sinon vous trouverez l&amp;rsquo;icône de l&amp;rsquo;expérience utilisateur en cours.&lt;/li&gt;
+&lt;li&gt;Sélectionnez &lt;em&gt;Data Activator&lt;/em&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Après le changement d&amp;rsquo;expérience, vous devez vous repositionner dans votre espace de travail.&lt;/p&gt;
+&lt;h4 id=&#34;création-dun-lakehouse&#34;&gt;Création d&amp;rsquo;un lakeHouse&lt;/h4&gt;
+&lt;p&gt;Nous allons maintenant créer un lakehouse dédié à notre exemple.&lt;br&gt;
+Un lakehouse est une espace de stockage acceptant n&amp;rsquo;importe quel type de données. Il sert de zone de stockage générique des données de notre couche bronze.&lt;br&gt;
+Dans l&amp;rsquo;écosystème Fabric un lakehouse est un sous-ensemble de OneLake, l&amp;rsquo;espace de stockage unifié de votre entreprise.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-data-activator-power-bi/img/003-fabric-create-lakehouse.png&#34;
+	width=&#34;308&#34;
+	height=&#34;582&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-data-activator-power-bi/img/003-fabric-create-lakehouse_hu6ff543d72f196539cb363f509e6524bc_24676_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-data-activator-power-bi/img/003-fabric-create-lakehouse_hu6ff543d72f196539cb363f509e6524bc_24676_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Création d&amp;rsquo;un lakehouse - étape 1&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;52&#34;
+		data-flex-basis=&#34;127px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Dans le menu de l&amp;rsquo;espace de travail, appuyez sur &lt;strong&gt;+ Nouveau&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;Sélectionnez &lt;strong&gt;Lakehouse&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-data-activator-power-bi/img/004-fabric-create-lakehouse-step2.png&#34;
+	width=&#34;342&#34;
+	height=&#34;218&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-data-activator-power-bi/img/004-fabric-create-lakehouse-step2_hu4b345e8e4139142d748b31d9e08ece73_8579_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-data-activator-power-bi/img/004-fabric-create-lakehouse-step2_hu4b345e8e4139142d748b31d9e08ece73_8579_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Création d&amp;rsquo;un lakehouse - étape 2&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;156&#34;
+		data-flex-basis=&#34;376px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Saisissez le nom du lakehouse, ici &lt;em&gt;DemoDataActivator&lt;/em&gt; qui est le nom de la source de données.&lt;/li&gt;
+&lt;li&gt;Appuyez sur &lt;strong&gt;Créer&lt;/strong&gt; pour créer le lakehouse.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;L&amp;rsquo;écran qui s&amp;rsquo;affiche est l&amp;rsquo;explorateur de lakehouse, nous allons créer une vue dans le point de terminaison SQL associé au lakehouse.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-data-activator-power-bi/img/005-fabric-create-lakehouse-view-step1.png&#34;
+	width=&#34;1852&#34;
+	height=&#34;928&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-data-activator-power-bi/img/005-fabric-create-lakehouse-view-step1_hu1540fa0c73153cab478195bbd1dd9de7_43996_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-data-activator-power-bi/img/005-fabric-create-lakehouse-view-step1_hu1540fa0c73153cab478195bbd1dd9de7_43996_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Création d&amp;rsquo;une vue dans le point de terminaison - étape 1&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;199&#34;
+		data-flex-basis=&#34;478px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Rendez-vous dans la liste déroulante en haut à droite pour basculer en mode point de terminaison SQL.&lt;/li&gt;
+&lt;li&gt;Ouvrez &lt;strong&gt;Schemas&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;Ouvrez &lt;strong&gt;dbo&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;Au niveau de &lt;em&gt;Views&lt;/em&gt; sélectionnez les 3 points.&lt;/li&gt;
+&lt;li&gt;Appuyez sur &lt;strong&gt;Nouvelle vue&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Nous allons ajouter une vue SQL dont le résultat évolue toutes les secondes afin de simuler des données qui se rafraichissent.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;CREATE&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;OR&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;ALTER&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;VIEW&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;dbo&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;].[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;DemoDataActivator&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;AS&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;SELECT&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;A&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Couleur&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;CONVERT&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;INT&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;CONVERT&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;INT&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;FORMAT&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;GETDATE&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(),&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;HHmmss&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;A&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Coef&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;AS&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Valeur&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;FROM&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;SELECT&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;Rouge&amp;#39;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;AS&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Couleur&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;5&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;AS&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Coef&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;UNION&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;SELECT&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;Vert&amp;#39;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;AS&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Couleur&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;5&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;AS&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Coef&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;UNION&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;SELECT&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;Bleu&amp;#39;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;AS&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Couleur&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;AS&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Coef&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;UNION&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;SELECT&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;Noir&amp;#39;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;AS&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Couleur&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;7&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;AS&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Coef&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;A&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;GO&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-data-activator-power-bi/img/006-fabric-create-lakehouse-view-step2.png&#34;
+	width=&#34;1852&#34;
+	height=&#34;928&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-data-activator-power-bi/img/006-fabric-create-lakehouse-view-step2_huab695c6356ad8035803dfc285e4f4d89_70672_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-data-activator-power-bi/img/006-fabric-create-lakehouse-view-step2_huab695c6356ad8035803dfc285e4f4d89_70672_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Création d&amp;rsquo;une vue dans le point de terminaison - étape 2&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;199&#34;
+		data-flex-basis=&#34;478px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Dans la fenêtre de la vue, remplacer le code par défaut par le code de la vue disponible ci-dessus.&lt;/li&gt;
+&lt;li&gt;Appuyez sur &lt;strong&gt;Run&lt;/strong&gt; pour créer la vue dans le point de terminaison SQL.&lt;/li&gt;
+&lt;li&gt;Vous pouvez voir que c&amp;rsquo;est un succès.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id=&#34;création-dun-rapport-power-bi&#34;&gt;Création d&amp;rsquo;un rapport Power BI&lt;/h4&gt;
+&lt;p&gt;Nous allons maintenant réaliser dans Power BI desktop, un rapport basé sur la vue créer dans le lakehouse.&lt;br&gt;
+Ouvrez Power BI Desktop. Je réalise mon rapport avec la version de juin 2023.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-data-activator-power-bi/img/007-power-bi-create-on-lakehouse-view-step1.png&#34;
+	width=&#34;667&#34;
+	height=&#34;290&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-data-activator-power-bi/img/007-power-bi-create-on-lakehouse-view-step1_hu682ac06b725667e0ec9ce012b778b15e_25809_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-data-activator-power-bi/img/007-power-bi-create-on-lakehouse-view-step1_hu682ac06b725667e0ec9ce012b778b15e_25809_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Création du rapport Power BI - étape 1&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;230&#34;
+		data-flex-basis=&#34;552px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Dans le menu &lt;strong&gt;Accueil&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;Sélectionnez &lt;strong&gt;Hub de données OneLake&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;Appuyez sur &lt;strong&gt;Lakehouses&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-data-activator-power-bi/img/008-power-bi-create-on-lakehouse-view-step2.png&#34;
+	width=&#34;1280&#34;
+	height=&#34;818&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-data-activator-power-bi/img/008-power-bi-create-on-lakehouse-view-step2_hu6d95d669cc583c8f621c8877219ec0b1_56158_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-data-activator-power-bi/img/008-power-bi-create-on-lakehouse-view-step2_hu6d95d669cc583c8f621c8877219ec0b1_56158_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Création du rapport Power BI - étape 2&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;156&#34;
+		data-flex-basis=&#34;375px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Sélectionnez le lakehouse &lt;em&gt;DemoDataActivator&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Appuyez sur le bouton avec le chevron vers le bas.&lt;/li&gt;
+&lt;li&gt;Choisissez &lt;strong&gt;Se connecter au point de terminaison SQL&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-data-activator-power-bi/img/009-power-bi-create-on-lakehouse-view-step3.png&#34;
+	width=&#34;880&#34;
+	height=&#34;700&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-data-activator-power-bi/img/009-power-bi-create-on-lakehouse-view-step3_hudea4a127c0031bf20dfa27a5e442e1d4_25596_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-data-activator-power-bi/img/009-power-bi-create-on-lakehouse-view-step3_hudea4a127c0031bf20dfa27a5e442e1d4_25596_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Création du rapport Power BI - étape 3&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;125&#34;
+		data-flex-basis=&#34;301px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Sélectionner la vue &lt;em&gt;DemoDataActivator&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Vous pouvez voir un aperçu des données.&lt;/li&gt;
+&lt;li&gt;Appuyez sur &lt;em&gt;Charger&lt;/em&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-data-activator-power-bi/img/010-power-bi-create-on-lakehouse-view-step4.png&#34;
+	width=&#34;500&#34;
+	height=&#34;299&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-data-activator-power-bi/img/010-power-bi-create-on-lakehouse-view-step4_hu9eb44468124a4dd8096e627c7155acc5_16291_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-data-activator-power-bi/img/010-power-bi-create-on-lakehouse-view-step4_hu9eb44468124a4dd8096e627c7155acc5_16291_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Création du rapport Power BI - étape 4&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;167&#34;
+		data-flex-basis=&#34;401px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Sélectionnez &lt;em&gt;DirectQuery&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Appuyez sur &lt;strong&gt;OK&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-data-activator-power-bi/img/011-power-bi-create-on-lakehouse-view-step5.png&#34;
+	width=&#34;1424&#34;
+	height=&#34;877&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-data-activator-power-bi/img/011-power-bi-create-on-lakehouse-view-step5_hub3a8f72281d9e096a97e3a63911ec2e1_105043_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-data-activator-power-bi/img/011-power-bi-create-on-lakehouse-view-step5_hub3a8f72281d9e096a97e3a63911ec2e1_105043_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Création du rapport Power BI - étape 5&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;162&#34;
+		data-flex-basis=&#34;389px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Ajoutez un visuel &lt;em&gt;Graphiques à barres groupées&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Ajoutez le champ &lt;em&gt;Couleur&lt;/em&gt;, puis le champ &lt;em&gt;Valeur&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Faite de la mise en forme si vous voulez.&lt;/li&gt;
+&lt;li&gt;Enregistrez le rapport en &lt;em&gt;DemoDataActivatorDesktopDQOnSQLLakehouse&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Publiez le rapport dans l&amp;rsquo;espace de travail &lt;em&gt;Data Activator&lt;/em&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Rendez-vous dans l&amp;rsquo;espace de travail &lt;em&gt;Data Activator&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-data-activator-power-bi/img/012-fabric-dataset-parameter-step1.png&#34;
+	width=&#34;1057&#34;
+	height=&#34;568&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-data-activator-power-bi/img/012-fabric-dataset-parameter-step1_hu01dbe6e438bc820190343421ef381feb_50965_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-data-activator-power-bi/img/012-fabric-dataset-parameter-step1_hu01dbe6e438bc820190343421ef381feb_50965_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Paramétrage du jeu de données Power BI - étape 1&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;186&#34;
+		data-flex-basis=&#34;446px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Pointez la souris sur le jeu de données &lt;em&gt;DemoDataActivatorDesktopDQOnSQLLakehouse&lt;/em&gt; et appuyez sur les 3 points.&lt;/li&gt;
+&lt;li&gt;Sélection &lt;strong&gt;Paramètres&lt;/strong&gt; dans le menu.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-data-activator-power-bi/img/013-fabric-dataset-parameter-step2.png&#34;
+	width=&#34;1301&#34;
+	height=&#34;158&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-data-activator-power-bi/img/013-fabric-dataset-parameter-step2_hu31cb5446e3c191910fadb157f7e68390_18069_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-data-activator-power-bi/img/013-fabric-dataset-parameter-step2_hu31cb5446e3c191910fadb157f7e68390_18069_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Paramétrage du jeu de données Power BI - étape 2&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;823&#34;
+		data-flex-basis=&#34;1976px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Rendez-vous dans la section &lt;em&gt;Informations d&amp;rsquo;identification de la source de données&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Appuyez sur &lt;em&gt;Modifier les informations d&amp;rsquo;identification&lt;/em&gt; pour mettre à jour l&amp;rsquo;authentification du jeu de données sur le point de terminaison SQL.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-data-activator-power-bi/img/014-fabric-dataset-parameter-step3.png&#34;
+	width=&#34;460&#34;
+	height=&#34;513&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-data-activator-power-bi/img/014-fabric-dataset-parameter-step3_huf2658f57790780050c59c154a3afa04f_21712_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-data-activator-power-bi/img/014-fabric-dataset-parameter-step3_huf2658f57790780050c59c154a3afa04f_21712_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Paramétrage du jeu de données Power BI - étape 3&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;89&#34;
+		data-flex-basis=&#34;215px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Sélectionnez &lt;em&gt;OAuth2&lt;/em&gt; dans &lt;em&gt;Méthode d&amp;rsquo;authentification&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Appuyez sur &lt;em&gt;Se connecter&lt;/em&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-data-activator-power-bi/img/015-fabric-dataset-parameter-step4.png&#34;
+	width=&#34;851&#34;
+	height=&#34;492&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-data-activator-power-bi/img/015-fabric-dataset-parameter-step4_hu44bbd59492111bcc5f68f486a81d2f70_42240_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-data-activator-power-bi/img/015-fabric-dataset-parameter-step4_hu44bbd59492111bcc5f68f486a81d2f70_42240_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Paramétrage du jeu de données Power BI - étape 4&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;172&#34;
+		data-flex-basis=&#34;415px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Rendez-vous dans la section &lt;em&gt;Actualisation planifiée et optimisation des performances&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Sélectionnez &lt;strong&gt;15 minutes&lt;/strong&gt; dans &lt;em&gt;Fréquence d&amp;rsquo;actualisation&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Appuyez sur &lt;strong&gt;Appliquer&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Le terrain de jeu est maintenant fonctionnel, nous allons pouvoir créer une alerte dans Data Activator.&lt;/p&gt;
+&lt;h2 id=&#34;réflexe&#34;&gt;Réflexe&lt;/h2&gt;
+&lt;p&gt;Data Activator, se présente comme un nouveau type d&amp;rsquo;objet nommé &lt;em&gt;Réflexe&lt;/em&gt; dans l&amp;rsquo;espace de travail.&lt;br&gt;
+C&amp;rsquo;est ce réflexe qui reçoit les informations et génère les alertes.&lt;/p&gt;
+&lt;h3 id=&#34;création&#34;&gt;Création&lt;/h3&gt;
+&lt;p&gt;Nous allons maintenant créer un déclencheur. Lors de la création d&amp;rsquo;un déclencheur, on va choisir entre la création d&amp;rsquo;un réflexe et la réutilisation d&amp;rsquo;un réflexe existant.&lt;/p&gt;
+&lt;p&gt;Pour créer le réflexe, ouvrez le rapport publié dans le service.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-data-activator-power-bi/img/016-power-bi-create-trigger-step1.png&#34;
+	width=&#34;1484&#34;
+	height=&#34;763&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-data-activator-power-bi/img/016-power-bi-create-trigger-step1_hu5ac7a1c6a92989e58518305215af85fe_37125_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-data-activator-power-bi/img/016-power-bi-create-trigger-step1_hu5ac7a1c6a92989e58518305215af85fe_37125_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Création d&amp;rsquo;un déclencheur avec Power BI - étape 1&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;194&#34;
+		data-flex-basis=&#34;466px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Pointez votre souris sur le visuel pour faire apparaitre le menu contextuel, appuyez sur les 3 points.&lt;/li&gt;
+&lt;li&gt;Sélectionnez &lt;em&gt;Action de déclencheur&lt;/em&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-data-activator-power-bi/img/017-power-bi-create-trigger-step2.png&#34;
+	width=&#34;303&#34;
+	height=&#34;871&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-data-activator-power-bi/img/017-power-bi-create-trigger-step2_hu9430f75c12b45558039b9c4e24be23d4_38190_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-data-activator-power-bi/img/017-power-bi-create-trigger-step2_hu9430f75c12b45558039b9c4e24be23d4_38190_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Création d&amp;rsquo;un déclencheur avec Power BI - étape 2&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;34&#34;
+		data-flex-basis=&#34;83px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Sélectionnez la mesure à surveiller, si plusieurs mesures sont présentes dans le visuel elles apparaissent dans la liste déroulante.&lt;/li&gt;
+&lt;li&gt;Sélectionnez l&amp;rsquo;axe de ventilation de la mesure à prendre en compte.&lt;/li&gt;
+&lt;li&gt;Sélectionnez la fréquence de capture de l&amp;rsquo;information.&lt;/li&gt;
+&lt;li&gt;Définissez un critère d&amp;rsquo;alerte&lt;/li&gt;
+&lt;li&gt;Donnez l&amp;rsquo;espace de travail où sera stocké le réflexe.&lt;/li&gt;
+&lt;li&gt;Donnez le nom du réflexe.&lt;/li&gt;
+&lt;li&gt;Appuyez sur &lt;strong&gt;Continuer&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Un message apparait pour vous confirmer la création de votre réflexe.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-data-activator-power-bi/img/018-power-bi-create-trigger-step3.png&#34;
+	width=&#34;378&#34;
+	height=&#34;147&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-data-activator-power-bi/img/018-power-bi-create-trigger-step3_hua2e76d19db7c1f08920b5107edafa057_9440_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-data-activator-power-bi/img/018-power-bi-create-trigger-step3_hua2e76d19db7c1f08920b5107edafa057_9440_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Création d&amp;rsquo;un déclencheur avec Power BI - étape 3&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;257&#34;
+		data-flex-basis=&#34;617px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Appuyez sur le lien pour ouvrir le réflexe créé.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Vous pouvez aussi accéder au réflexe en cliquant sur l&amp;rsquo;objet créer dans l&amp;rsquo;espace de travail :&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-data-activator-power-bi/img/019-power-bi-reflexe.png&#34;
+	width=&#34;534&#34;
+	height=&#34;51&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-data-activator-power-bi/img/019-power-bi-reflexe_hu1adf801be72f6c3df4f69887e11e36e8_1675_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-data-activator-power-bi/img/019-power-bi-reflexe_hu1adf801be72f6c3df4f69887e11e36e8_1675_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Réflexe dans l&amp;rsquo;espace de travail&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;1047&#34;
+		data-flex-basis=&#34;2512px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;principe-de-fonctionnement&#34;&gt;Principe de fonctionnement&lt;/h3&gt;
+&lt;p&gt;⚠ La description du fonctionnement présenté ici et celui de la private preview de juin 2023. Cela a pu évoluer depuis.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-data-activator-power-bi/img/020-power-bi-reflexe-description.png&#34;
+	width=&#34;997&#34;
+	height=&#34;544&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-data-activator-power-bi/img/020-power-bi-reflexe-description_hu8b0176cac67abde47f60dcd1de8f05b5_33759_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-data-activator-power-bi/img/020-power-bi-reflexe-description_hu8b0176cac67abde47f60dcd1de8f05b5_33759_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Schéma de fonctionnement de réflexe avec Power BI&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;183&#34;
+		data-flex-basis=&#34;439px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Un réflexe se compose de 2 éléments :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Un premier qui capture l&amp;rsquo;état de vos données à la fréquence définie lors de la création. Plusieurs processus de capture peuvent être définis au sein d&amp;rsquo;un même réflexe.&lt;/li&gt;
+&lt;li&gt;Un outil pour analyser les données et déclencher une action en fonction du résultat de l&amp;rsquo;analyse. Plusieurs déclencheurs peuvent exister au sein d&amp;rsquo;un même réflexe.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Les données de votre jeu de données capturer par réflexe deviennent automatiquement une série temporelle, et l&amp;rsquo;analyse que vous allez en faire sera contrainte par ce modèle de série temporelle.&lt;/p&gt;
+&lt;p&gt;Pour rappel une série temporelle est une valeur qui évolue dans le temps. Par exemple dans notre requête nous aurons :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Valeur pour &lt;em&gt;bleu&lt;/em&gt; capturer le 01/07/2023 à 15:00:15 = 130010&lt;/li&gt;
+&lt;li&gt;Valeur pour &lt;em&gt;bleu&lt;/em&gt; capturer le 01/07/2023 à 15:15:15 = 131510&lt;/li&gt;
+&lt;li&gt;&amp;hellip;..&lt;/li&gt;
+&lt;li&gt;Valeur pour &lt;em&gt;bleu&lt;/em&gt; capturer le 01/07/2023 à 18:45:15 = 164510&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Pour rappel la requête renvoie un format heures minutes secondes pour la valeur Bleu. L&amp;rsquo;heure du serveur est toujours en temps universel (UTC+0) donc avec 2 heures de moins que l&amp;rsquo;heure de Paris en juillet.&lt;/p&gt;
+&lt;p&gt;Lorsque l&amp;rsquo;on ouvre un réflexe, on arrive sur un écran avec 2 onglets :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Data : Permets de voir arriver les données capturées en temps réel.&lt;/li&gt;
+&lt;li&gt;Design : Permets de définir les règles qui déclencheront des actions en fonction des données.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;présentation-des-données-capturées&#34;&gt;Présentation des données capturées&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-data-activator-power-bi/img/021-reflexe-data.png&#34;
+	width=&#34;1857&#34;
+	height=&#34;929&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-data-activator-power-bi/img/021-reflexe-data_hu756344e262c8ac02e6f45db4abd11c98_242007_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-data-activator-power-bi/img/021-reflexe-data_hu756344e262c8ac02e6f45db4abd11c98_242007_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Visualisation des données capturées&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;199&#34;
+		data-flex-basis=&#34;479px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Panneau avec la liste des captures de données d&amp;rsquo;un réflexe.&lt;/li&gt;
+&lt;li&gt;Permets de renommer une capture de données.&lt;/li&gt;
+&lt;li&gt;Permets de filtrer la capture de données.&lt;/li&gt;
+&lt;li&gt;Permets d&amp;rsquo;avoir des informations détaillées sur la capture de données.&lt;/li&gt;
+&lt;li&gt;Permets de voir arriver les données capturées, la couleur verte permet d&amp;rsquo;identifier les données qui viennent d&amp;rsquo;arriver.&lt;/li&gt;
+&lt;li&gt;On retrouve les valeurs en provenance de notre Power BI.&lt;/li&gt;
+&lt;li&gt;Permets de passer de l&amp;rsquo;écran &lt;em&gt;Data&lt;/em&gt; à l&amp;rsquo;écran &lt;em&gt;Design&lt;/em&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;personnaliser-votre-alerte&#34;&gt;Personnaliser votre alerte&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-data-activator-power-bi/img/022-reflexe-design-step1.png&#34;
+	width=&#34;1855&#34;
+	height=&#34;929&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-data-activator-power-bi/img/022-reflexe-design-step1_hua0ebb4bf090551d23e546d6216debaaf_74850_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-data-activator-power-bi/img/022-reflexe-design-step1_hua0ebb4bf090551d23e546d6216debaaf_74850_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Visualisation des déclencheurs - Events&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;199&#34;
+		data-flex-basis=&#34;479px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Rendez-vous sur l&amp;rsquo;écran &lt;em&gt;Design&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Par défaut on arrive sur le déclencheur créer par défaut.&lt;/li&gt;
+&lt;li&gt;Vous pouvez voir la série temporelle associée.&lt;/li&gt;
+&lt;li&gt;Vous pouvez sélectionner les identifiants à surveiller, dans notre cas Bleu, Noir, Rouge et Vert.&lt;/li&gt;
+&lt;li&gt;Vous pouvez sélectionner la fenêtre de temps à afficher.&lt;/li&gt;
+&lt;li&gt;Vous pouvez mettre en pause le rafraichissement de la série temporelle.&lt;/li&gt;
+&lt;li&gt;Vous pouvez accéder à l&amp;rsquo;écran de détail.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-data-activator-power-bi/img/023-reflexe-design-step2.png&#34;
+	width=&#34;1845&#34;
+	height=&#34;923&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-data-activator-power-bi/img/023-reflexe-design-step2_hu1f90ac3fe570d4c9f515451fdbec4df0_77995_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-data-activator-power-bi/img/023-reflexe-design-step2_hu1f90ac3fe570d4c9f515451fdbec4df0_77995_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Visualisation des déclencheurs - Trigger - étape 1&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;199&#34;
+		data-flex-basis=&#34;479px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Sélectionnez votre déclencheur. Il a été créé automatiquement via le rapport.&lt;/li&gt;
+&lt;li&gt;Vous pouvez voir les points de collecte des données.&lt;/li&gt;
+&lt;li&gt;On choisit de traiter les informations du champ &lt;em&gt;Somme_de_Valeur&lt;/em&gt;, elle s&amp;rsquo;affiche dans un graphe. Vous pouvez constater que l&amp;rsquo;on a une mise à jour des données une fois toutes les 15 minutes, ce qui correspond au rafraichissement du jeu de données et non à la lecture des données de la vue comme on aurait pu s&amp;rsquo;y attendre.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-data-activator-power-bi/img/024-reflexe-design-step3.png&#34;
+	width=&#34;1847&#34;
+	height=&#34;923&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-data-activator-power-bi/img/024-reflexe-design-step3_hu2998e1284f45aa2e456773561f277d41_65939_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-data-activator-power-bi/img/024-reflexe-design-step3_hu2998e1284f45aa2e456773561f277d41_65939_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Visualisation des déclencheurs - Trigger - étape 2&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;200&#34;
+		data-flex-basis=&#34;480px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;On défini un critère pour filtrer la série de l&amp;rsquo;étape précédente, avec comme critère devient plus grand que 170 000.&lt;/li&gt;
+&lt;li&gt;Une seule occurrence est trouvée elle apparait dans le nouveau graphe.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-data-activator-power-bi/img/025-reflexe-design-step4.png&#34;
+	width=&#34;1857&#34;
+	height=&#34;929&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-data-activator-power-bi/img/025-reflexe-design-step4_hud996896c973e906952f929099baa801f_67629_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-data-activator-power-bi/img/025-reflexe-design-step4_hud996896c973e906952f929099baa801f_67629_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Visualisation des déclencheurs - Trigger - étape 3&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;199&#34;
+		data-flex-basis=&#34;479px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol start=&#34;6&#34;&gt;
+&lt;li&gt;On définit les informations à envoyer par mail quand un évènement est détecté dans l&amp;rsquo;étape précédente.&lt;/li&gt;
+&lt;li&gt;On peut démarrer ou tester le déclencheur.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Ici se termine un premier tour d&amp;rsquo;horizon de Data Activator.&lt;/p&gt;
+&lt;h2 id=&#34;retour-dexpérience&#34;&gt;Retour d&amp;rsquo;expérience&lt;/h2&gt;
+&lt;p&gt;Lors de mes tests, j&amp;rsquo;ai pu constater le comportement suivant en fonction du mode de connexion du jeu de données et de la configuration de rafraichissement :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Direct query : Refresh de data activator est égale à la fréquence de refresh du dataset, pas de refresh sur le jeu de données par défaut du lakehouse.&lt;/li&gt;
+&lt;li&gt;Import : : Refresh de data activator est égale à la fréquence de refresh du dataset.&lt;/li&gt;
+&lt;li&gt;Direct Lake sur jeu de données par défaut : Pas de refresh sur le jeu de données par défaut du lakehouse.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Merci de votre attention.&lt;/p&gt;</description>
+        </item>
+        <item>
         <title>Query folding, optimiser vos requêtes Power Query.</title>
         <link>https://blog.ddata.fr/p/power-query-query-folding/</link>
         <pubDate>Mon, 26 Jun 2023 00:00:00 +0000</pubDate>
