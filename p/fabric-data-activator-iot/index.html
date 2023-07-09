@@ -1,0 +1,1168 @@
+<!DOCTYPE html>
+<html lang="fr-fr" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Microsoft Fabric Data Activator, en mode IOT
+'>
+<meta name="keywords" content="Formation, Microsoft Fabric, Fabric, Data, Power BI, PowerBI, Data Activator"><title>Microsoft Fabric Data Activator, en mode IOT</title>
+
+<link rel='canonical' href='https://blog.ddata.fr/p/fabric-data-activator-iot/'>
+
+<link rel="stylesheet" href="/scss/style.min.5be32ca3f6e1a997c75795c4359147cc6d4fbd34948c0acd51e31d237033978a.css"><meta property='og:title' content='Microsoft Fabric Data Activator, en mode IOT'>
+<meta property='og:description' content='Microsoft Fabric Data Activator, en mode IOT
+'>
+<meta property='og:url' content='https://blog.ddata.fr/p/fabric-data-activator-iot/'>
+<meta property='og:site_name' content='Le D de Data'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Intermédiaire' /><meta property='article:tag' content='Auto formation' /><meta property='article:published_time' content='2023-07-09T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2023-07-09T00:00:00&#43;00:00'/><meta property='og:image' content='https://blog.ddata.fr/p/fabric-data-activator-iot/chutipon-pattanatitinon-LG8Mt7f7lXQ-unsplash.jpg' />
+<meta name="twitter:title" content="Microsoft Fabric Data Activator, en mode IOT">
+<meta name="twitter:description" content="Microsoft Fabric Data Activator, en mode IOT
+"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://blog.ddata.fr/p/fabric-data-activator-iot/chutipon-pattanatitinon-LG8Mt7f7lXQ-unsplash.jpg' />
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TY6XFEN6QV"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-TY6XFEN6QV', { 'anonymize_ip': false });
+}
+</script>
+<link rel="alternate"
+      type="application/rss+xml"
+      href="https://blog.ddata.fr/index.xml"
+      title="Le D de Data">
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "dark");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Afficher le menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/pierre_hua6bbc70dde858dd10e363a14d1f7729c_67951_300x0_resize_q75_box.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Le D de Data</a></h1>
+            <h2 class="site-description">Blog francophone autour de la data Microsoft</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/pierreddata'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://www.linkedin.com/in/pierre-dupont-0b532374/'
+                        target="_blank"
+                        title="LinkdIn"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-folders" width="44" height="44" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <rect x="4" y="4" width="16" height="16" rx="2" />
+  <line x1="8" y1="11" x2="8" y2="16" />
+  <line x1="8" y1="8" x2="8" y2="8.01" />
+  <line x1="12" y1="16" x2="12" y2="11" />
+  <path d="M16 16v-3a2 2 0 0 0 -4 0" />
+</svg>
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Accueil</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/a-propos-de-d-de-data/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>A Propos</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/series/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-folders" width="44" height="44" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 4h3l2 2h5a2 2 0 0 1 2 2v7a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-9a2 2 0 0 1 2 -2" />
+  <path d="M17 17v2a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-9a2 2 0 0 1 2 -2h2" />
+</svg>
+
+                
+                <span>Series</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/liens/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Liens</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Rechercher</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Mode sombre</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table des matières</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#contexte">Contexte</a></li>
+    <li><a href="#préparation-de-lenvironnement">Préparation de l&rsquo;environnement</a></li>
+    <li><a href="#création-du-réflexe">Création du réflexe</a>
+      <ol>
+        <li><a href="#sélection-de-lexpérience-utilisateur">Sélection de l&rsquo;expérience utilisateur</a></li>
+        <li><a href="#création-dun-réflexe">Création d&rsquo;un réflexe</a></li>
+        <li><a href="#création-de-la-capture-de-données">Création de la capture de données</a></li>
+      </ol>
+    </li>
+    <li><a href="#les-données-arrivent">Les données arrivent</a></li>
+    <li><a href="#création-dune-alerte-complexe">Création d&rsquo;une alerte complexe</a>
+      <ol>
+        <li><a href="#étapes-disponibles-en-preview">Étapes disponibles en preview</a></li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/fabric-data-activator-iot/">
+                <img src="/p/fabric-data-activator-iot/chutipon-pattanatitinon-LG8Mt7f7lXQ-unsplash_hu3d03a01dcc18bc5be0e67db3d8d209a6_954281_800x0_resize_q75_box.jpg"
+                        srcset="/p/fabric-data-activator-iot/chutipon-pattanatitinon-LG8Mt7f7lXQ-unsplash_hu3d03a01dcc18bc5be0e67db3d8d209a6_954281_800x0_resize_q75_box.jpg 800w, /p/fabric-data-activator-iot/chutipon-pattanatitinon-LG8Mt7f7lXQ-unsplash_hu3d03a01dcc18bc5be0e67db3d8d209a6_954281_1600x0_resize_q75_box.jpg 1600w"
+                        width="800" 
+                        height="533" 
+                        loading="lazy"
+                        alt="Featured image of post Microsoft Fabric Data Activator, en mode IOT" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/fabric/" style="background-color: #117865; color: #fff;">
+                Microsoft Fabric
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/fabric-data-activator-iot/">Microsoft Fabric Data Activator, en mode IOT</a>
+        </h2>
+
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published" datetime="2023-07-09T00:00:00Z">
+                    9 juillet 2023
+                    
+                </time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    8 minutes de lecture
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+    
+    
+</div>
+</header>
+
+    <section class="article-content">
+    
+    
+    <p>Microsoft Fabric Data Activator, en mode IOT</p>
+<h2 id="contexte">Contexte</h2>
+<p>Dans l&rsquo;article <a class="link" href="https://blog.ddata.fr/p/fabric-data-activator-power-bi/" >Microsoft Fabric Data Activator, alertes avancées dans Power BI</a>, je vous ai présenté Data Activator dans le contexte d&rsquo;un rapport Power BI.<br>
+Je vous propose maintenant de voir Data Activator dans un contexte plus complexe et pour cela nous allons repartir de l&rsquo;exemple d&rsquo;utilisation de Fabric présenté dans mon article <a class="link" href="https://blog.ddata.fr/p/fabric-poc-iot/" >Données en temps réel dans votre rapport Power BI avec Microsoft Fabric</a>.</p>
+<h2 id="préparation-de-lenvironnement">Préparation de l&rsquo;environnement</h2>
+<p>À la suite de l&rsquo;article <a class="link" href="https://blog.ddata.fr/p/fabric-poc-iot/" >Données en temps réel dans votre rapport Power BI avec Microsoft Fabric</a> l&rsquo;environnement de travail est prêt à être utilisé pour exploiter Data Activator.</p>
+<p>On va modifier légèrement le PowerShell qui simule un IOT afin que ce dernier envoie des informations pendant plus longtemps, mais à une fréquence moins importante.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># Votre chaine de connexion</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$ConnectionString</span> <span class="p">=</span> <span class="s1">&#39;REMPLACER_PAR_VOTRE_CHAINE_DE_CONNEXION&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="c"># Nombre de message à envoyer</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$Messages</span> <span class="p">=</span> <span class="mf">2000</span>
+</span></span><span class="line"><span class="cl"><span class="c"># Id des capteurs</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$HardwareID</span> <span class="p">=</span> <span class="s2">&#34;12345&#34;</span><span class="p">,</span> <span class="s2">&#34;23456&#34;</span><span class="p">,</span> <span class="s2">&#34;34567&#34;</span><span class="p">,</span><span class="s2">&#34;45678&#34;</span><span class="p">,</span><span class="s2">&#34;67890&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">$Pattern</span> <span class="p">=</span> <span class="s1">&#39;Endpoint=(.+);SharedAccessKeyName=(.+);SharedAccessKey=(.+);EntityPath=(.+)&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="p">([</span><span class="no">uri</span><span class="p">]</span><span class="nv">$Endpoint</span><span class="p">),</span><span class="nv">$PolicyName</span><span class="p">,</span><span class="nv">$Key</span><span class="p">,</span><span class="nv">$Queue</span> <span class="p">=</span> <span class="p">(</span><span class="nv">$ConnectionString</span> <span class="o">-replace</span> <span class="nv">$Pattern</span><span class="p">,</span><span class="s1">&#39;$1;$2;$3;$4&#39;</span><span class="p">)</span> <span class="n">-split</span> <span class="s1">&#39;;&#39;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c"># Depending on your environment you may need to load the assembly System.Web</span>
+</span></span><span class="line"><span class="cl"><span class="c"># $null = [Reflection.Assembly]::LoadWithPartialName(&#34;System.Web&#34;)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">$UrlEncodedEndpoint</span> <span class="p">=</span> <span class="p">[</span><span class="no">System.Web.HttpUtility</span><span class="p">]::</span><span class="n">UrlEncode</span><span class="p">(</span><span class="nv">$Endpoint</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$Expiry</span> <span class="p">=</span> <span class="p">[</span><span class="no">DateTimeOffset</span><span class="p">]::</span><span class="n">Now</span><span class="p">.</span><span class="py">ToUnixTimeSeconds</span><span class="p">()</span> <span class="p">+</span> <span class="mf">3600</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">$RawSignatureString</span> <span class="p">=</span> <span class="s2">&#34;</span><span class="nv">$UrlEncodedEndpoint</span><span class="se">`n</span><span class="nv">$Expiry</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">$HMAC</span> <span class="p">=</span> <span class="nb">New-Object</span> <span class="n">System</span><span class="p">.</span><span class="py">Security</span><span class="p">.</span><span class="py">Cryptography</span><span class="p">.</span><span class="py">HMACSHA256</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$HMAC</span><span class="p">.</span><span class="py">Key</span> <span class="p">=</span> <span class="p">[</span><span class="no">Text.Encoding</span><span class="p">]::</span><span class="n">ASCII</span><span class="p">.</span><span class="py">GetBytes</span><span class="p">(</span><span class="nv">$Key</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$HashBytes</span> <span class="p">=</span> <span class="nv">$HMAC</span><span class="p">.</span><span class="py">ComputeHash</span><span class="p">([</span><span class="no">Text.Encoding</span><span class="p">]::</span><span class="n">ASCII</span><span class="p">.</span><span class="py">GetBytes</span><span class="p">(</span><span class="nv">$RawSignatureString</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$SignatureString</span> <span class="p">=</span> <span class="p">[</span><span class="no">Convert</span><span class="p">]::</span><span class="n">ToBase64String</span><span class="p">(</span><span class="nv">$HashBytes</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$UrlEncodedSignatureString</span> <span class="p">=</span> <span class="p">[</span><span class="no">System.Web.HttpUtility</span><span class="p">]::</span><span class="n">UrlEncode</span><span class="p">(</span><span class="nv">$SignatureString</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">$SASToken</span> <span class="p">=</span> <span class="s2">&#34;SharedAccessSignature sig=</span><span class="nv">$UrlEncodedSignatureString</span><span class="s2">&amp;se=</span><span class="nv">$Expiry</span><span class="s2">&amp;skn=</span><span class="nv">$PolicyName</span><span class="s2">&amp;sr=</span><span class="nv">$UrlEncodedEndpoint</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c"># Boucle d&#39;envoi des messages</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="p">(</span><span class="nv">$i</span> <span class="p">=</span> <span class="mf">0</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">-lt</span> <span class="nv">$Messages</span><span class="p">;</span> <span class="nv">$i</span><span class="p">++)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c"># Création du message à envoyer au format JSON</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">$IOTFakeMessage</span> <span class="p">=</span> <span class="vm">@</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">HardwareId</span> <span class="p">=</span> <span class="s2">&#34;ID-&#34;</span> <span class="p">+</span> <span class="nv">$HardwareID</span><span class="p">[(</span><span class="nb">Get-Random</span> <span class="n">-Minimum</span> <span class="mf">0</span> <span class="n">-Maximum</span> <span class="nv">$HardwareID</span><span class="p">.</span><span class="n">Count</span><span class="p">)]</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Date</span>       <span class="p">=</span> <span class="nb">Get-Date</span>
+</span></span><span class="line"><span class="cl">        <span class="n">CaptorInfo</span> <span class="p">=</span> <span class="vm">@</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Temp</span> <span class="p">=</span> <span class="nb">Get-Random</span> <span class="n">-Minimum</span> <span class="mf">20</span> <span class="n">-Maximum</span> <span class="mf">28</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Hum</span>  <span class="p">=</span> <span class="nb">Get-Random</span> <span class="n">-Minimum</span> <span class="mf">40</span> <span class="n">-Maximum</span> <span class="mf">60</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>  <span class="p">|</span> <span class="nb">ConvertTo-Json</span> <span class="n">-Depth</span> <span class="mf">99</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c"># Préparation de la requête HTTP</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">$Params</span> <span class="p">=</span> <span class="vm">@</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Uri</span> <span class="p">=</span> <span class="s2">&#34;https://</span><span class="p">$(</span><span class="nv">$Endpoint</span><span class="p">.</span><span class="n">Host</span><span class="p">)</span><span class="s2">/</span><span class="nv">$Queue</span><span class="s2">/messages&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">ContentType</span> <span class="p">=</span> <span class="s1">&#39;application/json;charset=utf-8&#39;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Method</span> <span class="p">=</span> <span class="s1">&#39;Post&#39;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Body</span> <span class="p">=</span> <span class="nv">$IOTFakeMessage</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Headers</span> <span class="p">=</span> <span class="vm">@</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="s1">&#39;Authorization&#39;</span> <span class="p">=</span> <span class="nv">$SASToken</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c"># Envoi du message vers le service BUS</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">Invoke-RestMethod</span> <span class="nv">@Params</span>
+</span></span><span class="line"><span class="cl">    <span class="c"># Attente avant le prochain message</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">Start-Sleep</span> <span class="n">-Milliseconds</span> <span class="p">(</span><span class="nb">Get-Random</span> <span class="n">-Minimum</span> <span class="mf">2000</span> <span class="n">-Maximum</span> <span class="mf">5000</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Maintenant on envoie 2000 messages avec un délai entre 2 et 5 secondes entre chaque message.<br>
+Penser à remplacer la chaine de caractère <em>REMPLACER_PAR_VOTRE_CHAINE_DE_CONNEXION</em> par la chaine de connexion (voir article précédent).</p>
+<p>Rendez-vous dans l&rsquo;espace de travail créer dans l&rsquo;article précédent et ouvrez l&rsquo;eventstream que l&rsquo;on avait créé.</p>
+<p><img src="/p/fabric-data-activator-iot/img/001-fabric-data-activator-eventstream-add-step1.png"
+	width="1846"
+	height="924"
+	srcset="/p/fabric-data-activator-iot/img/001-fabric-data-activator-eventstream-add-step1_hu2581acf00a92b172036c61b92d369391_62494_480x0_resize_box_3.png 480w, /p/fabric-data-activator-iot/img/001-fabric-data-activator-eventstream-add-step1_hu2581acf00a92b172036c61b92d369391_62494_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Modification du traitement EventStream - étape 1"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="199"
+		data-flex-basis="479px"
+	
+></p>
+<ol>
+<li>Sur le composant central, appuyez sur <em>+</em> pour ajouter une sortie.</li>
+<li>Sélectionnez <strong>Custom App</strong>.</li>
+<li>Entrez un nom de destination, ici <em>DataActivator</em>.</li>
+<li>Appuyez sur <strong>Add</strong> pour ajouter cette nouvelle destination.</li>
+</ol>
+<p>Maintenant le flux en entrée envoie les informations vers 2 destinations distinctes.</p>
+<p><img src="/p/fabric-data-activator-iot/img/002-fabric-data-activator-eventstream-add-step2.png"
+	width="1047"
+	height="710"
+	srcset="/p/fabric-data-activator-iot/img/002-fabric-data-activator-eventstream-add-step2_hu6bf86142f986e341c4a3dc3e04fa8ae7_48522_480x0_resize_box_3.png 480w, /p/fabric-data-activator-iot/img/002-fabric-data-activator-eventstream-add-step2_hu6bf86142f986e341c4a3dc3e04fa8ae7_48522_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Modification du traitement EventStream - étape 2"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="147"
+		data-flex-basis="353px"
+	
+></p>
+<ol>
+<li>Sélectionnez la sortie que l&rsquo;on vient de créer.</li>
+<li>Notez la valeur de <em>Consumer group</em>.</li>
+<li>Afficher la valeur de <em>Connection string-primary key</em> en appuyant sur l&rsquo;icône oeil.</li>
+<li>Notez la valeur de <em>Connection string-primary key</em>.</li>
+</ol>
+<h2 id="création-du-réflexe">Création du réflexe</h2>
+<p>Rendez-vous dans l&rsquo;espace de travail.</p>
+<h3 id="sélection-de-lexpérience-utilisateur">Sélection de l&rsquo;expérience utilisateur</h3>
+<p>Afin de simplifier l&rsquo;interface, Fabric est organisé autour de différentes expériences utilisateur afin de ne pas présenter l&rsquo;ensemble des types objets disponible à tout le monde.
+Pour notre exemple nous pouvons utiliser l&rsquo;expérience <em>Data Activator</em>.</p>
+<p><img src="/p/fabric-data-activator-iot/img/003-fabric-select-experience.png"
+	width="319"
+	height="299"
+	srcset="/p/fabric-data-activator-iot/img/003-fabric-select-experience_hu6ede9bac94363e653d600507a411fbd3_16109_480x0_resize_box_3.png 480w, /p/fabric-data-activator-iot/img/003-fabric-select-experience_hu6ede9bac94363e653d600507a411fbd3_16109_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Modification de l&rsquo;expérience utilisateur"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="106"
+		data-flex-basis="256px"
+	
+></p>
+<ol>
+<li>Appuyez sur l&rsquo;icône en bas à gauche de votre écran, si vous êtes arrivé par le portail Power BI vous trouver l&rsquo;icône Power BI, sinon vous trouverez l&rsquo;icône de l&rsquo;expérience utilisateur en cours.</li>
+<li>Sélectionnez <em>Data Activator</em></li>
+</ol>
+<p>Après le changement d&rsquo;expérience, vous devez vous repositionner dans votre espace de travail.</p>
+<h3 id="création-dun-réflexe">Création d&rsquo;un réflexe</h3>
+<p><img src="/p/fabric-data-activator-iot/img/004-fabric-create-reflexe.png"
+	width="310"
+	height="535"
+	srcset="/p/fabric-data-activator-iot/img/004-fabric-create-reflexe_hu3466b65fc08425cefff054072f63cc52_22308_480x0_resize_box_3.png 480w, /p/fabric-data-activator-iot/img/004-fabric-create-reflexe_hu3466b65fc08425cefff054072f63cc52_22308_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Création d&rsquo;un réflexe"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="57"
+		data-flex-basis="139px"
+	
+></p>
+<ol>
+<li>Dans le menu de l&rsquo;espace de travail, appuyez sur <strong>+ Nouveau</strong>.</li>
+<li>Sélectionnez <strong>Preview</strong> ou <strong>Reflexe</strong> si le texte dans l&rsquo;interface est corrigé 😊. Celui à prendre à une icône en éclair ⚡.</li>
+</ol>
+<p>La fenêtre de Réflexe apparait</p>
+<h3 id="création-de-la-capture-de-données">Création de la capture de données</h3>
+<p>Lancer le script PowerShell avant de continuer.</p>
+<p><img src="/p/fabric-data-activator-iot/img/005-fabric-reflexe-getdata.png"
+	width="1397"
+	height="922"
+	srcset="/p/fabric-data-activator-iot/img/005-fabric-reflexe-getdata_hu38d7624070b06619146d7a6bdca60593_78251_480x0_resize_box_3.png 480w, /p/fabric-data-activator-iot/img/005-fabric-reflexe-getdata_hu38d7624070b06619146d7a6bdca60593_78251_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Création de la capture de données"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="151"
+		data-flex-basis="363px"
+	
+></p>
+<ol>
+<li>Appuyez sur <strong>Get Data</strong>.</li>
+<li>Vérifiez que <em>Event Hubs</em> est sélectionné.</li>
+<li>Saisissez un nom, ici <em>Demo IOT</em>.</li>
+<li>Remplir la zone <em>Connection string</em> avec la valeur <em>Connection string-primary key</em> récupérée précédemment.</li>
+<li>Remplir la zone <em>Consumer group</em> avec la valeur <em>Consumer group</em> récupérée précédemment.</li>
+<li>Saisissez Date dans <em>Time Field</em>, cela correspond à la clé de temps du JSON renvoyer par le PowerShell (ligne 32 du script)</li>
+<li>Appuyez sur <em>Connect</em>.</li>
+</ol>
+<h2 id="les-données-arrivent">Les données arrivent</h2>
+<p>Attendez un peu, les données commencent à arriver.</p>
+<p><img src="/p/fabric-data-activator-iot/img/006-fabric-reflexe-getdata-run.png"
+	width="1846"
+	height="932"
+	srcset="/p/fabric-data-activator-iot/img/006-fabric-reflexe-getdata-run_hu33b8fae8e35a4ea4ce0640794e76bc1f_83799_480x0_resize_box_3.png 480w, /p/fabric-data-activator-iot/img/006-fabric-reflexe-getdata-run_hu33b8fae8e35a4ea4ce0640794e76bc1f_83799_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Capture de données en cours"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="198"
+		data-flex-basis="475px"
+	
+></p>
+<ol>
+<li>Vous pouvez voir l&rsquo;event créer précédemment, un réflexe peut avoir plusieurs events.</li>
+<li>Vous voyez les données arriver en temps réel. En vert ce sont les données qui viennent juste d&rsquo;arriver.</li>
+<li>Appuyez sur <strong>Design</strong> pour créer une alerte.</li>
+</ol>
+<p><img src="/p/fabric-data-activator-iot/img/006-fabric-reflexe-getdata-run.png"
+	width="1846"
+	height="932"
+	srcset="/p/fabric-data-activator-iot/img/006-fabric-reflexe-getdata-run_hu33b8fae8e35a4ea4ce0640794e76bc1f_83799_480x0_resize_box_3.png 480w, /p/fabric-data-activator-iot/img/006-fabric-reflexe-getdata-run_hu33b8fae8e35a4ea4ce0640794e76bc1f_83799_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Écran de design vide"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="198"
+		data-flex-basis="475px"
+	
+></p>
+<ol>
+<li>Vous pouvez constater que l&rsquo;on ne trouve pas d&rsquo;objet dans la partie <em>Design</em>.</li>
+<li>Appuyez sur <strong>Data</strong> pour commencer à créer une alerte.</li>
+</ol>
+<h2 id="création-dune-alerte-complexe">Création d&rsquo;une alerte complexe</h2>
+<p>Nous allons commencer par créer un objet qui va nous permettre ensuite de créer des alertes.</p>
+<p><img src="/p/fabric-data-activator-iot/img/007-fabric-reflexe-create-object-step1.png"
+	width="1853"
+	height="284"
+	srcset="/p/fabric-data-activator-iot/img/007-fabric-reflexe-create-object-step1_hud00bfa6282f227367ed4a88807313191_46669_480x0_resize_box_3.png 480w, /p/fabric-data-activator-iot/img/007-fabric-reflexe-create-object-step1_hud00bfa6282f227367ed4a88807313191_46669_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Création d&rsquo;un objet - étape 1"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="652"
+		data-flex-basis="1565px"
+	
+></p>
+<ol>
+<li>Positionnez-vous sur l&rsquo;event créer.</li>
+<li>Pointez sur la colonne <em>HardwareID</em> et appuyez sur les 3 points pour ouvrir le menu.</li>
+<li>Sélectionnez <strong>+ Create object</strong> pour créer un objet.</li>
+</ol>
+<p><img src="/p/fabric-data-activator-iot/img/008-fabric-reflexe-create-object-step2.png"
+	width="342"
+	height="312"
+	srcset="/p/fabric-data-activator-iot/img/008-fabric-reflexe-create-object-step2_hu2dc84b4289e0ba1eccaede4f50a9516d_13676_480x0_resize_box_3.png 480w, /p/fabric-data-activator-iot/img/008-fabric-reflexe-create-object-step2_hu2dc84b4289e0ba1eccaede4f50a9516d_13676_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Création d&rsquo;un objet - étape 2"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="109"
+		data-flex-basis="263px"
+	
+></p>
+<ol>
+<li>Choisir un nom pour l&rsquo;objet, <em>IOT</em> par exemple.</li>
+<li>Laissez cocher <em>Go to design mode after creation</em>.</li>
+<li>Appuyez sur <strong>Create</strong> pour finir la création de l&rsquo;objet.</li>
+</ol>
+<p><img src="/p/fabric-data-activator-iot/img/009-fabric-reflexe-create-object-step3.png"
+	width="1847"
+	height="923"
+	srcset="/p/fabric-data-activator-iot/img/009-fabric-reflexe-create-object-step3_hufd5e5da1fc765057f6335a703c23a513_52839_480x0_resize_box_3.png 480w, /p/fabric-data-activator-iot/img/009-fabric-reflexe-create-object-step3_hufd5e5da1fc765057f6335a703c23a513_52839_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Création d&rsquo;un objet - étape 3"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="200"
+		data-flex-basis="480px"
+	
+></p>
+<ol>
+<li>Vous pouvez voir l&rsquo;objet IOT que l&rsquo;on vient de créer.</li>
+<li>L&rsquo;objet a été créé sur l&rsquo;event <em>Demo IOT</em>.</li>
+<li>On peut voir l&rsquo;arrivée des données. On a un point pour chaque capture de données.</li>
+<li>Vous pouvez sélectionner les <em>HardwareID</em> que l&rsquo;on monitor dans l&rsquo;écran.</li>
+<li>Vous pouvez choisir la fenêtre de temps des données affichées par le graphique.</li>
+<li>Vous pouvez mettre en pause la mise à jour en temps réel.</li>
+<li>Appuyez sur <strong>New Property</strong> pour créer une propriété.</li>
+</ol>
+<p><img src="/p/fabric-data-activator-iot/img/010-fabric-reflexe-create-property-step1.png"
+	width="1844"
+	height="923"
+	srcset="/p/fabric-data-activator-iot/img/010-fabric-reflexe-create-property-step1_hu92d6549189faca3eca0ce806ff54bc39_62867_480x0_resize_box_3.png 480w, /p/fabric-data-activator-iot/img/010-fabric-reflexe-create-property-step1_hu92d6549189faca3eca0ce806ff54bc39_62867_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Création de la propriété température - étape 1"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="199"
+		data-flex-basis="479px"
+	
+></p>
+<ol>
+<li>Vous pouvez voir la nouvelle propriété.</li>
+<li>Renommez la propriété en <em>Température</em>.</li>
+<li>Sélectionner CaptorInfo.Temp dans la liste.</li>
+</ol>
+<p>Nous avons le résultat suivant :</p>
+<p><img src="/p/fabric-data-activator-iot/img/011-fabric-reflexe-create-property-step2.png"
+	width="1841"
+	height="923"
+	srcset="/p/fabric-data-activator-iot/img/011-fabric-reflexe-create-property-step2_hu608ec0cdaf480a64ac1fb42345cb3d55_132673_480x0_resize_box_3.png 480w, /p/fabric-data-activator-iot/img/011-fabric-reflexe-create-property-step2_hu608ec0cdaf480a64ac1fb42345cb3d55_132673_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Création de la propriété température - étape 2"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="199"
+		data-flex-basis="478px"
+	
+></p>
+<ol>
+<li>Vous pouvez constater que l&rsquo;on a maintenant des courbes correspondant aux valeurs de la température.</li>
+<li>Boutons vous permettant d&rsquo;ajouter des étapes de traitement.</li>
+</ol>
+<p>Chaque étape est réalisée sur le résultat de l&rsquo;étape précédente, vous avez donc la possibilité d&rsquo;ajouter plusieurs étapes permettant de définir des critères plus ou moins complexe afin d&rsquo;identifier les données pour lesquels vous souhaitez déclencher une alerte.</p>
+<h3 id="étapes-disponibles-en-preview">Étapes disponibles en preview</h3>
+<p>Voici la liste des étapes disponible lors de la publication de cet article. Les choses ont surement évolué depuis, car nous sommes sur une version en Private Preview.</p>
+<p><strong>Detect</strong> : permets de sélectionner les évènements de la série temporelle de manière unitaire sur un critère</p>
+<ul>
+<li>Changes : Conserve les évènements ayant subi un changement de la valeur.</li>
+<li>Change from : conserve les évènements ayant changé par rapport à une valeur de référence.</li>
+<li>Change to : conserve les évènements ayant atteint une valeur de référence.</li>
+<li>Is not equal : conserve les évènements différents d&rsquo;une valeur de référence.</li>
+<li>Is equal : conserve les évènements égaux à une valeur de référence.</li>
+<li>Exits range : conserve les évènements qui sorte d&rsquo;une plage de référence.</li>
+<li>Enter range : conserve les évènements qui entrent dans une plage de référence.</li>
+<li>Is less than : conserve les évènements inférieurs à une valeur de référence.</li>
+<li>Is greater than : conserve les évènements supérieurs à une valeur de référence.</li>
+<li>Become less than : conserve l&rsquo;évènement devenant inférieur à une valeur de référence.</li>
+<li>Become greater than : conserve l&rsquo;évènement devenant supérieur à une valeur de référence.</li>
+<li>Is false : conserve les évènements ayant une valeur faux.</li>
+<li>Is true : conserve les évènements ayant une valeur vraie.</li>
+<li>Become false : conserve l&rsquo;évènement devenant faux.</li>
+<li>Become true : conserve l&rsquo;évènement devenant vrai.</li>
+</ul>
+<p>Tous les évènements de <strong>Detect</strong> peuvent être regardés soit</p>
+<ul>
+<li>à chaque changement</li>
+<li>pour un nombre de changements sur une période de temps entre 1 minute et 24 heures.</li>
+</ul>
+<p><strong>Summarize</strong> : permets de sélectionner des évènements de la série temporelle sur un critère de regroupement de plusieurs évènements contigus sur une plage de temps.</p>
+<ul>
+<li>Maximum over time : permets de calculer le maximum des valeurs d&rsquo;un évènement sur une plage de temps.</li>
+<li>Minimum over time : permets de calculer le minimum des valeurs d&rsquo;un évènement sur une plage de temps.</li>
+<li>Average over time : permets de calculer la moyenne des valeurs d&rsquo;un évènement sur une plage de temps.</li>
+<li>Count : permets de compter le nombre d&rsquo;évènements sur une plage de temps.</li>
+</ul>
+<p>Pour <strong>Summarize</strong> les fenêtres de temps des calculs sont entre 1 minute et 24 heures.</p>
+<p><strong>Filter</strong> : permets de sélectionner des évènements sur un critère de filtre.</p>
+<ul>
+<li>Filter : permets un filtre numérique avec les opérateurs suivants
+<ul>
+<li>Greater</li>
+<li>Greater or equal</li>
+<li>Less</li>
+<li>Less or equal</li>
+<li>Equal</li>
+<li>Not equal
+*Property filter : permets de filtrer par rapport à une autre propriété.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Compare</strong> : permets de sélectionner des évènements sur un critère de filtre avec les opérateurs suivants :</p>
+<ul>
+<li>Greater</li>
+<li>Greater or equal</li>
+<li>Less</li>
+<li>Less or equal</li>
+<li>Equal</li>
+<li>Not equal</li>
+</ul>
+<p>La différence entre <strong>Filter</strong> et <strong>Compare</strong>, est que <strong>Filter</strong> renvoie la valeur de l&rsquo;évènement alors que <strong>Compare</strong> renvoie une valeur vraie ou fausse.</p>
+<p><strong>Act</strong> : permets de déclencher une action pour les évènements restant suite à l&rsquo;application des filtres. Pour le moment seul un envoi d&rsquo;email est disponible.
+À partir du moment où vous ajoutez une étape de type <strong>Act</strong>, la propriété est automatiquement transformée en Trigger.</p>
+<p>Comme vous pouvez le voir, Data Activator va vous permettre de créer des alertes complexes sur vos données. Les étapes présentées ici sont bien entendu aussi disponibles quand la source de votre event est Power BI.</p>
+<p>Merci de votre attention.</p>
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/interm%C3%A9diaire/">Intermédiaire</a>
+        
+            <a href="/tags/auto-formation/">Auto formation</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Contenus liés</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/fabric-data-activator-power-bi/">
+        
+        
+            <div class="article-image">
+                <img src="/p/fabric-data-activator-power-bi/_hu3d03a01dcc18bc5be0e67db3d8d209a6_384387_72c11e3773f273fdd2ffb5905b8dbc9e.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Microsoft Fabric Data Activator, alertes avancées dans Power BI"
+                        data-key="fabric-data-activator-power-bi" 
+                        data-hash="md5-Aox1e8HOs5bauOn0hmFsnQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Microsoft Fabric Data Activator, alertes avancées dans Power BI</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/fabric-the-match-result/">
+        
+        
+            <div class="article-image">
+                <img src="/p/fabric-the-match-result/_hu3d03a01dcc18bc5be0e67db3d8d209a6_2681829_0245678618a12c641ec659c994145bd8.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Préparation de données avec Microsoft Fabric, les résultats"
+                        data-key="fabric-the-match-result" 
+                        data-hash="md5-&#43;BNXvrNwlWBCP4vC47HGuQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Préparation de données avec Microsoft Fabric, les résultats</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/fabric-the-match-notebook/">
+        
+        
+            <div class="article-image">
+                <img src="/p/fabric-the-match-notebook/_hu3d03a01dcc18bc5be0e67db3d8d209a6_1320955_4bdd8aa2c1b3f94c7a2285cfd22d6a15.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Préparation de données avec Microsoft Fabric, les blocs-notes"
+                        data-key="fabric-the-match-notebook" 
+                        data-hash="md5-t0oYCnGDIcGQX&#43;CQ6yLX2Q==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Préparation de données avec Microsoft Fabric, les blocs-notes</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/fabric-the-match-sql/">
+        
+        
+            <div class="article-image">
+                <img src="/p/fabric-the-match-sql/_hu3d03a01dcc18bc5be0e67db3d8d209a6_3268696_6eb6cf868cb3ff421ec48f9d41083a69.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Préparation de données avec Microsoft Fabric, le SQL"
+                        data-key="fabric-the-match-sql" 
+                        data-hash="md5-91s2rteMwbLk91yEWWf/UQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Préparation de données avec Microsoft Fabric, le SQL</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/fabric-the-match-dataflow/">
+        
+        
+            <div class="article-image">
+                <img src="/p/fabric-the-match-dataflow/_hu3d03a01dcc18bc5be0e67db3d8d209a6_2607520_07b48fe72d1ce193f4999bb3694f2895.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Préparation de données avec Microsoft Fabric, les flux de données"
+                        data-key="fabric-the-match-dataflow" 
+                        data-hash="md5-/OUNanLjwpEM0ur0SgZXRQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Préparation de données avec Microsoft Fabric, les flux de données</h2>
+        </div>
+    </a>
+</article>
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "ddata" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2022 - 
+        
+        2023 Le D de Data
+    </section>
+    
+    <section class="powerby">
+        Généré avec <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Thème <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.16.0">Stack</a></b> conçu par <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

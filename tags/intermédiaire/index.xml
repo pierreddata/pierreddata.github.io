@@ -6,7 +6,450 @@
         <description>Recent content in Intermédiaire on Le D de Data</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>fr-fr</language>
-        <lastBuildDate>Sun, 02 Jul 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ddata.fr/tags/interm%C3%A9diaire/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sun, 09 Jul 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ddata.fr/tags/interm%C3%A9diaire/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Microsoft Fabric Data Activator, en mode IOT</title>
+        <link>https://blog.ddata.fr/p/fabric-data-activator-iot/</link>
+        <pubDate>Sun, 09 Jul 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://blog.ddata.fr/p/fabric-data-activator-iot/</guid>
+        <description>&lt;img src="https://blog.ddata.fr/p/fabric-data-activator-iot/chutipon-pattanatitinon-LG8Mt7f7lXQ-unsplash.jpg" alt="Featured image of post Microsoft Fabric Data Activator, en mode IOT" /&gt;&lt;p&gt;Microsoft Fabric Data Activator, en mode IOT&lt;/p&gt;
+&lt;h2 id=&#34;contexte&#34;&gt;Contexte&lt;/h2&gt;
+&lt;p&gt;Dans l&amp;rsquo;article &lt;a class=&#34;link&#34; href=&#34;https://blog.ddata.fr/p/fabric-data-activator-power-bi/&#34; &gt;Microsoft Fabric Data Activator, alertes avancées dans Power BI&lt;/a&gt;, je vous ai présenté Data Activator dans le contexte d&amp;rsquo;un rapport Power BI.&lt;br&gt;
+Je vous propose maintenant de voir Data Activator dans un contexte plus complexe et pour cela nous allons repartir de l&amp;rsquo;exemple d&amp;rsquo;utilisation de Fabric présenté dans mon article &lt;a class=&#34;link&#34; href=&#34;https://blog.ddata.fr/p/fabric-poc-iot/&#34; &gt;Données en temps réel dans votre rapport Power BI avec Microsoft Fabric&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;préparation-de-lenvironnement&#34;&gt;Préparation de l&amp;rsquo;environnement&lt;/h2&gt;
+&lt;p&gt;À la suite de l&amp;rsquo;article &lt;a class=&#34;link&#34; href=&#34;https://blog.ddata.fr/p/fabric-poc-iot/&#34; &gt;Données en temps réel dans votre rapport Power BI avec Microsoft Fabric&lt;/a&gt; l&amp;rsquo;environnement de travail est prêt à être utilisé pour exploiter Data Activator.&lt;/p&gt;
+&lt;p&gt;On va modifier légèrement le PowerShell qui simule un IOT afin que ce dernier envoie des informations pendant plus longtemps, mais à une fréquence moins importante.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;21
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;22
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;23
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;24
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;25
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;26
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;27
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;28
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;29
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;30
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;31
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;32
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;33
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;34
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;35
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;36
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;37
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;38
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;39
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;40
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;41
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;42
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;43
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;44
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;45
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;46
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;47
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;48
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;49
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;50
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;51
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;52
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;53
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;54
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-powershell&#34; data-lang=&#34;powershell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c&#34;&gt;# Votre chaine de connexion&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;$ConnectionString&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;REMPLACER_PAR_VOTRE_CHAINE_DE_CONNEXION&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c&#34;&gt;# Nombre de message à envoyer&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;$Messages&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;2000&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c&#34;&gt;# Id des capteurs&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;$HardwareID&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;12345&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;23456&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;34567&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;45678&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;67890&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;$Pattern&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;Endpoint=(.+);SharedAccessKeyName=(.+);SharedAccessKey=(.+);EntityPath=(.+)&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;([&lt;/span&gt;&lt;span class=&#34;no&#34;&gt;uri&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$Endpoint&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$PolicyName&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$Key&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$Queue&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$ConnectionString&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-replace&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$Pattern&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;$1;$2;$3;$4&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;-split&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;;&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c&#34;&gt;# Depending on your environment you may need to load the assembly System.Web&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c&#34;&gt;# $null = [Reflection.Assembly]::LoadWithPartialName(&amp;#34;System.Web&amp;#34;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;$UrlEncodedEndpoint&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;no&#34;&gt;System.Web.HttpUtility&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;UrlEncode&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$Endpoint&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;$Expiry&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;no&#34;&gt;DateTimeOffset&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Now&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;py&#34;&gt;ToUnixTimeSeconds&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;3600&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;$RawSignatureString&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$UrlEncodedEndpoint&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;`n&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$Expiry&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;$HMAC&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;New-Object&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;System&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;py&#34;&gt;Security&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;py&#34;&gt;Cryptography&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;py&#34;&gt;HMACSHA256&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;$HMAC&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;py&#34;&gt;Key&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;no&#34;&gt;Text.Encoding&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ASCII&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;py&#34;&gt;GetBytes&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$Key&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;$HashBytes&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$HMAC&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;py&#34;&gt;ComputeHash&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;([&lt;/span&gt;&lt;span class=&#34;no&#34;&gt;Text.Encoding&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ASCII&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;py&#34;&gt;GetBytes&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$RawSignatureString&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;$SignatureString&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;no&#34;&gt;Convert&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ToBase64String&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$HashBytes&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;$UrlEncodedSignatureString&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;no&#34;&gt;System.Web.HttpUtility&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;UrlEncode&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$SignatureString&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;$SASToken&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;SharedAccessSignature sig=&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$UrlEncodedSignatureString&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;amp;se=&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$Expiry&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;amp;skn=&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$PolicyName&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;amp;sr=&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$UrlEncodedEndpoint&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c&#34;&gt;# Boucle d&amp;#39;envoi des messages&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$i&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$i&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-lt&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$Messages&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$i&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;++)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;c&#34;&gt;# Création du message à envoyer au format JSON&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nv&#34;&gt;$IOTFakeMessage&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;vm&#34;&gt;@&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;HardwareId&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;ID-&amp;#34;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$HardwareID&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;Get-Random&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;-Minimum&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;0&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;-Maximum&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$HardwareID&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Count&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;Date&lt;/span&gt;       &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;Get-Date&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;CaptorInfo&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;vm&#34;&gt;@&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;n&#34;&gt;Temp&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;Get-Random&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;-Minimum&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;20&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;-Maximum&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;28&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;n&#34;&gt;Hum&lt;/span&gt;  &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;Get-Random&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;-Minimum&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;40&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;-Maximum&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;60&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;  &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;ConvertTo-Json&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;-Depth&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;99&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;c&#34;&gt;# Préparation de la requête HTTP&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nv&#34;&gt;$Params&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;vm&#34;&gt;@&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;Uri&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;https://&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;$(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$Endpoint&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Host&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$Queue&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;/messages&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;ContentType&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;application/json;charset=utf-8&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;Method&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;Post&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;Body&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$IOTFakeMessage&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;Headers&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;vm&#34;&gt;@&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;s1&#34;&gt;&amp;#39;Authorization&amp;#39;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$SASToken&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;c&#34;&gt;# Envoi du message vers le service BUS&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nb&#34;&gt;Invoke-RestMethod&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;@Params&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;c&#34;&gt;# Attente avant le prochain message&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nb&#34;&gt;Start-Sleep&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;-Milliseconds&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;Get-Random&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;-Minimum&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;2000&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;-Maximum&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;5000&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Maintenant on envoie 2000 messages avec un délai entre 2 et 5 secondes entre chaque message.&lt;br&gt;
+Penser à remplacer la chaine de caractère &lt;em&gt;REMPLACER_PAR_VOTRE_CHAINE_DE_CONNEXION&lt;/em&gt; par la chaine de connexion (voir article précédent).&lt;/p&gt;
+&lt;p&gt;Rendez-vous dans l&amp;rsquo;espace de travail créer dans l&amp;rsquo;article précédent et ouvrez l&amp;rsquo;eventstream que l&amp;rsquo;on avait créé.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-data-activator-iot/img/001-fabric-data-activator-eventstream-add-step1.png&#34;
+	width=&#34;1846&#34;
+	height=&#34;924&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-data-activator-iot/img/001-fabric-data-activator-eventstream-add-step1_hu2581acf00a92b172036c61b92d369391_62494_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-data-activator-iot/img/001-fabric-data-activator-eventstream-add-step1_hu2581acf00a92b172036c61b92d369391_62494_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Modification du traitement EventStream - étape 1&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;199&#34;
+		data-flex-basis=&#34;479px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Sur le composant central, appuyez sur &lt;em&gt;+&lt;/em&gt; pour ajouter une sortie.&lt;/li&gt;
+&lt;li&gt;Sélectionnez &lt;strong&gt;Custom App&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;Entrez un nom de destination, ici &lt;em&gt;DataActivator&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Appuyez sur &lt;strong&gt;Add&lt;/strong&gt; pour ajouter cette nouvelle destination.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Maintenant le flux en entrée envoie les informations vers 2 destinations distinctes.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-data-activator-iot/img/002-fabric-data-activator-eventstream-add-step2.png&#34;
+	width=&#34;1047&#34;
+	height=&#34;710&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-data-activator-iot/img/002-fabric-data-activator-eventstream-add-step2_hu6bf86142f986e341c4a3dc3e04fa8ae7_48522_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-data-activator-iot/img/002-fabric-data-activator-eventstream-add-step2_hu6bf86142f986e341c4a3dc3e04fa8ae7_48522_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Modification du traitement EventStream - étape 2&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;147&#34;
+		data-flex-basis=&#34;353px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Sélectionnez la sortie que l&amp;rsquo;on vient de créer.&lt;/li&gt;
+&lt;li&gt;Notez la valeur de &lt;em&gt;Consumer group&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Afficher la valeur de &lt;em&gt;Connection string-primary key&lt;/em&gt; en appuyant sur l&amp;rsquo;icône oeil.&lt;/li&gt;
+&lt;li&gt;Notez la valeur de &lt;em&gt;Connection string-primary key&lt;/em&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;création-du-réflexe&#34;&gt;Création du réflexe&lt;/h2&gt;
+&lt;p&gt;Rendez-vous dans l&amp;rsquo;espace de travail.&lt;/p&gt;
+&lt;h3 id=&#34;sélection-de-lexpérience-utilisateur&#34;&gt;Sélection de l&amp;rsquo;expérience utilisateur&lt;/h3&gt;
+&lt;p&gt;Afin de simplifier l&amp;rsquo;interface, Fabric est organisé autour de différentes expériences utilisateur afin de ne pas présenter l&amp;rsquo;ensemble des types objets disponible à tout le monde.
+Pour notre exemple nous pouvons utiliser l&amp;rsquo;expérience &lt;em&gt;Data Activator&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-data-activator-iot/img/003-fabric-select-experience.png&#34;
+	width=&#34;319&#34;
+	height=&#34;299&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-data-activator-iot/img/003-fabric-select-experience_hu6ede9bac94363e653d600507a411fbd3_16109_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-data-activator-iot/img/003-fabric-select-experience_hu6ede9bac94363e653d600507a411fbd3_16109_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Modification de l&amp;rsquo;expérience utilisateur&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;106&#34;
+		data-flex-basis=&#34;256px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Appuyez sur l&amp;rsquo;icône en bas à gauche de votre écran, si vous êtes arrivé par le portail Power BI vous trouver l&amp;rsquo;icône Power BI, sinon vous trouverez l&amp;rsquo;icône de l&amp;rsquo;expérience utilisateur en cours.&lt;/li&gt;
+&lt;li&gt;Sélectionnez &lt;em&gt;Data Activator&lt;/em&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Après le changement d&amp;rsquo;expérience, vous devez vous repositionner dans votre espace de travail.&lt;/p&gt;
+&lt;h3 id=&#34;création-dun-réflexe&#34;&gt;Création d&amp;rsquo;un réflexe&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-data-activator-iot/img/004-fabric-create-reflexe.png&#34;
+	width=&#34;310&#34;
+	height=&#34;535&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-data-activator-iot/img/004-fabric-create-reflexe_hu3466b65fc08425cefff054072f63cc52_22308_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-data-activator-iot/img/004-fabric-create-reflexe_hu3466b65fc08425cefff054072f63cc52_22308_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Création d&amp;rsquo;un réflexe&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;57&#34;
+		data-flex-basis=&#34;139px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Dans le menu de l&amp;rsquo;espace de travail, appuyez sur &lt;strong&gt;+ Nouveau&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;Sélectionnez &lt;strong&gt;Preview&lt;/strong&gt; ou &lt;strong&gt;Reflexe&lt;/strong&gt; si le texte dans l&amp;rsquo;interface est corrigé 😊. Celui à prendre à une icône en éclair ⚡.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;La fenêtre de Réflexe apparait&lt;/p&gt;
+&lt;h3 id=&#34;création-de-la-capture-de-données&#34;&gt;Création de la capture de données&lt;/h3&gt;
+&lt;p&gt;Lancer le script PowerShell avant de continuer.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-data-activator-iot/img/005-fabric-reflexe-getdata.png&#34;
+	width=&#34;1397&#34;
+	height=&#34;922&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-data-activator-iot/img/005-fabric-reflexe-getdata_hu38d7624070b06619146d7a6bdca60593_78251_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-data-activator-iot/img/005-fabric-reflexe-getdata_hu38d7624070b06619146d7a6bdca60593_78251_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Création de la capture de données&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;151&#34;
+		data-flex-basis=&#34;363px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Appuyez sur &lt;strong&gt;Get Data&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;Vérifiez que &lt;em&gt;Event Hubs&lt;/em&gt; est sélectionné.&lt;/li&gt;
+&lt;li&gt;Saisissez un nom, ici &lt;em&gt;Demo IOT&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Remplir la zone &lt;em&gt;Connection string&lt;/em&gt; avec la valeur &lt;em&gt;Connection string-primary key&lt;/em&gt; récupérée précédemment.&lt;/li&gt;
+&lt;li&gt;Remplir la zone &lt;em&gt;Consumer group&lt;/em&gt; avec la valeur &lt;em&gt;Consumer group&lt;/em&gt; récupérée précédemment.&lt;/li&gt;
+&lt;li&gt;Saisissez Date dans &lt;em&gt;Time Field&lt;/em&gt;, cela correspond à la clé de temps du JSON renvoyer par le PowerShell (ligne 32 du script)&lt;/li&gt;
+&lt;li&gt;Appuyez sur &lt;em&gt;Connect&lt;/em&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;les-données-arrivent&#34;&gt;Les données arrivent&lt;/h2&gt;
+&lt;p&gt;Attendez un peu, les données commencent à arriver.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-data-activator-iot/img/006-fabric-reflexe-getdata-run.png&#34;
+	width=&#34;1846&#34;
+	height=&#34;932&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-data-activator-iot/img/006-fabric-reflexe-getdata-run_hu33b8fae8e35a4ea4ce0640794e76bc1f_83799_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-data-activator-iot/img/006-fabric-reflexe-getdata-run_hu33b8fae8e35a4ea4ce0640794e76bc1f_83799_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Capture de données en cours&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;198&#34;
+		data-flex-basis=&#34;475px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Vous pouvez voir l&amp;rsquo;event créer précédemment, un réflexe peut avoir plusieurs events.&lt;/li&gt;
+&lt;li&gt;Vous voyez les données arriver en temps réel. En vert ce sont les données qui viennent juste d&amp;rsquo;arriver.&lt;/li&gt;
+&lt;li&gt;Appuyez sur &lt;strong&gt;Design&lt;/strong&gt; pour créer une alerte.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-data-activator-iot/img/006-fabric-reflexe-getdata-run.png&#34;
+	width=&#34;1846&#34;
+	height=&#34;932&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-data-activator-iot/img/006-fabric-reflexe-getdata-run_hu33b8fae8e35a4ea4ce0640794e76bc1f_83799_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-data-activator-iot/img/006-fabric-reflexe-getdata-run_hu33b8fae8e35a4ea4ce0640794e76bc1f_83799_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Écran de design vide&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;198&#34;
+		data-flex-basis=&#34;475px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Vous pouvez constater que l&amp;rsquo;on ne trouve pas d&amp;rsquo;objet dans la partie &lt;em&gt;Design&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Appuyez sur &lt;strong&gt;Data&lt;/strong&gt; pour commencer à créer une alerte.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;création-dune-alerte-complexe&#34;&gt;Création d&amp;rsquo;une alerte complexe&lt;/h2&gt;
+&lt;p&gt;Nous allons commencer par créer un objet qui va nous permettre ensuite de créer des alertes.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-data-activator-iot/img/007-fabric-reflexe-create-object-step1.png&#34;
+	width=&#34;1853&#34;
+	height=&#34;284&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-data-activator-iot/img/007-fabric-reflexe-create-object-step1_hud00bfa6282f227367ed4a88807313191_46669_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-data-activator-iot/img/007-fabric-reflexe-create-object-step1_hud00bfa6282f227367ed4a88807313191_46669_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Création d&amp;rsquo;un objet - étape 1&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;652&#34;
+		data-flex-basis=&#34;1565px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Positionnez-vous sur l&amp;rsquo;event créer.&lt;/li&gt;
+&lt;li&gt;Pointez sur la colonne &lt;em&gt;HardwareID&lt;/em&gt; et appuyez sur les 3 points pour ouvrir le menu.&lt;/li&gt;
+&lt;li&gt;Sélectionnez &lt;strong&gt;+ Create object&lt;/strong&gt; pour créer un objet.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-data-activator-iot/img/008-fabric-reflexe-create-object-step2.png&#34;
+	width=&#34;342&#34;
+	height=&#34;312&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-data-activator-iot/img/008-fabric-reflexe-create-object-step2_hu2dc84b4289e0ba1eccaede4f50a9516d_13676_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-data-activator-iot/img/008-fabric-reflexe-create-object-step2_hu2dc84b4289e0ba1eccaede4f50a9516d_13676_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Création d&amp;rsquo;un objet - étape 2&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;109&#34;
+		data-flex-basis=&#34;263px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Choisir un nom pour l&amp;rsquo;objet, &lt;em&gt;IOT&lt;/em&gt; par exemple.&lt;/li&gt;
+&lt;li&gt;Laissez cocher &lt;em&gt;Go to design mode after creation&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Appuyez sur &lt;strong&gt;Create&lt;/strong&gt; pour finir la création de l&amp;rsquo;objet.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-data-activator-iot/img/009-fabric-reflexe-create-object-step3.png&#34;
+	width=&#34;1847&#34;
+	height=&#34;923&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-data-activator-iot/img/009-fabric-reflexe-create-object-step3_hufd5e5da1fc765057f6335a703c23a513_52839_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-data-activator-iot/img/009-fabric-reflexe-create-object-step3_hufd5e5da1fc765057f6335a703c23a513_52839_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Création d&amp;rsquo;un objet - étape 3&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;200&#34;
+		data-flex-basis=&#34;480px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Vous pouvez voir l&amp;rsquo;objet IOT que l&amp;rsquo;on vient de créer.&lt;/li&gt;
+&lt;li&gt;L&amp;rsquo;objet a été créé sur l&amp;rsquo;event &lt;em&gt;Demo IOT&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;On peut voir l&amp;rsquo;arrivée des données. On a un point pour chaque capture de données.&lt;/li&gt;
+&lt;li&gt;Vous pouvez sélectionner les &lt;em&gt;HardwareID&lt;/em&gt; que l&amp;rsquo;on monitor dans l&amp;rsquo;écran.&lt;/li&gt;
+&lt;li&gt;Vous pouvez choisir la fenêtre de temps des données affichées par le graphique.&lt;/li&gt;
+&lt;li&gt;Vous pouvez mettre en pause la mise à jour en temps réel.&lt;/li&gt;
+&lt;li&gt;Appuyez sur &lt;strong&gt;New Property&lt;/strong&gt; pour créer une propriété.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-data-activator-iot/img/010-fabric-reflexe-create-property-step1.png&#34;
+	width=&#34;1844&#34;
+	height=&#34;923&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-data-activator-iot/img/010-fabric-reflexe-create-property-step1_hu92d6549189faca3eca0ce806ff54bc39_62867_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-data-activator-iot/img/010-fabric-reflexe-create-property-step1_hu92d6549189faca3eca0ce806ff54bc39_62867_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Création de la propriété température - étape 1&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;199&#34;
+		data-flex-basis=&#34;479px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Vous pouvez voir la nouvelle propriété.&lt;/li&gt;
+&lt;li&gt;Renommez la propriété en &lt;em&gt;Température&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Sélectionner CaptorInfo.Temp dans la liste.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Nous avons le résultat suivant :&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/fabric-data-activator-iot/img/011-fabric-reflexe-create-property-step2.png&#34;
+	width=&#34;1841&#34;
+	height=&#34;923&#34;
+	srcset=&#34;https://blog.ddata.fr/p/fabric-data-activator-iot/img/011-fabric-reflexe-create-property-step2_hu608ec0cdaf480a64ac1fb42345cb3d55_132673_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/fabric-data-activator-iot/img/011-fabric-reflexe-create-property-step2_hu608ec0cdaf480a64ac1fb42345cb3d55_132673_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Création de la propriété température - étape 2&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;199&#34;
+		data-flex-basis=&#34;478px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Vous pouvez constater que l&amp;rsquo;on a maintenant des courbes correspondant aux valeurs de la température.&lt;/li&gt;
+&lt;li&gt;Boutons vous permettant d&amp;rsquo;ajouter des étapes de traitement.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Chaque étape est réalisée sur le résultat de l&amp;rsquo;étape précédente, vous avez donc la possibilité d&amp;rsquo;ajouter plusieurs étapes permettant de définir des critères plus ou moins complexe afin d&amp;rsquo;identifier les données pour lesquels vous souhaitez déclencher une alerte.&lt;/p&gt;
+&lt;h3 id=&#34;étapes-disponibles-en-preview&#34;&gt;Étapes disponibles en preview&lt;/h3&gt;
+&lt;p&gt;Voici la liste des étapes disponible lors de la publication de cet article. Les choses ont surement évolué depuis, car nous sommes sur une version en Private Preview.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Detect&lt;/strong&gt; : permets de sélectionner les évènements de la série temporelle de manière unitaire sur un critère&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Changes : Conserve les évènements ayant subi un changement de la valeur.&lt;/li&gt;
+&lt;li&gt;Change from : conserve les évènements ayant changé par rapport à une valeur de référence.&lt;/li&gt;
+&lt;li&gt;Change to : conserve les évènements ayant atteint une valeur de référence.&lt;/li&gt;
+&lt;li&gt;Is not equal : conserve les évènements différents d&amp;rsquo;une valeur de référence.&lt;/li&gt;
+&lt;li&gt;Is equal : conserve les évènements égaux à une valeur de référence.&lt;/li&gt;
+&lt;li&gt;Exits range : conserve les évènements qui sorte d&amp;rsquo;une plage de référence.&lt;/li&gt;
+&lt;li&gt;Enter range : conserve les évènements qui entrent dans une plage de référence.&lt;/li&gt;
+&lt;li&gt;Is less than : conserve les évènements inférieurs à une valeur de référence.&lt;/li&gt;
+&lt;li&gt;Is greater than : conserve les évènements supérieurs à une valeur de référence.&lt;/li&gt;
+&lt;li&gt;Become less than : conserve l&amp;rsquo;évènement devenant inférieur à une valeur de référence.&lt;/li&gt;
+&lt;li&gt;Become greater than : conserve l&amp;rsquo;évènement devenant supérieur à une valeur de référence.&lt;/li&gt;
+&lt;li&gt;Is false : conserve les évènements ayant une valeur faux.&lt;/li&gt;
+&lt;li&gt;Is true : conserve les évènements ayant une valeur vraie.&lt;/li&gt;
+&lt;li&gt;Become false : conserve l&amp;rsquo;évènement devenant faux.&lt;/li&gt;
+&lt;li&gt;Become true : conserve l&amp;rsquo;évènement devenant vrai.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Tous les évènements de &lt;strong&gt;Detect&lt;/strong&gt; peuvent être regardés soit&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;à chaque changement&lt;/li&gt;
+&lt;li&gt;pour un nombre de changements sur une période de temps entre 1 minute et 24 heures.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Summarize&lt;/strong&gt; : permets de sélectionner des évènements de la série temporelle sur un critère de regroupement de plusieurs évènements contigus sur une plage de temps.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Maximum over time : permets de calculer le maximum des valeurs d&amp;rsquo;un évènement sur une plage de temps.&lt;/li&gt;
+&lt;li&gt;Minimum over time : permets de calculer le minimum des valeurs d&amp;rsquo;un évènement sur une plage de temps.&lt;/li&gt;
+&lt;li&gt;Average over time : permets de calculer la moyenne des valeurs d&amp;rsquo;un évènement sur une plage de temps.&lt;/li&gt;
+&lt;li&gt;Count : permets de compter le nombre d&amp;rsquo;évènements sur une plage de temps.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Pour &lt;strong&gt;Summarize&lt;/strong&gt; les fenêtres de temps des calculs sont entre 1 minute et 24 heures.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Filter&lt;/strong&gt; : permets de sélectionner des évènements sur un critère de filtre.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Filter : permets un filtre numérique avec les opérateurs suivants
+&lt;ul&gt;
+&lt;li&gt;Greater&lt;/li&gt;
+&lt;li&gt;Greater or equal&lt;/li&gt;
+&lt;li&gt;Less&lt;/li&gt;
+&lt;li&gt;Less or equal&lt;/li&gt;
+&lt;li&gt;Equal&lt;/li&gt;
+&lt;li&gt;Not equal
+*Property filter : permets de filtrer par rapport à une autre propriété.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Compare&lt;/strong&gt; : permets de sélectionner des évènements sur un critère de filtre avec les opérateurs suivants :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Greater&lt;/li&gt;
+&lt;li&gt;Greater or equal&lt;/li&gt;
+&lt;li&gt;Less&lt;/li&gt;
+&lt;li&gt;Less or equal&lt;/li&gt;
+&lt;li&gt;Equal&lt;/li&gt;
+&lt;li&gt;Not equal&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;La différence entre &lt;strong&gt;Filter&lt;/strong&gt; et &lt;strong&gt;Compare&lt;/strong&gt;, est que &lt;strong&gt;Filter&lt;/strong&gt; renvoie la valeur de l&amp;rsquo;évènement alors que &lt;strong&gt;Compare&lt;/strong&gt; renvoie une valeur vraie ou fausse.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Act&lt;/strong&gt; : permets de déclencher une action pour les évènements restant suite à l&amp;rsquo;application des filtres. Pour le moment seul un envoi d&amp;rsquo;email est disponible.
+À partir du moment où vous ajoutez une étape de type &lt;strong&gt;Act&lt;/strong&gt;, la propriété est automatiquement transformée en Trigger.&lt;/p&gt;
+&lt;p&gt;Comme vous pouvez le voir, Data Activator va vous permettre de créer des alertes complexes sur vos données. Les étapes présentées ici sont bien entendu aussi disponibles quand la source de votre event est Power BI.&lt;/p&gt;
+&lt;p&gt;Merci de votre attention.&lt;/p&gt;</description>
+        </item>
+        <item>
         <title>Microsoft Fabric Data Activator, alertes avancées dans Power BI</title>
         <link>https://blog.ddata.fr/p/fabric-data-activator-power-bi/</link>
         <pubDate>Sun, 02 Jul 2023 00:00:00 +0000</pubDate>
