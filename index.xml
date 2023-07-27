@@ -6,7 +6,68 @@
         <description>Recent content on Le D de Data</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>fr-fr</language>
-        <lastBuildDate>Sun, 09 Jul 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ddata.fr/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Thu, 27 Jul 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ddata.fr/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Un raccourcie clavier peu vous faire gagner beaucoup de temps</title>
+        <link>https://blog.ddata.fr/p/bien-utiliser-son-clavier/</link>
+        <pubDate>Thu, 27 Jul 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://blog.ddata.fr/p/bien-utiliser-son-clavier/</guid>
+        <description>&lt;img src="https://blog.ddata.fr/p/bien-utiliser-son-clavier/girl-with-red-hat-gL3-jTs_Q7g-unsplash.jpg" alt="Featured image of post Un raccourcie clavier peu vous faire gagner beaucoup de temps" /&gt;&lt;p&gt;Connaissez-vous ces quelques raccourcis clavier très utiles ?&lt;/p&gt;
+&lt;h2 id=&#34;contexte&#34;&gt;Contexte&lt;/h2&gt;
+&lt;p&gt;Lorsque j&amp;rsquo;observe les utilisateurs en informatique, je constate fréquemment que la connaissance de quelques raccourcis clavier pourrait leur faire gagner du temps et de la maitrise.&lt;br&gt;
+Je vous propose de vous présenter ici ce qui me semble le plus important dans l&amp;rsquo;écosystème Microsoft Windows.&lt;br&gt;
+Les raccourcis clavier doivent être réalisés de manière séquentielle, par exemple pour copier un texte sélectionné vous connaissez le {Control} + c. Vous appuyez sur la touche contrôle, vous la maintenez appuyée et appuyer ensuite sur la touche c.&lt;br&gt;
+Dans les exemples ci-dessous, j&amp;rsquo;indiquerais les touches spéciales entre accolades {}.&lt;/p&gt;
+&lt;h2 id=&#34;verrouiller-sa-session&#34;&gt;Verrouiller sa session&lt;/h2&gt;
+&lt;p&gt;La sécurité informatique commence par le verrouillage de votre session quand vous quittez votre poste de travail. Vous pouvez le faire rapidement grâce au raccourci clavier &lt;strong&gt;{Windows} + l&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;Avec &lt;strong&gt;l&lt;/strong&gt; comme lock.&lt;/p&gt;
+&lt;h2 id=&#34;direction-le-bureau&#34;&gt;Direction le bureau&lt;/h2&gt;
+&lt;p&gt;Vous utilisez votre bureau et vous avez besoin d&amp;rsquo;y accéder rapidement ? Utilisez le raccourci clavier &lt;strong&gt;{Windows} + d&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;Avec &lt;strong&gt;d&lt;/strong&gt; comme desktop.&lt;/p&gt;
+&lt;h2 id=&#34;bien-déplacer-son-curseur&#34;&gt;Bien déplacer son curseur&lt;/h2&gt;
+&lt;p&gt;Voici une série de raccourcis clavier que j&amp;rsquo;utilise tous les jours, il me permette de me déplacer efficacement partout où une saisie de texte est demandée. Cela fonctionne aussi bien dans les formulaires de votre navigateur web, votre traitement de texte ou votre éditeur de code.&lt;/p&gt;
+&lt;h3 id=&#34;dans-word-et-autres-outils-de-saisie&#34;&gt;Dans Word et autres outils de saisie&lt;/h3&gt;
+&lt;p&gt;Déplacez-vous de mot en mot avec la flèche droite et la flèche gauche en maintenant la touche contrôle enfoncée.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/bien-utiliser-son-clavier/img/001-controle-fleches-droite-gauche.gif&#34;
+	width=&#34;769&#34;
+	height=&#34;62&#34;
+	srcset=&#34;https://blog.ddata.fr/p/bien-utiliser-son-clavier/img/001-controle-fleches-droite-gauche_hu6ade98120fa64230dad5c9c1af7f4937_31921_480x0_resize_box_1.gif 480w, https://blog.ddata.fr/p/bien-utiliser-son-clavier/img/001-controle-fleches-droite-gauche_hu6ade98120fa64230dad5c9c1af7f4937_31921_1024x0_resize_box_1.gif 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Déplacement vers la droite et la gauche avec la touche contrôle enfoncée&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;1240&#34;
+		data-flex-basis=&#34;2976px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Voici 2 autres raccourcie pour ce déplacer efficacement :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;{Control} + {Début} pour aller directement au début du document&lt;/li&gt;
+&lt;li&gt;{Control} + {Fin} pour aller directement au fin du document&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;La touche {Début} ce trouve en général à coté de la touche {Insér.}, elle est représenter par une flèche diagonnal pointant en haut à gauche.&lt;br&gt;
+La touche {Fin} ce trouve en général à coté de la touche {Suppr.}, en général il est écrit &lt;em&gt;Fin&lt;/em&gt; dessus.&lt;/p&gt;
+&lt;h3 id=&#34;dans-excel&#34;&gt;Dans Excel&lt;/h3&gt;
+&lt;p&gt;La touche {Control} avec les flèches de directions permet dans Excel de sauter rapidement entre les cellules non vide. Si vous êtes sur une cellule vide vous allez directement à la prochaine cellule non vide dans la direction choisie. Si vous êtes sur une cellule non vide, vous allez directement à la dernière cellule non vide dans la direction choisi.&lt;/p&gt;
+&lt;h2 id=&#34;sélectionner-précisément-du-texte&#34;&gt;Sélectionner précisément du texte&lt;/h2&gt;
+&lt;h3 id=&#34;dans-word-et-autres-outils-de-saisie-1&#34;&gt;Dans Word et autres outils de saisie&lt;/h3&gt;
+&lt;p&gt;Faites comme pour le déplacement de mot en mot, mais ajoutez la touche {Majuscule} enfoncée.&lt;/p&gt;
+&lt;h3 id=&#34;dans-excel-1&#34;&gt;Dans Excel&lt;/h3&gt;
+&lt;p&gt;Les touches {Majuscule} + {Control} avec les flèches de directions permet dans Excel de sélectionner rapidement des plages de cellules.&lt;/p&gt;
+&lt;h2 id=&#34;mettre-en-commentaire&#34;&gt;Mettre en commentaire&lt;/h2&gt;
+&lt;p&gt;Pas besoin de ce souvenir des symboles utilisés pour faire des commentaires dans les différents langages. Il suffit de connaitre ce raccourcie qui fonctionne dans les outils Microsoft, notamment Power BI, pour l&amp;rsquo;éditeur Power Query et l&amp;rsquo;éditeur DAX, et vscode.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;{Control} + k ; {Control} + c&lt;/li&gt;
+&lt;li&gt;{Control} + k ; {Control} + u&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Moyen mnémotechnique pour s&amp;rsquo;en souvenir : c = comment et u = uncomment.&lt;/p&gt;
+&lt;p&gt;Cette combinaison est efficace mais plus dificile à réalisé car vous devevez réaliser 2 séquence de raccourcie à la suite. La touche {Control} peut être maintenu appuyé ou non entre les 2 séquences.&lt;/p&gt;
+&lt;p&gt;Prenez le temps de vous entrainez à maitriser votre clavier vous pouvez gagner beaucoup de temps et de maitrise.&lt;/p&gt;
+&lt;p&gt;Merci de votre attention.&lt;/p&gt;</description>
+        </item>
+        <item>
         <title>Microsoft Fabric Data Activator, en mode IOT</title>
         <link>https://blog.ddata.fr/p/fabric-data-activator-iot/</link>
         <pubDate>Sun, 09 Jul 2023 00:00:00 +0000</pubDate>
