@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="fr-fr" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Dans cet article je me propose de vous faire découvrir Snowflake et de créer un compte gratuit pour essayer ses fonctionnalités.
+'>
+<meta name="keywords" content="Snowflake, Gratuit, Base"><title>Créer un compte gratuit pour tester Snowflake</title>
+
+<link rel='canonical' href='https://blog.ddata.fr/p/tester-snowflake/'>
+
+<link rel="stylesheet" href="/scss/style.min.5be32ca3f6e1a997c75795c4359147cc6d4fbd34948c0acd51e31d237033978a.css"><meta property='og:title' content='Créer un compte gratuit pour tester Snowflake'>
+<meta property='og:description' content='Dans cet article je me propose de vous faire découvrir Snowflake et de créer un compte gratuit pour essayer ses fonctionnalités.
+'>
+<meta property='og:url' content='https://blog.ddata.fr/p/tester-snowflake/'>
+<meta property='og:site_name' content='Le D de Data'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Intermédiaire' /><meta property='article:tag' content='Auto formation' /><meta property='article:published_time' content='2023-09-17T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2023-09-17T00:00:00&#43;00:00'/><meta property='og:image' content='https://blog.ddata.fr/p/tester-snowflake/nathan-wolfe-rtMiBkMCOsw-unsplash.jpg' />
+<meta name="twitter:title" content="Créer un compte gratuit pour tester Snowflake">
+<meta name="twitter:description" content="Dans cet article je me propose de vous faire découvrir Snowflake et de créer un compte gratuit pour essayer ses fonctionnalités.
+"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://blog.ddata.fr/p/tester-snowflake/nathan-wolfe-rtMiBkMCOsw-unsplash.jpg' />
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TY6XFEN6QV"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-TY6XFEN6QV', { 'anonymize_ip': false });
+}
+</script>
+<link rel="alternate"
+      type="application/rss+xml"
+      href="https://blog.ddata.fr/index.xml"
+      title="Le D de Data">
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "dark");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Afficher le menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/pierre_hua6bbc70dde858dd10e363a14d1f7729c_67951_300x0_resize_q75_box.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Le D de Data</a></h1>
+            <h2 class="site-description">Blog francophone autour de la data Microsoft</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/pierreddata'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://www.linkedin.com/in/pierre-dupont-0b532374/'
+                        target="_blank"
+                        title="LinkdIn"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-folders" width="44" height="44" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <rect x="4" y="4" width="16" height="16" rx="2" />
+  <line x1="8" y1="11" x2="8" y2="16" />
+  <line x1="8" y1="8" x2="8" y2="8.01" />
+  <line x1="12" y1="16" x2="12" y2="11" />
+  <path d="M16 16v-3a2 2 0 0 0 -4 0" />
+</svg>
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Accueil</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/a-propos-de-d-de-data/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>A Propos</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/series/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-folders" width="44" height="44" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 4h3l2 2h5a2 2 0 0 1 2 2v7a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-9a2 2 0 0 1 2 -2" />
+  <path d="M17 17v2a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-9a2 2 0 0 1 2 -2h2" />
+</svg>
+
+                
+                <span>Series</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/liens/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Liens</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Rechercher</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Mode sombre</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table des matières</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#contexte">Contexte</a></li>
+    <li><a href="#les-principaux-concurrents">Les principaux concurrents</a></li>
+    <li><a href="#les-fonctionnalités-de-snowflake-pour-une-data-plateforme">Les fonctionnalités de Snowflake pour une data plateforme</a></li>
+    <li><a href="#créer-un-compte-pour-tester-snowflake">Créer un compte pour tester Snowflake</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/tester-snowflake/">
+                <img src="/p/tester-snowflake/nathan-wolfe-rtMiBkMCOsw-unsplash_hu3d03a01dcc18bc5be0e67db3d8d209a6_1418558_800x0_resize_q75_box.jpg"
+                        srcset="/p/tester-snowflake/nathan-wolfe-rtMiBkMCOsw-unsplash_hu3d03a01dcc18bc5be0e67db3d8d209a6_1418558_800x0_resize_q75_box.jpg 800w, /p/tester-snowflake/nathan-wolfe-rtMiBkMCOsw-unsplash_hu3d03a01dcc18bc5be0e67db3d8d209a6_1418558_1600x0_resize_q75_box.jpg 1600w"
+                        width="800" 
+                        height="533" 
+                        loading="lazy"
+                        alt="Featured image of post Créer un compte gratuit pour tester Snowflake" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/snowflake/" style="background-color: #249edc; color: #fff;">
+                Snowflake
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/tester-snowflake/">Créer un compte gratuit pour tester Snowflake</a>
+        </h2>
+
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published" datetime="2023-09-17T00:00:00Z">
+                    17 septembre 2023
+                    
+                </time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    4 minutes de lecture
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+    
+    
+</div>
+</header>
+
+    <section class="article-content">
+    
+    
+    <p>Dans cet article je me propose de vous faire découvrir Snowflake et de créer un compte gratuit pour essayer ses fonctionnalités.</p>
+<h2 id="contexte">Contexte</h2>
+<p>Qu&rsquo;est-ce que Snowflake ?<br>
+Snowflake est un système de gestion de vos données dans le cloud en mode PaaS.<br>
+Il est adapté pour gérer des données structurées et non structurées.
+Il a la caractéristique d&rsquo;être multi cloud provider, AWS, Azure et GCP peuvent héberger vos projets Snowflake.</p>
+<p>Snwoflake est un outil ayant atteint un bon niveau de maturité, qui peut être le cœur de votre dataplateforme.</p>
+<h2 id="les-principaux-concurrents">Les principaux concurrents</h2>
+<p>Les principaux concurrents de Snowflake sont :</p>
+<ul>
+<li>Redshift chez Amazon.</li>
+<li>Azure Synapse et Microsoft Fabric chez Microsoft.</li>
+<li>BigQuery chez Google.</li>
+<li>Databricks et Spark peuvent aussi être vus comme des compétiteurs.</li>
+</ul>
+<h2 id="les-fonctionnalités-de-snowflake-pour-une-data-plateforme">Les fonctionnalités de Snowflake pour une data plateforme</h2>
+<p>Voici à mon sens les principales fonctionnalités que Snowflake apportera à votre data plateforme :</p>
+<ul>
+<li>Base de données scalable, c&rsquo;est le principal intérêt des bases de données dans le Cloud, elles sont scalable sans limites techniques, par contre la limite financière elle reste bien réelle.</li>
+<li>La séparation de stockage et du calcul permet de ne payer votre moteur de calcul (warehouse) que lorsque vous vous en servez.
+<ul>
+<li>Le multi warehouse, vous permet d&rsquo;avoir autant de moteurs de calcul que nécessaire pour une même base ou plusieurs bases.</li>
+<li>La scalabilité des moteurs de calcul à la demande vous permet de changer la puissance de calcul en fonction de vos besoins.</li>
+</ul>
+</li>
+<li>Le data time travelling vous permet de voir l&rsquo;état de vos données dans le passé.</li>
+<li>Le zéro copy clone, vous permet de cloner un objet, table, schéma ou base de données, instantanément. Cela vous permet de créer vos environnements de développement ou pré production à moindre effort.</li>
+<li>Le paiement à l&rsquo;utilisation permet d&rsquo;avoir une tarification prévisible de vos dépenses.</li>
+<li>Le dynamique data masking vous permet d&rsquo;afficher certaines données masquées totalement ou partiellement en fonction de vos utilisateurs.</li>
+<li>La possibilité de gérer finement la sécurité afin de contrôler qui voit quoi.
+<ul>
+<li>Avec des droits par objet</li>
+<li>Une intégration SSO avec Azure AD</li>
+</ul>
+</li>
+</ul>
+<h2 id="créer-un-compte-pour-tester-snowflake">Créer un compte pour tester Snowflake</h2>
+<p>Pour créer un compte de démonstration Snowflake, il vous suffit d&rsquo;une adresse email, vous pouvez bien sûr créer des adresses de tests, comme par exemple dans un <a class="link" href="https://blog.ddata.fr/p/m365-developer/" >environnement Microsoft 365 gratuit</a>.<br>
+Pensez a <a class="link" href="https://blog.ddata.fr/p/creer-des-personas/" >créer un profil dans votre navigateur</a> si vous utilisez une autre adresse email que votre adresse principale.</p>
+<p>Votre compte gratuit fonctionnera jusqu&rsquo;à l&rsquo;atteinte d&rsquo;une de ces 2 limites :</p>
+<ul>
+<li>Consommation de 400 $.</li>
+<li>Durée de 30 jours.</li>
+</ul>
+<p>Rendez-vous sur <a class="link" href="https://www.snowflake.com/fr/"  target="_blank" rel="noopener"
+    >le site de Snowflake</a>.<br>
+Dans le coin, en haut à droite, sélectionnez <em>commencer gratuitement</em>.</p>
+<p><img src="/p/tester-snowflake/img/001-free-subscription.png"
+	width="1920"
+	height="979"
+	srcset="/p/tester-snowflake/img/001-free-subscription_hua9f49a317900016f38080f9d44c112d2_535013_480x0_resize_box_3.png 480w, /p/tester-snowflake/img/001-free-subscription_hua9f49a317900016f38080f9d44c112d2_535013_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Remplir les informations"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="196"
+		data-flex-basis="470px"
+	
+></p>
+<ol>
+<li>Saisissez les informations demandées.</li>
+<li>Appuyez sur <em>continuer</em> pour passer à l&rsquo;étape suivante.</li>
+</ol>
+<p><img src="/p/tester-snowflake/img/002-free-subscription-step2.png"
+	width="444"
+	height="647"
+	srcset="/p/tester-snowflake/img/002-free-subscription-step2_hu20514b928a27bae646e44acb307fd25d_66888_480x0_resize_box_3.png 480w, /p/tester-snowflake/img/002-free-subscription-step2_hu20514b928a27bae646e44acb307fd25d_66888_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Sélection des caractéristiques du service"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="68"
+		data-flex-basis="164px"
+	
+></p>
+<ol>
+<li>Sélectionner le niveau de service de Snowflake, pour avoir toutes les possibilités listées ci-dessus, le niveau Entreprise est indispensable.</li>
+<li>Sélectionner le cloud provider qui hébergera votre instance de Snowflake. Une fois cette sélection faite, choisissez la région chez le fournisseur dans la liste qui apparait en dessous.</li>
+<li>Validez les conditions générales.</li>
+<li>Appuyez sur <em>démarrer</em> pour passer à l&rsquo;étape suivante.</li>
+</ol>
+<p>Sur les écrans suivants, vous pouvez répondre à un questionnaire ou ignorer les questions.</p>
+<p><img src="/p/tester-snowflake/img/003-free-subscription-final-step.png"
+	width="431"
+	height="545"
+	srcset="/p/tester-snowflake/img/003-free-subscription-final-step_hu1b409f0df059431100733b48b985dfbd_54738_480x0_resize_box_3.png 480w, /p/tester-snowflake/img/003-free-subscription-final-step_hu1b409f0df059431100733b48b985dfbd_54738_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Écran final de l&rsquo;inscription"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="79"
+		data-flex-basis="189px"
+	
+>
+Sur le dernier écran, snowflake vous informe vous avoir envoyer un lien d&rsquo;activation dans votre boite email afin de finaliser l&rsquo;inscription.
+Cliquez sur le lien dans le mail.</p>
+<p>L&rsquo;étape suivante est cruciale, vous allez définir le compte de l&rsquo;administrateur du compte Snowflake. Ne perdez pas ces informations !</p>
+<p><img src="/p/tester-snowflake/img/004-define-admin-user.png"
+	width="504"
+	height="663"
+	srcset="/p/tester-snowflake/img/004-define-admin-user_hu33d5b8c1e059c069f6ab9c40d4671a5d_40488_480x0_resize_box_3.png 480w, /p/tester-snowflake/img/004-define-admin-user_hu33d5b8c1e059c069f6ab9c40d4671a5d_40488_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Création de l&rsquo;administrateur du compte Snowflake"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="76"
+		data-flex-basis="182px"
+	
+></p>
+<ol>
+<li>Donnez le nom d&rsquo;utilisateur</li>
+<li>Choisissez et confirmez un mot de passe fort.</li>
+<li>Appuyez sur <strong>get started</strong>.</li>
+</ol>
+<p><img src="/p/tester-snowflake/img/005-access-snowflake.png"
+	width="1920"
+	height="979"
+	srcset="/p/tester-snowflake/img/005-access-snowflake_hu4e3f8bdb7618f76f9b7b040be8a25c72_79835_480x0_resize_box_3.png 480w, /p/tester-snowflake/img/005-access-snowflake_hu4e3f8bdb7618f76f9b7b040be8a25c72_79835_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Écran d&rsquo;accueil de Snowflake"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="196"
+		data-flex-basis="470px"
+	
+>
+Bravo vous avez créer votre compte Snowflake.<br>
+Prenez le temps de copier l&rsquo;adresse du site dans votre navigateur, car elle contient des informations cruciales. Elle se présente sous la forme :</p>
+<ul>
+<li><a class="link" href="https://app.snowflake.com/XXXXXX/YYYYYY/worksheets"  target="_blank" rel="noopener"
+    >https://app.snowflake.com/XXXXXX/YYYYYY/worksheets</a> oi
+<ul>
+<li>XXXXXX : est votre code d&rsquo;organisation Snowflake.</li>
+<li>YYYYYY : est votre code de compte dans votre organisation.
+Ces codes vous seront utiles par la suite.</li>
+</ul>
+</li>
+</ul>
+<p>Je vous présenterai les bases de Snowflake dans un prochain article.</p>
+<p>Merci de votre attention.</p>
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/interm%C3%A9diaire/">Intermédiaire</a>
+        
+            <a href="/tags/auto-formation/">Auto formation</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Contenus liés</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/fabric-data-activator-iot/">
+        
+        
+            <div class="article-image">
+                <img src="/p/fabric-data-activator-iot/_hu3d03a01dcc18bc5be0e67db3d8d209a6_954281_b54e1636c2aecb2f2c46db3c3147c8fd.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Microsoft Fabric Data Activator, en mode IOT"
+                        data-key="fabric-data-activator-iot" 
+                        data-hash="md5-GDASY&#43;268QG3Ryzqbi7X9A==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Microsoft Fabric Data Activator, en mode IOT</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/fabric-data-activator-power-bi/">
+        
+        
+            <div class="article-image">
+                <img src="/p/fabric-data-activator-power-bi/_hu3d03a01dcc18bc5be0e67db3d8d209a6_384387_72c11e3773f273fdd2ffb5905b8dbc9e.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Microsoft Fabric Data Activator, alertes avancées dans Power BI"
+                        data-key="fabric-data-activator-power-bi" 
+                        data-hash="md5-Aox1e8HOs5bauOn0hmFsnQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Microsoft Fabric Data Activator, alertes avancées dans Power BI</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/power-query-query-folding/">
+        
+        
+            <div class="article-image">
+                <img src="/p/power-query-query-folding/_hu71f8ecb5fe253ecb731b7a50aebe9db7_2962660_2dee3e0ed23eda42528a6e3ccd583688.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Query folding, optimiser vos requêtes Power Query."
+                        data-key="power-query-query-folding" 
+                        data-hash="md5-bM2bc5qNAji5uyQBQ6pBEQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Query folding, optimiser vos requêtes Power Query.</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/fabric-the-match-result/">
+        
+        
+            <div class="article-image">
+                <img src="/p/fabric-the-match-result/_hu3d03a01dcc18bc5be0e67db3d8d209a6_2681829_0245678618a12c641ec659c994145bd8.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Préparation de données avec Microsoft Fabric, les résultats"
+                        data-key="fabric-the-match-result" 
+                        data-hash="md5-&#43;BNXvrNwlWBCP4vC47HGuQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Préparation de données avec Microsoft Fabric, les résultats</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/fabric-the-match-notebook/">
+        
+        
+            <div class="article-image">
+                <img src="/p/fabric-the-match-notebook/_hu3d03a01dcc18bc5be0e67db3d8d209a6_1320955_4bdd8aa2c1b3f94c7a2285cfd22d6a15.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Préparation de données avec Microsoft Fabric, les blocs-notes"
+                        data-key="fabric-the-match-notebook" 
+                        data-hash="md5-t0oYCnGDIcGQX&#43;CQ6yLX2Q==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Préparation de données avec Microsoft Fabric, les blocs-notes</h2>
+        </div>
+    </a>
+</article>
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "ddata" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2022 - 
+        
+        2023 Le D de Data
+    </section>
+    
+    <section class="powerby">
+        Généré avec <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Thème <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.16.0">Stack</a></b> conçu par <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

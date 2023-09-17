@@ -6,7 +6,15 @@
         <description>Recent content in Categories on Le D de Data</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>fr-fr</language>
-        <lastBuildDate>Sun, 09 Jul 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ddata.fr/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sun, 17 Sep 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ddata.fr/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Snowflake</title>
+        <link>https://blog.ddata.fr/categories/snowflake/</link>
+        <pubDate>Sun, 17 Sep 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://blog.ddata.fr/categories/snowflake/</guid>
+        <description>&lt;img src="https://blog.ddata.fr/categories/snowflake/Snowflake250.png" alt="Featured image of post Snowflake" /&gt;</description>
+        </item>
+        <item>
         <title>Microsoft Fabric</title>
         <link>https://blog.ddata.fr/categories/fabric/</link>
         <pubDate>Sun, 09 Jul 2023 00:00:00 +0000</pubDate>

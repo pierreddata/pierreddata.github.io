@@ -6,13 +6,170 @@
         <description>Recent content on Le D de Data</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>fr-fr</language>
-        <lastBuildDate>Thu, 27 Jul 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ddata.fr/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>Un raccourcie clavier peu vous faire gagner beaucoup de temps</title>
+        <lastBuildDate>Sun, 17 Sep 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ddata.fr/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Créer un compte gratuit pour tester Snowflake</title>
+        <link>https://blog.ddata.fr/p/tester-snowflake/</link>
+        <pubDate>Sun, 17 Sep 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://blog.ddata.fr/p/tester-snowflake/</guid>
+        <description>&lt;img src="https://blog.ddata.fr/p/tester-snowflake/nathan-wolfe-rtMiBkMCOsw-unsplash.jpg" alt="Featured image of post Créer un compte gratuit pour tester Snowflake" /&gt;&lt;p&gt;Dans cet article je me propose de vous faire découvrir Snowflake et de créer un compte gratuit pour essayer ses fonctionnalités.&lt;/p&gt;
+&lt;h2 id=&#34;contexte&#34;&gt;Contexte&lt;/h2&gt;
+&lt;p&gt;Qu&amp;rsquo;est-ce que Snowflake ?&lt;br&gt;
+Snowflake est un système de gestion de vos données dans le cloud en mode PaaS.&lt;br&gt;
+Il est adapté pour gérer des données structurées et non structurées.
+Il a la caractéristique d&amp;rsquo;être multi cloud provider, AWS, Azure et GCP peuvent héberger vos projets Snowflake.&lt;/p&gt;
+&lt;p&gt;Snwoflake est un outil ayant atteint un bon niveau de maturité, qui peut être le cœur de votre dataplateforme.&lt;/p&gt;
+&lt;h2 id=&#34;les-principaux-concurrents&#34;&gt;Les principaux concurrents&lt;/h2&gt;
+&lt;p&gt;Les principaux concurrents de Snowflake sont :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Redshift chez Amazon.&lt;/li&gt;
+&lt;li&gt;Azure Synapse et Microsoft Fabric chez Microsoft.&lt;/li&gt;
+&lt;li&gt;BigQuery chez Google.&lt;/li&gt;
+&lt;li&gt;Databricks et Spark peuvent aussi être vus comme des compétiteurs.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;les-fonctionnalités-de-snowflake-pour-une-data-plateforme&#34;&gt;Les fonctionnalités de Snowflake pour une data plateforme&lt;/h2&gt;
+&lt;p&gt;Voici à mon sens les principales fonctionnalités que Snowflake apportera à votre data plateforme :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Base de données scalable, c&amp;rsquo;est le principal intérêt des bases de données dans le Cloud, elles sont scalable sans limites techniques, par contre la limite financière elle reste bien réelle.&lt;/li&gt;
+&lt;li&gt;La séparation de stockage et du calcul permet de ne payer votre moteur de calcul (warehouse) que lorsque vous vous en servez.
+&lt;ul&gt;
+&lt;li&gt;Le multi warehouse, vous permet d&amp;rsquo;avoir autant de moteurs de calcul que nécessaire pour une même base ou plusieurs bases.&lt;/li&gt;
+&lt;li&gt;La scalabilité des moteurs de calcul à la demande vous permet de changer la puissance de calcul en fonction de vos besoins.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Le data time travelling vous permet de voir l&amp;rsquo;état de vos données dans le passé.&lt;/li&gt;
+&lt;li&gt;Le zéro copy clone, vous permet de cloner un objet, table, schéma ou base de données, instantanément. Cela vous permet de créer vos environnements de développement ou pré production à moindre effort.&lt;/li&gt;
+&lt;li&gt;Le paiement à l&amp;rsquo;utilisation permet d&amp;rsquo;avoir une tarification prévisible de vos dépenses.&lt;/li&gt;
+&lt;li&gt;Le dynamique data masking vous permet d&amp;rsquo;afficher certaines données masquées totalement ou partiellement en fonction de vos utilisateurs.&lt;/li&gt;
+&lt;li&gt;La possibilité de gérer finement la sécurité afin de contrôler qui voit quoi.
+&lt;ul&gt;
+&lt;li&gt;Avec des droits par objet&lt;/li&gt;
+&lt;li&gt;Une intégration SSO avec Azure AD&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;créer-un-compte-pour-tester-snowflake&#34;&gt;Créer un compte pour tester Snowflake&lt;/h2&gt;
+&lt;p&gt;Pour créer un compte de démonstration Snowflake, il vous suffit d&amp;rsquo;une adresse email, vous pouvez bien sûr créer des adresses de tests, comme par exemple dans un &lt;a class=&#34;link&#34; href=&#34;https://blog.ddata.fr/p/m365-developer/&#34; &gt;environnement Microsoft 365 gratuit&lt;/a&gt;.&lt;br&gt;
+Pensez a &lt;a class=&#34;link&#34; href=&#34;https://blog.ddata.fr/p/creer-des-personas/&#34; &gt;créer un profil dans votre navigateur&lt;/a&gt; si vous utilisez une autre adresse email que votre adresse principale.&lt;/p&gt;
+&lt;p&gt;Votre compte gratuit fonctionnera jusqu&amp;rsquo;à l&amp;rsquo;atteinte d&amp;rsquo;une de ces 2 limites :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Consommation de 400 $.&lt;/li&gt;
+&lt;li&gt;Durée de 30 jours.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Rendez-vous sur &lt;a class=&#34;link&#34; href=&#34;https://www.snowflake.com/fr/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;le site de Snowflake&lt;/a&gt;.&lt;br&gt;
+Dans le coin, en haut à droite, sélectionnez &lt;em&gt;commencer gratuitement&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/tester-snowflake/img/001-free-subscription.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;979&#34;
+	srcset=&#34;https://blog.ddata.fr/p/tester-snowflake/img/001-free-subscription_hua9f49a317900016f38080f9d44c112d2_535013_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/tester-snowflake/img/001-free-subscription_hua9f49a317900016f38080f9d44c112d2_535013_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Remplir les informations&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;196&#34;
+		data-flex-basis=&#34;470px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Saisissez les informations demandées.&lt;/li&gt;
+&lt;li&gt;Appuyez sur &lt;em&gt;continuer&lt;/em&gt; pour passer à l&amp;rsquo;étape suivante.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/tester-snowflake/img/002-free-subscription-step2.png&#34;
+	width=&#34;444&#34;
+	height=&#34;647&#34;
+	srcset=&#34;https://blog.ddata.fr/p/tester-snowflake/img/002-free-subscription-step2_hu20514b928a27bae646e44acb307fd25d_66888_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/tester-snowflake/img/002-free-subscription-step2_hu20514b928a27bae646e44acb307fd25d_66888_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Sélection des caractéristiques du service&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;68&#34;
+		data-flex-basis=&#34;164px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Sélectionner le niveau de service de Snowflake, pour avoir toutes les possibilités listées ci-dessus, le niveau Entreprise est indispensable.&lt;/li&gt;
+&lt;li&gt;Sélectionner le cloud provider qui hébergera votre instance de Snowflake. Une fois cette sélection faite, choisissez la région chez le fournisseur dans la liste qui apparait en dessous.&lt;/li&gt;
+&lt;li&gt;Validez les conditions générales.&lt;/li&gt;
+&lt;li&gt;Appuyez sur &lt;em&gt;démarrer&lt;/em&gt; pour passer à l&amp;rsquo;étape suivante.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Sur les écrans suivants, vous pouvez répondre à un questionnaire ou ignorer les questions.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/tester-snowflake/img/003-free-subscription-final-step.png&#34;
+	width=&#34;431&#34;
+	height=&#34;545&#34;
+	srcset=&#34;https://blog.ddata.fr/p/tester-snowflake/img/003-free-subscription-final-step_hu1b409f0df059431100733b48b985dfbd_54738_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/tester-snowflake/img/003-free-subscription-final-step_hu1b409f0df059431100733b48b985dfbd_54738_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Écran final de l&amp;rsquo;inscription&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;79&#34;
+		data-flex-basis=&#34;189px&#34;
+	
+&gt;
+Sur le dernier écran, snowflake vous informe vous avoir envoyer un lien d&amp;rsquo;activation dans votre boite email afin de finaliser l&amp;rsquo;inscription.
+Cliquez sur le lien dans le mail.&lt;/p&gt;
+&lt;p&gt;L&amp;rsquo;étape suivante est cruciale, vous allez définir le compte de l&amp;rsquo;administrateur du compte Snowflake. Ne perdez pas ces informations !&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/tester-snowflake/img/004-define-admin-user.png&#34;
+	width=&#34;504&#34;
+	height=&#34;663&#34;
+	srcset=&#34;https://blog.ddata.fr/p/tester-snowflake/img/004-define-admin-user_hu33d5b8c1e059c069f6ab9c40d4671a5d_40488_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/tester-snowflake/img/004-define-admin-user_hu33d5b8c1e059c069f6ab9c40d4671a5d_40488_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Création de l&amp;rsquo;administrateur du compte Snowflake&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;76&#34;
+		data-flex-basis=&#34;182px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Donnez le nom d&amp;rsquo;utilisateur&lt;/li&gt;
+&lt;li&gt;Choisissez et confirmez un mot de passe fort.&lt;/li&gt;
+&lt;li&gt;Appuyez sur &lt;strong&gt;get started&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/tester-snowflake/img/005-access-snowflake.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;979&#34;
+	srcset=&#34;https://blog.ddata.fr/p/tester-snowflake/img/005-access-snowflake_hu4e3f8bdb7618f76f9b7b040be8a25c72_79835_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/tester-snowflake/img/005-access-snowflake_hu4e3f8bdb7618f76f9b7b040be8a25c72_79835_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Écran d&amp;rsquo;accueil de Snowflake&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;196&#34;
+		data-flex-basis=&#34;470px&#34;
+	
+&gt;
+Bravo vous avez créer votre compte Snowflake.&lt;br&gt;
+Prenez le temps de copier l&amp;rsquo;adresse du site dans votre navigateur, car elle contient des informations cruciales. Elle se présente sous la forme :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://app.snowflake.com/XXXXXX/YYYYYY/worksheets&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://app.snowflake.com/XXXXXX/YYYYYY/worksheets&lt;/a&gt; oi
+&lt;ul&gt;
+&lt;li&gt;XXXXXX : est votre code d&amp;rsquo;organisation Snowflake.&lt;/li&gt;
+&lt;li&gt;YYYYYY : est votre code de compte dans votre organisation.
+Ces codes vous seront utiles par la suite.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Je vous présenterai les bases de Snowflake dans un prochain article.&lt;/p&gt;
+&lt;p&gt;Merci de votre attention.&lt;/p&gt;</description>
+        </item>
+        <item>
+        <title>Un raccourci clavier peu vous faire gagner beaucoup de temps</title>
         <link>https://blog.ddata.fr/p/bien-utiliser-son-clavier/</link>
         <pubDate>Thu, 27 Jul 2023 00:00:00 +0000</pubDate>
         
         <guid>https://blog.ddata.fr/p/bien-utiliser-son-clavier/</guid>
-        <description>&lt;img src="https://blog.ddata.fr/p/bien-utiliser-son-clavier/girl-with-red-hat-gL3-jTs_Q7g-unsplash.jpg" alt="Featured image of post Un raccourcie clavier peu vous faire gagner beaucoup de temps" /&gt;&lt;p&gt;Connaissez-vous ces quelques raccourcis clavier très utiles ?&lt;/p&gt;
+        <description>&lt;img src="https://blog.ddata.fr/p/bien-utiliser-son-clavier/girl-with-red-hat-gL3-jTs_Q7g-unsplash.jpg" alt="Featured image of post Un raccourci clavier peu vous faire gagner beaucoup de temps" /&gt;&lt;p&gt;Connaissez-vous ces quelques raccourcis clavier très utiles ?&lt;/p&gt;
 &lt;h2 id=&#34;contexte&#34;&gt;Contexte&lt;/h2&gt;
 &lt;p&gt;Lorsque j&amp;rsquo;observe les utilisateurs en informatique, je constate fréquemment que la connaissance de quelques raccourcis clavier pourrait leur faire gagner du temps et de la maitrise.&lt;br&gt;
 Je vous propose de vous présenter ici ce qui me semble le plus important dans l&amp;rsquo;écosystème Microsoft Windows.&lt;br&gt;
