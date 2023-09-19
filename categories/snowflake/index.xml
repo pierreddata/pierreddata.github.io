@@ -6,7 +6,122 @@
         <description>Recent content in Snowflake on Le D de Data</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>fr-fr</language>
-        <lastBuildDate>Sun, 17 Sep 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ddata.fr/categories/snowflake/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Tue, 19 Sep 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ddata.fr/categories/snowflake/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Les bases pour utiliser Snowflake</title>
+        <link>https://blog.ddata.fr/p/snowflake-les-bases/</link>
+        <pubDate>Tue, 19 Sep 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://blog.ddata.fr/p/snowflake-les-bases/</guid>
+        <description>&lt;img src="https://blog.ddata.fr/p/snowflake-les-bases/damian-mccoig-2HqpqSqy0zg-unsplash.jpg" alt="Featured image of post Les bases pour utiliser Snowflake" /&gt;&lt;p&gt;Quelles sont les notions de base à comprendre quand on débute avec Snowflake ?&lt;/p&gt;
+&lt;h2 id=&#34;contexte&#34;&gt;Contexte&lt;/h2&gt;
+&lt;p&gt;Vous venez de créer votre compte Snowflake.&lt;br&gt;
+Je vous propose de faire le tour du propriétaire afin de comprendre les grands principes qui vous permettront de l&amp;rsquo;utiliser.&lt;/p&gt;
+&lt;p&gt;Un focus sur la sécurité sera fait dans un prochain article.&lt;/p&gt;
+&lt;h2 id=&#34;les-adresses-de-connexion&#34;&gt;Les adresses de connexion&lt;/h2&gt;
+&lt;p&gt;La première chose à comprendre dans Snowflake est l&amp;rsquo;adresse de connexion, déjà cela vous sera utile pour vous connecter 🤡 mais elle est pleine d&amp;rsquo;information utile pour comprendre la structure de snowflake.&lt;/p&gt;
+&lt;p&gt;Pour vous connecter à l&amp;rsquo;interface de Snowflake vous utiliserez une adresse sous la forme suivante :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://app.snowflake.com/XXXXXX/YYYYYY/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://app.snowflake.com/XXXXXX/YYYYYY/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://XXXXXX-YYYYYY.snowflakecomputing.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://XXXXXX-YYYYYY.snowflakecomputing.com/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;XXXXXX est votre code d&amp;rsquo;organisation Snowflake.&lt;br&gt;
+YYYYYY est votre code de compte dans votre organisation.&lt;/p&gt;
+&lt;p&gt;Vous pouvez avoir plusieurs comptes au sein d&amp;rsquo;une même organisation, même avec la version d&amp;rsquo;essai.&lt;/p&gt;
+&lt;p&gt;Un compte représente une combinaison unique par les choix suivants :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Le cloud provider
+&lt;ul&gt;
+&lt;li&gt;AWS&lt;/li&gt;
+&lt;li&gt;Azure&lt;/li&gt;
+&lt;li&gt;GCP&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;La région dans le cloud provider&lt;/li&gt;
+&lt;li&gt;Un niveau de service Snowflake
+&lt;ul&gt;
+&lt;li&gt;Standard&lt;/li&gt;
+&lt;li&gt;Entreprise&lt;/li&gt;
+&lt;li&gt;Business critical&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Pour chacune de ces combinaisons, Snowflake vous donne le prix d&amp;rsquo;un crédit. Cette notion de crédit sera expliquée ci-dessous, avec les warehouses.&lt;/p&gt;
+&lt;h2 id=&#34;linterface-utilisateur&#34;&gt;L&amp;rsquo;interface utilisateur&lt;/h2&gt;
+&lt;p&gt;Lors de votre première connexion, vous arrivez sur une interface tel que celle-ci dessous :&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/snowflake-les-bases/img/001-snowflake-user-interface.png&#34;
+	width=&#34;1658&#34;
+	height=&#34;883&#34;
+	srcset=&#34;https://blog.ddata.fr/p/snowflake-les-bases/img/001-snowflake-user-interface_hu4fd8ebcfcdf6df9be0e918f6e6cc2324_74346_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/snowflake-les-bases/img/001-snowflake-user-interface_hu4fd8ebcfcdf6df9be0e918f6e6cc2324_74346_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Interface utilisateur de Snowflake&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;187&#34;
+		data-flex-basis=&#34;450px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Ici vous pourrez changer de rôle, voir votre profil et vous déconnecter.&lt;/li&gt;
+&lt;li&gt;Ici vous trouverez les informations relatives au compte en cours.&lt;/li&gt;
+&lt;li&gt;Vous pouvez voir le temps restant de votre période d&amp;rsquo;évaluation.&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Worksheets&lt;/em&gt; vous permet de ranger vos scripts SQL et Python.&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Data&lt;/em&gt; vous permet de voir les bases de données.&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Activity&lt;/em&gt; vous permet de monitor l&amp;rsquo;activité, notamment l&amp;rsquo;historique des requêtes.&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Admin&lt;/em&gt; vous permet de gérer les objets administratifs comme :
+&lt;ul&gt;
+&lt;li&gt;La consommation financière de votre Snowflake dans &lt;em&gt;Usage&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Les warehouses&lt;/li&gt;
+&lt;li&gt;Les utilisateurs et les rôles&lt;/li&gt;
+&lt;li&gt;les comptent&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;les-objets-snowflake&#34;&gt;Les objets Snowflake&lt;/h2&gt;
+&lt;p&gt;Snowflake est composé de 2 principaux objets, les bases et les warehouses.&lt;/p&gt;
+&lt;p&gt;Nous sommes dans une architecture où le stockage et le calcul sont décorrélés, les bases représentent l&amp;rsquo;endroit où résideront vos données et les warehouse sont les puissances de calcul permettant de traiter vos données.&lt;br&gt;
+Il n&amp;rsquo;y a pas de contraintes entre les 2, un warehouse peut traiter différentes bases et une base peut être consommée par différents wwarehouses.&lt;/p&gt;
+&lt;h3 id=&#34;warehouse&#34;&gt;Warehouse&lt;/h3&gt;
+&lt;p&gt;Un warehouse est un moteur de calcul qui peut être utilisé pour requêter une ou plusieurs bases.&lt;/p&gt;
+&lt;p&gt;Un warehouse est facturé à la seconde à partir de la première minute consommée. Vous payez donc au minimum 60 secondes de warehouse.&lt;br&gt;
+Un warehouse ne vous coute rien quand il est suspendu et peut être autosuspendu en cas de non-sollicitations. Attention le processus d&amp;rsquo;autosuspension passe une fois par minute, donc un auto suspend inférieure à une minute ne sera peut être pas pris en compte correctement.&lt;/p&gt;
+&lt;p&gt;Il existe différentes tailles de warehouse avec la même notation que la taille de t-shirt allant du XS au 4-XL, voir 6-XL sur demande.&lt;br&gt;
+Un warehouse XS consomme un crédit par heure de traitement.&lt;br&gt;
+Lorsque l&amp;rsquo;on passe à la taille au-dessus, on double la capacité de calcul et on double la consommation de crédits.&lt;br&gt;
+Vous pouvez changer la taille d&amp;rsquo;un warehouse après sa création.&lt;/p&gt;
+&lt;p&gt;Le prix du crédit dépend du cloud provider et du niveau de service Snowflake attendu.&lt;/p&gt;
+&lt;h3 id=&#34;base&#34;&gt;Base&lt;/h3&gt;
+&lt;p&gt;Les bases sont le lieu de stockage de vos données. Snowflake vous facture l&amp;rsquo;espace disque consommé par ces dernières indépendamment des traitements réalisés dessus.
+L&amp;rsquo;organisation des bases est la même que celui des bases de données relationnelles classiques, la hiérarchie des objets est donc la suivante :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Base
+&lt;ul&gt;
+&lt;li&gt;Schéma
+&lt;ul&gt;
+&lt;li&gt;Table
+&lt;ul&gt;
+&lt;li&gt;Données&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Pour mettre en place une architecture de type médaillon avec une approche Data Mesh dans Snowflake, vous pouvez donc créer 3 bases :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Bronze&lt;/li&gt;
+&lt;li&gt;Silver&lt;/li&gt;
+&lt;li&gt;Gold&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Et dans chacune des bases, créez un schéma par data product.&lt;br&gt;
+La sécurité que nous verrons plus tard vous permettra de rendre étanches les éléments en fonctions de vos besoins.&lt;/p&gt;
+&lt;p&gt;Merci de votre attention.&lt;/p&gt;</description>
+        </item>
+        <item>
         <title>Créer un compte gratuit pour tester Snowflake</title>
         <link>https://blog.ddata.fr/p/tester-snowflake/</link>
         <pubDate>Sun, 17 Sep 2023 00:00:00 +0000</pubDate>
@@ -151,8 +266,8 @@ Cliquez sur le lien dans le mail.&lt;/p&gt;
 Bravo vous avez créer votre compte Snowflake.&lt;br&gt;
 Prenez le temps de copier l&amp;rsquo;adresse du site dans votre navigateur, car elle contient des informations cruciales. Elle se présente sous la forme :&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://app.snowflake.com/XXXXXX/YYYYYY/worksheets&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;https://app.snowflake.com/XXXXXX/YYYYYY/worksheets&lt;/a&gt; oi
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://app.snowflake.com/XXXXXX/YYYYYY/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://app.snowflake.com/XXXXXX/YYYYYY/&lt;/a&gt;
 &lt;ul&gt;
 &lt;li&gt;XXXXXX : est votre code d&amp;rsquo;organisation Snowflake.&lt;/li&gt;
 &lt;li&gt;YYYYYY : est votre code de compte dans votre organisation.
@@ -160,7 +275,7 @@ Ces codes vous seront utiles par la suite.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;Je vous présenterai les bases de Snowflake dans un prochain article.&lt;/p&gt;
+&lt;p&gt;Je vous présente &lt;a class=&#34;link&#34; href=&#34;https://blog.ddata.fr/p/snowflake-les-bases/&#34; &gt;les bases de Snowflake dans cet prochain article&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Merci de votre attention.&lt;/p&gt;</description>
         </item>
         
