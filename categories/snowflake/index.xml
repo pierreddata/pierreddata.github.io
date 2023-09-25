@@ -6,7 +6,136 @@
         <description>Recent content in Snowflake on Le D de Data</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>fr-fr</language>
-        <lastBuildDate>Tue, 19 Sep 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ddata.fr/categories/snowflake/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Mon, 25 Sep 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ddata.fr/categories/snowflake/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Les bases de la sécurité dans Snowflake</title>
+        <link>https://blog.ddata.fr/p/snowflake-la-securite/</link>
+        <pubDate>Mon, 25 Sep 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://blog.ddata.fr/p/snowflake-la-securite/</guid>
+        <description>&lt;img src="https://blog.ddata.fr/p/snowflake-la-securite/john-salvino-bqGBbLq_yfc-unsplash.jpg" alt="Featured image of post Les bases de la sécurité dans Snowflake" /&gt;&lt;p&gt;Quelles sont les notions de sécurité à comprendre quand on débute avec Snowflake ?&lt;/p&gt;
+&lt;h2 id=&#34;contexte&#34;&gt;Contexte&lt;/h2&gt;
+&lt;p&gt;Snowflake est un outil disponible via Internet, vous devez donc vous préoccuper de sa sécurisation avec la plus grande attention.
+En termes de sécurité, nous allons aborder les 2 éléments importants :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Les accès à l&amp;rsquo;outil avec les moyens de protéger les connexions.&lt;/li&gt;
+&lt;li&gt;Les accès dans l&amp;rsquo;outil avec les moyens de protéger les données.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;security-by-design&#34;&gt;Security By Design&lt;/h2&gt;
+&lt;p&gt;Ce terme désigne le fait de définir le fonctionnement de sa sécurité &lt;strong&gt;AVANT&lt;/strong&gt; de faire entrer les premières données dans le système.
+C&amp;rsquo;est une &lt;strong&gt;très bonne pratique&lt;/strong&gt; si on souhaite avoir un système protégé. Dans le cas contraire si vous laissez vos utilisateurs avoir tous les droits et tout voir dès le début la mise en place des moyens permettant de garantir un bon niveau de sécurité de vos données et une liberté de travail suffisante pour vos utilisateurs sera très douloureuse à mettre en place à postériori.&lt;/p&gt;
+&lt;p&gt;Le design de votre sécurité doit être adapté à vos besoins et à vos risques, le seul conseil que l&amp;rsquo;on pourrait appliquer à chacun est le principe de moindre privilège. Ne donner à chacun que les droits dont ils ont besoin et pas plus.&lt;/p&gt;
+&lt;p&gt;Les administrateurs sont les principaux concernés par ce principe. Par exemple une personne ayant un rôle d&amp;rsquo;analyste et d&amp;rsquo;administrateur de la plate-forme aura tout intérêt à avoir 2 comptes distincts afin de se protéger notamment des erreurs de manipulation, plus fréquentes que les vols d&amp;rsquo;identifiants.&lt;/p&gt;
+&lt;h2 id=&#34;les-connexions&#34;&gt;Les connexions&lt;/h2&gt;
+&lt;p&gt;Quand on parle de connexion à un outil, il faut en général prendre en compte 2 types de connexion&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Les connexions faites par des humains qui peuvent interagir avec l&amp;rsquo;interface.&lt;/li&gt;
+&lt;li&gt;Les connexions faites par des programmes qui doivent se faire sans interactions.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Un autre élément important à prendre en compte est le provisionnement des comptes, mais aussi le décommissionnement. En effet, mieux vaut créer les comptes de manière automatisés afin d&amp;rsquo;éviter des erreurs humaines, mais aussi prévoir dès le départ comment gérer les départs de vos utilisateurs.&lt;/p&gt;
+&lt;h3 id=&#34;mode-de-connexion&#34;&gt;Mode de connexion&lt;/h3&gt;
+&lt;p&gt;Snowflake propose plusieurs modes d&amp;rsquo;authentification pour vos comptes parmi lesquelles je retiendrais :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Le classique &lt;em&gt;Login / Mot de passe&lt;/em&gt;
+&lt;ul&gt;
+&lt;li&gt;Utilisable par un humain ou un programme&lt;/li&gt;
+&lt;li&gt;Devra être décomissionné en plus de votre stratégie actuelle de décommisionement de compte d&amp;rsquo;entreprise.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Le &lt;em&gt;SSO&lt;/em&gt; avec Entra Id (ex Azure AD)
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://learn.microsoft.com/fr-fr/azure/active-directory/saas-apps/snowflake-tutorial&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Facile à mettre en place,&lt;/a&gt; mais utilisable seulement par un humain, car cela ne prend pas en charge les principaux de service.&lt;/li&gt;
+&lt;li&gt;Un &lt;a class=&#34;link&#34; href=&#34;https://learn.microsoft.com/en-us/azure/active-directory/saas-apps/snowflake-provisioning-tutorial&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;autoprovisionning des comptes&lt;/a&gt; peut être mis en place depuis votre Entra ID.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;La clé &lt;em&gt;RSA&lt;/em&gt;, permettant de ce connecter via un système clé publique/clé privée très robuste.
+&lt;ul&gt;
+&lt;li&gt;Utilisable par un programme&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;La mise en place du SSO avec Entra Id ou Okta me semble un prérequis si vous utilisez déjà ces services.&lt;br&gt;
+Pour Entra ID vous pouvez faire des tests pour vérifier la faisabilité et vous rassurez, en créant &lt;a class=&#34;link&#34; href=&#34;https://blog.ddata.fr/p/m365-developer/&#34; &gt;un compte de test gratuit Microsoft 365 pour Entra ID&lt;/a&gt; et &lt;a class=&#34;link&#34; href=&#34;https://blog.ddata.fr/p/tester-snowflake/&#34; &gt;un compte gratuit Snowflake&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Pour les programmes, utilisez de préférence une clé RSA quand c&amp;rsquo;est possible.&lt;/p&gt;
+&lt;h3 id=&#34;attention-aux-cumuls-des-authentifications&#34;&gt;Attention aux cumuls des authentifications&lt;/h3&gt;
+&lt;p&gt;Les modes d&amp;rsquo;authentification peuvent être cumulés.
+Vous pouvez par exemple paramétré un login/mot de passe et une clé RSA. Je pense que ce genre de pratique doit être évité, car cela représente 2 modes d&amp;rsquo;attaque cumulables.
+Une clé RSA seule ou un mot de passe fort (plus de 15 caractères en 2023) sont préférables.&lt;/p&gt;
+&lt;h2 id=&#34;les-rôles&#34;&gt;Les rôles&lt;/h2&gt;
+&lt;p&gt;Quand on parle de sécurisation des objets Snowflake, on parle de rôle. En effet les droits sont affectables &lt;strong&gt;seulement&lt;/strong&gt; à des rôles.
+Ensuite vous pouvez affecter un rôle à un autre rôle afin de cumuler des droits basiques.
+Enfin vous pourrez affecter un ou plusieurs rôles à vos utilisateurs afin de leur donner des droits.&lt;/p&gt;
+&lt;p&gt;Vous trouverez tous les détails dans la documentation officielle &lt;a class=&#34;link&#34; href=&#34;https://docs.snowflake.com/fr/user-guide/security-access-control-overview&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Aperçu du contrôle d’accès&lt;/a&gt;.&lt;/p&gt;
+&lt;h3 id=&#34;les-rôles-spéciaux&#34;&gt;Les rôles spéciaux&lt;/h3&gt;
+&lt;p&gt;En fonction des tâches que vous réalisez, choisissez le bon rôle :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;SECURITYADMIN : Pour toutes les tâches d&amp;rsquo;affectation de droits.&lt;/li&gt;
+&lt;li&gt;USERADMIN : Pour toutes les tâches de création d&amp;rsquo;utilisateurs et de rôles.&lt;/li&gt;
+&lt;li&gt;SYSADMIN : Pour toutes les opérations de création d&amp;rsquo;objets liés aux données (bases, warehouse, &amp;hellip;).&lt;/li&gt;
+&lt;li&gt;ACCOUNTADMIN : À utiliser dans les rares exceptions où vous avez besoin de droits de très haut niveau.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Comme dans la vie, il est important de se mettre dans le bon rôle en fonction de ce que l&amp;rsquo;on veut faire.&lt;/p&gt;
+&lt;p&gt;Les rôles spéciaux sont à réserver aux tâches d&amp;rsquo;administration de la plate-forme, pour gérer les accès de vos utilisateurs, créer des rôles adaptés à leurs besoins.&lt;/p&gt;
+&lt;h3 id=&#34;donner-des-droits&#34;&gt;Donner des droits&lt;/h3&gt;
+&lt;p&gt;Pour donner des droits sur un objet dans Snowflake, on utilisera la commande SQL GRANT et on utilisera REVOKE pour supprimer un droit.
+Chaque type d&amp;rsquo;objet dans Snowflake possède sa panoplie de droit, par exemple pour une table vous pouvez donner les droits suivants :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;DELETE : Permets de supprimer des lignes.&lt;/li&gt;
+&lt;li&gt;INSERT : Permets d&amp;rsquo;ajouter des lignes.&lt;/li&gt;
+&lt;li&gt;REFERENCES : Permets de référencer la table quand vous partagez une vue sécurisée.&lt;/li&gt;
+&lt;li&gt;SELECT : Permets de lire les lignes de la table.&lt;/li&gt;
+&lt;li&gt;TRUNCATE : Permets de vider la table.&lt;/li&gt;
+&lt;li&gt;UPDATE : Permets de mettre à jour une ligne.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;pas-dhéritage&#34;&gt;Pas d&amp;rsquo;héritage&lt;/h3&gt;
+&lt;p&gt;Dans Snowflake il n&amp;rsquo;y a pas de notion d&amp;rsquo;héritage implicite d&amp;rsquo;un objet parent vers un objet enfant. Par exemple votre rôle peut avoir le ownership d&amp;rsquo;une base de données, mais pas pour autant le droit de lecture sur une table.
+Pour avoir des droits sur un objet, il y a donc 2 possibilités :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Avoir le droit ownership de l&amp;rsquo;objet, un seul rôle peut avoir ce droit.&lt;/li&gt;
+&lt;li&gt;Avoir un droit explicitement donné par un GRANT sur l&amp;rsquo;objet.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;créer-vos-propres-rôles&#34;&gt;Créer vos propres rôles&lt;/h3&gt;
+&lt;p&gt;Afin de maitriser la sécurité de Snowflake, vous devrez réfléchir à une stratégie de rôles personnalisée permettant à vos équipes de travailler sans trop leur donner de droits pour autant.&lt;/p&gt;
+&lt;p&gt;Par exemple si vous voulez donner au rôle &lt;em&gt;MON_ROLE&lt;/em&gt; le droit de lire la table &lt;em&gt;MA_TABLE&lt;/em&gt; du schéma &lt;em&gt;MON_SCHEMA&lt;/em&gt; de la base &lt;em&gt;MA_BASE&lt;/em&gt; vous devrez procéder de la manière suivante :&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;-- Création du rôle MON_ROLE
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;CREATE&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;ROLE&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;IF&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;NOT&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;EXISTS&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;MON_ROLE&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;-- On affecte le rôle MON_ROLE au rôle SYSADMIN
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;GRANT&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;ROLE&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;MON_ROLE&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;TO&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;ROLE&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;SYSADMIN&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;-- On donne à MON_ROLE le droit d&amp;#39;accéder au warehouse MON_WARHOUSE
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;GRANT&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;USAGE&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;ON&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;WAREHOUSE&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;MON_WARHOUSE&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;TO&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;ROLE&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;MON_ROLE&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;-- On donne à MON_ROLE le droit d&amp;#39;accéder à la base MA_BASE
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;GRANT&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;USAGE&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;ON&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;DATABASE&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;MA_BASE&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;TO&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;ROLE&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;MON_ROLE&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;-- On donne à MON_ROLE le droit d&amp;#39;accéder au schéma MON_SCHEMA
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;GRANT&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;USAGE&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;ON&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;SCHEMA&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;MON_SCHEMA&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;TO&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;ROLE&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;MON_ROLE&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;-- On donne à MON_ROLE le droit de lire la table MA_TABLE
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;GRANT&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;SELECT&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;ON&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;TABLE&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;MA_TABLE&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;TO&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;ROLE&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;MON_ROLE&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;-- Maintenant MON_ROLE peut faire la requête : SELECT * FROM MA_TABLE;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Il existe bien sûr des commandes pour vous aidez à aller vite et vous permettre de donner tous les droits d&amp;rsquo;un coup (GRANT ALL PRIVILEGES) ou sur les futurs schémas d&amp;rsquo;une base ou les futures tables d&amp;rsquo;un schéma.&lt;br&gt;
+Bien sûr donner des droits massivement peut créer des failles massivement.&lt;/p&gt;
+&lt;p&gt;Merci de votre attention.&lt;/p&gt;</description>
+        </item>
+        <item>
         <title>Les bases pour utiliser Snowflake</title>
         <link>https://blog.ddata.fr/p/snowflake-les-bases/</link>
         <pubDate>Tue, 19 Sep 2023 00:00:00 +0000</pubDate>

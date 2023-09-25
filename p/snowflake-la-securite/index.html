@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="fr-fr" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Quelles sont les notions de sécurité à comprendre quand on débute avec Snowflake ?
+'>
+<meta name="keywords" content="Snowflake, Sécurité, Roles, Users"><title>Les bases de la sécurité dans Snowflake</title>
+
+<link rel='canonical' href='https://blog.ddata.fr/p/snowflake-la-securite/'>
+
+<link rel="stylesheet" href="/scss/style.min.5be32ca3f6e1a997c75795c4359147cc6d4fbd34948c0acd51e31d237033978a.css"><meta property='og:title' content='Les bases de la sécurité dans Snowflake'>
+<meta property='og:description' content='Quelles sont les notions de sécurité à comprendre quand on débute avec Snowflake ?
+'>
+<meta property='og:url' content='https://blog.ddata.fr/p/snowflake-la-securite/'>
+<meta property='og:site_name' content='Le D de Data'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Intermédiaire' /><meta property='article:tag' content='Auto formation' /><meta property='article:published_time' content='2023-09-25T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2023-09-25T00:00:00&#43;00:00'/><meta property='og:image' content='https://blog.ddata.fr/p/snowflake-la-securite/john-salvino-bqGBbLq_yfc-unsplash.jpg' />
+<meta name="twitter:title" content="Les bases de la sécurité dans Snowflake">
+<meta name="twitter:description" content="Quelles sont les notions de sécurité à comprendre quand on débute avec Snowflake ?
+"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://blog.ddata.fr/p/snowflake-la-securite/john-salvino-bqGBbLq_yfc-unsplash.jpg' />
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TY6XFEN6QV"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-TY6XFEN6QV', { 'anonymize_ip': false });
+}
+</script>
+<link rel="alternate"
+      type="application/rss+xml"
+      href="https://blog.ddata.fr/index.xml"
+      title="Le D de Data">
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "dark");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Afficher le menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/pierre_hua6bbc70dde858dd10e363a14d1f7729c_67951_300x0_resize_q75_box.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Le D de Data</a></h1>
+            <h2 class="site-description">Blog francophone autour de la data Microsoft</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/pierreddata'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://www.linkedin.com/in/pierre-dupont-0b532374/'
+                        target="_blank"
+                        title="LinkdIn"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-folders" width="44" height="44" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <rect x="4" y="4" width="16" height="16" rx="2" />
+  <line x1="8" y1="11" x2="8" y2="16" />
+  <line x1="8" y1="8" x2="8" y2="8.01" />
+  <line x1="12" y1="16" x2="12" y2="11" />
+  <path d="M16 16v-3a2 2 0 0 0 -4 0" />
+</svg>
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Accueil</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/a-propos-de-d-de-data/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>A Propos</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/series/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-folders" width="44" height="44" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 4h3l2 2h5a2 2 0 0 1 2 2v7a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-9a2 2 0 0 1 2 -2" />
+  <path d="M17 17v2a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-9a2 2 0 0 1 2 -2h2" />
+</svg>
+
+                
+                <span>Series</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/liens/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Liens</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Rechercher</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Mode sombre</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table des matières</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#contexte">Contexte</a></li>
+    <li><a href="#security-by-design">Security By Design</a></li>
+    <li><a href="#les-connexions">Les connexions</a>
+      <ol>
+        <li><a href="#mode-de-connexion">Mode de connexion</a></li>
+        <li><a href="#attention-aux-cumuls-des-authentifications">Attention aux cumuls des authentifications</a></li>
+      </ol>
+    </li>
+    <li><a href="#les-rôles">Les rôles</a>
+      <ol>
+        <li><a href="#les-rôles-spéciaux">Les rôles spéciaux</a></li>
+        <li><a href="#donner-des-droits">Donner des droits</a></li>
+        <li><a href="#pas-dhéritage">Pas d&rsquo;héritage</a></li>
+        <li><a href="#créer-vos-propres-rôles">Créer vos propres rôles</a></li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/snowflake-la-securite/">
+                <img src="/p/snowflake-la-securite/john-salvino-bqGBbLq_yfc-unsplash_hu3d03a01dcc18bc5be0e67db3d8d209a6_5951255_800x0_resize_q75_box.jpg"
+                        srcset="/p/snowflake-la-securite/john-salvino-bqGBbLq_yfc-unsplash_hu3d03a01dcc18bc5be0e67db3d8d209a6_5951255_800x0_resize_q75_box.jpg 800w, /p/snowflake-la-securite/john-salvino-bqGBbLq_yfc-unsplash_hu3d03a01dcc18bc5be0e67db3d8d209a6_5951255_1600x0_resize_q75_box.jpg 1600w"
+                        width="800" 
+                        height="1200" 
+                        loading="lazy"
+                        alt="Featured image of post Les bases de la sécurité dans Snowflake" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/snowflake/" style="background-color: #249edc; color: #fff;">
+                Snowflake
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/snowflake-la-securite/">Les bases de la sécurité dans Snowflake</a>
+        </h2>
+
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published" datetime="2023-09-25T00:00:00Z">
+                    25 septembre 2023
+                    
+                </time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    6 minutes de lecture
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+    
+    
+</div>
+</header>
+
+    <section class="article-content">
+    
+    
+    <p>Quelles sont les notions de sécurité à comprendre quand on débute avec Snowflake ?</p>
+<h2 id="contexte">Contexte</h2>
+<p>Snowflake est un outil disponible via Internet, vous devez donc vous préoccuper de sa sécurisation avec la plus grande attention.
+En termes de sécurité, nous allons aborder les 2 éléments importants :</p>
+<ul>
+<li>Les accès à l&rsquo;outil avec les moyens de protéger les connexions.</li>
+<li>Les accès dans l&rsquo;outil avec les moyens de protéger les données.</li>
+</ul>
+<h2 id="security-by-design">Security By Design</h2>
+<p>Ce terme désigne le fait de définir le fonctionnement de sa sécurité <strong>AVANT</strong> de faire entrer les premières données dans le système.
+C&rsquo;est une <strong>très bonne pratique</strong> si on souhaite avoir un système protégé. Dans le cas contraire si vous laissez vos utilisateurs avoir tous les droits et tout voir dès le début la mise en place des moyens permettant de garantir un bon niveau de sécurité de vos données et une liberté de travail suffisante pour vos utilisateurs sera très douloureuse à mettre en place à postériori.</p>
+<p>Le design de votre sécurité doit être adapté à vos besoins et à vos risques, le seul conseil que l&rsquo;on pourrait appliquer à chacun est le principe de moindre privilège. Ne donner à chacun que les droits dont ils ont besoin et pas plus.</p>
+<p>Les administrateurs sont les principaux concernés par ce principe. Par exemple une personne ayant un rôle d&rsquo;analyste et d&rsquo;administrateur de la plate-forme aura tout intérêt à avoir 2 comptes distincts afin de se protéger notamment des erreurs de manipulation, plus fréquentes que les vols d&rsquo;identifiants.</p>
+<h2 id="les-connexions">Les connexions</h2>
+<p>Quand on parle de connexion à un outil, il faut en général prendre en compte 2 types de connexion</p>
+<ul>
+<li>Les connexions faites par des humains qui peuvent interagir avec l&rsquo;interface.</li>
+<li>Les connexions faites par des programmes qui doivent se faire sans interactions.</li>
+</ul>
+<p>Un autre élément important à prendre en compte est le provisionnement des comptes, mais aussi le décommissionnement. En effet, mieux vaut créer les comptes de manière automatisés afin d&rsquo;éviter des erreurs humaines, mais aussi prévoir dès le départ comment gérer les départs de vos utilisateurs.</p>
+<h3 id="mode-de-connexion">Mode de connexion</h3>
+<p>Snowflake propose plusieurs modes d&rsquo;authentification pour vos comptes parmi lesquelles je retiendrais :</p>
+<ul>
+<li>Le classique <em>Login / Mot de passe</em>
+<ul>
+<li>Utilisable par un humain ou un programme</li>
+<li>Devra être décomissionné en plus de votre stratégie actuelle de décommisionement de compte d&rsquo;entreprise.</li>
+</ul>
+</li>
+<li>Le <em>SSO</em> avec Entra Id (ex Azure AD)
+<ul>
+<li><a class="link" href="https://learn.microsoft.com/fr-fr/azure/active-directory/saas-apps/snowflake-tutorial"  target="_blank" rel="noopener"
+    >Facile à mettre en place,</a> mais utilisable seulement par un humain, car cela ne prend pas en charge les principaux de service.</li>
+<li>Un <a class="link" href="https://learn.microsoft.com/en-us/azure/active-directory/saas-apps/snowflake-provisioning-tutorial"  target="_blank" rel="noopener"
+    >autoprovisionning des comptes</a> peut être mis en place depuis votre Entra ID.</li>
+</ul>
+</li>
+<li>La clé <em>RSA</em>, permettant de ce connecter via un système clé publique/clé privée très robuste.
+<ul>
+<li>Utilisable par un programme</li>
+</ul>
+</li>
+</ul>
+<p>La mise en place du SSO avec Entra Id ou Okta me semble un prérequis si vous utilisez déjà ces services.<br>
+Pour Entra ID vous pouvez faire des tests pour vérifier la faisabilité et vous rassurez, en créant <a class="link" href="https://blog.ddata.fr/p/m365-developer/" >un compte de test gratuit Microsoft 365 pour Entra ID</a> et <a class="link" href="https://blog.ddata.fr/p/tester-snowflake/" >un compte gratuit Snowflake</a>.</p>
+<p>Pour les programmes, utilisez de préférence une clé RSA quand c&rsquo;est possible.</p>
+<h3 id="attention-aux-cumuls-des-authentifications">Attention aux cumuls des authentifications</h3>
+<p>Les modes d&rsquo;authentification peuvent être cumulés.
+Vous pouvez par exemple paramétré un login/mot de passe et une clé RSA. Je pense que ce genre de pratique doit être évité, car cela représente 2 modes d&rsquo;attaque cumulables.
+Une clé RSA seule ou un mot de passe fort (plus de 15 caractères en 2023) sont préférables.</p>
+<h2 id="les-rôles">Les rôles</h2>
+<p>Quand on parle de sécurisation des objets Snowflake, on parle de rôle. En effet les droits sont affectables <strong>seulement</strong> à des rôles.
+Ensuite vous pouvez affecter un rôle à un autre rôle afin de cumuler des droits basiques.
+Enfin vous pourrez affecter un ou plusieurs rôles à vos utilisateurs afin de leur donner des droits.</p>
+<p>Vous trouverez tous les détails dans la documentation officielle <a class="link" href="https://docs.snowflake.com/fr/user-guide/security-access-control-overview"  target="_blank" rel="noopener"
+    >Aperçu du contrôle d’accès</a>.</p>
+<h3 id="les-rôles-spéciaux">Les rôles spéciaux</h3>
+<p>En fonction des tâches que vous réalisez, choisissez le bon rôle :</p>
+<ul>
+<li>SECURITYADMIN : Pour toutes les tâches d&rsquo;affectation de droits.</li>
+<li>USERADMIN : Pour toutes les tâches de création d&rsquo;utilisateurs et de rôles.</li>
+<li>SYSADMIN : Pour toutes les opérations de création d&rsquo;objets liés aux données (bases, warehouse, &hellip;).</li>
+<li>ACCOUNTADMIN : À utiliser dans les rares exceptions où vous avez besoin de droits de très haut niveau.</li>
+</ul>
+<p>Comme dans la vie, il est important de se mettre dans le bon rôle en fonction de ce que l&rsquo;on veut faire.</p>
+<p>Les rôles spéciaux sont à réserver aux tâches d&rsquo;administration de la plate-forme, pour gérer les accès de vos utilisateurs, créer des rôles adaptés à leurs besoins.</p>
+<h3 id="donner-des-droits">Donner des droits</h3>
+<p>Pour donner des droits sur un objet dans Snowflake, on utilisera la commande SQL GRANT et on utilisera REVOKE pour supprimer un droit.
+Chaque type d&rsquo;objet dans Snowflake possède sa panoplie de droit, par exemple pour une table vous pouvez donner les droits suivants :</p>
+<ul>
+<li>DELETE : Permets de supprimer des lignes.</li>
+<li>INSERT : Permets d&rsquo;ajouter des lignes.</li>
+<li>REFERENCES : Permets de référencer la table quand vous partagez une vue sécurisée.</li>
+<li>SELECT : Permets de lire les lignes de la table.</li>
+<li>TRUNCATE : Permets de vider la table.</li>
+<li>UPDATE : Permets de mettre à jour une ligne.</li>
+</ul>
+<h3 id="pas-dhéritage">Pas d&rsquo;héritage</h3>
+<p>Dans Snowflake il n&rsquo;y a pas de notion d&rsquo;héritage implicite d&rsquo;un objet parent vers un objet enfant. Par exemple votre rôle peut avoir le ownership d&rsquo;une base de données, mais pas pour autant le droit de lecture sur une table.
+Pour avoir des droits sur un objet, il y a donc 2 possibilités :</p>
+<ul>
+<li>Avoir le droit ownership de l&rsquo;objet, un seul rôle peut avoir ce droit.</li>
+<li>Avoir un droit explicitement donné par un GRANT sur l&rsquo;objet.</li>
+</ul>
+<h3 id="créer-vos-propres-rôles">Créer vos propres rôles</h3>
+<p>Afin de maitriser la sécurité de Snowflake, vous devrez réfléchir à une stratégie de rôles personnalisée permettant à vos équipes de travailler sans trop leur donner de droits pour autant.</p>
+<p>Par exemple si vous voulez donner au rôle <em>MON_ROLE</em> le droit de lire la table <em>MA_TABLE</em> du schéma <em>MON_SCHEMA</em> de la base <em>MA_BASE</em> vous devrez procéder de la manière suivante :</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="c1">-- Création du rôle MON_ROLE
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">CREATE</span><span class="w"> </span><span class="k">ROLE</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">MON_ROLE</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">-- On affecte le rôle MON_ROLE au rôle SYSADMIN
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">GRANT</span><span class="w"> </span><span class="k">ROLE</span><span class="w"> </span><span class="n">MON_ROLE</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="k">ROLE</span><span class="w"> </span><span class="n">SYSADMIN</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">-- On donne à MON_ROLE le droit d&#39;accéder au warehouse MON_WARHOUSE
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">GRANT</span><span class="w"> </span><span class="k">USAGE</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">WAREHOUSE</span><span class="w"> </span><span class="n">MON_WARHOUSE</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="k">ROLE</span><span class="w"> </span><span class="n">MON_ROLE</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">-- On donne à MON_ROLE le droit d&#39;accéder à la base MA_BASE
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">GRANT</span><span class="w"> </span><span class="k">USAGE</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="k">DATABASE</span><span class="w"> </span><span class="n">MA_BASE</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="k">ROLE</span><span class="w"> </span><span class="n">MON_ROLE</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">-- On donne à MON_ROLE le droit d&#39;accéder au schéma MON_SCHEMA
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">GRANT</span><span class="w"> </span><span class="k">USAGE</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="k">SCHEMA</span><span class="w"> </span><span class="n">MON_SCHEMA</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="k">ROLE</span><span class="w"> </span><span class="n">MON_ROLE</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">-- On donne à MON_ROLE le droit de lire la table MA_TABLE
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">GRANT</span><span class="w"> </span><span class="k">SELECT</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">MA_TABLE</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="k">ROLE</span><span class="w"> </span><span class="n">MON_ROLE</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">-- Maintenant MON_ROLE peut faire la requête : SELECT * FROM MA_TABLE;
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>Il existe bien sûr des commandes pour vous aidez à aller vite et vous permettre de donner tous les droits d&rsquo;un coup (GRANT ALL PRIVILEGES) ou sur les futurs schémas d&rsquo;une base ou les futures tables d&rsquo;un schéma.<br>
+Bien sûr donner des droits massivement peut créer des failles massivement.</p>
+<p>Merci de votre attention.</p>
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/interm%C3%A9diaire/">Intermédiaire</a>
+        
+            <a href="/tags/auto-formation/">Auto formation</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Contenus liés</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/snowflake-les-bases/">
+        
+        
+            <div class="article-image">
+                <img src="/p/snowflake-les-bases/_hu3d03a01dcc18bc5be0e67db3d8d209a6_1158859_75b9d55fc71c7edab39d98234db1b1ea.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Les bases pour utiliser Snowflake"
+                        data-key="snowflake-les-bases" 
+                        data-hash="md5-Z6rmL/BeijihK4sozvQwIQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Les bases pour utiliser Snowflake</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/tester-snowflake/">
+        
+        
+            <div class="article-image">
+                <img src="/p/tester-snowflake/_hu3d03a01dcc18bc5be0e67db3d8d209a6_1418558_3497eb4d40397faee03a599e1a532a85.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Créer un compte gratuit pour tester Snowflake"
+                        data-key="tester-snowflake" 
+                        data-hash="md5-DVFxAv1XOfFHnDRTxul7Xw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Créer un compte gratuit pour tester Snowflake</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/fabric-data-activator-iot/">
+        
+        
+            <div class="article-image">
+                <img src="/p/fabric-data-activator-iot/_hu3d03a01dcc18bc5be0e67db3d8d209a6_954281_b54e1636c2aecb2f2c46db3c3147c8fd.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Microsoft Fabric Data Activator, en mode IOT"
+                        data-key="fabric-data-activator-iot" 
+                        data-hash="md5-GDASY&#43;268QG3Ryzqbi7X9A==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Microsoft Fabric Data Activator, en mode IOT</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/fabric-data-activator-power-bi/">
+        
+        
+            <div class="article-image">
+                <img src="/p/fabric-data-activator-power-bi/_hu3d03a01dcc18bc5be0e67db3d8d209a6_384387_72c11e3773f273fdd2ffb5905b8dbc9e.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Microsoft Fabric Data Activator, alertes avancées dans Power BI"
+                        data-key="fabric-data-activator-power-bi" 
+                        data-hash="md5-Aox1e8HOs5bauOn0hmFsnQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Microsoft Fabric Data Activator, alertes avancées dans Power BI</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/power-query-query-folding/">
+        
+        
+            <div class="article-image">
+                <img src="/p/power-query-query-folding/_hu71f8ecb5fe253ecb731b7a50aebe9db7_2962660_2dee3e0ed23eda42528a6e3ccd583688.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Query folding, optimiser vos requêtes Power Query."
+                        data-key="power-query-query-folding" 
+                        data-hash="md5-bM2bc5qNAji5uyQBQ6pBEQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Query folding, optimiser vos requêtes Power Query.</h2>
+        </div>
+    </a>
+</article>
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "ddata" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2022 - 
+        
+        2023 Le D de Data
+    </section>
+    
+    <section class="powerby">
+        Généré avec <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Thème <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.16.0">Stack</a></b> conçu par <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>
