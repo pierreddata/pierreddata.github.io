@@ -1,0 +1,1035 @@
+<!DOCTYPE html>
+<html lang="fr-fr" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Il est temps de monter en selle et d&amp;rsquo;utiliser Snowflake pour faire votre première requête.
+'>
+<meta name="keywords" content="Snowflake, Warehouse, Database, query"><title>Votre première requête dans Snowflake</title>
+
+<link rel='canonical' href='https://blog.ddata.fr/p/snowflake-first-query/'>
+
+<link rel="stylesheet" href="/scss/style.min.24ef1cc321916467896e8c70c10c0ad7b98c2a8df14298032fb637216e397f50.css"><meta property='og:title' content='Votre première requête dans Snowflake'>
+<meta property='og:description' content='Il est temps de monter en selle et d&amp;rsquo;utiliser Snowflake pour faire votre première requête.
+'>
+<meta property='og:url' content='https://blog.ddata.fr/p/snowflake-first-query/'>
+<meta property='og:site_name' content='Le D de Data'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Intermédiaire' /><meta property='article:tag' content='Auto formation' /><meta property='article:published_time' content='2023-09-27T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2023-09-27T00:00:00&#43;00:00'/><meta property='og:image' content='https://blog.ddata.fr/p/snowflake-first-query/juan-encalada-Yxh8CqeM9Sc-unsplash.jpg' />
+<meta name="twitter:title" content="Votre première requête dans Snowflake">
+<meta name="twitter:description" content="Il est temps de monter en selle et d&amp;rsquo;utiliser Snowflake pour faire votre première requête.
+"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://blog.ddata.fr/p/snowflake-first-query/juan-encalada-Yxh8CqeM9Sc-unsplash.jpg' />
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TY6XFEN6QV"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-TY6XFEN6QV', { 'anonymize_ip': false });
+}
+</script>
+<link rel="alternate"
+      type="application/rss+xml"
+      href="https://blog.ddata.fr/index.xml"
+      title="Le D de Data">
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "dark");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Afficher le menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/pierre_hua6bbc70dde858dd10e363a14d1f7729c_67951_300x0_resize_q75_box.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Le D de Data</a></h1>
+            <h2 class="site-description">Blog francophone autour de la data Microsoft</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/pierreddata'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://www.linkedin.com/in/pierre-dupont-0b532374/'
+                        target="_blank"
+                        title="LinkdIn"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-folders" width="44" height="44" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <rect x="4" y="4" width="16" height="16" rx="2" />
+  <line x1="8" y1="11" x2="8" y2="16" />
+  <line x1="8" y1="8" x2="8" y2="8.01" />
+  <line x1="12" y1="16" x2="12" y2="11" />
+  <path d="M16 16v-3a2 2 0 0 0 -4 0" />
+</svg>
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Accueil</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/a-propos-de-d-de-data/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>A Propos</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/series/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-folders" width="44" height="44" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 4h3l2 2h5a2 2 0 0 1 2 2v7a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-9a2 2 0 0 1 2 -2" />
+  <path d="M17 17v2a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-9a2 2 0 0 1 2 -2h2" />
+</svg>
+
+                
+                <span>Series</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/liens/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Liens</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Rechercher</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Mode sombre</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table des matières</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#contexte">Contexte</a></li>
+    <li><a href="#créer-votre-première-requête">Créer votre première requête</a>
+      <ol>
+        <li><a href="#maitriser-le-contexte-de-notre-requête">Maitriser le contexte de notre requête</a></li>
+        <li><a href="#ouvrir-linterface">Ouvrir l&rsquo;interface</a></li>
+        <li><a href="#créer-un-warehouse">Créer un warehouse</a></li>
+        <li><a href="#créer-les-structures-de-données">Créer les structures de données</a></li>
+        <li><a href="#charger-des-données">Charger des données</a></li>
+        <li><a href="#requêter-vos-données">Requêter vos données</a></li>
+      </ol>
+    </li>
+    <li><a href="#un-problème-de-sécurité">Un problème de sécurité.</a>
+      <ol>
+        <li><a href="#changeons-de-contexte">Changeons de contexte</a></li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/snowflake-first-query/">
+                <img src="/p/snowflake-first-query/juan-encalada-Yxh8CqeM9Sc-unsplash_hu3d03a01dcc18bc5be0e67db3d8d209a6_1910656_800x0_resize_q75_box.jpg"
+                        srcset="/p/snowflake-first-query/juan-encalada-Yxh8CqeM9Sc-unsplash_hu3d03a01dcc18bc5be0e67db3d8d209a6_1910656_800x0_resize_q75_box.jpg 800w, /p/snowflake-first-query/juan-encalada-Yxh8CqeM9Sc-unsplash_hu3d03a01dcc18bc5be0e67db3d8d209a6_1910656_1600x0_resize_q75_box.jpg 1600w"
+                        width="800" 
+                        height="534" 
+                        loading="lazy"
+                        alt="Featured image of post Votre première requête dans Snowflake" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/snowflake/" style="background-color: #249edc; color: #fff;">
+                Snowflake
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/snowflake-first-query/">Votre première requête dans Snowflake</a>
+        </h2>
+
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published" datetime="2023-09-27T00:00:00Z">
+                    27 septembre 2023
+                    
+                </time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    6 minutes de lecture
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+    
+    
+</div>
+</header>
+
+    <section class="article-content">
+    
+    
+    <p>Il est temps de monter en selle et d&rsquo;utiliser Snowflake pour faire votre première requête.</p>
+<h2 id="contexte">Contexte</h2>
+<p>Les premières fois sont importantes. Votre première requête vous permettra de mieux comprendre les bases de snowflake expliquées lors des articles précédents :</p>
+<ul>
+<li><a class="link" href="https://blog.ddata.fr/p/tester-snowflake/" >Créer un compte gratuit pour tester Snowflake</a></li>
+<li><a class="link" href="https://blog.ddata.fr/p/snowflake-les-bases/" >Les bases pour utiliser Snowflake</a></li>
+<li><a class="link" href="https://blog.ddata.fr/p/snowflake-la-securite/" >Les bases de la sécurité dans Snowflake</a></li>
+</ul>
+<p>Je pars donc du principe que vous en avez pris connaissance.</p>
+<h2 id="créer-votre-première-requête">Créer votre première requête</h2>
+<p>Je vous propose un exemple simple nous permettant de faire une première requête dans votre environnement Snowflake.
+Pour réaliser cela, nous procéderons ainsi :</p>
+<ul>
+<li>Créer un warehouse</li>
+<li>Créer une base
+<ul>
+<li>Créer un schéma
+<ul>
+<li>Créer une table</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Charger nos données</li>
+<li>Créer un rôle et lui donner les droits adéquats</li>
+<li>Requêter nos données avec le rôle défini.</li>
+</ul>
+<h3 id="maitriser-le-contexte-de-notre-requête">Maitriser le contexte de notre requête</h3>
+<p>Lorsque l&rsquo;on exécute une requête dans Snowflake, cette exécution se fait toujours dans un contexte définie par les 4 paramètres suivants :</p>
+<ul>
+<li>Le rôle : vous devez être dans un rôle défini pour exécuter une requête, cela peut être le rôle par défaut de votre utilisateur ou un autre rôle qui vous as été attribué.</li>
+<li>Le warehouse : Il est obligatoire pour les requêtes sur les données et provoque une facturation. Pour les requêtes de créations d&rsquo;objets dans Snowflake il n&rsquo;est pas impératif.</li>
+<li>La base : Permets de définir le nom de la base dans laquelle vous travaillez. Si elle n&rsquo;est pas définie ou si vous voulez utiliser une autre base, vous pouvez indiquer le nom de cette base dans vos requêtes.</li>
+<li>Le schéma : Permets de définir le nom du schéma dans laquelle vous travaillez. S&rsquo;il n&rsquo;est pas défini ou si vous voulez utiliser un autre schéma, vous pouvez indiquer le nom de ce schéma dans vos requêtes.</li>
+</ul>
+<h3 id="ouvrir-linterface">Ouvrir l&rsquo;interface</h3>
+<p>Pour créer une requête, vous devez créer un <em>SQL worksheet</em> dans l&rsquo;interface web.<br>
+Ce document sera automatiquement sauvegardé et versionné par Snowflake. Il vous permet de choisir votre contexte, d&rsquo;écrire et d&rsquo;exécuter vos requêtes.</p>
+<p>Rendez-vous sur la page d&rsquo;accueil de Snowflake.</p>
+<p><img src="/p/snowflake-first-query/img/001-create-worksheet.png"
+	width="1920"
+	height="979"
+	srcset="/p/snowflake-first-query/img/001-create-worksheet_hu55ecd4008ce4a24f8f6b788d1844b378_79258_480x0_resize_box_3.png 480w, /p/snowflake-first-query/img/001-create-worksheet_hu55ecd4008ce4a24f8f6b788d1844b378_79258_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Créer un SQL Worksheet"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="196"
+		data-flex-basis="470px"
+	
+></p>
+<ol>
+<li>Positionnez-vous sur <strong>Worksheet</strong>.</li>
+<li>Appuyez sur le symbole <strong>+</strong> en haut à droite.</li>
+<li>Sélectionnez <strong>SQL Worksheet</strong>.</li>
+</ol>
+<p><img src="/p/snowflake-first-query/img/002-worksheet-presentation.png"
+	width="1920"
+	height="979"
+	srcset="/p/snowflake-first-query/img/002-worksheet-presentation_hu5459044ca785486f19345b76f29d8fb4_48431_480x0_resize_box_3.png 480w, /p/snowflake-first-query/img/002-worksheet-presentation_hu5459044ca785486f19345b76f29d8fb4_48431_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Présentation d&rsquo;un SQL Worksheet"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="196"
+		data-flex-basis="470px"
+	
+></p>
+<ol>
+<li>Onglet pour naviguer entre la liste de vos bases et la liste de vos worksheet.</li>
+<li>Liste des bases disponible.</li>
+<li>Sélection du rôle et du warehouse du contexte de la requête.</li>
+<li>Sélection de la base et du schéma du contexte de la requête.</li>
+<li>Zone de saisie de vos requêtes SQL.</li>
+<li>Permets d&rsquo;exécuter les requêtes SQL.</li>
+</ol>
+<p>Noter que vous devez séparer vos différentes requêtes par un point-virgule, en général en fin de ligne d&rsquo;une requête.</p>
+<h3 id="créer-un-warehouse">Créer un warehouse</h3>
+<p>Pour interagir avec nos données, nous devons passer par un warehouse.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="c1">-- Création du warehouse MON_WARHOUSE
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">CREATE</span><span class="w"> </span><span class="n">WAREHOUSE</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">MON_WARHOUSE</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">WAREHOUSE_SIZE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">xsmall</span><span class="w">     </span><span class="c1">-- le plus petit, conssome 1 crédit / heure
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">WAREHOUSE_TYPE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">standard</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">AUTO_SUSPEND</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">60</span><span class="w">           </span><span class="c1">-- Arrêt automatique après 60 secondes d&#39;inactivité
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">AUTO_RESUME</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">true</span><span class="w">          </span><span class="c1">-- Redémarrage automatique quand on envoi une requête
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">INITIALLY_SUSPENDED</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">true</span><span class="p">;</span><span class="w"> </span><span class="c1">-- Warehouse arréter après sa création
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="/p/snowflake-first-query/img/003-execute-query.png"
+	width="1595"
+	height="723"
+	srcset="/p/snowflake-first-query/img/003-execute-query_hu5010abe937252aa830f2f8b9d8c30818_67181_480x0_resize_box_3.png 480w, /p/snowflake-first-query/img/003-execute-query_hu5010abe937252aa830f2f8b9d8c30818_67181_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Exécution de la requête"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="220"
+		data-flex-basis="529px"
+	
+></p>
+<ol>
+<li>Pour créer le warehouse, positionnez-vous dans la zone de saisie des requêtes est copiez le code ci-dessus.</li>
+<li>Appuyez sur le bouton bleu pour l&rsquo;exécuter.</li>
+<li>Vous pouvez voir le résultat.</li>
+</ol>
+<h3 id="créer-les-structures-de-données">Créer les structures de données</h3>
+<p>Nous allons maintenant créer les structures pour accueillir nos données</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="c1">-- Création de la base MA_BASE
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">CREATE</span><span class="w"> </span><span class="k">DATABASE</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">MA_BASE</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">-- Création du schéma MON_SCHEMA
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">CREATE</span><span class="w"> </span><span class="k">SCHEMA</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">MON_SCHEMA</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">-- Création de la table MA_TABLE
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">CREATE</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="k">REPLACE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">MA_TABLE</span><span class="w"> </span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">     </span><span class="n">id</span><span class="w"> </span><span class="nb">INTEGER</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">     </span><span class="n">name</span><span class="w"> </span><span class="n">STRING</span><span class="p">);</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="/p/snowflake-first-query/img/004-execute-multiple-query.png"
+	width="1588"
+	height="633"
+	srcset="/p/snowflake-first-query/img/004-execute-multiple-query_hu229934618a07f9a1daa2ecbe4e8c53b0_60891_480x0_resize_box_3.png 480w, /p/snowflake-first-query/img/004-execute-multiple-query_hu229934618a07f9a1daa2ecbe4e8c53b0_60891_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Exécution de plusieurs requêtes"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="250"
+		data-flex-basis="602px"
+	
+></p>
+<ol>
+<li>Pour créer les 3 objets base, schéma et table en même temps, positionnez-vous dans la zone de saisie des requêtes est copiez le code ci-dessus.</li>
+<li>Sur le bouton bleu, appuyez sur le chevron vers le bas pour ouvrir le menu.</li>
+<li>Sélectionnez <strong>Run All</strong> pour exécuter toutes les requêtes de la fenêtre.</li>
+<li>Vous pouvez voir le résultat de la dernière requête exécuter.</li>
+<li>Automatiquement le contexte de votre requête c&rsquo;est adapté lors de la création de la base et du schéma.</li>
+</ol>
+<h3 id="charger-des-données">Charger des données</h3>
+<p>Nous allons charger les données via une simple requête d&rsquo;insertion de données.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="c1">-- Insertion de 5 lignes dans la table MA_TABLE
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">MA_TABLE</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="s1">&#39;Luffy&#39;</span><span class="p">),(</span><span class="mi">2</span><span class="p">,</span><span class="s1">&#39;Nami&#39;</span><span class="p">),(</span><span class="mi">2</span><span class="p">,</span><span class="s1">&#39;Zoro&#39;</span><span class="p">),(</span><span class="mi">3</span><span class="p">,</span><span class="s1">&#39;Sanji&#39;</span><span class="p">),(</span><span class="mi">4</span><span class="p">,</span><span class="s1">&#39;Usop&#39;</span><span class="p">);</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>Comme je n&rsquo;indique pas de schéma et de nom de base, les valeurs du contexte de la requête sont utilisées.<br>
+Les règles de résolution de nom sont les suivantes :</p>
+<ul>
+<li>MA_TABLE &ndash;&gt; utilise la base et le schéma du contexte de connexion.</li>
+<li>MON_SCHEMA.MA_TABLE &ndash;&gt; utilise le schéma du contexte de connexion.</li>
+<li>MA_BASE.MON_SCHEMA.MA_TABLE &ndash;&gt; pas d&rsquo;utilisation du contexte de connexion.</li>
+</ul>
+<h3 id="requêter-vos-données">Requêter vos données</h3>
+<p>Pour lire vos données, une simple requête SQL SELECT suffit :</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="c1">-- Lire MA_TABLE
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">MA_TABLE</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="/p/snowflake-first-query/img/005-execute-select-query.png"
+	width="1592"
+	height="723"
+	srcset="/p/snowflake-first-query/img/005-execute-select-query_hu749ce28bda989bcdd7b880658aa7a442_47631_480x0_resize_box_3.png 480w, /p/snowflake-first-query/img/005-execute-select-query_hu749ce28bda989bcdd7b880658aa7a442_47631_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Exécution de la requête SELECT"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="220"
+		data-flex-basis="528px"
+	
+></p>
+<ol>
+<li>Positionnez-vous dans la zone de saisie des requêtes est copiez le code ci-dessus.</li>
+<li>Vérifier d&rsquo;avoir le bon contexte pour la base et le schéma.</li>
+<li>Vérifier d&rsquo;avoir le bon contexte pour le rôle et le warehouse.</li>
+<li>Appuyez sur le bouton bleu pour l&rsquo;exécuter.</li>
+<li>Vous pouvez voir le résultat.</li>
+</ol>
+<h2 id="un-problème-de-sécurité">Un problème de sécurité.</h2>
+<p>Vous pouvez créer des objets, car vous êtes dans le rôle ACCOUNTADMIN et vous pouvez requêter les données, car vous êtes le propriétaire de la table.
+Dans un cadre d&rsquo;entreprise, vous devrez utiliser des rôles personnalisés pour requêter vos données.<br>
+De même il est conseillé d&rsquo;utiliser des rôles dédiés pour la création des ressources et au pire d&rsquo;utiliser le rôle SYSADMIN.</p>
+<p>Nous allons donc créer un rôle dédié à la lecture de nos données et lui donner les droits suivant :</p>
+<ul>
+<li>Droit d&rsquo;usage du warehouse pour pouvoir exécuter des requêtes.</li>
+<li>Droit d&rsquo;usage de la base et du schéma pour pouvoir y accéder.</li>
+<li>Droit de sélectionner les données de la table.</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">CREATE</span><span class="w"> </span><span class="k">ROLE</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">MON_ROLE</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">-- On affecte le rôle MON_ROLE au rôle SYSADMIN
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">GRANT</span><span class="w"> </span><span class="k">ROLE</span><span class="w"> </span><span class="n">MON_ROLE</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="k">ROLE</span><span class="w"> </span><span class="n">SYSADMIN</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">-- On donne à MON_ROLE le droit d&#39;accéder au warehouse MON_WARHOUSE
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">GRANT</span><span class="w"> </span><span class="k">USAGE</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">WAREHOUSE</span><span class="w"> </span><span class="n">MON_WARHOUSE</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="k">ROLE</span><span class="w"> </span><span class="n">MON_ROLE</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">-- On donne à MON_ROLE le droit d&#39;accéder à la base MA_BASE
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">GRANT</span><span class="w"> </span><span class="k">USAGE</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="k">DATABASE</span><span class="w"> </span><span class="n">MA_BASE</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="k">ROLE</span><span class="w"> </span><span class="n">MON_ROLE</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">-- On donne à MON_ROLE le droit d&#39;accéder au schéma MON_SCHEMA
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">GRANT</span><span class="w"> </span><span class="k">USAGE</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="k">SCHEMA</span><span class="w"> </span><span class="n">MON_SCHEMA</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="k">ROLE</span><span class="w"> </span><span class="n">MON_ROLE</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">-- On donne à MON_ROLE le droit de lire la table MA_TABLE
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">GRANT</span><span class="w"> </span><span class="k">SELECT</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">MA_TABLE</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="k">ROLE</span><span class="w"> </span><span class="n">MON_ROLE</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">-- Maintenant MON_ROLE peut faire la requête : SELECT * FROM MA_TABLE;
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>Comme pour la création des structures de données, utiliser <em>Run All</em> pour exécuter toutes les requêtes.</p>
+<h3 id="changeons-de-contexte">Changeons de contexte</h3>
+<p>Nous allons maintenant nous mettre dans le rôle MON_ROLA, et pour cela changer de contexte directement en SQL et ensuite requêter notre table.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="n">USE</span><span class="w"> </span><span class="k">ROLE</span><span class="w"> </span><span class="n">MON_ROLE</span><span class="p">;</span><span class="w">          </span><span class="c1">-- On change le contexte du rôle
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">USE</span><span class="w"> </span><span class="n">WAREHOUSE</span><span class="w"> </span><span class="n">MON_WARHOUSE</span><span class="p">;</span><span class="w"> </span><span class="c1">-- On change le contexte du warehouse
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">USE</span><span class="w"> </span><span class="k">DATABASE</span><span class="w"> </span><span class="n">MA_BASE</span><span class="p">;</span><span class="w">       </span><span class="c1">-- On change le contexte de la base
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">USE</span><span class="w"> </span><span class="k">SCHEMA</span><span class="w"> </span><span class="n">MON_SCHEMA</span><span class="p">;</span><span class="w">      </span><span class="c1">-- On change le contexte du schéma
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">MA_TABLE</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="/p/snowflake-first-query/img/006-execute-select-query-in-role.png"
+	width="1593"
+	height="719"
+	srcset="/p/snowflake-first-query/img/006-execute-select-query-in-role_hubb8df27c263059ac3b1b9b69ec6456f2_68313_480x0_resize_box_3.png 480w, /p/snowflake-first-query/img/006-execute-select-query-in-role_hubb8df27c263059ac3b1b9b69ec6456f2_68313_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Exécution de la requête SELECT avec MON_ROLE"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="221"
+		data-flex-basis="531px"
+	
+></p>
+<ol>
+<li>Positionnez-vous dans la zone de saisie des requêtes est copiez le code ci-dessus.</li>
+<li>Sur le bouton bleu, appuyez sur le chevron vers le bas pour ouvrir le menu.</li>
+<li>Sélectionnez <strong>Run All</strong> pour exécuter toutes les requêtes de la fenêtre.</li>
+<li>Vous pouvez voir que le contexte pour le rôle et le warehouse sont ceux demandés par la requête.</li>
+<li>Vous pouvez voir que le contexte pour la base et le schéma sont ceux demandés par la requête.</li>
+<li>Vous pouvez voir le résultat de la dernière requête exécuter.</li>
+</ol>
+<p>Bravo, vous avez fini votre première requête dans Snowflake.</p>
+<p>Merci de votre attention.</p>
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/interm%C3%A9diaire/">Intermédiaire</a>
+        
+            <a href="/tags/auto-formation/">Auto formation</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Contenus liés</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/snowflake-la-securite/">
+        
+        
+            <div class="article-image">
+                <img src="/p/snowflake-la-securite/_hu3d03a01dcc18bc5be0e67db3d8d209a6_5951255_e0a51016530eccca8cc56fb73f7e1eab.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Les bases de la sécurité dans Snowflake"
+                        data-key="snowflake-la-securite" 
+                        data-hash="md5-bkLocwKCUwN/fi2UxJ60LA==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Les bases de la sécurité dans Snowflake</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/snowflake-les-bases/">
+        
+        
+            <div class="article-image">
+                <img src="/p/snowflake-les-bases/_hu3d03a01dcc18bc5be0e67db3d8d209a6_1158859_75b9d55fc71c7edab39d98234db1b1ea.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Les bases pour utiliser Snowflake"
+                        data-key="snowflake-les-bases" 
+                        data-hash="md5-Z6rmL/BeijihK4sozvQwIQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Les bases pour utiliser Snowflake</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/tester-snowflake/">
+        
+        
+            <div class="article-image">
+                <img src="/p/tester-snowflake/_hu3d03a01dcc18bc5be0e67db3d8d209a6_1418558_3497eb4d40397faee03a599e1a532a85.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Créer un compte gratuit pour tester Snowflake"
+                        data-key="tester-snowflake" 
+                        data-hash="md5-DVFxAv1XOfFHnDRTxul7Xw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Créer un compte gratuit pour tester Snowflake</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/fabric-data-activator-iot/">
+        
+        
+            <div class="article-image">
+                <img src="/p/fabric-data-activator-iot/_hu3d03a01dcc18bc5be0e67db3d8d209a6_954281_b54e1636c2aecb2f2c46db3c3147c8fd.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Microsoft Fabric Data Activator, en mode IOT"
+                        data-key="fabric-data-activator-iot" 
+                        data-hash="md5-GDASY&#43;268QG3Ryzqbi7X9A==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Microsoft Fabric Data Activator, en mode IOT</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/fabric-data-activator-power-bi/">
+        
+        
+            <div class="article-image">
+                <img src="/p/fabric-data-activator-power-bi/_hu3d03a01dcc18bc5be0e67db3d8d209a6_384387_72c11e3773f273fdd2ffb5905b8dbc9e.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Microsoft Fabric Data Activator, alertes avancées dans Power BI"
+                        data-key="fabric-data-activator-power-bi" 
+                        data-hash="md5-Aox1e8HOs5bauOn0hmFsnQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Microsoft Fabric Data Activator, alertes avancées dans Power BI</h2>
+        </div>
+    </a>
+</article>
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "ddata" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2022 - 
+        
+        2023 Le D de Data
+    </section>
+    
+    <section class="powerby">
+        Généré avec <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Thème <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.20.0">Stack</a></b> conçu par <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>
