@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="fr-fr" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Python est le langage de programmation de prédilection de la data.
+Vous souhaitez débuter, mais par où commencer ?
+'>
+<meta name="keywords" content="Python"><title>Bien débuter avec Python</title>
+
+<link rel='canonical' href='https://blog.ddata.fr/p/start-with-python/'>
+
+<link rel="stylesheet" href="/scss/style.min.24ef1cc321916467896e8c70c10c0ad7b98c2a8df14298032fb637216e397f50.css"><meta property='og:title' content='Bien débuter avec Python'>
+<meta property='og:description' content='Python est le langage de programmation de prédilection de la data.
+Vous souhaitez débuter, mais par où commencer ?
+'>
+<meta property='og:url' content='https://blog.ddata.fr/p/start-with-python/'>
+<meta property='og:site_name' content='Le D de Data'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Intermédiaire' /><meta property='article:tag' content='Auto formation' /><meta property='article:published_time' content='2023-12-26T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2023-12-26T00:00:00&#43;00:00'/><meta property='og:image' content='https://blog.ddata.fr/p/start-with-python/imso-gabriel-8OMtWmTNSZo-unsplash.jpg' />
+<meta name="twitter:title" content="Bien débuter avec Python">
+<meta name="twitter:description" content="Python est le langage de programmation de prédilection de la data.
+Vous souhaitez débuter, mais par où commencer ?
+"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://blog.ddata.fr/p/start-with-python/imso-gabriel-8OMtWmTNSZo-unsplash.jpg' />
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TY6XFEN6QV"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-TY6XFEN6QV', { 'anonymize_ip': false });
+}
+</script>
+<link rel="alternate"
+      type="application/rss+xml"
+      href="https://blog.ddata.fr/index.xml"
+      title="Le D de Data">
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "dark");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Afficher le menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/pierre_hua6bbc70dde858dd10e363a14d1f7729c_67951_300x0_resize_q75_box.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Le D de Data</a></h1>
+            <h2 class="site-description">Blog francophone autour de la data</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/pierreddata'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://www.linkedin.com/in/pierre-dupont-0b532374/'
+                        target="_blank"
+                        title="LinkdIn"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-folders" width="44" height="44" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <rect x="4" y="4" width="16" height="16" rx="2" />
+  <line x1="8" y1="11" x2="8" y2="16" />
+  <line x1="8" y1="8" x2="8" y2="8.01" />
+  <line x1="12" y1="16" x2="12" y2="11" />
+  <path d="M16 16v-3a2 2 0 0 0 -4 0" />
+</svg>
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Accueil</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/a-propos-de-d-de-data/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>A Propos</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/series/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-folders" width="44" height="44" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 4h3l2 2h5a2 2 0 0 1 2 2v7a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-9a2 2 0 0 1 2 -2" />
+  <path d="M17 17v2a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-9a2 2 0 0 1 2 -2h2" />
+</svg>
+
+                
+                <span>Series</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/liens/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Liens</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Rechercher</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Mode sombre</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table des matières</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#contexte">Contexte</a></li>
+    <li><a href="#installer-python">Installer Python</a></li>
+    <li><a href="#travailler-proprement">Travailler proprement</a>
+      <ol>
+        <li><a href="#utiliser-git">Utiliser git</a></li>
+        <li><a href="#utilisez-des-modules-existants">Utilisez des modules existants</a></li>
+        <li><a href="#travailler-exclusivement-dans-des-environnements-virtuels">Travailler exclusivement dans des environnements virtuels</a>
+          <ol>
+            <li><a href="#maintenez-un-fichier-de-dépendance-précis">Maintenez un fichier de dépendance précis</a></li>
+          </ol>
+        </li>
+        <li><a href="#garder-secrets-vos-secrets">Garder secrets vos secrets</a></li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/start-with-python/">
+                <img src="/p/start-with-python/imso-gabriel-8OMtWmTNSZo-unsplash_hu3d03a01dcc18bc5be0e67db3d8d209a6_3758728_800x0_resize_q75_box.jpg"
+                        srcset="/p/start-with-python/imso-gabriel-8OMtWmTNSZo-unsplash_hu3d03a01dcc18bc5be0e67db3d8d209a6_3758728_800x0_resize_q75_box.jpg 800w, /p/start-with-python/imso-gabriel-8OMtWmTNSZo-unsplash_hu3d03a01dcc18bc5be0e67db3d8d209a6_3758728_1600x0_resize_q75_box.jpg 1600w"
+                        width="800" 
+                        height="600" 
+                        loading="lazy"
+                        alt="Featured image of post Bien débuter avec Python" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/python/" style="background-color: #ffd343; color: #000;">
+                Python
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/start-with-python/">Bien débuter avec Python</a>
+        </h2>
+
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published" datetime="2023-12-26T00:00:00Z">
+                    26 décembre 2023
+                    
+                </time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    5 minutes de lecture
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+    
+    
+</div>
+</header>
+
+    <section class="article-content">
+    
+    
+    <p>Python est le langage de programmation de prédilection de la data.<br>
+Vous souhaitez débuter, mais par où commencer ?</p>
+<h2 id="contexte">Contexte</h2>
+<p>Je vous propose dans cet article de vous présenter les bases indispensables pour travailler au quotidien avec le langage Python.</p>
+<h2 id="installer-python">Installer Python</h2>
+<p>Pour commencer, vous devez installer Python.<br>
+Vous trouverez les versions installables de Python sur le site <a class="link" href="https://www.python.org/downloads/"  target="_blank" rel="noopener"
+    >python.org</a>.<br>
+Python est un langage multiplateforme, vos programmes peuvent être exécutés notamment sous Windows, Linux ou macOS.</p>
+<p>Si vous débuter en Python le choix est simple, prenez une version 3 de Python et pour le choix de la release (le numéro après le <em>3.</em>) choisissez la version ayant une date de <em>First released</em> dans le passé et ayant la date la plus éloignée pour la date de <em>End of support</em>. Ainsi vous aurez la version officielle la plus récente.</p>
+<p>Vous pouvez installer plusieurs versions de Python sur votre poste, je vous conseille donc de laisser le numéro de la version dans le dossier d&rsquo;installation comme <em>python310</em> pour la version 3.10 de python.</p>
+<p>Si vous souhaitez pouvoir appeler Python depuis n&rsquo;importe où, ajouter le chemin au <em>Path</em> de la machine. Cette option est disponible lors de l&rsquo;installation.</p>
+<h2 id="travailler-proprement">Travailler proprement</h2>
+<p>Si vous lisez cet article, vous débutez probablement en développement informatique. Voici quelques conseils pour bien démarrer.</p>
+<h3 id="utiliser-git">Utiliser git</h3>
+<p>Python est un outil de développement informatique. L&rsquo;utilisation d&rsquo;un gestionnaire de configuration tel que <a class="link" href="https://git-scm.com/"  target="_blank" rel="noopener"
+    >git</a> est indispensable.</p>
+<ul>
+<li>git est un outil qui vous permet de suivre les modifications de code dans le temps et de collaborer sur un même code source.</li>
+<li>git est un outil indispensable. Il est actuellement utilisé dans une majorité de projets informatiques.</li>
+</ul>
+<h3 id="utilisez-des-modules-existants">Utilisez des modules existants</h3>
+<p>Lorsque vous travaillez avec un langage informatique moderne, vous utilisez un grand nombre de projets externe que vous apportent des fonctionnalités écrites par d&rsquo;autres développeurs et mises à disposition. On appelle ces projets des modules.</p>
+<p>Certains modules comme <em>json</em> sont embarqués en standard par Python. Par contre seuls les modules de base ou considérés comme indispensable sont inclus.</p>
+<p>Pour ajouter d&rsquo;autre fonctionnalité, vous devez trouver et installer le module qui vous convient.</p>
+<p>Les modules sont mis à disposition sous la forme de paquets installables.</p>
+<p>Python vous propose un outil simple pour installer des paquets : <strong>pip</strong><br>
+Par exemple, pour installer le paquet <em>pandas</em> tapez la ligne de commande suivante :</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">pip install pandas
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Dans <a class="link" href="https://docs.python.org/fr/dev/installing/index.html"  target="_blank" rel="noopener"
+    >la documentation officielle</a> vous trouverez les nombreuses options de pip, notamment comment installer une version précise ou une version minimale d&rsquo;un module</p>
+<h3 id="travailler-exclusivement-dans-des-environnements-virtuels">Travailler exclusivement dans des environnements virtuels</h3>
+<p>Python dispose d&rsquo;un grand nombre de paquets spécialisé pour vous aider à ajouter rapidement des fonctionnalités avancées à vos programmes.
+Les paquets ont leur propre cycle de vie , il n&rsquo;est pas rare de voir un programme que l&rsquo;on a écrit il y a quelques mois ne plus pouvoir fonctionner avec la dernière version d&rsquo;un paquet que l&rsquo;on utilise, car les paquets utilisent eux-mêmes d&rsquo;autres paquets. On arrive rapidement à un système de dépendance complexe.</p>
+<p>De plus, si vous utilisez plusieurs programmes Python différents, ils n&rsquo;auront pas forcément besoin des mêmes versions d&rsquo;un paquet.</p>
+<p>Afin d&rsquo;éviter les problèmes de version de paquet entre vos différents programmes, il est indispensable d&rsquo;utiliser les environnements virtuels.</p>
+<p>Les environnements virtuels permettent de créer un écosystème local à votre projet comportant tous les éléments indispensables à sa bonne exécution notamment :</p>
+<ul>
+<li>Le programme Python lui-même.</li>
+<li>Le programme pip.</li>
+<li>L&rsquo;ensemble des paquets installé pour le projet.</li>
+</ul>
+<p>Les environnements virtuels sont indispensables pour la survie de votre projet et pour prendre soin de votre santé mentale 🤪.</p>
+<p>Pour créer un environnement virtuel, nommer <em>.venv</em> à la racine du dossier de votre projet, positionnez-vous dans le dossier et exécuter cette ligne de commande :</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">python -m venv .venv
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>De nombreuses options sont disponibles dans <a class="link" href="https://docs.python.org/fr/3/library/venv.html"  target="_blank" rel="noopener"
+    >la documentation officielle</a>.</p>
+<h4 id="maintenez-un-fichier-de-dépendance-précis">Maintenez un fichier de dépendance précis</h4>
+<p>Avoir un environnement virtuel vous permet de travailler de manière isolée des autres programmes Python, mais si vous souhaitez partager votre projet ou pouvoir le réinstaller sereinement, vous devez maintenir un fichier précisant la liste des paquets installer ainsi que la version compatible avec votre projet.</p>
+<p>Par convention on met ces informations dans un fichier texte nommé <em>requirements.txt</em>.</p>
+<p>Si vous avez déjà installé des paquets, mais que vous ne savez plus lesquels ou que vous voulez connaitre la version utilisée, vous pouvez avoir la liste de tous les paquets installés via la commande suivante :</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">pip freeze
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Attention, cette liste représente l&rsquo;ensemble des paquets installé dans votre environnement, notamment ceux d’installer par le jeu des dépendances. Ajouter à votre fichier <em>requirements.txt</em> uniquement les paquets que vous utiliser directement cela sera plus simple à maintenir.</p>
+<p>Pour installer tous les paquets d&rsquo;un coup vous pourrez utiliser la commande :</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">pip install -r requirements.txt
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="garder-secrets-vos-secrets">Garder secrets vos secrets</h3>
+<p>Vos secrets sont tous les éléments à sécuriser notamment ceux liés à l&rsquo;authentification, par exemple :</p>
+<ul>
+<li>Les logins et mots de passe</li>
+<li>Les clés d&rsquo;API</li>
+</ul>
+<p>En aucun cas ils doivent être présent dans votre code source, car dès que vous partager ce code via git le secret sera révélé à toutes personnes ayant accès au git, même si vous supprimer le fichier son ancienne version sera dans l&rsquo;historique.</p>
+<p>Le plus simple est donc de les stocker en dehors de votre code source, une solution classique est de les stocker dans les variables d&rsquo;environnement de votre machine. Les variables d&rsquo;environnement stockent des valeurs en mémoire et sont accessibles par tous les programmes s&rsquo;exécutant sur votre poste.</p>
+<p>En Python on utilise en général un fichier <em>.env</em> à la racine de notre projet qui contient la liste de nos variables d&rsquo;environnements et leur valeur. Ce fichier est ajouté au fichier <em>.gitignore</em> qui permet d&rsquo;empêcher l&rsquo;ajout par erreur d&rsquo;un fichier non désiré dans git.</p>
+<p>Exemple de fichier .env :</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="nv">BLOG_LOGIN</span><span class="o">=</span>ddata
+</span></span><span class="line"><span class="cl"><span class="nv">BLOG_PASSWORD</span><span class="o">=</span>cPasMonMotDeP4sse!
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Pour charger automatiquement le fichier <em>.env</em> lors de l&rsquo;exécution de votre code vous pouvez utiliser le paquet <a class="link" href="https://pypi.org/project/python-dotenv/"  target="_blank" rel="noopener"
+    >python-dotenv</a>.</p>
+<p>On peut ensuite utiliser les variables d&rsquo;environnement directement depuis notre code source :</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">os</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">login</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&#34;BLOG_LOGIN&#34;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="n">password</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&#34;BLOG_PASSWORD&#34;</span><span class="p">]</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Je vous conseille d&rsquo;utiliser les variables d&rsquo;environnement aussi pour variabiliser vos informations de connexion comme par exemple les URL ou les noms de serveur. Cela rendra votre programme plus simple à maintenir.</p>
+<p>Merci de votre attention.</p>
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/interm%C3%A9diaire/">Intermédiaire</a>
+        
+            <a href="/tags/auto-formation/">Auto formation</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Contenus liés</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/snowflake-first-query/">
+        
+        
+            <div class="article-image">
+                <img src="/p/snowflake-first-query/_hu3d03a01dcc18bc5be0e67db3d8d209a6_1910656_c3b52d469a7bacc5fbdf9c7a7c9838d5.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Votre première requête dans Snowflake"
+                        data-key="snowflake-first-query" 
+                        data-hash="md5-vNPqBlX&#43;tUcMsXM5V9D0MQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Votre première requête dans Snowflake</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/snowflake-la-securite/">
+        
+        
+            <div class="article-image">
+                <img src="/p/snowflake-la-securite/_hu3d03a01dcc18bc5be0e67db3d8d209a6_5951255_e0a51016530eccca8cc56fb73f7e1eab.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Les bases de la sécurité dans Snowflake"
+                        data-key="snowflake-la-securite" 
+                        data-hash="md5-bkLocwKCUwN/fi2UxJ60LA==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Les bases de la sécurité dans Snowflake</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/snowflake-les-bases/">
+        
+        
+            <div class="article-image">
+                <img src="/p/snowflake-les-bases/_hu3d03a01dcc18bc5be0e67db3d8d209a6_1158859_75b9d55fc71c7edab39d98234db1b1ea.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Les bases pour utiliser Snowflake"
+                        data-key="snowflake-les-bases" 
+                        data-hash="md5-Z6rmL/BeijihK4sozvQwIQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Les bases pour utiliser Snowflake</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/tester-snowflake/">
+        
+        
+            <div class="article-image">
+                <img src="/p/tester-snowflake/_hu3d03a01dcc18bc5be0e67db3d8d209a6_1418558_3497eb4d40397faee03a599e1a532a85.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Créer un compte gratuit pour tester Snowflake"
+                        data-key="tester-snowflake" 
+                        data-hash="md5-DVFxAv1XOfFHnDRTxul7Xw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Créer un compte gratuit pour tester Snowflake</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/fabric-data-activator-iot/">
+        
+        
+            <div class="article-image">
+                <img src="/p/fabric-data-activator-iot/_hu3d03a01dcc18bc5be0e67db3d8d209a6_954281_b54e1636c2aecb2f2c46db3c3147c8fd.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Microsoft Fabric Data Activator, en mode IOT"
+                        data-key="fabric-data-activator-iot" 
+                        data-hash="md5-GDASY&#43;268QG3Ryzqbi7X9A==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Microsoft Fabric Data Activator, en mode IOT</h2>
+        </div>
+    </a>
+</article>
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "ddata" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2022 - 
+        
+        2023 Le D de Data
+    </section>
+    
+    <section class="powerby">
+        Généré avec <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Thème <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.20.0">Stack</a></b> conçu par <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

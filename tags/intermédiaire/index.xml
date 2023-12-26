@@ -6,7 +6,136 @@
         <description>Recent content in Intermédiaire on Le D de Data</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>fr-fr</language>
-        <lastBuildDate>Wed, 27 Sep 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ddata.fr/tags/interm%C3%A9diaire/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Tue, 26 Dec 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ddata.fr/tags/interm%C3%A9diaire/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Bien débuter avec Python</title>
+        <link>https://blog.ddata.fr/p/start-with-python/</link>
+        <pubDate>Tue, 26 Dec 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://blog.ddata.fr/p/start-with-python/</guid>
+        <description>&lt;img src="https://blog.ddata.fr/p/start-with-python/imso-gabriel-8OMtWmTNSZo-unsplash.jpg" alt="Featured image of post Bien débuter avec Python" /&gt;&lt;p&gt;Python est le langage de programmation de prédilection de la data.&lt;br&gt;
+Vous souhaitez débuter, mais par où commencer ?&lt;/p&gt;
+&lt;h2 id=&#34;contexte&#34;&gt;Contexte&lt;/h2&gt;
+&lt;p&gt;Je vous propose dans cet article de vous présenter les bases indispensables pour travailler au quotidien avec le langage Python.&lt;/p&gt;
+&lt;h2 id=&#34;installer-python&#34;&gt;Installer Python&lt;/h2&gt;
+&lt;p&gt;Pour commencer, vous devez installer Python.&lt;br&gt;
+Vous trouverez les versions installables de Python sur le site &lt;a class=&#34;link&#34; href=&#34;https://www.python.org/downloads/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;python.org&lt;/a&gt;.&lt;br&gt;
+Python est un langage multiplateforme, vos programmes peuvent être exécutés notamment sous Windows, Linux ou macOS.&lt;/p&gt;
+&lt;p&gt;Si vous débuter en Python le choix est simple, prenez une version 3 de Python et pour le choix de la release (le numéro après le &lt;em&gt;3.&lt;/em&gt;) choisissez la version ayant une date de &lt;em&gt;First released&lt;/em&gt; dans le passé et ayant la date la plus éloignée pour la date de &lt;em&gt;End of support&lt;/em&gt;. Ainsi vous aurez la version officielle la plus récente.&lt;/p&gt;
+&lt;p&gt;Vous pouvez installer plusieurs versions de Python sur votre poste, je vous conseille donc de laisser le numéro de la version dans le dossier d&amp;rsquo;installation comme &lt;em&gt;python310&lt;/em&gt; pour la version 3.10 de python.&lt;/p&gt;
+&lt;p&gt;Si vous souhaitez pouvoir appeler Python depuis n&amp;rsquo;importe où, ajouter le chemin au &lt;em&gt;Path&lt;/em&gt; de la machine. Cette option est disponible lors de l&amp;rsquo;installation.&lt;/p&gt;
+&lt;h2 id=&#34;travailler-proprement&#34;&gt;Travailler proprement&lt;/h2&gt;
+&lt;p&gt;Si vous lisez cet article, vous débutez probablement en développement informatique. Voici quelques conseils pour bien démarrer.&lt;/p&gt;
+&lt;h3 id=&#34;utiliser-git&#34;&gt;Utiliser git&lt;/h3&gt;
+&lt;p&gt;Python est un outil de développement informatique. L&amp;rsquo;utilisation d&amp;rsquo;un gestionnaire de configuration tel que &lt;a class=&#34;link&#34; href=&#34;https://git-scm.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;git&lt;/a&gt; est indispensable.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;git est un outil qui vous permet de suivre les modifications de code dans le temps et de collaborer sur un même code source.&lt;/li&gt;
+&lt;li&gt;git est un outil indispensable. Il est actuellement utilisé dans une majorité de projets informatiques.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;utilisez-des-modules-existants&#34;&gt;Utilisez des modules existants&lt;/h3&gt;
+&lt;p&gt;Lorsque vous travaillez avec un langage informatique moderne, vous utilisez un grand nombre de projets externe que vous apportent des fonctionnalités écrites par d&amp;rsquo;autres développeurs et mises à disposition. On appelle ces projets des modules.&lt;/p&gt;
+&lt;p&gt;Certains modules comme &lt;em&gt;json&lt;/em&gt; sont embarqués en standard par Python. Par contre seuls les modules de base ou considérés comme indispensable sont inclus.&lt;/p&gt;
+&lt;p&gt;Pour ajouter d&amp;rsquo;autre fonctionnalité, vous devez trouver et installer le module qui vous convient.&lt;/p&gt;
+&lt;p&gt;Les modules sont mis à disposition sous la forme de paquets installables.&lt;/p&gt;
+&lt;p&gt;Python vous propose un outil simple pour installer des paquets : &lt;strong&gt;pip&lt;/strong&gt;&lt;br&gt;
+Par exemple, pour installer le paquet &lt;em&gt;pandas&lt;/em&gt; tapez la ligne de commande suivante :&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;pip install pandas
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Dans &lt;a class=&#34;link&#34; href=&#34;https://docs.python.org/fr/dev/installing/index.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;la documentation officielle&lt;/a&gt; vous trouverez les nombreuses options de pip, notamment comment installer une version précise ou une version minimale d&amp;rsquo;un module&lt;/p&gt;
+&lt;h3 id=&#34;travailler-exclusivement-dans-des-environnements-virtuels&#34;&gt;Travailler exclusivement dans des environnements virtuels&lt;/h3&gt;
+&lt;p&gt;Python dispose d&amp;rsquo;un grand nombre de paquets spécialisé pour vous aider à ajouter rapidement des fonctionnalités avancées à vos programmes.
+Les paquets ont leur propre cycle de vie , il n&amp;rsquo;est pas rare de voir un programme que l&amp;rsquo;on a écrit il y a quelques mois ne plus pouvoir fonctionner avec la dernière version d&amp;rsquo;un paquet que l&amp;rsquo;on utilise, car les paquets utilisent eux-mêmes d&amp;rsquo;autres paquets. On arrive rapidement à un système de dépendance complexe.&lt;/p&gt;
+&lt;p&gt;De plus, si vous utilisez plusieurs programmes Python différents, ils n&amp;rsquo;auront pas forcément besoin des mêmes versions d&amp;rsquo;un paquet.&lt;/p&gt;
+&lt;p&gt;Afin d&amp;rsquo;éviter les problèmes de version de paquet entre vos différents programmes, il est indispensable d&amp;rsquo;utiliser les environnements virtuels.&lt;/p&gt;
+&lt;p&gt;Les environnements virtuels permettent de créer un écosystème local à votre projet comportant tous les éléments indispensables à sa bonne exécution notamment :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Le programme Python lui-même.&lt;/li&gt;
+&lt;li&gt;Le programme pip.&lt;/li&gt;
+&lt;li&gt;L&amp;rsquo;ensemble des paquets installé pour le projet.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Les environnements virtuels sont indispensables pour la survie de votre projet et pour prendre soin de votre santé mentale 🤪.&lt;/p&gt;
+&lt;p&gt;Pour créer un environnement virtuel, nommer &lt;em&gt;.venv&lt;/em&gt; à la racine du dossier de votre projet, positionnez-vous dans le dossier et exécuter cette ligne de commande :&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;python -m venv .venv
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;De nombreuses options sont disponibles dans &lt;a class=&#34;link&#34; href=&#34;https://docs.python.org/fr/3/library/venv.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;la documentation officielle&lt;/a&gt;.&lt;/p&gt;
+&lt;h4 id=&#34;maintenez-un-fichier-de-dépendance-précis&#34;&gt;Maintenez un fichier de dépendance précis&lt;/h4&gt;
+&lt;p&gt;Avoir un environnement virtuel vous permet de travailler de manière isolée des autres programmes Python, mais si vous souhaitez partager votre projet ou pouvoir le réinstaller sereinement, vous devez maintenir un fichier précisant la liste des paquets installer ainsi que la version compatible avec votre projet.&lt;/p&gt;
+&lt;p&gt;Par convention on met ces informations dans un fichier texte nommé &lt;em&gt;requirements.txt&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;Si vous avez déjà installé des paquets, mais que vous ne savez plus lesquels ou que vous voulez connaitre la version utilisée, vous pouvez avoir la liste de tous les paquets installés via la commande suivante :&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;pip freeze
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Attention, cette liste représente l&amp;rsquo;ensemble des paquets installé dans votre environnement, notamment ceux d’installer par le jeu des dépendances. Ajouter à votre fichier &lt;em&gt;requirements.txt&lt;/em&gt; uniquement les paquets que vous utiliser directement cela sera plus simple à maintenir.&lt;/p&gt;
+&lt;p&gt;Pour installer tous les paquets d&amp;rsquo;un coup vous pourrez utiliser la commande :&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;pip install -r requirements.txt
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id=&#34;garder-secrets-vos-secrets&#34;&gt;Garder secrets vos secrets&lt;/h3&gt;
+&lt;p&gt;Vos secrets sont tous les éléments à sécuriser notamment ceux liés à l&amp;rsquo;authentification, par exemple :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Les logins et mots de passe&lt;/li&gt;
+&lt;li&gt;Les clés d&amp;rsquo;API&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;En aucun cas ils doivent être présent dans votre code source, car dès que vous partager ce code via git le secret sera révélé à toutes personnes ayant accès au git, même si vous supprimer le fichier son ancienne version sera dans l&amp;rsquo;historique.&lt;/p&gt;
+&lt;p&gt;Le plus simple est donc de les stocker en dehors de votre code source, une solution classique est de les stocker dans les variables d&amp;rsquo;environnement de votre machine. Les variables d&amp;rsquo;environnement stockent des valeurs en mémoire et sont accessibles par tous les programmes s&amp;rsquo;exécutant sur votre poste.&lt;/p&gt;
+&lt;p&gt;En Python on utilise en général un fichier &lt;em&gt;.env&lt;/em&gt; à la racine de notre projet qui contient la liste de nos variables d&amp;rsquo;environnements et leur valeur. Ce fichier est ajouté au fichier &lt;em&gt;.gitignore&lt;/em&gt; qui permet d&amp;rsquo;empêcher l&amp;rsquo;ajout par erreur d&amp;rsquo;un fichier non désiré dans git.&lt;/p&gt;
+&lt;p&gt;Exemple de fichier .env :&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;BLOG_LOGIN&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;ddata
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;BLOG_PASSWORD&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;cPasMonMotDeP4sse!
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Pour charger automatiquement le fichier &lt;em&gt;.env&lt;/em&gt; lors de l&amp;rsquo;exécution de votre code vous pouvez utiliser le paquet &lt;a class=&#34;link&#34; href=&#34;https://pypi.org/project/python-dotenv/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;python-dotenv&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;On peut ensuite utiliser les variables d&amp;rsquo;environnement directement depuis notre code source :&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;os&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;login&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;os&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;environ&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;BLOG_LOGIN&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;password&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;os&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;environ&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;BLOG_PASSWORD&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Je vous conseille d&amp;rsquo;utiliser les variables d&amp;rsquo;environnement aussi pour variabiliser vos informations de connexion comme par exemple les URL ou les noms de serveur. Cela rendra votre programme plus simple à maintenir.&lt;/p&gt;
+&lt;p&gt;Merci de votre attention.&lt;/p&gt;</description>
+        </item>
+        <item>
         <title>Votre première requête dans Snowflake</title>
         <link>https://blog.ddata.fr/p/snowflake-first-query/</link>
         <pubDate>Wed, 27 Sep 2023 00:00:00 +0000</pubDate>
