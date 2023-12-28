@@ -6,7 +6,15 @@
         <description>Recent content in Categories on Le D de Data</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>fr-fr</language>
-        <lastBuildDate>Tue, 26 Dec 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ddata.fr/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Thu, 28 Dec 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ddata.fr/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Azure</title>
+        <link>https://blog.ddata.fr/categories/azure/</link>
+        <pubDate>Thu, 28 Dec 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://blog.ddata.fr/categories/azure/</guid>
+        <description>&lt;img src="https://blog.ddata.fr/categories/azure/Azure250.png" alt="Featured image of post Azure" /&gt;</description>
+        </item>
+        <item>
         <title>Python</title>
         <link>https://blog.ddata.fr/categories/python/</link>
         <pubDate>Tue, 26 Dec 2023 00:00:00 +0000</pubDate>
@@ -45,14 +53,6 @@
         
         <guid>https://blog.ddata.fr/categories/excel/</guid>
         <description>&lt;img src="https://blog.ddata.fr/categories/excel/Excel.png" alt="Featured image of post Excel" /&gt;</description>
-        </item>
-        <item>
-        <title>Azure</title>
-        <link>https://blog.ddata.fr/categories/azure/</link>
-        <pubDate>Fri, 14 Apr 2023 00:00:00 +0000</pubDate>
-        
-        <guid>https://blog.ddata.fr/categories/azure/</guid>
-        <description>&lt;img src="https://blog.ddata.fr/categories/azure/Azure250.png" alt="Featured image of post Azure" /&gt;</description>
         </item>
         <item>
         <title>Data</title>

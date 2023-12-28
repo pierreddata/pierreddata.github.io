@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html lang="fr-fr" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Les principaux de service sont des identités dans EntraID (ex Azure AD) qui vous permettront d&amp;rsquo;authentifier vos programmes auprès de vos services utilisant Entra ID, comme Microsoft 365, dans un contexte de sécurité maitrisé.
+'>
+<meta name="keywords" content="Azure, Service principal, Application d&#39;entreprise, Sécurité"><title>Principal de service</title>
+
+<link rel='canonical' href='https://blog.ddata.fr/p/service-principal/'>
+
+<link rel="stylesheet" href="/scss/style.min.24ef1cc321916467896e8c70c10c0ad7b98c2a8df14298032fb637216e397f50.css"><meta property='og:title' content='Principal de service'>
+<meta property='og:description' content='Les principaux de service sont des identités dans EntraID (ex Azure AD) qui vous permettront d&amp;rsquo;authentifier vos programmes auprès de vos services utilisant Entra ID, comme Microsoft 365, dans un contexte de sécurité maitrisé.
+'>
+<meta property='og:url' content='https://blog.ddata.fr/p/service-principal/'>
+<meta property='og:site_name' content='Le D de Data'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Auto formation' /><meta property='article:published_time' content='2023-12-28T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2023-12-28T00:00:00&#43;00:00'/><meta property='og:image' content='https://blog.ddata.fr/p/service-principal/towfiqu-barbhuiya-0TORZQnU0aI-unsplash.jpg' />
+<meta name="twitter:title" content="Principal de service">
+<meta name="twitter:description" content="Les principaux de service sont des identités dans EntraID (ex Azure AD) qui vous permettront d&amp;rsquo;authentifier vos programmes auprès de vos services utilisant Entra ID, comme Microsoft 365, dans un contexte de sécurité maitrisé.
+"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://blog.ddata.fr/p/service-principal/towfiqu-barbhuiya-0TORZQnU0aI-unsplash.jpg' />
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TY6XFEN6QV"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-TY6XFEN6QV', { 'anonymize_ip': false });
+}
+</script>
+<link rel="alternate"
+      type="application/rss+xml"
+      href="https://blog.ddata.fr/index.xml"
+      title="Le D de Data">
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "dark");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Afficher le menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/pierre_hua6bbc70dde858dd10e363a14d1f7729c_67951_300x0_resize_q75_box.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Le D de Data</a></h1>
+            <h2 class="site-description">Blog francophone autour de la data</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/pierreddata'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://www.linkedin.com/in/pierre-dupont-0b532374/'
+                        target="_blank"
+                        title="LinkdIn"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-folders" width="44" height="44" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <rect x="4" y="4" width="16" height="16" rx="2" />
+  <line x1="8" y1="11" x2="8" y2="16" />
+  <line x1="8" y1="8" x2="8" y2="8.01" />
+  <line x1="12" y1="16" x2="12" y2="11" />
+  <path d="M16 16v-3a2 2 0 0 0 -4 0" />
+</svg>
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Accueil</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/a-propos-de-d-de-data/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>A Propos</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/series/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-folders" width="44" height="44" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 4h3l2 2h5a2 2 0 0 1 2 2v7a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-9a2 2 0 0 1 2 -2" />
+  <path d="M17 17v2a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-9a2 2 0 0 1 2 -2h2" />
+</svg>
+
+                
+                <span>Series</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/liens/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Liens</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Rechercher</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Mode sombre</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table des matières</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#contexte">Contexte</a></li>
+    <li><a href="#comprendre-les-principaux-de-services">Comprendre les principaux de services</a></li>
+    <li><a href="#créer-un-principal-de-service">Créer un principal de service</a>
+      <ol>
+        <li><a href="#via-le-portail-entra-id">Via le portail Entra Id</a></li>
+        <li><a href="#via-une-ligne-de-commande">Via une ligne de commande</a></li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/service-principal/">
+                <img src="/p/service-principal/towfiqu-barbhuiya-0TORZQnU0aI-unsplash_hu3d03a01dcc18bc5be0e67db3d8d209a6_512044_800x0_resize_q75_box.jpg"
+                        srcset="/p/service-principal/towfiqu-barbhuiya-0TORZQnU0aI-unsplash_hu3d03a01dcc18bc5be0e67db3d8d209a6_512044_800x0_resize_q75_box.jpg 800w, /p/service-principal/towfiqu-barbhuiya-0TORZQnU0aI-unsplash_hu3d03a01dcc18bc5be0e67db3d8d209a6_512044_1600x0_resize_q75_box.jpg 1600w"
+                        width="800" 
+                        height="534" 
+                        loading="lazy"
+                        alt="Featured image of post Principal de service" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/azure/" style="background-color: #0078d4; color: #fff;">
+                Azure
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/service-principal/">Principal de service</a>
+        </h2>
+
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published" datetime="2023-12-28T00:00:00Z">
+                    28 décembre 2023
+                    
+                </time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    5 minutes de lecture
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+    
+    
+</div>
+</header>
+
+    <section class="article-content">
+    
+    
+    <p>Les principaux de service sont des identités dans EntraID (ex Azure AD) qui vous permettront d&rsquo;authentifier vos programmes auprès de vos services utilisant Entra ID, comme Microsoft 365, dans un contexte de sécurité maitrisé.</p>
+<h2 id="contexte">Contexte</h2>
+<p>Lorsque vous travaillez dans l&rsquo;écosystème Microsoft dans des outils comme Microsoft 365 ou Azure, vous êtes authentifié par un système nommé Entra ID (Ex Azure Active Directory ou aad).</p>
+<p>Cette authentification permet ensuite d&rsquo;attribuer des autorisations à votre identité.</p>
+<p>Cette authentification est individuelle, elle est liée à votre identité dans cet écosystème. Quand vous souhaitez utiliser un programme qui utilise les ressources de cet écosystème, vous devez lui fournir sa propre identité.</p>
+<p>Les principaux de service sont utilisés pour donner une identité à vos programmes.<br>
+Les bonnes pratiques veulent que vous créer une identité différente par programme et que vous lui attribuiez le minimum d&rsquo;autorisation nécessaire pour son bon fonctionnement. C&rsquo;est le principe du moindre privilège.</p>
+<p>Si cette identité est compromise, les conséquences seront limitées aux autorisations que vous lui aurez accordées.</p>
+<p>N&rsquo;oubliez pas d’exécuter un programme dans votre contexte de sécurité et la porte ouverte aux problèmes de sécurité.</p>
+<h2 id="comprendre-les-principaux-de-services">Comprendre les principaux de services</h2>
+<p>Si vous souhaitez approfondir votre compréhension des principaux de services, je vous recommande la vidéo Youtube de John Savill, <a class="link" href="https://www.youtube.com/watch?v=WVNvoiA_ktw"  target="_blank" rel="noopener"
+    >Azure AD App Registrations, Enterprise Apps and Service Principals</a></p>
+<h2 id="créer-un-principal-de-service">Créer un principal de service</h2>
+<p>Nous allons maintenant créer un principal de service via 2 méthodes distinctes, l&rsquo;interface Web et la ligne de commande. Les résultats seront les mêmes. La première méthode permet de bien voir l&rsquo;ensemble des options possibles alors que la seconde est utilisable dans des usages plus complexes.</p>
+<h3 id="via-le-portail-entra-id">Via le portail Entra Id</h3>
+<p>Rendez-vous sur votre portail <a class="link" href="https://entra.microsoft.com/"  target="_blank" rel="noopener"
+    >Entra ID</a>.</p>
+<p><img src="/p/service-principal/img/0001-entra-id-portal.png"
+	width="1920"
+	height="979"
+	srcset="/p/service-principal/img/0001-entra-id-portal_hu74ca025e33716dbab9f9ca675d1f7bba_86074_480x0_resize_box_3.png 480w, /p/service-principal/img/0001-entra-id-portal_hu74ca025e33716dbab9f9ca675d1f7bba_86074_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Portail Entra ID"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="196"
+		data-flex-basis="470px"
+	
+></p>
+<ol>
+<li>Sélectionnez <strong>Applications</strong>.</li>
+<li>Sélectionnez <strong>Inscriptions des applications</strong>.</li>
+<li>Choisissez <strong>+ Nouvelle inscription</strong>.3</li>
+</ol>
+<p><img src="/p/service-principal/img/0002-entra-id-create-app.png"
+	width="1920"
+	height="979"
+	srcset="/p/service-principal/img/0002-entra-id-create-app_hu36ae514510e58f493c7528731037e2a6_98122_480x0_resize_box_3.png 480w, /p/service-principal/img/0002-entra-id-create-app_hu36ae514510e58f493c7528731037e2a6_98122_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Inscrire une application"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="196"
+		data-flex-basis="470px"
+	
+></p>
+<ol>
+<li>Saisir un nom pour votre principal de service.</li>
+<li>On créer un compte utilisable uniquement dans notre annuaire Entra ID.</li>
+<li>Appuyez sur <strong>S&rsquo;inscrire</strong> pour créer votre principal de service.</li>
+</ol>
+<p><img src="/p/service-principal/img/0003-entra-id-info-app.png"
+	width="1920"
+	height="979"
+	srcset="/p/service-principal/img/0003-entra-id-info-app_huef9d362bbf2f2fee7e996a4f3ac078a3_174430_480x0_resize_box_3.png 480w, /p/service-principal/img/0003-entra-id-info-app_huef9d362bbf2f2fee7e996a4f3ac078a3_174430_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Information sur votre principal de service"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="196"
+		data-flex-basis="470px"
+	
+></p>
+<ol>
+<li>L&rsquo;<strong>ID d&rsquo;application (client)</strong> est l&rsquo;id de votre principal de service, il sera utilisé pour s&rsquo;authentifier.</li>
+<li>Dans <strong>Certificats &amp; secrets</strong> vous pouvez gérer le mode d&rsquo;authentification de votre principal de service, via un secret (mot de passe) ou un certificat.</li>
+<li>Dans <strong>API autorisées</strong> vous pouvez autorisé votre principal de service à interagir avec les différents composants de votre écosystème.</li>
+</ol>
+<p><img src="/p/service-principal/img/0004-entra-id-app-secret.png"
+	width="1920"
+	height="979"
+	srcset="/p/service-principal/img/0004-entra-id-app-secret_hu559cff7d6f8bbd686478577024f554d0_123111_480x0_resize_box_3.png 480w, /p/service-principal/img/0004-entra-id-app-secret_hu559cff7d6f8bbd686478577024f554d0_123111_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Ajout d&rsquo;un secret à votre principal de service"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="196"
+		data-flex-basis="470px"
+	
+></p>
+<ol>
+<li>Rendez-vous dans <strong>Certificats &amp; secrets</strong>.</li>
+<li>Sélectionnez <strong>+ Nouveau secret client</strong>.</li>
+<li>Choisissez un nom pour ce secret, si vous ne mettez rien un nom par défaut avec la date sera mis.</li>
+<li>Sélectionnez une durée de vie pour le secret avec un maximum de 24 mois.</li>
+<li>Appuyez sur <strong>Ajouter</strong> pour créer le secret.</li>
+</ol>
+<p><img src="/p/service-principal/img/0005-entra-id-app-secret.png"
+	width="1062"
+	height="228"
+	srcset="/p/service-principal/img/0005-entra-id-app-secret_hua621150e9126fba9ba0373d0cf400811_20850_480x0_resize_box_3.png 480w, /p/service-principal/img/0005-entra-id-app-secret_hua621150e9126fba9ba0373d0cf400811_20850_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Création du secret de votre principal de service"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="465"
+		data-flex-basis="1117px"
+	
+></p>
+<ol>
+<li>La valeur de votre secret apparait pour cette fois uniquement.</li>
+<li>Vous pouvez voir la date de fin de validité du secret.</li>
+<li>Vous pouvez supprimer le secret.</li>
+</ol>
+<p>Vous pouvez créer plusieurs secrets pour un même principal de service.<br>
+Vous devez impérativement copier votre secret dans un endroit sécurisé de type KeyPass. En cas de perte vous ne pourrez pas le retrouver, vous pourrez seulement le supprimer et le recréer.</p>
+<p>Je vous conseille de mettre en place une stratégie d&rsquo;inventaire des principaux de service et de rotation des secrets, de ne pas prendre des durées de vie trop longues, car dans 2 ans vous risquez de ne plus savoir où est utilisé ce service principal jusqu&rsquo;au moment où une application tombe en panne pour un mot de passe périmé.</p>
+<p><img src="/p/service-principal/img/0006-entra-id-app-autorization.png"
+	width="1920"
+	height="979"
+	srcset="/p/service-principal/img/0006-entra-id-app-autorization_hu2ec210eadf6977403e69f0767535109b_195413_480x0_resize_box_3.png 480w, /p/service-principal/img/0006-entra-id-app-autorization_hu2ec210eadf6977403e69f0767535109b_195413_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Ajout d&rsquo;autorisation à votre principal de service"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="196"
+		data-flex-basis="470px"
+	
+></p>
+<ol>
+<li>Pour ajouter des autorisations à une API de votre écosystème à votre service principal rendez-vous dans <strong>API autorisé</strong>.</li>
+<li>Appuyez sur <strong>+ Ajouter une autorisation</strong>.</li>
+<li>Sélectionnez l&rsquo;API voulu puis le niveau de droit souhaité.</li>
+</ol>
+<p>Par exemple pour donner l&rsquo;autorisation Sites.Selected de Microsoft Graph, sélectionnez Microsoft Graph
+<img src="/p/service-principal/img/0007-entra-id-app-autorization.png"
+	width="856"
+	height="935"
+	srcset="/p/service-principal/img/0007-entra-id-app-autorization_hu069b82720e78c33e28a3245d698cea76_51736_480x0_resize_box_3.png 480w, /p/service-principal/img/0007-entra-id-app-autorization_hu069b82720e78c33e28a3245d698cea76_51736_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Ajout de l&rsquo;autorisation Sites.Selected de Microsoft Graph"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="91"
+		data-flex-basis="219px"
+	
+></p>
+<ol>
+<li>Sélectionner <strong>Autorisation d&rsquo;application</strong>.</li>
+<li>Tapez <em>Sites</em> pour filtrer les droits.</li>
+<li>Cochez <strong>Sites.Selected</strong>.</li>
+<li>Appuyez sur <strong>Ajouter des autorisations</strong>.</li>
+</ol>
+<p><img src="/p/service-principal/img/0008-entra-id-app-autorization.png"
+	width="1065"
+	height="277"
+	srcset="/p/service-principal/img/0008-entra-id-app-autorization_hub693dc5d15a920e391770aa87c3df8ca_22165_480x0_resize_box_3.png 480w, /p/service-principal/img/0008-entra-id-app-autorization_hub693dc5d15a920e391770aa87c3df8ca_22165_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Consentement de l&rsquo;autorisation"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="384"
+		data-flex-basis="922px"
+	
+></p>
+<ol>
+<li>Certaines autorisations nécessitent un consentement de l&rsquo;administrateur.</li>
+<li>Cliquez ici pour consentir formellement à l&rsquo;attribution de  l&rsquo;autorisation. Sans consentement, pas d&rsquo;autorisation.</li>
+</ol>
+<h3 id="via-une-ligne-de-commande">Via une ligne de commande</h3>
+<p>Vous trouverez sur internet un grand nombre de méthodes différentes pour créer un service principal, en 2023, la bonne méthode, celle préconisée par Microsoft est de passer par Microsoft Graph. Toutes autres méthodes risquent de se voir déprécier avant Microsoft Graph.</p>
+<p>Pour utiliser Microsoft Graph avec PowerShell, vous devrez installer le SDK. Toutes les informations concernant ce SDK sont sur la page <a class="link" href="https://learn.microsoft.com/en-us/powershell/microsoftgraph/installation"  target="_blank" rel="noopener"
+    >Install the Microsoft Graph PowerShell SDK</a></p>
+<p>Ouvrez une fenêtre en PowerShell Core (version 7) et installez le module Microsoft Graph.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">Install-Module Microsoft.Graph -Scope CurrentUser
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Connectez-vous avec la ligne de code suivante :</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">Connect-MgGraph -Scopes <span class="s2">&#34;Application.ReadWrite.All&#34;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Une fois la procédure de connexion terminée avec succès vous pouvez créer un principal de service nommé <em>Mon application via PowerShell</em> avec la ligne de commande suivante :</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">New-MgApplication -DisplayName <span class="s1">&#39;Mon application via PowerShell&#39;</span> <span class="p">|</span> Format-List Id, DisplayName, AppId, SignInAudience, PublisherDomain
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>En sortie de la commande, vous aurez les informations concernant l&rsquo;application créer.</p>
+<p>Pour ajouter un secret et l&rsquo;afficher, vous pouvez exécuter le script suivant :</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="nv">$appRegObj</span> <span class="o">=</span> Get-MgApplication -All -Filter <span class="s2">&#34;DisplayName eq &#39;Mon application via PowerShell&#39;&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">$passwordCred</span> <span class="o">=</span> @<span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;displayName&#34;</span> <span class="o">=</span> <span class="s2">&#34;Mon secret&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;endDateTime&#34;</span> <span class="o">=</span> <span class="o">(</span>Get-Date<span class="o">)</span>.AddDays<span class="o">(</span>180<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl"><span class="nv">$newSecretObj</span> <span class="o">=</span> <span class="nv">$null</span>
+</span></span><span class="line"><span class="cl"> 
+</span></span><span class="line"><span class="cl"><span class="c1"># Send the request and get the new password</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$newSecretObj</span> <span class="o">=</span> Add-MgApplicationPassword -ApplicationId <span class="nv">$appRegObj</span>.Id -PasswordCredential <span class="nv">$passwordCred</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Write-host <span class="nv">$newSecretObj</span>.SecretText
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Il existe des versions de ce SDK pour les principaux langages de développement.</p>
+<p>Vous savez maintenant créer des identités pour vos programmes.</p>
+<p>Merci de votre attention.</p>
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/auto-formation/">Auto formation</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Contenus liés</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/les-bases-du-cloud/">
+        
+        
+            <div class="article-image">
+                <img src="/p/les-bases-du-cloud/_huec165e5e5d9302a0ae5db3cdc02c6df6_758416_a06383d26df7532f657785ba9c65095c.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Les bases du cloud"
+                        data-key="les-bases-du-cloud" 
+                        data-hash="md5-/YR1K9JXu0sySlf&#43;3r&#43;7qQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Les bases du cloud</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/datalake-compute/">
+        
+        
+            <div class="article-image">
+                <img src="/p/datalake-compute/_huabd43efd91f25ddf48b57b8258cba1be_7710978_32b7f7cc909a6d06bc2538c6fd73bfb4.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Datalake : comment traiter les données d&#39;un datalake dans Azure"
+                        data-key="datalake-compute" 
+                        data-hash="md5-VLy4um3&#43;GCs9fx6xPJ1AoQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Datalake : comment traiter les données d&#39;un datalake dans Azure</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/datalake-la-base/">
+        
+        
+            <div class="article-image">
+                <img src="/p/datalake-la-base/_hu0aa3f93b2631ba2a32af5171088bce89_2286693_99fe5381d1849f007a28d9e271f98a19.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Datalake : la base d&#39;un projet data moderne"
+                        data-key="datalake-la-base" 
+                        data-hash="md5-XS8IKKiJI9HVYcDLGszlMA==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Datalake : la base d&#39;un projet data moderne</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/c%C3%A9koidonc-azure/">
+        
+        
+            <div class="article-image">
+                <img src="/p/c%C3%A9koidonc-azure/_hueac9fc876ba4dc6d3988d92735221d11_1415592_8801c8f4a91236e0a0717f0c364ffb86.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Cékoidonc Azure ?"
+                        
+                        data-hash="md5-O2q/&#43;CDKWqSGB4ME&#43;/Kmcg==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Cékoidonc Azure ?</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/c%C3%A9koidonc-azure-active-directory/">
+        
+        
+            <div class="article-image">
+                <img src="/p/c%C3%A9koidonc-azure-active-directory/_hu35525c2077e7c31a5937113b838474e5_621905_74a6b7a80d79db3487b280189da877b4.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Cékoidonc Azure Active Directory ?"
+                        
+                        data-hash="md5-A2zAyxOtMalePCd8psbKfg==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Cékoidonc Azure Active Directory ?</h2>
+        </div>
+    </a>
+</article>
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "ddata" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2022 - 
+        
+        2023 Le D de Data
+    </section>
+    
+    <section class="powerby">
+        Généré avec <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Thème <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.20.0">Stack</a></b> conçu par <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

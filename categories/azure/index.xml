@@ -6,7 +6,257 @@
         <description>Recent content in Azure on Le D de Data</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>fr-fr</language>
-        <lastBuildDate>Fri, 14 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ddata.fr/categories/azure/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Thu, 28 Dec 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ddata.fr/categories/azure/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Principal de service</title>
+        <link>https://blog.ddata.fr/p/service-principal/</link>
+        <pubDate>Thu, 28 Dec 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://blog.ddata.fr/p/service-principal/</guid>
+        <description>&lt;img src="https://blog.ddata.fr/p/service-principal/towfiqu-barbhuiya-0TORZQnU0aI-unsplash.jpg" alt="Featured image of post Principal de service" /&gt;&lt;p&gt;Les principaux de service sont des identités dans EntraID (ex Azure AD) qui vous permettront d&amp;rsquo;authentifier vos programmes auprès de vos services utilisant Entra ID, comme Microsoft 365, dans un contexte de sécurité maitrisé.&lt;/p&gt;
+&lt;h2 id=&#34;contexte&#34;&gt;Contexte&lt;/h2&gt;
+&lt;p&gt;Lorsque vous travaillez dans l&amp;rsquo;écosystème Microsoft dans des outils comme Microsoft 365 ou Azure, vous êtes authentifié par un système nommé Entra ID (Ex Azure Active Directory ou aad).&lt;/p&gt;
+&lt;p&gt;Cette authentification permet ensuite d&amp;rsquo;attribuer des autorisations à votre identité.&lt;/p&gt;
+&lt;p&gt;Cette authentification est individuelle, elle est liée à votre identité dans cet écosystème. Quand vous souhaitez utiliser un programme qui utilise les ressources de cet écosystème, vous devez lui fournir sa propre identité.&lt;/p&gt;
+&lt;p&gt;Les principaux de service sont utilisés pour donner une identité à vos programmes.&lt;br&gt;
+Les bonnes pratiques veulent que vous créer une identité différente par programme et que vous lui attribuiez le minimum d&amp;rsquo;autorisation nécessaire pour son bon fonctionnement. C&amp;rsquo;est le principe du moindre privilège.&lt;/p&gt;
+&lt;p&gt;Si cette identité est compromise, les conséquences seront limitées aux autorisations que vous lui aurez accordées.&lt;/p&gt;
+&lt;p&gt;N&amp;rsquo;oubliez pas d’exécuter un programme dans votre contexte de sécurité et la porte ouverte aux problèmes de sécurité.&lt;/p&gt;
+&lt;h2 id=&#34;comprendre-les-principaux-de-services&#34;&gt;Comprendre les principaux de services&lt;/h2&gt;
+&lt;p&gt;Si vous souhaitez approfondir votre compréhension des principaux de services, je vous recommande la vidéo Youtube de John Savill, &lt;a class=&#34;link&#34; href=&#34;https://www.youtube.com/watch?v=WVNvoiA_ktw&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Azure AD App Registrations, Enterprise Apps and Service Principals&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;créer-un-principal-de-service&#34;&gt;Créer un principal de service&lt;/h2&gt;
+&lt;p&gt;Nous allons maintenant créer un principal de service via 2 méthodes distinctes, l&amp;rsquo;interface Web et la ligne de commande. Les résultats seront les mêmes. La première méthode permet de bien voir l&amp;rsquo;ensemble des options possibles alors que la seconde est utilisable dans des usages plus complexes.&lt;/p&gt;
+&lt;h3 id=&#34;via-le-portail-entra-id&#34;&gt;Via le portail Entra Id&lt;/h3&gt;
+&lt;p&gt;Rendez-vous sur votre portail &lt;a class=&#34;link&#34; href=&#34;https://entra.microsoft.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Entra ID&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/service-principal/img/0001-entra-id-portal.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;979&#34;
+	srcset=&#34;https://blog.ddata.fr/p/service-principal/img/0001-entra-id-portal_hu74ca025e33716dbab9f9ca675d1f7bba_86074_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/service-principal/img/0001-entra-id-portal_hu74ca025e33716dbab9f9ca675d1f7bba_86074_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Portail Entra ID&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;196&#34;
+		data-flex-basis=&#34;470px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Sélectionnez &lt;strong&gt;Applications&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;Sélectionnez &lt;strong&gt;Inscriptions des applications&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;Choisissez &lt;strong&gt;+ Nouvelle inscription&lt;/strong&gt;.3&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/service-principal/img/0002-entra-id-create-app.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;979&#34;
+	srcset=&#34;https://blog.ddata.fr/p/service-principal/img/0002-entra-id-create-app_hu36ae514510e58f493c7528731037e2a6_98122_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/service-principal/img/0002-entra-id-create-app_hu36ae514510e58f493c7528731037e2a6_98122_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Inscrire une application&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;196&#34;
+		data-flex-basis=&#34;470px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Saisir un nom pour votre principal de service.&lt;/li&gt;
+&lt;li&gt;On créer un compte utilisable uniquement dans notre annuaire Entra ID.&lt;/li&gt;
+&lt;li&gt;Appuyez sur &lt;strong&gt;S&amp;rsquo;inscrire&lt;/strong&gt; pour créer votre principal de service.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/service-principal/img/0003-entra-id-info-app.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;979&#34;
+	srcset=&#34;https://blog.ddata.fr/p/service-principal/img/0003-entra-id-info-app_huef9d362bbf2f2fee7e996a4f3ac078a3_174430_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/service-principal/img/0003-entra-id-info-app_huef9d362bbf2f2fee7e996a4f3ac078a3_174430_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Information sur votre principal de service&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;196&#34;
+		data-flex-basis=&#34;470px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;L&amp;rsquo;&lt;strong&gt;ID d&amp;rsquo;application (client)&lt;/strong&gt; est l&amp;rsquo;id de votre principal de service, il sera utilisé pour s&amp;rsquo;authentifier.&lt;/li&gt;
+&lt;li&gt;Dans &lt;strong&gt;Certificats &amp;amp; secrets&lt;/strong&gt; vous pouvez gérer le mode d&amp;rsquo;authentification de votre principal de service, via un secret (mot de passe) ou un certificat.&lt;/li&gt;
+&lt;li&gt;Dans &lt;strong&gt;API autorisées&lt;/strong&gt; vous pouvez autorisé votre principal de service à interagir avec les différents composants de votre écosystème.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/service-principal/img/0004-entra-id-app-secret.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;979&#34;
+	srcset=&#34;https://blog.ddata.fr/p/service-principal/img/0004-entra-id-app-secret_hu559cff7d6f8bbd686478577024f554d0_123111_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/service-principal/img/0004-entra-id-app-secret_hu559cff7d6f8bbd686478577024f554d0_123111_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Ajout d&amp;rsquo;un secret à votre principal de service&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;196&#34;
+		data-flex-basis=&#34;470px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Rendez-vous dans &lt;strong&gt;Certificats &amp;amp; secrets&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;Sélectionnez &lt;strong&gt;+ Nouveau secret client&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;Choisissez un nom pour ce secret, si vous ne mettez rien un nom par défaut avec la date sera mis.&lt;/li&gt;
+&lt;li&gt;Sélectionnez une durée de vie pour le secret avec un maximum de 24 mois.&lt;/li&gt;
+&lt;li&gt;Appuyez sur &lt;strong&gt;Ajouter&lt;/strong&gt; pour créer le secret.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/service-principal/img/0005-entra-id-app-secret.png&#34;
+	width=&#34;1062&#34;
+	height=&#34;228&#34;
+	srcset=&#34;https://blog.ddata.fr/p/service-principal/img/0005-entra-id-app-secret_hua621150e9126fba9ba0373d0cf400811_20850_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/service-principal/img/0005-entra-id-app-secret_hua621150e9126fba9ba0373d0cf400811_20850_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Création du secret de votre principal de service&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;465&#34;
+		data-flex-basis=&#34;1117px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;La valeur de votre secret apparait pour cette fois uniquement.&lt;/li&gt;
+&lt;li&gt;Vous pouvez voir la date de fin de validité du secret.&lt;/li&gt;
+&lt;li&gt;Vous pouvez supprimer le secret.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Vous pouvez créer plusieurs secrets pour un même principal de service.&lt;br&gt;
+Vous devez impérativement copier votre secret dans un endroit sécurisé de type KeyPass. En cas de perte vous ne pourrez pas le retrouver, vous pourrez seulement le supprimer et le recréer.&lt;/p&gt;
+&lt;p&gt;Je vous conseille de mettre en place une stratégie d&amp;rsquo;inventaire des principaux de service et de rotation des secrets, de ne pas prendre des durées de vie trop longues, car dans 2 ans vous risquez de ne plus savoir où est utilisé ce service principal jusqu&amp;rsquo;au moment où une application tombe en panne pour un mot de passe périmé.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/service-principal/img/0006-entra-id-app-autorization.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;979&#34;
+	srcset=&#34;https://blog.ddata.fr/p/service-principal/img/0006-entra-id-app-autorization_hu2ec210eadf6977403e69f0767535109b_195413_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/service-principal/img/0006-entra-id-app-autorization_hu2ec210eadf6977403e69f0767535109b_195413_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Ajout d&amp;rsquo;autorisation à votre principal de service&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;196&#34;
+		data-flex-basis=&#34;470px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Pour ajouter des autorisations à une API de votre écosystème à votre service principal rendez-vous dans &lt;strong&gt;API autorisé&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;Appuyez sur &lt;strong&gt;+ Ajouter une autorisation&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;Sélectionnez l&amp;rsquo;API voulu puis le niveau de droit souhaité.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Par exemple pour donner l&amp;rsquo;autorisation Sites.Selected de Microsoft Graph, sélectionnez Microsoft Graph
+&lt;img src=&#34;https://blog.ddata.fr/p/service-principal/img/0007-entra-id-app-autorization.png&#34;
+	width=&#34;856&#34;
+	height=&#34;935&#34;
+	srcset=&#34;https://blog.ddata.fr/p/service-principal/img/0007-entra-id-app-autorization_hu069b82720e78c33e28a3245d698cea76_51736_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/service-principal/img/0007-entra-id-app-autorization_hu069b82720e78c33e28a3245d698cea76_51736_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Ajout de l&amp;rsquo;autorisation Sites.Selected de Microsoft Graph&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;91&#34;
+		data-flex-basis=&#34;219px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Sélectionner &lt;strong&gt;Autorisation d&amp;rsquo;application&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;Tapez &lt;em&gt;Sites&lt;/em&gt; pour filtrer les droits.&lt;/li&gt;
+&lt;li&gt;Cochez &lt;strong&gt;Sites.Selected&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;Appuyez sur &lt;strong&gt;Ajouter des autorisations&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ddata.fr/p/service-principal/img/0008-entra-id-app-autorization.png&#34;
+	width=&#34;1065&#34;
+	height=&#34;277&#34;
+	srcset=&#34;https://blog.ddata.fr/p/service-principal/img/0008-entra-id-app-autorization_hub693dc5d15a920e391770aa87c3df8ca_22165_480x0_resize_box_3.png 480w, https://blog.ddata.fr/p/service-principal/img/0008-entra-id-app-autorization_hub693dc5d15a920e391770aa87c3df8ca_22165_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Consentement de l&amp;rsquo;autorisation&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;384&#34;
+		data-flex-basis=&#34;922px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Certaines autorisations nécessitent un consentement de l&amp;rsquo;administrateur.&lt;/li&gt;
+&lt;li&gt;Cliquez ici pour consentir formellement à l&amp;rsquo;attribution de  l&amp;rsquo;autorisation. Sans consentement, pas d&amp;rsquo;autorisation.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;via-une-ligne-de-commande&#34;&gt;Via une ligne de commande&lt;/h3&gt;
+&lt;p&gt;Vous trouverez sur internet un grand nombre de méthodes différentes pour créer un service principal, en 2023, la bonne méthode, celle préconisée par Microsoft est de passer par Microsoft Graph. Toutes autres méthodes risquent de se voir déprécier avant Microsoft Graph.&lt;/p&gt;
+&lt;p&gt;Pour utiliser Microsoft Graph avec PowerShell, vous devrez installer le SDK. Toutes les informations concernant ce SDK sont sur la page &lt;a class=&#34;link&#34; href=&#34;https://learn.microsoft.com/en-us/powershell/microsoftgraph/installation&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Install the Microsoft Graph PowerShell SDK&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Ouvrez une fenêtre en PowerShell Core (version 7) et installez le module Microsoft Graph.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Install-Module Microsoft.Graph -Scope CurrentUser
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Connectez-vous avec la ligne de code suivante :&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Connect-MgGraph -Scopes &lt;span class=&#34;s2&#34;&gt;&amp;#34;Application.ReadWrite.All&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Une fois la procédure de connexion terminée avec succès vous pouvez créer un principal de service nommé &lt;em&gt;Mon application via PowerShell&lt;/em&gt; avec la ligne de commande suivante :&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;New-MgApplication -DisplayName &lt;span class=&#34;s1&#34;&gt;&amp;#39;Mon application via PowerShell&amp;#39;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; Format-List Id, DisplayName, AppId, SignInAudience, PublisherDomain
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;En sortie de la commande, vous aurez les informations concernant l&amp;rsquo;application créer.&lt;/p&gt;
+&lt;p&gt;Pour ajouter un secret et l&amp;rsquo;afficher, vous pouvez exécuter le script suivant :&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;$appRegObj&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; Get-MgApplication -All -Filter &lt;span class=&#34;s2&#34;&gt;&amp;#34;DisplayName eq &amp;#39;Mon application via PowerShell&amp;#39;&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;$passwordCred&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; @&lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;s2&#34;&gt;&amp;#34;displayName&amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;Mon secret&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;s2&#34;&gt;&amp;#34;endDateTime&amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;Get-Date&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;.AddDays&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;180&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;$newSecretObj&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$null&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# Send the request and get the new password&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;$newSecretObj&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; Add-MgApplicationPassword -ApplicationId &lt;span class=&#34;nv&#34;&gt;$appRegObj&lt;/span&gt;.Id -PasswordCredential &lt;span class=&#34;nv&#34;&gt;$passwordCred&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Write-host &lt;span class=&#34;nv&#34;&gt;$newSecretObj&lt;/span&gt;.SecretText
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Il existe des versions de ce SDK pour les principaux langages de développement.&lt;/p&gt;
+&lt;p&gt;Vous savez maintenant créer des identités pour vos programmes.&lt;/p&gt;
+&lt;p&gt;Merci de votre attention.&lt;/p&gt;</description>
+        </item>
+        <item>
         <title>Les bases du cloud</title>
         <link>https://blog.ddata.fr/p/les-bases-du-cloud/</link>
         <pubDate>Fri, 14 Apr 2023 00:00:00 +0000</pubDate>
