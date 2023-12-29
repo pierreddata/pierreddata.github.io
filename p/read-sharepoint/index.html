@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="fr-fr" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Utiliser un principal de service pour accéder aux données stockées dans votre SharePoint en toute sécurité.
+'>
+<meta name="keywords" content="Azure, Service principal, Application d&#39;entreprise, SharePoint, Sécurité"><title>Accéder à vos données Sharepoint avec un principal de service</title>
+
+<link rel='canonical' href='https://blog.ddata.fr/p/read-sharepoint/'>
+
+<link rel="stylesheet" href="/scss/style.min.24ef1cc321916467896e8c70c10c0ad7b98c2a8df14298032fb637216e397f50.css"><meta property='og:title' content='Accéder à vos données Sharepoint avec un principal de service'>
+<meta property='og:description' content='Utiliser un principal de service pour accéder aux données stockées dans votre SharePoint en toute sécurité.
+'>
+<meta property='og:url' content='https://blog.ddata.fr/p/read-sharepoint/'>
+<meta property='og:site_name' content='Le D de Data'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Auto formation' /><meta property='article:published_time' content='2023-12-29T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2023-12-29T00:00:00&#43;00:00'/><meta property='og:image' content='https://blog.ddata.fr/p/read-sharepoint/ramakant-sharda-rHoODSwsQoc-unsplash.jpg' />
+<meta name="twitter:title" content="Accéder à vos données Sharepoint avec un principal de service">
+<meta name="twitter:description" content="Utiliser un principal de service pour accéder aux données stockées dans votre SharePoint en toute sécurité.
+"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://blog.ddata.fr/p/read-sharepoint/ramakant-sharda-rHoODSwsQoc-unsplash.jpg' />
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TY6XFEN6QV"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-TY6XFEN6QV', { 'anonymize_ip': false });
+}
+</script>
+<link rel="alternate"
+      type="application/rss+xml"
+      href="https://blog.ddata.fr/index.xml"
+      title="Le D de Data">
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "dark");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Afficher le menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/pierre_hua6bbc70dde858dd10e363a14d1f7729c_67951_300x0_resize_q75_box.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Le D de Data</a></h1>
+            <h2 class="site-description">Blog francophone autour de la data</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/pierreddata'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://www.linkedin.com/in/pierre-dupont-0b532374/'
+                        target="_blank"
+                        title="LinkdIn"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-folders" width="44" height="44" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <rect x="4" y="4" width="16" height="16" rx="2" />
+  <line x1="8" y1="11" x2="8" y2="16" />
+  <line x1="8" y1="8" x2="8" y2="8.01" />
+  <line x1="12" y1="16" x2="12" y2="11" />
+  <path d="M16 16v-3a2 2 0 0 0 -4 0" />
+</svg>
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Accueil</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/a-propos-de-d-de-data/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>A Propos</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/series/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-folders" width="44" height="44" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 4h3l2 2h5a2 2 0 0 1 2 2v7a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-9a2 2 0 0 1 2 -2" />
+  <path d="M17 17v2a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-9a2 2 0 0 1 2 -2h2" />
+</svg>
+
+                
+                <span>Series</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/liens/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Liens</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Rechercher</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Mode sombre</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table des matières</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#contexte">Contexte</a></li>
+    <li><a href="#pré-requis">Pré requis</a></li>
+    <li><a href="#autorisation">Autorisation</a></li>
+    <li><a href="#accéder-à-vos-données">Accéder à vos données</a>
+      <ol>
+        <li><a href="#authentification">Authentification</a></li>
+        <li><a href="#lecture-dun-fichier">Lecture d&rsquo;un fichier</a></li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/read-sharepoint/">
+                <img src="/p/read-sharepoint/ramakant-sharda-rHoODSwsQoc-unsplash_hu3d03a01dcc18bc5be0e67db3d8d209a6_682746_800x0_resize_q75_box.jpg"
+                        srcset="/p/read-sharepoint/ramakant-sharda-rHoODSwsQoc-unsplash_hu3d03a01dcc18bc5be0e67db3d8d209a6_682746_800x0_resize_q75_box.jpg 800w, /p/read-sharepoint/ramakant-sharda-rHoODSwsQoc-unsplash_hu3d03a01dcc18bc5be0e67db3d8d209a6_682746_1600x0_resize_q75_box.jpg 1600w"
+                        width="800" 
+                        height="533" 
+                        loading="lazy"
+                        alt="Featured image of post Accéder à vos données Sharepoint avec un principal de service" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/m365/" style="background-color: #D83B01; color: #fff;">
+                Microsoft 365
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/read-sharepoint/">Accéder à vos données Sharepoint avec un principal de service</a>
+        </h2>
+
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published" datetime="2023-12-29T00:00:00Z">
+                    29 décembre 2023
+                    
+                </time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    6 minutes de lecture
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+    
+    
+</div>
+</header>
+
+    <section class="article-content">
+    
+    
+    <p>Utiliser un principal de service pour accéder aux données stockées dans votre SharePoint en toute sécurité.</p>
+<h2 id="contexte">Contexte</h2>
+<p>Votre SharePoint contient certainement un grand nombre de données que vous souhaitez pouvoir utiliser avec vos programmes.
+Dans cet article je me propose de vous présenter un exemple de bout en bout pour autoriser un principal de service à accéder à un site SharePoint puis utiliser cet accès via un programme en Python.</p>
+<p>Pour rappel, un site SharePoint est créé automatiquement pour toutes équipes Teams, l&rsquo;exemple présenter ici est donc adressable pour les documents d&rsquo;une équipe Teams, stockés dans le site SharePoint sous-jacent.</p>
+<h2 id="pré-requis">Pré requis</h2>
+<p>Pour plus d&rsquo;information sur les comptes principaux de service, lisez mon article <a class="link" href="https://blog.ddata.fr/p/service-principal/" >Principal de service</a>.</p>
+<p>Je suppose que vous avez créé préalablement un principal de service avec un secret.</p>
+<p>Le principal de service doit avoir l&rsquo;autorisation d&rsquo;API <em>Sites.Selected</em> pour l&rsquo;API Microsoft Graph. Cette autorisation permet de donner des droits à ce principal de service site par site et non de manière globale.<br>
+Nous restons donc dans une logique de moindre privilège.</p>
+<p>Vous devez aussi créer les 3 variables d&rsquo;environnement suivantes :</p>
+<ul>
+<li>SHAREPOINT_SERVICE_PRINCIPAL_APPLICATION_ID : Contiens la valeur <em>ID d&rsquo;application (client)</em> de votre principal de service.</li>
+<li>SHAREPOINT_SERVICE_PRINCIPAL_SECRET : Contiens la valeur du secret du vôtre principal de service.</li>
+<li>SHAREPOINT_SERVICE_PRINCIPAL_TENANT_ID : Contiens la valeur <em>ID de l&rsquo;annuaire (locataire)</em> de votre principal de service. Il s&rsquo;agit de l&rsquo;id de votre tenant Entra ID.</li>
+</ul>
+<p>Vous pouvez initialiser ces variables d&rsquo;environnement via les commandes PowerShell suivantes :</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="nv">$env</span>:SHAREPOINT_SERVICE_PRINCIPAL_APPLICATION_ID <span class="o">=</span> <span class="s2">&#34;VOTRE_VALEUR_APPLICATION_ID&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$env</span>:SHAREPOINT_SERVICE_PRINCIPAL_SECRET <span class="o">=</span> <span class="s2">&#34;VOTRE_VALEUR_SECRET&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$env</span>:SHAREPOINT_SERVICE_PRINCIPAL_TENANT_ID <span class="o">=</span> <span class="s2">&#34;VOTRE_VALEUR_TENANT_ID&#34;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="autorisation">Autorisation</h2>
+<p>Par défaut vous ne pouvez des droits d&rsquo; accès à un site SharePoint qu&rsquo;à des comptes utilisateurs. Il n&rsquo;existe aucun moyen via l&rsquo;interface web pour donner des droits à un compte de type principal de service.</p>
+<p>Pour donner les autorisations, nous allons passer par l&rsquo;API Microsoft Graph.</p>
+<p>⚠ La personne exécutant le script doit avoir le droit propriétaire sur le site SharePoint et avoir le droit <em>Sites.FullControl.All</em> au niveau de Microsoft Graph (typiquement un administrateur). Une fois la procédure d&rsquo;autorisation réalisée, vous pouvez enlever le droit propriétaire à cette personne.</p>
+<p>Pour utiliser Microsoft Graph avec PowerShell, vous devrez installer le SDK. Toutes les informations concernant ce SDK sont sur la page <a class="link" href="https://learn.microsoft.com/en-us/powershell/microsoftgraph/installation"  target="_blank" rel="noopener"
+    >Install the Microsoft Graph PowerShell SDK</a></p>
+<p>Ouvrez une fenêtre en PowerShell Core (version 7) et installez le module Microsoft Graph si ce n&rsquo;est pas déjà fait.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">Install-Module Microsoft.Graph -Scope CurrentUser
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Connectez-vous avec la ligne de code suivante :</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">Connect-MgGraph -Scopes <span class="s2">&#34;Sites.FullControl.All&#34;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Modifiez le script puis exécutez-le.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="nv">$ClientId</span> <span class="o">=</span> <span class="nv">$env</span>:SHAREPOINT_SERVICE_PRINCIPAL_APPLICATION_ID
+</span></span><span class="line"><span class="cl"><span class="nv">$SPDomaine</span> <span class="o">=</span> <span class="s2">&#34;REMPLACER PAR VOTRE DOMAINE SHAREPOINT&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$MSGraphURL</span> <span class="o">=</span> <span class="s2">&#34;https://graph.microsoft.com&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">$SPSiteName</span> <span class="o">=</span> <span class="s2">&#34;REMPLACER PAR LE NOM DU SITE&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># Get Site information for site Id</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$URL</span> <span class="o">=</span> <span class="nv">$MSGraphURL</span> + <span class="s2">&#34;/v1.0/sites/</span><span class="nv">$SPDomaine</span><span class="s2">.sharepoint.com:/sites/</span><span class="nv">$SPSiteName</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$SPSite</span> <span class="o">=</span> Invoke-MgGraphRequest -Uri <span class="nv">$URL</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Put permission on Site</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$URL</span> <span class="o">=</span> <span class="nv">$MSGraphURL</span> + <span class="s2">&#34;/v1.0/sites/</span><span class="k">$(</span><span class="nv">$SPSite</span>.id<span class="k">)</span><span class="s2">/permissions&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$Body</span> <span class="o">=</span> @<span class="o">{</span> 
+</span></span><span class="line"><span class="cl">    <span class="nv">roles</span>               <span class="o">=</span> @<span class="o">(</span><span class="s2">&#34;read&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">grantedToIdentities</span> <span class="o">=</span> @<span class="o">(</span>
+</span></span><span class="line"><span class="cl">        @<span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nv">application</span> <span class="o">=</span> @<span class="o">{</span>
+</span></span><span class="line"><span class="cl">                <span class="nv">id</span> <span class="o">=</span> <span class="nv">$ClientId</span>
+</span></span><span class="line"><span class="cl">                <span class="nv">displayName</span> <span class="o">=</span> <span class="s2">&#34;Droit ajouté par script le </span><span class="k">$(</span>Get-Date -AsUTC -Format o<span class="k">)</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">    <span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span> <span class="p">|</span> ConvertTo-Json -Depth <span class="m">100</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">$r</span> <span class="o">=</span> Invoke-MgGraphRequest -Uri <span class="nv">$URL</span> -Body <span class="nv">$Body</span> -Method POST
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Explication du script ci-dessus :</p>
+<ul>
+<li>La variable <em>$SPDomaine</em> dois contenir votre domaine SharePoint, c&rsquo;est la valeur entre <em>https://</em> et <em>.sharepoint.com/</em> dans l&rsquo;URL de votre site SharePoint (visible en haut dans votre navigateur Internet).</li>
+<li>La variable <em>$SPSite</em> doit contenir le nom de votre site SharePoint, c&rsquo;est la valeur entre <em>/sites/</em> et le <em>/</em> suivant dans l&rsquo;URL de votre site SharePoint.</li>
+<li>Le script créer un JSON qui autorise le principal de service à lire les données du site SharePoint puis l&rsquo;envoi à l&rsquo;API Graph pour valider l&rsquo;ordre.</li>
+</ul>
+<p>Suite à cela votre principal de service a accès en lecture à la totalité de ce site SharePoint.</p>
+<h2 id="accéder-à-vos-données">Accéder à vos données</h2>
+<p>Maintenant que vous avez autorisé le principal de service à accéder au site SharePoint, nous allons lire un fichier depuis ce site.<br>
+Pour cela nous allons procéder en 2 étapes :</p>
+<ol>
+<li>L&rsquo;authentification nous permettant de nous identifier auprès d&rsquo;Entra ID et de recevoir un token nous permettant d&rsquo;accéder à des ressources.</li>
+<li>L&rsquo;accès à un fichier dans notre SharePoint en fournissant le token obtenu à l&rsquo;étape 1.</li>
+</ol>
+<h3 id="authentification">Authentification</h3>
+<p>Nous allons installer le paquet <em>azure-identity</em> qui gère l&rsquo;authentification</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">pip install azure-identity
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Le script Python suivant permet de réaliser l&rsquo;authentification et de préparer la variable <em>headers</em> qui sera ensuite utilisée pour interroger SharePoint.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">os</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">azure.identity</span> <span class="kn">import</span> <span class="n">ClientSecretCredential</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Create a credential object. Used to authenticate requests</span>
+</span></span><span class="line"><span class="cl"><span class="n">credential</span> <span class="o">=</span> <span class="n">ClientSecretCredential</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">tenant_id</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&#34;SHAREPOINT_SERVICE_PRINCIPAL_TENANT_ID&#34;</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="n">client_id</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&#34;SHAREPOINT_SERVICE_PRINCIPAL_APPLICATION_ID&#34;</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="n">client_secret</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&#34;SHAREPOINT_SERVICE_PRINCIPAL_SECRET&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">scopes</span> <span class="o">=</span> <span class="s1">&#39;https://graph.microsoft.com/.default&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&#34;Authorization&#34;</span><span class="p">:</span> <span class="s2">&#34;bearer </span><span class="si">{token}</span><span class="s2">&#34;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">token</span><span class="o">=</span><span class="n">credential</span><span class="o">.</span><span class="n">get_token</span><span class="p">(</span><span class="n">scopes</span><span class="p">)</span><span class="o">.</span><span class="n">token</span><span class="p">)}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="lecture-dun-fichier">Lecture d&rsquo;un fichier</h3>
+<p>Pour le test vous allez créer un fichier texte, pour pouvoir afficher simplement le contenu, dans votre site SharePoint.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">requests</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">graph_URL</span> <span class="o">=</span><span class="s1">&#39;https://graph.microsoft.com&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">sp_domaine</span> <span class="o">=</span> <span class="s1">&#39;REMPLACER PAR VOTRE DOMAINE SHAREPOINT&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">sp_site_name</span> <span class="o">=</span> <span class="s1">&#39;REMPLACER PAR LE NOM DU SITE&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">sp_file_path</span> <span class="o">=</span> <span class="s1">&#39;REMPLACER PAR LE CHEMIN DU FICHIER TEXTE&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># On obtient l&#39;id du site SharePoint</span>
+</span></span><span class="line"><span class="cl"><span class="n">URL</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">graph_URL</span><span class="si">}</span><span class="s1">/v1.0/sites/</span><span class="si">{</span><span class="n">sp_domaine</span><span class="si">}</span><span class="s1">.sharepoint.com:/sites/</span><span class="si">{</span><span class="n">sp_site_name</span><span class="si">}</span><span class="s1">&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">URL</span><span class="p">,</span> <span class="n">headers</span> <span class="o">=</span> <span class="n">headers</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">site_id</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">&#34;id&#34;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># On obtient l&#39;id du fichier dans le site SharePoint</span>
+</span></span><span class="line"><span class="cl"><span class="n">URL</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">graph_URL</span><span class="si">}</span><span class="s1">/v1.0/sites/</span><span class="si">{</span><span class="n">site_id</span><span class="si">}</span><span class="s1">/drive/root:/</span><span class="si">{</span><span class="n">sp_file_path</span><span class="si">}</span><span class="s1">&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">URL</span><span class="p">,</span> <span class="n">headers</span> <span class="o">=</span> <span class="n">headers</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">item_id</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">&#34;id&#34;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># On obtient le contenu du fichier</span>
+</span></span><span class="line"><span class="cl"><span class="n">URL</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">graph_URL</span><span class="si">}</span><span class="s1">/v1.0/sites/</span><span class="si">{</span><span class="n">site_id</span><span class="si">}</span><span class="s1">/drive/items/</span><span class="si">{</span><span class="n">item_id</span><span class="si">}</span><span class="s1">/content&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">URL</span><span class="p">,</span> <span class="n">headers</span> <span class="o">=</span> <span class="n">headers</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># On affiche le contenu du fichier</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Explication du script ci-dessus :</p>
+<ul>
+<li>La variable <em>sp_domaine</em> doit contenir votre domaine SharePoint, c&rsquo;est la valeur entre <em>https://</em> et <em>.sharepoint.com/</em> dans l&rsquo;URL de votre site SharePoint (visible en haut dans votre navigateur Internet).</li>
+<li>La variable <em>sp_site_name</em> doit contenir le nom de votre site SharePoint, c&rsquo;est la valeur entre <em>/sites/</em> et le <em>/</em> suivant dans l&rsquo;URL de votre site SharePoint.</li>
+<li>La variable <em>sp_file_path</em> doit contenir le chemin relatif du fichier texte de test, extension incluse. Vous pouvez mettre le fichier dans un dossier bien entendu.</li>
+</ul>
+<p>Le script complet est donc le suivant :</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">requests</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">os</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">azure.identity</span> <span class="kn">import</span> <span class="n">ClientSecretCredential</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">sp_domaine</span> <span class="o">=</span> <span class="s1">&#39;REMPLACER PAR VOTRE DOMAINE SHAREPOINT&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">sp_site_name</span> <span class="o">=</span> <span class="s1">&#39;REMPLACER PAR LE NOM DU SITE&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">sp_file_path</span> <span class="o">=</span> <span class="s1">&#39;REMPLACER PAR LE CHEMIN DU FICHIER TEXTE&#39;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Create a credential object. Used to authenticate requests</span>
+</span></span><span class="line"><span class="cl"><span class="n">credential</span> <span class="o">=</span> <span class="n">ClientSecretCredential</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">tenant_id</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&#34;SHAREPOINT_SERVICE_PRINCIPAL_TENANT_ID&#34;</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="n">client_id</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&#34;SHAREPOINT_SERVICE_PRINCIPAL_APPLICATION_ID&#34;</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="n">client_secret</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&#34;SHAREPOINT_SERVICE_PRINCIPAL_SECRET&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">scopes</span> <span class="o">=</span> <span class="s1">&#39;https://graph.microsoft.com/.default&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&#34;Authorization&#34;</span><span class="p">:</span> <span class="s2">&#34;bearer </span><span class="si">{token}</span><span class="s2">&#34;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">token</span><span class="o">=</span><span class="n">credential</span><span class="o">.</span><span class="n">get_token</span><span class="p">(</span><span class="n">scopes</span><span class="p">)</span><span class="o">.</span><span class="n">token</span><span class="p">)}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">graph_URL</span> <span class="o">=</span><span class="s1">&#39;https://graph.microsoft.com&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># On obtient l&#39;id du site SharePoint</span>
+</span></span><span class="line"><span class="cl"><span class="n">URL</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">graph_URL</span><span class="si">}</span><span class="s1">/v1.0/sites/</span><span class="si">{</span><span class="n">sp_domaine</span><span class="si">}</span><span class="s1">.sharepoint.com:/sites/</span><span class="si">{</span><span class="n">sp_site_name</span><span class="si">}</span><span class="s1">&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">URL</span><span class="p">,</span> <span class="n">headers</span> <span class="o">=</span> <span class="n">headers</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">site_id</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">&#34;id&#34;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># On obtient l&#39;id du fichier dans le site SharePoint</span>
+</span></span><span class="line"><span class="cl"><span class="n">URL</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">graph_URL</span><span class="si">}</span><span class="s1">/v1.0/sites/</span><span class="si">{</span><span class="n">site_id</span><span class="si">}</span><span class="s1">/drive/root:/</span><span class="si">{</span><span class="n">sp_file_path</span><span class="si">}</span><span class="s1">&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">URL</span><span class="p">,</span> <span class="n">headers</span> <span class="o">=</span> <span class="n">headers</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">item_id</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">&#34;id&#34;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># On obtient le contenu du fichier</span>
+</span></span><span class="line"><span class="cl"><span class="n">URL</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">graph_URL</span><span class="si">}</span><span class="s1">/v1.0/sites/</span><span class="si">{</span><span class="n">site_id</span><span class="si">}</span><span class="s1">/drive/items/</span><span class="si">{</span><span class="n">item_id</span><span class="si">}</span><span class="s1">/content&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">URL</span><span class="p">,</span> <span class="n">headers</span> <span class="o">=</span> <span class="n">headers</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># On affiche le contenu du fichier</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Vous pouvez maintenant exploiter les fichiers contenus dans vos sites SharePoint avec un principal de service.</p>
+<p>Merci de votre attention.</p>
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/auto-formation/">Auto formation</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "ddata" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2022 - 
+        
+        2023 Le D de Data
+    </section>
+    
+    <section class="powerby">
+        Généré avec <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Thème <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.20.0">Stack</a></b> conçu par <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

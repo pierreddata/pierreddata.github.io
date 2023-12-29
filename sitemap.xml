@@ -3,24 +3,30 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://blog.ddata.fr/</loc>
-    <lastmod>2023-12-28T00:00:00+00:00</lastmod>
+    <lastmod>2023-12-29T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.ddata.fr/p/read-sharepoint/</loc>
+    <lastmod>2023-12-29T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://blog.ddata.fr/tags/auto-formation/</loc>
-    <lastmod>2023-12-28T00:00:00+00:00</lastmod>
+    <lastmod>2023-12-29T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.ddata.fr/categories/</loc>
+    <lastmod>2023-12-29T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.ddata.fr/categories/m365/</loc>
+    <lastmod>2023-12-29T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.ddata.fr/post/</loc>
+    <lastmod>2023-12-29T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.ddata.fr/tags/</loc>
+    <lastmod>2023-12-29T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://blog.ddata.fr/categories/azure/</loc>
     <lastmod>2023-12-28T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://blog.ddata.fr/categories/</loc>
-    <lastmod>2023-12-28T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://blog.ddata.fr/post/</loc>
-    <lastmod>2023-12-28T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://blog.ddata.fr/p/service-principal/</loc>
-    <lastmod>2023-12-28T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://blog.ddata.fr/tags/</loc>
     <lastmod>2023-12-28T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://blog.ddata.fr/p/start-with-python/</loc>
@@ -234,9 +240,6 @@
     <lastmod>2022-10-02T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://blog.ddata.fr/p/power-bi-data-alert-to-teams/</loc>
-    <lastmod>2022-09-25T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://blog.ddata.fr/categories/m365/</loc>
     <lastmod>2022-09-25T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://blog.ddata.fr/categories/powerautomate/</loc>
